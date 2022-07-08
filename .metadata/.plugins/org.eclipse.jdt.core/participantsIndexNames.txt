@@ -1,0 +1,5 @@
+INDEX VERSION 1.131
+C:\workspace\Uglory_Customer\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\346581926.index
+\Uglory_Customer\src\main\java
+C:\workspace\Uglory_Customer\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\416890729.index
+\Uglory_Admin\src\main\java

@@ -1,0 +1,4 @@
+INDEX VERSION 1.4+C:\workspace\Uglory_Customer\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+97863556.index
+416890729.index
+3972178044.index
