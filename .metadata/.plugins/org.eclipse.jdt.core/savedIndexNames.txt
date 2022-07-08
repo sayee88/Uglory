@@ -1,4 +1,0 @@
-INDEX VERSION 1.131+C:\workspace\Uglory_Customer\.metadata\.plugins\org.eclipse.jdt.core
-3972178044.index
-1865797976.index
-97863556.index
