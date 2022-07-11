@@ -9,7 +9,7 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="../img/favicon.ico" rel="icon">
     
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,9 +29,10 @@
     
     <!-- Template Stylesheet -->
     <link href="../css/style.css" rel="stylesheet">
+
+    <!-- 회원, 결제, 리뷰 조회 Style sheet -->
+    <link href="../css/adminselect-style.css" rel="stylesheet">
     
-    <!-- Product Style sheet -->
-    <link href="../css/adminproduct-style.css" rel="stylesheet">
 
     <!-- Fontawesome cdn 링크 -->
     <script src="https://kit.fontawesome.com/1ef9913073.js" crossorigin="anonymous"></script>
@@ -57,7 +58,7 @@
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
                     <div class="position-relative">
-                        <img class="rounded-circle" src="img/bananaKoongya.jpg" alt="" style="width: 40px; height: 40px;">
+                        <img class="rounded-circle" src="../img/bananaKoongya.jpg" alt="" style="width: 40px; height: 40px;">
                         <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                     </div>
                     <div class="ms-3">
@@ -126,7 +127,7 @@
                 <div class="navbar-nav align-items-center ms-auto">
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img class="rounded-circle me-lg-2" src="img/bananaKoongya.jpg" alt="프로필 사진" style="width: 40px; height: 40px;">
+                            <img class="rounded-circle me-lg-2" src="../img/bananaKoongya.jpg" alt="프로필 사진" style="width: 40px; height: 40px;">
                             <span class="d-none d-lg-inline-flex fw-bold">바나나 쿵야</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
@@ -139,44 +140,62 @@
 
 
             <!-- 상품 등록 form태그 -->
-            <div class="container-fluid pt-2 px-4">
-                <div class="row justify-content-center mx-0">
-                    <div class="col-xl-6 col-lg-8 text-center bg-light rounded farmIn-margin p-5">
-                        <form action="">
-                            <h2 class="text-start">농장 등록</h2>
-                            <hr>
-                            
-                            <div class="product-row">
-                                <span class="fw-bold">농장 이름</span>
-                                <div class="productWrap">
-                                    <input type="text" class="productInput ps-1" placeholder="농장 이름">
-                                    <div class="inputMessage text-danger">이미 존재하는 농장 이름입니다</div>
-                                </div>
-                            </div>
+            <div class="container-fluid pt-4 px-4">
+                <div class="row bg-light rounded justify-content-center mx-0 m-5 p-4">
+                    <div class="col-lg-12 text-center">
+                        <h2 class="text-start">회원 관리</h2>
+                        <hr>
 
-                            <div class="product-row">
-                                <span class="fw-bold">생산자 이름</span>
-                                <div class="productWrap">
-                                    <input type="text" class="productInput ps-1" placeholder="생산자 이름">
-                                </div>
-                            </div>
+                        <table class="table table-borderless farmTable mt-4">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">회원 이메일</th>
+                                    <th scope="col">회원 이름</th>
+                                    <th scope="col">구독 상태</th>
+                                    <th scope="col">계정 정지</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>test01@uglory.com</td>
+                                    <td>양배추쿵야</td>
+                                    <td>
+                                        <button type="button" class="btn btn-subscription">구독 중</button>
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-stopaccount">계정 정지</button>
+                                    </td>
+                                </tr>
 
-                            <div class="product-row">
-                                <span class="fw-bold">원산지</span>
-                                <div class="productWrap">
-                                    <input type="text" class="productInput ps-1" placeholder="원산지">
-                                    <div class="inputMessage text-danger">원산지는 한글만 입력해주세요</div>
-                                </div>
-                            </div>
-                            
-                       
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>test01@uglory.com</td>
+                                    <td>양배추쿵야</td>
+                                    <td>
+                                        <button type="button" class="btn btn-secondary">구독</button>
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-stopaccount">계정 정지</button>
+                                    </td>
+                                </tr>
+                                
+                                <tr>
+                                    <th scope="row">1</th>
+                                    <td>test01@uglory.com</td>
+                                    <td>양배추쿵야</td>
+                                    <td>
+                                        <button type="button" class="btn btn-subscription">구독 중</button>
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-stopaccount">계정 정지</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
 
-                            <div class="product-row">
-                                <button type="button" class="btn btn-lg btn-primary m-1 w-100">취소</button>
-                                <button class="btn btn-lg btn-primary m-1 w-100">등록</button>
-                            </div>
 
-                        </form>
                     </div>
                 </div>
             </div>

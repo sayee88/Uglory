@@ -1,0 +1,51 @@
+/* 관리자 전체 폰트 */
+@font-face {
+    font-family: 'MapoPeacefull';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoPeacefullA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*{font-family:'MapoPeacefull';}
+
+/* 사이드바 서브메뉴 간격 */
+.sub-menu {margin-left: 47px; color: black; font-size: 18px;}
+.sub-menu:hover{color: black;}
+
+/* 계정 삭제 버튼 */
+.btn-stopaccount{
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.btn-stopaccount:hover {
+    color: #fff;
+    background-color: #bb2d3b;
+    border-color: #b02a37;
+}
+
+/* 구독 중 버튼(버튼 클릭 시 구독 상태 X로 전환) */
+.btn-subscription{
+    color: #fff;
+    background-color: rgb(53, 204, 182);
+    border-color: rgb(53, 204, 182);
+}
+
+/* 결제 상세 버튼 */
+.btn-payment-detail{
+    color: #fff;
+    background-color: rgb(53, 204, 182);
+    border-color: rgb(53, 204, 182);
+}
+
+
+/* 결제 상세 페이지 표 */
+table *{
+    border: 1px solid #6c757d;
+}
+
+/* 결제 상세 페이지 표 사이 공백 */
+.blank{
+    height: 30px;
+}
