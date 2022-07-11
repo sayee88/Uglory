@@ -1,0 +1,166 @@
+
+/* 상품 상세조회 전체 영역 */
+.product-detail{
+    width: 1020px;
+    min-height: 700px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+/* 상품 상세조회 영역 */
+.product-detail-area{
+    display: flex;
+}
+
+/* 상품 이미지 영역 */
+.product-detail-img{
+    width: 40%;
+}
+
+/* 상품 정보 영역 */
+.product-detail-info{
+    width: 60%;
+    margin-top: 15px;
+    margin-left: 30px;
+}
+
+/* 상품가격, 별점, 리뷰 영역 */
+.detail-name-area{
+    display: flex;
+    align-items: center;
+}
+
+/* 상품 가격 */
+.product-price {
+    width: 50%;
+}
+
+/* 별점 평균 */
+.detail-star-area > span {
+    font-size: 20px;
+}
+
+/* 리뷰 연결 */
+.detail-star-area > a {
+    font-size: 14px;
+}
+
+/* 배송비, 원산지, 생산자 */
+.detail-product-farm{
+    font-size: 18px;
+    color: gray;
+}
+
+/* 상품 옵션 선택 */
+.product-option {
+    width: 100%;
+    height: 40px;
+    color: gray;
+    border:1px solid #BDBDBD;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+/* 총 금액 영역 */
+.total-amount-area{
+    display: flex;
+    justify-content: space-between;
+}
+
+/* 총 금액 */
+.total-amount{
+    font-size: 25px;
+    font-weight: bold;
+    color: rgb(255, 89, 87);
+}
+
+/* 구매 버튼 */
+#buy-btn{
+    border: 0;
+    width: 52%;
+    height: 50px;
+    background-color: rgb(113, 214, 199);
+    color: white;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+/* 구매 버튼 hover */
+#buy-btn:hover{
+    border: 1px solid rgb(113, 214, 199) ;
+    width: 52%;
+    height: 50px;
+    background-color: transparent;
+    color: rgb(113, 214, 199);
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+/* 장바구니 버튼 */
+#cart-btn{
+    border: 0;
+    width: 26%;
+    height: 50px;
+    background-color: #D5D5D5;
+    color: #8C8C8C;
+    font-size: 17px;
+    border-radius: 5px;
+}
+
+/* 장바구니 버튼 hover */
+#cart-btn:hover{
+    border: 1px solid #8C8C8C ;
+    width: 26%;
+    height: 50px;
+    background-color: transparent;
+    color: #8C8C8C;
+    font-weight: bold;
+    font-size: 17px;
+    border-radius: 5px;
+}
+
+/* 공유하기 버튼 */
+#share-btn{
+    border: 0;
+    width: 20%;
+    height: 50px;
+    background-color: #D5D5D5;
+    color: #8C8C8C;
+    font-size: 17px;
+    border-radius: 5px;
+}
+
+/* 공유하기 버튼 hover */
+#share-btn:hover{
+    border: 1px solid #8C8C8C ;
+    width: 20%;
+    height: 50px;
+    background-color: transparent;
+    color: #8C8C8C;
+    font-weight: bold;
+    font-size: 17px;
+    border-radius: 5px;
+}
+
+/* 하단 후기 개수 조회 */
+#detail-review-count{
+    color: rgb(255, 89, 87);
+}
+
+/* 하단 리뷰 영역 */
+.product-review-area{
+    display: flex;
+    height: 70px;
+    align-items: center;
+    padding: 20px;
+    background-color: #D5D5D5 ;
+}
+
+/* 하단 리뷰 영역 리뷰 평균 */
+#product-review-avg{
+    color: black
+}
+
+
+

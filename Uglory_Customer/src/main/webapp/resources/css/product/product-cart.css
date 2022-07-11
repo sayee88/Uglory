@@ -1,0 +1,164 @@
+/* 장바구니 영역 */
+.product-cart{
+    width: 400px;
+    margin: 0 auto;
+}
+
+/* 장바구니 시작 및 개수 */
+.cart-count{
+    margin-top: 40px;
+}
+/* 장바구니 div 영역 */
+.product-cart-area{
+    width: 100%;
+}
+
+/* 장바구니에 담긴 상품이 없을 경우 */
+.empty-product-cart{
+    height: 30px;
+    background-color: #F6F6F6;
+    padding: 5px;
+}
+
+.empty-product-cart > p{
+    font-size: 15px;
+    font-weight: bold;
+    color: gray;
+}
+
+/* 장바구니 상품 선택 및 삭제 영역 */
+.cart-check-delete{
+    display: flex;
+    justify-content: space-between;
+}
+
+/* 상품 선택 input */
+#cart-check{
+    width: 16px;
+    height: 16px;
+}
+
+/* 상품 삭제 버튼 */
+#cart-delete{
+    border: 0;
+    background-color: transparent;
+    color: gray;
+    cursor: pointer;
+}
+
+/* 상품 정보 영역 */
+.cart-info-area{
+    display: flex;
+    margin-top: 20px;
+}
+
+/* 상품 정보 영역 상품명 */
+.cart-info-area > a{
+    color: black;
+    font-size: 15px;
+}
+
+/* 상품 옵션 조회 영역 */
+.cart-option-info{
+    height: 70px;
+    background-color: #F6F6F6;
+    padding: 10px;
+    margin: 0px;
+}
+
+/* 상품 수량 변경 및 금액 영역 */
+.option-info{
+    display: flex;
+    justify-content: space-between;
+}
+
+/* 상품 수량 변경 */
+.option-updown{
+    width : 100px;
+}
+
+/* 수량 감소 버튼 */
+#option-minus{
+    border: 0;
+    background-color: white;
+    width: 20px;
+    height: 20px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+/* 수량 증가 버튼 */
+#option-plus{
+    border: 0;
+    background-color: white;
+    width: 20px;
+    height: 20px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+/* 옵션 수량 조회 */
+.option-count{
+    width: 50px;
+}
+
+/* 설정한 옵션에 따른 가격 */
+.option-info > p{
+    color: #5D5D5D;
+    font-size: 16px;
+}
+
+/* 옵션 + 배송비 합친 가격 */
+.cart-option-amount{
+    color: #5D5D5D;
+    font-size: 18px;
+    text-align: end;
+}
+
+/* 장바구니 총 주문 가격 영역 */
+.cart-total-amount{
+    display: flex;
+    justify-content: space-between;
+}
+
+.cart-total-amount > p{
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+/* 총 상품 금액 */
+.total-product-amount {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* 총 배송비 */
+.total-del-amount{
+    display: flex;
+    justify-content: space-between;
+}
+
+/* 주문하기 버튼 */
+#product-order{
+    width: 100%;
+    height: 50px;
+    border: 0;
+    border-radius: 5px;
+    background-color: rgb(113, 214, 199);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* 주문하기 버튼 hover*/
+#product-order:hover{
+    width: 100%;
+    height: 50px;
+    border: 1px solid rgb(113, 214, 199);
+    border-radius: 5px;
+    background-color: transparent;
+    color: rgb(113, 214, 199);
+    font-size: 18px;
+    font-weight: bold;
+}
