@@ -9,6 +9,7 @@
 
 	<name>ugloryC</name> <!-- 프로젝트 명 -->
 
+
 	<packaging>war</packaging> <!-- 배포 형식 war: web archieve -->
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 
