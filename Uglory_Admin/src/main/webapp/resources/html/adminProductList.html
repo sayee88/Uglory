@@ -139,177 +139,256 @@
 
             <!-- 상품 목록 조회 -->
             <div class="container-fluid pt-4 px-4">
-                <div class="row rounded justify-content-center mx-0 m-5 p-4">
-                    <div class="col-lg-12 text-center">
-                        <h2 class="text-start ">상품 목록</h2>
-                        <hr>
-
-                        <div class="listHead">
-                            <form>
-                                <select name="" id="">
-                                    <option value="">상품명</option>
-                                    <option value="">생산자</option>
-                                    <option value="">상품상태</option>
-                                </select>
-                                <input type="text" id="pSearch">
-                                <button type="button" class="btn btn-secondary"><i class="fa-solid fa-magnifying-glass"></i></button>
-                            </form>
+                <div class="row justify-content-center mx-0 m-5 p-4">
+                    <h2>상품 목록</h2>
+                    <!-- 카테고리 분류 -->
+                    <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <button class="nav-link active" id="nav-root-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-root" type="button" role="tab" aria-controls="nav-root"
+                                aria-selected="true">근채류</button>
+                            <button class="nav-link" id="nav-beans-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-beans" type="button" role="tab"
+                                aria-controls="nav-beans" aria-selected="false">두류/곡류/견과류</button>
+                            <button class="nav-link" id="nav-veg-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-veg" type="button" role="tab"
+                                aria-controls="nav-veg" aria-selected="false">채소류</button>
+                            <button class="nav-link" id="nav-fnv-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-fnv" type="button" role="tab"
+                                aria-controls="nav-fnv" aria-selected="false">과채류</button>
+                            <button class="nav-link" id="nav-herbs-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-herbs" type="button" role="tab"
+                                aria-controls="nav-herbs" aria-selected="false">나물류</button>
+                            <button class="nav-link" id="nav-mush-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-mush" type="button" role="tab"
+                                aria-controls="nav-mush" aria-selected="false">버섯류</button>
+                            <button class="nav-link" id="nav-fruit-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-fruit" type="button" role="tab"
+                                aria-controls="nav-fruit" aria-selected="false">과일류</button>
                         </div>
+                    </nav>
 
-                        <div class="listBody">
-
-                            <div class="card m-4 col-lg-4 col-xl-3">
-                                <a href="#">
-                                    <img src="../img/vegetables-2485055.jpg" alt="야채"/>
-                                    <div class="cardBody">
-                                        <div class="card-tit">
-                                            <p>1</p>
-                                            <p>당근</p>
-                                        </div>
-                                        <p id="pCategory">근채류</p>
-
-                                        <div class="card-con">
-                                            <p>상품등록일</p>
-                                            <p class="pData">2022-07-08</p>
-                                        </div>
-                                        <div class="card-con">
-                                            <p>생산자</p>
-                                            <p class="pData">당근 농장</p>
-                                        </div>
-                                    </div>
-                                </a>
+                    <!-- 상품 리스트 시작 -->
+                    <div class="tab-content pt-3" id="nav-tabContent">
+                        <!-- root 시작 -->
+                        <div class="tab-pane fade show active" id="nav-root" role="tabpanel" aria-labelledby="nav-root-tab">
+                            <div class="listHead">
+                                <form>
+                                    <select name="" id="">
+                                        <option value="">상품명</option>
+                                        <option value="">생산자</option>
+                                        <option value="">상품상태</option>
+                                    </select>
+                                    <input type="text" id="pSearch">
+                                    <button type="button" class="btn btn-secondary"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                </form>
                             </div>
 
-                            <div class="card m-4 col-lg-4 col-xl-3">
-                                <a href="#">
-                                    <img src="../img/vegetables-2485055.jpg" alt="야채"/>
-                                    <div class="cardBody">
-                                        <div class="card-tit">
-                                            <p>1</p>
-                                            <p>당근</p>
-                                        </div>
-                                        <p id="pCategory">근채류</p>
+                            근채류
+                            
+                            <div class="listBody">
+                                <!-- card1 start -->
+                                <div class="card m-4 col-sm-5 col-xl-3">
+                                    <a href="#">
 
-                                        <div class="card-con">
-                                            <p>상품등록일</p>
-                                            <p class="pData">2022-07-08</p>
+                                        <!-- 품절표시 넣어보기 -->
+                                        <div class="sold-out-bg">
+                                            <img src="../img/soldOut.png" alt="품절" class="sold-out">
                                         </div>
-                                        <div class="card-con">
-                                            <p>생산자</p>
-                                            <p class="pData">당근 농장</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
 
-                            <div class="card m-4 col-lg-4 col-xl-3">
-                                <a href="#">
-                                    <img src="../img/vegetables-2485055.jpg" alt="야채"/>
-                                    <div class="cardBody">
-                                        <div class="card-tit">
-                                            <p>1</p>
-                                            <p>당근</p>
-                                        </div>
-                                        <p id="pCategory">근채류</p>
+                                        <img src="../img/vegetables-2485055.jpg" alt="야채"/>
+                                        <div class="cardBody">
+                                            <div class="card-tit">
+                                                <p>1</p>
+                                                <p>당근</p>
+                                            </div>
+                                            <p id="pCategory">근채류</p>
 
-                                        <div class="card-con">
-                                            <p>상품등록일</p>
-                                            <p class="pData">2022-07-08</p>
+                                            <div class="card-con">
+                                                <p>상품등록일</p>
+                                                <p class="pData">2022-07-08</p>
+                                            </div>
+                                            <div class="card-con">
+                                                <p>생산자</p>
+                                                <p class="pData">당근 농장</p>
+                                            </div>
                                         </div>
-                                        <div class="card-con">
-                                            <p>생산자</p>
-                                            <p class="pData">당근 농장</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="card m-4 col-lg-4 col-xl-3">
-                                <a href="#">
-                                    <img src="../img/vegetables-2485055.jpg" alt="야채"/>
-                                    <div class="cardBody">
-                                        <div class="card-tit">
-                                            <p>1</p>
-                                            <p>당근</p>
-                                        </div>
-                                        <p id="pCategory">근채류</p>
-
-                                        <div class="card-con">
-                                            <p>상품등록일</p>
-                                            <p class="pData">2022-07-08</p>
-                                        </div>
-                                        <div class="card-con">
-                                            <p>생산자</p>
-                                            <p class="pData">당근 농장</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="card m-4 col-lg-4 col-xl-3">
-                                <a href="#">
-                                    <img src="../img/vegetables-2485055.jpg" alt="야채"/>
-                                    <div class="cardBody">
-                                        <div class="card-tit">
-                                            <p>1</p>
-                                            <p>당근</p>
-                                        </div>
-                                        <p id="pCategory">근채류</p>
-
-                                        <div class="card-con">
-                                            <p>상품등록일</p>
-                                            <p class="pData">2022-07-08</p>
-                                        </div>
-                                        <div class="card-con">
-                                            <p>생산자</p>
-                                            <p class="pData">당근 농장</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="card m-4 col-lg-4 col-xl-3">
-                                <a href="#">
-                                    <img src="../img/vegetables-2485055.jpg" alt="야채"/>
-                                    <div class="cardBody">
-                                        <div class="card-tit">
-                                            <p>1</p>
-                                            <p>당근</p>
-                                        </div>
-                                        <p id="pCategory">근채류</p>
-
-                                        <div class="card-con">
-                                            <p>상품등록일</p>
-                                            <p class="pData">2022-07-08</p>
-                                        </div>
-                                        <div class="card-con">
-                                            <p>생산자</p>
-                                            <p class="pData">당근 농장</p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-
-                            <!-- 페이지네이션 -->
-                            <div class="btn-toolbar justify-content-center align-items-center mt-4">
-                                <i class="fa-solid fa-angles-left m-1 text-primary"></i>
-                                <i class="fa-solid fa-angle-left me-2 text-primary"></i>
-                                <div class="btn-group" role="group" aria-label="First group">
-                                    <button type="button" class="btn btn-primary">1</button>
-                                    <button type="button" class="btn btn-primary">2</button>
-                                    <button type="button" class="btn btn-primary">3</button>
-                                    <button type="button" class="btn btn-primary">4</button>
-                                    <button type="button" class="btn btn-primary">5</button>
+                                    </a>
                                 </div>
-                                <i class="fa-solid fa-angle-right ms-2 text-primary"></i>
-                                <i class="fa-solid fa-angles-right m-1 text-primary"></i>
+                                <!-- card1 end -->
+
+                                <!-- card2 start -->
+                                <div class="card m-4 col-sm-5 col-xl-3">
+                                    <a href="#">
+
+                                        <img src="../img/vegetables-2485055.jpg" alt="야채"/>
+                                        <div class="cardBody">
+                                            <div class="card-tit">
+                                                <p>1</p>
+                                                <p>당근</p>
+                                            </div>
+                                            <p id="pCategory">근채류</p>
+
+                                            <div class="card-con">
+                                                <p>상품등록일</p>
+                                                <p class="pData">2022-07-08</p>
+                                            </div>
+                                            <div class="card-con">
+                                                <p>생산자</p>
+                                                <p class="pData">당근 농장</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <!-- card2 end -->
+
+                                <!-- card3 start -->
+                                <div class="card m-4 col-sm-5 col-xl-3">
+                                    <a href="#">
+                                        <img src="../img/vegetables-2485055.jpg" alt="야채"/>
+                                        <div class="cardBody">
+                                            <div class="card-tit">
+                                                <p>1</p>
+                                                <p>당근</p>
+                                            </div>
+                                            <p id="pCategory">근채류</p>
+
+                                            <div class="card-con">
+                                                <p>상품등록일</p>
+                                                <p class="pData">2022-07-08</p>
+                                            </div>
+                                            <div class="card-con">
+                                                <p>생산자</p>
+                                                <p class="pData">당근 농장</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <!-- card3 end -->
+
+                            </div>
+                        </div>
+                        <!-- root 끝 -->
+
+                        <!-- beans 시작 -->
+                        <div class="tab-pane fade" id="nav-beans" role="tabpanel" aria-labelledby="nav-beans-tab">
+                            <div class="listHead">
+                                <form>
+                                    <select name="" id="">
+                                        <option value="">상품명</option>
+                                        <option value="">생산자</option>
+                                        <option value="">상품상태</option>
+                                    </select>
+                                    <input type="text" id="pSearch">
+                                    <button type="button" class="btn btn-secondary"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                </form>
                             </div>
 
+                            콩
+
                         </div>
+                        <!-- beans 끝 -->
+
+                        <!-- veg 시작 -->
+                        <div class="tab-pane fade" id="nav-veg" role="tabpanel" aria-labelledby="nav-veg-tab">
+                            <div class="listHead">
+                                <form>
+                                    <select name="" id="">
+                                        <option value="">상품명</option>
+                                        <option value="">생산자</option>
+                                        <option value="">상품상태</option>
+                                    </select>
+                                    <input type="text" id="pSearch">
+                                    <button type="button" class="btn btn-secondary"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                </form>
+                            </div>
+
+                            채소
+
+                        </div>
+                        <!-- veg 끝 -->
+
+                        <!-- fnv 시작 -->
+                        <div class="tab-pane fade" id="nav-fnv" role="tabpanel" aria-labelledby="nav-fnv-tab">
+                            <div class="listHead">
+                                <form>
+                                    <select name="" id="">
+                                        <option value="">상품명</option>
+                                        <option value="">생산자</option>
+                                        <option value="">상품상태</option>
+                                    </select>
+                                    <input type="text" id="pSearch">
+                                    <button type="button" class="btn btn-secondary"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                </form>
+                            </div>
+
+                            과채류
+
+                        </div>
+                        <!-- fnv 끝 -->
+
+                        <!-- herbs 시작 -->
+                        <div class="tab-pane fade" id="nav-herbs" role="tabpanel" aria-labelledby="nav-herbs-tab">
+                            <div class="listHead">
+                                <form>
+                                    <select name="" id="">
+                                        <option value="">상품명</option>
+                                        <option value="">생산자</option>
+                                        <option value="">상품상태</option>
+                                    </select>
+                                    <input type="text" id="pSearch">
+                                    <button type="button" class="btn btn-secondary"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                </form>
+                            </div>
+
+                            나물류
+
+                        </div>
+                        <!-- herbs 끝 -->
+
+                        <!-- mush 시작 -->
+                        <div class="tab-pane fade" id="nav-mush" role="tabpanel" aria-labelledby="nav-mush-tab">
+                            <div class="listHead">
+                                <form>
+                                    <select name="" id="">
+                                        <option value="">상품명</option>
+                                        <option value="">생산자</option>
+                                        <option value="">상품상태</option>
+                                    </select>
+                                    <input type="text" id="pSearch">
+                                    <button type="button" class="btn btn-secondary"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                </form>
+                            </div>
+
+                            버섯류
+
+                        </div>
+                        <!-- mush 끝 -->
+
+                        <!-- fruit 시작 -->
+                        <div class="tab-pane fade" id="nav-fruit" role="tabpanel" aria-labelledby="nav-fruit-tab">
+                            <div class="listHead">
+                                <form>
+                                    <select name="" id="">
+                                        <option value="">상품명</option>
+                                        <option value="">생산자</option>
+                                        <option value="">상품상태</option>
+                                    </select>
+                                    <input type="text" id="pSearch">
+                                    <button type="button" class="btn btn-secondary"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                </form>
+                            </div>
+
+                            과일류
+
+                        </div>
+                        <!-- fruit 끝 -->
+
                     </div>
+                    <!-- 상품 리스트 끝-->
+
                 </div>
             </div>
-
 
             <!-- Footer Start -->
             <div class="container-fluid pt-4 px-4">
