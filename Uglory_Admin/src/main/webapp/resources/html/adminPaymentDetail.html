@@ -38,6 +38,11 @@
     <script src="https://kit.fontawesome.com/1ef9913073.js" crossorigin="anonymous"></script>
 
     <style>
+
+        table *{
+            border: 1px solid #6c757d;
+        }
+
         thead{
             background-color: rgb(53, 204, 182); 
             color: white;
@@ -76,8 +81,14 @@
 
                 <!-- 사이드바 내용 -->
                 <div class="navbar-nav w-100">
+                    <!-- 회원 관리 -->
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown"><i class="fa-solid fa-carrot me-2"></i>상품 관리</a>
+                        <a href="#" class="nav-link"><i class="fa-solid fa-user me-2"></i>회원 관리</a>
+                    </div>
+
+                    <!-- 상품 관리 -->
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-carrot me-2"></i>상품 관리</a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <div class="dropdown-item">
                                 <a href="adminProductList.html" class="sub-menu">상품 조회</a>
@@ -91,6 +102,7 @@
                         </div>
                     </div>
 
+                    <!-- 농장 관리 -->
                     <div class="nav-item dropdown">
                                                                                                 <!-- <i class="fa-solid fa-hat-cowboy me-2"></i> -->
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-house me-2"></i>농장 관리</a>
@@ -103,8 +115,28 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- 결제 관리 -->
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown"><i class="fa-solid fa-user me-2"></i>Pages</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-user me-2"></i>결제&매출</a>
+                        <div class="dropdown-menu bg-transparent border-0">
+                            <div class="dropdown-item">
+                                <a href="" class="sub-menu">결제 관리</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="signup.html" class="sub-menu">매출 관리</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 리뷰게시판 관리 -->
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link"><i class="fa-solid fa-user me-2"></i>리뷰 관리</a>
+                    </div>
+
+                    <!-- 마이페이지 -->
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-user me-2"></i>마이페이지</a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <div class="dropdown-item">
                                 <a href="signin.html" class="sub-menu">Sign In</a>
@@ -259,10 +291,10 @@
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-light rounded-top p-4">
                     <div class="row">
-                        <div class="col-12 col-sm-6 text-center text-sm-start">
+                        <div class="col-12 col-sm-6 text-center text-sm-start" style="font-size: 16px;">
                             &copy; <a href="#">Uglory</a>, All Right Reserved. 
                         </div>
-                        <div class="col-12 col-sm-6 text-center text-sm-end">
+                        <div class="col-12 col-sm-6 text-center text-sm-end" style="font-size: 16px;">
                             <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
                             Designed By <a href="https://htmlcodex.com">HTML Codex</a>
                         </div>

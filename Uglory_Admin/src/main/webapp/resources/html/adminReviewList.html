@@ -9,7 +9,7 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="../img/favicon.ico" rel="icon">
     
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -58,7 +58,7 @@
                 </a>
                 <div class="d-flex align-items-center ms-4 mb-4">
                     <div class="position-relative">
-                        <img class="rounded-circle" src="img/bananaKoongya.jpg" alt="" style="width: 40px; height: 40px;">
+                        <img class="rounded-circle" src="../img/bananaKoongya.jpg" alt="" style="width: 40px; height: 40px;">
                         <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                     </div>
                     <div class="ms-3">
@@ -69,8 +69,14 @@
 
                 <!-- 사이드바 내용 -->
                 <div class="navbar-nav w-100">
+                    <!-- 회원 관리 -->
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown"><i class="fa-solid fa-carrot me-2"></i>상품 관리</a>
+                        <a href="#" class="nav-link"><i class="fa-solid fa-user me-2"></i>회원 관리</a>
+                    </div>
+
+                    <!-- 상품 관리 -->
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-carrot me-2"></i>상품 관리</a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <div class="dropdown-item">
                                 <a href="adminProductList.html" class="sub-menu">상품 조회</a>
@@ -84,6 +90,7 @@
                         </div>
                     </div>
 
+                    <!-- 농장 관리 -->
                     <div class="nav-item dropdown">
                                                                                                 <!-- <i class="fa-solid fa-hat-cowboy me-2"></i> -->
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-house me-2"></i>농장 관리</a>
@@ -96,8 +103,28 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- 결제 관리 -->
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown"><i class="fa-solid fa-user me-2"></i>Pages</a>
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-user me-2"></i>결제&매출</a>
+                        <div class="dropdown-menu bg-transparent border-0">
+                            <div class="dropdown-item">
+                                <a href="" class="sub-menu">결제 관리</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="signup.html" class="sub-menu">매출 관리</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 리뷰게시판 관리 -->
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link"><i class="fa-solid fa-user me-2"></i>리뷰 관리</a>
+                    </div>
+
+                    <!-- 마이페이지 -->
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-user me-2"></i>마이페이지</a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <div class="dropdown-item">
                                 <a href="signin.html" class="sub-menu">Sign In</a>
@@ -127,7 +154,7 @@
                 <div class="navbar-nav align-items-center ms-auto">
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                            <img class="rounded-circle me-lg-2" src="img/bananaKoongya.jpg" alt="프로필 사진" style="width: 40px; height: 40px;">
+                            <img class="rounded-circle me-lg-2" src="../img/bananaKoongya.jpg" alt="프로필 사진" style="width: 40px; height: 40px;">
                             <span class="d-none d-lg-inline-flex fw-bold">바나나 쿵야</span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
@@ -146,63 +173,75 @@
                         <h2 class="text-start">리뷰 관리</h2>
                         <hr>
 
-                        <table class="table table-borderless farmTable mt-4">
-                            <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">작성일</th>
-                                    <th scope="col">글쓴이</th>
-                                    <th scope="col">내용</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>2022.04.06</td>
-                                    <td>블랙이</td>
-                                    <td>
+                        <div class="listHead">
+                            <form>
+                                <select name="" id="">
+                                    <option value="">작성일</option>
+                                    <option value="">회원 이름</option>
+                                </select>
+
+                                <input type="text" id="pSearch">
+                                <button type="button" class="btn btn-secondary"><i class="fa-solid fa-magnifying-glass"></i></button>
+                            </form>
+                        </div>
+
+                        <div class="listBody">
+                            <table class="table table-borderless farmTable mt-4">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">작성일</th>
+                                        <th scope="col">글쓴이</th>
+                                        <th scope="col">내용</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>2022.04.06</td>
+                                        <td>블랙이</td>
+                                        <td>
 <pre>
 빨간 건 사과, 사과는 맛있어
 맛있으면 바나나. 최고의 바나나.
 </pre>
-                                    </td>
-                                </tr>
+                                        </td>
+                                    </tr>
 
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>2022.04.06</td>
-                                    <td>블랙이</td>
-                                    <td>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>2022.04.06</td>
+                                        <td>블랙이</td>
+                                        <td>
 <pre>
 빨간 건 사과, 사과는 맛있어
 맛있으면 바나나. 최고의 바나나.
 </pre>
-                                    </td>
-                                </tr>
+                                        </td>
+                                    </tr>
 
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>2022.04.06</td>
-                                    <td>블랙이</td>
-                                    <td>
-                                        빨간 건 사과, 사과는 맛있어
-                                        맛있으면 바나나. 최고의 바나나.
-                                        자동줄바꿈이 안 되는 거 아닌가요
-                                        이거 자동줄바꿈 어떻게 넣어?
-                                        나중에 내용 들어갈 때 new line handling 하면 되려나?
-                                        띠발 좃댓당 짜증나아악
-                                        일단 이렇게 두긴 하는데
-                                        나중에 고민해보자요
-                                        분명 답이 나올 것이다 늘 그렇듯 
-                                        근데 작성일은 고정되어있는데 글쓴이만 고정이 안 되어있네? 
-                                        나중에 찾아봐 일단 html 만들고 생각해 
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>2022.04.06</td>
+                                        <td>블랙이</td>
+                                        <td>
+                                            빨간 건 사과, 사과는 맛있어
+                                            맛있으면 바나나. 최고의 바나나.
+                                            자동줄바꿈이 안 되는 거 아닌가요
+                                            이거 자동줄바꿈 어떻게 넣어?
+                                            나중에 내용 들어갈 때 new line handling 하면 되려나?
+                                            띠발 좃댓당 짜증나아악
+                                            일단 이렇게 두긴 하는데
+                                            나중에 고민해보자요
+                                            분명 답이 나올 것이다 늘 그렇듯 
+                                            근데 작성일은 고정되어있는데 글쓴이만 고정이 안 되어있네? 
+                                            나중에 찾아봐 일단 html 만들고 생각해 
+                                        </td>
+                                    </tr>
 
-                            </tbody>
-                        </table>
-
-
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -212,10 +251,10 @@
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-light rounded-top p-4">
                     <div class="row">
-                        <div class="col-12 col-sm-6 text-center text-sm-start">
+                        <div class="col-12 col-sm-6 text-center text-sm-start" style="font-size: 16px;">
                             &copy; <a href="#">Uglory</a>, All Right Reserved. 
                         </div>
-                        <div class="col-12 col-sm-6 text-center text-sm-end">
+                        <div class="col-12 col-sm-6 text-center text-sm-end" style="font-size: 16px;">
                             <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
                             Designed By <a href="https://htmlcodex.com">HTML Codex</a>
                         </div>
