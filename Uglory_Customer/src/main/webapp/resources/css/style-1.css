@@ -1,3 +1,6 @@
+/* 폰트 적용 */
+*{font-family: 'Noto Sans KR', sans-serif;}
+
 /********** Template CSS **********/
 :root {
     --primary: #FEA116;
@@ -150,7 +153,7 @@
 
 /*** Hero Header ***/
 .hero-header {
-    background: linear-gradient(rgba(226, 216, 216, 0.9), rgba(230, 180, 180, 0.9)), url(../img/bg-hero.jpg);
+    background: linear-gradient(rgba(226, 216, 216, 0.9), rgba(230, 180, 180, 0.9)), url(../images/main/bg-hero.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -491,31 +494,101 @@
 
 
 /* 미션 버튼 */
-.col-lg-6 > div{
-}
 
 
-.ps-3{
-    text-align: end;
-    margin-bottom: 20px;
-}
 
-/* 이용약관 */
-.temsConditionArea > h4{
+/* ======================== */
+/* 여기부터 추가 한 내용 (폰트 적용 위로 올림)*/
+
+/* 배송방식 영역 */
+.delivery{
     display: flex;
-    justify-content: center;
+    /* border: 1px solid red; */
+}
+
+.delivery_content{
+    width: 50%;
+    /* border: 1px solid red; */
+}
+
+.img{
+    margin: 0 20px;
+    text-align: center;
+}
+
+.delivery_img{
+    height: 550px;
+    border-radius: 30px;
+}
+
+.text{
+    padding : 2.5rem;
+    height: 550px;
+    /* border: 1px solid red; */
+}
+
+.text > div{
+    display: inline-flex;
+    padding-left: 150px;
+}
+
+.delivery_text{
+    margin-top: 5rem;
+}
+
+.text_num{
+    display: flex;
+    margin-right: 20px;
+    /* border: 1px solid red; */
+}
+
+.text_num_bg{
+    background-color: #FF5957;
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-right: 20px;
+}
+
+.text_num_content{
+    /* border: 1px solid red; */
+    color: white;
+    font-weight: bold;
+    font-size: 25px;
+    padding-top: 2px;
+    padding-left: 12px;
+}
+
+/* 리뷰 영역 */
+div > .ps-3{
+    /* border: 1px solid red; */
+    margin : 0;
+    padding: 0;
+}
+
+.rounded-circle{
+    margin-left: 20px;
+}
+
+.review-content{
     margin-top: 20px;
-}
-.temsConditionArea > pre{
-    font-size: 12px;
-}
-
-@font-face {
-    font-family: 'ChusaLove';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2205@1.0/ChusaLove.woff2') format('woff2');
-    font-weight: 400;
-    font-style: normal;
+    padding: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: break-all;
 }
 
-*{font-family:'ChusaLove';}
+.align-items-center{
+    justify-content: space-between;
+    padding-right: 20px;
+}
 
+.mb-3{
+    font-size: 20px;
+}
+
+.img-fluid{
+    max-width: 100%;
+    max-height: 100%;
+}

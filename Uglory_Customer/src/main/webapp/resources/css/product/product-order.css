@@ -1,0 +1,178 @@
+/* 주문 영역 */
+.product-order{
+    width: 400px;
+    margin: 0 auto;
+}
+
+/* 배송지 정보 */
+.order-info{
+    margin-top: 40px;
+}
+
+/* input을 감싸고 있는 div */
+.order-input-area{
+    width: 100%;
+    height: 50px;
+
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+
+/* 내부 input 제목(label) */
+.product-order-area > label{
+    display: block;
+    margin-top: 20px;
+    font-size: 15px;
+}
+
+/* input태그 */
+.order-input-area > input {
+    width: 100%;
+    height: 100%;
+    padding: 10px 10px 5px; 
+    
+    font-size: 14px;
+    font-weight: bold;
+    color: gray;
+
+    border: 1px solid #F6F6F6;
+    border-radius: 5px;
+    outline: 0;
+}
+
+/* input태그 focus */
+.order-input-area:focus-within {
+    width: 100%;
+    border: 1px solid rgb(113, 214, 199);
+    border-radius: 5px;
+}
+
+/* 주소 */
+#order_postcode{
+    width: 70%;
+}
+
+/* 주소 focus - 확인 필요 */
+#order_postcode:focus-within {
+    width: 70%;
+}
+
+/* 주소 검색 버튼 */
+#addressBtn{
+    width: 25%;
+    height: 50px;
+
+    margin-left: 5%;
+
+    background-color: rgb(113, 214, 199);
+    border: 0;
+    border-radius: 5px;
+
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* 주소 검색 버튼 */
+#addressBtn:hover{
+    width: 25%;
+    height: 50px;
+
+    margin-left: 5%;
+
+    background-color: transparent;
+    border: 1px solid rgb(113, 214, 199);
+    border-radius: 5px;
+
+    color: rgb(113, 214, 199);
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* 주문 상품 영역 - 확인 필요*/
+.order-product-area{
+    display: inline-block;
+}
+
+/* 상품명 상품개수 영역 */
+.order-product-info{
+    display: inline;
+    width: 250px;
+}
+
+/* 옵션에 따른 가격 */
+.orderPrice{
+    display: flex;
+}
+
+/* 카카오페이 선택 Input */
+.kakaoPayChk{
+    padding: 5px;
+}
+
+/* 카카오페이  */
+.kakaoPayChk > label {
+    padding: 5px;
+}
+
+/* 총 결제 금액 */
+.total-pay{
+    display: flex;
+    justify-content: space-between;
+}
+
+/* 총 결제 금액 p 태그 */
+.total-pay > p{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* 총 상품 금액 */
+.product-total-pay{
+    display: flex;
+    justify-content: space-between;
+}
+
+/* 총 배송비 */
+.delivery-total-pay{
+    display: flex;
+    justify-content: space-between;
+}
+
+/* 개인정보 수집 및 이용 동의 */
+.privacyPolicy{
+    padding: 5px;
+}
+
+.privacyPolicy > label {
+    padding: 5px;
+}
+
+/* 주문하기 버튼 */
+#order-btn{
+    margin-top: 10px;
+
+    width: 100%;
+    height: 50px;
+    border: 0;
+    border-radius: 5px;
+    background-color: rgb(113, 214, 199);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* 주문하기 버튼 hover */
+#order-btn:hover{
+    margin-top: 10px;
+
+    width: 100%;
+    height: 50px;
+    border: 1px solid rgb(113, 214, 199);
+    border-radius: 5px;
+    background-color: transparent;
+    color: rgb(113, 214, 199);
+    font-size: 18px;
+    font-weight: bold;
+}
