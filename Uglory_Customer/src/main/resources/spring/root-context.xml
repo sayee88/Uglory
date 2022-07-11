@@ -8,7 +8,8 @@
 	<bean id="realDataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
 		<property name="url" value="jdbc:oracle:thin:@115.90.212.22:9000:xe"/>
-		<property name="username" value="uglory" />
+<!-- 		<property name="username" value="uglory" /> -->
+		<property name="username" value="uglory_jdy"/>
 		<property name="password" value="uglory1234" />
 		
 		<!-- SQL이 수행된 후 자동으로 commit 되는 것을 지정 -->
