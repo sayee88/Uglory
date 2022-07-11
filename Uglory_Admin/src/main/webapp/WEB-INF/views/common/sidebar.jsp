@@ -21,7 +21,7 @@
         <div class="navbar-nav w-100">
             <!-- 회원 관리 -->
             <div class="nav-item dropdown">
-                <a href="#" class="nav-link"><i class="fa-solid fa-user me-2"></i>회원 관리</a>
+                <a href="#" class="nav-link"><i class="fa-solid fa-people-group"></i>회원 관리</a>
             </div>
 
             <!-- 상품 관리 -->
@@ -56,7 +56,7 @@
 
             <!-- 결제 관리 -->
             <div class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-user me-2"></i>결제&매출</a>
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-credit-card"></i>결제&매출</a>
                 <div class="dropdown-menu bg-transparent border-0">
                     <div class="dropdown-item">
                         <a href="" class="sub-menu">결제 관리</a>
@@ -69,7 +69,7 @@
 
             <!-- 리뷰게시판 관리 -->
             <div class="nav-item dropdown">
-                <a href="#" class="nav-link"><i class="fa-solid fa-user me-2"></i>리뷰 관리</a>
+                <a href="#" class="nav-link"><i class="fa-solid fa-clipboard-list"></i>리뷰 관리</a>
             </div>
 
             <!-- 마이페이지 -->
