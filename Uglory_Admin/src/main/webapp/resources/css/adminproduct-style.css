@@ -1,0 +1,130 @@
+/* @font-face {
+    font-family: 'NanumBarunpen';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumBarunpen.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+} */
+
+/* 관리자 전체 폰트 */
+@font-face {
+    font-family: 'MapoPeacefull';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoPeacefullA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+*{font-family:'MapoPeacefull';}
+
+/* 사이드바 서브메뉴 간격 */
+.sub-menu {margin-left: 47px; color: black; font-size: 18px;}
+.sub-menu:hover{color: black;}
+
+
+/* 상품/농장/리스트 등록 페이지 */
+.product-row{
+    display: flex;
+    justify-content: space-between;
+    font-size: 24px;
+    padding: 5px 10px;
+    margin: 10px 0;
+    /* border: 1px solid #ddd; */
+    color: black;
+}
+
+.productWrap{width: 60%;}
+.productInput{width: 100%; height: 40px; font-size: 20px; display: block; margin: 5px 0;}
+
+.inputMessage{font-size: 18px; text-align: left;}
+
+.farmIn-margin{margin: 15% 0;}
+.product-margin{margin: 5% 0;}
+
+/* 다음주 배송 상품 개수 입력 항목 */
+.pListCount{display: flex; height: 40px; font-size: 20px; width: 60%;}
+.pListCount>input{width: 75%;}
+.pListCount>button{width:25%; height: 100%; font-size: 20px;}
+
+.pListItem{width: 50%; font-size: 20px; height: 40px; margin: 5px;}
+
+
+/* 상품 목록 페이지 */
+.listHead{display: flex; justify-content: end;}
+.listHead>form{display: flex; align-items: center;}
+.listHead>form>*{height: 36px; border-radius: 5px; margin: 0 2px;}
+.listHead select{color:#6c757d; border:1px solid #ccc;}
+.listHead input{color:#6c757d; border:1px solid #ccc; width:200px;}
+.card{display: inline-block;}
+.card p {margin: 0;}
+
+.listBody img{max-width:100%; border-top-left-radius: 5px; border-top-right-radius: 5px;}
+
+.card-tit{display: flex; justify-content: space-between; color: black; font-size: 28px; font-weight: bold;}
+#pCategory{color: #6c757d; text-align: end; margin-bottom: 20px;}
+.card-con{display: flex; justify-content: space-between; font-size: 18px;}
+.pData{color: #6c757d;}
+.cardBody{padding: 10px;}
+
+/* 농장 관리 */
+/* .farmTable>thead{border-top:1px solid rgb(53, 204, 182); border-bottom: 1px solid rgb(53, 204, 182);} */
+.farmTable button{font-size: 18px; font-weight: 500; height: 40px;}
+.farmInBtn{font-size: 24px; color: rgb(254, 161, 22);}
+.farmInBtn:hover{color: rgb(207, 128, 8);}
+
+/* 구독 상품 알림 페이지 */
+.pListBox{
+    margin: 10px 0;
+    padding: 10px;
+    list-style: none;
+    border: 1px solid rgb(53, 204, 182);
+    height: 300px;
+    border-radius: 4px;
+}
+
+.pListBox>li{display: flex; justify-content: space-between; margin:4px;}
+.pListBox>li>p{margin: 0;}
+
+.p-btn-area{display: flex; justify-content: space-between;}
+.p-btn-area button{font-size: 18px; padding: 6px;}
+
+.pListBody{display: flex; justify-content: space-around; flex-wrap: wrap;}
+
+.pList-tit{color: rgb(53, 204, 182); font-size: 24px; font-weight: bold;}
+.dl-date{border-top: 1px solid rgb(53, 204, 182); border-bottom: 1px solid rgb(53, 204, 182);}
+
+/* 상품 상세조회 페이지 */
+.productNo{
+    width: 36px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border:1px solid rgb(254, 161, 22);
+    border-radius: 10px;
+    background-color: rgb(254, 161, 22);
+    color: white;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.detailHead{display: flex; justify-content: space-between;}
+.detailHead p{margin: 0;}
+.info-box{height: 100%; display: flex; align-items: center; justify-content: center;}
+
+.first-row{border-top: 1px solid rgb(53, 204, 182);}
+.last-row{border-bottom: 1px solid rgb(53, 204, 182);}
+
+#in-btn{font-size: 20px; font-weight: bold; padding: 5px 10px;}
+#out-btn{font-size: 20px; font-weight: bold; padding: 5px 10px;}
+
+.detail-btn{text-align: right;}
+.detail-btn>button{font-size: 20px; font-weight: bold; margin-bottom: 10px;}
+
+.detail-info{border: 1px solid #ddd; border-radius: 2px; margin: 10px 0;}
+
+.img-area{height: 150px; display: flex;}
+.detail-img{width: 40%; border-radius: 5px;}
+.img-area>div{width: 60%; padding: 10px;}
+#pre-img{color:rgb(254, 161, 22); display: block; width: 100%; text-align: right; margin-top: 60px;}
+#pre-img:hover{color:rgb(207, 128, 8);}
+.detail-con{font-size: 22px;}
+
