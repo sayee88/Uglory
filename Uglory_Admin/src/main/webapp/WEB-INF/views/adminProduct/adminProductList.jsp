@@ -1,0 +1,431 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Uglory</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="../img/favicon.ico" rel="icon">
+    
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    
+    <!-- Libraries Stylesheet -->
+    <link href="../lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="../lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Template Stylesheet -->
+    <link href="../css/style.css" rel="stylesheet">
+    
+    <!-- Product Style sheet -->
+    <link href="../css/adminproduct-style.css" rel="stylesheet">
+
+    <!-- Fontawesome cdn 링크 -->
+    <script src="https://kit.fontawesome.com/1ef9913073.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <div class="container-xxl position-relative bg-white d-flex p-0">
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+
+        <!-- Sidebar Start -->
+        <div class="sidebar pe-4 pb-3">
+            <nav class="navbar bg-light navbar-light">
+                <a href="index.html" class="navbar-brand mx-4 mb-3">
+                    <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>UGLORY</h3>
+                </a>
+                <div class="d-flex align-items-center ms-4 mb-4">
+                    <div class="position-relative">
+                        <img class="rounded-circle" src="../img/bananaKoongya.jpg" alt="" style="width: 40px; height: 40px;">
+                        <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
+                    </div>
+                    <div class="ms-3">
+                        <h6 class="mb-0">바나나 쿵야</h6>
+                        <span>Admin</span>
+                    </div>
+                </div>
+
+                <!-- 사이드바 내용 -->
+                <div class="navbar-nav w-100">
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-carrot me-2"></i>상품 관리</a>
+                        <div class="dropdown-menu bg-transparent border-0">
+                            <div class="dropdown-item">
+                                <a href="adminProductList.html" class="sub-menu">상품 조회</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="adminProductIn.html" class="sub-menu">상품 등록</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="adminPList.html" class="sub-menu">구독 상품 알림</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown"><i class="fa-solid fa-house me-2"></i>농장 관리</a>
+                        <div class="dropdown-menu bg-transparent border-0">
+                            <div class="dropdown-item">
+                                <a href="adminFarmList.html" class="sub-menu">농장 조회</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="adminFarmIn.html" class="sub-menu">농장 등록</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown"><i class="fa-solid fa-user me-2"></i>Pages</a>
+                        <div class="dropdown-menu bg-transparent border-0">
+                            <div class="dropdown-item">
+                                <a href="signin.html" class="sub-menu">Sign In</a>
+                            </div>
+                            <div class="dropdown-item">
+                                <a href="signup.html" class="sub-menu">Sign Up</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <!-- Sidebar End -->
+
+
+        <!-- Content Start -->
+        <div class="content">
+            <!-- Navbar Start -->
+            <nav class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
+                <a href="index.html" class="navbar-brand d-flex d-lg-none me-4">
+                    <h2 class="text-primary mb-0"><i class="fa fa-hashtag"></i></h2>
+                </a>
+                <a href="#" class="sidebar-toggler flex-shrink-0">
+                    <i class="fa fa-bars"></i>
+                </a>
+                
+                <div class="navbar-nav align-items-center ms-auto">
+                    <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                            <img class="rounded-circle me-lg-2" src="../img/bananaKoongya.jpg" alt="프로필 사진" style="width: 40px; height: 40px;">
+                            <span class="d-none d-lg-inline-flex fw-bold">바나나 쿵야</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
+                            <a href="#" class="dropdown-item text-center">Log Out</a>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <!-- Navbar End -->
+
+
+            <!-- 상품 목록 조회 -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="row justify-content-center mx-0 m-5 p-4">
+                    <h2>상품 목록</h2>
+                    <!-- 카테고리 분류 -->
+                    <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <button class="nav-link active" id="nav-root-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-root" type="button" role="tab" aria-controls="nav-root"
+                                aria-selected="true">근채류</button>
+                            <button class="nav-link" id="nav-beans-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-beans" type="button" role="tab"
+                                aria-controls="nav-beans" aria-selected="false">두류/곡류/견과류</button>
+                            <button class="nav-link" id="nav-veg-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-veg" type="button" role="tab"
+                                aria-controls="nav-veg" aria-selected="false">채소류</button>
+                            <button class="nav-link" id="nav-fnv-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-fnv" type="button" role="tab"
+                                aria-controls="nav-fnv" aria-selected="false">과채류</button>
+                            <button class="nav-link" id="nav-herbs-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-herbs" type="button" role="tab"
+                                aria-controls="nav-herbs" aria-selected="false">나물류</button>
+                            <button class="nav-link" id="nav-mush-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-mush" type="button" role="tab"
+                                aria-controls="nav-mush" aria-selected="false">버섯류</button>
+                            <button class="nav-link" id="nav-fruit-tab" data-bs-toggle="tab"
+                                data-bs-target="#nav-fruit" type="button" role="tab"
+                                aria-controls="nav-fruit" aria-selected="false">과일류</button>
+                        </div>
+                    </nav>
+
+                    <!-- 상품 리스트 시작 -->
+                    <div class="tab-content pt-3" id="nav-tabContent">
+                        <!-- root 시작 -->
+                        <div class="tab-pane fade show active" id="nav-root" role="tabpanel" aria-labelledby="nav-root-tab">
+                            <div class="listHead">
+                                <form>
+                                    <select name="" id="">
+                                        <option value="">상품명</option>
+                                        <option value="">생산자</option>
+                                        <option value="">상품상태</option>
+                                    </select>
+                                    <input type="text" id="pSearch">
+                                    <button type="button" class="btn btn-secondary"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                </form>
+                            </div>
+
+                            근채류
+                            
+                            <div class="listBody">
+                                <!-- card1 start -->
+                                <div class="card m-4 col-sm-5 col-xl-3">
+                                    <a href="#">
+
+                                        <!-- 품절표시 넣어보기 -->
+                                        <div class="sold-out-bg">
+                                            <img src="../img/soldOut.png" alt="품절" class="sold-out">
+                                        </div>
+
+                                        <img src="../img/vegetables-2485055.jpg" alt="야채"/>
+                                        <div class="cardBody">
+                                            <div class="card-tit">
+                                                <p>1</p>
+                                                <p>당근</p>
+                                            </div>
+                                            <p id="pCategory">근채류</p>
+
+                                            <div class="card-con">
+                                                <p>상품등록일</p>
+                                                <p class="pData">2022-07-08</p>
+                                            </div>
+                                            <div class="card-con">
+                                                <p>생산자</p>
+                                                <p class="pData">당근 농장</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <!-- card1 end -->
+
+                                <!-- card2 start -->
+                                <div class="card m-4 col-sm-5 col-xl-3">
+                                    <a href="#">
+
+                                        <img src="../img/vegetables-2485055.jpg" alt="야채"/>
+                                        <div class="cardBody">
+                                            <div class="card-tit">
+                                                <p>1</p>
+                                                <p>당근</p>
+                                            </div>
+                                            <p id="pCategory">근채류</p>
+
+                                            <div class="card-con">
+                                                <p>상품등록일</p>
+                                                <p class="pData">2022-07-08</p>
+                                            </div>
+                                            <div class="card-con">
+                                                <p>생산자</p>
+                                                <p class="pData">당근 농장</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <!-- card2 end -->
+
+                                <!-- card3 start -->
+                                <div class="card m-4 col-sm-5 col-xl-3">
+                                    <a href="#">
+                                        <img src="../img/vegetables-2485055.jpg" alt="야채"/>
+                                        <div class="cardBody">
+                                            <div class="card-tit">
+                                                <p>1</p>
+                                                <p>당근</p>
+                                            </div>
+                                            <p id="pCategory">근채류</p>
+
+                                            <div class="card-con">
+                                                <p>상품등록일</p>
+                                                <p class="pData">2022-07-08</p>
+                                            </div>
+                                            <div class="card-con">
+                                                <p>생산자</p>
+                                                <p class="pData">당근 농장</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <!-- card3 end -->
+
+                            </div>
+                        </div>
+                        <!-- root 끝 -->
+
+                        <!-- beans 시작 -->
+                        <div class="tab-pane fade" id="nav-beans" role="tabpanel" aria-labelledby="nav-beans-tab">
+                            <div class="listHead">
+                                <form>
+                                    <select name="" id="">
+                                        <option value="">상품명</option>
+                                        <option value="">생산자</option>
+                                        <option value="">상품상태</option>
+                                    </select>
+                                    <input type="text" id="pSearch">
+                                    <button type="button" class="btn btn-secondary"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                </form>
+                            </div>
+
+                            콩
+
+                        </div>
+                        <!-- beans 끝 -->
+
+                        <!-- veg 시작 -->
+                        <div class="tab-pane fade" id="nav-veg" role="tabpanel" aria-labelledby="nav-veg-tab">
+                            <div class="listHead">
+                                <form>
+                                    <select name="" id="">
+                                        <option value="">상품명</option>
+                                        <option value="">생산자</option>
+                                        <option value="">상품상태</option>
+                                    </select>
+                                    <input type="text" id="pSearch">
+                                    <button type="button" class="btn btn-secondary"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                </form>
+                            </div>
+
+                            채소
+
+                        </div>
+                        <!-- veg 끝 -->
+
+                        <!-- fnv 시작 -->
+                        <div class="tab-pane fade" id="nav-fnv" role="tabpanel" aria-labelledby="nav-fnv-tab">
+                            <div class="listHead">
+                                <form>
+                                    <select name="" id="">
+                                        <option value="">상품명</option>
+                                        <option value="">생산자</option>
+                                        <option value="">상품상태</option>
+                                    </select>
+                                    <input type="text" id="pSearch">
+                                    <button type="button" class="btn btn-secondary"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                </form>
+                            </div>
+
+                            과채류
+
+                        </div>
+                        <!-- fnv 끝 -->
+
+                        <!-- herbs 시작 -->
+                        <div class="tab-pane fade" id="nav-herbs" role="tabpanel" aria-labelledby="nav-herbs-tab">
+                            <div class="listHead">
+                                <form>
+                                    <select name="" id="">
+                                        <option value="">상품명</option>
+                                        <option value="">생산자</option>
+                                        <option value="">상품상태</option>
+                                    </select>
+                                    <input type="text" id="pSearch">
+                                    <button type="button" class="btn btn-secondary"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                </form>
+                            </div>
+
+                            나물류
+
+                        </div>
+                        <!-- herbs 끝 -->
+
+                        <!-- mush 시작 -->
+                        <div class="tab-pane fade" id="nav-mush" role="tabpanel" aria-labelledby="nav-mush-tab">
+                            <div class="listHead">
+                                <form>
+                                    <select name="" id="">
+                                        <option value="">상품명</option>
+                                        <option value="">생산자</option>
+                                        <option value="">상품상태</option>
+                                    </select>
+                                    <input type="text" id="pSearch">
+                                    <button type="button" class="btn btn-secondary"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                </form>
+                            </div>
+
+                            버섯류
+
+                        </div>
+                        <!-- mush 끝 -->
+
+                        <!-- fruit 시작 -->
+                        <div class="tab-pane fade" id="nav-fruit" role="tabpanel" aria-labelledby="nav-fruit-tab">
+                            <div class="listHead">
+                                <form>
+                                    <select name="" id="">
+                                        <option value="">상품명</option>
+                                        <option value="">생산자</option>
+                                        <option value="">상품상태</option>
+                                    </select>
+                                    <input type="text" id="pSearch">
+                                    <button type="button" class="btn btn-secondary"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                </form>
+                            </div>
+
+                            과일류
+
+                        </div>
+                        <!-- fruit 끝 -->
+
+                    </div>
+                    <!-- 상품 리스트 끝-->
+
+                </div>
+            </div>
+
+            <!-- Footer Start -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="bg-light rounded-top p-4">
+                    <div class="row">
+                        <div class="col-12 col-sm-6 text-center text-sm-start">
+                            &copy; <a href="#">Uglory</a>, All Right Reserved. 
+                        </div>
+                        <div class="col-12 col-sm-6 text-center text-sm-end">
+                            <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                            Designed By <a href="https://htmlcodex.com">HTML Codex</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Footer End -->
+        </div>
+        <!-- Content End -->
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../lib/chart/chart.min.js"></script>
+    <script src="../lib/easing/easing.min.js"></script>
+    <script src="../lib/waypoints/waypoints.min.js"></script>
+    <script src="../lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="../lib/tempusdominus/js/moment.min.js"></script>
+    <script src="../lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="../lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <script src="../js/adminProduct.js"></script>  
+    
+    <!-- Template Javascript -->
+    <script src="../js/main.js"></script>  
+
+</body>
+
+</html>
