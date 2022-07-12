@@ -34,10 +34,12 @@
     <!-- 회원, 결제, 리뷰 조회 Style sheet -->
     <link href="${contextPath}/resources/css/adminselect-style.css" rel="stylesheet">
     
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.min.js" integrity="sha512-sW/w8s4RWTdFFSduOTGtk4isV1+190E/GghVffMA9XczdJ2MDzSzLEubKAs5h0wzgSJOQTRYyaz73L3d6RtJSg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <!-- Fontawesome cdn 링크 -->
     <script src="https://kit.fontawesome.com/1ef9913073.js" crossorigin="anonymous"></script>
 
+    
 </head>
 
 <body>
@@ -56,7 +58,71 @@
             <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
 
-            <!-- 상품 등록 form태그 -->
+            <%-- 회원, 리뷰, 매출 --%>
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-thin fa-people-group fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">회원 수</p>
+                                <h6 class="mb-0">173</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-solid fa-heart fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">전체 리뷰 수</p>
+                                <h6 class="mb-0">395</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-solid fa-hand-holding-dollar fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">당일 매출</p>
+                                <h6 class="mb-0">6,135,456</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-solid fa-piggy-bank fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">총 매출</p>
+                                <h6 class="mb-0">17,359,692</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <%-- 매출 그래프 --%>
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-sm-12 col-xl-6">
+                        <div class="bg-light text-center rounded p-4">
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <h6 class="mb-0">일일 매출</h6>
+                            </div>
+                            <canvas id="sales-per-day"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-xl-6">
+                        <div class="bg-light text-center rounded p-4">
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <h6 class="mb-0">월별 전체 매출</h6>
+                            </div>
+                            <canvas id="sales-per-month"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 
 
             <!-- Footer include -->
@@ -82,6 +148,13 @@
 
     <!-- Template Javascript -->
     <script src="${contextPath}/resources/js/main.js"></script>
+
+    <%-- 차트 JS --%>
+    <script src="${contextPath}/resources/js/chart.js"></script>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
 </body>
 
 </html>

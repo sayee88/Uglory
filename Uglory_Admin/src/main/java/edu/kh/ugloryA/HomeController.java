@@ -1,4 +1,4 @@
-package edu.kh.ugloryC;
+package edu.kh.ugloryA;
 
 import java.text.DateFormat;
 import java.util.Date;
