@@ -23,7 +23,7 @@ public class ProductListController {
 	Logger logger = LoggerFactory.getLogger(ProductListController.class);
 	
 	@GetMapping("/product/list")
-	public String productList(@PathVariable("categoryNo") int categoryNo,
+	public String productList(/*@PathVariable("categoryNo") int categoryNo,*/
 							  Model model,
 							  HttpServletRequest req,
 							  HttpServletResponse resp) {

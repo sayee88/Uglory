@@ -12,7 +12,7 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="../img/favicon.ico" rel="icon">
+    <link href="${contextPath}/resources/img/favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,33 +24,29 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    <link href="${contextPath}/resources/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="${contextPath}/resources/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="${contextPath}/resources/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
     <!-- bootstrap css -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="../css/style.css" rel="stylesheet">
+    <link href="${contextPath}/resources/css/style.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="../css/product/product-list.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/product/product-list.css">
 </head>
 
 <body>
 
-    <jsp:include page="/WEB-INF/views/common/header.jsp" />
+    <jsp:include page="/WEB-INF/views/common/header-1.jsp" />
 
     <!-- Menu Start -->
     <div class="container-xxl py-5">
         <div class="container">
-            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h5 class="section-title ff-secondary text-center text-primary fw-normal">Food Menu</h5>
-                <h1 class="mb-5">Market</h1>
-            </div>
             
             <!-- 슬라이드 -->
             <div class="slide-container">
@@ -62,13 +58,13 @@
                     </div>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                        <img src="../img/BSH/수박슬라이드.png" class="d-block w-100" alt="...">
+                        <img src="${contextPath}/resources/img/BSH/수박슬라이드.png" class="d-block w-100" alt="${contextPath}/resources.">
                         </div>
                         <div class="carousel-item">
-                        <img src="../img/BSH/복숭아슬라이드.png" class="d-block w-100" alt="...">
+                        <img src="${contextPath}/resources/img/BSH/복숭아슬라이드.png" class="d-block w-100" alt="${contextPath}/resources.">
                         </div>
                         <div class="carousel-item">
-                        <img src="../img/BSH/옥수수슬라이드.png" class="d-block w-100" alt="...">
+                        <img src="${contextPath}/resources/img/BSH/옥수수슬라이드.png" class="d-block w-100" alt="${contextPath}/resources.">
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -124,14 +120,14 @@
 
                     <div class="col">
                         <div class="box">
-                            <img src="../img/마늘쫑쿵야.png" alt="" class="product-img soldout">
-                            <img src="../img/BSH/품절스티커.png" alt="" class="soldout-sticker">
+                            <img src="${contextPath}/resources/img/마늘쫑쿵야.png" alt="" class="product-img soldout">
+                            <img src="${contextPath}/resources/img/BSH/품절스티커.png" alt="" class="soldout-sticker">
                             <div>
                                 <h5>친환경 초당 옥수수 - 10개/20개</h5>
                                 <div class="flex-container">
                                     <h4>25,000</h4>
                                     <div class="sub-box">
-                                        <img src="../img/BSH/별.jpg" alt=""><p>(49)</p>
+                                        <img src="${contextPath}/resources/img/BSH/별.jpg" alt=""><p>(49)</p>
                                     </div>
                                 </div>
                             </div>
@@ -140,13 +136,13 @@
 
                     <div class="col">
                         <div class="box">
-                        <img src="../img/바나나쿵야.png" alt="" class="product-img">
+                        <img src="${contextPath}/resources/img/바나나쿵야.png" alt="" class="product-img">
                             <div>
                                 <h5>친환경 초당 옥수수 - 10개/20개</h5>
                                 <div class="flex-container">
                                     <h4>25,000</h4>
                                     <div class="sub-box">
-                                        <img src="../img/BSH/별.jpg" alt=""><p>(49)</p>
+                                        <img src="${contextPath}/resources/img/BSH/별.jpg" alt=""><p>(49)</p>
                                     </div>
                                 </div>
                             </div>
@@ -155,13 +151,13 @@
 
                     <div class="col">
                         <div class="box">
-                        <img src="../img/반계쿵야.png" alt="" class="product-img">
+                        <img src="${contextPath}/resources/img/반계쿵야.png" alt="" class="product-img">
                             <div>
                                 <h5>친환경 초당 옥수수 - 10개/20개</h5>
                                 <div class="flex-container">
                                     <h4>25,000</h4>
                                     <div class="sub-box">
-                                        <img src="../img/BSH/별.jpg" alt=""><p>(49)</p>
+                                        <img src="${contextPath}/resources/img/BSH/별.jpg" alt=""><p>(49)</p>
                                     </div>
                                 </div>
                             </div>
@@ -170,13 +166,13 @@
 
                     <div class="col">
                         <div class="box">
-                        <img src="../img/버섯쿵야.png" alt="" class="product-img">
+                        <img src="${contextPath}/resources/img/버섯쿵야.png" alt="" class="product-img">
                             <div>
                                 <h5>친환경 초당 옥수수 - 10개/20개</h5>
                                 <div class="flex-container">
                                     <h4>25,000</h4>
                                     <div class="sub-box">
-                                        <img src="../img/BSH/별.jpg" alt=""><p>(49)</p>
+                                        <img src="${contextPath}/resources/img/BSH/별.jpg" alt=""><p>(49)</p>
                                     </div>
                                 </div>
                             </div>
@@ -185,13 +181,13 @@
 
                     <div class="col" >
                         <div class="box">
-                        <img src="../img/샐러리쿵야.png" alt="" class="product-img">
+                        <img src="${contextPath}/resources/img/샐러리쿵야.png" alt="" class="product-img">
                             <div>
                                 <h5>친환경 초당 옥수수 - 10개/20개</h5>
                                 <div class="flex-container">
                                     <h4>25,000</h4>
                                     <div class="sub-box">
-                                        <img src="../img/BSH/별.jpg" alt=""><p>(49)</p>
+                                        <img src="${contextPath}/resources/img/BSH/별.jpg" alt=""><p>(49)</p>
                                     </div>
                                 </div>
                             </div>
@@ -200,13 +196,13 @@
 
                     <div class="col" >
                         <div class="box">
-                        <img src="../img/양배추쿵야.png" alt="" class="product-img">
+                        <img src="${contextPath}/resources/img/양배추쿵야.png" alt="" class="product-img">
                             <div>
                                 <h5>친환경 초당 옥수수 - 10개/20개</h5>
                                 <div class="flex-container">
                                     <h4>25,000</h4>
                                     <div class="sub-box">
-                                        <img src="../img/BSH/별.jpg" alt=""><p>(49)</p>
+                                        <img src="${contextPath}/resources/img/BSH/별.jpg" alt=""><p>(49)</p>
                                     </div>
                                 </div>
                             </div>
@@ -215,13 +211,13 @@
 
                     <div class="col" >
                         <div class="box">
-                        <img src="../img/양파쿵야.png" alt="" class="product-img">
+                        <img src="${contextPath}/resources/img/양파쿵야.png" alt="" class="product-img">
                             <div>
                                 <h5>친환경 초당 옥수수 - 10개/20개</h5>
                                 <div class="flex-container">
                                     <h4>25,000</h4>
                                     <div class="sub-box">
-                                        <img src="../img/BSH/별.jpg" alt=""><p>(49)</p>
+                                        <img src="${contextPath}/resources/img/BSH/별.jpg" alt=""><p>(49)</p>
                                     </div>
                                 </div>
                             </div>
@@ -230,13 +226,13 @@
 
                     <div class="col" >
                         <div class="box">
-                        <img src="../img/완계쿵야.png" alt="" class="product-img">
+                        <img src="${contextPath}/resources/img/완계쿵야.png" alt="" class="product-img">
                             <div>
                                 <h5>친환경 초당 옥수수 - 10개/20개</h5>
                                 <div class="flex-container">
                                     <h4>25,000</h4>
                                     <div class="sub-box">
-                                        <img src="../img/BSH/별.jpg" alt=""><p>(49)</p>
+                                        <img src="${contextPath}/resources/img/BSH/별.jpg" alt=""><p>(49)</p>
                                     </div>
                                 </div>
                             </div>
@@ -245,13 +241,13 @@
 
                     <div class="col" >
                         <div class="box">
-                        <img src="../img/주먹밥쿵야.png" alt="" class="product-img">
+                        <img src="${contextPath}/resources/img/주먹밥쿵야.png" alt="" class="product-img">
                             <div>
                                 <h5>친환경 초당 옥수수 - 10개/20개</h5>
                                 <div class="flex-container">
                                     <h4>25,000</h4>
                                     <div class="sub-box">
-                                        <img src="../img/BSH/별.jpg" alt=""><p>(49)</p>
+                                        <img src="${contextPath}/resources/img/BSH/별.jpg" alt=""><p>(49)</p>
                                     </div>
                                 </div>
                             </div>
@@ -260,21 +256,18 @@
 
                     <div class="col" >
                         <div class="box">
-                        <img src="../img/호박쿵야.png" alt="" class="product-img">
+                        <img src="${contextPath}/resources/img/호박쿵야.png" alt="" class="product-img">
                             <div>
                                 <h5>친환경 초당 옥수수 - 10개/20개</h5>
                                 <div class="flex-container">
                                     <h4>25,000</h4>
                                     <div class="sub-box">
-                                        <img src="../img/BSH/별.jpg" alt=""><p>(49)</p>
+                                        <img src="${contextPath}/resources/img/BSH/별.jpg" alt=""><p>(49)</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-
-
 
 
 
@@ -303,7 +296,7 @@
     <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
     <!-- Template Javascript -->
-    <script src="../js/main.js"></script>
+    <script src="${contextPath}/resources/js/main.js"></script>
 
     <!-- bootstrap Javascript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

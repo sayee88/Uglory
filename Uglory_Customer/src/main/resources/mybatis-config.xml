@@ -24,7 +24,6 @@
 	<typeAliases>
 		<typeAlias type="edu.kh.ugloryC.product.model.vo.ProductDetail" alias="detail"/>
 		<typeAlias type="edu.kh.ugloryC.product.model.vo.ProductImage" alias="productImage"/>
-		<typeAlias type="edu.kh.ugloryC.product.model.vo.ProductList" alias="productList"/>
 		
 	</typeAliases>
 	
