@@ -58,7 +58,50 @@
             <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
 
-            <!-- Sales Chart Start -->
+            <%-- 회원, 리뷰, 매출 --%>
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-thin fa-people-group fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">회원 수</p>
+                                <h6 class="mb-0">173</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-solid fa-heart fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">전체 리뷰 수</p>
+                                <h6 class="mb-0">395</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-solid fa-hand-holding-dollar fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">당일 매출</p>
+                                <h6 class="mb-0">6,135,456</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xl-3">
+                        <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                            <i class="fa fa-solid fa-piggy-bank fa-3x text-primary"></i>
+                            <div class="ms-3">
+                                <p class="mb-2">총 매출</p>
+                                <h6 class="mb-0">17,359,692</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <%-- 매출 그래프 --%>
             <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">
                     <div class="col-sm-12 col-xl-6">
@@ -79,7 +122,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Sales Chart End -->
 
 
 

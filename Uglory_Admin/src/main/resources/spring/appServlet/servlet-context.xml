@@ -28,7 +28,7 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="edu.kh.ugloryC" />
+	<context:component-scan base-package="edu.kh.ugloryA" />
 	
 <!-- 	 interceptors : 인터셉터를 모아둔 태그 
 	<interceptors>
