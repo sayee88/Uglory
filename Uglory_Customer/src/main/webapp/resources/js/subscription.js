@@ -18,18 +18,22 @@ function sample4_execDaumPostcode() {
 
 
 
-const submitBtn = document.getElementById("submit-btn");
 
-const orderName = document.getElementById("s-orderName");
-const orderPhone = document.getElementById("s-orderPhone");
 
-const regExpName = /^[가-힣]{2,5}|[a-zA-Z]{2,10}$/; // 이름 정규식
-const regExpPhone = /^0(1[01679]|2|[3-6][1-5]|70)\d{3,4}\d{4}$/; // 전화번호 정규식
 
-submitBtn.addEventListener("click", function(){
+function orderValidate(){
 
-    // 이름 유효성 검사
-    if(orderName.value.trim().length == 0){
+    const submitBtn = document.getElementById("submit-btn");
+
+    const orderName = document.getElementById("s-orderName");
+    const orderPhone = document.getElementById("s-orderPhone");
+
+    const regExpName = /^[가-힣]{2,5}|[a-zA-Z]{2,10}$/; // 이름 정규식
+    const regExpPhone = /^0(1[01679]|2|[3-6][1-5]|70)\d{3,4}\d{4}$/; // 전화번호 정규식
+    
+
+     // 이름 유효성 검사
+     if(orderName.value.trim().length == 0){
         alert("이름을 입력해주세요.");
         orderName.focus();
         return false;
@@ -57,10 +61,46 @@ submitBtn.addEventListener("click", function(){
     // if(reqExpPhone.test(orderPhone.value)){
 
     // }
+    
+
+}
+
+// submitBtn.addEventListener("click", function(){
+
+//     // 이름 유효성 검사
+//     if(orderName.value.trim().length == 0){
+//         alert("이름을 입력해주세요.");
+//         orderName.focus();
+//         return false;
+//     }
+//     if(!regExpName.test(orderName.value)){
+//         alert("이름은 한글 2~5글자 / 영문 2~10글자 사이로 작성해주세요.");
+//         orderName.focus();
+//         return false;
+//     }
+//     // if(reqExpName.test(orderName.value)){
+
+//     // }
+    
+//     // 전화번호 유효성 검사
+//     if(orderPhone.value.trim().length == 0){
+//         alert("연락처를 입력해주세요.(-제외)");
+//         orderPhone.focus();
+//         return false;
+//     }
+//     if(!regExpPhone.test(orderPhone.value)){
+//         alert("연락처 형식이 올바르지 않습니다.(-제외)");
+//         orderPhone.focus();
+//         return false;
+//     }
+//     // if(reqExpPhone.test(orderPhone.value)){
+
+//     // }
 
 
 
 
-});
+
+// });
 
 
