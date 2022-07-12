@@ -135,8 +135,8 @@
 
 
             <!-- 상품 목록 조회 -->
-            <div class="container-fluid pt-4 px-4">
-                <div class="row justify-content-center mx-0 m-5 p-4">
+            <main class="container-fluid pt-4 px-4">
+                <section class="row justify-content-center mx-0 m-5 p-4">
                     <h2>상품 목록</h2>
                     <!-- 카테고리 분류 -->
                     <nav>
@@ -166,7 +166,7 @@
                     </nav>
 
                     <!-- 상품 리스트 시작 -->
-                    <div class="tab-content pt-3" id="nav-tabContent">
+                    <article class="tab-content pt-3" id="nav-tabContent">
                         <!-- root 시작 -->
                         <div class="tab-pane fade show active" id="nav-root" role="tabpanel" aria-labelledby="nav-root-tab">
                             <div class="listHead">
@@ -381,11 +381,11 @@
                         </div>
                         <!-- fruit 끝 -->
 
-                    </div>
+                    </article>
                     <!-- 상품 리스트 끝-->
 
-                </div>
-            </div>
+                </section>
+            </main>
 
             <!-- Footer Start -->
             <div class="container-fluid pt-4 px-4">
