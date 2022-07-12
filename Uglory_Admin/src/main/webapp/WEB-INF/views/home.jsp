@@ -42,32 +42,28 @@
 
 <body>
     <div class="container-xxl position-relative bg-white d-flex p-0">
-        <!-- Spinner Start -->
+        <!-- Spinner include -->
         <jsp:include page="/WEB-INF/views/common/spinner.jsp"/>
-        <!-- Spinner End -->
 
 
-        <!-- Sidebar Start -->
+        <!-- Sidebar include -->
         <jsp:include page="/WEB-INF/views/common/sidebar.jsp"/>
-        <!-- Sidebar End -->
 
 
         <!-- Content Start -->
         <div class="content">
-            <!-- Navbar Start -->
+            <!-- Header include -->
             <jsp:include page="/WEB-INF/views/common/header.jsp"/>
-            <!-- Navbar End -->
 
 
             <!-- 상품 등록 form태그 -->
 
 
-            <!-- Footer Start -->
+            <!-- Footer include -->
             <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
-            <!-- Footer End -->
+
         </div>
         <!-- Content End -->
-
 
         <!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
