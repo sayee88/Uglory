@@ -1,0 +1,87 @@
+.btn-primary{
+    margin: 20px 10px;
+    border-radius: 5px;
+    background-color: rgb(255, 89, 87);
+}
+
+.slide{
+    margin-bottom: 100px;
+}
+
+.slide-container{
+    display: flex;
+    justify-content: center;
+}
+
+.category{
+    display: flex;
+    justify-content: center;
+}
+
+.line{
+    width: 100%;
+    height: 5px;
+    background-color: rgba(224, 224, 224, 0.29);
+    margin-bottom: 40px;
+}
+
+.flex-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+}
+
+.flex-container > h4{
+    display: inline-block;
+}
+
+.col{
+    margin: 30px 0;
+    display: flex;
+}
+
+.box{
+    width: 320px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.product-img{
+    width: 100%;
+    height: auto;
+}
+
+.sub-box > img{
+    width: 100px;
+    height: 30px;
+}
+
+.sub-box > p{
+    display: inline-block;
+}
+
+
+/* 품절 처리 */
+.soldout{
+    filter: brightness(70%); 
+}
+
+.soldout-sticker{
+    position: absolute;
+    bottom: 15%;
+    right: 2%;
+    width: 50px;
+    height: 50px;
+}
+
+.btn-outline-success{
+    border: 1px solid #ff4444;
+    color: #ff4444;
+}
+
+.btn-outline-success:hover{
+    background-color: #ff4444;
+    color: white;
+    border: white;
+}
