@@ -64,6 +64,10 @@ pre{
     padding: 20px 0;
 }
 
+.modal-dialog {
+    max-width: 700px;
+}
+
 /* 체크이미지 변경 */
 #standard-check + label{
     width: 30px;
