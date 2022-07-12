@@ -1,4 +1,4 @@
-package edu.kh.ugloryC.common.filter;
+package edu.kh.ugloryA.common.filter;
 
 import java.io.IOException;
 
@@ -61,6 +61,4 @@ public class InitFilter extends HttpFilter implements Filter {
 	      
 	      chain.doFilter(request, response);
 	}
-
-
 }
