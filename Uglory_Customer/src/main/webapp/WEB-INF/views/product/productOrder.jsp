@@ -63,16 +63,16 @@
                     
                     <label for="p-orderAddress">주소</label>
                     <div class="order-input-area">
-                        <input type="text" id="order-postcode" name="p-orderAddress" placeholder="우편번호">
+                        <input type="text" id="sample2_postcode" name="p-orderAddress" placeholder="우편번호">
                         <button tyle="button" id="addressBtn" onclick="sample2_execDaumPostcode()">검색</button>
                     </div>
 
                     <div class="order-input-area">
-                        <input type="text" name="order-address" id="order-address" placeholder="주소를 입력해주세요" required>
+                        <input type="text" name="order-address" id="sample2_address" placeholder="주소를 입력해주세요" required>
                     </div>
 
                     <div class="order-input-area">
-                        <input type="text" name="order-detailAddress" id="order-detailAddress" placeholder="상세주소를 입력해주세요" required>
+                        <input type="text" name="order-detailAddress" id="sample2_detailAddress" placeholder="상세주소를 입력해주세요" required>
                     </div>
 
                     <label for="p-orderReq">배송 요청사항(선택)</label>
@@ -138,24 +138,27 @@
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
         
-        <%-- <!— jQuery 추가 —> --%>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    
-        <!-- JavaScript Libraries -->
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="${contextPath}/resources/lib/wow/wow.min.js"></script>
-        <script src="${contextPath}/resources/lib/easing/easing.min.js"></script>
-        <script src="${contextPath}/resources/lib/waypoints/waypoints.min.js"></script>
-        <script src="${contextPath}/resources/lib/counterup/counterup.min.js"></script>
-        <script src="${contextPath}/resources/lib/owlcarousel/owl.carousel.min.js"></script>
-        <script src="${contextPath}/resources/lib/tempusdominus/js/moment.min.js"></script>
-        <script src="${contextPath}/resources/lib/tempusdominus/js/moment-timezone.min.js"></script>
-        <script src="${contextPath}/resources/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
-    
-        <%-- Template Javascript --%>
-        <script src="${contextPath}/resources/js/main.js"></script>
+    <%-- <!— jQuery 추가 —> --%>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
-        <script src="${contextPath}/resources/js/product-order.js"></script>
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="${contextPath}/resources/lib/wow/wow.min.js"></script>
+    <script src="${contextPath}/resources/lib/easing/easing.min.js"></script>
+    <script src="${contextPath}/resources/lib/waypoints/waypoints.min.js"></script>
+    <script src="${contextPath}/resources/lib/counterup/counterup.min.js"></script>
+    <script src="${contextPath}/resources/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="${contextPath}/resources/lib/tempusdominus/js/moment.min.js"></script>
+    <script src="${contextPath}/resources/lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="${contextPath}/resources/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <%-- 다음 주소 API --%>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+    <%-- Template Javascript --%>
+    <script src="${contextPath}/resources/js/main.js"></script>
+
+    <script src="${contextPath}/resources/js/product-order.js"></script>
 </body>
 </html>
