@@ -622,3 +622,10 @@ div > .ps-3{
     max-width: 100%;
     max-height: 100%;
 }
+
+/* 구독방식 설명 이미지 */
+.subs-img{
+    width: 130px;
+    height: 130px;
+    background-color: transparent;
+}

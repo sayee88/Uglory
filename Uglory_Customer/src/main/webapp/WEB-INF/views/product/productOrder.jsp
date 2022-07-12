@@ -152,10 +152,10 @@
         <script src="${contextPath}/resources/lib/tempusdominus/js/moment.min.js"></script>
         <script src="${contextPath}/resources/lib/tempusdominus/js/moment-timezone.min.js"></script>
         <script src="${contextPath}/resources/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
-    
+
         <%-- Template Javascript --%>
         <script src="${contextPath}/resources/js/main.js"></script>
 
-        <script src="${contextPath}/resources/js/product-order.js"></script>
+        <script src="${contextPath}/resources/js/product/product-order.js"></script>
 </body>
 </html>

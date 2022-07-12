@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="productMapper">
+
+	<!-- 상품 상세조회용 resultMap -->   
+  	<resultMap type="detail" id="detail_rm">
+    	<id property="pCode" column="P_CD"/>
+      	<result property="pName" column="PRODUCT_NM"/>
+      	<result property="pPrice" column="PRODUCT_PRICE"/>
+      	<result property="pInfo" column="RODUCT_INFO"/>
+      	
+      	<result property="optionName" column="OPTION_NM"/>
+      	<result property="optionPrice" column="OPTION_PRICE"/>
+      	
+      	<result property="producer" column="PRODUCER"/>
+      	<result property="origin" column="ORIGIN"/>
+      	
+      	<result property="star" column="STAR_RATING"/>
+
+    </resultMap>
+      	 
+    <!-- 상품 상세 조회 -->
+    <!-- 별점 개수, 리뷰 개수 필요 -->
+	<select id="productDetail" resultMap="detail_rm">
+		SELECT P_CD, PRODUCT_NM, PRODUCT_PRICE, PRODUCT_INFO,
+      	OPTION_NM, OPTION_PRICE, PRODUCT_IMG,
+      	PRODUCER, ORIGIN, STAR_RATING
+      	FROM PRODUCT
+      	JOIN OPTION_TYPE USING(P_CD)
+      	JOIN FARM USING(FARM_NO)
+      	JOIN REVIEW USING(P_CD)
+      	JOIN PRODUCT_IMG USING(P_CD)
+      	WHERE P_CD = ${pCode}
+	</select>
+
+</mapper>
+

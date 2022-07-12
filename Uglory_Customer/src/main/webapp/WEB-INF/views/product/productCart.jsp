@@ -35,7 +35,8 @@
     <!-- Template Stylesheet -->
     <link href="resources/css/style-1.css" rel="stylesheet">
 
-    <link href="resources/css/product/product-cart.css" rel="stylesheet">"
+    <link href="resources/css/product/product-cart.css" rel="stylesheet">
+    
 </head>
 <body>
     <main>
