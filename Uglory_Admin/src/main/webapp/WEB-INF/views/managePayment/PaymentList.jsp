@@ -15,26 +15,25 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="../img/favicon.ico" rel="icon">
+    <link href="${contextPath}/resources/img/favicon.ico" rel="icon">
     
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
     
     <!-- Libraries Stylesheet -->
-    <link href="../lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="../lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    <link href="${contextPath}/resources/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="${contextPath}/resources/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
     
     <!-- Template Stylesheet -->
-    <link href="../css/style.css" rel="stylesheet">
+    <link href="${contextPath}/resources/css/style.css" rel="stylesheet">
 
     <!-- 회원, 결제, 리뷰 조회 Style sheet -->
-    <link href="../css/adminselect-style.css" rel="stylesheet">
+    <link href="${contextPath}/resources/css/adminselect-style.css" rel="stylesheet">
     
-
     <!-- Fontawesome cdn 링크 -->
     <script src="https://kit.fontawesome.com/1ef9913073.js" crossorigin="anonymous"></script>
 
@@ -42,6 +41,7 @@
 
 <body>
     <div class="container-xxl position-relative bg-white d-flex p-0">
+        
         <!-- Spinner Start -->
         <jsp:include page="/WEB-INF/views/common/spinner.jsp"/>
         <!-- Spinner End -->
@@ -51,9 +51,10 @@
         <jsp:include page="/WEB-INF/views/common/sidebar.jsp"/>
         <!-- Sidebar End -->
 
-
+        
         <!-- Content Start -->
         <div class="content">
+        
             <!-- Navbar Start -->
             <jsp:include page="/WEB-INF/views/common/header.jsp"/>
             <!-- Navbar End -->
@@ -63,14 +64,15 @@
             <div class="container-fluid pt-4 px-4">
                 <div class="row bg-light rounded justify-content-center mx-0 m-5 p-4">
                     <div class="col-lg-12 text-center">
-                        <h2 class="text-start">회원 관리</h2>
+                        <h2 class="text-start">결제 관리</h2>
                         <hr>
 
                         <div class="listHead">
                             <form>
                                 <select name="" id="">
+                                    <option value="">주문번호</option>
                                     <option value="">회원 이메일</option>
-                                    <option value="">회원 이름</option>
+                                    <option value="">결제일</option>
                                 </select>
 
                                 <input type="text" id="pSearch">
@@ -78,56 +80,51 @@
                             </form>
                         </div>
 
+
                         <div class="listBody">
                             <table class="table table-borderless farmTable mt-4">
                                 <thead>
                                     <tr>
-                                        <th scope="col">#</th>
+                                        <th scope="col">주문 번호</th>
                                         <th scope="col">회원 이메일</th>
-                                        <th scope="col">회원 이름</th>
-                                        <th scope="col">구독 상태</th>
-                                        <th scope="col">계정 정지</th>
+                                        <th scope="col">결제금액</th>
+                                        <th scope="col">결제일</th>
+                                        <th scope="col">결제 상세</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <th scope="row">1</th>
+                                        <th scope="row">#2207071731-406</th>
                                         <td>test01@uglory.com</td>
-                                        <td>양배추쿵야</td>
+                                        <td>100,400원</td>
+                                        <td>2022-07-07</td>
                                         <td>
-                                            <button type="button" class="btn btn-subscription">구독 중</button>
-                                        </td>
-                                        <td>
-                                            <button type="button" class="btn btn-stopaccount">계정 정지</button>
+                                            <button type="button" class="btn btn-payment-detail">상세</button>
+                                            <!-- 상세 버튼 클릭 시 결제 상세 조회 페이지로 이동 -->
                                         </td>
                                     </tr>
 
                                     <tr>
-                                        <th scope="row">1</th>
+                                        <th scope="row">#2207071731-406</th>
                                         <td>test01@uglory.com</td>
-                                        <td>양배추쿵야</td>
+                                        <td>100,400원</td>
+                                        <td>2022-07-07</td>
                                         <td>
-                                            <button type="button" class="btn btn-secondary">구독</button>
-                                        </td>
-                                        <td>
-                                            <button type="button" class="btn btn-stopaccount">계정 정지</button>
+                                            <button type="button" class="btn btn-payment-detail">상세</button>
                                         </td>
                                     </tr>
-                                    
+
                                     <tr>
-                                        <th scope="row">1</th>
+                                        <th scope="row">#2207071731-406</th>
                                         <td>test01@uglory.com</td>
-                                        <td>양배추쿵야</td>
+                                        <td>100,400원</td>
+                                        <td>2022-07-07</td>
                                         <td>
-                                            <button type="button" class="btn btn-subscription">구독 중</button>
-                                        </td>
-                                        <td>
-                                            <button type="button" class="btn btn-stopaccount">계정 정지</button>
+                                            <button type="button" class="btn btn-payment-detail">상세</button>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
-
                         </div>
                     </div>
                 </div>
@@ -148,16 +145,16 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/chart/chart.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/tempusdominus/js/moment.min.js"></script>
-    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    <%-- <script src="lib/chart/chart.min.js"></script> --%>
+    <script src="${contextPath}/resources/lib/easing/easing.min.js"></script>
+    <script src="${contextPath}/resources/lib/waypoints/waypoints.min.js"></script>
+    <script src="${contextPath}/resources/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="${contextPath}/resources/lib/tempusdominus/js/moment.min.js"></script>
+    <script src="${contextPath}/resources/lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="${contextPath}/resources/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
     <!-- Template Javascript -->
-    <script src="../js/main.js"></script>
+    <script src="${contextPath}/resources/js/main.js"></script>
 </body>
 
 </html>
