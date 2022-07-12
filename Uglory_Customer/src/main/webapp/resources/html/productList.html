@@ -34,76 +34,7 @@
     <!-- Template Stylesheet -->
     <link href="../css/style.css" rel="stylesheet">
 
-    <style>
-        .btn-primary{
-            margin: 20px 10px;
-            border-radius: 5px;
-            background-color: rgb(255, 89, 87);
-        }
-
-        .slide{
-            margin-bottom: 100px;
-        }
-
-        .line{
-            width: 100%;
-            height: 5px;
-            background-color: rgba(224, 224, 224, 0.29);
-            margin-bottom: 40px;
-        }
-
-        .flex-container{
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-
-        }
-
-        .flex-container > h4{
-            display: inline-block;
-        }
-
-        .col{
-            margin: 30px 0;
-        }
-        
-        .box{
-            width: 320px;
-            margin: 0 auto;
-            position: relative;
-        }
-        
-        .product-img{
-            width: 100%;
-            height: auto;
-        }
-
-        .sub-box > img{
-            width: 100px;
-            height: 30px;
-        }
-
-        .sub-box > p{
-            display: inline-block;
-        }
-
-        
-        /* 품절 처리 */
-        .soldout{
-            filter: brightness(70%); 
-        }
-
-        .soldout-sticker{
-            position: absolute;
-            bottom: 15%;
-            right: 2%;
-            width: 50px;
-            height: 50px;
-        }
-
-
-    </style>
-    
+    <link rel="stylesheet" href="../css/product/product-list.css">
 </head>
 
 <body>
@@ -164,40 +95,60 @@
                     <h1 class="mb-5">Market</h1>
                 </div>
                 
-                <!-- Slide -->
-                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-indicators">
-                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <!-- 슬라이드 -->
+                <div class="slide-container">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style="width: 97%;">
+                        <div class="carousel-indicators">
+                          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        </div>
+                        <div class="carousel-inner">
+                          <div class="carousel-item active">
+                            <img src="../img/BSH/수박슬라이드.png" class="d-block w-100" alt="...">
+                          </div>
+                          <div class="carousel-item">
+                            <img src="../img/BSH/복숭아슬라이드.png" class="d-block w-100" alt="...">
+                          </div>
+                          <div class="carousel-item">
+                            <img src="../img/BSH/옥수수슬라이드.png" class="d-block w-100" alt="...">
+                          </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Next</span>
+                        </button>
                     </div>
-                    <div class="carousel-inner">
-                      <div class="carousel-item active">
-                        <img src="../img/BSH/수박슬라이드.png" class="d-block w-100" alt="...">
-                      </div>
-                      <div class="carousel-item">
-                        <img src="../img/BSH/복숭아슬라이드.png" class="d-block w-100" alt="...">
-                      </div>
-                      <div class="carousel-item">
-                        <img src="../img/BSH/옥수수슬라이드.png" class="d-block w-100" alt="...">
-                      </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                      <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                      <span class="visually-hidden">Next</span>
-                    </button>
+
                 </div>
 
                 <!-- line -->
-                <h3>상품보기</h3>
+                <form action="#">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col" style="margin: 20px;">
+                                <h2 >상품보기</h2>
+                            </div>
+                            <div class="col container-fluid" style="justify-content: flex-end; margin: 20px;">
+                                <form class="d-flex" style="height: 40px;">
+                                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                                    <button class="btn btn-outline-success" type="submit">Search</button>
+                                </form>
+                          </div>
+                        </div>
+                      </div>
+
+                </form>
+                
+                
                 <div class="line"></div>
 
                 <!-- 상품 카테고리 -->
-                <div class="category" style="display: flex; justify-content: center;">
+                <div class="category">
                     <input class="btn btn-primary" type="button" value="All">
                     <input class="btn btn-primary" type="button" value="뿌리채소">
                     <input class="btn btn-primary" type="button" value="두류/견과류">
@@ -210,13 +161,13 @@
 
 
 
-
+                
                 <!-- 상품 목록 -->
                 <div class="container">
 
                     <div class="row">
 
-                        <div class="col" style="display: flex;">
+                        <div class="col">
                             <div class="box">
                                 <img src="../img/마늘쫑쿵야.png" alt="" class="product-img soldout">
                                 <img src="../img/BSH/품절스티커.png" alt="" class="soldout-sticker">
@@ -232,7 +183,7 @@
                             </div>
                         </div>
 
-                        <div class="col" style="display: flex;">
+                        <div class="col">
                             <div class="box">
                             <img src="../img/바나나쿵야.png" alt="" class="product-img">
                                 <div>
@@ -247,7 +198,7 @@
                             </div>
                         </div>
 
-                        <div class="col" style="display: flex;">
+                        <div class="col">
                             <div class="box">
                             <img src="../img/반계쿵야.png" alt="" class="product-img">
                                 <div>
@@ -262,7 +213,7 @@
                             </div>
                         </div>
 
-                        <div class="col" style="display: flex;">
+                        <div class="col">
                             <div class="box">
                             <img src="../img/버섯쿵야.png" alt="" class="product-img">
                                 <div>
@@ -277,7 +228,7 @@
                             </div>
                         </div>
 
-                        <div class="col" style="display: flex;">
+                        <div class="col" >
                             <div class="box">
                             <img src="../img/샐러리쿵야.png" alt="" class="product-img">
                                 <div>
@@ -292,7 +243,7 @@
                             </div>
                         </div>
 
-                        <div class="col" style="display: flex;">
+                        <div class="col" >
                             <div class="box">
                             <img src="../img/양배추쿵야.png" alt="" class="product-img">
                                 <div>
@@ -307,7 +258,7 @@
                             </div>
                         </div>
 
-                        <div class="col" style="display: flex;">
+                        <div class="col" >
                             <div class="box">
                             <img src="../img/양파쿵야.png" alt="" class="product-img">
                                 <div>
@@ -322,7 +273,7 @@
                             </div>
                         </div>
 
-                        <div class="col" style="display: flex;">
+                        <div class="col" >
                             <div class="box">
                             <img src="../img/완계쿵야.png" alt="" class="product-img">
                                 <div>
@@ -337,7 +288,7 @@
                             </div>
                         </div>
 
-                        <div class="col" style="display: flex;">
+                        <div class="col" >
                             <div class="box">
                             <img src="../img/주먹밥쿵야.png" alt="" class="product-img">
                                 <div>
@@ -352,7 +303,7 @@
                             </div>
                         </div>
 
-                        <div class="col" style="display: flex;">
+                        <div class="col" >
                             <div class="box">
                             <img src="../img/호박쿵야.png" alt="" class="product-img">
                                 <div>
