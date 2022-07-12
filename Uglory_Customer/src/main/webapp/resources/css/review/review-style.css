@@ -1,0 +1,409 @@
+*{box-sizing: border-box;}
+
+/* 내용 전체 영역 지정 */
+.content_container{
+    /* border: 1px solid red; */
+    margin: 0 80px 100px 80px;
+}
+
+/* box 안에 내용 영역 */
+.box_container{
+    border: 1px solid rgb(208, 208, 208);
+    height: 150px;
+    padding: 30px 40px;
+    display: flex;
+}
+
+.box_text{
+    /* border: 1px solid red; */
+    font-size: 18px;
+    /* line-height: 1.5rem; */
+    font-weight: bold;
+    width: 300px;
+    overflow: hidden;
+}
+
+.box_content{
+    /* border: 1px solid red; */
+    width: 800px;
+    display: flex;
+    margin-left: 40px;
+}
+
+.box_content_d{
+    /* border: 1px solid red; */
+    width: 320px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    box-sizing: border-box;
+    flex-direction: row;
+}
+
+.box_review_section{
+    /* border: 1px solid red; */
+    width: 50%;
+    padding-right: 40px;
+    padding-left: 5px;
+    flex-direction: column;
+    /* font-size: 1.125rem; */
+    border-right-width: 1px;
+    display: flex;
+}
+
+.box_center{
+    padding: 0 20px;
+}
+
+.box_center > p > span:nth-of-type(2):hover{
+    cursor: pointer;
+}
+
+.box_review_section > p:nth-of-type(1){
+    text-align: left;
+    color: rgb(55, 55, 55);
+    font-weight: bold;
+}
+
+.box_review_section > p:nth-of-type(2){
+    text-align: left;
+    color: rgb(254, 161, 22);
+    font-weight: bold;
+    font-size: 30px;
+}
+
+/* ========================================== */
+/* 카테고리 버튼 */
+.category_section{
+    /* border: 1px solid red; */
+    text-align: center;
+    padding: 40px 0 10px 0;
+    margin-left: 26%;
+    margin-right: 26%;
+}
+
+.category_button{
+    /* border: 1px solid red; */
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+.category_button > div{
+    /* border: 1px solid red; */
+    /* border: 1px solid rgb(113, 214, 199); */
+    border-radius: 10px;
+    margin: 0 20px;
+    color: rgb(55, 55, 55);
+    font-weight: bold;
+    padding: 10px;
+    width: 100px;
+    overflow: hidden;
+}
+
+.category_button > div:hover{
+    cursor: pointer;
+    background-color: rgb(113, 214, 199);
+    color: white;
+}
+
+
+/* ========================================== */
+/* 리뷰 목록 */
+.review-section{
+    /* border: 1px solid red; */
+    padding: 0 0 20px 0;
+}
+
+.review-list{
+    /* border: 1px solid red; */
+    display: flex;
+    /* justify-content: space-between; */
+    margin-top: 40px;
+
+}
+
+.review-content{
+    /* border: 1px solid red; */
+    width: 30%;
+    height: 500px;
+    padding: 0;
+    margin: 0 16px;
+}
+
+.review-content > div > img{
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-top-left-radius: .125rem;
+    border-top-right-radius: .125rem;
+}
+
+.review-content > div > img:hover{
+    cursor: pointer;
+}
+
+.review-content-text{
+    display: block;
+    height: 150px;
+    background-color: rgb(241, 241, 241);
+    padding: 20px;
+    border-bottom-right-radius: .125rem;
+    border-bottom-left-radius: .125rem;
+}
+
+.review-content-top-section{
+    display: flex;
+}
+
+.review-content-top-left{
+    width: 50%;
+}
+
+.review-content-top-left > div:nth-of-type(1){
+    font-weight: bold;
+}
+
+.review-content-top-left > div:nth-of-type(2){
+    color: rgb(167, 167, 167);
+    font-size: 13px;
+}
+
+.review-star > span{
+    color: rgb(113, 214, 199);
+    text-align: end;
+}
+
+.review-star{
+    /* border: 1px solid red; */
+    padding-left: 30px;
+}
+
+
+.review-content-text-section{
+    /* border: 1px solid red; */
+    padding: 10px 0;
+    color: black;
+    font-weight: bold;
+    font-size: 15px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: break-all;
+}
+
+.review-content-bottom-section > div{
+    padding-top: 8px;
+    border-top: 0.5px solid rgb(157, 157, 157);
+    color: rgb(176, 176, 176);
+}
+
+
+/* ========================================== */
+
+/* 모달창 */
+.modal{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: flex;
+    /* display: none; */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(160, 160, 160, 0.429);
+    border-radius: 1px;
+    /* border: 1px solid red; */
+}
+
+.modal.show{
+    display: flex;
+    animation-name: show;
+}
+
+.modal.hide{
+    animation-name: hide;
+}
+
+.hidden{
+    /* display: none; */
+}
+
+.modal-close{
+    background-color: rgb(50, 50, 50);
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.modal-close:hover{
+    cursor: pointer;
+}
+
+.modal-window{
+    background-color: white;
+    border-radius: 3px;
+    /* border: 1px solid red; */
+    width: 800px;
+    height: 500px;
+
+    position: relative;
+
+    display: flex;
+}
+
+.modal-window > div{
+    /* border: 1px solid red; */
+    width: 50%;
+}
+
+.modal-mainImage > div:nth-of-type(1){
+    /* border: 1px solid red; */
+    height: 80%;
+}
+
+.active > img{
+    /* border: 1px solid red; */
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.modal-imgList > div:hover{
+    cursor: pointer;
+}
+
+.modal-mainImage > div{
+    /* border: 1px solid red; */
+    height: 20%;
+}
+
+.modal-imgList{
+    display: flex;
+}
+
+.modal-imgList > div{
+    /* border: 1px solid red; */
+    width: 25%;
+}
+
+.img4{
+    background-color: rgb(255, 255, 255);
+    color: rgb(216, 216, 216);
+    text-align: center;
+    line-height: 0.9;
+    font-size: 100px;
+}
+
+.modal-imgList > div>img{
+    /* border: 1px solid red; */
+    width: 100%;
+    height: 100%;
+    object-fit: covers;
+}
+
+.modal-content{
+    border-radius: 0;
+    padding: 20px;
+    border-left: 1px solid red;
+}
+
+.modal-content-info{
+    display: flex;
+    /* padding: 20px 0; */
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgb(160, 160, 160);
+}
+
+.modal-content-info > div{
+    /* border: 1px solid red; */
+    width: 50%;
+}
+
+.modal-content-info > div:nth-of-type(1){
+    padding: 0 0 0 10px;
+}
+
+.purchase{
+    margin-top: 5px;
+    font-size: 13px;
+}
+
+.info-name-date > span:nth-of-type(1){
+    font-weight: bold;
+    font-size: 18px;
+    color: rgb(50, 50, 50);
+}
+
+.info-name-date > span:nth-of-type(2){
+    margin-left: 5px;
+    color: rgb(158, 158, 158);
+    padding-top: 10px;
+    font-size: 14px;
+}
+
+.modal-star > div{
+    text-align: end;
+    padding-right: 5px;
+}
+
+.modal-star > div > span{
+    font-size: 18px;
+    color: rgb(113, 214, 199);
+}
+
+.avgstar{
+    font-size: 20px;
+    font-weight: bold;
+    color:rgb(254, 161, 22);
+}
+
+
+
+.modal-content-text{
+    /* border: 1px solid red; */
+    padding: 20px 0;
+    font-size: 15px;
+    color: rgb(60, 60, 60);
+    height: 300px;
+}
+
+.modal-bottom{
+    /* border: 1px solid red; */
+    height: 100px;
+}
+
+.modal-sub{
+    /* border: 1px solid red; */
+    text-align: end;
+}
+
+.modal-sub > a{
+    color: blue;
+}
+
+.bottom-update-del{
+    /* border: 1px solid red; */
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.bottom-update-del > button{
+    /* border: 1px solid red; */
+    border: 0;
+    margin-left: 15px;
+    padding: 3px 15px;
+    background-color: rgb(113, 214, 199);
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+    border-radius: 5px;
+}
