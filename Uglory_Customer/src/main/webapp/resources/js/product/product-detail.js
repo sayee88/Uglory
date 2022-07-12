@@ -1,7 +1,7 @@
 // 링크 공유
 function clip(){
 
-	var url = 'http://192.168.10.73:5500/product-detail.html';
+	var url = contextPath + "/product/detail/" + categoryNo + "/" + pCode;
 	var textarea = document.createElement("textarea");
 	document.body.appendChild(textarea);
 	url = window.document.location.href;

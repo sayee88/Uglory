@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"  %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -24,24 +25,24 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="resources/lib/animate/animate.min.css" rel="stylesheet">
-    <link href="resources/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="resources/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    <link href="${contextPath}/resources/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="${contextPath}/resources/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="${contextPath}/resources/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="resources/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="resources/css/style-1.css" rel="stylesheet">
-    <link href="resources/css/product/product-detail-style.css" rel="stylesheet">
+    <link href="${contextPath}/resources/css/style-1.css" rel="stylesheet">
+    <link href="${contextPath}/resources/css/product/product-detail-style.css" rel="stylesheet">
 
 </head>
 
 <body>
-    <main>
 
-       <jsp:include page="/WEB-INF/views/common/header.jsp" />
+    <main>
+       <jsp:include page="/WEB-INF/views/common/header-1.jsp" />
 
         <section class="product-detail">
             <!-- 상품, 옵션, FARM, 별점, 상품이미지, 리뷰 테이블 필요 -->
@@ -72,12 +73,12 @@
                 <div class="product-detail-info">
 
                     <!-- 상품명 가격 -->
-                    <h3 class="product-name" style="color: gray;"><span>유기농 어글리 바나나</span></h3>
+                    <h3 class="product-name" style="color: gray;"><span>${detail.pName}</span></h3>
                     <h3 class="option-name" style="color: gray;"><span>(1.5kg/2.5kg)</span></h3>
 
                     <!-- 상품가격, 별점, 리뷰 영역 -->
                     <div class="detail-name-area">
-                        <h3 class="product-price"><span>14,800원</span></h3>
+                        <h3 class="product-price"><span>${detail.pPrice}</span></h3>
 
                         <div class="detail-star-area">
                             <img src="img/star.png" width="30px" height="30px">
@@ -96,9 +97,9 @@
 
                     <!-- fram 정보, 옵션 영역 -->
                     <div class="detail-product-farm">
-                        <p>배송비 : <span>3,000원</span> </p>
-                        <p>원산지 : <span>Uglory</span> </p>
-                        <p>생산자 : <span>양파쿵야</span> </p>
+                        <p>배송비 : <span>3,000원 (30,000원 이상부터 무료배송)</span> </p>
+                        <p>원산지 : <span>${detail.origin}</span> </p>
+                        <p>생산자 : <span>${detail.producer}</span> </p>
 
                         <select name="product-option" class="product-option">
                             <!-- 옵션 선택 for문으로 가져오기 -->
@@ -131,7 +132,7 @@
 
             <!-- 썸머노트 조회 영역(확인 필요) -->
             <div>
-                썸머노트를 조회합시당
+                <span>${detail.pInfo}</span>
             </div>
             <!-- 썸머노트 조회 영역 끝 -->
 
@@ -153,6 +154,22 @@
                 <h4 style="color: gray"><span id="product-review-avg">3</span>/5</h4>
                 <a href="#"><span>325</span>개의 리뷰 &gt;</a>
             </div>
+
+            <%-- 장바구니 모달창 --%>
+            <div id="modalLayer">
+                <div class="mask">
+                    <div class="modalContent"> 
+                        <button type="button" class="gnb_close_btn"><i class="fa fa-times" aria-hidden="true"></i></button>
+                        <!-- 내용 시작 -->
+                        <div class="cont">
+                            <p>선택하신 상품이 장바구니에 담겼습니다.</p>
+                            <a href="<?php echo G5_SHOP_URL; ?>/list.php?ca_id=<?php echo $it['ca_id']; ?>" class="shopping">계속쇼핑하기</a>
+                            <a href="<?php echo G5_SHOP_URL; ?>/cart.php" class="carting">장바구니보기</a>
+                        </div>
+                        <!-- 내용 끝// -->
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 
@@ -172,10 +189,22 @@
         <script src="${contextPath}/resources/lib/tempusdominus/js/moment.min.js"></script>
         <script src="${contextPath}/resources/lib/tempusdominus/js/moment-timezone.min.js"></script>
         <script src="${contextPath}/resources/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
-    
+
+        <script>
+            // 최상위 주소
+            const contextPath = "${contextPath}";
+
+            // 카테고리 번호
+            const categoryNo = "${detail.categoryNo}";
+
+            // 상품 번호
+            const pCode = "${detail.pCode}"
+
+        </script>
+        
         <%-- Template Javascript --%>
         <script src="${contextPath}/resources/js/main.js"></script>
 
-        <script src="${contextPath}/resources/js/product-detail.js"></script>
+        <script src="${contextPath}/resources/js/product/product-detail.js"></script>
 </body>
 </html>
