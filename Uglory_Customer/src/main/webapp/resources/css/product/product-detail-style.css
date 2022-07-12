@@ -98,7 +98,7 @@
 }
 
 /* 장바구니 버튼 */
-#cart-btn{
+.cartBtn{
     border: 0;
     width: 26%;
     height: 50px;
@@ -109,7 +109,7 @@
 }
 
 /* 장바구니 버튼 hover */
-#cart-btn:hover{
+.cartBtn:hover{
     border: 1px solid #8C8C8C ;
     width: 26%;
     height: 50px;
