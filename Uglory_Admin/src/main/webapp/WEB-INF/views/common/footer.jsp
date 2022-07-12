@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!-- Footer Start -->
-<div class="container-fluid pt-4 px-4">
+<footer class="container-fluid pt-4 px-4">
     <div class="bg-light rounded-top p-4">
         <div class="row">
             <div class="col-12 col-sm-6 text-center text-sm-start" style="font-size: 16px;">
@@ -14,7 +14,7 @@
             </div>
         </div>
     </div>
-</div>
+</footer>
 <!-- Footer End -->
 
 <c:if test="${ !empty message }">
