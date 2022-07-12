@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -132,100 +134,141 @@
             <!-- Navbar End -->
 
 
-            <!-- 상품 상세 조회 -->
+            <!-- 구독 상품 목록 조회 -->
             <main class="container-fluid pt-4 px-4">
-                <section class="row justify-content-center mx-0 m-5 p-4">
-                    <article class="col-lg-12 p-1">
-                        <div class="productNo">1</div>
-                        <div class="detailHead">
-                            <h1 class="">당근</h1>
-                            <div class="dateBox">
-                                <p>상품 등록일 : 2022-07-06</p>
-                                <p>최종 수정일 : 2022-07-06</p>
-                            </div>
-                        </div>
+                <section class="row rounded justify-content-center mx-0 m-5 p-4">
+                    <article class="col-lg-12 text-center">
+                        <h2 class="text-start">구독 상품 알림</h2>
                         <hr>
 
-                        <div class="detailBody">
-                            <h2>상품 정보</h2>
+                        <div class="pListBody">
 
-                            <div class="detail-con row justify-content-between">
-                                <div class="col-sm-12 col-md-6 p-2 mb-2">
-                                    <div class="bg-light rounded info-box p-3">
-
-                                        <table class="table text-center">
-                                            <tr class="first-row">
-                                                <th>상품 분류</th>
-                                                <td>근채류</td>
-                                            </tr>
-                                            <tr>
-                                                <th>상품 가격</th>
-                                                <td>15,000원</td>
-                                            </tr>
-                                            <tr>
-                                                <th>상품 상태</th>
-                                                <td>
-                                                    <button class="btn btn-success" id="in-btn">입고</button>
-                                                    <button class="btn btn-outline-secondary" id="out-btn">품절</button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <th>원산지</th>
-                                                <td>뿌리채소 마을</td>
-                                            </tr>
-                                            <tr class="last-row">
-                                                <th>생산자</th>
-                                                <td>당근농장(당근쿵야)</td>
-                                            </tr>
-                                        </table>
-
-                                    </div>
-                                </div>
-
-                                <div class="col-sm-12 col-md-6 p-2">
-                                    <div class="bg-light rounded mb-2 p-3">
-                                        <h4>옵션 정보</h4>
-
-                                        <table class="table text-center">
-                                            <tr class="first-row">
-                                                <th>1</th>
-                                                <td>3kg</td>
-                                                <td>15,000원</td>
-                                            </tr>
-                                            <tr class="last-row">
-                                                <th>2</th>
-                                                <td>5kg</td>
-                                                <td>27,000원</td>
-                                            </tr>
-                                        </table>
-
-                                    </div>
-                                    <div class="bg-light rounded p-2 mb-2 img-area">
-                                        <img src="../img/vegetables-2485055.jpg" alt="상품이미지" class="detail-img">
-                                        <div>
-                                            <h4>첨부 이미지</h4>
-                                            <a href="#" id="pre-img">이미지 미리보기</a>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="col-xl-4 p-4">
+                                <div class="pList-tit m-2">이번주 배송 상품</div>                           
+                                <div class="text-start p-3 dl-date">배송예정일 : 2022-07-06</div>                           
+                                <ul class="pListBox">
+                                    <li>
+                                        <p>양파</p>
+                                        <p>1kg</p>
+                                    </li>
+    
+                                    <li>
+                                        <p>양파</p>
+                                        <p>1kg</p>
+                                    </li>
+    
+                                    <li>
+                                        <p>양파</p>
+                                        <p>1kg</p>
+                                    </li>
+    
+                                    <li>
+                                        <p>양파</p>
+                                        <p>1kg</p>
+                                    </li>
+    
+                                    <li>
+                                        <p>양파</p>
+                                        <p>1kg</p>
+                                    </li>
+                                </ul>
+    
+                                <div class="p-btn-area">
+                                    <button type="button" class="btn btn-primary">알림</button>
+                                    <i class="fa-solid fa-lightbulb text-warning" style="font-size:36px;"></i>
+                                </div>                           
                             </div>
 
-                            <div class="detail-btn">
-                                <button class="btn btn-primary">수정</button>
+                            <div class="col-xl-4 p-4">
+                                <div class="pList-tit m-2">다음주 배송 상품</div>                           
+                                <div class="text-start p-3 dl-date">배송예정일 : 2022-07-13</div>                           
+                                <ul class="pListBox">
+                                    <li>
+                                        <p>양파</p>
+                                        <p>1kg</p>
+                                    </li>
+    
+                                    <li>
+                                        <p>양파</p>
+                                        <p>1kg</p>
+                                    </li>
+    
+                                    <li>
+                                        <p>양파</p>
+                                        <p>1kg</p>
+                                    </li>
+    
+                                    <li>
+                                        <p>양파</p>
+                                        <p>1kg</p>
+                                    </li>
+    
+                                    <li>
+                                        <p>양파</p>
+                                        <p>1kg</p>
+                                    </li>
+
+                                    <li>
+                                        <p>양파</p>
+                                        <p>1kg</p>
+                                    </li>
+
+                                    <li>
+                                        <p>양파</p>
+                                        <p>1kg</p>
+                                    </li>
+
+                                    <li>
+                                        <p>양파</p>
+                                        <p>1kg</p>
+                                    </li>
+                                </ul>
+    
+                                <div class="p-btn-area">
+                                    <div>
+                                        <button type="button" class="btn btn-primary">수정</button>
+                                        <button type="button" class="btn btn-primary">알림</button>
+                                    </div>
+                                    <i class="fa-regular fa-lightbulb text-warning" style="font-size:36px;"></i>
+                                </div>                           
                             </div>
-                        </div>
-                        
-                    </article>
 
-                    <hr>
-
-                    <article>
-                        <h2>상품 설명</h2>
-
-                        <div class="detail-info">상품 설명을 작성해주세요.</div>
-
-                        <div class="detail-btn">
-                            <button class="btn btn-primary">수정</button>
+                            <div class="col-xl-4 p-4">
+                                <div class="pList-tit m-2">다다음주 배송 상품</div>                           
+                                <div class="text-start p-3 dl-date">배송예정일 : 2022-07-20</div>                           
+                                <ul class="pListBox">
+                                    <li>
+                                        <p>양파</p>
+                                        <p>1kg</p>
+                                    </li>
+    
+                                    <li>
+                                        <p>양파</p>
+                                        <p>1kg</p>
+                                    </li>
+    
+                                    <li>
+                                        <p>양파</p>
+                                        <p>1kg</p>
+                                    </li>
+    
+                                    <li>
+                                        <p>양파</p>
+                                        <p>1kg</p>
+                                    </li>
+    
+                                    <li>
+                                        <p>양파</p>
+                                        <p>1kg</p>
+                                    </li>
+                                </ul>
+    
+                                <div class="p-btn-area">
+                                    <button type="button" class="btn btn-primary">등록</button>
+                                    <i class="fa-regular fa-lightbulb text-warning" style="font-size:36px;"></i>
+                                </div>                           
+                            </div>
+                            
                         </div>
                     </article>
                 </section>
@@ -266,7 +309,7 @@
     <script src="../lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="../lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
-    <script src="../js/product.js"></script>  
+    <script src="../js/adminProduct.js"></script>  
     
     <!-- Template Javascript -->
     <script src="../js/main.js"></script>  

@@ -39,13 +39,14 @@
     border-color: rgb(53, 204, 182);
 }
 
-
-/* 결제 상세 페이지 표 */
-table *{
-    border: 1px solid #6c757d;
-}
-
 /* 결제 상세 페이지 표 사이 공백 */
 .blank{
     height: 30px;
 }
+
+/* 검색창 */
+.listHead{display: flex; justify-content: end;}
+.listHead>form{display: flex; align-items: center;}
+.listHead>form>*{height: 36px; border-radius: 5px; margin: 0 2px;}
+.listHead select{color:#6c757d; border:1px solid #ccc;}
+.listHead input{color:#6c757d; border:1px solid #ccc; width:200px;}

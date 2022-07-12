@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,10 +26,9 @@
     
     <!-- Template Stylesheet -->
     <link href="../css/style.css" rel="stylesheet">
-
-    <!-- 회원, 결제, 리뷰 조회 Style sheet -->
-    <link href="../css/adminselect-style.css" rel="stylesheet">
     
+    <!-- Product Style sheet -->
+    <link href="../css/adminproduct-style.css" rel="stylesheet">
 
     <!-- Fontawesome cdn 링크 -->
     <script src="https://kit.fontawesome.com/1ef9913073.js" crossorigin="anonymous"></script>
@@ -64,12 +65,6 @@
 
                 <!-- 사이드바 내용 -->
                 <div class="navbar-nav w-100">
-                    <!-- 회원 관리 -->
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link"><i class="fa-solid fa-people-group"></i>회원 관리</a>
-                    </div>
-
-                    <!-- 상품 관리 -->
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-carrot me-2"></i>상품 관리</a>
                         <div class="dropdown-menu bg-transparent border-0">
@@ -85,10 +80,8 @@
                         </div>
                     </div>
 
-                    <!-- 농장 관리 -->
                     <div class="nav-item dropdown">
-                                                                                                <!-- <i class="fa-solid fa-hat-cowboy me-2"></i> -->
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-house me-2"></i>농장 관리</a>
+                        <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown"><i class="fa-solid fa-house me-2"></i>농장 관리</a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <div class="dropdown-item">
                                 <a href="adminFarmList.html" class="sub-menu">농장 조회</a>
@@ -98,28 +91,8 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- 결제 관리 -->
                     <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-credit-card"></i>결제&매출</a>
-                        <div class="dropdown-menu bg-transparent border-0">
-                            <div class="dropdown-item">
-                                <a href="" class="sub-menu">결제 관리</a>
-                            </div>
-                            <div class="dropdown-item">
-                                <a href="signup.html" class="sub-menu">매출 관리</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- 리뷰게시판 관리 -->
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link"><i class="fa-solid fa-clipboard-list"></i>리뷰 관리</a>
-                    </div>
-
-                    <!-- 마이페이지 -->
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-user me-2"></i>마이페이지</a>
+                        <a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown"><i class="fa-solid fa-user me-2"></i>Pages</a>
                         <div class="dropdown-menu bg-transparent border-0">
                             <div class="dropdown-item">
                                 <a href="signin.html" class="sub-menu">Sign In</a>
@@ -161,89 +134,114 @@
             <!-- Navbar End -->
 
 
-            <!-- 상품 등록 form태그 -->
-            <div class="container-fluid pt-4 px-4">
-                <div class="row bg-light rounded justify-content-center mx-0 m-5 p-4">
-                    <div class="col-lg-12 text-center">
-                        <h2 class="text-start">회원 관리</h2>
+            <!-- 상품 상세 조회 -->
+            <main class="container-fluid pt-4 px-4">
+                <section class="row justify-content-center mx-0 m-5 p-4">
+                    <article class="col-lg-12 p-1">
+                        <div class="productNo">1</div>
+                        <div class="detailHead">
+                            <h1 class="">당근</h1>
+                            <div class="dateBox">
+                                <p>상품 등록일 : 2022-07-06</p>
+                                <p>최종 수정일 : 2022-07-06</p>
+                            </div>
+                        </div>
                         <hr>
 
-                        <div class="listHead">
-                            <form>
-                                <select name="" id="">
-                                    <option value="">회원 이메일</option>
-                                    <option value="">회원 이름</option>
-                                </select>
+                        <div class="detailBody">
+                            <h2>상품 정보</h2>
 
-                                <input type="text" id="pSearch">
-                                <button type="button" class="btn btn-secondary"><i class="fa-solid fa-magnifying-glass"></i></button>
-                            </form>
+                            <div class="detail-con row justify-content-between">
+                                <div class="col-sm-12 col-md-6 p-2 mb-2">
+                                    <div class="bg-light rounded info-box p-3">
+
+                                        <table class="table text-center">
+                                            <tr class="first-row">
+                                                <th>상품 분류</th>
+                                                <td>근채류</td>
+                                            </tr>
+                                            <tr>
+                                                <th>상품 가격</th>
+                                                <td>15,000원</td>
+                                            </tr>
+                                            <tr>
+                                                <th>상품 상태</th>
+                                                <td>
+                                                    <button class="btn btn-success" id="in-btn">입고</button>
+                                                    <button class="btn btn-outline-secondary" id="out-btn">품절</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th>원산지</th>
+                                                <td>뿌리채소 마을</td>
+                                            </tr>
+                                            <tr class="last-row">
+                                                <th>생산자</th>
+                                                <td>당근농장(당근쿵야)</td>
+                                            </tr>
+                                        </table>
+
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-12 col-md-6 p-2">
+                                    <div class="bg-light rounded mb-2 p-3">
+                                        <h4>옵션 정보</h4>
+
+                                        <table class="table text-center">
+                                            <tr class="first-row">
+                                                <th>1</th>
+                                                <td>3kg</td>
+                                                <td>15,000원</td>
+                                            </tr>
+                                            <tr class="last-row">
+                                                <th>2</th>
+                                                <td>5kg</td>
+                                                <td>27,000원</td>
+                                            </tr>
+                                        </table>
+
+                                    </div>
+                                    <div class="bg-light rounded p-2 mb-2 img-area">
+                                        <img src="../img/vegetables-2485055.jpg" alt="상품이미지" class="detail-img">
+                                        <div>
+                                            <h4>첨부 이미지</h4>
+                                            <a href="#" id="pre-img">이미지 미리보기</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="detail-btn">
+                                <button class="btn btn-primary">수정</button>
+                            </div>
                         </div>
+                        
+                    </article>
 
-                        <div class="listBody">
-                            <table class="table table-borderless farmTable mt-4">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">회원 이메일</th>
-                                        <th scope="col">회원 이름</th>
-                                        <th scope="col">구독 상태</th>
-                                        <th scope="col">계정 정지</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>test01@uglory.com</td>
-                                        <td>양배추쿵야</td>
-                                        <td>
-                                            <button type="button" class="btn btn-subscription">구독 중</button>
-                                        </td>
-                                        <td>
-                                            <button type="button" class="btn btn-stopaccount">계정 정지</button>
-                                        </td>
-                                    </tr>
+                    <hr>
 
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>test01@uglory.com</td>
-                                        <td>양배추쿵야</td>
-                                        <td>
-                                            <button type="button" class="btn btn-secondary">구독</button>
-                                        </td>
-                                        <td>
-                                            <button type="button" class="btn btn-stopaccount">계정 정지</button>
-                                        </td>
-                                    </tr>
-                                    
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>test01@uglory.com</td>
-                                        <td>양배추쿵야</td>
-                                        <td>
-                                            <button type="button" class="btn btn-subscription">구독 중</button>
-                                        </td>
-                                        <td>
-                                            <button type="button" class="btn btn-stopaccount">계정 정지</button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                    <article>
+                        <h2>상품 설명</h2>
 
+                        <div class="detail-info">상품 설명을 작성해주세요.</div>
+
+                        <div class="detail-btn">
+                            <button class="btn btn-primary">수정</button>
                         </div>
-                    </div>
-                </div>
-            </div>
+                    </article>
+                </section>
+            </main>
 
 
             <!-- Footer Start -->
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-light rounded-top p-4">
                     <div class="row">
-                        <div class="col-12 col-sm-6 text-center text-sm-start" style="font-size: 16px;">
+                        <div class="col-12 col-sm-6 text-center text-sm-start">
                             &copy; <a href="#">Uglory</a>, All Right Reserved. 
                         </div>
-                        <div class="col-12 col-sm-6 text-center text-sm-end" style="font-size: 16px;">
+                        <div class="col-12 col-sm-6 text-center text-sm-end">
                             <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
                             Designed By <a href="https://htmlcodex.com">HTML Codex</a>
                         </div>
@@ -262,16 +260,19 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/chart/chart.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/tempusdominus/js/moment.min.js"></script>
-    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="../lib/chart/chart.min.js"></script>
+    <script src="../lib/easing/easing.min.js"></script>
+    <script src="../lib/waypoints/waypoints.min.js"></script>
+    <script src="../lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="../lib/tempusdominus/js/moment.min.js"></script>
+    <script src="../lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="../lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
+    <script src="../js/product.js"></script>  
+    
     <!-- Template Javascript -->
-    <script src="../js/main.js"></script>
+    <script src="../js/main.js"></script>  
+
 </body>
 
 </html>
