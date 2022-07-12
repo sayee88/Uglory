@@ -36,7 +36,7 @@
 </head>
 <body>
     <main class="main">
-     <jsp:include page="/WEB-INF/views/common/header.jsp" />
+     <jsp:include page="/WEB-INF/views/common/header-1.jsp" />
 
         <div class="secession">
             <div>
