@@ -20,47 +20,45 @@ import org.slf4j.LoggerFactory;
 public class InitFilter extends HttpFilter implements Filter {
 	
 	
-	// print ±¸¹® X -> Logger / Debug Mode »ç¿ë
+	// print êµ¬ë¬¸ X -> Logger / Debug Mode ì‚¬ìš©
 	
-	// Logger °´Ã¼ »ı¼º
-	// ÇØ´ç Å¬·¡½º¿¡ ´ëÇÑ log¸¦ Ãâ·ÂÇÏ´Â °´Ã¼
+	// Logger ê°ì²´ ìƒì„±
+	// í•´ë‹¹ í´ë˜ìŠ¤ì— ëŒ€í•œ logë¥¼ ì¶œë ¥í•˜ëŠ” ê°ì²´
 	private Logger logger = LoggerFactory.getLogger(InitFilter.class);
 	
 	
        
-	// ÇÊÅÍ°¡ »ı¼ºµÉ ¶§ ½ÇÇà
+	// í•„í„°ê°€ ìƒì„±ë  ë•Œ ì‹¤í–‰
 	public void init(FilterConfig fConfig) throws ServletException {
-		// logger¸¦ ÀÌ¿ëÇØ¼­ Ãâ·ÂÇÏ´Â ¹æ¹ı
+		// loggerë¥¼ ì´ìš©í•´ì„œ ì¶œë ¥í•˜ëŠ” ë°©ë²•
 		// trace - debug - info - warn - error
 		
-		// debug : °³¹ßÀÇ Èå¸§À» ÆÄ¾ÇÇÒ ¶§ ¸¹ÀÌ ¾¸
-		// info : ¸Ş¼­µå ½ÇÇà
+		// debug : ê°œë°œì˜ íë¦„ì„ íŒŒì•…í•  ë•Œ ë§ì´ ì”€
+		// info : ë©”ì„œë“œ ì‹¤í–‰
 		
-		logger.info("ÃÊ±âÈ­ ÇÊÅÍ »ı¼º");
+		logger.info("ì´ˆê¸°í™” í•„í„° ìƒì„±");
 	}
 	
-	// ÇÊÅÍ°¡ ÆÄ±«µÉ ¶§ ½ÇÇà
+	// í•„í„°ê°€ íŒŒê´´ë  ë•Œ ì‹¤í–‰
     public void destroy() {
-		logger.info("ÃÊ±âÈ­ ÇÊÅÍ ÆÄ±«");
+		logger.info("ì´ˆê¸°í™” í•„í„° íŒŒê´´");
 
 	}
 
     
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		
-	      // application ³»Àå °´Ã¼ ¾ò¾î¿À±â
+	      // application ë‚´ì¥ ê°ì²´ ì–»ì–´ì˜¤ê¸°
 	      ServletContext application = request.getServletContext();
 	      
-	      // ÃÖ»óÀ§ ÁÖ¼Ò ¾ò¾î¿À±â
+	      // ìµœìƒìœ„ ì£¼ì†Œ ì–»ì–´ì˜¤ê¸°
 	      String contextPath =  ( (HttpServletRequest)request ).getContextPath();
-	                           // ´Ù¿îÄ³½ºÆÃ
+	                           // ë‹¤ìš´ìºìŠ¤íŒ…
 	      
-	      // ¼¼ÆÃ
+	      // ì„¸íŒ…
 	      application.setAttribute("contextPath", contextPath);
 
 	      
 	      chain.doFilter(request, response);
 	}
-
-
 }
