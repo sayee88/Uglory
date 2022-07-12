@@ -204,7 +204,7 @@
                                         <img src="../img/vegetables-2485055.jpg" alt="상품이미지" class="detail-img">
                                         <div>
                                             <h4>첨부 이미지</h4>
-                                            <a href="#" id="pre-img">이미지 미리보기</a>
+                                            <a href="#" id="pre-img" data-bs-toggle="modal" data-bs-target="#exampleModal">이미지 미리보기</a>
                                         </div>
                                     </div>
                                 </div>
@@ -250,6 +250,56 @@
         </div>
         <!-- Content End -->
 
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">이미지 미리보기</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                    
+                        <!-- 이미지 캐러셀(슬라이드) -->
+                        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                            
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="../img/vegetables-2485055.jpg" class="d-block w-100" alt="채소">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="../img/vegetables-2485055.jpg" class="d-block w-100" alt="채소">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="../img/vegetables-2485055.jpg" class="d-block w-100" alt="채소">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="../img/vegetables-2485055.jpg" class="d-block w-100" alt="채소">
+                                </div>
+                            </div>
+
+                            <div class="carousel-indicators">
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                            </div>
+
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal 끝 -->
 
         <!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>

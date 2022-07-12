@@ -1,12 +1,9 @@
-@font-face {
+/* @font-face {
     font-family: 'NanumBarunpen';
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumBarunpen.woff') format('woff');
     font-weight: normal;
     font-style: normal;
-}
-
-/* 관리자 전체 폰트 */
-
+} */
 
 /* 사이드바 서브메뉴 간격 */
 .sub-menu {margin-left: 47px; color: black; font-size: 18px;}
@@ -135,4 +132,5 @@
     margin: 2px;
     display: flex;
 }
+
 
