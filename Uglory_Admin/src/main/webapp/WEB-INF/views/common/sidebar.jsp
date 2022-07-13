@@ -8,15 +8,30 @@
             <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>UGLORY</h3>
         </a>
 
+        <%-- 로그인 X --%>
         <c:if test="${ empty loginAdmin }">
             <div class="d-flex align-items-center ms-4 mb-4">
                 <div class="position-relative">
-                    <img class="rounded-circle" src="${contextPath}/resources/img/seed.jpg" alt="프로필 사진" style="width: 40px; height: 40px;">
+                    <img class="rounded-circle" src="${contextPath}/resources/img/seed.jpg" alt="프로필 사진" style="width: 45px; height: 45px; opacity:0.5">
                     <div class="bg-danger rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                 </div>
                 <div class="ms-3">
-                    <h6 class="mb-0">씨앗 쿵야</h6>
+                    <h6 class="mb-0 text-secondary">씨앗 쿵야</h6>
                     <span>Seed</span>
+                </div>
+            </div>
+        </c:if>
+
+        <%-- 로그인 O --%>
+        <c:if test="${ !empty loginAdmin }">
+            <div class="d-flex align-items-center ms-4 mb-4">
+                <div class="position-relative">
+                    <img class="rounded-circle" src="${contextPath}${loginAdmin.profileImage}" alt="프로필 사진" style="width: 45px; height: 45px;">
+                    <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
+                </div>
+                <div class="ms-3">
+                    <h6 class="mb-0">${loginAdmin.adminName}</h6>
+                    <span>Admin</span>
                 </div>
             </div>
         </c:if>

@@ -48,12 +48,12 @@
 
                         <form action="signIn" method="POST" name="login-form" onsubmit="return loginValidate()">
                             <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="floatingInput" name="adminEmail" value="${cookie.saveId.value}">
-                                <label for="floatingInput">Email address</label>
+                                <input type="email" class="form-control" id="inputEmail" name="adminEmail" value="${cookie.saveId.value}">
+                                <label for="inputEmail">Email address</label>
                             </div>
                             <div class="form-floating mb-4">
-                                <input type="password" class="form-control" id="floatingPassword" name="adminPw">
-                                <label for="floatingPassword">Password</label>
+                                <input type="password" class="form-control" id="inputPw" name="adminPw">
+                                <label for="inputPw">Password</label>
                             </div>
 
                             <%-- 쿠키에 saveId가 있는 경우--%>
@@ -99,6 +99,7 @@
 
     <!-- Template Javascript -->
     <script src="${contextPath}/resources/js/main.js"></script>
+    <script src="${contextPath}/resources/js/myPage.js"></script>
 </body>
 
 </html>

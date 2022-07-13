@@ -1,10 +1,10 @@
 function loginValidate(){ // 로그인 유효성 검사
 
     // 이메일 입력 input 요소 
-    const inputEmail = document.getElementById("floatingInput");
+    const inputEmail = document.getElementById("inputEmail");
 
     // 비밀번호 입력 input 요소
-    const inputPw = document.getElementById("floatingPassword");
+    const inputPw = document.getElementById("inputPw");
 
     // 이메일이 입력되지 않은 경우 false를 반환
     if( inputEmail.value.trim().length == 0 ){
@@ -30,17 +30,29 @@ function loginValidate(){ // 로그인 유효성 검사
 
 // 유효성 검사 여부를 기록할 객체 생성
 const checkObj = { 
+    "adminName"      : false,
     "adminEmail"     : false,
     "adminPw"        : false,
     "adminPwConfirm" : false,
-    "approvalNumber"  : false
+    "approvalNumber" : false
 };
 
-if( $('#signUp') != null){
+if( document.getElementById("signUp") != null){
+
+    //관리자 이름 유효성 검사
+    const adminName = document.getElementById("adminName");
+
+    adminName.addEventListener("input", function(){
+
+        if(adminName.value.trim().length != 0){
+
+            checkObj.adminName = true;
+        }
+    });
 
 
     // 이메일 유효성 검사
-    const adminEmail = document.getElementById("floatingInput");
+    const adminEmail = document.getElementById("adminEmail");
     const emailMessage = document.getElementById("emailMessage");
 
     adminEmail.addEventListener("input", function(){
@@ -87,25 +99,22 @@ if( $('#signUp') != null){
                     // 비동기 통신(ajax) 중 오류가 발생한 경우
                     console.log("에러 발생");
                 }
-
             });
-            
-
 
         }else{
             emailMessage.innerText = "이메일 형식이 유효하지 않습니다.";
-            emailMessage.classList.add("error");
-            emailMessage.classList.remove("confirm");
+            emailMessage.classList.add("text-danger");
+            emailMessage.classList.remove("text-success");
 
-            checkObj.memberEmail = false; // 유효 X 기록
+            checkObj.adminEmail = false; // 유효 X 기록
         }
 
     });
 
 
     // 비밀번호 유효성 검사
-    const adminPw = document.getElementById("floatingPassword");
-    const adminPwConfirm = document.getElementById("floatingPwConfirm");
+    const adminPw = document.getElementById("adminPw");
+    const adminPwConfirm = document.getElementById("adminPwConfirm");
     const pwMessage = document.getElementById("pwMessage");
 
     adminPw.addEventListener("input", function(){
@@ -165,11 +174,13 @@ if( $('#signUp') != null){
         }
     }
 
-    const approvalNumber = document.getElementById("floatingApproval");
+    const approvalNumber = document.getElementById("approvalNumber");
 
-    if(approvalNumber.value == "kkpbsj07"){
-        checkObj.approvalNumber = true;
-    }
+    approvalNumber.addEventListener("input", function(){
+        if(approvalNumber.value == 'kkpbsj07'){
+            checkObj.approvalNumber = true;
+        }
+    });
 }
 
 // 회원가입 버튼 클릭 시 유효성 검사가 완료 되었는지 확인하는 함수
@@ -183,13 +194,12 @@ function signUpValidate(){
         if( !checkObj[key] ){ 
 
             switch(key){
-            case "adminEmail":     str="이메일이"; break;
-            case "adminPw":        str="비밀번호가"; break;    
-            case "adminPwConfirm": str="비밀번호 확인이"; break;
-            case "approvalNumber":  str="승인번호가"; break;
+            case "adminName" :      str="이름을 작성해주세요."; break;    
+            case "adminEmail":      str="이메일이 유효하지 않습니다."; break;
+            case "adminPw":         str="비밀번호가 유효하지 않습니다."; break;    
+            case "adminPwConfirm":  str="비밀번호 확인이 유효하지 않습니다."; break;
+            case "approvalNumber":  str="승인번호가 유효하지 않습니다."; break;
             }
-
-            str += " 유효하지 않습니다.";
 
             alert(str);
 
@@ -198,6 +208,5 @@ function signUpValidate(){
             return false; // form태그 기본 이벤트 제거
         }
     }
-
     return true; // form태그 기본 이벤트 수행
 }

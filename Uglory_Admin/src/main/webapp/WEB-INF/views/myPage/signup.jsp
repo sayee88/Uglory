@@ -48,27 +48,27 @@
 
                         <form action="signUp" method="POST" name="signUp-form" enctype="multipart/form-data" onsubmit="return signUpValidate()">
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="floatingText" name="adminName">
-                                <label for="floatingText">Admin name</label>
+                                <input type="text" class="form-control" id="adminName" name="adminName" placeholder="Admin name">
+                                <label for="adminName">Admin name</label>
                             </div>
                             <div class="form-floating mb-1">
-                                <input type="email" class="form-control" id="floatingInput" name="adminEmail">
-                                <label for="floatingInput">Email address</label>
+                                <input type="email" class="form-control" id="adminEmail" name="adminEmail" placeholder="Email address">
+                                <label for="adminEmail">Email address</label>
                             </div>
                             <p class="text-success mb-3" id="emailMessage"></p>
                             <div class="form-floating mb-3">
-                                <input type="password" class="form-control" id="floatingPassword" name="adminPw">
-                                <label for="floatingPassword">Password</label>
+                                <input type="password" class="form-control" id="adminPw" name="adminPw" placeholder="Password">
+                                <label for="adminPw">Password</label>
                             </div>
                             <div class="form-floating mb-1">
-                                <input type="password" class="form-control" id="floatingPwConfirm">
-                                <label for="floatingPwConfirm">Password Confirm</label>
+                                <input type="password" class="form-control" id="adminPwConfirm" placeholder="Password Confirm">
+                                <label for="adminPwConfirm">Password Confirm</label>
                             </div>
                             <p class="text-danger mb-3" id="pwMessage"></p>
 
                             <div class="form-floating mb-3">
-                                <input type="password" class="form-control" id="floatingApproval">
-                                <label for="floatingApproval">Approval number</label>
+                                <input type="password" class="form-control" id="approvalNumber" placeholder="Approval number">
+                                <label for="approvalNumber">Approval number</label>
                             </div>
 
                             <p class="mt-2 mb-1" style="color: #757575;">Profile Image</p>
