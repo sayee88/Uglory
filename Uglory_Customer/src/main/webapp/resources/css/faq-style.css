@@ -1,6 +1,6 @@
 .faq-container{
     /* border: 1px solid red; */
-    margin: 20px 180px;
+    margin: 20px 200px 300px 200px;
     display: flex;
 }
 
@@ -33,7 +33,7 @@
 /* faq 질문 내용 */
 .faq-content{
     /* border: 1px solid red; */
-    width: 100%;
+    /* width: 100%; */
     padding: 10px;
 }
 
@@ -56,7 +56,7 @@
     /* border: 1px solid red; */
     font-size: 24px;
     font-weight: bold;
-    color: rgb(254, 161, 22)
+    color: rgb(113, 214, 199);
 }
 
 .faq-content-list > div > span:nth-of-type(2){
@@ -70,8 +70,6 @@
     color: rgb(101, 101, 101);
     font-weight: bold;
 }
-
-
 
 .faq-content-list >div>div{
     /* border: 1px solid red; */

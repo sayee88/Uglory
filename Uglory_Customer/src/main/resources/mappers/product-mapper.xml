@@ -43,13 +43,13 @@
 	<select id="totalAmount" resultType="_int">
 		SELECT PRODUCT_PRICE + OPTION_PRICE
 		<!-- 상품 가격이 3만원이 안 넘을 경우 (배송비 추가)-->
-<!-- 		<if test='productPrice lt 30000'>
+  		<if test='productPrice &lt; 30000'>
 			+ 3000
-		</if> -->
+		</if>
 		FROM PRODUCT
 		JOIN OPTION_TYPE USING(P_CD)
 		WHERE P_CD = ${productCode}
-		AND OPTION_NM = #{optionName}
+		AND OPTION_CD = #{optionCode}
 	</select>
 
 </mapper>
