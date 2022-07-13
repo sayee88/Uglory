@@ -38,6 +38,19 @@
     <link href="${contextPath}/resources/css/style.css" rel="stylesheet">
 
     <link rel="stylesheet" href="${contextPath}/resources/css/subscription.css">
+
+    <style>
+        .row{
+            margin:20px;
+            padding: 10px 15px 10px 65px;
+            font-size:25px;
+        }
+
+        .modal{
+            max-height:1000px;
+        }
+
+    </style>
     
     
 </head>
@@ -129,28 +142,287 @@
                         </button>
                         
                         <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true";>
-                            <div class="modal-dialog modal-dialog-scrollable" >
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
+
+
+
+
                                         <div class="container">
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                                                <label class="form-check-label" for="inlineCheckbox1">1</label>
+                                        
+                                            <div class="row">
+                                                <div class="col">
+                                                    <input class="form-check-input" type="checkbox" id="potato" value="감자" disabled>
+                                                    <label class="form-check-label" for="potato">감자</label>
+                                                </div>
+                                                <div class="col">
+                                                    <input class="form-check-input" type="checkbox" id="carrot" value="당근">
+                                                    <label class="form-check-label" for="carrot">당근</label>
+                                                </div>
+                                                <div class="col">
+                                                    <input class="form-check-input" type="checkbox" id="sweetPotato" value="고구마"  >
+                                                    <label class="form-check-label" for="sweetPotato">고구마</label>
+                                                </div>
                                             </div>
-                                                <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                                                <label class="form-check-label" for="inlineCheckbox2">2</label>
+
+                                            <div class="row">
+                                                <div class="col">
+                                                    <input class="form-check-input" type="checkbox" id="burdock" value="우엉">
+                                                    <label class="form-check-label" for="burdock">우엉</label>
+                                                </div>
+                                                <div class="col">
+                                                    <input class="form-check-input" type="checkbox" id="radish" value="무">
+                                                    <label class="form-check-label" for="radish">무</label>
+                                                </div>
+                                                <div class="col">
+                                                    <input class="form-check-input" type="checkbox" id="lotusRoot" value="연근"  >
+                                                    <label class="form-check-label" for="lotusRoot">연근</label>
+                                                </div>
                                             </div>
-                                                <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" disabled>
-                                                <label class="form-check-label" for="inlineCheckbox3">3 (disabled)</label>
+
+                                            <div class="row">
+                                                <div class="col">
+                                                    <input class="form-check-input" type="checkbox" id="bean" value="서리태">
+                                                    <label class="form-check-label" for="bean">서리태</label>
+                                                </div>
+                                                <div class="col">
+                                                    <input class="form-check-input" type="checkbox" id="chestnut" value="밤">
+                                                    <label class="form-check-label" for="chestnut">밤</label>
+                                                </div>
+                                                <div class="col">
+                                                    <input class="form-check-input" type="checkbox" id="pea" value="완두콩"  >
+                                                    <label class="form-check-label" for="pea">완두콩</label>
+                                                </div>
                                             </div>
+
+                                            <div class="row">
+                                                <div class="col">
+                                                    <input class="form-check-input" type="checkbox" id="onion" value="양파">
+                                                    <label class="form-check-label" for="onion">양파</label>
+                                                </div>
+                                                <div class="col">
+                                                    <input class="form-check-input" type="checkbox" id="springOnion" value="대파">
+                                                    <label class="form-check-label" for="springOnion">대파</label>
+                                                </div>
+                                                <div class="col">
+                                                    <input class="form-check-input" type="checkbox" id="greenOnion" value="쪽파"  >
+                                                    <label class="form-check-label" for="greenOnion">쪽파</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col">
+                                                    <input class="form-check-input" type="checkbox" id="chives" value="부추">
+                                                    <label class="form-check-label" for="chives">부추</label>
+                                                </div>
+                                                <div class="col">
+                                                    <input class="form-check-input" type="checkbox" id="garlic" value="마늘">
+                                                    <label class="form-check-label" for="garlic">마늘</label>
+                                                </div>
+                                                <div class="col">
+                                                    <input class="form-check-input" type="checkbox" id="redPepper" value="고추"  >
+                                                    <label class="form-check-label" for="redPepper">고추</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col">
+                                                    <input class="form-check-input" type="checkbox" id="spinach" value="시금치">
+                                                    <label class="form-check-label" for="spinach">시금치</label>
+                                                </div>
+                                                <div class="col">
+                                                    <input class="form-check-input" type="checkbox" id="Ccabbage" value="배추">
+                                                    <label class="form-check-label" for="Ccabbage">배추</label>
+                                                </div>
+                                                <div class="col">
+                                                    <input class="form-check-input" type="checkbox" id="peakChoi" value="청경채"  >
+                                                    <label class="form-check-label" for="peakChoi">청경채</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col">
+                                                    <input class="form-check-input" type="checkbox" id="cabbage" value="양배추">
+                                                    <label class="form-check-label" for="cabbage">양배추</label>
+                                                </div>
+                                                <div class="col">
+                                                    <input class="form-check-input" type="checkbox" id="Clettuce" value="양상추">
+                                                    <label class="form-check-label" for="Clettuce">양상추</label>
+                                                </div>
+                                                <div class="col">
+                                                    <input class="form-check-input" type="checkbox" id="broccoli" value="브로콜리"  >
+                                                    <label class="form-check-label" for="broccoli">브로콜리</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col">
+                                                    <input class="form-check-input" type="checkbox" id="lettuce" value="상추">
+                                                    <label class="form-check-label" for="lettuce">상추</label>
+                                                </div>
+                                                <div class="col">
+                                                    <input class="form-check-input" type="checkbox" id="perillaLeaf" value="깻잎">
+                                                    <label class="form-check-label" for="perillaLeaf">꺳잎</label>
+                                                </div>
+                                                <div class="col">
+                                                    <input class="form-check-input" type="checkbox" id="sweetPumpkin" value="단호박"  >
+                                                    <label class="form-check-label" for="sweetPumpkin">단호박</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col">
+                                                    <input class="form-check-input" type="checkbox" id="tomato" value="토마토">
+                                                    <label class="form-check-label" for="tomato">토마토</label>
+                                                </div>
+                                                <div class="col">
+                                                    <input class="form-check-input" type="checkbox" id="paprika" value="파프리카">
+                                                    <label class="form-check-label" for="paprika">파프리카</label>
+                                                </div>
+                                                <div class="col">
+                                                    <input class="form-check-input" type="checkbox" id="cucumber" value="오이"  >
+                                                    <label class="form-check-label" for="cucumber">오이</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col">
+                                                    <input class="form-check-input" type="checkbox" id="greenPumpkin" value="애호박">
+                                                    <label class="form-check-label" for="greenPumpkin">애호박</label>
+                                                </div>
+                                                <div class="col">
+                                                    <input class="form-check-input" type="checkbox" id="eggplant" value="가지">
+                                                    <label class="form-check-label" for="eggplant">가지</label>
+                                                </div>
+                                                <div class="col">
+                                                    <input class="form-check-input" type="checkbox" id="wildChive" value="달래"  >
+                                                    <label class="form-check-label" for="wildChive">달래</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col">
+                                                    <input class="form-check-input" type="checkbox" id="greenSprouts" value="숙주나물">
+                                                    <label class="form-check-label" for="greenSprouts">숙주나물</label>
+                                                </div>
+                                                <div class="col">
+                                                    <input class="form-check-input" type="checkbox" id="beanSprouts" value="콩나물">
+                                                    <label class="form-check-label" for="beanSprouts">콩나물</label>
+                                                </div>
+                                                <div class="col">
+                                                    <input class="form-check-input" type="checkbox" id="fatsia" value="두릅"  >
+                                                    <label class="form-check-label" for="fatsia">두릅</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col">
+                                                    <input class="form-check-input" type="checkbox" id="waterParsley" value="미나리">
+                                                    <label class="form-check-label" for="waterParsley">미나리</label>
+                                                </div>
+                                                <div class="col">
+                                                    <input class="form-check-input" type="checkbox" id="apple" value="사과">
+                                                    <label class="form-check-label" for="apple">사과</label>
+                                                </div>
+                                                <div class="col">
+                                                    <input class="form-check-input" type="checkbox" id="orange" value="감귤"  >
+                                                    <label class="form-check-label" for="orange">감귤</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col">
+                                                    <input class="form-check-input" type="checkbox" id="kiwi" value="키위">
+                                                    <label class="form-check-label" for="kiwi">키위</label>
+                                                </div>
+                                                <div class="col">
+                                                    <input class="form-check-input" type="checkbox" id="cherry" value="체리">
+                                                    <label class="form-check-label" for="cherry">체리</label>
+                                                </div>
+                                                <div class="col">
+                                                    <input class="form-check-input" type="checkbox" id="pear" value="배"  >
+                                                    <label class="form-check-label" for="pear">배</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col">
+                                                    <input class="form-check-input" type="checkbox" id="peach" value="복숭아">
+                                                    <label class="form-check-label" for="peach">복숭아</label>
+                                                </div>
+                                                <div class="col">
+                                                    <input class="form-check-input" type="checkbox" id="blueberry" value="블루베리">
+                                                    <label class="form-check-label" for="blueberry">블루베리</label>
+                                                </div>
+                                                <div class="col">
+                                                    <input class="form-check-input" type="checkbox" id="lemon" value="레몬"  >
+                                                    <label class="form-check-label" for="lemon">레몬</label>
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="col">
+                                                    <input class="form-check-input" type="checkbox" id="plum" value="자두">
+                                                    <label class="form-check-label" for="plum">자두</label>
+                                                </div>
+                                                <div class="col">
+                                                    <input class="form-check-input" type="checkbox" id="banana" value="바나나">
+                                                    <label class="form-check-label" for="banana">바나나</label>
+                                                </div>
+                                                <div class="col">
+                                                </div>
+                                            </div>
+
+                                            
+                                        
+                                            <div style="background-color:#eee;">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <input class="form-check-input" type="checkbox" id="mush1" value="버섯전체">
+                                                        <label class="form-check-label" for="mush1">버섯 전체</label>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <input class="form-check-input" type="checkbox" id="mush2" name="mushroom" value="새송이버섯">
+                                                        <label class="form-check-label" for="mush2">새송이버섯</label>
+                                                    </div>
+                                                    <div class="col">
+                                                        <input class="form-check-input" type="checkbox" id="mush3" name="mushroom" value="양송이버섯">
+                                                        <label class="form-check-label" for="mush3">양송이버섯</label>
+                                                    </div>
+                                                    <div class="col">
+                                                        <input class="form-check-input" type="checkbox" id="mush4" name="mushroom" value="표고버섯">
+                                                        <label class="form-check-label" for="mush4">표고버섯</label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <input class="form-check-input" type="checkbox" id="mush5" name="mushroom" value="느타리버섯">
+                                                        <label class="form-check-label" for="mush5">느타리버섯</label>
+                                                    </div>
+                                                    <div class="col">
+                                                        <input class="form-check-input" type="checkbox" id="mush6" name="mushroom" value="팽이버섯">
+                                                        <label class="form-check-label" for="mush6">팽이버섯</label>
+                                                    </div>
+                                                    <div class="col">
+                                                </div>
+                                            </div>
+                                            
+                                            </div>
+                                            
+
+                                            
+
                                         </div>
+
                                     </div>
                                     <div class="modal-footer">
                                     <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
@@ -186,30 +458,20 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/wow/wow.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/counterup/counterup.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/tempusdominus/js/moment.min.js"></script>
-    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="${contextPath}/resources/lib/wow/wow.min.js"></script>
+    <script src="${contextPath}/resources/lib/easing/easing.min.js"></script>
+    <script src="${contextPath}/resources/lib/waypoints/waypoints.min.js"></script>
+    <script src="${contextPath}/resources/lib/counterup/counterup.min.js"></script>
+    <script src="${contextPath}/resources/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="${contextPath}/resources/lib/tempusdominus/js/moment.min.js"></script>
+    <script src="${contextPath}/resources/lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="${contextPath}/resources/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
     <!-- Template Javascript -->
     <script src="${contextPath}/resources/js/main.js"></script>
 
     <!-- bootstrap Javascript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
-    <!-- 모달 -->
-    <script>
-        var myModal = document.getElementById('myModal')
-        var myInput = document.getElementById('myInput')
-
-        myModal.addEventListener('shown.bs.modal', function () {
-            myInput.focus()
-        })
-    </script>
     
     <script src="${contextPath}/resources/js/subscription.js"></script>
 
