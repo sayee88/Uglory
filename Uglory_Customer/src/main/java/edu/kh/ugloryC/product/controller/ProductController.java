@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import edu.kh.ugloryC.product.model.service.ProductService;
 import edu.kh.ugloryC.product.model.vo.ProductDetail;
 
+
 @Controller
 @RequestMapping("/product")
 public class ProductController {
@@ -25,6 +26,7 @@ public class ProductController {
 	
 	Logger logger = LoggerFactory.getLogger(ProductController.class);
 	
+	// 상품 상세 조회
 	@GetMapping("detail/{categoryNo}/{pCode}")
 	public String productDetail(@PathVariable("categoryNo") int categoryNo,
 							    @PathVariable("pCode") int pCode,
@@ -35,7 +37,7 @@ public class ProductController {
 		ProductDetail detail = service.productDetail(pCode);
 		
 		// 별점 카운트, 리뷰 카운트, 총 상품금액 계산 필요
-
+		
 		model.addAttribute("detail", detail);
 		
 		return "product/productDetail";

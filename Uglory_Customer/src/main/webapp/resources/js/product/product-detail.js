@@ -13,7 +13,7 @@ function clip(){
 }
 
 // 구매하기 버튼
-function productOrder(){
+/* function productOrder(){
 	const buy_btn = document.getElementById("buy-btn");
 
 	// if(){ // 옵션을 선택했을 경우에만 이벤트 추가
@@ -25,6 +25,11 @@ function productOrder(){
 	// }
 }
 
-// 장바구니 모달창
+// 장바구니로 이동하기 버튼
+const productCartBtn = productCartBtn.addEventListener("click", function(){
+
+	let url = contextPath + "/product/cart" + categoryNo + "/" + pCode;
+	location.href = url;	
+}); */
 
 
