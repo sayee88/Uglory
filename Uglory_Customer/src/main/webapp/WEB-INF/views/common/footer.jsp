@@ -53,7 +53,7 @@
                     <div class="col-md-6 text-center text-md-end">
                         <div class="footer-menu">
                             <a href="${contextPath}">Home</a>
-                            <a href="">FAQ</a>
+                            <a href="${contextPath}/faq">FAQ</a>
                         </div>
                     </div>
                 </div>
