@@ -125,7 +125,7 @@
                         <hr>
                         <!-- 상품 금액 + 옵션금액 + 배송비 -->
                         <div class="total-amount-area">
-                            <p>총 상품 금액 <span class="total-amount">14,800원</span> </p>
+                            <p>총 상품 금액 <span class="total-amount">${result}</span> </p>
                         </div>
 
                         <!-- 상품 상세조회 버튼 영역 -->
