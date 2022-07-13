@@ -12,7 +12,6 @@ import edu.kh.ugloryC.member.model.service.MemberService;
 @RequestMapping("/member")
 @SessionAttributes({"loginMember"}) // 로그인 멤버 정보 얻어오는 어노테이션
 public class MemberController {
-
 	
 	@Autowired
 	private MemberService service;

@@ -47,7 +47,7 @@
         <section class="product-detail">
             <!-- 상품, 옵션, FARM, 별점, 상품이미지, 리뷰 테이블 필요 -->
 
-            <form action="${pCode}" method="POST">
+            <form>
                 <div class="product-detail-area">
                     <!-- 상품 이미지 영역 최대 4개(썸네일 포함)-->
                     <div class="product-detail-img">
@@ -133,7 +133,7 @@
 
                 <!-- 썸머노트 조회 영역(확인 필요) -->
                 <div>
-                    <span>${detail.pInfo}</span>
+                    <span>조회</span>
                 </div>
                 <!-- 썸머노트 조회 영역 끝 -->
 
@@ -168,7 +168,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">쇼핑 계속하기</button>
-                                <button type="button" class="btn btn-primary">장바구니보기</button>
+                                <button type="button" class="btn btn-primary" id="productCartBtn">장바구니보기</button>
                             </div>
                         </div>
                     </div>
@@ -194,17 +194,6 @@
         <script src="${contextPath}/resources/lib/tempusdominus/js/moment-timezone.min.js"></script>
         <script src="${contextPath}/resources/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
-        <script>
-            // 최상위 주소
-            const contextPath = "${contextPath}";
-
-            // 카테고리 번호
-            const categoryNo = "${detail.categoryNo}";
-
-            // 상품 번호
-            const pCode = "${detail.pCode}"
-
-        </script>
 
         <%-- Template Javascript --%>
         <script src="${contextPath}/resources/js/main.js"></script>
