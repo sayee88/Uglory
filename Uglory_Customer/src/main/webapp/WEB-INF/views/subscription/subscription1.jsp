@@ -80,7 +80,7 @@
                             <div class="col">
                                 <div>
                                     <fieldset id="fieldset1">
-                                        <input id="standard-check" type="radio" name="box">
+                                        <input id="standard-check" type="radio" name="box" value="standard">
                                         <label for="standard-check">
                                             <img src="${contextPath}/resources/img/BSH/standard.png" style="cursor: pointer;">
                                             <div>
@@ -95,7 +95,7 @@
                             <div class="col">
                                 <div>
                                     <fieldset id="fieldset2">
-                                        <input id="jumbo-check" type="radio" name="box">
+                                        <input id="jumbo-check" type="radio" name="box" value="jumbo">
                                         <label for="jumbo-check">
                                             <img src="${contextPath}/resources/img/BSH/jumbo.png" style="cursor: pointer;">
                                             <div>
@@ -120,10 +120,10 @@
                         <h2>배송 주기를 선택해주세요</h2>
                     </div>
                     <div class="container" style="width: 89%; display: flex; justify-content: center;">
-                        <input type="radio" class="btn-check" name="options-outlined" id="danger-outlined1" autocomplete="off" value="매주">
+                        <input type="radio" class="btn-check" name="cycle" id="danger-outlined1" autocomplete="off" value="매주">
                         <label class="btn btn-outline-danger week-btn" for="danger-outlined1">매주</label>  
 
-                        <input type="radio" class="btn-check" name="options-outlined" id="danger-outlined2" autocomplete="off" value="격주">
+                        <input type="radio" class="btn-check" name="cycle" id="danger-outlined2" autocomplete="off" value="격주">
                         <label class="btn btn-outline-danger week-btn" for="danger-outlined2">격주</label>   
                     </div>
                 </div>
@@ -156,8 +156,14 @@
 
                                         <div class="container">
 
-                                            <div>
-                                                <img src="${contextPath}/resources/img/BSH/제외채소.png" style="cursor: pointer;">
+                                            <div style="display:flex; justify-content:center; margin:30px 0;">
+                                                
+                                                <table style="text-align:center;">
+                                                    <tr><td><img src="${contextPath}/resources/img/BSH/제외채소.jpg" style="width:150px;"></td></tr>
+                                                    <tr><th><h2>알러지 선택</h2></th></tr>
+                                                    <tr><td><h4>선택 시, 다른 품목으로 대체해 보내드려요.</h4></td></tr>
+                                                    <tr><td><h4>섭취가 불가한 채소가 아니라면 다양하게 즐겨보세요!</h4></td></tr>
+                                                </table>
                                             </div>
 
                                         
@@ -423,10 +429,9 @@
                                             
                                             </div>
                                             
-
-                                            
-
                                         </div>
+
+
 
                                     </div>
                                     <div class="modal-footer">
