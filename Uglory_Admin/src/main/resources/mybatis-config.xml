@@ -23,6 +23,7 @@
 	<!-- 별칭 작성 부분 -->
 	<typeAliases>
 		<!-- <typeAlias type="edu.kh.comm.member.model.vo.Member" alias="member"/> -->
+		<typeAlias type="edu.kh.ugloryA.myPage.model.vo.Admin" alias="admin"/>
 		
 		
 	</typeAliases>
@@ -35,6 +36,7 @@
 		-->
 		
 		<!-- <mapper resource="/mappers/member-mapper.xml" /> -->
+		<mapper resource="/mappers/admin-mapper.xml" />
 		
 		
 	</mappers>
