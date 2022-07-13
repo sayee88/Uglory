@@ -4,6 +4,7 @@
 
 	<!-- 상품 상세조회용 resultMap -->   
   	<resultMap type="detail" id="detail_rm">
+  	
     	<id property="pCode" column="P_CD"/>
       	<result property="pName" column="PRODUCT_NM"/>
       	<result property="pPrice" column="PRODUCT_PRICE"/>
@@ -22,7 +23,7 @@
     <!-- 상품 상세 조회 -->
     <!-- 별점 개수, 리뷰 개수 필요 -->
 	<select id="productDetail" resultMap="detail_rm">
-		SELECT P_CD, PRODUCT_NM, PRODUCT_PRICE, PRODUCT_INFO,
+<!-- 		SELECT P_CD, PRODUCT_NM, PRODUCT_PRICE, PRODUCT_INFO,
       	OPTION_NM, OPTION_PRICE, PRODUCT_IMG,
       	PRODUCER, ORIGIN, STAR_RATING
       	FROM PRODUCT
@@ -30,7 +31,12 @@
       	JOIN FARM USING(FARM_NO)
       	JOIN REVIEW USING(P_CD)
       	JOIN PRODUCT_IMG USING(P_CD)
-      	WHERE P_CD = ${pCode}
+      	WHERE P_CD = ${pCode} -->
+      	
+		SELECT P_CD, PRODUCT_NM, PRODUCT_PRICE, PRODUCT_INFO, P_CATEGORY_NO, PRODUCER, ORIGIN
+		FROM PRODUCT
+		JOIN FARM USING(FARM_NO)
+		WHERE P_CD = ${pCode}
 	</select>
 
 </mapper>
