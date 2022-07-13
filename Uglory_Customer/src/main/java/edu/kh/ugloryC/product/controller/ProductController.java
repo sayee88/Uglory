@@ -1,6 +1,7 @@
 package edu.kh.ugloryC.product.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -14,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import edu.kh.ugloryC.product.model.service.OptionService;
 import edu.kh.ugloryC.product.model.service.ProductService;
@@ -34,12 +36,12 @@ public class ProductController {
 	Logger logger = LoggerFactory.getLogger(ProductController.class);
 	
 	// 상품 상세 조회
-	@GetMapping("detail/{categoryNo}/{pCode}")
+	@GetMapping("detail/{categoryNo}/{productCode}")
 	public String productDetail(@PathVariable("categoryNo") int categoryNo,
 							    @PathVariable("productCode") int productCode,
-							    int optionCode,
+							    String optionName,
 							    Model model,
-							    HttpSession session,
+							    @RequestParam Map<String, Object> paramMap,
 							    HttpServletRequest req, HttpServletResponse resp) {
 							
 		ProductDetail detail = service.productDetail(productCode);
@@ -53,10 +55,14 @@ public class ProductController {
 			
 			if(!optionList.isEmpty()) { // 옵션 조회 성공 시
 				
-				int result = service.totalAmount(optionCode, productCode);
+				paramMap.put("productCode", productCode);
+				paramMap.put("optionName", optionName);
+				
+				int result = service.totalAmount(paramMap);
+				
+				model.addAttribute("result", result);
 			}
 		}
-		
 		
 		// 별점 카운트, 리뷰 카운트, 총 상품금액 계산 필요
 		
