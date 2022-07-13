@@ -48,16 +48,16 @@
                     <div class="col-lg-6">
                         <div class="row g-3">
                             <div class="col-6 text-start">
-                                <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.1s" src="${contextPath}/resources/images/main/famer.png">
+                                <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.1s" src="${contextPath}/resources/img/main/famer.png">
                             </div>
                             <div class="col-6 text-start">
-                                <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.3s" src="${contextPath}/resources/images/main/mission_2.jpg" style="margin-top: 25%;">
+                                <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.3s" src="${contextPath}/resources/img/main/mission_2.jpg" style="margin-top: 25%;">
                             </div>
                             <div class="col-6 text-end">
-                                <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.5s" src="${contextPath}/resources/images/main/mission_3.jpg">
+                                <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.5s" src="${contextPath}/resources/img/main/mission_3.jpg">
                             </div>
                             <div class="col-6 text-end">
-                                <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.7s" src="${contextPath}/resources/images/main/about-4.jpg">
+                                <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.7s" src="${contextPath}/resources/img/main/about-4.jpg">
                             </div>
                         </div>
                     </div>
@@ -148,7 +148,7 @@
                             <div class="row g-4">
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="${contextPath}/resources/images/main/paprika.jpg" alt="" style="width: 80px;">
+                                        <img class="flex-shrink-0 img-fluid rounded" src="${contextPath}/resources/img/main/paprika.jpg" alt="" style="width: 80px;">
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <span>과채류</span>
@@ -161,7 +161,7 @@
 
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="${contextPath}/resources/images/main/watermelon.jpg" alt="" style="width: 80px;">
+                                        <img class="flex-shrink-0 img-fluid rounded" src="${contextPath}/resources/img/main/watermelon.jpg" alt="" style="width: 80px;">
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <span>과일류</span>
@@ -177,7 +177,7 @@
                             <div class="row g-4">
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="${contextPath}/resources/images/main/broccoli.jpg" alt="" style="width: 80px;">
+                                        <img class="flex-shrink-0 img-fluid rounded" src="${contextPath}/resources/img/main/broccoli.jpg" alt="" style="width: 80px;">
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <span>엽/양채류</span>
@@ -189,7 +189,7 @@
                                 </div> 
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="${contextPath}/resources/images/main/onion.jpg" alt="" style="width: 80px;">
+                                        <img class="flex-shrink-0 img-fluid rounded" src="${contextPath}/resources/img/main/onion.jpg" alt="" style="width: 80px;">
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <span>조미채소류</span>
@@ -265,7 +265,7 @@
                     
         
                     <div class="delivery_content img">
-                        <img class="delivery_img" src="${contextPath}/resources/images/main/farm.jpg">
+                        <img class="delivery_img" src="${contextPath}/resources/img/main/farm.jpg">
                     </div>
             </div>
         </div>
@@ -284,7 +284,7 @@
                     <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="team-item text-center rounded overflow-hidden">
                             <div class="rounded-circle overflow-hidden m-4">
-                                <img class="img-fluid subs-img" src="${contextPath}/resources/images/main/main_box.png" alt="">
+                                <img class="img-fluid subs-img" src="${contextPath}/resources/img/main/main_box.png" alt="">
                             </div>
                             <h5 class="mb-0">박스 사이트 선택</h5>
                             <%-- <small>Designation</small>
@@ -298,7 +298,7 @@
                     <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
                         <div class="team-item text-center rounded overflow-hidden">
                             <div class="rounded-circle overflow-hidden m-4">
-                                <img class="img-fluid subs-img" src="${contextPath}/resources/images/main/main_vagetable.png" alt="">
+                                <img class="img-fluid subs-img" src="${contextPath}/resources/img/main/main_vagetable.png" alt="">
                             </div>
                             <h5 class="mb-0">알러지 제외 가능</h5>
                             <%-- <small>Designation</small>
@@ -312,7 +312,7 @@
                     <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
                         <div class="team-item text-center rounded overflow-hidden">
                             <div class="rounded-circle overflow-hidden m-4">
-                                <img class="img-fluid subs-img" src="${contextPath}/resources/images/main/main_calendar.png" alt="">
+                                <img class="img-fluid subs-img" src="${contextPath}/resources/img/main/main_calendar.png" alt="">
                             </div>
                             <h5 class="mb-0">매주 / 격주 선택 가능</h5>
                             <%-- <small>Designation</small>
@@ -326,7 +326,7 @@
                     <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
                         <div class="team-item text-center rounded overflow-hidden">
                             <div class="rounded-circle overflow-hidden m-4">
-                                <img class="img-fluid subs-img" src="${contextPath}/resources/images/main/main_card.png" alt="">
+                                <img class="img-fluid subs-img" src="${contextPath}/resources/img/main/main_card.png" alt="">
                             </div>
                             <h5 class="mb-0">해지 & 중지 가능</h5>
                             <%-- <small>Designation</small>
@@ -364,7 +364,7 @@
                                 <div style="font-size: 14px;">2022.07.07</div>
                                 <div>유*일</div>
                             </div>
-                            <img class="img-fluid flex-shrink-0 rounded-circle" src="${contextPath}/resources/images/review/review_img1.png" style="width: 100px; height: 100px;">
+                            <img class="img-fluid flex-shrink-0 rounded-circle" src="${contextPath}/resources/img/review/review_img1.png" style="width: 100px; height: 100px;">
                         </div>
                         <div class="review-content">맛있어요~ 뭐가 올지 궁금한맛도 좋아요 원숭이 엉덩이는 빨개 빨갛면 사과 사과는</div>
                     </div>
@@ -381,7 +381,7 @@
                                 <div style="font-size: 14px;">2022.07.07</div>
                                 <div>유*일</div>
                             </div>
-                            <img class="img-fluid flex-shrink-0 rounded-circle" src="${contextPath}/resources/images/review/review_img2.jpeg" style="width: 100px; height: 100px;">
+                            <img class="img-fluid flex-shrink-0 rounded-circle" src="${contextPath}/resources/img/review/review_img2.jpeg" style="width: 100px; height: 100px;">
                         </div>
                         <div class="review-content">맛있어요~ 뭐가 올지 궁금한맛도 좋아요</div>
                     </div>
@@ -398,7 +398,7 @@
                                 <div style="font-size: 14px;">2022.07.07</div>
                                 <div>유*일</div>
                             </div>
-                            <img class="img-fluid flex-shrink-0 rounded-circle" src="${contextPath}/resources/images/review/review_img3.jpeg" style="width: 100px; height: 100px;">
+                            <img class="img-fluid flex-shrink-0 rounded-circle" src="${contextPath}/resources/img/review/review_img3.jpeg" style="width: 100px; height: 100px;">
                         </div>
                         <div class="review-content">맛있어요~ 뭐가 올지 궁금한맛도 좋아요</div>
                     </div>
@@ -415,7 +415,7 @@
                                 <div style="font-size: 14px;">2022.07.07</div>
                                 <div>유*일</div>
                             </div>
-                            <img class="img-fluid flex-shrink-0 rounded-circle" src="${contextPath}/resources/images/review/review_img4.jpeg" style="width: 100px; height: 100px;">
+                            <img class="img-fluid flex-shrink-0 rounded-circle" src="${contextPath}/resources/img/review/review_img4.jpeg" style="width: 100px; height: 100px;">
                         </div>
                         <div class="review-content">맛있어요~ 뭐가 올지 궁금한맛도 좋아요</div>
                     </div>

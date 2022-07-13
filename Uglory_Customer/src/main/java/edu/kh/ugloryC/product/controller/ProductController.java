@@ -49,12 +49,11 @@ public class ProductController {
 		if(detail != null) { // 상세 조회 성공 시
 			
 			List<OptionType> optionList = optionService.selectOptionList(productCode);
-			
 			model.addAttribute("optionList", optionList);
 			
 		}
 		
-		// 별점 카운트, 리뷰 카운트, 총 상품금액 계산 필요
+		// 별점 카운트, 리뷰 카운트 필요
 		
 		model.addAttribute("detail", detail);
 		
@@ -74,5 +73,22 @@ public class ProductController {
 		int result = service.totalAmount(paramMap);
 		
 		return result;
+	}
+	
+	// 결제 페이지 전환
+	@GetMapping("/order/{categoryNo}/{productCode}/{optionCode}")
+	public String productOrder(@PathVariable("categoryNo") int categoryNo,
+							   @PathVariable("productCode") int productCode,
+							   @PathVariable("optionCode") int optionCode,
+							   // loginMember 가져오기
+							   Model model) {
+		
+		// 로그인되어있을 시 결제 페이지로 전환 가능 코드 추가
+		// if(loginMember != null){
+		
+		// else {
+			
+		
+		return "product/productOrder";
 	}
 }
