@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -22,8 +24,10 @@ public class AdminServiceImpl implements AdminService {
 	//암호화를 위한 bcrypt 객체 의존성 주입
 	@Autowired
 	private BCryptPasswordEncoder bcrypt;
+	
+	private Logger logger = LoggerFactory.getLogger(AdminServiceImpl.class);
 
-	//회원 가입 서비스 구현
+	//관리자 가입 서비스 구현
 	@Override
 	public int signUp(Map<String, Object> map) throws IOException {
 		
@@ -50,6 +54,37 @@ public class AdminServiceImpl implements AdminService {
 		return result;
 	}
 
+	//로그인 서비스 구현
+	@Override
+	public Admin signIn(Admin inputAdmin) {
+		
+		Admin loginAdmin = dao.signIn(inputAdmin);
+		
+		logger.debug( bcrypt.encode(inputAdmin.getAdminPw()) );
+		
+		String encPw = bcrypt.encode(inputAdmin.getAdminPw());
+		
+		if(loginAdmin != null) {
+			
+			//입력된 비밀번호와 조회된 비밀번호 비교
+			if(bcrypt.matches(inputAdmin.getAdminPw(), loginAdmin.getAdminPw())) {
+				loginAdmin.setAdminPw(null);
+			} else {
+				loginAdmin = null;
+			}
+		}
+		
+		return loginAdmin;
+	}
+
+	//이메일 중복 검사 서비스 구현
+	@Override
+	public int emailDupCheck(String adminEmail) {
+		return dao.emailDupCheck(adminEmail);
+	}
+
+	
+	
 	
 	
 	

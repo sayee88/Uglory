@@ -3,12 +3,13 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>myPage</title>
-    <link href="resources/css/member/member.css" rel="stylesheet">
+    <link href="${contextPath}/resources/css/member/member.css" rel="stylesheet">
+    <title>login</title>
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,42 +24,45 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="resources/lib/animate/animate.min.css" rel="stylesheet">
-    <link href="resources/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="resources/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    <link href="${contextPath}/resources/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="${contextPath}/resources/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="${contextPath}/resources/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="resources/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="resources/css/style-1.css" rel="stylesheet">
-   
+    <link href="${contextPath}/resources/css/style-1.css" rel="stylesheet">
+
+    
+
 </head>
 <body>
+    
     <main class="main">
 
-     <jsp:include page="/WEB-INF/views/common/header-1.jsp" />
+    <jsp:include page="/WEB-INF/views/common/header-1.jsp" />
 
         <div class="myPage">
             <div class="myPage-info">
                 <div class="myPage-nameBox">
                     <div class="nameBox">
                         <div class="nameSection">
-                            <span class="name">박예찐</span>
-                            <div class="subsBtn">
-                                <img src="" alt="" class="icon">
-                            </div>
+                            <h3 class="name">${loginMember.memberName}고객님 </h3>
+                        
+                          
                         </div>
                     </div>
                 </div>
                 
                 
                 <div class="myPage-emailBox">
-                    <p class="emailText">justlikeyejin@gmail.com</p>
+                    <p class="emailText">${loginMember.memberEmail}</p>
                     <button class="logoutBtn">로그아웃</button>
                 </div>
-                <a href="" class="myPageSecession">회원 탈퇴를 원하세요?</a>
+                <div class=empty1></div>  
+                <a href="${contextPath}/member/secession" class="myPageSecession">회원 탈퇴를 원하세요?</a>
             
             
             </div>
@@ -67,14 +71,20 @@
                 
                 <div class="itemBox">
                     <div class="item">
-                        <img src="/resources/img/PYJ/mypage.png"  class="item-image">
-                        <p class="item-text">주문내역</p>
+                        <img src="${contextPath}/resources/img/PYJ/mypage.png"  class="item-image">
+                        <a href="${contextPath}/member/orderHistory" class="item-text">내 구독 현황</a>
                     </div>        
                 </div>
                 <div class="itemBox">
                     <div class="item">
-                        <img src="/resources/img/PYJ/mypage.png"  class="item-image">
-                        <p class="item-text">구독내역</p>
+                        <img src="${contextPath}/resources/img/PYJ/mypage.png"  class="item-image">
+                        <a href="${contextPath}/member/orderHistory" class="item-text">주문내역</a>
+                    </div>        
+                </div>
+                <div class="itemBox">
+                    <div class="item">
+                        <img src="${contextPath}/resources/img/PYJ/mypage.png"  class="item-image">
+                        <a href="${contextPath}/member/subscriptionHistory" class="item-text">구독내역</a>
                     </div>        
                 </div>
 
