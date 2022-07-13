@@ -31,8 +31,8 @@
                         <a href="${contextPath}/product/list" class="nav-item nav-link">Market</a>
                         <a href="${contextPath}/review/list" class="nav-item nav-link icon">Review</a>
                     </div>
-                    <a href="#" class="nav-item icon"><img class="menu-chart" src="${contextPath}/resources/images/main/shopping-cart-white.png"></a>
-                    <a href="${contextPath}/member/login" class="nav-item icon"><img class="menu-chart" src="${contextPath}/resources/images/main/user-white.png"></a>
+                    <a href="#" class="nav-item icon"><img class="menu-chart" src="${contextPath}/resources/img/main/shopping-cart-white.png"></a>
+                    <a href="${contextPath}/member/login" class="nav-item icon"><img class="menu-chart" src="${contextPath}/resources/img/main/user-white.png"></a>
                 </div>
             </nav>
         </div>

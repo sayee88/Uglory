@@ -63,7 +63,7 @@
                                 <p class="about1-boxContent">박스 크기를 선택해요</p>
                                 <p class="about1-subContext">1-2인 가구용, 3-4인 가구용</p>
                                 <div class="about1-image1" >
-                                    <img class="about1-image1" src="${contextPath}/resources/img/PYJ/about1-image.png">
+                                    <img class="about1-image1" src="${contextPath}/resources/img/about/about1-image.png">
                                 </div>                        
                                 
                             </div>
@@ -81,7 +81,7 @@
                                 <p class="about1-boxContent">배송 주기를 선택해요.</p>
                                 <p class="about1-subContext">매주, 격주</p>
                                 <div class="about1-image1" >
-                                    <img class="about1-image1" src="${contextPath}/resources/img/PYJ/about-image2.png">
+                                    <img class="about1-image1" src="${contextPath}/resources/img/about/about-image2.png">
                                 </div>                        
                                 
                             </div>
@@ -99,7 +99,7 @@
                             <p class="about1-boxContent">먹지 않는 채소를 제외하면 끝!</p>
                             <p class="about1-subContext">구독 후에도 변경 가능</p>
                             <div class="about1-image1" >
-                                <img class="about1-image1" src="${contextPath}/resources/img/PYJ/about-image3.png">
+                                <img class="about1-image1" src="${contextPath}/resources/img/about/about-image3.png">
                             </div>                        
                             </div>
                         </div>
@@ -127,7 +127,7 @@
                 <div class="about2-items">
                     <div class="about2-item1">
                         <div class="about2-image1">
-                            <img src="${contextPath}/resources/img/PYJ/about2-image1.png">
+                            <img src="${contextPath}/resources/img/about/about2-image1.png">
                             <p class="about2-text1">품목알림</p>
                            
                             <p class="about2-text2">월요일</p>
@@ -138,7 +138,7 @@
                 <div class="about2-items">
                     <div class="about2-item1">
                         <div class="about2-image1">
-                            <img src="${contextPath}/resources/img/PYJ/about2-image2.png">
+                            <img src="${contextPath}/resources/img/about/about2-image2.png">
                             <p class="about2-text1">결제일</p>
                             <div class="empty5"></div>
                             <p class="about2-text2">수요일</p>
@@ -149,7 +149,7 @@
                 <div class="about2-items">
                     <div class="about2-item1">
                         <div class="about2-image1">
-                            <img src="${contextPath}/resources/img/PYJ/about2-image3.png">
+                            <img src="${contextPath}/resources/img/about/about2-image3.png">
                             <p class="about2-text1">도착일</p>
                             <div class="empty5"></div>
                             <p class="about2-text2">금요일</p>
@@ -170,7 +170,7 @@
                 <div class="about3-imagePlace">
                     <div>
                         <div class="about3-image">
-                            <img  class="about3-image" src="${contextPath}/resources/img/PYJ/Manual-vegebox.54b16562.jpg">
+                            <img  class="about3-image" src="${contextPath}/resources/img/about/Manual-vegebox.54b16562.jpg">
                         </div>
                     </div>
                 </div>
@@ -203,10 +203,10 @@
     <div class="madal-area">
         <div class="modal">
             <button class="madal-close">
-                <img class="xMark" src="${contextPath}/resources/img/xmark.svg">
+                <img class="xMark" src="${contextPath}/resources/img/about/xmark.png">
             </button>
             <div class="vegList">
-                <img class="modal-image" src="${contextPath}/resources/img/PYJ/vegetable.webp">
+                <img class="modal-image" src="${contextPath}/resources/img/about/vegetable.webp">
             </div>
 
         </div>
