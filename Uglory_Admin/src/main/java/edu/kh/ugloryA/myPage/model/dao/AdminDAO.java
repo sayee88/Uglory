@@ -13,12 +13,30 @@ public class AdminDAO {
 	private SqlSessionTemplate sqlSession;
 
 	/**
-	 * 회원가입 DAO
+	 * 관리자 가입 DAO
 	 * @param inputAdmin
 	 * @return result
 	 */
 	public int signUp(Admin inputAdmin) {
 		return sqlSession.insert("adminMapper.signUp", inputAdmin);
+	}
+
+	/**
+	 * 로그인 DAO
+	 * @param inputAdmin
+	 * @return loginAdmin
+	 */
+	public Admin signIn(Admin inputAdmin) {
+		return sqlSession.selectOne("adminMapper.signIn", inputAdmin);
+	}
+	
+	/**
+	 * 이메일 중복 검사 DAO
+	 * @param adminEmail
+	 * @return result
+	 */
+	public int emailDupCheck(String adminEmail) {
+		return sqlSession.selectOne("adminMapper.emailDupCheck", adminEmail);
 	}
 
 }

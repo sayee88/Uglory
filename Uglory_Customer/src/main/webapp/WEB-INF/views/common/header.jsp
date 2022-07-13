@@ -31,8 +31,8 @@
                         <a href="${contextPath}/product/list" class="nav-item nav-link">Market</a>
                         <a href="${contextPath}/review/list" class="nav-item nav-link icon">Review</a>
                     </div>
-                    <a href="#" class="nav-item icon"><img class="menu-chart" src="${contextPath}/resources/images/main/shopping-cart-white.png"></a>
-                    <a href="${contextPath}/member/login" class="nav-item icon"><img class="menu-chart" src="${contextPath}/resources/images/main/user-white.png"></a>
+                    <a href="#" class="nav-item icon"><img class="menu-chart" src="${contextPath}/resources/img/main/shopping-cart-white.png"></a>
+                    <a href="${contextPath}/member/login" class="nav-item icon"><img class="menu-chart" src="${contextPath}/resources/img/main/user-white.png"></a>
                 </div>
             </nav>
 
@@ -50,7 +50,7 @@
                             <a href="" class="btn btn-primary py-sm-3 px-sm-5 me-3 animated slideInLeft">Booking</a>
                         </div>
                         <div class="col-lg-6 text-center text-lg-end overflow-hidden">
-                            <img class="img-fluid" src="${contextPath}/resources/images/main/vagetable.png" alt="">
+                            <img class="img-fluid" src="${contextPath}/resources/img/main/vagetable.png" alt="">
                         </div>
                     </div>
                 </div>

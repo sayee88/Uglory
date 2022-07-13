@@ -139,6 +139,7 @@
                     <div>상점</div>
                 </div>
             </div>
+            
 
             <!-- 리뷰 목록 -->
             <div class="review-section">

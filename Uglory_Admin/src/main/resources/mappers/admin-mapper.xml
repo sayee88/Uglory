@@ -16,5 +16,18 @@
 			SEQ_ADMIN_NO.NEXTVAL, #{adminEmail}, #{adminPw}, #{adminName}, #{profileImage}
 		)
 	</insert>
+	
+	<!-- 로그인 -->
+	<select id="signIn" resultMap="admin_rm">
+		SELECT ADMIN_NO, ADMIN_EMAIL, ADMIN_PW, ADMIN_NAME, ADMIN_P_IMG
+		FROM ADMIN
+		WHERE ADMIN_EMAIL = #{adminEmail}
+	</select>
+	
+	<!-- 이메일 중복 검사 -->
+	<select id="emailDupCheck" resultType="_int">
+		SELECT COUNT(*) FROM ADMIN
+		WHERE ADMIN_EMAIL = #{adminEmail}
+	</select>
 
 </mapper>

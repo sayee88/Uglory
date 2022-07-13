@@ -24,11 +24,10 @@ public class ProductDAO {
 	}
 
 	/** 총 가격 조회 DAO
-	 * @param paramMap
+	 * @param map
 	 * @return result
 	 */
-	public int totalAmount(Map<String, Object> paramMap) {
-
-		return sqlSession.selectOne("productMapper.totalAmount", paramMap);
+	public int totalAmount(Map<String, Object> map) {
+		return sqlSession.selectOne("productMapper.totalAmount", map);
 	}
 }
