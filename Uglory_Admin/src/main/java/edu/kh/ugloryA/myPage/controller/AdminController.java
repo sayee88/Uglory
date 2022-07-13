@@ -1,6 +1,7 @@
 package edu.kh.ugloryA.myPage.controller;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -61,7 +62,8 @@ public class AdminController {
 	
 	//회원가입
 	@PostMapping("/signUp")
-	public String signUp( @RequestParam Map<String, Object> map,
+	public String signUp( @ModelAttribute("inputAdmin") Admin inputAdmin,
+						  @RequestParam("uploadImage") MultipartFile uploadImage,
 						  RedirectAttributes ra,
 						  HttpServletRequest req) throws IOException {
 		
@@ -71,8 +73,12 @@ public class AdminController {
 		String webPath = "/resources/img/profileImage/";
 		String folderPath = req.getSession().getServletContext().getRealPath(webPath);
 		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("inputAdmin", inputAdmin);
 		map.put("webPath", webPath);
 		map.put("folderPath", folderPath);
+		map.put("uploadImage", uploadImage);
 		
 		//회원가입 수행
 		int result = service.signUp(map);
