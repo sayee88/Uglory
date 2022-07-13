@@ -38,7 +38,7 @@ public class AdminServiceImpl implements AdminService {
 		String renameImage = null;
 		
 		renameImage = Util.fileRename(uploadImage.getOriginalFilename());
-		inputAdmin.setProfileImage(renameImage);
+		inputAdmin.setProfileImage( map.get("webPath") + renameImage);
 		
 		int result = dao.signUp(inputAdmin);
 		

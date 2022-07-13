@@ -45,34 +45,37 @@
                             </a>
                             <h3>Sign Up</h3>
                         </div>
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="floatingText" placeholder="jhondoe">
-                            <label for="floatingText">Username</label>
-                        </div>
-                        <div class="form-floating mb-1">
-                            <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                            <label for="floatingInput">Email address</label>
-                        </div>
-                        <p class="text-success mb-3">사용가능한 이메일입니다.</p>
-                        <div class="form-floating mb-3">
-                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                            <label for="floatingPassword">Password</label>
-                        </div>
-                        <div class="form-floating mb-1">
-                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password Confirm">
-                            <label for="floatingPassword">Password Confirm</label>
-                        </div>
-                        <p class="text-danger mb-3">비밀번호가 일치하지 않습니다.</p>
 
-                        <div class="form-floating mb-3">
-                            <input type="password" class="form-control" id="floatingPassword" placeholder="Approval number">
-                            <label for="floatingPassword">Approval number</label>
-                        </div>
+                        <form action="signUp" method="POST" name="signUp-form" enctype="multipart/form-data">
+                            <div class="form-floating mb-3">
+                                <input type="text" class="form-control" id="floatingText" name="adminName">
+                                <label for="floatingText">Admin name</label>
+                            </div>
+                            <div class="form-floating mb-1">
+                                <input type="email" class="form-control" id="floatingInput" name="adminEmail">
+                                <label for="floatingInput">Email address</label>
+                            </div>
+                            <p class="text-success mb-3">사용가능한 이메일입니다.</p>
+                            <div class="form-floating mb-3">
+                                <input type="password" class="form-control" id="floatingPassword" name="adminPw">
+                                <label for="floatingPassword">Password</label>
+                            </div>
+                            <div class="form-floating mb-1">
+                                <input type="password" class="form-control" id="floatingPwConfirm">
+                                <label for="floatingPwConfirm">Password Confirm</label>
+                            </div>
+                            <p class="text-danger mb-3">비밀번호가 일치하지 않습니다.</p>
 
-                        <p class="mt-2 mb-1" style="color: #757575;">Profile Image</p>
-                        <input type="file" class="productInput mb-4">
+                            <div class="form-floating mb-3">
+                                <input type="password" class="form-control" id="floatingApproval">
+                                <label for="floatingApproval">Approval number</label>
+                            </div>
+
+                            <p class="mt-2 mb-1" style="color: #757575;">Profile Image</p>
+                            <input type="file" class="productInput mb-4" name="uploadImage">
                         
-                        <button type="submit" class="btn btn-primary py-3 w-100 mb-4" style="font-size: 20px;">Sign Up</button>
+                            <button class="btn btn-primary py-3 w-100 mb-4" style="font-size: 20px;">Sign Up</button>
+                        </form>
                         <p class="text-center mb-0">Already have an Account? <a href="signin.html">Sign In</a></p>
                     </div>
                 </div>
@@ -93,6 +96,7 @@
 
     <!-- Template Javascript -->
     <script src="${contextPath}/resources/js/main.js"></script>
+    <script src="${contextPath}/resources/js/myPage.js"></script>
 </body>
 
 </html>
