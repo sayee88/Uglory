@@ -58,6 +58,7 @@
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
     <script>
         //d16c24decd0c24025e4473a953442aa0
@@ -75,13 +76,24 @@
                             const kakao_account=res.kakao_account;
                             console.log(kakao_account);
 
-                            // 1) res에 담긴 로그인 정보를 로그인 Controller로 전달
-                            // 2) 서비스 호출
-                            // 3) 서비스에서 res에 담긴 정보 중 email이 DB에 있는지 확인 (select)
-                            // 4) 없으면 insert 후 회원정보 return, 
-                            //    있으면 조회한 회원정보 return
-                            // 5) 컨트롤러에서 메인페이지(또는 원하는 페이지)로 리다이렉트
-                            // + 메세지 전달하고 싶으면 RedirectAttributes 이용ㄴ
+                            $.ajax({
+                                url : "login",
+                                type : "post",
+                                data : { "memberEmail" : kakao_account.email,
+                                         "memberName" : kakao_account.profile.nickname},
+                                success : function(result){
+                                    
+                                    if(result > 0) location.href = "${contextPath}/member/myPage";
+                                    else alert("카카오 로그인 실패");
+
+                                },
+
+                                error : function(){
+                                    console.log("로그인 실패");
+                                }
+                            })
+
+                          
                         }
                     });
                 }
