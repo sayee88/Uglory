@@ -53,16 +53,24 @@
                             <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
                             <label for="floatingInput">Email address</label>
                         </div>
-                        <p class="text-success">사용가능한 이메일입니다.</p>
+                        <p class="text-success mb-3">사용가능한 이메일입니다.</p>
                         <div class="form-floating mb-3">
                             <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
                             <label for="floatingPassword">Password</label>
                         </div>
                         <div class="form-floating mb-1">
-                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password Confirm">
                             <label for="floatingPassword">Password Confirm</label>
                         </div>
-                        <p class="text-danger">비밀번호가 일치하지 않습니다.</p>
+                        <p class="text-danger mb-3">비밀번호가 일치하지 않습니다.</p>
+
+                        <div class="form-floating mb-3">
+                            <input type="password" class="form-control" id="floatingPassword" placeholder="Approval number">
+                            <label for="floatingPassword">Approval number</label>
+                        </div>
+
+                        <p class="mt-2 mb-1" style="color: #757575;">Profile Image</p>
+                        <input type="file" class="productInput mb-4">
                         
                         <button type="submit" class="btn btn-primary py-3 w-100 mb-4" style="font-size: 20px;">Sign Up</button>
                         <p class="text-center mb-0">Already have an Account? <a href="signin.html">Sign In</a></p>

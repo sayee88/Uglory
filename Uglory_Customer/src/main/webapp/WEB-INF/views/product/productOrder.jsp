@@ -64,7 +64,7 @@
                     <label for="p-orderAddress">주소</label>
                     <div class="order-input-area">
                         <input type="text" id="order-postcode" name="p-orderAddress" placeholder="우편번호">
-                        <button tyle="button" id="addressBtn" onclick="sample2_execDaumPostcode()">검색</button>
+                        <button type="button" id="addressBtn" onclick="sample2_execDaumPostcode()">검색</button>
                     </div>
 
                     <div class="order-input-area">

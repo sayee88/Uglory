@@ -34,6 +34,7 @@
     <!-- Template Stylesheet -->
     <link href="../css/style.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="../css/subscription.css">
     
     
 </head>
@@ -86,107 +87,135 @@
             </div>
         </div>
         <!-- Navbar & Hero End -->
-        <div style="display: flex; justify-content: center;">
-            <div style="width: 70%;">
 
-                <div class="step1" style="padding: 120px 0;">
-                    <div class="step-text">
-                        <h3  style="color: gray;">STEP 1</h3>
-                        <h2>구독 상품을 선택해주세요.</h2>
-                        <pre style="font-size: 17px;">매 주 나에게 맞는 6~10종의
-다양한 채소/과일이 들어가요
-                        </pre>
+        <form action="#">
+
+            <div id="box" style="padding-bottom: 200px;">
+                <div style="width: 70%;">
+    
+                    <div class="inner-box">
+                        <div>
+                            <h3 id="step-text">STEP 1</h3>
+                            <h2>구독 상품을 선택해주세요.</h2>
+                            <pre>매 주 나에게 맞는 6~10종의
+    다양한 채소/과일이 들어가요
+                            </pre>
+                        </div>
+        
+                        <div class="container" style="margin-top: 100px;">
+    
+    
+                            <div class="row row-cols-2">
+                                
+                                <div class="col">
+                                    <div>
+                                        <fieldset id="fieldset1">
+                                            <input id="standard-check" type="radio" name="box">
+                                            <label for="standard-check">
+                                                <img src="../img/BSH/standard.png" style="cursor: pointer;">
+                                            </label>
+                                        </fieldset>
+                                        <div>
+                                            <h5 id="box-name">스탠다드 박스</h5>
+                                            <p id="box-intro">1-2인 가구에게 적합해요</p>
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <div class="col">
+                                    <fieldset id="fieldset2">
+                                        <input id="jumbo-check" type="radio" name="box">
+                                        <label for="jumbo-check">
+                                            <img src="../img/BSH/jumbo.png" style="cursor: pointer;">
+                                        </label>
+                                    </fieldset>
+                                    <div>
+                                        <h5 id="box-name">점보 박스</h5>
+                                        <p id="box-intro">3-4인 가구에게 적합해요</p>
+                                    </div>
+                                </div>
+    
+                            </div>
+                        </div>
+    
                     </div>
     
-                    <div class="container" style="margin-top: 100px;">
-                        <div class="row row-cols-2">
-                            <div class="col" style="position: relative;">
-                                <img src="../img/BSH/standard.png" style="width: 100%; background-color: rgba(224, 224, 224, 0.6);">
-                                <img src="../img/BSH/체크.png" style="position: absolute; width: 9%; top: 10%; left: 10%;">
-                                <h5 style="display: flex; justify-content: center; margin-top: 20px;">스탠다드 박스</h5>
-                                <p style="display: flex; justify-content: center;">1-2인 가구에게 적합해요</p>
+    
+                    <div class="step2">
+    
+                        <div class="step-text">
+                            <h3 id="step-text">STEP 2</h3>
+                            <h2>배송 주기를 선택해주세요</h2>
+                        </div>
+                        <div class="container" style="width: 89%; display: flex; justify-content: center;">
+                            <input type="radio" class="btn-check" name="options-outlined" id="danger-outlined1" autocomplete="off">
+                            <label class="btn btn-outline-danger week-btn" for="danger-outlined1">매주</label>  
+    
+                            <input type="radio" class="btn-check" name="options-outlined" id="danger-outlined2" autocomplete="off">
+                            <label class="btn btn-outline-danger week-btn" for="danger-outlined2">격주</label>   
+                        </div>
+                    </div>
+    
+                    
+                    <div class="step3" style="padding: 120px 0;">
+    
+                        <div class="step-text">
+                            <h3 id="step-text">STEP 3</h3>
+                            <h2 style="margin-bottom: 100px;">제외할 채소를 골라주세요</h2>
+                        </div>
+    
+                        <div class="step3-container">
+    
+                            <!-- Button trigger modal -->
+                            <button type="button" id="exception-btn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                ⓧ 제외할 채소 고르기
+                            </button>
+                            
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true";>
+                                <div class="modal-dialog modal-dialog-scrollable">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="container">
+                                                <div class="row">
+                                                  <div class="col">
+                                                    Column
+                                                  </div>
+                                                  <div class="col">
+                                                    Column
+                                                  </div>
+                                                  <div class="col">
+                                                    Column
+                                                  </div>
+                                                </div>
+                                              </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            
+                            <div style="text-align: center; margin: 100px 0">
+                                <button class="submit-btn" >다음</button>
                             </div>
     
-                            <div class="col" style="position: relative;">
-                                <img src="../img/BSH/jumbo.png" style="width: 100%;">
-                                <!-- <img src="/../img/BSH/체크.png" style="position: absolute; width: 9%; top: 10%; left: 10%;"> -->
-                                <h5 style="display: flex; justify-content: center; margin-top: 20px;">점보 박스</h5>
-                                <p style="display: flex; justify-content: center;">3-4인 가구에게 적합해요</p>
-                            </div>
                         </div>
+    
                     </div>
-
+                    
                 </div>
-
-
-                <div class="step2" style="padding: 120px 0;">
-
-                    <div class="step-text">
-                        <h3  style="color: gray;">STEP 2</h3>
-                        <h2>배송 주기를 선택해주세요</h2>
-                    </div>
-
-                    <div class="container" style="width: 89%;">
-                        <div class="row row-cols-2">
-                            <div class="col" style="position: relative;">
-                                <h1 style="display: inline-block; margin: 50% 30%;">매주</h1>
-                                <img src="../img/BSH/체크.png" style="position: absolute; width: 9%; top: 33%; left: 20%;">
-                            </div>
-                            <div class="col" style="position: relative;">
-                                <h1 style="display: inline-block; margin: 50% 30%;">격주</h1>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                
-                <div class="step3" style="padding: 120px 0;">
-
-                    <div class="step-text">
-                        <h3  style="color: gray;">STEP 3</h3>
-                        <h2 style="margin-bottom: 100px;">제외할 채소를 골라주세요</h2>
-                    </div>
-
-                    <div style="margin: 0 auto; width: 500px; height: 80px;">
-                        
-
-                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="width: 500px; height: 80px; background-color: rgba(224, 224, 224, 0.6); color: rgb(255, 89, 87); font-size: 25px; border: none; text-decoration: underline;">
-                            ⓧ 제외할 채소 고르기
-                        </button>
-                        
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true";>
-                            <div class="modal-dialog modal-dialog-scrollable" >
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                ...
-                                </div>
-                                <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-  
-                        
-
-                    </div>
-
-                </div>
-
-
-
-
+    
             </div>
 
-        </div>
+        </form>
 
         
 
@@ -198,7 +227,7 @@
 
 
         <!-- Footer Start -->
-        <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
+        <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s" style="margin-top: 50px;">
             <div class="container py-5">
                 <div class="row g-5">
                     <div class="col-lg-3 col-md-6">
@@ -295,6 +324,8 @@
         })
     </script>
     
+    <script src="../js/subscription.js"></script>
+
 </body>
 
 </html>

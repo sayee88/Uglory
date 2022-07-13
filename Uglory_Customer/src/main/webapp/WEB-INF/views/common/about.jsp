@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="resources/css/member/member.css" rel="stylesheet">
+    <link href="${contextPath}/resources/css/member/member.css" rel="stylesheet">
     <title>about</title>
 
     <!-- Google Web Fonts -->
@@ -22,22 +22,22 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
-    <!-- Libraries Stylesheet -->
-    <link href="resources/lib/animate/animate.min.css" rel="stylesheet">
-    <link href="resources/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="resources/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+   <!-- Libraries Stylesheet -->
+    <link href="${contextPath}/resources/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="${contextPath}/resources/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="${contextPath}/resources/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="resources/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="resources/css/style-1.css" rel="stylesheet">
+    <link href="${contextPath}/resources/css/style-1.css" rel="stylesheet">
 </head>
 <body>
     <main class="main">
 
-     <jsp:include page="/WEB-INF/views/common/header.jsp" />
+     <jsp:include page="/WEB-INF/views/common/header-1.jsp" />
 
         <div>
             <div class="about1">
@@ -188,10 +188,10 @@
     <div class="madal-area">
         <div class="modal">
             <button class="madal-close">
-                <img class="xMark" src="/img/xmark.svg">
+                <img class="xMark" src="${contextPath}/resources/img/xmark.svg">
             </button>
             <div class="vegList">
-                <img class="modal-image" src="/resources/img/PYJ/vegetable.webp">
+                <img class="modal-image" src="${contextPath}/resources/img/PYJ/vegetable.webp">
             </div>
 
         </div>

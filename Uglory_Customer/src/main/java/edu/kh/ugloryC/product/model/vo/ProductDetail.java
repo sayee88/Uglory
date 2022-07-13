@@ -19,9 +19,6 @@ public class ProductDetail {
     private int pPrice;
     private String pInfo;
     
-    private String optionName;
-    private int optionPrice;
-    
     private int totalPrice;
     private String producer;
     private String origin;
@@ -31,4 +28,7 @@ public class ProductDetail {
     private int reviewCount;
     
     private List<ProductImage> imageList;
+    private List<OptionType> optionList;
+    
+    private String pState; // 상품상태
 }
