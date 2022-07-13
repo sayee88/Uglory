@@ -25,4 +25,10 @@ public class CustomerServiceImpl implements CustomerService {
 	}
 
 	
+	// 특정 조건을 만족하는 고객 목록 조회
+	@Override
+	public List<Customer> searchCustomer(String key, String query) {
+		return dao.searchCustomer(key, query);
+	}
+	
 }

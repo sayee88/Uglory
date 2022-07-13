@@ -12,11 +12,38 @@
 
 	<!-- 전체 고객 목록 조회 -->
 	<select id="selectAllCustomer" resultMap="customer_rm">
-		SELECT MEMBER_NO, MEMBER_EMAIL, MEMBER_NAME, S_CANCEL, MEMBER_ST
-		FROM MEMBER
-		JOIN SUBS_ORDER USING(MEMBER_NO)
+		SELECT M.MEMBER_NO, M.MEMBER_EMAIL, M.MEMBER_NAME, S.S_CANCEL, M.MEMBER_ST
+		FROM MEMBER M
+		LEFT JOIN SUBS_ORDER S
+		ON M.MEMBER_NO = S.MEMBER_NO
 		WHERE MEMBER_ST = 'N'
+		ORDER BY 1
 	</select>
+	
+	
+	<!-- 특정 조건을 만족하는 고객 목록 조회 -->
+	<select id="searchCustomer" resultMap="customer_rm">
+		SELECT M.MEMBER_NO, M.MEMBER_EMAIL, M.MEMBER_NAME, S.S_CANCEL, M.MEMBER_ST
+         FROM MEMBER M
+         LEFT JOIN SUBS_ORDER S
+         ON M.MEMBER_NO = S.MEMBER_NO
+         WHERE MEMBER_ST = 'N'
+         <if test='query != null and query !=""'>
+			AND
+			<choose>
+				<when test='key == "customerEmail"'>
+					MEMBER_EMAIL LIKE '%${query}%'
+				</when>
+				
+				<when test='key == "customerName"'>
+					MEMBER_NAME LIKE '%${query}%'
+				</when>
+			</choose>
+		</if>
+		ORDER BY MEMBER_NO 
+	</select>
+	
+	
 
 
 
