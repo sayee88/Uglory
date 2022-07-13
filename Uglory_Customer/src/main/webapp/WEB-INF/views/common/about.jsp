@@ -28,6 +28,8 @@
     <link href="${contextPath}/resources/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="${contextPath}/resources/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
@@ -186,7 +188,10 @@
                     <p class="about3-Explanation">지금, 가장 맛있는 제철 채소를 수확 직후 보내드려요.</p>
                     
                     <div class="vegetable-area">
-                        <a class="vegetable">어글로리 채소 전체보기 click  👀🥬</a>
+                        <%-- <a class="vegetable">어글로리 채소 전체보기 click  👀🥬</a> --%>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        어글로리 채소 전체보기 click  👀🥬
+                        </button>
                     </div>
 
                 </div>
@@ -195,22 +200,34 @@
         </div>
         <!-- 3어바웃 시작 -->
 
+    <!-- Button trigger modal -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">어글로리 채소 전체보기  👀🥬</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <img src="${contextPath}/resources/img/about/vegetable.webp" style="width:450px;">
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          
+        </div>
+        </div>
+    </div>
+    </div>
     </main>
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
-    <!-- 모달 -->
-    <div class="madal-area">
-        <div class="modal">
-            <button class="madal-close">
-                <img class="xMark" src="${contextPath}/resources/img/about/xmark.png">
-            </button>
-            <div class="vegList">
-                <img class="modal-image" src="${contextPath}/resources/img/about/vegetable.webp">
-            </div>
+    
 
-        </div>
-    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
 
 </body>
