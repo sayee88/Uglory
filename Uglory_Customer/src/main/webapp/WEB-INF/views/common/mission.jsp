@@ -111,7 +111,7 @@
                             
                             
                             건강한 땅을 위한 농부의 땀과 노력이 인정받을 수 있고 소비자는 건강한 식품을 지속가능하게 공급받을 수 있도록 합니다.</p>
-                        <a class="btn btn-primary py-3 px-5 mt-2" href="">구독 신청하기</a>
+                        <a class="btn btn-primary py-3 px-5 mt-2" href="${contextPath}/subscription">구독 신청하기</a>
                     </div>
                 </div>
             </div>
