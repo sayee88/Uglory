@@ -1,6 +1,7 @@
 package edu.kh.ugloryA.myPage.model.dao;
 
 import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import edu.kh.ugloryA.myPage.model.vo.Admin;
@@ -8,6 +9,7 @@ import edu.kh.ugloryA.myPage.model.vo.Admin;
 @Repository
 public class AdminDAO {
 	
+	@Autowired
 	private SqlSessionTemplate sqlSession;
 
 	/**

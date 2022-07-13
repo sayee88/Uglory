@@ -28,7 +28,7 @@
                         <a href="${contextPath}" class="nav-item nav-link active">Home</a>
                         <a href="${contextPath}/common/mission" class="nav-item nav-link">Mission</a>
                         <a href="${contextPath}/common/about" class="nav-item nav-link">About</a>
-                        <a href="Market.html" class="nav-item nav-link">Market</a>
+                        <a href="${contextPath}/product/list" class="nav-item nav-link">Market</a>
                         <a href="${contextPath}/review/list" class="nav-item nav-link icon">Review</a>
                     </div>
                     <a href="#" class="nav-item icon"><img class="menu-chart" src="${contextPath}/resources/img/main/shopping-cart-white.png"></a>

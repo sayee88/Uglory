@@ -107,3 +107,16 @@ function count_check(obj){
         return false;
     }
 }
+
+
+// value 값 가져오기
+function getValue(){
+    const checked = 'input[name="choice"]:checked';
+    const selectedEls = document.querySelectorAll(checked);
+
+    let result = '';
+    selectedEls.forEach((el)=>{
+        result += el.value + ' ';
+    });
+
+}
