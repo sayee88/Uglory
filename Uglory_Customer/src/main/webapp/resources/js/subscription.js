@@ -109,14 +109,38 @@ function count_check(obj){
 }
 
 
-// value 값 가져오기
+
+// X버튼 클릭시 check 해제
+const xbtn = document.getElementById("xbtn");
+xbtn.addEventListener("click", function(){
+    const choice = document.getElementsByName("choice");
+
+    for(var i=0 ; i<choice.length ; i++){
+        if(choice[i].checked){
+            choice[i].checked = false;
+        }
+    }
+})
+
+
+// 제외할 야채(choice) value 값 가져오기
 function getValue(){
     const checked = 'input[name="choice"]:checked';
-    const selectedEls = document.querySelectorAll(checked);
+    const checkedVege = document.querySelectorAll(checked);
 
     let result = '';
-    selectedEls.forEach((el)=>{
+    checkedVege.forEach((el)=>{
         result += el.value + ' ';
     });
 
 }
+
+
+$.ajax({
+    url : contextPath + "",
+    data : {},
+    type : "",
+    success : function(){},
+    error: function(){}
+
+});

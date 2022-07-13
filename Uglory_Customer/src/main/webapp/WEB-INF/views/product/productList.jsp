@@ -58,13 +58,13 @@
                     </div>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                        <img src="${contextPath}/resources/img/BSH/수박슬라이드.png" class="d-block w-100" alt="${contextPath}/resources.">
+                        <img src="${contextPath}/resources/img/product/수박슬라이드.png" class="d-block w-100" alt="${contextPath}/resources.">
                         </div>
                         <div class="carousel-item">
-                        <img src="${contextPath}/resources/img/BSH/복숭아슬라이드.png" class="d-block w-100" alt="${contextPath}/resources.">
+                        <img src="${contextPath}/resources/img/product/복숭아슬라이드.png" class="d-block w-100" alt="${contextPath}/resources.">
                         </div>
                         <div class="carousel-item">
-                        <img src="${contextPath}/resources/img/BSH/옥수수슬라이드.png" class="d-block w-100" alt="${contextPath}/resources.">
+                        <img src="${contextPath}/resources/img/product/옥수수슬라이드.png" class="d-block w-100" alt="${contextPath}/resources.">
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -120,14 +120,14 @@
 
                     <div class="col">
                         <div class="box">
-                            <img src="${contextPath}/resources/img/마늘쫑쿵야.png" alt="" class="product-img soldout">
-                            <img src="${contextPath}/resources/img/BSH/품절스티커.png" alt="" class="soldout-sticker">
+                            <img src="${contextPath}/resources/img/쿵야/마늘쫑쿵야.png" alt="" class="product-img soldout">
+                            <img src="${contextPath}/resources/img/product/품절스티커.png" alt="" class="soldout-sticker">
                             <div>
                                 <h5>친환경 초당 옥수수 - 10개/20개</h5>
                                 <div class="flex-container">
                                     <h4>25,000</h4>
                                     <div class="sub-box">
-                                        <img src="${contextPath}/resources/img/BSH/별.jpg" alt=""><p>(49)</p>
+                                        <img src="${contextPath}/resources/img/product/star.jpg" alt=""><p>(49)</p>
                                     </div>
                                 </div>
                             </div>
@@ -136,13 +136,13 @@
 
                     <div class="col">
                         <div class="box">
-                        <img src="${contextPath}/resources/img/바나나쿵야.png" alt="" class="product-img">
+                        <img src="${contextPath}/resources/img/쿵야/바나나쿵야.png" alt="" class="product-img">
                             <div>
                                 <h5>친환경 초당 옥수수 - 10개/20개</h5>
                                 <div class="flex-container">
                                     <h4>25,000</h4>
                                     <div class="sub-box">
-                                        <img src="${contextPath}/resources/img/BSH/별.jpg" alt=""><p>(49)</p>
+                                        <img src="${contextPath}/resources/img/product/star.jpg" alt=""><p>(49)</p>
                                     </div>
                                 </div>
                             </div>
@@ -151,13 +151,13 @@
 
                     <div class="col">
                         <div class="box">
-                        <img src="${contextPath}/resources/img/반계쿵야.png" alt="" class="product-img">
+                        <img src="${contextPath}/resources/img/쿵야/반계쿵야.png" alt="" class="product-img">
                             <div>
                                 <h5>친환경 초당 옥수수 - 10개/20개</h5>
                                 <div class="flex-container">
                                     <h4>25,000</h4>
                                     <div class="sub-box">
-                                        <img src="${contextPath}/resources/img/BSH/별.jpg" alt=""><p>(49)</p>
+                                        <img src="${contextPath}/resources/img/product/star.jpg" alt=""><p>(49)</p>
                                     </div>
                                 </div>
                             </div>
@@ -166,13 +166,13 @@
 
                     <div class="col">
                         <div class="box">
-                        <img src="${contextPath}/resources/img/버섯쿵야.png" alt="" class="product-img">
+                        <img src="${contextPath}/resources/img/쿵야/버섯쿵야.png" alt="" class="product-img">
                             <div>
                                 <h5>친환경 초당 옥수수 - 10개/20개</h5>
                                 <div class="flex-container">
                                     <h4>25,000</h4>
                                     <div class="sub-box">
-                                        <img src="${contextPath}/resources/img/BSH/별.jpg" alt=""><p>(49)</p>
+                                        <img src="${contextPath}/resources/img/product/star.jpg" alt=""><p>(49)</p>
                                     </div>
                                 </div>
                             </div>
@@ -181,13 +181,13 @@
 
                     <div class="col" >
                         <div class="box">
-                        <img src="${contextPath}/resources/img/샐러리쿵야.png" alt="" class="product-img">
+                        <img src="${contextPath}/resources/img/쿵야/샐러리쿵야.png" alt="" class="product-img">
                             <div>
                                 <h5>친환경 초당 옥수수 - 10개/20개</h5>
                                 <div class="flex-container">
                                     <h4>25,000</h4>
                                     <div class="sub-box">
-                                        <img src="${contextPath}/resources/img/BSH/별.jpg" alt=""><p>(49)</p>
+                                        <img src="${contextPath}/resources/img/product/star.jpg" alt=""><p>(49)</p>
                                     </div>
                                 </div>
                             </div>
@@ -196,13 +196,13 @@
 
                     <div class="col" >
                         <div class="box">
-                        <img src="${contextPath}/resources/img/양배추쿵야.png" alt="" class="product-img">
+                        <img src="${contextPath}/resources/img/쿵야/양배추쿵야.png" alt="" class="product-img">
                             <div>
                                 <h5>친환경 초당 옥수수 - 10개/20개</h5>
                                 <div class="flex-container">
                                     <h4>25,000</h4>
                                     <div class="sub-box">
-                                        <img src="${contextPath}/resources/img/BSH/별.jpg" alt=""><p>(49)</p>
+                                        <img src="${contextPath}/resources/img/product/star.jpg" alt=""><p>(49)</p>
                                     </div>
                                 </div>
                             </div>
@@ -211,13 +211,13 @@
 
                     <div class="col" >
                         <div class="box">
-                        <img src="${contextPath}/resources/img/양파쿵야.png" alt="" class="product-img">
+                        <img src="${contextPath}/resources/img/쿵야/양파쿵야.png" alt="" class="product-img">
                             <div>
                                 <h5>친환경 초당 옥수수 - 10개/20개</h5>
                                 <div class="flex-container">
                                     <h4>25,000</h4>
                                     <div class="sub-box">
-                                        <img src="${contextPath}/resources/img/BSH/별.jpg" alt=""><p>(49)</p>
+                                        <img src="${contextPath}/resources/img/product/star.jpg" alt=""><p>(49)</p>
                                     </div>
                                 </div>
                             </div>
@@ -226,13 +226,13 @@
 
                     <div class="col" >
                         <div class="box">
-                        <img src="${contextPath}/resources/img/완계쿵야.png" alt="" class="product-img">
+                        <img src="${contextPath}/resources/img/쿵야/완계쿵야.png" alt="" class="product-img">
                             <div>
                                 <h5>친환경 초당 옥수수 - 10개/20개</h5>
                                 <div class="flex-container">
                                     <h4>25,000</h4>
                                     <div class="sub-box">
-                                        <img src="${contextPath}/resources/img/BSH/별.jpg" alt=""><p>(49)</p>
+                                        <img src="${contextPath}/resources/img/product/star.jpg" alt=""><p>(49)</p>
                                     </div>
                                 </div>
                             </div>
@@ -241,13 +241,13 @@
 
                     <div class="col" >
                         <div class="box">
-                        <img src="${contextPath}/resources/img/주먹밥쿵야.png" alt="" class="product-img">
+                        <img src="${contextPath}/resources/img/쿵야/주먹밥쿵야.png" alt="" class="product-img">
                             <div>
                                 <h5>친환경 초당 옥수수 - 10개/20개</h5>
                                 <div class="flex-container">
                                     <h4>25,000</h4>
                                     <div class="sub-box">
-                                        <img src="${contextPath}/resources/img/BSH/별.jpg" alt=""><p>(49)</p>
+                                        <img src="${contextPath}/resources/img/product/star.jpg" alt=""><p>(49)</p>
                                     </div>
                                 </div>
                             </div>
@@ -256,13 +256,13 @@
 
                     <div class="col" >
                         <div class="box">
-                        <img src="${contextPath}/resources/img/호박쿵야.png" alt="" class="product-img">
+                        <img src="${contextPath}/resources/img/쿵야/호박쿵야.png" alt="" class="product-img">
                             <div>
                                 <h5>친환경 초당 옥수수 - 10개/20개</h5>
                                 <div class="flex-container">
                                     <h4>25,000</h4>
                                     <div class="sub-box">
-                                        <img src="${contextPath}/resources/img/BSH/별.jpg" alt=""><p>(49)</p>
+                                        <img src="${contextPath}/resources/img/product/star.jpg" alt=""><p>(49)</p>
                                     </div>
                                 </div>
                             </div>
