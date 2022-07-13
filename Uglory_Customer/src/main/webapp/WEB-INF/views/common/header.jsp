@@ -26,8 +26,8 @@
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0 pe-4">
                         <a href="${contextPath}" class="nav-item nav-link active">Home</a>
-                        <a href="Mission.html" class="nav-item nav-link">Mission</a>
-                        <a href="About.html" class="nav-item nav-link">About</a>
+                        <a href="${contextPath}/common/mission" class="nav-item nav-link">Mission</a>
+                        <a href="${contextPath}/common/about" class="nav-item nav-link">About</a>
                         <a href="${contextPath}/product/list" class="nav-item nav-link">Market</a>
                         <a href="Review.html" class="nav-item nav-link icon">Review</a>
                     </div>
