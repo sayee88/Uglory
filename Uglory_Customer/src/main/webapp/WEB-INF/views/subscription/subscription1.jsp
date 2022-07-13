@@ -148,8 +148,8 @@
                             <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    <h5 class="modal-title" id="exampleModalLabel">제외할 채소 고르기</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" id="xbtn"></button>
                                     </div>
                                     <div class="modal-body">
 
@@ -435,8 +435,7 @@
 
                                     </div>
                                     <div class="modal-footer">
-                                    <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-                                    <button type="button" class="btn btn-primary" style="background-color: #ff4444;">확인</button>
+                                    <button type="button" class="btn btn-primary"  data-bs-dismiss="modal" style="background-color: #ff4444;">확인</button>
                                     </div>
                                 </div>
                             </div>

@@ -121,3 +121,15 @@ function getValue(){
 
 }
 
+
+// X버튼 클릭시 check 해제
+const xbtn = document.getElementById("xbtn");
+xbtn.addEventListener("click", function(){
+    const choice = document.getElementsByName("choice");
+
+    for(var i=0 ; i<choice.length ; i++){
+        if(choice[i].checked){
+            choice[i].checked = false;
+        }
+    }
+})
