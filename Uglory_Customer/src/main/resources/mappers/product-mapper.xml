@@ -38,6 +38,19 @@
 		JOIN FARM USING(FARM_NO)
 		WHERE P_CD = ${productCode}
 	</select>
+	
+	<!-- 총가격 계산 -->
+	<select id="totalAmount" resultType="_int">
+		SELECT PRODUCT_PRICE + OPTION_PRICE
+		<!-- 상품 가격이 3만원이 안 넘을 경우 (배송비 추가)-->
+<!-- 		<if test='productPrice lt 30000'>
+			+ 3000
+		</if> -->
+		FROM PRODUCT
+		JOIN OPTION_TYPE USING(P_CD)
+		WHERE P_CD = ${productCode}
+		AND OPTION_NM = #{optionName}
+	</select>
 
 </mapper>
 
