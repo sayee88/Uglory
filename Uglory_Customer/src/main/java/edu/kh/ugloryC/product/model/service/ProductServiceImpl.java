@@ -1,5 +1,7 @@
 package edu.kh.ugloryC.product.model.service;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,12 +21,10 @@ public class ProductServiceImpl implements ProductService {
 		return dao.productDetail(productCode);
 	}
 
-	// 총 계산 서비스 구현
+	// 총 가격 조회 서비스 구현
 	@Override
-	public int totalAmount(int optionCode, int productCode) {
-
-		return dao.totalAmount(optionCode, productCode);
+	public int totalAmount(Map<String, Object> paramMap) {
+		
+		return dao.totalAmount(paramMap);
 	}
-	
-	
 }
