@@ -90,3 +90,20 @@ function mushroom(){
 document.getElementById("mush1").addEventListener("change", mushroom);
 
 
+
+// 갯수 제한
+
+function count_check(obj){
+    var checkBox = document.getElementsByName("choice");
+    var checkCount = 0;
+    for(var i=0 ; i<checkBox.length; i++){
+        if(checkBox[i].checked){
+            checkCount++;
+        }
+    }
+    if(checkCount > 5){
+        alert("5개까지 체크할 수 있습니다.");
+        obj.checked = false;
+        return false;
+    }
+}
