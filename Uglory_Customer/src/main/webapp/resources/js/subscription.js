@@ -109,18 +109,6 @@ function count_check(obj){
 }
 
 
-// value 값 가져오기
-function getValue(){
-    const checked = 'input[name="choice"]:checked';
-    const selectedEls = document.querySelectorAll(checked);
-
-    let result = '';
-    selectedEls.forEach((el)=>{
-        result += el.value + ' ';
-    });
-
-}
-
 
 // X버튼 클릭시 check 해제
 const xbtn = document.getElementById("xbtn");
@@ -133,3 +121,26 @@ xbtn.addEventListener("click", function(){
         }
     }
 })
+
+
+// 제외할 야채(choice) value 값 가져오기
+function getValue(){
+    const checked = 'input[name="choice"]:checked';
+    const checkedVege = document.querySelectorAll(checked);
+
+    let result = '';
+    checkedVege.forEach((el)=>{
+        result += el.value + ' ';
+    });
+
+}
+
+
+$.ajax({
+    url : contextPath + "",
+    data : {},
+    type : "",
+    success : function(){},
+    error: function(){}
+
+});

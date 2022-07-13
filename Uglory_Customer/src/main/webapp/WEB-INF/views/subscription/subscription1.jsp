@@ -40,16 +40,9 @@
     <link rel="stylesheet" href="${contextPath}/resources/css/subscription.css">
 
     <style>
-        .row{
-            margin:20px;
-            padding: 10px 15px 10px 65px;
-            font-size:25px;
-        }
-
         .modal{
             max-height:1000px;
         }
-
     </style>
     
     
@@ -78,33 +71,29 @@
                         <div class="row row-cols-2">
                             
                             <div class="col">
-                                <div>
-                                    <fieldset id="fieldset1">
-                                        <input id="standard-check" type="radio" name="box" value="standard">
-                                        <label for="standard-check">
-                                            <img src="${contextPath}/resources/img/BSH/standard.png" style="cursor: pointer;">
-                                            <div>
-                                                <h5 id="box-name">스탠다드 박스</h5>
-                                                <p id="box-intro">1-2인 가구에게 적합해요</p>
-                                            </div>
-                                        </label>
-                                    </fieldset> 
-                                </div>
+                                <div id="fieldset1" style="display:flex; justify-content:center;">
+                                    <input id="standard-check" type="radio" name="box" value="standard">
+                                    <label for="standard-check">
+                                        <img src="${contextPath}/resources/img/product/standard.png" style="cursor: pointer;">
+                                        <div>
+                                            <h5 id="box-name">스탠다드 박스</h5>
+                                            <p id="box-intro">1-2인 가구에게 적합해요</p>
+                                        </div>
+                                    </label>
+                                </div> 
                             </div>
 
                             <div class="col">
-                                <div>
-                                    <fieldset id="fieldset2">
-                                        <input id="jumbo-check" type="radio" name="box" value="jumbo">
-                                        <label for="jumbo-check">
-                                            <img src="${contextPath}/resources/img/BSH/jumbo.png" style="cursor: pointer;">
-                                            <div>
-                                                <h5 id="box-name">점보 박스</h5>
-                                                <p id="box-intro">3-4인 가구에게 적합해요</p>
-                                            </div>
-                                        </label>
-                                    </fieldset> 
-                                </div>
+                                <div id="fieldset1" style="display:flex; justify-content:center;">
+                                    <input id="jumbo-check" type="radio" name="box" value="jumbo">
+                                    <label for="jumbo-check">
+                                        <img src="${contextPath}/resources/img/product/jumbo.png" style="cursor: pointer;">
+                                        <div>
+                                            <h5 id="box-name">점보 박스</h5>
+                                            <p id="box-intro">3-4인 가구에게 적합해요</p>
+                                        </div>
+                                    </label>
+                                </div> 
                             </div>
 
                         </div>
@@ -119,7 +108,7 @@
                         <h3 id="step-text">STEP 2</h3>
                         <h2>배송 주기를 선택해주세요</h2>
                     </div>
-                    <div class="container" style="width: 89%; display: flex; justify-content: center;">
+                    <div class="container" style="display: flex; justify-content: center;">
                         <input type="radio" class="btn-check" name="cycle" id="danger-outlined1" autocomplete="off" value="매주">
                         <label class="btn btn-outline-danger week-btn" for="danger-outlined1">매주</label>  
 
@@ -159,7 +148,7 @@
                                             <div style="display:flex; justify-content:center; margin:30px 0;">
                                                 
                                                 <table style="text-align:center;">
-                                                    <tr><td><img src="${contextPath}/resources/img/BSH/제외채소.jpg" style="width:150px;"></td></tr>
+                                                    <tr><td><img src="${contextPath}/resources/img/product/제외채소.jpg" style="width:150px;"></td></tr>
                                                     <tr><th><h2>알러지 선택</h2></th></tr>
                                                     <tr><td><h4>선택 시, 다른 품목으로 대체해 보내드려요.</h4></td></tr>
                                                     <tr><td><h4>섭취가 불가한 채소가 아니라면 다양하게 즐겨보세요!</h4></td></tr>
@@ -463,6 +452,11 @@
 
     <%-- jQuery --%>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <%-- 전역변수 선언 --%>
+    <script>
+        const contextPath = "${contextPath}";
+    </script>
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

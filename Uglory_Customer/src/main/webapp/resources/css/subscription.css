@@ -69,8 +69,7 @@ pre{
 }
 
 /* 체크이미지 변경 */
-#standard-check + label{
-    display: inline-block;
+#standard-check + label{display: inline-block;
     cursor: pointer;
 }
 #standard-check:checked + label{
@@ -78,8 +77,6 @@ pre{
     background-repeat: no-repeat;
     background-size: 30px;
 }
-
-
 #standard-check{
     display: none;
 }
@@ -95,10 +92,10 @@ pre{
 #jumbo-check{
     display: none;
 }
-
-#fieldset1{height: 290px;}
-#fieldset2{height: 284px;}
-
+.row{
+    font-size: 25px;
+    margin: 30px 30px 30px 40px;
+}
 
 /* 2 */
 
