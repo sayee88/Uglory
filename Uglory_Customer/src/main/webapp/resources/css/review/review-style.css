@@ -202,33 +202,19 @@
 /* ========================================== */
 
 /* 모달창 */
-.modal{
+.mymodal{
     width: 100%;
     height: 100%;
     position: fixed;
     left: 0;
     top: 0;
     display: flex;
-    /* display: none; */
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: rgba(160, 160, 160, 0.429);
     border-radius: 1px;
-    /* border: 1px solid red; */
-}
-
-.modal.show{
-    display: flex;
-    animation-name: show;
-}
-
-.modal.hide{
-    animation-name: hide;
-}
-
-.hidden{
-    /* display: none; */
+    border: 1px solid red; 
 }
 
 .modal-close{
@@ -254,12 +240,12 @@
     width: 800px;
     height: 500px;
 
-    position: relative;
+    position: absolute;
 
     display: flex;
 }
 
-.modal-window > div{
+.modal-body > div{
     /* border: 1px solid red; */
     width: 50%;
 }
@@ -272,7 +258,6 @@
 .active > img{
     /* border: 1px solid red; */
     width: 100%;
-    height: 100%;
     object-fit: contain;
 }
 
@@ -280,13 +265,15 @@
     cursor: pointer;
 }
 
-.modal-mainImage > div{
+.modal-mainImage > div img{
     /* border: 1px solid red; */
     height: 20%;
+    object-fit: cover;
 }
 
 .modal-imgList{
     display: flex;
+    /* height: 20%; */
 }
 
 .modal-imgList > div{
@@ -309,10 +296,10 @@
     object-fit: covers;
 }
 
-.modal-content{
+.modal-mycontent{
     border-radius: 0;
     padding: 20px;
-    border-left: 1px solid red;
+    /* border-left: 1px solid red; */
 }
 
 .modal-content-info{
@@ -372,38 +359,24 @@
     padding: 20px 0;
     font-size: 15px;
     color: rgb(60, 60, 60);
-    height: 300px;
+    height: 400px;
 }
 
 .modal-bottom{
     /* border: 1px solid red; */
-    height: 100px;
+    height: 20px;
 }
 
 .modal-sub{
     /* border: 1px solid red; */
     text-align: end;
+    bottom: 0;
 }
 
 .modal-sub > a{
     color: blue;
 }
 
-.bottom-update-del{
-    /* border: 1px solid red; */
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 20px;
-}
-
-.bottom-update-del > button{
-    /* border: 1px solid red; */
-    border: 0;
-    margin-left: 15px;
-    padding: 3px 15px;
-    background-color: rgb(113, 214, 199);
-    color: white;
-    font-size: 13px;
-    font-weight: bold;
-    border-radius: 5px;
+.review-content-text-section:hover{
+    cursor: pointer;
 }
