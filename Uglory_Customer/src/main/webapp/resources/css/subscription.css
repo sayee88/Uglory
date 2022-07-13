@@ -70,31 +70,27 @@ pre{
 
 /* 체크이미지 변경 */
 #standard-check + label{
-    width: 30px;
-    height: 30px;
-
     display: inline-block;
     cursor: pointer;
 }
 #standard-check:checked + label{
     background-image: url(../img/BSH/체크.png);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 30px;
 }
+
+
 #standard-check{
     display: none;
 }
 #jumbo-check + label{
-    width: 30px;
-    height: 30px;
-
     display: inline-block;
     cursor: pointer;
 }
 #jumbo-check:checked + label{
     background-image: url(../img/BSH/체크.png);
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 30px;
 }
 #jumbo-check{
     display: none;
