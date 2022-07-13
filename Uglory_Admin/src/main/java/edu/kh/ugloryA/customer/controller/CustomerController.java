@@ -26,9 +26,16 @@ public class CustomerController {
 	@Autowired
 	private CustomerService service;
 	
+	
+	@GetMapping("/selectAll")
+	public String selectAll() {
+		return "manageMember/MemberList";
+	}
+	
+	
 	// 고객 목록 조회 ajax
 	@ResponseBody
-	@GetMapping("/selectAll")
+	@GetMapping("/selectAllCustomer")
 	public String selectAllCustomer() {
 		List<Customer> list = service.selectAllCustomer();
 		
