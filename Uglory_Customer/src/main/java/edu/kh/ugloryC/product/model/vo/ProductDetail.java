@@ -13,11 +13,11 @@ import lombok.ToString;
 @ToString
 public class ProductDetail {
 	
-	private int pCode;
+	private int productCode;
 	private int categoryNo;
-	private String pName;
-    private int pPrice;
-    private String pInfo;
+	private String productName;
+    private int productPrice;
+    private String productInfo;
     
     private int totalPrice;
     private String producer;
@@ -30,5 +30,5 @@ public class ProductDetail {
     private List<ProductImage> imageList;
     private List<OptionType> optionList;
     
-    private String pState; // 상품상태
+    private String productState; // 상품상태
 }

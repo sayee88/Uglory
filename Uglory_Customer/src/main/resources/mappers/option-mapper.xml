@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="optionMapper">
+
+	<resultMap type="optionType" id="optionType_rm">
+		<id property="optionCode" column="OPTION_CD"/>
+		<result property="optionName" column="OPTION_NM"/>
+		<result property="optionPrice" column="OPTION_PRICE"/>
+	</resultMap>
+	
+	<!-- 옵션 조회 -->
+	<select id="selectOptionList" resultMap="optionType_rm">
+		SELECT OPTION_CD, OPTION_NM, OPTION_PRICE
+		FROM OPTION_TYPE
+		WHERE P_CD = ${productCode}
+	</select>
+	
+</mapper>
