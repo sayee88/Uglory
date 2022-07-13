@@ -55,15 +55,15 @@
                             <tbody>
                                 <tr>
                                     <!-- 썸네일 이미지 -->
-                                    <td><img src="img/famer.png" width="400" height="400"/></td>
+                                    <td><img src="${contextPath}/resources/images/main/famer.png" width="400" height="400"/></td>
                                 </tr>
                             </tbody>
                             <tfoot>
                                 <tr>
                                     <td>
-                                        <img src="img/famer.png" width="75" height="75"/>
-                                        <img src="img/famer.png" width="75" height="75"/>
-                                        <img src="img/famer.png" width="75" height="75"/>
+                                        <img src="${contextPath}/resources/images/main/famer.png" width="75" height="75"/>
+                                        <img src="${contextPath}/resources/images/main/famer.png" width="75" height="75"/>
+                                        <img src="${contextPath}/resources/images/main/famer.png" width="75" height="75"/>
                                     </td>
                                 </tr>
                             </tfoot>
@@ -73,20 +73,20 @@
                     <!-- 상품 정보  -->
                     <div class="product-detail-info">
 
-                        <!-- 상품명 가격 -->
-                        <h3 class="product-name" style="color: gray;"><span>${detail.pName}</span></h3>
+                        <!-- 상품명 옵션명 -->
+                        <h3 class="product-name" style="color: gray;"><span>${detail.PName}</span></h3>
                         <h3 class="option-name" style="color: gray;"><span>(1.5kg/2.5kg)</span></h3>
 
                         <!-- 상품가격, 별점, 리뷰 영역 -->
                         <div class="detail-name-area">
-                            <h3 class="product-price"><span>${detail.pPrice}</span></h3>
+                            <h3 class="product-price"><span>${detail.PPrice}</span>원</h3>
 
                             <div class="detail-star-area">
-                                <img src="img/star.png" width="30px" height="30px">
-                                <img src="img/star.png" width="30px" height="30px">
-                                <img src="img/star.png" width="30px" height="30px">
-                                <img src="img/star.png" width="30px" height="30px">
-                                <img src="img/star.png" width="30px" height="30px">
+                                <img src="${contextPath}/resources/images/main/star.png" width="30px" height="30px">
+                                <img src="${contextPath}/resources/images/main/star.png" width="30px" height="30px">
+                                <img src="${contextPath}/resources/images/main/star.png" width="30px" height="30px">
+                                <img src="${contextPath}/resources/images/main/star-2.png" width="30px" height="30px">
+                                <img src="${contextPath}/resources/images/main/star-2.png" width="30px" height="30px">
 
                                 <!-- 별점 평균 -->
                                 <span>3</span>

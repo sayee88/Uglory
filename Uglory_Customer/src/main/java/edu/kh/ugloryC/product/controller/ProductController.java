@@ -38,10 +38,7 @@ public class ProductController {
 		
 		// 별점 카운트, 리뷰 카운트, 총 상품금액 계산 필요
 		
-		logger.debug(detail.getPName());
-		
 		model.addAttribute("detail", detail);
-		
 		
 		return "product/productDetail";
 	}			
