@@ -9,6 +9,7 @@ pom.properties
 MANIFEST.MF
 
 Servers
+root-context.xml
 # Created by https://www.toptal.com/developers/gitignore/api/java,eclipse,windows
 # Edit at https://www.toptal.com/developers/gitignore?templates=java,eclipse,windows
 

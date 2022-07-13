@@ -41,7 +41,7 @@
                     <div class="row align-items-center g-5">
                         <div class="col-lg-6 text-center text-lg-start">
                             <h1 class="display-3 text-white animated slideInLeft">Reap every crop<br></h1>
-                            <p class="text-white animated slideInLeft mb-4 pb-2">Hello, we are vegetable village. 
+                            <p class="text-white animated slideInLeft mb-4 pb-2">Hello, we are vegetable village.
                                 Our goal is an interview.
                                 Our motto is don't be scared.
                                 I have one person to introduce.
