@@ -1,5 +1,7 @@
 package edu.kh.ugloryC.product.model.dao;
 
+import java.util.Map;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -21,8 +23,12 @@ public class ProductDAO {
 		return sqlSession.selectOne("productMapper.productDetail", productCode);
 	}
 
-	public int totalAmount(int optionCode, int productCode) {
+	/** 총 가격 조회 DAO
+	 * @param paramMap
+	 * @return result
+	 */
+	public int totalAmount(Map<String, Object> paramMap) {
 
-		return sqlSession.selectOne(null);
+		return sqlSession.selectOne("productMapper.totalAmount", paramMap);
 	}
 }
