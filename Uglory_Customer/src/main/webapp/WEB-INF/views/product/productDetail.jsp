@@ -2,6 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"  %>
 
+<c:set var="productCode" value="${productCode}" />
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -107,7 +109,7 @@
                             <p>원산지 : <span>${detail.origin}</span> </p>
                             <p>생산자 : <span>${detail.producer}</span> </p>
 
-                            <select name="product-option" class="product-option" onchange="optionSelectBox(this)">
+                            <select name="product-option" class="product-option" onchange="optionSelectBox()">
 
                                 <!-- 옵션 선택 for문으로 가져오기 -->
                                 <option value="option-0" selected>옵션 선택</option>
@@ -115,7 +117,7 @@
                                     <option value="${option_type.optionCode}" >${option_type.optionName} - 
                                         <%-- 옵션 가격이 0원이 아닐때만 가격 조회 --%>
                                         <c:if test="${option_type.optionPrice != 0}">
-                                            ${option_type.optionPrice}
+                                            ${option_type.optionPrice} 원
                                         </c:if>
                                     </option>
                                 </c:forEach>
@@ -125,7 +127,7 @@
                         <hr>
                         <!-- 상품 금액 + 옵션금액 + 배송비 -->
                         <div class="total-amount-area">
-                            <p>총 상품 금액 <span class="total-amount">${result}</span> </p>
+                            <p>총 상품 금액 <span class="total-amount">0</span> 원</p>
                         </div>
 
                         <!-- 상품 상세조회 버튼 영역 -->
@@ -207,6 +209,10 @@
         <script src="${contextPath}/resources/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
 
+        <script>
+            let optionCode = "${option_type.optionCode}";
+            const productCode = "${productCode}";
+        </script>
         <%-- Template Javascript --%>
         <script src="${contextPath}/resources/js/main.js"></script>
         <script src="${contextPath}/resources/js/product/product-detail.js"></script>
