@@ -24,7 +24,7 @@
 	<typeAliases>
 		<!-- <typeAlias type="edu.kh.comm.member.model.vo.Member" alias="member"/> -->
 		<typeAlias type="edu.kh.ugloryA.myPage.model.vo.Admin" alias="admin"/>
-		
+		<typeAlias type="edu.kh.ugloryA.customer.model.vo.Customer" alias="customer"/>
 		
 	</typeAliases>
 	
@@ -37,6 +37,7 @@
 		
 		<!-- <mapper resource="/mappers/member-mapper.xml" /> -->
 		<mapper resource="/mappers/admin-mapper.xml" />
+		<mapper resource="/mappers/customer-mapper.xml"/>
 		
 		
 	</mappers>
