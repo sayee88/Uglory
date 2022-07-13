@@ -23,8 +23,8 @@ public class ProductServiceImpl implements ProductService {
 
 	// 총 가격 조회 서비스 구현
 	@Override
-	public int totalAmount(Map<String, Object> paramMap) {
+	public int totalAmount(Map<String, Object> map) {
 		
-		return dao.totalAmount(paramMap);
+		return dao.totalAmount(map);
 	}
 }

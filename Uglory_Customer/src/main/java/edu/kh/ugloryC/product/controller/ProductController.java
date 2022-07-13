@@ -5,7 +5,6 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,8 +13,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import edu.kh.ugloryC.product.model.service.OptionService;
 import edu.kh.ugloryC.product.model.service.ProductService;
@@ -36,12 +37,10 @@ public class ProductController {
 	Logger logger = LoggerFactory.getLogger(ProductController.class);
 	
 	// 상품 상세 조회
-	@GetMapping("detail/{categoryNo}/{productCode}")
+	@GetMapping("/detail/{categoryNo}/{productCode}")
 	public String productDetail(@PathVariable("categoryNo") int categoryNo,
 							    @PathVariable("productCode") int productCode,
-							    String optionName,
 							    Model model,
-							    @RequestParam Map<String, Object> paramMap,
 							    HttpServletRequest req, HttpServletResponse resp) {
 							
 		ProductDetail detail = service.productDetail(productCode);
@@ -53,15 +52,6 @@ public class ProductController {
 			
 			model.addAttribute("optionList", optionList);
 			
-			if(!optionList.isEmpty()) { // 옵션 조회 성공 시
-				
-				paramMap.put("productCode", productCode);
-				paramMap.put("optionName", optionName);
-				
-				int result = service.totalAmount(paramMap);
-				
-				model.addAttribute("result", result);
-			}
 		}
 		
 		// 별점 카운트, 리뷰 카운트, 총 상품금액 계산 필요
@@ -70,4 +60,19 @@ public class ProductController {
 		
 		return "product/productDetail";
 	}			
+	
+	// 옵션 선택
+	@ResponseBody
+	@PostMapping("/detail/optionSelect")
+	public int optionSelect(int productCode,
+							   int optionCode,
+							   @RequestParam Map<String, Object> paramMap) {
+		
+		paramMap.put("productCode", productCode);
+		paramMap.put("optionCode", optionCode);
+		
+		int result = service.totalAmount(paramMap);
+		
+		return result;
+	}
 }

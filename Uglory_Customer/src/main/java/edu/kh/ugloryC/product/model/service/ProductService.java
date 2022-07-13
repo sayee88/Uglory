@@ -13,10 +13,9 @@ public interface ProductService {
 	ProductDetail productDetail(int productCode);
 
 	/** 총 가격 조회 서비스
-	 * @param paramMap
+	 * @param map
 	 * @return result
 	 */
-	int totalAmount(Map<String, Object> paramMap);
-
+	int totalAmount(Map<String, Object> map);
 
 }
