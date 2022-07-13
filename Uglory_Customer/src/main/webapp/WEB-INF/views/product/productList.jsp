@@ -58,13 +58,13 @@
                     </div>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                        <img src="${contextPath}/resources/img/BSH/수박슬라이드.png" class="d-block w-100" alt="${contextPath}/resources.">
+                        <img src="${contextPath}/resources/img/product/수박슬라이드.png" class="d-block w-100" alt="${contextPath}/resources.">
                         </div>
                         <div class="carousel-item">
-                        <img src="${contextPath}/resources/img/BSH/복숭아슬라이드.png" class="d-block w-100" alt="${contextPath}/resources.">
+                        <img src="${contextPath}/resources/img/product/복숭아슬라이드.png" class="d-block w-100" alt="${contextPath}/resources.">
                         </div>
                         <div class="carousel-item">
-                        <img src="${contextPath}/resources/img/BSH/옥수수슬라이드.png" class="d-block w-100" alt="${contextPath}/resources.">
+                        <img src="${contextPath}/resources/img/product/옥수수슬라이드.png" class="d-block w-100" alt="${contextPath}/resources.">
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
