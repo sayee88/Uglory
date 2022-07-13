@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"  %>
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
-    <title>상품결제페이지</title>
+    <title>상품결제</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -24,23 +25,23 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="resources/lib/animate/animate.min.css" rel="stylesheet">
-    <link href="resources/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="resources/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    <link href="${contextPath}/resources/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="${contextPath}/resources/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="${contextPath}/resources/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="resources/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="resources/css/style-1.css" rel="stylesheet">
-    <link href="resources/css/product/product-order.css" rel="stylesheet">
+    <link href="${contextPath}/resources/css/style-1.css" rel="stylesheet">
+    <link href="${contextPath}/resources/css/product/product-order.css" rel="stylesheet">
 
 </head>
 <body>
 
     <main>
-        <jsp:include page="/WEB-INF/views/common/header.jsp" />
+        <jsp:include page="/WEB-INF/views/common/header-1.jsp" />
 
         <!-- 상품, 옵션, 개별상품주문정보, 결제 테이블 -->
         <!-- 결제페이지 -->
@@ -87,7 +88,7 @@
                     <div class="order-product-area">
                         <!-- 상품 썸네일 이미지 -->
                         <div>
-                            <img src="img/broccoli.jpg" width="150px" height="150px">
+                            <img src="${contextPath}/resources/img/main/broccoli.jpg" width="150px" height="150px">
                         </div>
 
                         <!-- 상품명(클릭 시 상품 상세조회 화면)-->

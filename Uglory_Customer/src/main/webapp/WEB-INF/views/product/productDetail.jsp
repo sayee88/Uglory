@@ -3,6 +3,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"  %>
 
 <c:set var="productCode" value="${productCode}" />
+<c:set var="categoryNo" value="${categoryNo}" />
 
 <!DOCTYPE html>
 <html lang="en">
@@ -39,6 +40,15 @@
     <link href="${contextPath}/resources/css/style-1.css" rel="stylesheet">
     <link href="${contextPath}/resources/css/product/product-detail-style.css" rel="stylesheet">
 
+    <%-- <!-- include libraries(jQuery, bootstrap) -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <!-- include summernote css/js -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script> --%>
+
 </head>
 
 <body>
@@ -53,23 +63,55 @@
                 <div class="product-detail-area">
                     <!-- 상품 이미지 영역 최대 4개(썸네일 포함)-->
                     <div class="product-detail-img">
-                        <table border="0">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        </div>
+                        <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="${contextPath}/resources/img/main/famer.png" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="${contextPath}/resources/img/main/famer.png" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="${contextPath}/resources/img/main/famer.png" class="d-block w-100" alt="...">
+                        </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                        </button>
+                        </div>
+                        <%-- <table border="0">
                             <tbody>
                                 <tr>
                                     <!-- 썸네일 이미지 -->
-                                    <td><img src="${contextPath}/resources/images/main/famer.png" width="400" height="400"/></td>
+                                    <td>
+                                    <p class="contoroller">
+                                        <span class ="prev">&lt;</span>
+                                        <img src="${contextPath}/resources/img/main/famer.png" width="400" height="400"/>
+                                        <span class ="next">&gt;</span>
+                                    </p>
+                                    </td>
                                 </tr>
                             </tbody>
                             <tfoot>
                                 <tr>
                                     <td>
-                                        <img src="${contextPath}/resources/images/main/famer.png" width="75" height="75"/>
-                                        <img src="${contextPath}/resources/images/main/famer.png" width="75" height="75"/>
-                                        <img src="${contextPath}/resources/images/main/famer.png" width="75" height="75"/>
+                                        <img src="${contextPath}/resources/img/main/famer.png" width="75" height="75"/>
+                                        <img src="${contextPath}/resources/img/main/famer.png" width="75" height="75"/>
+                                        <img src="${contextPath}/resources/img/main/famer.png" width="75" height="75"/>
                                     </td>
                                 </tr>
                             </tfoot>
-                        </table>
+                        </table> --%>
                     </div>
 
                     <!-- 상품 정보  -->
@@ -89,11 +131,11 @@
                             <h3 class="product-price"><span>${detail.productPrice}</span>원</h3>
 
                             <div class="detail-star-area">
-                                <img src="${contextPath}/resources/images/main/star.png" width="30px" height="30px">
-                                <img src="${contextPath}/resources/images/main/star.png" width="30px" height="30px">
-                                <img src="${contextPath}/resources/images/main/star.png" width="30px" height="30px">
-                                <img src="${contextPath}/resources/images/main/star-2.png" width="30px" height="30px">
-                                <img src="${contextPath}/resources/images/main/star-2.png" width="30px" height="30px">
+                                <img src="${contextPath}/resources/img/main/star.png" width="30px" height="30px">
+                                <img src="${contextPath}/resources/img/main/star.png" width="30px" height="30px">
+                                <img src="${contextPath}/resources/img/main/star.png" width="30px" height="30px">
+                                <img src="${contextPath}/resources/img/main/star-2.png" width="30px" height="30px">
+                                <img src="${contextPath}/resources/img/main/star-2.png" width="30px" height="30px">
 
                                 <!-- 별점 평균 -->
                                 <span>3</span>
@@ -112,7 +154,7 @@
                             <select name="product-option" class="product-option" onchange="optionSelectBox()">
 
                                 <!-- 옵션 선택 for문으로 가져오기 -->
-                                <option value="option-0" selected>옵션 선택</option>
+                                <option value="option-0" selected disabled>옵션 선택</option>
                                 <c:forEach var="option_type" items="${optionList}">
                                     <option value="${option_type.optionCode}" >${option_type.optionName} - 
                                         <%-- 옵션 가격이 0원이 아닐때만 가격 조회 --%>
@@ -132,7 +174,7 @@
 
                         <!-- 상품 상세조회 버튼 영역 -->
                         <div class="detail-product-btnArea">
-                            <button id="buy-btn" onclick="productOrder()">구매하기</button>
+                            <button id="buy-btn" onclick="location.href='../order/${categoryNo}/${productCode}/${optionCode}'">구매하기</button>
                             <button type="button" class="cartBtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">장바구니</button>
                             <button id="share-btn" onclick="clip(); return false;">공유하기</button>
                         </div>
@@ -146,8 +188,12 @@
                 <hr>
 
                 <!-- 썸머노트 조회 영역(확인 필요) -->
-                <div>
-                    <span>조회</span>
+                <div id="summernote"><p>Hello Summernote</p>
+                    <script>
+                        $(document).ready(function() {
+                            $('#summernote').summernote();
+                        });
+                    </script>
                 </div>
                 <!-- 썸머노트 조회 영역 끝 -->
 
@@ -211,7 +257,8 @@
 
         <script>
             let optionCode = "${option_type.optionCode}";
-            const productCode = "${productCode}";
+            let productCode = "${productCode}";
+            let categoryNo "${categoryNo}";
         </script>
         <%-- Template Javascript --%>
         <script src="${contextPath}/resources/js/main.js"></script>
