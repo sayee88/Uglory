@@ -47,44 +47,9 @@
         </div>
         <!-- Spinner End -->
 
-
-        <!-- Navbar & Hero Start -->
-        <div class="container-xxl position-relative p-0">
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0">
-                <a href="" class="navbar-brand p-0">
-                    <h1 class="text-primary m-0"><i class="fa fa-utensils me-3"></i>Review</h1>
-                    <!-- <img src="img/logo.png" alt="Logo"> -->
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                    <span class="fa fa-bars"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav ms-auto py-0 pe-4">
-                        <a href="index.html" class="nav-item nav-link active">Home</a>
-                        <a href="Mission.html" class="nav-item nav-link">Mission</a>
-                        <a href="About.html" class="nav-item nav-link">About</a>
-                        <a href="Market.html" class="nav-item nav-link">Market</a>
-                        <a href="Review.html" class="nav-item nav-link icon">Review</a>
-                    </div>
-                    <a href="#" class="nav-item icon"><img class="menu-chart" src="img/shopping-cart-white.png"></a>
-                    <a href="#" class="nav-item icon"><img class="menu-chart" src="img/user-white.png"></a>
-                </div>
-            </nav>
-
-            <div class="container-xxl py-5 bg-dark hero-header mb-5">
-                <div class="container text-center my-5 pt-5 pb-4">
-                    <h1 class="display-3 text-white mb-3 animated slideInDown">Review</h1>
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb justify-content-center text-uppercase">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                            <li class="breadcrumb-item text-white active" aria-current="page">Review</li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-        </div>
-        <!-- Navbar & Hero End -->
+        <%-- Header --%>
+        <jsp:include page="/WEB-INF/views/common/header.jsp" />
+        <jsp:include page="/WEB-INF/views/common/header-1.jsp" />
 
 
         <!-- Contact Start -->
@@ -394,77 +359,87 @@
 
 
         <!-- 모달창 -->
-        <div class="modal hidden">
-            <div class="modal-close">&times;</div>
-            <div class="modal-window">
-                
-                <div class="modal-mainImage">
-                    <div>
-                        <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-                            <div class="carousel-inner">
-                              <div class="carousel-item active">
-                                <img src="img/리뷰/이용후기1.png" class="d-block w-100">
-                              </div>
-                              <div class="carousel-item">
-                                <img src="img/리뷰/이용후기10.png" class="d-block w-100">
-                              </div>
-                              <div class="carousel-item">
-                                <img src="img/리뷰/이용후기11.png" class="d-block w-100" alt="...">
-                              </div>
-                            </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-                              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                              <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-                              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                              <span class="visually-hidden">Next</span>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="modal-imgList">
-                        <div><img class="small" src="img/리뷰/이용후기1.png"></div>
-                        <div><img class="small" src="img/리뷰/이용후기10.png"></div>
-                        <div><img class="small" src="img/리뷰/이용후기11.png"></div>
-                        <div class="img4">x</div>
-                    </div>
-                </div>
-
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" style="object-fit: contain;">
                 <div class="modal-content">
-                    <div class="modal-content-info">
-                        
-                        <div>
-                            <div class="info-name-date">
-                                <span>신*윤</span>
-                                <span>2022.07.02</span>
-                            </div>
-                            <div class="purchase">정기구독박스</div>
-                        </div>
-                        <div class="modal-star">
+                    
+                    <div class="modal-header">
+                        <div class="modal-title" id="exampleModalLabel"></div>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    
+                    <div class="modal-body" style="display: flex;">
+                        <div class="modal-mainImage">
                             <div>
-                                <span>★</span>
-                                <span>★</span>
-                                <span>★</span>
-                                <span>★</span>
-                                <span>☆</span>
+                                <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+                                    <div class="carousel-inner">
+                                      <div class="carousel-item active" >
+                                        <img src="img/리뷰/이용후기1.png" class="d-block w-100" style="object-fit: contain;">
+                                      </div>
+                                      <div class="carousel-item">
+                                        <img src="img/리뷰/이용후기10.png" class="d-block w-100">
+                                      </div>
+                                      <div class="carousel-item">
+                                        <img src="img/리뷰/이용후기11.png" class="d-block w-100" alt="...">
+                                      </div>
+                                    </div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+                                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                      <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+                                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                      <span class="visually-hidden">Next</span>
+                                    </button>
+                                </div>
                             </div>
-                            <div class="avgstar">4.0</div>
+                            <div class="modal-imgList">
+                                <div><img class="small" src="img/리뷰/이용후기1.png"></div>
+                                <div><img class="small" src="img/리뷰/이용후기10.png"></div>
+                                <div><img class="small" src="img/리뷰/이용후기11.png"></div>
+                                <div class="img4">x</div>
+                            </div>
                         </div>
-
-                    </div>
-                    <div class="modal-content-text">
-                        신선한 토마토로 카프레제 해먹었어요~ 멋쟁이 토마토로 파스타도 해먹구 신이 나요~
-                    </div>
-                    <div class="modal-bottom">
-                        <div class="modal-sub">
-                            <img src="#">
-                            <a href="#">구독 박스가 궁금하다면? >></a>
+                        
+                        <div class="modal-mycontent">
+                            <div class="modal-content-info">
+                                
+                                <div>
+                                    <div class="info-name-date">
+                                        <span>신*윤</span>
+                                        <span>2022.07.02</span>
+                                    </div>
+                                    <div class="purchase">정기구독박스</div>
+                                </div>
+                                <div class="modal-star">
+                                    <div>
+                                        <span>★</span>
+                                        <span>★</span>
+                                        <span>★</span>
+                                        <span>★</span>
+                                        <span>☆</span>
+                                    </div>
+                                    <div class="avgstar">4.0</div>
+                                </div>
+        
+                            </div>
+                            <div class="modal-content-text">
+                                신선한 토마토로 카프레제 해먹었어요~ 멋쟁이 토마토로 파스타도 해먹구 신이 나요~
+                            </div>
+                            <div class="modal-bottom">
+                                <div class="modal-sub">
+                                    <img src="#">
+                                    <a href="#">구독 박스가 궁금하다면? >></a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="bottom-update-del">
-                            <button>수정하기</button>
-                            <button>삭제하기</button>
-                        </div>
                     </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                        style="background-color:rgb(113, 214, 199); border:0; font-weight: bold;">수정하기</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                        style="background-color:rgb(113, 214, 199); border:0; font-weight: bold;">삭제하기</button>
+                </div>
                 </div>
             </div>
         </div>

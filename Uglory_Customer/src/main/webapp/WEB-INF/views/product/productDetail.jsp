@@ -47,7 +47,7 @@
         <section class="product-detail">
             <!-- 상품, 옵션, FARM, 별점, 상품이미지, 리뷰 테이블 필요 -->
 
-            <form action="${pCode}" method="POST">
+            <form>
                 <div class="product-detail-area">
                     <!-- 상품 이미지 영역 최대 4개(썸네일 포함)-->
                     <div class="product-detail-img">
@@ -55,15 +55,15 @@
                             <tbody>
                                 <tr>
                                     <!-- 썸네일 이미지 -->
-                                    <td><img src="img/famer.png" width="400" height="400"/></td>
+                                    <td><img src="${contextPath}/resources/images/main/famer.png" width="400" height="400"/></td>
                                 </tr>
                             </tbody>
                             <tfoot>
                                 <tr>
                                     <td>
-                                        <img src="img/famer.png" width="75" height="75"/>
-                                        <img src="img/famer.png" width="75" height="75"/>
-                                        <img src="img/famer.png" width="75" height="75"/>
+                                        <img src="${contextPath}/resources/images/main/famer.png" width="75" height="75"/>
+                                        <img src="${contextPath}/resources/images/main/famer.png" width="75" height="75"/>
+                                        <img src="${contextPath}/resources/images/main/famer.png" width="75" height="75"/>
                                     </td>
                                 </tr>
                             </tfoot>
@@ -73,20 +73,20 @@
                     <!-- 상품 정보  -->
                     <div class="product-detail-info">
 
-                        <!-- 상품명 가격 -->
-                        <h3 class="product-name" style="color: gray;"><span>${detail.pName}</span></h3>
+                        <!-- 상품명 옵션명 -->
+                        <h3 class="product-name" style="color: gray;"><span>${detail.PName}</span></h3>
                         <h3 class="option-name" style="color: gray;"><span>(1.5kg/2.5kg)</span></h3>
 
                         <!-- 상품가격, 별점, 리뷰 영역 -->
                         <div class="detail-name-area">
-                            <h3 class="product-price"><span>${detail.pPrice}</span></h3>
+                            <h3 class="product-price"><span>${detail.PPrice}</span>원</h3>
 
                             <div class="detail-star-area">
-                                <img src="img/star.png" width="30px" height="30px">
-                                <img src="img/star.png" width="30px" height="30px">
-                                <img src="img/star.png" width="30px" height="30px">
-                                <img src="img/star.png" width="30px" height="30px">
-                                <img src="img/star.png" width="30px" height="30px">
+                                <img src="${contextPath}/resources/images/main/star.png" width="30px" height="30px">
+                                <img src="${contextPath}/resources/images/main/star.png" width="30px" height="30px">
+                                <img src="${contextPath}/resources/images/main/star.png" width="30px" height="30px">
+                                <img src="${contextPath}/resources/images/main/star-2.png" width="30px" height="30px">
+                                <img src="${contextPath}/resources/images/main/star-2.png" width="30px" height="30px">
 
                                 <!-- 별점 평균 -->
                                 <span>3</span>
@@ -133,7 +133,7 @@
 
                 <!-- 썸머노트 조회 영역(확인 필요) -->
                 <div>
-                    <span>${detail.pInfo}</span>
+                    <span>조회</span>
                 </div>
                 <!-- 썸머노트 조회 영역 끝 -->
 
@@ -168,7 +168,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">쇼핑 계속하기</button>
-                                <button type="button" class="btn btn-primary">장바구니보기</button>
+                                <button type="button" class="btn btn-primary" id="productCartBtn">장바구니보기</button>
                             </div>
                         </div>
                     </div>
@@ -194,17 +194,6 @@
         <script src="${contextPath}/resources/lib/tempusdominus/js/moment-timezone.min.js"></script>
         <script src="${contextPath}/resources/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
-        <script>
-            // 최상위 주소
-            const contextPath = "${contextPath}";
-
-            // 카테고리 번호
-            const categoryNo = "${detail.categoryNo}";
-
-            // 상품 번호
-            const pCode = "${detail.pCode}"
-
-        </script>
 
         <%-- Template Javascript --%>
         <script src="${contextPath}/resources/js/main.js"></script>
