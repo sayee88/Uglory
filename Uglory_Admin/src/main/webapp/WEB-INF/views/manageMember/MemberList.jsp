@@ -66,6 +66,7 @@
                         <h2 class="text-start">회원 관리</h2>
                         <hr>
 
+                        <%-- 검색창 --%>
                         <div class="listHead">
                             <form>
                                 <select name="" id="">
@@ -73,11 +74,12 @@
                                     <option value="">회원 이름</option>
                                 </select>
 
-                                <input type="text" id="pSearch">
+                                <input type="text" id="memberSearch">
                                 <button type="button" class="btn btn-secondary"><i class="fa-solid fa-magnifying-glass"></i></button>
                             </form>
                         </div>
 
+                        <%-- 메인 --%>
                         <div class="listBody">
                             <table class="table table-borderless farmTable mt-4">
                                 <thead>

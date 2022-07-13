@@ -8,6 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="${contextPath}/resources/css/member/member.css" rel="stylesheet">
+    
     <title>about</title>
 
     <!-- Google Web Fonts -->
@@ -33,12 +34,14 @@
 
     <!-- Template Stylesheet -->
     <link href="${contextPath}/resources/css/style-1.css" rel="stylesheet">
+    
 </head>
 <body>
     <main class="main">
 
      <jsp:include page="/WEB-INF/views/common/header-1.jsp" />
 
+        <!-- 1어바웃 시작 -->
         <div>
             <div class="about1">
                 <p class="about1-title">
@@ -47,7 +50,8 @@
                 </p>
                 <div class="empty1"></div>
                     <div class="about1-content">
-                    
+                        
+                        <%-- 1번 --%>
                         <div>
                             <div class="about1-item">
                                 <p class="about1-num">1.</p>
@@ -58,11 +62,14 @@
                             <div class="about1-box">
                                 <p class="about1-boxContent">박스 크기를 선택해요</p>
                                 <p class="about1-subContext">1-2인 가구용, 3-4인 가구용</p>
-                                <div class="about1-image1"></div>
+                                <div class="about1-image1" >
+                                    <img class="about1-image1" src="${contextPath}/resources/img/PYJ/about1-image.png">
+                                </div>                        
+                                
                             </div>
                         </div>
 
-                        
+                        <%-- 2번 --%>
                         <div>
                             <div class="about1-item">
                                 <p class="about1-num">2.</p>
@@ -70,34 +77,42 @@
                             </div>
                             
                             <div class="empty2"></div>
-
                             <div class="about1-box">
                                 <p class="about1-boxContent">배송 주기를 선택해요.</p>
                                 <p class="about1-subContext">매주, 격주</p>
-                                <div class="about1-image2"></div>
+                                <div class="about1-image1" >
+                                    <img class="about1-image1" src="${contextPath}/resources/img/PYJ/about-image2.png">
+                                </div>                        
+                                
                             </div>
                         </div>
 
-
+                        <%-- 3번 --%>
                         <div>
-                            <div class="about1-item">
-                                <p class="about1-num">3.</p>
-                                <div class="about1-line"></div>
-                            </div>
-                            
-                            <div class="empty2"></div>
-                            <div class="about1-box">
-                                <p class="about1-boxContent">먹지 않는 채소를 제외하면 끝!</p>
-                                <p class="about1-subContext">구독 후에도 변경 가능</p>
-                                <div class="about1-image3"></div>
-                            </div>
+                        <div class="about1-item">
+                            <p class="about1-num">3.</p>
+                            <div class="about1-line"></div>
                         </div>
                         
+                        <div class="empty2"></div>
+                        <div class="about1-box">
+                            <p class="about1-boxContent">먹지 않는 채소를 제외하면 끝!</p>
+                            <p class="about1-subContext">구독 후에도 변경 가능</p>
+                            <div class="about1-image1" >
+                                <img class="about1-image1" src="${contextPath}/resources/img/PYJ/about-image3.png">
+                            </div>                        
+                            </div>
+                        </div>
+                    </div>
+
+
                    
                     </div>
                 </div>
         </div>
+        <!-- 1번 어바웃 끝 -->
     
+        <!-- 2번 어바웃 시작 -->
         <div class="empty"></div> 
         <div class="about2">
             <div class="about2-content">
@@ -112,9 +127,9 @@
                 <div class="about2-items">
                     <div class="about2-item1">
                         <div class="about2-image1">
-                            <div class="empty4"></div>
+                            <img src="${contextPath}/resources/img/PYJ/about2-image1.png">
                             <p class="about2-text1">품목알림</p>
-                            <div class="empty5"></div>
+                           
                             <p class="about2-text2">월요일</p>
                         </div>
                     </div>
@@ -122,8 +137,8 @@
                 </div>
                 <div class="about2-items">
                     <div class="about2-item1">
-                        <div class="about2-image2">
-                            <div class="empty4"></div>
+                        <div class="about2-image1">
+                            <img src="${contextPath}/resources/img/PYJ/about2-image2.png">
                             <p class="about2-text1">결제일</p>
                             <div class="empty5"></div>
                             <p class="about2-text2">수요일</p>
@@ -133,8 +148,8 @@
                 </div>
                 <div class="about2-items">
                     <div class="about2-item1">
-                        <div class="about2-image3">
-                            <div class="empty4"></div>
+                        <div class="about2-image1">
+                            <img src="${contextPath}/resources/img/PYJ/about2-image3.png">
                             <p class="about2-text1">도착일</p>
                             <div class="empty5"></div>
                             <p class="about2-text2">금요일</p>
@@ -145,17 +160,18 @@
 
 
             </div>
-
-            <div></div>
-            
         </div>
-        
+        <!-- 2 어바웃 끝 -->
+
+        <!-- 3어바웃 시작 -->
         <div class="empty"></div>
         <div class="about3">
             <div class="about3-content">
                 <div class="about3-imagePlace">
                     <div>
-                        <div class="about3-image"></div>
+                        <div class="about3-image">
+                            <img  class="about3-image" src="${contextPath}/resources/img/PYJ/Manual-vegebox.54b16562.jpg">
+                        </div>
                     </div>
                 </div>
                 <div class="about3-text">
@@ -170,15 +186,14 @@
                     <p class="about3-Explanation">지금, 가장 맛있는 제철 채소를 수확 직후 보내드려요.</p>
                     
                     <div class="vegetable-area">
-                        <a class="vegetable">어글로리 채소 전체보기👀🥬</a>
-                     
-
+                        <a class="vegetable">어글로리 채소 전체보기 click  👀🥬</a>
                     </div>
 
                 </div>
              
             </div>
         </div>
+        <!-- 3어바웃 시작 -->
 
     </main>
 
