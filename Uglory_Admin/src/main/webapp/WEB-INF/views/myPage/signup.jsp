@@ -40,13 +40,13 @@
                 <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
                     <div class="bg-light rounded p-4 p-sm-8 my-4 mx-3">
                         <div class="d-flex align-items-center justify-content-between mb-3">
-                            <a href="index.html" class="">
+                            <a href="${contextPath}">
                                 <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>UGLORY</h3>
                             </a>
-                            <h3>Sign Up</h3>
+                            <h3 id="signUp">Sign Up</h3>
                         </div>
 
-                        <form action="signUp" method="POST" name="signUp-form" enctype="multipart/form-data">
+                        <form action="signUp" method="POST" name="signUp-form" enctype="multipart/form-data" onsubmit="return signUpValidate()">
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" id="floatingText" name="adminName">
                                 <label for="floatingText">Admin name</label>
@@ -55,7 +55,7 @@
                                 <input type="email" class="form-control" id="floatingInput" name="adminEmail">
                                 <label for="floatingInput">Email address</label>
                             </div>
-                            <p class="text-success mb-3">사용가능한 이메일입니다.</p>
+                            <p class="text-success mb-3" id="emailMessage"></p>
                             <div class="form-floating mb-3">
                                 <input type="password" class="form-control" id="floatingPassword" name="adminPw">
                                 <label for="floatingPassword">Password</label>
@@ -64,7 +64,7 @@
                                 <input type="password" class="form-control" id="floatingPwConfirm">
                                 <label for="floatingPwConfirm">Password Confirm</label>
                             </div>
-                            <p class="text-danger mb-3">비밀번호가 일치하지 않습니다.</p>
+                            <p class="text-danger mb-3" id="pwMessage"></p>
 
                             <div class="form-floating mb-3">
                                 <input type="password" class="form-control" id="floatingApproval">
@@ -76,13 +76,19 @@
                         
                             <button class="btn btn-primary py-3 w-100 mb-4" style="font-size: 20px;">Sign Up</button>
                         </form>
-                        <p class="text-center mb-0">Already have an Account? <a href="signin.html">Sign In</a></p>
+                        <p class="text-center mb-0">Already have an Account? <a href="${contextPath}/signIn">Sign In</a></p>
                     </div>
                 </div>
             </div>
         </div>
         <!-- Sign Up End -->
     </div>
+
+    <c:if test="${ !empty message }">
+    <script>
+        alert("${message}");
+    </script>
+    </c:if>
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
