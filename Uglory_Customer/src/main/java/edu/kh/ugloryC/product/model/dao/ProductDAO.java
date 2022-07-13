@@ -13,11 +13,16 @@ public class ProductDAO {
 	private SqlSessionTemplate sqlSession;
 	
 	/** 상품 상세조회 DAO
-	 * @param pCode
+	 * @param productCode
 	 * @return detail
 	 */
-	public ProductDetail productDetail(int pCode) {
+	public ProductDetail productDetail(int productCode) {
 		
-		return sqlSession.selectOne("productMapper.productDetail", pCode);
+		return sqlSession.selectOne("productMapper.productDetail", productCode);
+	}
+
+	public int totalAmount(int optionCode, int productCode) {
+
+		return sqlSession.selectOne(null);
 	}
 }

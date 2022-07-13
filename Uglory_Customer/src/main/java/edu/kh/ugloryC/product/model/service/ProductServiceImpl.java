@@ -14,8 +14,17 @@ public class ProductServiceImpl implements ProductService {
 
 	// 상품 상세 조회 서비스 구현
 	@Override
-	public ProductDetail productDetail(int pCode) {
+	public ProductDetail productDetail(int productCode) {
 		
-		return dao.productDetail(pCode);
+		return dao.productDetail(productCode);
 	}
+
+	// 총 계산 서비스 구현
+	@Override
+	public int totalAmount(int optionCode, int productCode) {
+
+		return dao.totalAmount(optionCode, productCode);
+	}
+	
+	
 }

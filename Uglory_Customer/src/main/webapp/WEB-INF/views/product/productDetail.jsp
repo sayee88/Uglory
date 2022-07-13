@@ -74,12 +74,17 @@
                     <div class="product-detail-info">
 
                         <!-- 상품명 옵션명 -->
-                        <h3 class="product-name" style="color: gray;"><span>${detail.PName}</span></h3>
-                        <h3 class="option-name" style="color: gray;"><span>(1.5kg/2.5kg)</span></h3>
+                        <h3 class="product-name" style="color: gray;"><span>${detail.productName}</span></h3>
+
+                        <h3 class="option-name" style="color: gray;"><span>(
+                            <c:forEach var="option_type" items="${optionList}"> ${option_type.optionName}</span>
+                            </c:forEach>
+                        )
+                        </h3>
 
                         <!-- 상품가격, 별점, 리뷰 영역 -->
                         <div class="detail-name-area">
-                            <h3 class="product-price"><span>${detail.PPrice}</span>원</h3>
+                            <h3 class="product-price"><span>${detail.productPrice}</span>원</h3>
 
                             <div class="detail-star-area">
                                 <img src="${contextPath}/resources/images/main/star.png" width="30px" height="30px">
@@ -103,10 +108,17 @@
                             <p>생산자 : <span>${detail.producer}</span> </p>
 
                             <select name="product-option" class="product-option">
+
                                 <!-- 옵션 선택 for문으로 가져오기 -->
                                 <option value="option-0" selected>옵션 선택</option>
-                                <option value="option-1">1.5kg</option>
-                                <option value="option-2">2.5kg</option>
+                                <c:forEach var="option_type" items="${optionList}">
+                                    <option value="option-1" id="optionCode" name="optionCode">${option_type.optionName} - 
+                                        <%-- 옵션 가격이 0원이 아닐때만 가격 조회 --%>
+                                        <c:if test="${option_type.optionPrice != 0}">
+                                            ${option_type.optionPrice}
+                                        </c:if>
+                                    </option>
+                                </c:forEach>
                             </select>
                         </div>
 
