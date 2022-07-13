@@ -5,10 +5,10 @@
 	<!-- 상품 상세조회용 resultMap -->   
   	<resultMap type="detail" id="detail_rm">
   	
-    	<id property="pCode" column="P_CD"/>
-      	<result property="pName" column="PRODUCT_NM"/>
-      	<result property="pPrice" column="PRODUCT_PRICE"/>
-      	<result property="pInfo" column="RODUCT_INFO"/>
+    	<id property="productCode" column="P_CD"/>
+      	<result property="productName" column="PRODUCT_NM"/>
+      	<result property="productPrice" column="PRODUCT_PRICE"/>
+      	<result property="productInfo" column="RODUCT_INFO"/>
       	
       	<result property="optionName" column="OPTION_NM"/>
       	<result property="optionPrice" column="OPTION_PRICE"/>
@@ -36,7 +36,7 @@
 		SELECT P_CD, PRODUCT_NM, PRODUCT_PRICE, PRODUCT_INFO, P_CATEGORY_NO, PRODUCER, ORIGIN
 		FROM PRODUCT
 		JOIN FARM USING(FARM_NO)
-		WHERE P_CD = ${pCode}
+		WHERE P_CD = ${productCode}
 	</select>
 
 </mapper>

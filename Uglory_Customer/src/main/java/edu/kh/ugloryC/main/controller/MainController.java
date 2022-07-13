@@ -24,4 +24,11 @@ public class MainController {
 	public String about() {
 		return"common/about";
 	}
+	
+	// 개인정보처리방침 페이지로 이동
+	@GetMapping("review/privacyPolicy")
+	public String privacyPolicy() {
+		return"review/privacyPolicy";
+	}
+	
 }
