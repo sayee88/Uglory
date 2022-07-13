@@ -36,11 +36,10 @@ public class ProductController {
 	Logger logger = LoggerFactory.getLogger(ProductController.class);
 	
 	// 상품 상세 조회
-	@GetMapping("detail/{categoryNo}/{pCode}")
+	@GetMapping("detail/{categoryNo}/{productCode}")
 	public String productDetail(@PathVariable("categoryNo") int categoryNo,
 							    @PathVariable("productCode") int productCode,
-							    int optionCode,
-							    int deliveryAmount,
+							    String optionName,
 							    Model model,
 							    @RequestParam Map<String, Object> paramMap,
 							    HttpServletRequest req, HttpServletResponse resp) {
@@ -57,7 +56,7 @@ public class ProductController {
 			if(!optionList.isEmpty()) { // 옵션 조회 성공 시
 				
 				paramMap.put("productCode", productCode);
-				paramMap.put("optionCode", optionCode);
+				paramMap.put("optionName", optionName);
 				
 				int result = service.totalAmount(paramMap);
 				

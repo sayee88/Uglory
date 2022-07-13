@@ -112,10 +112,11 @@
                                 <!-- 옵션 선택 for문으로 가져오기 -->
                                 <option value="option-0" selected>옵션 선택</option>
                                 <c:forEach var="option_type" items="${optionList}">
-                                    <option value="option-1" id="optionCode" name="optionCode">${option_type.optionName} - 
+                                    <option value="${optionList.optionCode}" id="optionCode" name="optionCode">${option_type.optionName} - 
                                         <%-- 옵션 가격이 0원이 아닐때만 가격 조회 --%>
                                         <c:if test="${option_type.optionPrice != 0}">
                                             ${option_type.optionPrice}
+                                            <%-- 어디가신겁니까~ --%>
                                         </c:if>
                                     </option>
                                 </c:forEach>

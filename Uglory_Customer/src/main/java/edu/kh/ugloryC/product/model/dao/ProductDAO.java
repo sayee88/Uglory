@@ -25,7 +25,7 @@ public class ProductDAO {
 
 	/** 총 가격 조회 DAO
 	 * @param paramMap
-	 * @return map
+	 * @return result
 	 */
 	public int totalAmount(Map<String, Object> paramMap) {
 
