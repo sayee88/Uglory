@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="memberMapper">
+	
+	<resultMap type="member" id="member_rm">
+		<id property="memberNo" column="MEMBER_NO"/>
+		
+		<result property="memberName" column="MEMBER_NAME"/>
+		<result property="memberEmail" column="MEMBER_EMAIL"/>
+		<result property="secessionFlag" column="MEMBER_ST"/>
+		<result property="secessionReason" column="SECESSION_CNT"/>
+	</resultMap>
+	
+	
+	<!-- 로그인 -->
+	<select id="login" resultMap="member_rm">
+		SELECT MEMBER_NO, MEMBER_NAME, MEMBER_EMAIL
+		FROM MEMBER
+		WHERE MEMBER_EMAIL = #{memberEmail}
+		AND MEMBER_ST = 'N'
+	</select>
+	
+	<!-- 회원가입 -->
+	<insert id="signUp" parameterType="member"  useGeneratedKeys="true">
+		<selectKey  keyProperty="memberNo" resultType="_int" order="BEFORE">
+			SELECT SEQ_MEMBER_NO.NEXTVAL FROM DUAL
+		</selectKey>
+		
+		INSERT INTO MEMBER VALUES(#{memberNo}, #{memberName}, #{memberEmail}, DEFAULT, DEFAULT )
+
+	</insert>
+</mapper>
