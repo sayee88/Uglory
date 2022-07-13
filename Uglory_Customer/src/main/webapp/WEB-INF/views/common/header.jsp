@@ -58,4 +58,5 @@
         </div>
     </div>
     <!-- Navbar & Hero End -->
+>>>>>>> branch 'main' of https://github.com/FinalDevTeam2/Uglory.git
 </header>
