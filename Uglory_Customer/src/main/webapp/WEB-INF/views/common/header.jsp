@@ -29,7 +29,7 @@
                         <a href="${contextPath}/common/mission" class="nav-item nav-link">Mission</a>
                         <a href="${contextPath}/common/about" class="nav-item nav-link">About</a>
                         <a href="${contextPath}/product/list" class="nav-item nav-link">Market</a>
-                        <a href="Review.html" class="nav-item nav-link icon">Review</a>
+                        <a href="${contextPath}/review/list" class="nav-item nav-link icon">Review</a>
                     </div>
                     <a href="#" class="nav-item icon"><img class="menu-chart" src="${contextPath}/resources/images/main/shopping-cart-white.png"></a>
                     <a href="${contextPath}/member/login" class="nav-item icon"><img class="menu-chart" src="${contextPath}/resources/images/main/user-white.png"></a>
@@ -57,6 +57,6 @@
             </div>
         </div>
     </div>
-    <!-- Navbar & Hero End -->
->>>>>>> branch 'main' of https://github.com/FinalDevTeam2/Uglory.git
+    
+    
 </header>
