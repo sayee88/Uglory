@@ -27,7 +27,7 @@
                     <div class="navbar-nav ms-auto py-0 pe-4">
                         <a href="${contextPath}" class="nav-item nav-link active">Home</a>
                         <a href="${contextPath}/common/mission" class="nav-item nav-link">Mission</a>
-                        <a href="About.html" class="nav-item nav-link">About</a>
+                        <a href="${contextPath}/common/about" class="nav-item nav-link">About</a>
                         <a href="${contextPath}/product/list" class="nav-item nav-link">Market</a>
                         <a href="Review.html" class="nav-item nav-link icon">Review</a>
                     </div>
@@ -41,7 +41,7 @@
                     <div class="row align-items-center g-5">
                         <div class="col-lg-6 text-center text-lg-start">
                             <h1 class="display-3 text-white animated slideInLeft">Reap every crop<br></h1>
-                            <p class="text-white animated slideInLeft mb-4 pb-2">Hello, we are vegetable village.
+                            <p class="text-white animated slideInLeft mb-4 pb-2">Hello, we are vegetable village. 
                                 Our goal is an interview.
                                 Our motto is don't be scared.
                                 I have one person to introduce.
