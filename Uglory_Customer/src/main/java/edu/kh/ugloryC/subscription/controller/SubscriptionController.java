@@ -19,15 +19,39 @@ public class SubscriptionController {
 	Logger logger = LoggerFactory.getLogger(SubscriptionController.class);
 	
 	@GetMapping("/subscription")
-	public String Subscription(/*@PathVariable("categoryNo") int categoryNo,*/
+	public String subscription(/*@PathVariable("categoryNo") int categoryNo,*/
 							   Model model,
 							   HttpServletRequest req,
 							   HttpServletResponse resp) {
 		
 		
 		
-		return "subscription";
+		return "subscription/subscription1";
 	}
+	
+	@GetMapping("/subscription/order")
+	public String subscription_order(/*@PathVariable("categoryNo") int categoryNo,*/
+			Model model,
+			HttpServletRequest req,
+			HttpServletResponse resp) {
+		
+		
+		
+		return "subscription/subscription2";
+	}
+	
+	@GetMapping("/subscription/pay")
+	public String subscription_pay(/*@PathVariable("categoryNo") int categoryNo,*/
+			Model model,
+			HttpServletRequest req,
+			HttpServletResponse resp) {
+		
+		
+		
+		return "subscription/subscription3";
+	}
+	
+	
 
 
 }
