@@ -155,6 +155,11 @@
 
 
                                         <div class="container">
+
+                                            <div>
+                                                <img src="${contextPath}/resources/img/BSH/제외채소.png" style="cursor: pointer;">
+                                            </div>
+
                                         
                                             <div class="row">
                                                 <div class="col">
