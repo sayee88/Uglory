@@ -31,4 +31,6 @@ public class ProductDetail {
     private int reviewCount;
     
     private List<ProductImage> imageList;
+    
+    private String pState; // 상품상태
 }

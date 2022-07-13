@@ -1,53 +1,49 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="utf-8">
-    <title>Restoran - Bootstrap Restaurant Template</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
-
-    <!-- Favicon -->
-    <link href="../img/favicon.ico" rel="icon">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>about</title>
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
-    <!-- Libraries Stylesheet -->
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+   <!-- Libraries Stylesheet -->
+    <link href="${contextPath}/resources/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="${contextPath}/resources/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="${contextPath}/resources/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
-    <!-- bootstrap css -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="../css/style.css" rel="stylesheet">
-
-    <link rel="stylesheet" href="../css/subscription.css">
-    
-    
+    <link href="${contextPath}/resources/css/style-1.css" rel="stylesheet">
 </head>
 
 <body>
     <div class="container-xxl bg-white p-0">
-        <!-- Spinner Start -->
+        <%-- <!-- Spinner Start -->
         <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
             <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
                 <span class="sr-only">Loading...</span>
             </div>
         </div>
-        <!-- Spinner End -->
+        <!-- Spinner End --> --%>
 
 
         <!-- Navbar & Hero Start -->
@@ -68,99 +64,84 @@
                         <a href="Market.html" class="nav-item nav-link">Market</a>
                         <a href="Review.html" class="nav-item nav-link icon">Review</a>
                     </div>
-                    <a href="#" class="nav-item icon"><img class="menu-chart" src="../img/shopping-cart-white.png"></a>
-                    <a href="#" class="nav-item icon"><img class="menu-chart" src="../img/user-white.png"></a>
+                    <a href="#" class="nav-item icon"><img class="menu-chart" src="img/shopping-cart-white.png"></a>
+                    <a href="#" class="nav-item icon"><img class="menu-chart" src="img/user-white.png"></a>
                 </div>
             </nav>
 
             <div class="container-xxl py-5 bg-dark hero-header mb-5">
                 <div class="container text-center my-5 pt-5 pb-4">
-                    <h1 class="display-3 text-white mb-3 animated slideInDown">Subscription</h1>
+                    <h1 class="display-3 text-white mb-3 animated slideInDown">Mission</h1>
                     <nav aria-label="breadcrumb">
-                        <!-- <ol class="breadcrumb justify-content-center text-uppercase">
+                        <ol class="breadcrumb justify-content-center text-uppercase">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
                             <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                            <li class="breadcrumb-item text-white active" aria-current="page">Market</li>
-                        </ol> -->
+                            <li class="breadcrumb-item text-white active" aria-current="page">Mission</li>
+                        </ol>
                     </nav>
                 </div>
             </div>
         </div>
         <!-- Navbar & Hero End -->
 
-        <div id="box">
-            <div style="width: 70%;">
 
-                
-                <div class="inner-box">
-                    <div class="step-text">
-                        <h3 id="step-text">STEP 4</h3>
-                        <h2>배송 정보를 입력해주세요.</h2>
-                        <pre style="font-size: 17px;">*은 필수 입력 항목입니다.</pre>
-                    </div>
-                    
-                    <div class="outer-table">
-                        <div class="gray-box">
-                            <form action="#" onsubmit="return orderValidate()">
-
-                                <table id="table2">
-                                    <tr>
-                                        <th colspan="2"><label for="s-orderName">받으시는 분 이름 *</label></th>
-                                    </tr>
-                                    <tr>
-                                        <th colspan="2"><input type="text" id="s-orderName" name="s-orderName" placeholder="한글 2~5글자 / 영문 2~10글자 사이로 작성해주세요." maxlength="30" autocapitalize="off"  ></th>
-                                    </tr>
-                                    <tr></tr>
-                                    <tr>
-                                        <th colspan="2"><label for="s-orderPhone">연락처 *</label></th>
-                                    </tr>
-                                    <tr>
-                                        <th colspan="2"><input type="text" id="s-orderPhone" name="s-orderPhone" placeholder="연락처를 입력해주세요" maxlength="11"  ></th>
-                                    </tr>
-                                    <tr></tr>
-                                    <tr>
-                                        <th colspan="2"><label for="s-orderAddress">주소 *</th>
-                                    </tr>
-                                    <tr>
-                                        <th id="postcode"><input type="text" id="sample4_postcode" name="s-orderAddress" placeholder="우편번호"></th>
-                                        <th style="width: 100px;"><button type="button" class="search-btn" id="addressBtn" onclick="sample4_execDaumPostcode()">검색</button></th>
-                                    </tr>
-                                    <tr>
-                                        <th colspan="2"><input type="text" name="order-address" id="sample4_roadAddress" placeholder="도로명 주소"  ></th>
-                                    </tr>
-                                    <tr>
-                                        <th colspan="2"><input type="text" name="order-detailAddress" id="sample4_detailAddress" placeholder="상세주소를 입력해주세요"  ></th>
-                                    </tr>
-                                    <tr></tr>
-                                    <tr>
-                                        <th colspan="2"><label for="s-orderReq">배송 요청사항(선택)</label></th>
-                                    </tr>
-                                    <tr>
-                                        <th colspan="2"><input type="text" id="s-orderReq" name="s-orderReq" placeholder="예) 집 앞에 두시고 벨은 누르지 말아주세요."></th>
-                                    </tr>
-                                    <tr></tr>
-                                    <tr>
-                                        <th colspan="2" class="submit-btn-th"><button class="submit-btn" type="submit" id="submit-btn">다음</button></th>
-                                    </tr>
-                                </table>
-                            </form>
-                            
+        <!-- About Start -->
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="row g-5 align-items-center">
+                    <div class="col-lg-6">
+                        <div class="row g-3">
+                            <div class="col-6 text-start">
+                                <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.1s" src="img/about-1.jpg">
+                            </div>
+                            <div class="col-6 text-start">
+                                <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.3s" src="img/about-2.jpg" style="margin-top: 25%;">
+                            </div>
+                            <div class="col-6 text-end">
+                                <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.5s" src="img/about-3.jpg">
+                            </div>
+                            <div class="col-6 text-end">
+                                <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.7s" src="img/about-4.jpg">
+                            </div>
                         </div>
-    
                     </div>
+                    <div class="col-lg-6">
+                        <h5 class="section-title ff-secondary text-start text-primary fw-normal">Mission</h5>
+                        <h1 class="mb-4">우리가 함께 구하는 것</h1>
+                        <h6 style="color:rgb(255, 89, 87); font-size: 20px;">왜 농산물의 1/3이 버려질까요?</h6>
+                        <p class="mb-4">전세계 농산물의 1/3이 "외적인 기준"이 미달해 버려지고 있습니다. 같은 땅에서 건강하게 자랐지만 모양과 크기,중량 등이 판매하기 용이하지 않다는 이유로 헐값에 처분되거나 폐기합니다.</p>
+                        <h6 style="font-weight: bold;">* 혹부리 당근, 사춘기 감자, 째깐한 무, 핸드볼 크기 양배추를 마트에서 볼 수 없는 이유</h6>
+                        <p class="mb-4">소비자는 농산물을 고를 때 눈에 보이는 ‘모양’을 보고 살 수 밖에 없어 실제 맛이나 품질과는 무관하게 완벽한 모양의 흠없는 농산물을 찾게됩니다.</p>
+                        <h6 style="font-weight: bold;">* 수요와 공급의 불안정</h6>
+                        <p class="mb-4">‘못생겼다’는 이유 외에도 농산물이 갈 곳을 잃는 경우가 있습니다. 바로 판로가 부족한 경우 그리고 단순히 많이 생산된 경우인데요. 정확한 수요공급 예측이 어려워 매년 ‘밭을 갈아엎는’ 상황이 생기고 있습니다.</p>
+                        
+                        <h6 style="color:rgb(255, 89, 87); font-size: 20px;">지속 가능한 농업을 지지합니다.</h6>
+                        <p class="mb-4">모양으로 억울하게 남겨진 농산물을 구출하는 것 뿐만 아니라,
 
+
+                            생산단계부터 거칠고 못나도 건강한 생산방식을 
+                            
+                            고수하는 농법을 지지합니다.
+                            
+                            이를 위해 단순히 수확량 증대와 외적인 품위만을 위해 필요 이상의 방제를 하지는 않는지 점검하고,
+                            
+                            
+                            개성있는 외모를 가졌지만 친환경적인 농법으로
+                            
+                            안전하게 먹을 수 있는 농산물을 생산하는 산지와의 파트너쉽을 우선합니다.
+                            
+                            
+                            건강한 땅을 위한 농부의 땀과 노력이 인정받을 수 있고 소비자는 건강한 식품을 지속가능하게 공급받을 수 있도록 합니다.</p>
+                        <a class="btn btn-primary py-3 px-5 mt-2" href="">구독 신청하기</a>
+                    </div>
                 </div>
             </div>
         </div>
+        <!-- About End -->
 
+
+  
         
-
-
-
-
-
-
-
 
         <!-- Footer Start -->
         <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
@@ -244,18 +225,8 @@
     <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
-
-    <!-- bootstrap Javascript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    
-    <!-- 다음 주소 API -->
-    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-
     <!-- Template Javascript -->
-    <script src="../js/main.js"></script>
-
-    <!-- subscription -->
-    <script src="../js/subscription.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>

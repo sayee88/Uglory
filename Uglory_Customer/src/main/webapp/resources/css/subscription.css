@@ -1,0 +1,182 @@
+/* 1 */
+#box{
+    display: flex;
+    justify-content: center;
+}
+.inner-box{
+    padding: 120px 0;
+}
+#step-text{
+    color: gray;
+}
+pre{
+    font-size: 17px;
+}
+.col{
+    position: relative;
+}
+.box-image{
+    width: 100%;
+}
+.soldout{
+    background-color: rgba(224, 224, 224, 0.6);
+}
+.check-sticker1{
+    position: absolute;
+    width: 9%;
+    top: 10%;
+    left: 10%;
+}
+#box-name{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+#box-intro{
+    display: flex;
+    justify-content: center;
+}
+
+.step2{
+    padding: 120px 0;
+}
+
+.step3-container{
+    margin: 0 auto;
+    width: 500px;
+    height: 80px;
+}
+#exception-btn{
+
+    width: 500px;
+    height: 80px;
+    background-color: rgba(224, 224, 224, 0.6); 
+    color: rgb(255, 89, 87); 
+    font-size: 25px; 
+    border: none; 
+    text-decoration: underline;
+}
+.week-btn{
+    width: 200px;
+    height: 70px;
+    font-size: 22px;
+    margin: 0 100px;
+    padding: 20px 0;
+}
+
+.modal-dialog {
+    max-width: 700px;
+}
+
+/* 체크이미지 변경 */
+#standard-check + label{
+    width: 30px;
+    height: 30px;
+
+    display: inline-block;
+    cursor: pointer;
+}
+#standard-check:checked + label{
+    background-image: url(../img/BSH/체크.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#standard-check{
+    display: none;
+}
+#jumbo-check + label{
+    width: 30px;
+    height: 30px;
+
+    display: inline-block;
+    cursor: pointer;
+}
+#jumbo-check:checked + label{
+    background-image: url(../img/BSH/체크.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#jumbo-check{
+    display: none;
+}
+
+#fieldset1{height: 290px;}
+#fieldset2{height: 284px;}
+
+
+/* 2 */
+
+.step-text{
+    margin-bottom: 50px;
+}
+.outer-table{
+    display: flex;
+    justify-content: center;
+}
+.gray-box{
+    width: 80%;
+    background-color: rgba(224, 224, 224, 0.6);
+    padding: 50px 0;
+}
+#table2{
+    width: 80%;
+    margin: 0 auto;
+    font-size: 18px;
+    color: black;
+}
+#table2 tr{
+    height: 50px;
+}
+#table2 tr>th:nth-child(2){
+    text-align:end;
+}
+
+#table2 input{
+    padding: 7px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+}
+
+.search-btn{
+    width: 100%;
+    height: 45px;
+    border: 0;
+    border-radius: 5px;
+    background-color: gray;
+    color: white;
+}
+.submit-btn-th{
+    text-align: center;
+}
+.submit-btn{
+    width: 80%;
+    height: 55px;
+    font-size: 22px;
+    color: white;
+    background-color: #ff4444;
+    border: none;
+    margin-top: 60px;
+}
+
+/* 3 */
+
+#table3{
+    width: 80%;
+    margin: 0 auto;
+    font-size: 18px;
+}
+#table3 tr{
+    height: 50px;
+}
+#table3 tr>th:nth-child(2){
+    text-align:end;
+}
+#table3 th{
+    padding: 30px 10px 0 10px;
+}
+.white-th{
+    background-color: white;
+    font-size: 22px;
+    padding: 0 10px;
+}
