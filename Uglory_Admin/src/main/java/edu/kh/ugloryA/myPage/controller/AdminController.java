@@ -61,8 +61,7 @@ public class AdminController {
 	
 	//회원가입
 	@PostMapping("/signUp")
-	public String signUp( @ModelAttribute("inputAdmin") Admin inputAdmin,
-						  @RequestParam("uploadImage") MultipartFile uploadImage,
+	public String signUp( @RequestParam Map<String, Object> map,
 						  RedirectAttributes ra,
 						  HttpServletRequest req) throws IOException {
 		
@@ -72,12 +71,8 @@ public class AdminController {
 		String webPath = "/resources/img/profileImage/";
 		String folderPath = req.getSession().getServletContext().getRealPath(webPath);
 		
-		Map<String, Object> map = null;
-		
-		map.put("inputAdmin", inputAdmin);
 		map.put("webPath", webPath);
 		map.put("folderPath", folderPath);
-		map.put("uploadImage", uploadImage);
 		
 		//회원가입 수행
 		int result = service.signUp(map);
