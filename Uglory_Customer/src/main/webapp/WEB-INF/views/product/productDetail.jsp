@@ -107,16 +107,15 @@
                             <p>원산지 : <span>${detail.origin}</span> </p>
                             <p>생산자 : <span>${detail.producer}</span> </p>
 
-                            <select name="product-option" class="product-option">
+                            <select name="product-option" class="product-option" onchange="optionSelectBox(this)">
 
                                 <!-- 옵션 선택 for문으로 가져오기 -->
                                 <option value="option-0" selected>옵션 선택</option>
                                 <c:forEach var="option_type" items="${optionList}">
-                                    <option value="${option_type.optionName}" id="optionCode" name="optionCode">${option_type.optionName} - 
+                                    <option value="${option_type.optionCode}" >${option_type.optionName} - 
                                         <%-- 옵션 가격이 0원이 아닐때만 가격 조회 --%>
                                         <c:if test="${option_type.optionPrice != 0}">
                                             ${option_type.optionPrice}
-                                            <%-- 어디가신겁니까~ --%>
                                         </c:if>
                                     </option>
                                 </c:forEach>
@@ -210,7 +209,6 @@
 
         <%-- Template Javascript --%>
         <script src="${contextPath}/resources/js/main.js"></script>
-
         <script src="${contextPath}/resources/js/product/product-detail.js"></script>
 </body>
 </html>

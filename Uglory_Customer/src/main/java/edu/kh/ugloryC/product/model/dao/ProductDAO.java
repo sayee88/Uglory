@@ -28,7 +28,6 @@ public class ProductDAO {
 	 * @return result
 	 */
 	public int totalAmount(Map<String, Object> paramMap) {
-
 		return sqlSession.selectOne("productMapper.totalAmount", paramMap);
 	}
 }
