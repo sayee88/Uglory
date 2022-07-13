@@ -12,7 +12,7 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="../img/favicon.ico" rel="icon">
+    <link href="${contextPath}/resources/img/favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,7 +37,7 @@
     <!-- Template Stylesheet -->
     <link href="${contextPath}/resources/css/style.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="${contextPath}/resources/css/product/subscription.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/subscription.css">
     
     
 </head>
@@ -45,7 +45,7 @@
 <body>
     <jsp:include page="/WEB-INF/views/common/header-1.jsp" />
 
-    <form action="#">
+    <form action="${contextPath}/subscription/order">
 
         <div id="box" style="padding-bottom: 200px;">
             <div style="width: 70%;">
@@ -69,7 +69,7 @@
                                     <fieldset id="fieldset1">
                                         <input id="standard-check" type="radio" name="box">
                                         <label for="standard-check">
-                                            <img src="../img/BSH/standard.png" style="cursor: pointer;">
+                                            <img src="${contextPath}/resources/img/BSH/standard.png" style="cursor: pointer;">
                                         </label>
                                     </fieldset>
                                     <div>
@@ -83,7 +83,7 @@
                                 <fieldset id="fieldset2">
                                     <input id="jumbo-check" type="radio" name="box">
                                     <label for="jumbo-check">
-                                        <img src="../img/BSH/jumbo.png" style="cursor: pointer;">
+                                        <img src="${contextPath}/resources/img/BSH/jumbo.png" style="cursor: pointer;">
                                     </label>
                                 </fieldset>
                                 <div>
@@ -137,18 +137,31 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                    ...
+                                        <div class="container">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                                <label class="form-check-label" for="inlineCheckbox1">1</label>
+                                            </div>
+                                                <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                                <label class="form-check-label" for="inlineCheckbox2">2</label>
+                                            </div>
+                                                <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" disabled>
+                                                <label class="form-check-label" for="inlineCheckbox3">3 (disabled)</label>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                    <button type="reset" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+                                    <button type="button" class="btn btn-primary" style="background-color: #ff4444;">확인</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         
                         <div style="text-align: center; margin: 100px 0">
-                            <button class="submit-btn" >다음</button>
+                            <button class="submit-btn" onclick="location.href='${contextPath}/subscription/order'"> 다음</button>
                         </div>
 
                     </div>
