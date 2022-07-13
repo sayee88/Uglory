@@ -1,3 +1,14 @@
+// 모달
+if(document.getElementById('myModal')){
+    var myModal = document.getElementById('myModal')
+        var myInput = document.getElementById('myInput')
+
+        myModal.addEventListener('shown.bs.modal', function () {
+        myInput.focus()
+    })
+
+}
+
 function sample4_execDaumPostcode() {
     new daum.Postcode({
         oncomplete: function(data) {
@@ -65,42 +76,47 @@ function orderValidate(){
 
 }
 
-// submitBtn.addEventListener("click", function(){
 
-//     // 이름 유효성 검사
-//     if(orderName.value.trim().length == 0){
-//         alert("이름을 입력해주세요.");
-//         orderName.focus();
-//         return false;
-//     }
-//     if(!regExpName.test(orderName.value)){
-//         alert("이름은 한글 2~5글자 / 영문 2~10글자 사이로 작성해주세요.");
-//         orderName.focus();
-//         return false;
-//     }
-//     // if(reqExpName.test(orderName.value)){
+// 버섯 전체
+function mushroom(){
+    if(document.getElementById("mush1").checked == true){
+        for(var i=0 ; i<5 ; i++) document.getElementsByName("mushroom")[i].checked = true;
+    }
+    if(document.getElementById("mush1").checked == false){
+        for(var i=0 ; i<5 ; i++) document.getElementsByName("mushroom")[i].checked = false;
+    }
+}
 
-//     // }
-    
-//     // 전화번호 유효성 검사
-//     if(orderPhone.value.trim().length == 0){
-//         alert("연락처를 입력해주세요.(-제외)");
-//         orderPhone.focus();
-//         return false;
-//     }
-//     if(!regExpPhone.test(orderPhone.value)){
-//         alert("연락처 형식이 올바르지 않습니다.(-제외)");
-//         orderPhone.focus();
-//         return false;
-//     }
-//     // if(reqExpPhone.test(orderPhone.value)){
-
-//     // }
+document.getElementById("mush1").addEventListener("change", mushroom);
 
 
 
+// 갯수 제한
+
+function count_check(obj){
+    var checkBox = document.getElementsByName("choice");
+    var checkCount = 0;
+    for(var i=0 ; i<checkBox.length; i++){
+        if(checkBox[i].checked){
+            checkCount++;
+        }
+    }
+    if(checkCount > 5){
+        alert("5개까지 체크할 수 있습니다.");
+        obj.checked = false;
+        return false;
+    }
+}
 
 
-// });
+// value 값 가져오기
+function getValue(){
+    const checked = 'input[name="choice"]:checked';
+    const selectedEls = document.querySelectorAll(checked);
 
+    let result = '';
+    selectedEls.forEach((el)=>{
+        result += el.value + ' ';
+    });
 
+}

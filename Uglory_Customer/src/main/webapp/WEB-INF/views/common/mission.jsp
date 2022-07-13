@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>about</title>
+    <title>Mission</title>
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,43 +32,11 @@
     <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="${contextPath}/resources/css/style-1.css" rel="stylesheet">
+    <link href="${contextPath}/resources/css/style.css" rel="stylesheet">
 </head>
 
 <body>
-    <div class="container-xxl bg-white p-0">
-        <%-- <!-- Spinner Start -->
-        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-                <span class="sr-only">Loading...</span>
-            </div>
-        </div>
-        <!-- Spinner End --> --%>
-
-
-        <!-- Navbar & Hero Start -->
-        <div class="container-xxl position-relative p-0">
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0">
-                <a href="" class="navbar-brand p-0">
-                    <h1 class="text-primary m-0"><i class="fa fa-utensils me-3"></i>Uglory</h1>
-                    <!-- <img src="img/logo.png" alt="Logo"> -->
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                    <span class="fa fa-bars"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav ms-auto py-0 pe-4">
-                        <a href="index.html" class="nav-item nav-link active">Home</a>
-                        <a href="Mission.html" class="nav-item nav-link">Mission</a>
-                        <a href="About.html" class="nav-item nav-link">About</a>
-                        <a href="Market.html" class="nav-item nav-link">Market</a>
-                        <a href="Review.html" class="nav-item nav-link icon">Review</a>
-                    </div>
-                    <a href="#" class="nav-item icon"><img class="menu-chart" src="img/shopping-cart-white.png"></a>
-                    <a href="#" class="nav-item icon"><img class="menu-chart" src="img/user-white.png"></a>
-                </div>
-            </nav>
-
+    <jsp:include page="/WEB-INF/views/common/header-1.jsp" />
             <div class="container-xxl py-5 bg-dark hero-header mb-5">
                 <div class="container text-center my-5 pt-5 pb-4">
                     <h1 class="display-3 text-white mb-3 animated slideInDown">Mission</h1>
@@ -81,8 +49,6 @@
                     </nav>
                 </div>
             </div>
-        </div>
-        <!-- Navbar & Hero End -->
 
 
         <!-- About Start -->
@@ -91,10 +57,10 @@
                 <div class="row g-5 align-items-center">
                     <div class="col-lg-6">
                         <div class="row g-3">
-                            <div class="col-6 text-start">
-                                <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.1s" src="${contextPath}/img/PYJ/mission4.png">
+                            <div class="text-start">
+                                <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.1s" src="${contextPath}/resources/img/main/mission4.png">
                             </div>
-                            <div class="col-6 text-start">
+                            <!--<div class="col-6 text-start">
                                 <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.3s" src="img/about-2.jpg" style="margin-top: 25%;">
                             </div>
                             <div class="col-6 text-end">
@@ -102,7 +68,7 @@
                             </div>
                             <div class="col-6 text-end">
                                 <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.7s" src="img/about-4.jpg">
-                            </div>
+                            </div>-->
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -132,7 +98,7 @@
                             
                             
                             건강한 땅을 위한 농부의 땀과 노력이 인정받을 수 있고 소비자는 건강한 식품을 지속가능하게 공급받을 수 있도록 합니다.</p>
-                        <a class="btn btn-primary py-3 px-5 mt-2" href="">구독 신청하기</a>
+                        <a class="btn btn-primary py-3 px-5 mt-2" href="${contextPath}/subscription">구독 신청하기</a>
                     </div>
                 </div>
             </div>

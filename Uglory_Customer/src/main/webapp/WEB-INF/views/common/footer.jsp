@@ -8,7 +8,7 @@
             <div class="row g-5">
                 <div class="col-lg-3 col-md-6">
                     <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Company</h4>
-                    <a class="btn btn-link" href="">Privacy Policy</a>
+                    <a class="btn btn-link" href="${contextPath}/review/privacyPolicy">Privacy Policy</a>
                     <a class="btn btn-link" href="${contextPath}/review/termsAndCondition">Terms & Condition</a>
                 </div>
                 <div class="col-lg-3 col-md-6">
@@ -53,7 +53,7 @@
                     <div class="col-md-6 text-center text-md-end">
                         <div class="footer-menu">
                             <a href="${contextPath}">Home</a>
-                            <a href="">FAQ</a>
+                            <a href="${contextPath}/faq">FAQ</a>
                         </div>
                     </div>
                 </div>

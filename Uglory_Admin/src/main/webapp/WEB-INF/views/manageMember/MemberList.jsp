@@ -59,13 +59,14 @@
             <!-- Navbar End -->
 
 
-            <!-- 상품 등록 form태그 -->
+            <!-- 회원 관리 form태그 -->
             <div class="container-fluid pt-4 px-4">
                 <div class="row bg-light rounded justify-content-center mx-0 m-5 p-4">
                     <div class="col-lg-12 text-center">
                         <h2 class="text-start">회원 관리</h2>
                         <hr>
 
+                        <%-- 검색창 --%>
                         <div class="listHead">
                             <form>
                                 <select name="" id="">
@@ -73,11 +74,12 @@
                                     <option value="">회원 이름</option>
                                 </select>
 
-                                <input type="text" id="pSearch">
+                                <input type="text" id="memberSearch">
                                 <button type="button" class="btn btn-secondary"><i class="fa-solid fa-magnifying-glass"></i></button>
                             </form>
                         </div>
 
+                        <%-- 메인 --%>
                         <div class="listBody">
                             <table class="table table-borderless farmTable mt-4">
                                 <thead>
@@ -89,7 +91,7 @@
                                         <th scope="col">계정 정지</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="customerList">
                                     <tr>
                                         <th scope="row">1</th>
                                         <td>test01@uglory.com</td>
@@ -157,7 +159,7 @@
     <script src="${contextPath}/resources/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
     <!-- Template Javascript -->
-    <script src="${contextPath}/resources/js/main.js"></script>
+    <script src="${contextPath}/resources/js/memberList.js"></script>
 </body>
 
 </html>

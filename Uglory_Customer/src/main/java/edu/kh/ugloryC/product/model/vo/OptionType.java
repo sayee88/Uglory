@@ -11,5 +11,5 @@ public class OptionType {
 	
 	private int optionCode;
 	private String optionName;
-	private String optionPrice;
+	private int optionPrice;
 }
