@@ -40,197 +40,203 @@
 </head>
 
 <body>
-    <div class="container-xxl bg-white p-0">
-
-         <!-- review header -->
-        <div class="container-xxl position-relative p-0">
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0">
-                <a href="${contextPath}" class="navbar-brand p-0">
-                    <h1 class="text-primary m-0"><i class="fa fa-utensils me-3"></i>Uglory</h1>
-                    <!-- <img src="img/logo.png" alt="Logo"> -->
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                    <span class="fa fa-bars"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav ms-auto py-0 pe-4">
-                        <a href="${contextPath}" class="nav-item nav-link active">Home</a>
-                        <a href="${contextPath}/common/mission" class="nav-item nav-link">Mission</a>
-                        <a href="${contextPath}/common/about" class="nav-item nav-link">About</a>
-                        <a href="${contextPath}/product/list" class="nav-item nav-link">Market</a>
-                        <a href="${contextPath}/review/list" class="nav-item nav-link icon">Review</a>
+    <main>
+    
+        <section class="container-xxl bg-white p-0">
+            <!-- review header -->
+            <div class="container-xxl position-relative p-0">
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0">
+                    <a href="${contextPath}" class="navbar-brand p-0">
+                        <h1 class="text-primary m-0"><i class="me-3"></i>Uglory</h1>
+                        <!-- <img src="img/logo.png" alt="Logo"> -->
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                        <span class="fa fa-bars"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <div class="navbar-nav ms-auto py-0 pe-4">
+                            <a href="${contextPath}" class="nav-item nav-link active">Home</a>
+                            <a href="${contextPath}/common/mission" class="nav-item nav-link">Mission</a>
+                            <a href="${contextPath}/common/about" class="nav-item nav-link">About</a>
+                            <a href="${contextPath}/product/list" class="nav-item nav-link">Market</a>
+                            <a href="${contextPath}/review/list" class="nav-item nav-link icon">Review</a>
+                        </div>
+                        <a href="#" class="nav-item icon"><img class="menu-chart" src="${contextPath}/resources/images/main/shopping-cart-white.png"></a>
+                        <a href="${contextPath}/member/login" class="nav-item icon"><img class="menu-chart" src="${contextPath}/resources/images/main/user-white.png"></a>
                     </div>
-                    <a href="#" class="nav-item icon"><img class="menu-chart" src="${contextPath}/resources/images/main/shopping-cart-white.png"></a>
-                    <a href="${contextPath}/member/login" class="nav-item icon"><img class="menu-chart" src="${contextPath}/resources/images/main/user-white.png"></a>
-                </div>
-            </nav>
+                </nav>
 
-            <div class="container-xxl py-5 bg-dark hero-header mb-5">
-                <div class="container text-center my-5 pt-5 pb-4">
-                    <h2 class="display-3 text-white mb-3 animated slideInDown" style="font-size:50px">Review</h2>
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb justify-content-center text-uppercase">
-                            <li class="breadcrumb-item"><a href="${contextPath}">Home</a></li>
-                            <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                            <li class="breadcrumb-item text-white active" aria-current="page">Review</li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-        </div>
-
-
-        <!-- Contact Start -->
-        <div class="container-xxl py-5">
-            <div class="container">
-                <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                    <h5 class="section-title ff-secondary text-center text-primary fw-normal">Review</h5>
-                    <h1 class="mb-5">이용후기</h1>
-                </div>
-            </div>
-        </div>
-        <!-- Contact End -->
-
-        <!-- content 부분 -->
-        <div class="content_container">
-            
-            <!-- box -->
-            <div class="box_container">
-                <div class="box_text">
-                    <div style="color: rgb(97, 97, 97);"><img src="#"><br> Uglory 채소들로 차린 식탁 <br> 지금 확인해보세요!</div>
-                </div>
-                <div class="box_content">
-                    <div class="box_content_d">
-                        <div class="box_review_section">
-                            <p>전체 후기 수</p>
-                            <p>2000</p>
-                        </div>
-                        <div class="box_review_section box_center">
-                            <p>전체만족도</p>
-                            <p>4.8</p>
-                        </div>
-                    </div>
-                    <div class="box_content_d">
-                        <div class="box_review_section box_center">
-                            <p>나의 리뷰</p>
-                            <p>
-                                <span style="margin-right: 7px;">1</span>
-                                <span style="background-color: rgb(190, 190, 190); color:white; font-size: 15px; padding: 3px 8px; border-radius: 10px;">OFF</span>
-                            </p>
-                        </div>
-                        <div class="box_review_section box_center">
-                            <p>미작성 리뷰</p>
-                            <p>
-                                <span style="margin-right: 15px;">2</span>
-                                <a href="${contextPath}/review/ReviewWriteForm.jsp">
-                                    <span style="font-size: 15px; color: rgb(80, 124, 254);">쓰기 >></span>
-                                </a>
-                            </p>
-                        </div>
+                <div class="container-xxl py-5 bg-dark hero-header mb-5">
+                    <div class="container text-center my-5 pt-5 pb-4">
+                        <h2 class="display-3 text-white mb-3 animated slideInDown" style="font-size:50px">Review</h2>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb justify-content-center text-uppercase">
+                                <li class="breadcrumb-item"><a href="${contextPath}">Home</a></li>
+                                <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                                <li class="breadcrumb-item text-white active" aria-current="page">Review</li>
+                            </ol>
+                        </nav>
                     </div>
                 </div>
             </div>
-            
-            <!-- category -->
-            <div class="category_section"> 
-                <div class="category_button">
-                    <div style="background-color: rgb(113, 214, 199); color:white">모두보기</div>
-                    <div>구독박스</div>
-                    <div>상점</div>
+
+            <!-- Contact Start -->
+            <div class="container-xxl py-5">
+                <div class="container">
+                    <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                        <h5 class="section-title ff-secondary text-center text-primary fw-normal">Review</h5>
+                        <h1 class="mb-5">이용후기</h1>
+                    </div>
                 </div>
             </div>
-            
+            <!-- Contact End -->
+
+
+
+            <!-- content 부분 -->
+            <div class="content_container">
+                
+                <!-- box -->
+                <div class="box_container">
+                    <div class="box_text">
+                        <div style="color: rgb(97, 97, 97);">
+                            <img src="${contextPath}/resources/img/icon/Uglory_apple.png" width="30px"><br> Uglory 채소들로 차린 식탁 <br> 지금 확인해보세요!
+                        </div>
+                    </div>
+                    <div class="box_content">
+                        <div class="box_content_d">
+                            <div class="box_review_section">
+                                <p>전체 후기 수</p>
+                                <p>2000</p>
+                            </div>
+                            <div class="box_review_section box_center">
+                                <p>전체만족도</p>
+                                <p>4.8</p>
+                            </div>
+                        </div>
+                        <div class="box_content_d">
+                            <div class="box_review_section box_center">
+                                <p>나의 리뷰</p>
+                                <p>
+                                    <span style="margin-right: 7px;">1</span>
+                                    <span style="background-color: rgb(190, 190, 190); color:white; font-size: 15px; padding: 3px 8px; border-radius: 10px;">OFF</span>
+                                </p>
+                            </div>
+                            <div class="box_review_section box_center">
+                                <p>미작성 리뷰</p>
+                                <p>
+                                    <span style="margin-right: 15px;">2</span>
+                                    <a href="${contextPath}/review/ReviewWriteForm.jsp">
+                                        <span style="font-size: 15px; color: rgb(80, 124, 254);">쓰기 >></span>
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- category -->
+                <div class="category_section"> 
+                    <div class="category_button">
+                        <div style="background-color: rgb(113, 214, 199); color:white">모두보기</div>
+                        <div>구독박스</div>
+                        <div>상점</div>
+                    </div>
+                </div>
+                
 
             <!-- 리뷰 목록 -->
             <div class="review-section">
                 <div class="review-list">
                     
-                    <div class="review-content">
-                        <div data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            <img src="${contextPath}/resources/images/review/review_img1.png">
-                        </div>
-                        <div class="review-content-text">
-                            <div class="review-content-top-section">
-                                <div class="review-content-top-left">
-                                    <div>고*비</div>
-                                    <div>2022.07.10</div>
-                                </div>
-                                <div class="review-star">
-                                    <span>★</span>
-                                    <span>★</span>
-                                    <span>★</span>
-                                    <span>★</span>
-                                    <span>★</span>
-                                </div>
-                            </div>
-                            <div class="review-content-text-section modal-open">
-                                <div href="#" style="color: black;" >
-                                    신선한 토마토로 카프레제 해먹었어요~ 멋쟁이 토마토로 파스타도 해먹구 신이 나요~
-                                </div> 
-                            </div>
-                            <div class="review-content-bottom-section">
-                                <div>정기구독박스</div>
-                            </div>
-                        </div>
-                    </div>
                     
-                    <div class="review-content">
-                        <div>
-                            <img src="img/리뷰/이용후기2.jpeg">
+
+                <div class="review-content">
+                    <div data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <img src="${contextPath}/resources/images/review/review_img1.png">
+                    </div>
+                    <div class="review-content-text">
+                        <div class="review-content-top-section">
+                            <div class="review-content-top-left">
+                                <div>고*비</div>
+                                <div>2022.07.10</div>
+                            </div>
+                            <div class="review-star">
+                                <span>★</span>
+                                <span>★</span>
+                                <span>★</span>
+                                <span>★</span>
+                                <span>★</span>
+                            </div>
                         </div>
-                        <div class="review-content-text">
-                            <div class="review-content-top-section">
-                                <div class="review-content-top-left">
-                                    <div>김*희</div>
-                                    <div>2022.07.06</div>
-                                </div>
-                                <div class="review-star">
-                                    <span>★</span>
-                                    <span>★</span>
-                                    <span>★</span>
-                                    <span>★</span>
-                                    <span>☆</span>
-                                </div>
-                            </div>
-                            <div class="review-content-text-section">
-                                <div href="#" style="color: black;">
-                                    모히또가서 몰디브 한잔?
-                                </div>
-                            </div>
-                            <div class="review-content-bottom-section">
-                                <div>개별상품구매</div>
-                            </div>
+                        <div class="review-content-text-section modal-open">
+                            <div href="#" style="color: black;" >
+                                신선한 토마토로 카프레제 해먹었어요~ 멋쟁이 토마토로 파스타도 해먹구 신이 나요~
+                            </div> 
+                        </div>
+                        <div class="review-content-bottom-section">
+                            <div>정기구독박스</div>
                         </div>
                     </div>
-                    
-                    <div class="review-content">
-                        <div>
-                            <img src="img/리뷰/이용후기3.jpeg">
+                </div>
+                
+                <div class="review-content">
+                    <div>
+                        <img src="img/리뷰/이용후기2.jpeg">
+                    </div>
+                    <div class="review-content-text">
+                        <div class="review-content-top-section">
+                            <div class="review-content-top-left">
+                                <div>김*희</div>
+                                <div>2022.07.06</div>
+                            </div>
+                            <div class="review-star">
+                                <span>★</span>
+                                <span>★</span>
+                                <span>★</span>
+                                <span>★</span>
+                                <span>☆</span>
+                            </div>
                         </div>
-                        <div class="review-content-text">
-                            <div class="review-content-top-section">
-                                <div class="review-content-top-left">
-                                    <div>박*진</div>
-                                    <div>2022.07.05</div>
-                                </div>
-                                <div class="review-star">
-                                    <span>★</span>
-                                    <span>★</span>
-                                    <span>★</span>
-                                    <span>★</span>
-                                    <span>★</span>
-                                </div>
+                        <div class="review-content-text-section">
+                            <div href="#" style="color: black;">
+                                모히또가서 몰디브 한잔?
                             </div>
-                            <div class="review-content-text-section">
-                                <div href="#" style="color: black;">
-                                    양상추로 푸짐한 샐러드완성~ 아삭아삭 신선해요!
-                                </div>
-                            </div>
-                            <div class="review-content-bottom-section">
-                                <div>정기구독박스</div>
-                            </div>
+                        </div>
+                        <div class="review-content-bottom-section">
+                            <div>개별상품구매</div>
                         </div>
                     </div>
+                </div>
+                
+                <div class="review-content">
+                    <div>
+                        <img src="img/리뷰/이용후기3.jpeg">
+                    </div>
+                    <div class="review-content-text">
+                        <div class="review-content-top-section">
+                            <div class="review-content-top-left">
+                                <div>박*진</div>
+                                <div>2022.07.05</div>
+                            </div>
+                            <div class="review-star">
+                                <span>★</span>
+                                <span>★</span>
+                                <span>★</span>
+                                <span>★</span>
+                                <span>★</span>
+                            </div>
+                        </div>
+                        <div class="review-content-text-section">
+                            <div href="#" style="color: black;">
+                                양상추로 푸짐한 샐러드완성~ 아삭아삭 신선해요!
+                            </div>
+                        </div>
+                        <div class="review-content-bottom-section">
+                            <div>정기구독박스</div>
+                        </div>
+                    </div>
+                </div>
 
                 </div>
                 <div class="review-list">
@@ -309,6 +315,7 @@
                                     <span>★</span>
                                     <span>★</span>
                                     <span>★</span>
+                                    
                                 </div>
                             </div>
                             <div class="review-content-text-section">
@@ -323,8 +330,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-
+        </section>
+    </main>
 
        
 

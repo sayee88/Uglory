@@ -1,6 +1,8 @@
 package edu.kh.ugloryA.customer.model.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
@@ -20,10 +22,26 @@ public class CustomerDAO {
 
 	/**
 	 * 전체 고객 목록 조회 DAO
-	 * @return
+	 * @return customerList
 	 */
 	public List<Customer> selectAllCustomer() {
 		return sqlSession.selectList("customerMapper.selectAllCustomer");
+	}
+
+	
+	/**
+	 * 특정 조건을 만족하는 고객 목록 조회 DAO
+	 * @param key
+	 * @param query
+	 * @return customerList
+	 */
+	public List<Customer> searchCustomer(String key, String query) {
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("key", key);
+		map.put("query", query);
+		
+		return sqlSession.selectList("customerMapper.selectAllCustomer", map);
 	}
 	
 	
