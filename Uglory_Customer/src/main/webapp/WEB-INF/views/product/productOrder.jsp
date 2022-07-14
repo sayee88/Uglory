@@ -37,6 +37,9 @@
     <link href="${contextPath}/resources/css/style-1.css" rel="stylesheet">
     <link href="${contextPath}/resources/css/product/product-order.css" rel="stylesheet">
 
+    <%-- 다음 우편번호 API --%>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
 </head>
 <body>
 
@@ -49,22 +52,24 @@
 
             <h4 class="order-info">배송지 정보</h4>
 
-            <form>
+            <form action="" method="POST" onsubmit="return orderValidate()">
                 <div class="product-order-area">
 
                     <label for="p-orderName">받으시는 분 이름</label>
                     <div class="order-input-area">
                         <input type="text" id="p-orderName" name="p-orderName" placeholder="이름을 입력해주세요" maxlength="30" autocapitalize="off" required>
                     </div>
+                    <span class="order-message" id="nameMessage"></span>
 
                     <label for="p-orderPhone">연락처</label> 
                     <div class="order-input-area">
-                        <input type="text" id="p-orderPhone" name="p-orderPhone" placeholder="연락처를 입력해주세요" maxlength="11" required>
+                        <input type="text" id="p-orderPhone" name="p-orderPhone" placeholder="연락처를 입력해주세요" maxlength="30" required>
                     </div>
+                    <span class="order-message" id="phoneMessage"></span>
                     
                     <label for="p-orderAddress">주소</label>
                     <div class="order-input-area">
-                        <input type="text" id="order-postcode" name="p-orderAddress" placeholder="우편번호">
+                        <input type="text" id="order-postcode" name="p-orderAddress" placeholder="우편번호" disabled>
                         <button type="button" id="addressBtn" onclick="sample2_execDaumPostcode()">검색</button>
                     </div>
 
@@ -128,7 +133,7 @@
                     </div>
 
                     <div class="privacyPolicy">
-                        <input type="checkbox"><label>개인정보 수집 및 이용 동의</label>
+                        <input type="checkbox" name="agree" id="agree"><label for="agree">개인정보 수집 및 이용 동의</label>
                     </div>
                     <button id="order-btn">주문하기</button>
                 </div>
@@ -137,26 +142,31 @@
         </section>
     </main>
 
+    <%-- 다음 우편번호 API --%>
+    <div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
+    <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer" style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="닫기 버튼">
+    </div>
+
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
         
-        <%-- <!— jQuery 추가 —> --%>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    
-        <!-- JavaScript Libraries -->
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-        <script src="${contextPath}/resources/lib/wow/wow.min.js"></script>
-        <script src="${contextPath}/resources/lib/easing/easing.min.js"></script>
-        <script src="${contextPath}/resources/lib/waypoints/waypoints.min.js"></script>
-        <script src="${contextPath}/resources/lib/counterup/counterup.min.js"></script>
-        <script src="${contextPath}/resources/lib/owlcarousel/owl.carousel.min.js"></script>
-        <script src="${contextPath}/resources/lib/tempusdominus/js/moment.min.js"></script>
-        <script src="${contextPath}/resources/lib/tempusdominus/js/moment-timezone.min.js"></script>
-        <script src="${contextPath}/resources/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    <%-- <!— jQuery 추가 —> --%>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
-        <%-- Template Javascript --%>
-        <script src="${contextPath}/resources/js/main.js"></script>
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="${contextPath}/resources/lib/wow/wow.min.js"></script>
+    <script src="${contextPath}/resources/lib/easing/easing.min.js"></script>
+    <script src="${contextPath}/resources/lib/waypoints/waypoints.min.js"></script>
+    <script src="${contextPath}/resources/lib/counterup/counterup.min.js"></script>
+    <script src="${contextPath}/resources/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="${contextPath}/resources/lib/tempusdominus/js/moment.min.js"></script>
+    <script src="${contextPath}/resources/lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="${contextPath}/resources/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
-        <script src="${contextPath}/resources/js/product/product-order.js"></script>
+    <%-- Template Javascript --%>
+    <script src="${contextPath}/resources/js/main.js"></script>
+
+    <script src="${contextPath}/resources/js/product/product-order.js"></script>
 </body>
 </html>

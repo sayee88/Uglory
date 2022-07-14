@@ -19,7 +19,6 @@ public class ProductDetail {
     private int productPrice;
     private String productInfo;
     
-    private int totalPrice;
     private String producer;
     private String origin;
     
