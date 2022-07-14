@@ -7,7 +7,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="${contextPath}/resources/css/member/member.css" rel="stylesheet">
     <title>login</title>
 
     <!-- Google Web Fonts -->
@@ -33,8 +32,9 @@
 
     <!-- Template Stylesheet -->
     <link href="${contextPath}/resources/css/style-1.css" rel="stylesheet">
-
     
+    <link href="${contextPath}/resources/css/member/member.css" rel="stylesheet">
+
 
 </head>
 <body>
@@ -54,11 +54,72 @@
             <div>
                 <p class="secessionText-bold">정말 탈퇴를 진행하시겠습니까?</p>
             </div>
+            <!-- Button trigger modal -->
             <div class="secessionBtn">
-                <button class="secession-btn">탈퇴하기</button>
+                        <button type="button" id="exception-btn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            탈퇴하기
+                        </button>
             </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">탈퇴 사유를 알려주세요.</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <br>
+                   
+                </div>
+                <div class="modal-body">
+
+                    <div class="row">
+                        <div class="col">
+                            <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="sweetPotato" value="고구마"  >
+                            <label class="form-check-label" for="sweetPotato">더 이상 서비스가 필요하지 않아요.</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="sweetPotato" value="고구마"  >
+                            <label class="form-check-label" for="sweetPotato">서비스가 마음에 들지 않아요.</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="sweetPotato" value="고구마"  >
+                            <label class="form-check-label" for="sweetPotato">구독료가 부담스러워요.</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="sweetPotato" value="고구마"  >
+                            <label class="form-check-label" for="sweetPotato">비밀이에요.</label>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">탈퇴 안할래요</button>
+                    <button type="button" class="btn btn-primary">탈퇴할께요</button>
+                </div>
+                </div>
+            </div>
+            </div>
+
+            
+
+
+
+
         </div>
     </main>
+
+
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
+
+        
+    <!-- bootstrap Javascript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>
 </html>
