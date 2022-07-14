@@ -75,25 +75,25 @@
 
                     <div class="row">
                         <div class="col">
-                            <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="sweetPotato" value="고구마"  >
+                            <input class="form-check-input" name="choice" onclick="count_check(this);" type="radio" id="secession_cnt" value="1" >
                             <label class="form-check-label" for="sweetPotato">더 이상 서비스가 필요하지 않아요.</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
-                            <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="sweetPotato" value="고구마"  >
+                            <input class="form-check-input" name="choice" onclick="count_check(this);" type="radio" id="secession_cnt" value="2"  >
                             <label class="form-check-label" for="sweetPotato">서비스가 마음에 들지 않아요.</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
-                            <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="sweetPotato" value="고구마"  >
+                            <input class="form-check-input" name="choice" onclick="count_check(this);" type="radio" id="secession_cnt" value="3"  >
                             <label class="form-check-label" for="sweetPotato">구독료가 부담스러워요.</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col">
-                            <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="sweetPotato" value="고구마"  >
+                            <input class="form-check-input" name="choice" onclick="count_check(this);" type="radio" id="secession_cnt" value="4" >
                             <label class="form-check-label" for="sweetPotato">비밀이에요.</label>
                         </div>
                     </div>
