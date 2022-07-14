@@ -61,7 +61,7 @@
                                 aria-selected="true">근채류</button>
                             <button class="nav-link" id="nav-beans-tab" data-bs-toggle="tab"
                                 data-bs-target="#nav-beans" type="button" role="tab"
-                                aria-controls="nav-beans" aria-selected="false">두류/곡류/견과류</button>
+                                aria-controls="nav-beans" aria-selected="false">곡식류/견과류</button>
                             <button class="nav-link" id="nav-veg-tab" data-bs-toggle="tab"
                                 data-bs-target="#nav-veg" type="button" role="tab"
                                 aria-controls="nav-veg" aria-selected="false">채소류</button>
@@ -78,27 +78,28 @@
                                 data-bs-target="#nav-fruit" type="button" role="tab"
                                 aria-controls="nav-fruit" aria-selected="false">과일류</button>
                         </div>
+
+                        <div class="listHead mt-3">
+                            <form>
+                                <select name="" id="">
+                                    <option value="">상품명</option>
+                                    <option value="">생산자</option>
+                                    <option value="">상품상태</option>
+                                </select>
+                                <input type="text" id="pSearch">
+                                <button type="button" class="btn btn-secondary"><i class="fa-solid fa-magnifying-glass"></i></button>
+                            </form>
+                        </div>
                     </nav>
 
                     <!-- 상품 리스트 시작 -->
                     <article class="tab-content pt-3" id="nav-tabContent">
                         <!-- root 시작 -->
                         <div class="tab-pane fade show active" id="nav-root" role="tabpanel" aria-labelledby="nav-root-tab">
-                            <div class="listHead">
-                                <form>
-                                    <select name="" id="">
-                                        <option value="">상품명</option>
-                                        <option value="">생산자</option>
-                                        <option value="">상품상태</option>
-                                    </select>
-                                    <input type="text" id="pSearch">
-                                    <button type="button" class="btn btn-secondary"><i class="fa-solid fa-magnifying-glass"></i></button>
-                                </form>
-                            </div>
 
                             근채류
                             
-                            <div class="listBody">
+                            <div class="listBody" id="rootBox">
                                 <!-- card1 start -->
                                 <div class="card m-4 col-sm-5 col-xl-3">
                                     <a href="#">
@@ -114,7 +115,7 @@
                                                 <p>1</p>
                                                 <p>당근</p>
                                             </div>
-                                            <p id="pCategory">근채류</p>
+                                            <p class="pCategory">근채류</p>
 
                                             <div class="card-con">
                                                 <p>상품등록일</p>
@@ -154,144 +155,72 @@
                                 </div>
                                 <!-- card2 end -->
 
-                                <!-- card3 start -->
-                                <div class="card m-4 col-sm-5 col-xl-3">
-                                    <a href="#">
-                                        <img src="${contextPath}/resources/img/vegetables-2485055.jpg" alt="야채"/>
-                                        <div class="cardBody">
-                                            <div class="card-tit">
-                                                <p>1</p>
-                                                <p>당근</p>
-                                            </div>
-                                            <p id="pCategory">근채류</p>
-
-                                            <div class="card-con">
-                                                <p>상품등록일</p>
-                                                <p class="pData">2022-07-08</p>
-                                            </div>
-                                            <div class="card-con">
-                                                <p>생산자</p>
-                                                <p class="pData">당근 농장</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <!-- card3 end -->
-
                             </div>
                         </div>
                         <!-- root 끝 -->
 
                         <!-- beans 시작 -->
                         <div class="tab-pane fade" id="nav-beans" role="tabpanel" aria-labelledby="nav-beans-tab">
-                            <div class="listHead">
-                                <form>
-                                    <select name="" id="">
-                                        <option value="">상품명</option>
-                                        <option value="">생산자</option>
-                                        <option value="">상품상태</option>
-                                    </select>
-                                    <input type="text" id="pSearch">
-                                    <button type="button" class="btn btn-secondary"><i class="fa-solid fa-magnifying-glass"></i></button>
-                                </form>
-                            </div>
 
                             콩
+
+                            <div class="listBody" id="beansBox">
+                            </div>
 
                         </div>
                         <!-- beans 끝 -->
 
                         <!-- veg 시작 -->
                         <div class="tab-pane fade" id="nav-veg" role="tabpanel" aria-labelledby="nav-veg-tab">
-                            <div class="listHead">
-                                <form>
-                                    <select name="" id="">
-                                        <option value="">상품명</option>
-                                        <option value="">생산자</option>
-                                        <option value="">상품상태</option>
-                                    </select>
-                                    <input type="text" id="pSearch">
-                                    <button type="button" class="btn btn-secondary"><i class="fa-solid fa-magnifying-glass"></i></button>
-                                </form>
-                            </div>
 
                             채소
+
+                            <div class="listBody" id="vegBox">
+                            </div>
 
                         </div>
                         <!-- veg 끝 -->
 
                         <!-- fnv 시작 -->
                         <div class="tab-pane fade" id="nav-fnv" role="tabpanel" aria-labelledby="nav-fnv-tab">
-                            <div class="listHead">
-                                <form>
-                                    <select name="" id="">
-                                        <option value="">상품명</option>
-                                        <option value="">생산자</option>
-                                        <option value="">상품상태</option>
-                                    </select>
-                                    <input type="text" id="pSearch">
-                                    <button type="button" class="btn btn-secondary"><i class="fa-solid fa-magnifying-glass"></i></button>
-                                </form>
-                            </div>
 
                             과채류
+
+                            <div class="listBody" id="fnvBox">
+                            </div>
 
                         </div>
                         <!-- fnv 끝 -->
 
                         <!-- herbs 시작 -->
                         <div class="tab-pane fade" id="nav-herbs" role="tabpanel" aria-labelledby="nav-herbs-tab">
-                            <div class="listHead">
-                                <form>
-                                    <select name="" id="">
-                                        <option value="">상품명</option>
-                                        <option value="">생산자</option>
-                                        <option value="">상품상태</option>
-                                    </select>
-                                    <input type="text" id="pSearch">
-                                    <button type="button" class="btn btn-secondary"><i class="fa-solid fa-magnifying-glass"></i></button>
-                                </form>
-                            </div>
 
                             나물류
+
+                            <div class="listBody" id="herbsBox">
+                            </div>
 
                         </div>
                         <!-- herbs 끝 -->
 
                         <!-- mush 시작 -->
                         <div class="tab-pane fade" id="nav-mush" role="tabpanel" aria-labelledby="nav-mush-tab">
-                            <div class="listHead">
-                                <form>
-                                    <select name="" id="">
-                                        <option value="">상품명</option>
-                                        <option value="">생산자</option>
-                                        <option value="">상품상태</option>
-                                    </select>
-                                    <input type="text" id="pSearch">
-                                    <button type="button" class="btn btn-secondary"><i class="fa-solid fa-magnifying-glass"></i></button>
-                                </form>
-                            </div>
 
                             버섯류
+
+                            <div class="listBody" id="mushBox">
+                            </div>
 
                         </div>
                         <!-- mush 끝 -->
 
                         <!-- fruit 시작 -->
                         <div class="tab-pane fade" id="nav-fruit" role="tabpanel" aria-labelledby="nav-fruit-tab">
-                            <div class="listHead">
-                                <form>
-                                    <select name="" id="">
-                                        <option value="">상품명</option>
-                                        <option value="">생산자</option>
-                                        <option value="">상품상태</option>
-                                    </select>
-                                    <input type="text" id="pSearch">
-                                    <button type="button" class="btn btn-secondary"><i class="fa-solid fa-magnifying-glass"></i></button>
-                                </form>
-                            </div>
 
                             과일류
+
+                            <div class="listBody" id="fruitBox">
+                            </div>
 
                         </div>
                         <!-- fruit 끝 -->
@@ -323,10 +252,9 @@
     <script src="${contextPath}/resources/lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="${contextPath}/resources/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
-    <script src="${contextPath}/resources/js/adminProduct.js"></script>  
-    
     <!-- Template Javascript -->
     <script src="${contextPath}/resources/js/main.js"></script>  
+    <script src="${contextPath}/resources/js/adminProduct.js"></script>  
 
 </body>
 
