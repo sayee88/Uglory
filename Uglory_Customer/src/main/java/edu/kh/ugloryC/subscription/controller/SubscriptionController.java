@@ -20,13 +20,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import edu.kh.ugloryC.member.model.vo.Member;
 import edu.kh.ugloryC.subscription.model.service.SubscriptionService;
 
-@SessionAttributes({"orderInfo", "deliveryInfo"})
+@SessionAttributes({"orderInfo", "deliveryInfo", "loginMember", "message"})
 @Controller
 public class SubscriptionController {
 	
+	@Autowired
+	private SubscriptionService service;
 	
 	Logger logger = LoggerFactory.getLogger(SubscriptionController.class);
 	
@@ -67,27 +71,47 @@ public class SubscriptionController {
 									@RequestParam(value="s-orderPhone") String inputPhone,
 									@RequestParam(value="s-orderAddress") String[] inputAddress,
 									@RequestParam(value="s-orderReq") String inputDelText,
+									@ModelAttribute("orderInfo") Map<String, Object> orderInfo,
+									@ModelAttribute("loginMember") Member loginMember,
+									
 									Model model,
+									RedirectAttributes ra,
 									HttpServletRequest req,
 									HttpServletResponse resp) {
 		
 		String address = String.join(",,", inputAddress);
 		
-		Map<String, Object> deliveryInfo = new HashMap<String, Object>();
+		int memberNo = loginMember.getMemberNo();
 		
-		deliveryInfo.put("inputName", inputName);
-		deliveryInfo.put("inputPhone", inputPhone);
-		deliveryInfo.put("inputAddress", address);
-		deliveryInfo.put("inputDelText", inputDelText);
+//		Map<String, Object> deliveryInfo = new HashMap<String, Object>();
 		
-		model.addAttribute("deliveryInfo", deliveryInfo);
+		orderInfo.put("inputName", inputName);
+		orderInfo.put("inputPhone", inputPhone);
+		orderInfo.put("inputAddress", address);
+		orderInfo.put("inputDelText", inputDelText);
+		orderInfo.put("memberNo", memberNo);
+		
+//		model.addAttribute("deliveryInfo", deliveryInfo);
 		
 		
+		int result = service.insertSubsOrder(orderInfo);
+		String path = null;
 		
-		return "subscription/subscription3";
+		if(result>0) {
+			ra.addFlashAttribute("message", "주문이 완료되었습니다:)");
+			path = "redirect:/member/myPage"; 
+			
+		}else {
+			ra.addFlashAttribute("message", "주문 실패:(");
+			path = "redirect:/subscription"; 
+		}
+		
+		return path;
+		
 	}
-	
-	
-
 
 }
+	
+
+
+

@@ -52,6 +52,8 @@
             ${orderInfo}
             <hr>
             ${deliveryInfo}
+            <hr>
+            ${loginMember}
             
             <div class="inner-box" >
                 <div class="step-text">

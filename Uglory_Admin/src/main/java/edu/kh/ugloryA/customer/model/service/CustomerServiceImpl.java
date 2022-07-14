@@ -30,5 +30,29 @@ public class CustomerServiceImpl implements CustomerService {
 	public List<Customer> searchCustomer(String key, String query) {
 		return dao.searchCustomer(key, query);
 	}
+
+
+	// 계정 상태 변경
+	@Override
+	public int changeStatement(int customerNo) {
+		
+		int result = 0;
+		
+		String accountFlag = dao.selectAccountFlag(customerNo);
+		
+		if(accountFlag.equals("N")) {
+			result = dao.stopAccount(customerNo);
+		} else {
+			result = dao.activeAccount(customerNo);
+		}
+		
+		return result;
+	}
+
+
+	
+	
+	
+	
 	
 }
