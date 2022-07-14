@@ -53,12 +53,12 @@
                     <ul class="orderList">
                         <li class="list-section">
                             
-                            <div class="date">2022.07.11 (17:00)</div>
+                            <div class="date">${orderHistory.orderDate}</div>
                         
                             <div class="order-goods">
                             
                                 <div class="order-name">
-                                    <a href="">새콤달콤 당도선별 제주 감귤</a>
+                                    <a href="">${orderHistory.productName}</a>
                                 </div>
                             
                             </div>
@@ -67,27 +67,21 @@
                                 <div class="description">
                                     <dl>
                                         <dt>주문번호</dt>
-                                        <dd>1646832984481</dd>
+                                        <dd>1646832984481${orderHistory.orderNo}</dd>
                                     </dl>
                                     <dl>
                                         <dt>결제금액</dt>
-                                        <dd>19,922원</dd>
+                                        <dd>${orderHistory.productPrice}</dd>
                                     </dl>
                                     <dl>
                                         <dt>배송상태</dt>
-                                        <dd>배송완료</dd>
+                                        <dd>${orderHistory.deliveryFlag}</dd>
                                     </dl>
                                 </div>
                             </div>
                         </li>
                     </ul>
-                    <%-- 로그인 상태인 경우 주문 리스트 버튼 출력 --%>
-                    <c:if test="${!empty loginMember}">
-                        <div>
-
-                            <button onclick="showOrderList"></button>
-                        </div>
-                    </c:if>
+                    
 
                 <!-- 페이지네이션 시작-->   
                 <nav aria-label="Page navigation example">
