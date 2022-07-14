@@ -26,7 +26,15 @@
 		<typeAlias type="edu.kh.ugloryC.product.model.vo.ProductImage" alias="productImage"/>
 		<typeAlias type="edu.kh.ugloryC.product.model.vo.OptionType" alias="optionType"/>
 		
+		<typeAlias type="edu.kh.ugloryC.review.model.vo.Review" alias="review"/>
+		<typeAlias type="edu.kh.ugloryC.review.model.vo.ReviewImage" alias="reviewImage"/>
+		
 		<typeAlias type="edu.kh.ugloryC.member.model.vo.Member" alias="member"/>
+		
+		<typeAlias type="edu.kh.ugloryC.member.model.vo.OrderHistory" alias="orderHistory"/>
+		<typeAlias type="edu.kh.ugloryC.member.model.vo.OrderHistory" alias="orderHistory_detail"/>
+		<typeAlias type="edu.kh.ugloryC.member.model.vo.OrderHistory" alias="orderList"/>
+		<typeAlias type="edu.kh.ugloryC.member.model.vo.OrderHistory" alias="deliveryList"/>
 		
 	</typeAliases>
 	
@@ -42,6 +50,7 @@
 		<mapper resource="/mappers/product-list-mapper.xml"/>
 		<mapper resource="/mappers/subscription-mapper.xml"/>
 		<mapper resource="/mappers/option-mapper.xml"/>
+		<mapper resource="/mappers/review-mapper.xml"/>
 		
 		<mapper resource="/mappers/member-mapper.xml"/>
 	</mappers>

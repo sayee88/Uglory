@@ -48,6 +48,12 @@ public class CustomerController {
 		return "manageMember/MemberList";
 	}
 	
+	@ResponseBody
+	@GetMapping("/changeSt")
+	public int changeStatement(int customerNo) {
+		return service.changeStatement(customerNo);
+	}
+	
 	
 
 }
