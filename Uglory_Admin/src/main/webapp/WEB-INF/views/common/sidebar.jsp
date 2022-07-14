@@ -40,7 +40,7 @@
         <div class="navbar-nav w-100">
             <!-- 회원 관리 -->
             <div class="nav-item dropdown">
-                <a href="#" class="nav-link"><i class="fa-solid fa-people-group me-2"></i>회원 관리</a>
+                <a href="${contextPath}/customer/selectAll" class="nav-link"><i class="fa-solid fa-people-group me-2"></i>회원 관리</a>
             </div>
 
             <!-- 상품 관리 -->
