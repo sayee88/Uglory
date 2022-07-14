@@ -30,6 +30,9 @@
     <!-- Product Style sheet -->
     <link href="${contextPath}/resources/css/adminproduct-style.css" rel="stylesheet">
 
+    <!-- Fontawesome cdn 링크 -->
+    <script src="https://kit.fontawesome.com/1ef9913073.js" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
@@ -50,10 +53,9 @@
             <!-- 404 Start -->
             <main class="container-fluid pt-4 px-4">
                 <section class="row vh-100 bg-light rounded align-items-center justify-content-center mx-0">
-                    <article class="col-md-6 text-center p-4">
+                    <article class="col-md-8 text-center p-4">
                         <i class="bi bi-exclamation-triangle display-1 text-primary"></i>
-                        <h1 class="display-1 fw-bold"></h1>
-                        <h1 class="mb-4">${requestScope.errorMessage}</h1>
+                        <h1 class="mb-4">서비스 이용 중<br>문제가 발생했습니다.</h1>
                         <p class="mb-4">${e}</p>
                         <a class="btn btn-primary rounded-pill py-3 px-5" href="${pageContext.servletContext.contextPath}">Go Back To Home</a>
                     </article>
@@ -73,12 +75,12 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- JavaScript Libraries -->
-    <%-- <script src="${contextPath}/resources/lib/easing/easing.min.js"></script> --%>
-    <%-- <script src="${contextPath}/resources/lib/waypoints/waypoints.min.js"></script> --%>
-    <%-- <script src="${contextPath}/resources/lib/owlcarousel/owl.carousel.min.js"></script> --%>
-    <%-- <script src="${contextPath}/resources/lib/tempusdominus/js/moment.min.js"></script> --%>
-    <%-- <script src="${contextPath}/resources/lib/tempusdominus/js/moment-timezone.min.js"></script> --%>
-    <%-- <script src="${contextPath}/resources/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script> --%>
+    <script src="${contextPath}/resources/lib/easing/easing.min.js"></script>
+    <script src="${contextPath}/resources/lib/waypoints/waypoints.min.js"></script>
+    <script src="${contextPath}/resources/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="${contextPath}/resources/lib/tempusdominus/js/moment.min.js"></script>
+    <script src="${contextPath}/resources/lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="${contextPath}/resources/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
     <!-- Template Javascript -->
     <script src="${contextPath}/resources/js/main.js"></script>
