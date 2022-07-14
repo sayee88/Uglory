@@ -158,221 +158,221 @@
                                         
                                             <div class="row">
                                                 <div class="col">
-                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="potato" value="감자" disabled>
+                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="potato" value="1" disabled>
                                                     <label class="form-check-label" for="potato">감자</label>
                                                 </div>
                                                 <div class="col">
-                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="carrot" value="당근">
+                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="carrot" value="2">
                                                     <label class="form-check-label" for="carrot">당근</label>
                                                 </div>
                                                 <div class="col">
-                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="sweetPotato" value="고구마"  >
+                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="sweetPotato" value="3"  >
                                                     <label class="form-check-label" for="sweetPotato">고구마</label>
                                                 </div>
                                             </div>
 
                                             <div class="row">
                                                 <div class="col">
-                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="burdock" value="우엉">
+                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="burdock" value="4">
                                                     <label class="form-check-label" for="burdock">우엉</label>
                                                 </div>
                                                 <div class="col">
-                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="radish" value="무">
+                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="radish" value="5">
                                                     <label class="form-check-label" for="radish">무</label>
                                                 </div>
                                                 <div class="col">
-                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="lotusRoot" value="연근"  >
+                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="lotusRoot" value="6"  >
                                                     <label class="form-check-label" for="lotusRoot">연근</label>
                                                 </div>
                                             </div>
 
                                             <div class="row">
                                                 <div class="col">
-                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="bean" value="서리태">
+                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="bean" value="7">
                                                     <label class="form-check-label" for="bean">서리태</label>
                                                 </div>
                                                 <div class="col">
-                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="chestnut" value="밤">
+                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="chestnut" value="8">
                                                     <label class="form-check-label" for="chestnut">밤</label>
                                                 </div>
                                                 <div class="col">
-                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="pea" value="완두콩"  >
+                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="pea" value="9"  >
                                                     <label class="form-check-label" for="pea">완두콩</label>
                                                 </div>
                                             </div>
 
                                             <div class="row">
                                                 <div class="col">
-                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="onion" value="양파">
+                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="onion" value="10">
                                                     <label class="form-check-label" for="onion">양파</label>
                                                 </div>
                                                 <div class="col">
-                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="springOnion" value="대파">
+                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="springOnion" value="11">
                                                     <label class="form-check-label" for="springOnion">대파</label>
                                                 </div>
                                                 <div class="col">
-                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="greenOnion" value="쪽파"  >
+                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="greenOnion" value="12"  >
                                                     <label class="form-check-label" for="greenOnion">쪽파</label>
                                                 </div>
                                             </div>
 
                                             <div class="row">
                                                 <div class="col">
-                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="chives" value="부추">
+                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="chives" value="13">
                                                     <label class="form-check-label" for="chives">부추</label>
                                                 </div>
                                                 <div class="col">
-                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="garlic" value="마늘">
+                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="garlic" value="14">
                                                     <label class="form-check-label" for="garlic">마늘</label>
                                                 </div>
                                                 <div class="col">
-                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="redPepper" value="고추"  >
+                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="redPepper" value="15"  >
                                                     <label class="form-check-label" for="redPepper">고추</label>
                                                 </div>
                                             </div>
 
                                             <div class="row">
                                                 <div class="col">
-                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="spinach" value="시금치">
+                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="spinach" value="16">
                                                     <label class="form-check-label" for="spinach">시금치</label>
                                                 </div>
                                                 <div class="col">
-                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="Ccabbage" value="배추">
+                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="Ccabbage" value="17">
                                                     <label class="form-check-label" for="Ccabbage">배추</label>
                                                 </div>
                                                 <div class="col">
-                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="peakChoi" value="청경채"  >
+                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="peakChoi" value="18"  >
                                                     <label class="form-check-label" for="peakChoi">청경채</label>
                                                 </div>
                                             </div>
 
                                             <div class="row">
                                                 <div class="col">
-                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="cabbage" value="양배추">
+                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="cabbage" value="19">
                                                     <label class="form-check-label" for="cabbage">양배추</label>
                                                 </div>
                                                 <div class="col">
-                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="Clettuce" value="양상추">
+                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="Clettuce" value="20">
                                                     <label class="form-check-label" for="Clettuce">양상추</label>
                                                 </div>
                                                 <div class="col">
-                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="broccoli" value="브로콜리"  >
+                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="broccoli" value="21"  >
                                                     <label class="form-check-label" for="broccoli">브로콜리</label>
                                                 </div>
                                             </div>
 
                                             <div class="row">
                                                 <div class="col">
-                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="lettuce" value="상추">
+                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="lettuce" value="22">
                                                     <label class="form-check-label" for="lettuce">상추</label>
                                                 </div>
                                                 <div class="col">
-                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="perillaLeaf" value="깻잎">
+                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="perillaLeaf" value="23">
                                                     <label class="form-check-label" for="perillaLeaf">깻잎</label>
                                                 </div>
                                                 <div class="col">
-                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="sweetPumpkin" value="단호박"  >
+                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="sweetPumpkin" value="24"  >
                                                     <label class="form-check-label" for="sweetPumpkin">단호박</label>
                                                 </div>
                                             </div>
 
                                             <div class="row">
                                                 <div class="col">
-                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="tomato" value="토마토">
+                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="tomato" value="25">
                                                     <label class="form-check-label" for="tomato">토마토</label>
                                                 </div>
                                                 <div class="col">
-                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="paprika" value="파프리카">
+                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="paprika" value="26">
                                                     <label class="form-check-label" for="paprika">파프리카</label>
                                                 </div>
                                                 <div class="col">
-                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="cucumber" value="오이"  >
+                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="cucumber" value="27"  >
                                                     <label class="form-check-label" for="cucumber">오이</label>
                                                 </div>
                                             </div>
 
                                             <div class="row">
                                                 <div class="col">
-                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="greenPumpkin" value="애호박">
+                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="greenPumpkin" value="28">
                                                     <label class="form-check-label" for="greenPumpkin">애호박</label>
                                                 </div>
                                                 <div class="col">
-                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="eggplant" value="가지">
+                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="eggplant" value="29">
                                                     <label class="form-check-label" for="eggplant">가지</label>
                                                 </div>
                                                 <div class="col">
-                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="wildChive" value="달래"  >
+                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="wildChive" value="30"  >
                                                     <label class="form-check-label" for="wildChive">달래</label>
                                                 </div>
                                             </div>
 
                                             <div class="row">
                                                 <div class="col">
-                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="greenSprouts" value="숙주나물">
+                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="greenSprouts" value="31">
                                                     <label class="form-check-label" for="greenSprouts">숙주나물</label>
                                                 </div>
                                                 <div class="col">
-                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="beanSprouts" value="콩나물">
+                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="beanSprouts" value="32">
                                                     <label class="form-check-label" for="beanSprouts">콩나물</label>
                                                 </div>
                                                 <div class="col">
-                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="fatsia" value="두릅"  >
+                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="fatsia" value="33"  >
                                                     <label class="form-check-label" for="fatsia">두릅</label>
                                                 </div>
                                             </div>
 
                                             <div class="row">
                                                 <div class="col">
-                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="waterParsley" value="미나리">
+                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="waterParsley" value="34">
                                                     <label class="form-check-label" for="waterParsley">미나리</label>
                                                 </div>
                                                 <div class="col">
-                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="apple" value="사과">
+                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="apple" value="35">
                                                     <label class="form-check-label" for="apple">사과</label>
                                                 </div>
                                                 <div class="col">
-                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="orange" value="감귤"  >
+                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="orange" value="36"  >
                                                     <label class="form-check-label" for="orange">감귤</label>
                                                 </div>
                                             </div>
 
                                             <div class="row">
                                                 <div class="col">
-                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="kiwi" value="키위">
+                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="kiwi" value="37">
                                                     <label class="form-check-label" for="kiwi">키위</label>
                                                 </div>
                                                 <div class="col">
-                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="cherry" value="체리">
+                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="cherry" value="38">
                                                     <label class="form-check-label" for="cherry">체리</label>
                                                 </div>
                                                 <div class="col">
-                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="pear" value="배"  >
+                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="pear" value="39"  >
                                                     <label class="form-check-label" for="pear">배</label>
                                                 </div>
                                             </div>
 
                                             <div class="row">
                                                 <div class="col">
-                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="peach" value="복숭아">
+                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="peach" value="40">
                                                     <label class="form-check-label" for="peach">복숭아</label>
                                                 </div>
                                                 <div class="col">
-                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="blueberry" value="블루베리">
+                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="blueberry" value="41">
                                                     <label class="form-check-label" for="blueberry">블루베리</label>
                                                 </div>
                                                 <div class="col">
-                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="lemon" value="레몬"  >
+                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="lemon" value="42"  >
                                                     <label class="form-check-label" for="lemon">레몬</label>
                                                 </div>
                                             </div>
 
                                             <div class="row">
                                                 <div class="col">
-                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="plum" value="자두">
+                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="plum" value="43">
                                                     <label class="form-check-label" for="plum">자두</label>
                                                 </div>
                                                 <div class="col">
-                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="banana" value="바나나">
+                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="banana" value="44">
                                                     <label class="form-check-label" for="banana">바나나</label>
                                                 </div>
                                                 <div class="col">
@@ -384,32 +384,32 @@
                                             <div style="background-color:#eee;">
                                                 <div class="row">
                                                     <div class="col">
-                                                        <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="mush1" value="버섯전체">
+                                                        <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="mush1" value="50">
                                                         <label class="form-check-label" for="mush1">버섯 전체</label>
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col">
-                                                        <input class="form-check-input" type="checkbox" id="mush2" name="mushroom" value="새송이버섯">
+                                                        <input class="form-check-input" type="checkbox" id="mush2" name="mushroom" value="45">
                                                         <label class="form-check-label" for="mush2">새송이버섯</label>
                                                     </div>
                                                     <div class="col">
-                                                        <input class="form-check-input" type="checkbox" id="mush3" name="mushroom" value="양송이버섯">
+                                                        <input class="form-check-input" type="checkbox" id="mush3" name="mushroom" value="46">
                                                         <label class="form-check-label" for="mush3">양송이버섯</label>
                                                     </div>
                                                     <div class="col">
-                                                        <input class="form-check-input" type="checkbox" id="mush4" name="mushroom" value="표고버섯">
+                                                        <input class="form-check-input" type="checkbox" id="mush4" name="mushroom" value="47">
                                                         <label class="form-check-label" for="mush4">표고버섯</label>
                                                     </div>
                                                 </div>
 
                                                 <div class="row">
                                                     <div class="col">
-                                                        <input class="form-check-input" type="checkbox" id="mush5" name="mushroom" value="느타리버섯">
+                                                        <input class="form-check-input" type="checkbox" id="mush5" name="mushroom" value="48">
                                                         <label class="form-check-label" for="mush5">느타리버섯</label>
                                                     </div>
                                                     <div class="col">
-                                                        <input class="form-check-input" type="checkbox" id="mush6" name="mushroom" value="팽이버섯">
+                                                        <input class="form-check-input" type="checkbox" id="mush6" name="mushroom" value="49">
                                                         <label class="form-check-label" for="mush6">팽이버섯</label>
                                                     </div>
                                                     <div class="col">
