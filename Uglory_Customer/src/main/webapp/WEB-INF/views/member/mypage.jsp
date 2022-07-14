@@ -8,7 +8,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="${contextPath}/resources/css/member/member.css" rel="stylesheet">
     <title>login</title>
 
     <!-- Google Web Fonts -->
@@ -35,6 +34,7 @@
     <!-- Template Stylesheet -->
     <link href="${contextPath}/resources/css/style-1.css" rel="stylesheet">
 
+    <link href="${contextPath}/resources/css/member/member.css" rel="stylesheet">
     
 
 </head>
@@ -59,31 +59,31 @@
                 
                 <div class="myPage-emailBox">
                     <p class="emailText">${loginMember.memberEmail}</p>
-                    <button class="logoutBtn">로그아웃</button>
+                    <a href="${contextPath}/member/logout" class="logoutBtn">로그아웃</a>
                 </div>
                 <div class=empty1></div>  
-                <a href="${contextPath}/member/secession" class="myPageSecession">회원 탈퇴를 원하세요?</a>
+                <a href="${contextPath}/member/secession" class="myPageSecession"><img src="${contextPath}/resources/img/myPage/door.png" style="width:40px; height:40px;">회원 탈퇴를 원하세요?</a>
             
             
             </div>
-            <hr >
+            <hr>
             <div class="myPage-item">
                 
                 <div class="itemBox">
                     <div class="item">
-                        <img src="${contextPath}/resources/img/PYJ/mypage.png"  class="item-image">
-                        <a href="${contextPath}/member/orderHistory" class="item-text">내 구독 현황</a>
+                        <img src="${contextPath}/resources/img/myPage/mypage_sub.png"  class="item-image">
+                        <a href="${contextPath}/member/subscribeCHK" class="item-text">내 구독 현황</a>
                     </div>        
                 </div>
                 <div class="itemBox">
                     <div class="item">
-                        <img src="${contextPath}/resources/img/PYJ/mypage.png"  class="item-image">
+                        <img src="${contextPath}/resources/img/myPage/mypage_order.png"  class="item-image">
                         <a href="${contextPath}/member/orderHistory" class="item-text">주문내역</a>
                     </div>        
                 </div>
                 <div class="itemBox">
                     <div class="item">
-                        <img src="${contextPath}/resources/img/PYJ/mypage.png"  class="item-image">
+                        <img src="${contextPath}/resources/img/myPage/mypage_subOrder.png"  class="item-image">
                         <a href="${contextPath}/member/subscriptionHistory" class="item-text">구독내역</a>
                     </div>        
                 </div>

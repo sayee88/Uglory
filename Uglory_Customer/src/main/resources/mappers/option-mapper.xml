@@ -2,10 +2,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="optionMapper">
 
+	<!-- 상품에 따른 옵션 조회 결과를 담은 resultMap -->
 	<resultMap type="optionType" id="optionType_rm">
 		<id property="optionCode" column="OPTION_CD"/>
 		<result property="optionName" column="OPTION_NM"/>
 		<result property="optionPrice" column="OPTION_PRICE"/>
+	</resultMap>
+	
+	<!-- 선택 옵션 조회 결과를 담은 resultMap -->
+	<resultMap type="optionType" id="selectOption_rm">
+		<id property="optionCode" column="OPTION_CD"/>
+		<result property="optionName" column="OPTION_NM"/>
+		<result property="optionPrice" column="OPTION_PRICE"/>
+		<result property="optionCount" column="OPTION_COUNT"/>
 	</resultMap>
 	
 	<!-- 옵션 조회 -->
@@ -15,4 +24,12 @@
 		WHERE P_CD = ${productCode}
 	</select>
 	
+	
+	<!-- 선택된 옵션 조회 -->
+	<select id="selectOption" resultMap="selectOption_rm">
+		SELECT OPTION_NM, OPTION_PRICE, OPTION_COUNT
+		FROM OPTION_TYPE
+		JOIN OPTION_TB USING(OPTION_CD)
+		WHERE OPTION_CD = ${optionCode}
+	</select>
 </mapper>

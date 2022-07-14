@@ -61,3 +61,77 @@ function initLayerPosition(){
     element_layer.style.left = (((window.innerWidth || document.documentElement.clientWidth) - width)/2 - borderWidth) + 'px';
     element_layer.style.top = (((window.innerHeight || document.documentElement.clientHeight) - height)/2 - borderWidth) + 'px';
 }
+
+// 이름 유효성 검사
+const p_orderName = document.getElementById("p-orderName");
+const nameMessage = document.getElementById("nameMessage");
+
+p_orderName.addEventListener("input", function(){
+
+    // 입력이 되지 않은 경우
+    if(p_orderName.value.trim().length == 0){
+        nameMessage.innerText = "이름을 입력해주세요";
+        nameMessage.classList.remove("confirm", "error");
+        p_orderName.focus();
+        return false;
+    }
+
+    // 이름 유효성 검사 정규식
+    const n_regExp = /^[가-힣]{2,15}$/;
+
+    if(n_regExp.test(p_orderName.value)){ // 유효한 경우
+        nameMessage.innerText = "이름 확인 완료";
+        nameMessage.classList.add("confirm");
+        nameMessage.classList.remove("error");
+
+    } else { // 유효하지 않은 경우 
+        nameMessage.innerText = "이름 형식을 확인해주세요";
+        nameMessage.classList.add("error");
+        nameMessage.classList.remove("confirm");
+    }
+    
+});
+
+// 전화번호 유효성 검사
+const p_orderPhone = document.getElementById("p-orderPhone");
+const phoneMessage = document.getElementById("phoneMessage");
+
+p_orderPhone.addEventListener("input", function(){
+   
+    // 입력이 되지 않은 경우
+    if(p_orderPhone.value.trim().length == 0){
+        phoneMessage.innerText = "연락처를 입력해주세요";
+        phoneMessage.classList.remove("confirm", "error");
+        p_orderPhone.focus();
+        return false;
+    }
+
+    // 전화번호 유효성 검사 정규식
+    const p_regExp = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})-?[0-9]{3,4}-?[0-9]{4}$/;
+
+    if(p_regExp.test(p_orderPhone.value)){ // 유효한 경우
+        phoneMessage.innerText = "연락처 확인 완료";
+        phoneMessage.classList.add("confirm");
+        phoneMessage.classList.remove("error");
+
+    } else {
+        phoneMessage.innerText = "연락처 형식을 확인해주세요";
+        phoneMessage.classList.add("error");
+        phoneMessage.classList.remove("confirm");
+    }
+});
+
+function orderValidate(){
+    
+    if( !agree.checked ){ // 체크를 안했을 때
+        alert("약관 동의 후 주문 버튼을 클릭해주세요.");
+        agree.focus();
+        return false;
+    }
+
+    return true;
+}
+
+
+
+
