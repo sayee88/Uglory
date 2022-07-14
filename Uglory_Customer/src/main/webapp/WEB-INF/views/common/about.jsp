@@ -35,14 +35,51 @@
     <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="${contextPath}/resources/css/style-1.css" rel="stylesheet">
+    <link href="${contextPath}/resources/css/style.css" rel="stylesheet">
     
 </head>
 <body>
+<!-- Mission header -->
+            <div class="container-xxl position-relative p-0">
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0">
+                    <a href="${contextPath}" class="navbar-brand p-0">
+                        <span class="text-primary m-0">
+                        <i class="me-3" style="font-size:30px"></i>
+                        <img src="${contextPath}/resources/img/main/logo/Uglory_farmar.png">
+                        <img src="${contextPath}/resources/img/main/logo/Uglory_whitecali.png" width="150px">
+                    </span>
+                        <!-- <img src="img/logo.png" alt="Logo"> -->
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                        <span class="fa fa-bars"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <div class="navbar-nav ms-auto py-0 pe-4">
+                            <a href="${contextPath}" class="nav-item nav-link active">Home</a>
+                            <a href="${contextPath}/common/mission" class="nav-item nav-link">Mission</a>
+                            <a href="${contextPath}/common/about" class="nav-item nav-link">About</a>
+                            <a href="${contextPath}/product/list" class="nav-item nav-link">Market</a>
+                            <a href="${contextPath}/review/list" class="nav-item nav-link icon">Review</a>
+                        </div>
+                        <a href="#" class="nav-item icon"><img class="menu-chart" src="${contextPath}/resources/img/main/shopping-cart-white.png"></a>
+                        <a href="${contextPath}/member/login" class="nav-item icon"><img class="menu-chart" src="${contextPath}/resources/img/main/user-white.png"></a>
+                    </div>
+                </nav>
+
+                <div class="container-xxl py-5 bg-dark hero-header mb-5">
+                    <div class="container text-center my-5 pt-5 pb-4">
+                        <h2 class="display-3 text-white mb-3 animated slideInDown" style="font-size:50px">About</h2>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb justify-content-center text-uppercase">
+                                <li class="breadcrumb-item"><a href="${contextPath}">Home</a></li>
+                                <li class="breadcrumb-item"><a href="${contextPath}/common/about">about</a></li>
+                                <li class="breadcrumb-item"><a href="${contextPath}/common/mission">Mission</a></li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
     <main class="main">
-
-     <jsp:include page="/WEB-INF/views/common/header-1.jsp" />
-
         <!-- 1어바웃 시작 -->
         <div>
             <div class="about1">
@@ -205,13 +242,13 @@
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content" style="height: 700px; width: 700px;">
         <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">어글로리 채소 전체보기  👀🥬</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            <img src="${contextPath}/resources/img/about/vegetable.webp" style="width:450px;">
+            <img src="${contextPath}/resources/img/about/vegetable.webp" style="width:680px;">
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -222,6 +259,7 @@
     </div>
     </main>
 
+    <%-- footer --%>
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
     
@@ -229,6 +267,19 @@
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="${contextPath}/resources/lib/wow/wow.min.js"></script>
+    <script src="${contextPath}/resources/lib/easing/easing.min.js"></script>
+    <script src="${contextPath}/resources/lib/waypoints/waypoints.min.js"></script>
+    <script src="${contextPath}/resources/lib/counterup/counterup.min.js"></script>
+    <script src="${contextPath}/resources/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="${contextPath}/resources/lib/tempusdominus/js/moment.min.js"></script>
+    <script src="${contextPath}/resources/lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="${contextPath}/resources/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
+    <!-- Template Javascript -->
+    <script src="${contextPath}/resources/js/main.js"></script>
 </body>
 </html>
