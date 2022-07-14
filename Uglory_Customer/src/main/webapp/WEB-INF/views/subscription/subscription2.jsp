@@ -60,7 +60,7 @@
                 <div class="outer-table">
                     <div class="gray-box">
 
-                        <form action="#">
+                        <form action="${contextPath}/subscription/pay" method="POST">
 
                             <table id="table2">
                                 <tr>
@@ -85,10 +85,10 @@
                                     <th style="width: 100px;"><button type="button" class="search-btn" id="addressBtn" onclick="sample4_execDaumPostcode()">검색</button></th>
                                 </tr>
                                 <tr>
-                                    <th colspan="2"><input type="text" name="order-address" id="sample4_roadAddress" placeholder="도로명 주소" required></th>
+                                    <th colspan="2"><input type="text" name="s-orderAddress" id="sample4_roadAddress" placeholder="도로명 주소" required></th>
                                 </tr>
                                 <tr>
-                                    <th colspan="2"><input type="text" name="order-detailAddress" id="sample4_detailAddress" placeholder="상세주소를 입력해주세요" required></th>
+                                    <th colspan="2"><input type="text" name="s-orderAddress" id="sample4_detailAddress" placeholder="상세주소를 입력해주세요" required></th>
                                 </tr>
                                 <tr></tr>
                                 <tr>
@@ -99,7 +99,7 @@
                                 </tr>
                                 <tr></tr>
                                 <tr>
-                                    <th colspan="2" class="submit-btn-th"><button class="submit-btn" type="submit" id="submit-btn" onclick="location.href='${contextPath}/subscription/pay'">다음</button></th>
+                                    <th colspan="2" class="submit-btn-th"><button class="submit-btn" type="submit" id="submit-btn">다음</button></th>
                                 </tr>
                             </table>
                         </form>
@@ -128,24 +128,25 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/wow/wow.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/counterup/counterup.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/tempusdominus/js/moment.min.js"></script>
-    <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="${contextPath}/resources/lib/wow/wow.min.js"></script>
+    <script src="${contextPath}/resources/lib/easing/easing.min.js"></script>
+    <script src="${contextPath}/resources/lib/waypoints/waypoints.min.js"></script>
+    <script src="${contextPath}/resources/lib/counterup/counterup.min.js"></script>
+    <script src="${contextPath}/resources/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="${contextPath}/resources/lib/tempusdominus/js/moment.min.js"></script>
+    <script src="${contextPath}/resources/lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="${contextPath}/resources/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
 
     <!-- bootstrap Javascript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
-    <!-- Template Javascript -->
-    <script src="${contextPath}/resources/js/main.js"></script>
 
     <!-- 다음 주소 API -->
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="${contextPath}/resources/js/main.js"></script>
 
     <!-- subscription -->
     <script src="${contextPath}/resources/js/subscription.js"></script>

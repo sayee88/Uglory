@@ -12,4 +12,10 @@ public interface OptionService {
 	 */
 	List<OptionType> selectOptionList(int productCode);
 
+	/** 선택된 옵션 리스트 서비스
+	 * @param optionCode
+	 * @return optionList
+	 */
+	List<OptionType> selectOption(int optionCode);
+
 }

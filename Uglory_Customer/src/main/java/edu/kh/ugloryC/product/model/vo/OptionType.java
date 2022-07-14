@@ -12,4 +12,5 @@ public class OptionType {
 	private int optionCode;
 	private String optionName;
 	private int optionPrice;
+	private int optionCount;
 }

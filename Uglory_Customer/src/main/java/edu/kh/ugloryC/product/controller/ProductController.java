@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.Gson;
+
 import edu.kh.ugloryC.product.model.service.OptionService;
 import edu.kh.ugloryC.product.model.service.ProductService;
 import edu.kh.ugloryC.product.model.vo.OptionType;
@@ -60,10 +62,20 @@ public class ProductController {
 		return "product/productDetail";
 	}			
 	
-	// 옵션 선택
+	// 선택한 옵션 조회
 	@ResponseBody
 	@PostMapping("/detail/optionSelect")
-	public int optionSelect(int productCode,
+	public String optionSelect(int optionCode) {
+		
+		List<OptionType> optionList = optionService.selectOption(optionCode);
+		
+		return new Gson().toJson(optionList);
+	}
+	
+	// 옵션 선택에 따른 총 가격 조회
+	@ResponseBody
+	@PostMapping("/detail/optionTotal")
+	public int optionTotal(int productCode,
 							   int optionCode,
 							   @RequestParam Map<String, Object> paramMap) {
 		
@@ -76,10 +88,8 @@ public class ProductController {
 	}
 	
 	// 결제 페이지 전환
-	@GetMapping("/order/{categoryNo}/{productCode}/{optionCode}")
-	public String productOrder(@PathVariable("categoryNo") int categoryNo,
-							   @PathVariable("productCode") int productCode,
-							   @PathVariable("optionCode") int optionCode,
+	@GetMapping("/order")
+	public String productOrder(
 							   // loginMember 가져오기
 							   Model model) {
 		
