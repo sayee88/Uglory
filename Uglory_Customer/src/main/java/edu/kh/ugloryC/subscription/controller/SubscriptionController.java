@@ -96,15 +96,18 @@ public class SubscriptionController {
 		
 		int result = service.insertSubsOrder(orderInfo);
 		String path = null;
+		String message = null;
 		
 		if(result>0) {
-			ra.addFlashAttribute("message", "주문이 완료되었습니다:)");
-			path = "redirect:/member/myPage"; 
+			message = "주문이 완료되었습니다:)";
+			path = "redirect:/member/subscribeCHK"; 
 			
 		}else {
-			ra.addFlashAttribute("message", "주문 실패:(");
+			message = "주문 실패:(";
 			path = "redirect:/subscription"; 
 		}
+		
+		ra.addFlashAttribute("message", message);
 		
 		return path;
 		

@@ -3,19 +3,41 @@
 <mapper namespace="subscriptionMapper">
 
 	<insert id="insertSubsOrder">
-		INSERT INTO SUBS_ORDER VALUES(
-			SEQ_S_ORDER_CD.NEXTVAL,
-			DEFAULT, DEFAULT,
-			#{inputName},
-			#{inputPhone},
-			#{address},
-			#{inputDelText},
-			(SELECT NEXT_DAY(SYSDATE, 'WEDNESDAY') AS NEXT_WED FROM DUAL),
-            DEFAULT,
-            #{cycle},
-            #{memberNo},
-            #{box}
-        )
+	
+		<choose>
+		   <when test='box == "standard"'>
+				INSERT INTO SUBS_ORDER VALUES(
+					(SELECT CONCAT(TO_CHAR(SYSDATE, '"S"YYYYMMDD-"00"'), SEQ_S_ORDER_CD.NEXTVAL) FROM DUAL),
+					DEFAULT, DEFAULT,
+					#{inputName},
+					#{inputPhone},
+					#{address},
+					#{inputDelText},
+					(SELECT NEXT_DAY(SYSDATE, 'WEDNESDAY') AS NEXT_WED FROM DUAL),
+		            DEFAULT,
+		            #{cycle},
+		            #{memberNo},
+		            #{box}
+		        )
+		   </when>
+		   <otherwise>
+				INSERT INTO SUBS_ORDER VALUES(
+					(SELECT CONCAT(TO_CHAR(SYSDATE, '"J"YYYYMMDD-"00"'), SEQ_S_ORDER_CD.NEXTVAL) FROM DUAL),
+					DEFAULT, DEFAULT,
+					#{inputName},
+					#{inputPhone},
+					#{address},
+					#{inputDelText},
+					(SELECT NEXT_DAY(SYSDATE, 'WEDNESDAY') AS NEXT_WED FROM DUAL),
+		            DEFAULT,
+		            #{cycle},
+		            #{memberNo},
+		            #{box}
+		        )
+		   </otherwise>
+		</choose>
+	
+	
 	</insert>
 	
 </mapper>
