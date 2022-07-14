@@ -82,25 +82,5 @@ public class AdminServiceImpl implements AdminService {
 	public int emailDupCheck(String adminEmail) {
 		return dao.emailDupCheck(adminEmail);
 	}
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 }
