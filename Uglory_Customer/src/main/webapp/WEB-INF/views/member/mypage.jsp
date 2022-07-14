@@ -59,7 +59,7 @@
                 
                 <div class="myPage-emailBox">
                     <p class="emailText">${loginMember.memberEmail}</p>
-                    <button class="logoutBtn">로그아웃</button>
+                    <a href="${contextPath}/member/logout" class="logoutBtn">로그아웃</a>
                 </div>
                 <div class=empty1></div>  
                 <a href="${contextPath}/member/secession" class="myPageSecession"><img src="${contextPath}/resources/img/myPage/door.png" style="width:40px; height:40px;">회원 탈퇴를 원하세요?</a>
