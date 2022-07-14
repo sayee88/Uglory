@@ -14,7 +14,7 @@
     width: 100%;
     height: 50px;
 
-    margin-bottom: 10px;
+    margin-bottom: 6px;
     display: flex;
     align-items: center;
 }
@@ -22,7 +22,7 @@
 /* 내부 input 제목(label) */
 .product-order-area > label{
     display: block;
-    margin-top: 20px;
+    margin-top: 10px;
     font-size: 15px;
 }
 
@@ -50,12 +50,12 @@
 
 /* 주소 */
 #order_postcode{
-    width: 70%;
+    width: 90%;
 }
 
 /* 주소 focus - 확인 필요 */
 #order_postcode:focus-within {
-    width: 70%;
+    width: 90%;
 }
 
 /* 주소 검색 버튼 */
@@ -63,7 +63,7 @@
     width: 25%;
     height: 50px;
 
-    margin-left: 5%;
+    margin-left: 1px;
 
     background-color: rgb(113, 214, 199);
     border: 0;
@@ -79,7 +79,7 @@
     width: 25%;
     height: 50px;
 
-    margin-left: 5%;
+    margin-left: 1px;
 
     background-color: transparent;
     border: 1px solid rgb(113, 214, 199);
@@ -176,3 +176,15 @@
     font-size: 18px;
     font-weight: bold;
 }
+
+/* 주문 관련 메세지 */
+.order-message{
+    margin-left: 5px;
+    font-size: 13px;
+    padding-top: -10px;
+    font-weight: bold;
+    letter-spacing: -1px; /* 자간 */
+}
+
+.confirm{ color : rgb(113, 214, 199);}
+.error{  color : rgb(255, 89, 87);}
