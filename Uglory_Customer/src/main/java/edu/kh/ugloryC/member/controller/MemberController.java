@@ -29,6 +29,22 @@ public class MemberController {
 	public String mypage() {
 		return "member/myPage";
 	}
+	@GetMapping("/secession")
+	public String secession() {
+		return "member/secession";
+	}
+	@GetMapping("/subscribeCHK")
+	public String subscribeCHK() {
+		return "member/subscribeCHK";
+	}
+	@GetMapping("/orderHistory")
+	public String orderHistory() {
+		return "member/orderHistory";
+	}
+	@GetMapping("/subscriptionHistory")
+	public String subscriptionHistory() {
+		return "member/subscriptionHistory";
+	}
 	
 	
 	@ResponseBody
