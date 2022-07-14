@@ -149,7 +149,11 @@
             <div class="review-section">
                 <div class="review-list">
                     
-                    
+                    <c:choose>
+                        <c:when test="">
+
+                        </c:when>
+                    </c:choose>
 
                 <div class="review-content">
                     <div data-bs-toggle="modal" data-bs-target="#exampleModal">
