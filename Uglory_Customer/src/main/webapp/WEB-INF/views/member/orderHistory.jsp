@@ -7,7 +7,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="${contextPath}/resources/css/member/member.css" rel="stylesheet">
     <title>login</title>
 
     <!-- Google Web Fonts -->
@@ -34,6 +33,7 @@
     <!-- Template Stylesheet -->
     <link href="${contextPath}/resources/css/style-1.css" rel="stylesheet">
 
+    <link href="${contextPath}/resources/css/member/member.css" rel="stylesheet">
     
 
 </head>
@@ -81,32 +81,41 @@
                             </div>
                         </li>
                     </ul>
+                    <%-- 로그인 상태인 경우 주문 리스트 버튼 출력 --%>
+                    <c:if test="${!empty loginMember}">
+                        <div>
 
-                    
-                    <!-- 페이지네이션 시작-->
-                    <div class="pagination-area">
-                        <div class="pagiDiv">
-                            <a href="" class="pagiA pagiAA">첫페이지로 가기</a>
-                            <a href="" class="pagiA pagiBB">이전 페이지로 가기</a>
-                            <span><a href="" class="pagiNum">1</a></span>
-                            <span><a href="" class="pagiNum">2</a></span>
-                            <span><a href="" class="pagiNum">3</a></span>
-                            <span><a href="" class="pagiNum">4</a></span>
-                            <span><a href="" class="pagiNum">5</a></span>
-                            <a href=""class="pagiA pagiCC">다음 페이지로 가기</a>
-                            <a href=""class="pagiA pagiDD">마지막 페이지로 가기</a>
+                            <button onclick="showOrderList"></button>
                         </div>
-                    </div>
-                    <!-- 페이지 네이션 끝 -->
-                    
+                    </c:if>
+
+                <!-- 페이지네이션 시작-->   
+                <nav aria-label="Page navigation example">
+                <ul class="pagination d-flex justify-content-center">
+                    <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                    </li>
+                </ul>
+                </nav>
+                <!-- 페이지 네이션 끝 -->
                 </div>
-            
-            
         </div>
-
-
     </main>
+                
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
+    
+    <!-- bootstrap Javascript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     
     
 </body>

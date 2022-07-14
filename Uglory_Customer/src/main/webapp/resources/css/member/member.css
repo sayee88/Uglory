@@ -11,10 +11,10 @@
     margin-right: auto;
 }
 .login-area{
-    padding-left: 4.25rem;
+    padding-left: 2.25rem;
     padding-right: 1.25rem;
     padding-top: 4rem;
-    padding-bottom: 4rem;
+    padding-bottom: 7rem;
     flex-direction: column;
     display: flex;
 }
@@ -253,7 +253,7 @@
     line-height: 1;
     cursor: pointer;
 }
-.madal-area{
+/* .madal-area{
     z-index: 100;
     overflow: auto;
     right: 0;
@@ -262,7 +262,7 @@
     bottom: 0;
     position: fixed;
     --tw-bg-opacity: 0.5;
-    /* background-color: rgba(47,56,69,var(--tw-bg-opacity)); */
+    /* background-color: rgba(47,56,69,var(--tw-bg-opacity)); 
 }
 .modal{
     width: 100%;
@@ -296,11 +296,11 @@
     border-radius: .125rem;
     --tw-bg-opacity: 1;
     background-color: rgba(255,255,255,var(--tw-bg-opacity));
-}
+} */
 
 /* 마이페이지 */
 .myPage{
-    max-width: 32rem;
+    max-width: 30rem;
     margin-left: auto;
     margin-right: auto;
 }
@@ -380,7 +380,7 @@
     grid-template-columns: repeat(3,minmax(0,1fr));
     row-gap: 2rem;
     width: 100%;
-    padding-top: 100px;
+    padding-top: 70px;
     padding-left: -25px;
     display: grid;
 }
@@ -404,6 +404,8 @@
     display: block;
     border-style: solid;
     cursor: pointer;
+    border: none;
+    font-weight: bold;
 }
 .item-text{
     text-align: center;
@@ -425,10 +427,11 @@
     position: relative;
     padding-left: 1rem;
     padding-right: 1rem;
-    max-width: 28rem;
+    max-width: 27rem;
     margin-left: auto;
     margin-right: auto;
-    height: 100vh;
+    margin-top: 210px;
+    height: 25vh;
 }
 .secession-text{
     font-size: 1.5rem;
@@ -437,6 +440,9 @@
 }
 .secessionText-bold{
     font-weight: 700;
+}
+.secessionBtn{
+    padding-top: 10px;
 }
 .secession-btn{
     width: 100%;
@@ -461,9 +467,10 @@
         padding-left: 1rem;
         padding-right: 1rem;
         max-width: 28rem;
+        margin-top: 279px;
         margin-left: auto;
         margin-right: auto;
-        height: 100vh;
+        height: 50vh;
    
 }
 .subscribe-box{
@@ -567,6 +574,9 @@
     padding: 20px 0 13px;
     border-bottom: 1px solid #dddfe1;
 }
+.order-name a{
+    color: black;
+}
 
 .order-info{
     overflow: hidden;
@@ -575,6 +585,7 @@
 .description{
     overflow: hidden;
     padding-top: 1px;
+    padding-left: 20px;
 }
 dl{
     overflow: hidden;
@@ -612,7 +623,7 @@ dd{
     margin: 200px;
     margin-left: 500px;
 }
-.pagination-area{
+/* .pagination-area{
     margin: 60px 0 0;
     text-align: center;
     word-break: break-all;
@@ -656,4 +667,4 @@ dd{
 }
 .pagiDD{
     background-image: url(/resources/img/PYJ/pagination4.webp);
-}
+} */
