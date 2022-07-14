@@ -309,6 +309,7 @@
                                     <span>★</span>
                                     <span>★</span>
                                     <span>★</span>
+                                    
                                 </div>
                             </div>
                             <div class="review-content-text-section">
