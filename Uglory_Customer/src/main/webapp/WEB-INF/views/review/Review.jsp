@@ -41,7 +41,8 @@
 
 <body>
     <main>
-        <div class="container-xxl bg-white p-0">
+    
+        <section class="container-xxl bg-white p-0">
             <!-- review header -->
             <div class="container-xxl position-relative p-0">
                 <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0">
@@ -147,7 +148,9 @@
             <!-- 리뷰 목록 -->
             <div class="review-section">
                 <div class="review-list">
-                        
+                    
+                    
+
                 <div class="review-content">
                     <div data-bs-toggle="modal" data-bs-target="#exampleModal">
                         <img src="${contextPath}/resources/images/review/review_img1.png">
@@ -327,7 +330,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     </main>
 
        
