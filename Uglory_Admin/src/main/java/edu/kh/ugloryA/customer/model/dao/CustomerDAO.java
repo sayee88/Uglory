@@ -41,8 +41,41 @@ public class CustomerDAO {
 		map.put("key", key);
 		map.put("query", query);
 		
-		return sqlSession.selectList("customerMapper.selectAllCustomer", map);
+		return sqlSession.selectList("customerMapper.searchCustomer", map);
 	}
+
+	
+	/**
+	 * 회원 상태 조회 DAO
+	 * @param customerNo
+	 * @return
+	 */
+	public String selectAccountFlag(int customerNo) {
+		return sqlSession.selectOne("customerMapper.selectAccountFlag", customerNo);
+	}
+
+
+	/**
+	 * 회원 계정 정지 DAO
+	 * @param customerNo
+	 * @return
+	 */
+	public int stopAccount(int customerNo) {
+		return sqlSession.update("customerMapper.stopAccount", customerNo);
+	}
+
+
+	/**
+	 * 회원 계정 활성화 DAO
+	 * @param customerNo
+	 * @return
+	 */
+	public int activeAccount(int customerNo) {
+		return sqlSession.update("customerMapper.activeAccount", customerNo);
+	}
+
+
+
 	
 	
 }
