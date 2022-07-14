@@ -28,7 +28,7 @@ public class ReviewController {
 	}
 	
 	
-	// 이용후기
+	// 리뷰 후기
 	@GetMapping("/list")
 	public String review(){
 		

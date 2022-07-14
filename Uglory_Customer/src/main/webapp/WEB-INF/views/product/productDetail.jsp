@@ -156,11 +156,8 @@
                                 <!-- 옵션 선택 for문으로 가져오기 -->
                                 <option value="option-0" selected disabled>옵션 선택</option>
                                 <c:forEach var="option_type" items="${optionList}">
-                                    <option value="${option_type.optionCode}" >${option_type.optionName} - 
-                                        <%-- 옵션 가격이 0원이 아닐때만 가격 조회 --%>
-                                        <c:if test="${option_type.optionPrice != 0}">
-                                            ${option_type.optionPrice} 원
-                                        </c:if>
+                                    <option value="${option_type.optionCode}" >
+                                        ${option_type.optionName} - ${option_type.optionPrice}원
                                     </option>
                                 </c:forEach>
                             </select>
@@ -259,6 +256,7 @@
             let optionCode = "${option_type.optionCode}";
             const productCode = "${productCode}";
             const categoryNo = "${categoryNo}";
+            const optionName = "${option_type.optionName}";
         </script>
         <%-- Template Javascript --%>
         <script src="${contextPath}/resources/js/main.js"></script>
