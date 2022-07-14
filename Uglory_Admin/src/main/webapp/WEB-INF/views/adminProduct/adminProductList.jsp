@@ -96,134 +96,58 @@
                     <article class="tab-content pt-3" id="nav-tabContent">
                         <!-- root 시작 -->
                         <div class="tab-pane fade show active" id="nav-root" role="tabpanel" aria-labelledby="nav-root-tab">
-
-                            근채류
                             
                             <div class="listBody" id="rootBox">
-                                <!-- card1 start -->
-                                <div class="card m-4 col-sm-5 col-xl-3">
-                                    <a href="#">
-
-                                        <!-- 품절표시 넣어보기 -->
-                                        <div class="sold-out-bg">
-                                            <img src="${contextPath}/resources/img/soldOut.png" alt="품절" class="sold-out">
-                                        </div>
-
-                                        <img src="${contextPath}/resources/img/vegetables-2485055.jpg" alt="야채"/>
-                                        <div class="cardBody">
-                                            <div class="card-tit">
-                                                <p>1</p>
-                                                <p>당근</p>
-                                            </div>
-                                            <p class="pCategory">근채류</p>
-
-                                            <div class="card-con">
-                                                <p>상품등록일</p>
-                                                <p class="pData">2022-07-08</p>
-                                            </div>
-                                            <div class="card-con">
-                                                <p>생산자</p>
-                                                <p class="pData">당근 농장</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <!-- card1 end -->
-
-                                <!-- card2 start -->
-                                <div class="card m-4 col-sm-5 col-xl-3">
-                                    <a href="#">
-
-                                        <img src="${contextPath}/resources/img/vegetables-2485055.jpg" alt="야채"/>
-                                        <div class="cardBody">
-                                            <div class="card-tit">
-                                                <p>1</p>
-                                                <p>당근</p>
-                                            </div>
-                                            <p id="pCategory">근채류</p>
-
-                                            <div class="card-con">
-                                                <p>상품등록일</p>
-                                                <p class="pData">2022-07-08</p>
-                                            </div>
-                                            <div class="card-con">
-                                                <p>생산자</p>
-                                                <p class="pData">당근 농장</p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </div>
-                                <!-- card2 end -->
-
                             </div>
                         </div>
-                        <!-- root 끝 -->
 
                         <!-- beans 시작 -->
                         <div class="tab-pane fade" id="nav-beans" role="tabpanel" aria-labelledby="nav-beans-tab">
-
-                            콩
 
                             <div class="listBody" id="beansBox">
                             </div>
 
                         </div>
-                        <!-- beans 끝 -->
 
                         <!-- veg 시작 -->
                         <div class="tab-pane fade" id="nav-veg" role="tabpanel" aria-labelledby="nav-veg-tab">
-
-                            채소
 
                             <div class="listBody" id="vegBox">
                             </div>
 
                         </div>
-                        <!-- veg 끝 -->
 
                         <!-- fnv 시작 -->
                         <div class="tab-pane fade" id="nav-fnv" role="tabpanel" aria-labelledby="nav-fnv-tab">
-
-                            과채류
 
                             <div class="listBody" id="fnvBox">
                             </div>
 
                         </div>
-                        <!-- fnv 끝 -->
 
                         <!-- herbs 시작 -->
                         <div class="tab-pane fade" id="nav-herbs" role="tabpanel" aria-labelledby="nav-herbs-tab">
-
-                            나물류
 
                             <div class="listBody" id="herbsBox">
                             </div>
 
                         </div>
-                        <!-- herbs 끝 -->
 
                         <!-- mush 시작 -->
                         <div class="tab-pane fade" id="nav-mush" role="tabpanel" aria-labelledby="nav-mush-tab">
-
-                            버섯류
 
                             <div class="listBody" id="mushBox">
                             </div>
 
                         </div>
-                        <!-- mush 끝 -->
 
                         <!-- fruit 시작 -->
                         <div class="tab-pane fade" id="nav-fruit" role="tabpanel" aria-labelledby="nav-fruit-tab">
-
-                            과일류
 
                             <div class="listBody" id="fruitBox">
                             </div>
 
                         </div>
-                        <!-- fruit 끝 -->
 
                     </article>
                     <!-- 상품 리스트 끝-->
@@ -240,6 +164,10 @@
         <!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
+
+    <script>
+        const contextPath = '${contextPath}';
+    </script>
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
