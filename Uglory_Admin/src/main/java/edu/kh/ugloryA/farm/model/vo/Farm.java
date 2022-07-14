@@ -1,4 +1,4 @@
-package edu.kh.ugloryA.product.model.vo;
+package edu.kh.ugloryA.farm.model.vo;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
