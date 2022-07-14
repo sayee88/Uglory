@@ -13,9 +13,6 @@
 			  null 소문자 작성시 오류, not null 제약 조건 컬럼에는 null 대입 불가능
 		
 		 -->
-		
-	
-	
 		<setting name="jdbcTypeForNull" value="NULL"/>
 	</settings>
 
@@ -25,6 +22,11 @@
 		<!-- <typeAlias type="edu.kh.comm.member.model.vo.Member" alias="member"/> -->
 		<typeAlias type="edu.kh.ugloryA.myPage.model.vo.Admin" alias="admin"/>
 		<typeAlias type="edu.kh.ugloryA.customer.model.vo.Customer" alias="customer"/>
+		
+		<typeAlias type="edu.kh.ugloryA.product.model.vo.Product" alias="product"/>
+		<typeAlias type="edu.kh.ugloryA.product.model.vo.ProductImage" alias="productImage"/>
+		<typeAlias type="edu.kh.ugloryA.product.model.vo.OptionType" alias="optionType"/>
+		<typeAlias type="edu.kh.ugloryA.farm.model.vo.Farm" alias="farm"/>
 		
 	</typeAliases>
 	
@@ -38,6 +40,8 @@
 		<!-- <mapper resource="/mappers/member-mapper.xml" /> -->
 		<mapper resource="/mappers/admin-mapper.xml" />
 		<mapper resource="/mappers/customer-mapper.xml"/>
+		<mapper resource="/mappers/product-mapper.xml"/>
+		<mapper resource="/mappers/farm-mapper.xml"/>
 		
 		
 	</mappers>

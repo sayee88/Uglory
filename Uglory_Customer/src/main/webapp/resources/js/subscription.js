@@ -87,7 +87,6 @@ function mushroom(){
     }
 }
 
-document.getElementById("mush1").addEventListener("change", mushroom);
 
 
 
@@ -112,35 +111,47 @@ function count_check(obj){
 
 // X버튼 클릭시 check 해제
 const xbtn = document.getElementById("xbtn");
-xbtn.addEventListener("click", function(){
-    const choice = document.getElementsByName("choice");
-
-    for(var i=0 ; i<choice.length ; i++){
-        if(choice[i].checked){
-            choice[i].checked = false;
+if(xbtn == true){
+    xbtn.addEventListener("click", function(){
+        const choice = document.getElementsByName("choice");
+    
+        for(var i=0 ; i<choice.length ; i++){
+            if(choice[i].checked){
+                choice[i].checked = false;
+            }
         }
-    }
-})
-
-
-// 제외할 야채(choice) value 값 가져오기
-function getValue(){
-    const checked = 'input[name="choice"]:checked';
-    const checkedVege = document.querySelectorAll(checked);
-
-    let result = '';
-    checkedVege.forEach((el)=>{
-        result += el.value + ' ';
-    });
+    })
 
 }
 
 
-$.ajax({
-    url : contextPath + "",
-    data : {},
-    type : "",
-    success : function(){},
-    error: function(){}
+// // 제외할 야채(choice) value 값 가져오기
+// function getValue(){
+//     const checked = 'input[name="choice"]:checked';
+//     const checkedVege = document.querySelectorAll(checked);
 
-});
+//     let result = '';
+//     checkedVege.forEach((el)=>{
+//         result += el.value + ' ';
+//     });
+
+
+
+// }
+
+
+
+
+
+// $.ajax({
+//     url : contextPath + "/subscription",
+//     data : {"choice" : result},
+//     type : "post",
+//     success : function(){
+
+//     },
+//     error: function(){
+        
+//     }
+
+// });
