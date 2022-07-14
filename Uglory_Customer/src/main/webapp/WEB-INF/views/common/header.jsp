@@ -22,7 +22,6 @@
                         <img src="${contextPath}/resources/img/main/logo/Uglory_farmar.png">
                         <img src="${contextPath}/resources/img/main/logo/Uglory_whitecali.png" width="150px">
                     </span>
-
                     <!-- <img src="img/logo.png" alt="Logo"> -->
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
