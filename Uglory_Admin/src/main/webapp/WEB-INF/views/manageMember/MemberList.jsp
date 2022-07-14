@@ -4,13 +4,13 @@
 <%-- 문자열 관련 함수(메서드) 제공 JSTL (EL형식으로 작성) --%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<c:forEach var="customer" items="${customerList}">
+<%-- <c:forEach var="customer" items="${customerList}">
     <c:set var="customerNo" value="${customer.customerNo}" />
     <c:set var="customerEmail" value="${customer.customerEmail}" />
     <c:set var="customerName" value="${customer.customerName}" />
     <c:set var="subscriptionFlag" value="${customer.subscriptionFlag}" />
     <c:set var="accountFlag" value="${customer.accountFlag}" />
-</c:forEach>
+</c:forEach> --%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -67,14 +67,14 @@
             <!-- Navbar End -->
 
 
-            <!-- 회원 관리 form태그 -->
+            <!-- 회원 관리 -->
             <div class="container-fluid pt-4 px-4">
                 <div class="row bg-light rounded justify-content-center mx-0 m-5 p-4">
                     <div class="col-lg-12 text-center">
                         <h2 class="text-start">회원 관리</h2>
                         <hr>
 
-                        <%-- 검색창 --%>
+                        <%-- 검색창 form 태그 --%>
                         <div class="listHead">
                             <form action="selectAll">
                                 <select name="key">
@@ -101,19 +101,40 @@
                                 </thead>
 
                                 <tbody id="customerList">
-                                    <c:forEach>
-                                            <tr>
-                                                <th scope="row">${customerNo}</th>
-                                                <td>${customerEmail}</td>
-                                                <td>${customerName}</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-subscription">구독 중</button>
-                                                </td>
-                                                <td>
-                                                    <button type="button" class="btn btn-stopaccount">계정 정지</button>
-                                                </td>
-                                            </tr>
-                                        </c:forEach>
+                                    <c:forEach var="customer" items="${customerList}" >
+                                        <tr>
+                                            <th scope="row">${customer.customerNo}</th>
+                                            <td>${customer.customerEmail}</td>
+                                            <td>${customer.customerName}</td>
+
+                                            <c:choose>
+                                                <c:when test="${customer.subscriptionFlag == 'N'}">
+                                                    <td>
+                                                        <div>구독 회원</div>
+                                                    </td>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <td>
+                                                        <div>미구독 회원</div>
+                                                    </td>
+                                                </c:otherwise>
+                                            </c:choose>
+
+                                            <c:choose>
+                                                <c:when test="${customer.accountFlag == 'N'}">
+                                                    <td>
+                                                        <button type="button" class="btn btn-stopaccount status-btn">계정 정지</button>
+                                                    </td>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <td>
+                                                        <button type="button" class="btn btn-active status-btn">계정 활성화</button>
+                                                    </td>
+                                                </c:otherwise>
+                                            </c:choose>
+                                           
+                                        </tr>
+                                    </c:forEach>
                                 </tbody>
                             </table>
 
@@ -147,7 +168,10 @@
     <!-- Template Javascript -->
     <script src="${contextPath}/resources/js/main.js"></script>
 
-    <%-- <script src="${contextPath}/resources/js/memberList.js"></script> --%>
+    <script src="${contextPath}/resources/js/memberList.js"></script>
+
+    <script>const contextPath = "${contextPath}";</script>
+    
 </body>
 
 </html>
