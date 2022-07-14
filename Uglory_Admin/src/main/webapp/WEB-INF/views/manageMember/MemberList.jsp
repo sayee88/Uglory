@@ -4,6 +4,14 @@
 <%-- 문자열 관련 함수(메서드) 제공 JSTL (EL형식으로 작성) --%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
+<c:forEach var="customer" items="${customerList}">
+    <c:set var="customerNo" value="${customer.customerNo}" />
+    <c:set var="customerEmail" value="${customer.customerEmail}" />
+    <c:set var="customerName" value="${customer.customerName}" />
+    <c:set var="subscriptionFlag" value="${customer.subscriptionFlag}" />
+    <c:set var="accountFlag" value="${customer.accountFlag}" />
+</c:forEach>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -68,14 +76,14 @@
 
                         <%-- 검색창 --%>
                         <div class="listHead">
-                            <form>
-                                <select name="" id="">
-                                    <option value="">회원 이메일</option>
-                                    <option value="">회원 이름</option>
+                            <form action="selectAll">
+                                <select name="key">
+                                    <option value="customerEmail">회원 이메일</option>
+                                    <option value="customerName">회원 이름</option>
                                 </select>
 
-                                <input type="text" id="memberSearch">
-                                <button type="button" class="btn btn-secondary"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                <input type="text" name="query" id="memberSearch">
+                                <button type="submit" class="btn btn-secondary"><i class="fa-solid fa-magnifying-glass"></i></button>
                             </form>
                         </div>
 
@@ -91,42 +99,21 @@
                                         <th scope="col">계정 정지</th>
                                     </tr>
                                 </thead>
-                                <tbody id="customerList">
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>test01@uglory.com</td>
-                                        <td>양배추쿵야</td>
-                                        <td>
-                                            <button type="button" class="btn btn-subscription">구독 중</button>
-                                        </td>
-                                        <td>
-                                            <button type="button" class="btn btn-stopaccount">계정 정지</button>
-                                        </td>
-                                    </tr>
 
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>test01@uglory.com</td>
-                                        <td>양배추쿵야</td>
-                                        <td>
-                                            <button type="button" class="btn btn-secondary">구독</button>
-                                        </td>
-                                        <td>
-                                            <button type="button" class="btn btn-stopaccount">계정 정지</button>
-                                        </td>
-                                    </tr>
-                                    
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>test01@uglory.com</td>
-                                        <td>양배추쿵야</td>
-                                        <td>
-                                            <button type="button" class="btn btn-subscription">구독 중</button>
-                                        </td>
-                                        <td>
-                                            <button type="button" class="btn btn-stopaccount">계정 정지</button>
-                                        </td>
-                                    </tr>
+                                <tbody id="customerList">
+                                    <c:forEach>
+                                            <tr>
+                                                <th scope="row">${customerNo}</th>
+                                                <td>${customerEmail}</td>
+                                                <td>${customerName}</td>
+                                                <td>
+                                                    <button type="button" class="btn btn-subscription">구독 중</button>
+                                                </td>
+                                                <td>
+                                                    <button type="button" class="btn btn-stopaccount">계정 정지</button>
+                                                </td>
+                                            </tr>
+                                        </c:forEach>
                                 </tbody>
                             </table>
 
@@ -150,7 +137,6 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <%-- <script src="lib/chart/chart.min.js"></script> --%>
     <script src="${contextPath}/resources/lib/easing/easing.min.js"></script>
     <script src="${contextPath}/resources/lib/waypoints/waypoints.min.js"></script>
     <script src="${contextPath}/resources/lib/owlcarousel/owl.carousel.min.js"></script>
@@ -159,7 +145,9 @@
     <script src="${contextPath}/resources/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
     <!-- Template Javascript -->
-    <script src="${contextPath}/resources/js/memberList.js"></script>
+    <script src="${contextPath}/resources/js/main.js"></script>
+
+    <%-- <script src="${contextPath}/resources/js/memberList.js"></script> --%>
 </body>
 
 </html>

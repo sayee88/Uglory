@@ -1,13 +1,16 @@
 package edu.kh.ugloryA.customer.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
@@ -28,17 +31,23 @@ public class CustomerController {
 	
 	
 	@GetMapping("/selectAll")
-	public String selectAll() {
+	public String selectAll(@RequestParam(value="key", required = false) String key, 
+			@RequestParam(value="query", required=false) String query,
+			Model model) {
+		
+		List<Customer> customerList = new ArrayList<Customer>();
+		
+		if(key == null && query == null) { // 검색이 아닌 경우 == key 혹은 query가 없을 경우
+			customerList = service.selectAllCustomer();
+		} else {
+			customerList = service.searchCustomer(key, query);
+		}
+		
+		model.addAttribute("customerList", customerList);
+		
 		return "manageMember/MemberList";
 	}
 	
 	
-	// 고객 목록 조회 ajax
-	@ResponseBody
-	@GetMapping("/selectAllCustomer")
-	public String selectAllCustomer() {
-		List<Customer> list = service.selectAllCustomer();
-		
-		return new Gson().toJson(list);
-	}
+
 }

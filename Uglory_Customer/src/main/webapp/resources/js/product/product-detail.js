@@ -18,7 +18,6 @@ function optionSelectBox(){
 	optionCode = document.getElementsByName("product-option")[0].value;
 
 	$.ajax({
-
 		url : "../optionSelect",
 		data : {"optionCode" : optionCode, 
 			   "productCode" : productCode},
@@ -30,27 +29,14 @@ function optionSelectBox(){
 		
 		error : function(request, status, error){
             console.log("AJAX 에러 발생");
-            console.log("상태코드 : " + request.status); // 404, 500
+            console.log("상태코드 : " + request.status); 
         }
-
 	});
 }
 
-// 구매하기 버튼
-/* function productOrder(){
-	const buy_btn = document.getElementById("buy-btn");
-
-	// if(){ // 옵션을 선택했을 경우에만 이벤트 추가
-		buy_btn.addEventListener("click", function(){
-			let url = contextPath + "/product/order" + categoryNo + "/" + pCode;
-
-			location.href = url;
-		});
-	// }
-}
 
 // 장바구니로 이동하기 버튼
-const productCartBtn = productCartBtn.addEventListener("click", function(){
+/* const productCartBtn = productCartBtn.addEventListener("click", function(){
 
 	let url = contextPath + "/product/cart" + categoryNo + "/" + pCode;
 	location.href = url;	
