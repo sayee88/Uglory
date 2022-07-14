@@ -2,8 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"  %>
 
-<c:set var="productCode" value="${productCode}" />
-<c:set var="categoryNo" value="${categoryNo}" />
+<c:set var="productCode" value="${detail.productCode}" />
+<c:set var="categoryNo" value="${detail.categoryNo}" />
 
 <!DOCTYPE html>
 <html lang="en">
@@ -70,15 +70,15 @@
                         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
                         </div>
                         <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="${contextPath}/resources/img/main/famer.png" class="d-block w-100" alt="...">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="${contextPath}/resources/img/main/famer.png" class="d-block w-100" alt="...">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="${contextPath}/resources/img/main/famer.png" class="d-block w-100" alt="...">
-                        </div>
+                            <div class="carousel-item active">
+                                <img src="${contextPath}/resources/img/main/famer.png" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="${contextPath}/resources/img/main/famer.png" class="d-block w-100" alt="...">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="${contextPath}/resources/img/main/famer.png" class="d-block w-100" alt="...">
+                            </div>
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -150,17 +150,14 @@
                             <p>배송비 : <span>3,000원 (30,000원 이상부터 무료배송)</span> </p>
                             <p>원산지 : <span>${detail.origin}</span> </p>
                             <p>생산자 : <span>${detail.producer}</span> </p>
-
+                                                                            <%-- onchange="optionSelectBox()" --%>
                             <select name="product-option" class="product-option" onchange="optionSelectBox()">
 
                                 <!-- 옵션 선택 for문으로 가져오기 -->
                                 <option value="option-0" selected disabled>옵션 선택</option>
                                 <c:forEach var="option_type" items="${optionList}">
-                                    <option value="${option_type.optionCode}" >${option_type.optionName} - 
-                                        <%-- 옵션 가격이 0원이 아닐때만 가격 조회 --%>
-                                        <c:if test="${option_type.optionPrice != 0}">
-                                            ${option_type.optionPrice} 원
-                                        </c:if>
+                                    <option value="${option_type.optionCode}" >
+                                        ${option_type.optionName} - ${option_type.optionPrice}원
                                     </option>
                                 </c:forEach>
                             </select>
@@ -174,7 +171,7 @@
 
                         <!-- 상품 상세조회 버튼 영역 -->
                         <div class="detail-product-btnArea">
-                            <button id="buy-btn" onclick="location.href='../order/${categoryNo}/${productCode}/${optionCode}'">구매하기</button>
+                            <button id="buy-btn" onclick="location.href='../order'">구매하기</button>
                             <button type="button" class="cartBtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">장바구니</button>
                             <button id="share-btn" onclick="clip(); return false;">공유하기</button>
                         </div>
@@ -188,13 +185,13 @@
                 <hr>
 
                 <!-- 썸머노트 조회 영역(확인 필요) -->
-                <div id="summernote"><p>Hello Summernote</p>
+                <%-- <div id="summernote"><p>Hello Summernote</p>
                     <script>
                         $(document).ready(function() {
                             $('#summernote').summernote();
                         });
                     </script>
-                </div>
+                </div> --%>
                 <!-- 썸머노트 조회 영역 끝 -->
 
                 <hr>
@@ -204,11 +201,11 @@
 
                 <!-- 별점 및 평균 조회 및 리뷰 페이지 이동 영역 -->
                 <div class="product-review-area">
-                    <img src="img/star.png" width="40px" height="40px">
-                    <img src="img/star.png" width="40px" height="40px">
-                    <img src="img/star.png" width="40px" height="40px">
-                    <img src="img/star.png" width="40px" height="40px">
-                    <img src="img/star.png" width="40px" height="40px">
+                    <img src="${contextPath}/resources/img/main/star.png" width="40px" height="40px">
+                    <img src="${contextPath}/resources/img/main/star.png" width="40px" height="40px">
+                    <img src="${contextPath}/resources/img/main/star.png" width="40px" height="40px">
+                    <img src="${contextPath}/resources/img/main/star-2.png" width="40px" height="40px">
+                    <img src="${contextPath}/resources/img/main/star-2.png" width="40px" height="40px">
 
 
                     <!-- 별점 평균 -->
@@ -257,8 +254,9 @@
 
         <script>
             let optionCode = "${option_type.optionCode}";
-            let productCode = "${productCode}";
-            let categoryNo "${categoryNo}";
+            const productCode = "${productCode}";
+            const categoryNo = "${categoryNo}";
+            const optionName = "${option_type.optionName}";
         </script>
         <%-- Template Javascript --%>
         <script src="${contextPath}/resources/js/main.js"></script>

@@ -16,7 +16,7 @@
 		FROM MEMBER M
 		LEFT JOIN SUBS_ORDER S
 		ON M.MEMBER_NO = S.MEMBER_NO
-		WHERE MEMBER_ST = 'N'
+		WHERE MEMBER_ST IN ('N', 'P')
 		ORDER BY 1
 	</select>
 	
@@ -27,7 +27,7 @@
          FROM MEMBER M
          LEFT JOIN SUBS_ORDER S
          ON M.MEMBER_NO = S.MEMBER_NO
-         WHERE MEMBER_ST = 'N'
+         WHERE MEMBER_ST IN ('N', 'P')
          <if test='query != null and query !=""'>
 			AND
 			<choose>
@@ -44,7 +44,32 @@
 	</select>
 	
 	
-
-
+	
+	<!-- 회원 상태 조회 -->
+	<select id="selectAccountFlag" resultType="string">
+		SELECT MEMBER_ST
+		FROM MEMBER
+		WHERE MEMBER_ST IN ('N', 'P')
+		AND MEMBER_NO = #{customerNo}
+	</select>
+	
+	
+	<!-- 회원 계정 정지 -->
+	<update id="stopAccount">
+		UPDATE MEMBER 
+		SET MEMBER_ST ='P'
+		WHERE MEMBER_NO = #{customerNo}
+		AND MEMBER_ST ='N'
+	</update>
+	
+	
+	<!-- 회원 계정 활성화 -->
+	<update id="activeAccount">
+		UPDATE MEMBER 
+		SET MEMBER_ST = 'N'
+		WHERE MEMBER_NO = #{customerNo}
+		AND MEMBER_ST = 'P'
+	</update>
+	
 
 </mapper>

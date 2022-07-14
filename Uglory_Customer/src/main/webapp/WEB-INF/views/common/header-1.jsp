@@ -17,7 +17,11 @@
         <div class="container-xxl position-relative p-0">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0 sticky-top shadow-sm">
                 <a href="${contextPath}" class="navbar-brand p-0">
-                    <h1 class="text-primary m-0"><i class="fa fa-utensils me-3"></i>Uglory</h1>
+                    <span class="text-primary m-0">
+                        <i class="me-3" style="font-size:30px"></i>
+                        <img src="${contextPath}/resources/img/main/logo/Uglory_farmar.png">
+                        <img src="${contextPath}/resources/img/main/logo/Uglory_whitecali.png" width="150px">
+                    </span>
                     <!-- <img src="img/logo.png" alt="Logo"> -->
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">

@@ -1,72 +1,36 @@
-function selectAll(){ // 회원 전체 조회 함수
-    // ajax코드
-    $.ajax({
-        url : "customer/selectAllCustomer",
-        dataType : "json",    //  응답 데이터의 형식을 "json"으로 지정
-                              // -> 자동으로 JS 객체로 변환됨
-        success : function( list ){
+// ajax에서는 this 못 씀!! 
 
-            // 1) #customerList 내용 삭제
-            const customerList = document.getElementById("customerList");
+const statusBtnList = document.getElementsByClassName("status-btn");
 
-            customerList.innerHTML = "";
+for (const statusBtn of statusBtnList) {
+    statusBtn.addEventListener("click", function (e) { // 계정 상태 버튼 클릭되었을 때
 
-            // 2) list를 for문을 이용해서 반복 접근
-            for(let item of list){
-                // item == 회원 1명의 정보가 담긴 JS 객체
+        const customerNo = this.parentElement.parentElement.children[0].innerText;
 
-                // 3) tr 요소 생성
-                const tr = document.createElement("tr");
+        $.ajax({
+            url :  contextPath + "/customer/changeSt",
+            data : {"customerNo" : customerNo},
+            type : "GET",
+            success : function(result){
+                if(result>0){ // 회원 상태 변경 완료
+                    alert("회원 상태 변경 완료");
 
-                // 4) th 요소 생성
-                const th = document.createElement("th"); 
-                th.setAttribute("scope", "row");
-                th.innerText = item.customerNo // 회원 번호
+                    e.target.classList.toggle("btn-stopaccount");
+                    e.target.classList.toggle("btn-active");
 
-                // 5) td 요소 생성 + 내용 추가 * 3
-                const td1 = document.createElement("td");
-                td1.innerText = item.customerEmail; // 회원 이메일
-
-                const td2 = document.createElement("td");
-                td2.innerText = item.customerName; // 회원 이름
-
-                const td3 = document.createElement("td");
-                const subsBtn = document.createElement("button");
-                subsBtn.classList.add("btn", "btn-subscription")
-                if(item.subscriptionFlag == 'N'){ // 구독 O
-                    subsBtn.innerText = "구독 중"; 
-                } else{ // 구독X
-                    subsBtn.innerText = "구독";
+                    if(e.target.innerText == "계정 정지") e.target.innerText = "계정 활성화";
+                    else e.target.innerText = "계정 정지"
+            
+                } else{
+                    alert("회원 상태 변경 실패");
                 }
-                td3.append(subsBtn);
+            },
 
-                const td4 = document.createElement("td");
-                const accountBtn = document.createElement("button");
-                accountBtn.classList.add("btn", "btn-stopaccount")
-                if(item.accountFlag == 'N'){ // 계정 정지 X
-                    accountBtn.innerText = "계정 정지"; 
-                } else{ // 계정 정지 O
-                    accountBtn.innerText = "계정 활성화"; 
-                }
-                td4.append(accountBtn);
-                
-
-                // 5) tr요소에 td요소 3개 추가
-                tr.append(th, td1, td2, td3, td4);
-
-                // 6) memberList에 tr 추가
-                customerList.append(tr);
+            error : function(){
+                console.log("에러 발생");
             }
-        },
-        error : function(){
-            console.log("에러 발생");
-        }
-    });
+        }); 
+
+    })
+
 }
-
-(function(){
-    selectAll(); // 함수 호출 -> 회원 목록을 먼저 조회
-
-    window.setInterval(selectAll, 3600); // 1*60*60
-
-})();

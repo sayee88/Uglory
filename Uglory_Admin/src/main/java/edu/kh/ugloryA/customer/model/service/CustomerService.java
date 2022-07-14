@@ -21,4 +21,16 @@ public interface CustomerService {
 	 */
 	List<Customer> searchCustomer(String key, String query);
 
+
+	/**
+	 * 회원 상태 변경
+	 * @param customerNo
+	 * @return
+	 */
+	int changeStatement(int customerNo);
+
+
+	
+	
+
 }
