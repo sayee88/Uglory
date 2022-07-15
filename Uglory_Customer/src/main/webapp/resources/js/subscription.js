@@ -143,15 +143,20 @@ if(xbtn == true){
 
 
 
-// $.ajax({
-//     url : contextPath + "/subscription",
-//     data : {"choice" : result},
-//     type : "post",
-//     success : function(){
+function orderNo(){
+    $.ajax({
+    
+        url : "orderNo",
+        data : {},
+        type : "post",
+        success : function(){
+    
+        },
+        error: function(){
+            
+        }
+    
+    });
 
-//     },
-//     error: function(){
-        
-//     }
+}
 
-// });

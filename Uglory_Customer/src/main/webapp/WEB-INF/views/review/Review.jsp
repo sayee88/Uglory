@@ -12,6 +12,9 @@
     <meta content="" name="keywords">
     <meta content="" name="description">
 
+    <%-- favicon --%>
+    <link rel="icon" href="${contextPath}/resources/img/main/logo/favicon.ico" />
+
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -154,15 +157,15 @@
             <div class="review-section">
                 <div class="review-list">
                     
-                    <c:choose>
+                    <%-- <c:choose>
                         <c:when test="">
 
                         </c:when>
-                    </c:choose>
+                    </c:choose> --%>
 
                 <div class="review-content">
                     <div data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        <img src="${contextPath}/resources/images/review/review_img1.png">
+                        <img src="${contextPath}/resources/img/review/review_img1.png">
                     </div>
                     <div class="review-content-text">
                         <div class="review-content-top-section">
@@ -361,13 +364,13 @@
                                 <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
                                     <div class="carousel-inner">
                                       <div class="carousel-item active" >
-                                        <img src="img/리뷰/이용후기1.png" class="d-block w-100" style="object-fit: contain;">
+                                        <img src="${contextPath}/resources/img/review/review_img1.png" class="d-block w-100" style="object-fit: contain;">
                                       </div>
                                       <div class="carousel-item">
-                                        <img src="img/리뷰/이용후기10.png" class="d-block w-100">
+                                        <img src="${contextPath}/resources/img/review/review_img10.png" class="d-block w-100">
                                       </div>
                                       <div class="carousel-item">
-                                        <img src="img/리뷰/이용후기11.png" class="d-block w-100" alt="...">
+                                        <img src="${contextPath}/resources/img/review/review_img11.png" class="d-block w-100" alt="...">
                                       </div>
                                     </div>
                                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
@@ -381,9 +384,9 @@
                                 </div>
                             </div>
                             <div class="modal-imgList">
-                                <div><img class="small" src="img/리뷰/이용후기1.png"></div>
-                                <div><img class="small" src="img/리뷰/이용후기10.png"></div>
-                                <div><img class="small" src="img/리뷰/이용후기11.png"></div>
+                                <div><img class="small" src="${contextPath}/resources/img/review/review_img1.png"></div>
+                                <div><img class="small" src="${contextPath}/resources/img/review/review_img10.png"></div>
+                                <div><img class="small" src="${contextPath}/resources/img/review/review_img11.png"></div>
                                 <div class="img4">x</div>
                             </div>
                         </div>
@@ -415,8 +418,8 @@
                             </div>
                             <div class="modal-bottom">
                                 <div class="modal-sub">
-                                    <img src="#">
-                                    <a href="#">구독 박스가 궁금하다면? >></a>
+                                    <img src="${contextPath}/resources/img/icon/tomato.png" width="50px">
+                                    <a href="#">   구독 박스가 궁금하다면? >></a>
                                 </div>
                             </div>
                         </div>
