@@ -111,7 +111,7 @@ public class ProductController {
 	}
 	
 	//구독 리스트 등록 페이지
-	@GetMapping("/subs/pinsert")
+	@GetMapping("/subs/presister")
 	public String subsPInsert() {
 		return "adminProduct/adminPListIn";
 	}
