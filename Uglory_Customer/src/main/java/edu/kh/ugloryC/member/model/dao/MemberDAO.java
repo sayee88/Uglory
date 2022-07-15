@@ -1,6 +1,7 @@
 package edu.kh.ugloryC.member.model.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,13 +33,24 @@ public class MemberDAO {
 		return result > 0 ? inputMember.getMemberNo() : 0 ; 
 	}
 
-	/**개별 상품 주문 조회 DAO
-	 * @param memberNo
-	 * @return
-	 */
-	public List<OrderHistory> orderHistory(int memberNo) {
-		
-		
-		return sqlSession.selectList("memberMapper.orderList",memberNo);
+	
+	// 회원 탈퇴 dao
+	public int secession(Map<String, Object> map) {
+		return sqlSession.update("memberMapper.secession",map);
 	}
+	
+	// 
+	public List<OrderHistory> selectOne() {
+		
+		return sqlSession.selectList("memberMapper.selectOne");
+	}
+
+	public int reSignUp(String memberEmail) {
+		return sqlSession.update("memberMapper.reSignUp", memberEmail);
+	}
+
+
+	
+	
 }
+

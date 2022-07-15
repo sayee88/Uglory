@@ -62,7 +62,7 @@
         <section class="product-detail">
             <!-- 상품, 옵션, FARM, 별점, 상품이미지, 리뷰 테이블 필요 -->
 
-            <form>
+            <form action="order" method="POST">
                 <div class="product-detail-area">
                     <!-- 상품 이미지 영역 최대 4개(썸네일 포함)-->
                     <div class="product-detail-img">
@@ -174,7 +174,7 @@
 
                         <!-- 상품 상세조회 버튼 영역 -->
                         <div class="detail-product-btnArea">
-                            <button id="buy-btn" onclick="location.href='../order'">구매하기</button>
+                            <button type="button" id="buy-btn" onclick="productOrder()">구매하기</button>
                             <button type="button" class="cartBtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">장바구니</button>
                             <button id="share-btn" onclick="clip(); return false;">공유하기</button>
                         </div>
@@ -254,11 +254,11 @@
         <script src="${contextPath}/resources/lib/tempusdominus/js/moment-timezone.min.js"></script>
         <script src="${contextPath}/resources/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
-
         <script>
             const productCode = "${productCode}";
             const categoryNo = "${categoryNo}";
         </script>
+
         <%-- Template Javascript --%>
         <script src="${contextPath}/resources/js/main.js"></script>
         <script src="${contextPath}/resources/js/product/product-detail.js"></script>

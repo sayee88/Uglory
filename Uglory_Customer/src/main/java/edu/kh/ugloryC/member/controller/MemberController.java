@@ -1,18 +1,27 @@
 package edu.kh.ugloryC.member.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.google.gson.Gson;
 
 import edu.kh.ugloryC.member.model.service.MemberService;
 import edu.kh.ugloryC.member.model.vo.Member;
@@ -48,7 +57,9 @@ public class MemberController {
 	}
 	//개별 주문 내역 조회
 	@GetMapping("/orderHistory")
-	public String orderHistory() {
+	public String orderHistory(Model model) {
+		List<OrderHistory> selectOne = service.selectOne();
+		model.addAttribute("selectOne", selectOne);
 		return "member/orderHistory";
 	}
 	//구독 주문 내역 조회
@@ -78,6 +89,18 @@ public class MemberController {
 		Member loginMember = service.login(inputMember);
 		
 		if(loginMember != null) {
+	
+			// 탈퇴 상태이면서 하루가 안 지난 경우
+			if(loginMember.getSecessionFlag().equals("Y") && loginMember.getPassStatus() < 1) {
+				return -2;
+			}
+			
+			// 탈퇴 상태이면서 하루가 지난 경우
+			else if(loginMember.getSecessionFlag().equals("Y") && loginMember.getPassStatus() > 0) {
+				return -1;
+			}
+			
+			
 			model.addAttribute("loginMember", loginMember);
 			return 1;
 		}
@@ -86,13 +109,65 @@ public class MemberController {
 		
 	}
 	
+	// 회원 탈퇴
+	@PostMapping("/secession") // 회원정보에 다들어있으니깐 
+	public String secession(@ModelAttribute("loginMember") Member loginMember
+						    ,@RequestParam("choice") int choice
+			                ,SessionStatus status// 세션 없애기
+							,RedirectAttributes ra // 메세지 출력
+							)  {
+		Map<String , Object> map = new HashMap<String, Object>();
+		
+		map.put("memberNo", loginMember.getMemberNo());
+		map.put("choise", choice);
+		
+		
+		int result = service.secession(map);
+		
+		String message = null;
+		String path = null;
+		
+		if(result >0) {
+			message = "탈퇴 되었습니다.";
+			path = "/";
+			
+			// ㅅㅔ션 없애기
+			status.setComplete();
+			
+		}else {
+			
+			message = "탈퇴 실패";
+			path = "secession";
+		}
+		ra.addFlashAttribute("message", message);
+		
+		return "redirect:"+path;
+	}
+	
+	
+	@ResponseBody
+	@PostMapping("/reSignUp")
+	public int reSignUp(Member inputMember, Model model) {
+		Member loginMember = service.reSignUp(inputMember.getMemberEmail());
+		
+		if(loginMember != null) {
+			model.addAttribute("loginMember", loginMember);
+			return 1;
+		}
+		
+		return 0;
+	}
+	
+	
 	
 	// 개별 상품 주문 조회
-	@PostMapping
-	public String orderHistory(int memberNo , Model model) {
-		
-		List<OrderHistory> orderHistory = service.orderHistory(memberNo);
-		
-		return null;
-	}
+//	@ResponseBody // 비동기 통신할때 사용 
+//	@GetMapping("/member/orderHistory/selectOne")
+//	public String selectOne(int memberNo) {
+//		
+//		 
+//		List<OrderHistory> selectOne = service.selectOne();
+//		
+//		return new Gson().toJson(selectOne);
+//	}
 }

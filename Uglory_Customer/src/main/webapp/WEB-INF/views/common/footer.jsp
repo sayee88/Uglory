@@ -35,7 +35,7 @@
                     <p>Partnering and Delivery Inquiries</p>
                     <div class="position-relative mx-auto" style="max-width: 400px;">
                         <input class="form-control border-primary w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
-                        <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+                        <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2" href="${contextPath}/member/login">SignUp</button>
                     </div>
                 </div>
 
@@ -44,7 +44,7 @@
         <div class="container">
             <div class="copyright">
                 <div class="row">
-                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0 fs-6">
                         &copy; <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved. 
                         
                         <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
@@ -62,6 +62,17 @@
         </div>
     </div> 
     <!-- Footer End -->
+
+    <%-- request에 message 속성이 존재하는 경우 alert창으로 해당 내용을 출력 --%>
+    <c:if test="${ !empty message }">
+        <script>
+            alert("${message}");
+            // EL 작성 시 scope를 지정하지 않으면
+            // page -> request -> session -> application 순서로 검색하여
+            // 일치하는 속성이 있으면 출력
+        </script>
+    
+    </c:if> 
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
