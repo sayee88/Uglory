@@ -57,7 +57,7 @@
     padding-bottom: 30px;
     border-bottom: 1px solid rgb(178, 178, 178);
 }
-
+/* 
 .review-star-section > h3{
     font-size: 24px;
 }
@@ -70,7 +70,39 @@
 
 .review-star-section > div > span:hover{
     cursor: pointer;
+} */
+
+/* 별점 */
+#myform fieldest{
+    display: inline-block;
+    direction : rtl;
+    border: 0;
 }
+
+#myform fieldset legend{
+    text-align: right;
+}
+
+#myform input[type=radio]{
+    font-size: 3rem;
+    color: transparent;
+    text-shadow: 0 0 0 #f0f0f0;
+}
+
+#myform label:hover{
+    text-shadow: 0 0 0 rgba(254, 161, 33, 0.99);
+}
+
+#myform label:hover ~ label{
+    text-shadow: 0 0 0 rgba(254, 161, 33, 0.99);
+}
+
+#myform input[type=radio]:checked ~ label{
+    text-shadow: 0 0 0 rgba(254, 161, 33, 0.99);
+}
+
+
+
 
 /* 이미지 삽입 부분 */
 .review-img-upload{
@@ -137,3 +169,6 @@
     height: 50px;
     border-radius: 10px;
 }
+
+
+/* 별점 */

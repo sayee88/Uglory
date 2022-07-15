@@ -21,12 +21,12 @@ public class OptionServiceImpl implements OptionService {
 		return dao.selectOptionList(productCode);
 	}
 
-	// 선택된 옵션 리스트 서비스 구현
-	@Override
-	public List<OptionType> selectOption(int optionCode) {
-		
-		return dao.selectOption(optionCode);
-	}
+	// 선택된 옵션 리스트 서비스 구현 - JS로 구현
+//	@Override
+//	public List<OptionType> selectOption(int optionCode) {
+//		
+//		return dao.selectOption(optionCode);
+//	}
 	
 	
 

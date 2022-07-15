@@ -114,13 +114,22 @@
 
                     <div class="review-star-section">
                         <h3>상품은 어떠셨나요?</h3>
-                        <div>
-                            <span>★</span>
-                            <span>★</span>
-                            <span>★</span>
-                            <span>★</span>
-                            <span>★</span>
-                        </div>
+                        <%-- <div>
+                            <span class="starR on">★</span>
+                            <span class="starR">★</span>
+                            <span class="starR">★</span>
+                            <span class="starR">★</span>
+                            <span class="starR">★</span>
+                        </div> --%>
+                        <form class="mb-3" name="myform" id="myform" method="post">
+                            <fieldest>
+                                <input type="radio" name="reviewStar" value="5" id="rate1"><label for="rate1">★</label>
+                                <input type="radio" name="reviewStar" value="4" id="rate2"><label for="rate2">★</label>
+                                <input type="radio" name="reviewStar" value="3" id="rate3"><label for="rate3">★</label>
+                                <input type="radio" name="reviewStar" value="2" id="rate4"><label for="rate4">★</label>
+                                <input type="radio" name="reviewStar" value="1" id="rate5"><label for="rate5">★</label>
+                            </fieldest>
+                        </form>
                     </div>
 
                     <!-- 썸네일 이미지 (첫번째 등록 이미지가 썸네일 이미지) -->
@@ -177,8 +186,9 @@
     <script src="${contextPath}/resources/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
 
-        <%-- Template Javascript --%>
-        <script src="${contextPath}/resources/js/main.js"></script>
+    <%-- Template Javascript --%>
+    <script src="${contextPath}/resources/js/main.js"></script>
+    <script src="${contextPath}/resources/js/star-rating.js"></script>
 </body>
 
 </html>
