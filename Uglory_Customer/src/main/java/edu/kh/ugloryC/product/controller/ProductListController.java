@@ -10,11 +10,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import edu.kh.ugloryC.product.model.service.ProductService;
 import edu.kh.ugloryC.product.model.vo.ProductDetail;
 
 @Controller
+@SessionAttributes({""})
 public class ProductListController {
 	
 	@Autowired
@@ -24,9 +26,7 @@ public class ProductListController {
 	
 	@GetMapping("/product/list")
 	public String productList(/*@PathVariable("categoryNo") int categoryNo,*/
-							  Model model,
-							  HttpServletRequest req,
-							  HttpServletResponse resp) {
+							  Model model) {
 		
 		
 		

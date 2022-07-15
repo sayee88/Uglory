@@ -161,3 +161,73 @@
 #product-review-avg{
     color: black
 }
+
+/* 옵션 수량 변경 영역 */
+.optionSpan{
+    width: 50%;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 옵션 이름 */
+.spanName{
+    font-size: 20px;
+    color: #8C8C8C;
+    margin: 0;
+
+}
+
+/* 옵션 가격 */
+.spanPrice{
+    font-size: 20px;
+    color: #BDBDBD;
+    margin: 0;
+}
+
+/* 옵션 수량 변경 영역 */
+.optionDiv{
+    margin: 10px;
+}
+/* 옵션 수량 마이너스 버튼 */
+.opMinus{
+    border: 0px;
+    background-color: #EAEAEA;
+    color: #BDBDBD;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+
+    line-height: 0;
+
+}
+
+/* 옵션 수량 플러스 버튼 */
+.opPlus{
+    border: 0px;
+    background-color: #EAEAEA;
+    color: #BDBDBD;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
+    margin-right: 5px;
+
+    line-height: 0;
+}
+
+/* 옵션 제거 버튼 */
+.opDelete{
+    border: 0px;
+    background-color: #BDBDBD;
+    color: #EAEAEA;
+    padding: 0;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+
+    line-height: 0;
+}
+

@@ -49,7 +49,7 @@
 .listBody img{max-width:100%; border-top-left-radius: 5px; border-top-right-radius: 5px;}
 
 .card-tit{display: flex; justify-content: space-between; color: black; font-size: 28px; font-weight: bold;}
-#pCategory{color: #6c757d; text-align: end; margin-bottom: 20px;}
+.pCategory{color: #6c757d; text-align: end; margin-bottom: 20px;}
 .card-con{display: flex; justify-content: space-between; font-size: 18px;}
 .pData{color: #6c757d;}
 .cardBody{padding: 10px;}

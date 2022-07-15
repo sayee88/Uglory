@@ -17,6 +17,7 @@ public class Product {
 	private String productCategory;
 	
 	private int farmNo;
+	private String farmName;
 	
 	private String productName;
 	private int productPrice;
@@ -25,5 +26,9 @@ public class Product {
 	
 	private Date productDate;
 	private Date productUpdate;
+	
+	private String productDateCh;
+	private String productUpdateCh;
+	private String thumbnail;
 	
 }

@@ -34,7 +34,6 @@ public class AdminController {
 	//로그인 화면 전환
 	@GetMapping("/signIn")
 	public String signIn() {
-		
 		return "myPage/signin";
 	}
 	
