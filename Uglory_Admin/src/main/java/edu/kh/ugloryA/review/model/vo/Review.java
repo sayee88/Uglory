@@ -12,7 +12,7 @@ import lombok.ToString;
 public class Review {
 	
 	private int reviewNo;
-	private String reviewEnrollDate;
+	private String enrollDate;
 	private String reviewContent;
 	private int starRating;
 	
