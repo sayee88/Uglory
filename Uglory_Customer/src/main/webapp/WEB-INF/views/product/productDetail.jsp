@@ -253,10 +253,8 @@
 
 
         <script>
-            let optionCode = "${option_type.optionCode}";
             const productCode = "${productCode}";
             const categoryNo = "${categoryNo}";
-            const optionName = "${option_type.optionName}";
         </script>
         <%-- Template Javascript --%>
         <script src="${contextPath}/resources/js/main.js"></script>
