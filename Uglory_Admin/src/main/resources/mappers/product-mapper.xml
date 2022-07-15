@@ -2,5 +2,66 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="productMapper">
 
+	<resultMap type="product" id="product_rm">
+		<id property="productCode" column="P_CD"/>
+		
+		<result property="productCategoryNo" column="P_CATEGORY_NO"/>
+		<result property="productCategory" column="P_CATEGORY_NM"/>
+		
+		<result property="farmNo" column="FARM_NO"/>
+		<result property="farmName" column="FARM_NM"/>
+		
+		<result property="productName" column="PRODUCT_NM"/>
+		<result property="productPrice" column="PRODUCT_PRICE"/>
+		<result property="productState" column="PRODUCT_ST"/>
+		<result property="productInfo" column="PRODUCT_INFO"/>
+		
+		<result property="productDate" column="PR_DATE"/>
+		<result property="productUpdate" column="PU_DATE"/>
+		
+		<result property="productDateCh" column="PR_DATE_CH"/>
+		<result property="productUpdateCh" column="PU_DATE_CH"/>
+		<result property="thumbnail" column="THUMBNAIL"/>
+	</resultMap>
+	
+	<resultMap type="farm" id="farm_rm">
+		<id property="farmNo" column="FARM_NO"/>
+		<result property="farmName" column="FARM_NM"/>
+		<result property="producer" column="PRODUCER"/>
+		<result property="origin" column="ORIGIN"/>
+		<result property="farmState" column="FARM_ST"/>
+	</resultMap>
+	
+	<resultMap type="optionType" id="option_rm">
+		<id property="optionCode" column="OPTION_CD"/>
+		<result property="productCode" column="P_CD"/>
+		<result property="optionName" column="OPTION_NM"/>
+		<result property="optionPrice" column="OPTION_PRICE"/>
+	</resultMap>
+	
+	<resultMap type="productImage" id="image_rm">
+		<id property="productImageNo" column="PRODUCT_IMG"/>
+		<result property="productCode" column="P_CD"/>
+		<result property="imageRename" column="IMG_RENAME"/>
+		<result property="imageRoot" column="IMG_ROOT"/>
+		<result property="imageLevel" column="IMG_LEVEL"/>
+	</resultMap>
+	
+	
+	<!-- 상품 전체 조회 -->
+	<select id="selectAll" resultMap="product_rm">
+		SELECT P_CD, PRODUCT_NM, P_CATEGORY_NO, P_CATEGORY_NM, 
+	       TO_CHAR(PR_DATE, 'YY-MM-DD') PR_DATE_CH, 
+	       FARM_NM, PRODUCT_ST,
+	      (SELECT IMG_ROOT FROM PRODUCT_IMG I
+	       WHERE IMG_LEVEL = 0
+	       AND I.P_CD = P.P_CD) THUMBNAIL
+	
+		FROM PRODUCT P
+		JOIN P_CATEGORY USING(P_CATEGORY_NO)
+		JOIN FARM USING(FARM_NO)
+		ORDER BY P_CD
+	</select>
+
 
 </mapper>
