@@ -1,21 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="subscriptionMapper">
-
+	
+	
 	<insert id="insertSubsOrder">
 		INSERT INTO SUBS_ORDER VALUES(
-			SEQ_S_ORDER_CD.NEXTVAL,
+			<choose>
+		   		<when test='box == "standard"'>
+					(SELECT CONCAT(TO_CHAR(SYSDATE, '"S"YYYYMMDD-"00"'), SEQ_S_ORDER_CD.NEXTVAL) FROM DUAL),
+				</when>
+		   		<otherwise>
+					(SELECT CONCAT(TO_CHAR(SYSDATE, '"J"YYYYMMDD-"00"'), SEQ_S_ORDER_CD.NEXTVAL) FROM DUAL),
+				</otherwise>
+			</choose>
 			DEFAULT, DEFAULT,
 			#{inputName},
 			#{inputPhone},
 			#{address},
 			#{inputDelText},
 			(SELECT NEXT_DAY(SYSDATE, 'WEDNESDAY') AS NEXT_WED FROM DUAL),
-            DEFAULT,
-            #{cycle},
-            #{memberNo},
-            #{box}
-        )
+	        DEFAULT,
+          	#{cycle},
+           	#{memberNo},
+           	#{box}
+	       )
 	</insert>
+	
 	
 </mapper>
