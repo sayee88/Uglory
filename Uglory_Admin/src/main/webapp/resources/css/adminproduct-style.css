@@ -103,8 +103,8 @@
 .first-row{border-top: 1px solid rgb(53, 204, 182);}
 .last-row{border-bottom: 1px solid rgb(53, 204, 182);}
 
-#in-btn{font-size: 20px; font-weight: bold; padding: 5px 10px;}
-#out-btn{font-size: 20px; font-weight: bold; padding: 5px 10px;}
+.in-btn{font-size: 20px; font-weight: bold; padding: 5px 10px; margin-right: 5px;}
+.out-btn{font-size: 20px; font-weight: bold; padding: 5px 10px;}
 
 .detail-btn{text-align: right;}
 .detail-btn>button{font-size: 20px; font-weight: bold; margin-bottom: 10px;}
@@ -133,4 +133,8 @@
     display: flex;
 }
 
+.tableLine{
+    width: 100%;
+    border-top: 0.5px solid rgb(53, 204, 182);
+}
 

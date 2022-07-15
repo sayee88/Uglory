@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,15 +44,32 @@ public class ProductController {
 	
 	//상품 상세보기
 	@GetMapping("/detail/{productCode}")
-	public String productDetail(@PathVariable("productCode") int productCode) {
+	public String productDetail(@PathVariable("productCode") int productCode,
+								Model model) {
 		
 		Map<String, Object> detailMap = service.productDetail(productCode);
+		model.addAttribute("detailMap", detailMap);
 		
 		return "adminProduct/adminPDetail";
 	}
 	
+	//상품 품절 처리
+	@ResponseBody
+	@GetMapping("/soldout")
+	public int soldout(int productCode) {
+		return service.soldout(productCode);
+	}
+	
+	//상품 입고 처리
+	@ResponseBody
+	@GetMapping("/stocked")
+	public int stocked(int productCode) {
+		return service.stocked(productCode);
+	}
+	
+	
 	//상품 등록 페이지 화면 전환
-	@GetMapping("/insert/data")
+	@GetMapping("/register")
 	public String productInsert() {
 		return "adminProduct/adminProductIn";
 	}
