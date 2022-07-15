@@ -52,7 +52,7 @@
 
             <h4 class="order-info">배송지 정보</h4>
 
-            <form action="" method="POST" onsubmit="return orderValidate()">
+            <form action="order" method="POST" onsubmit="return orderValidate()">
                 <div class="product-order-area">
 
                     <label for="p-orderName">받으시는 분 이름</label>

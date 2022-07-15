@@ -39,10 +39,10 @@
 		WHERE P_CD = ${productCode}
 	</select>
 	
-	<!-- 총가격 계산 -->
-	<select id="totalAmount" resultType="_int">
+	<!-- 총가격 계산 - JS로 구현 -->
+<!-- 	<select id="totalAmount" resultType="_int">
 		SELECT PRODUCT_PRICE + OPTION_PRICE
-		<!-- 상품 가격이 3만원이 안 넘을 경우 (배송비 추가)-->
+		상품 가격이 3만원이 안 넘을 경우 (배송비 추가)
   		<if test='productPrice &lt; 30000'>
 			+ 3000
 		</if>
@@ -50,7 +50,24 @@
 		JOIN OPTION_TYPE USING(P_CD)
 		WHERE P_CD = ${productCode}
 		AND OPTION_CD = #{optionCode}
-	</select>
+	</select> -->
+	
+	<!-- 주문정보 -->
+	<insert id="productOrder">
+		INSERT INTO PRODUCT_ORDER (P_ORDER_CD, P_ORDER_DT, P_ORDER_NM, P_ORDER_PHONE, P_ORDER_ADDR, TOTAL_PRICE, P_DL_REQ, P_REVIEW_ST, MEMBER_NO, DELIVERY_CD) 
+		VALUES (
+				CONCAT(TO_CHAR(SYSDATE, 'YYYYMMDD-"00"'), SEQ_P_ORDER_CD.NEXTVAL),
+				DEFAULT, 
+				#{productOrderName}, 
+				#{productOrderPhone}, 
+				#{productOrderAddr}, 
+				#{totalPrice}, 
+				#{productDelReq}, 
+				DEFAULT, 
+				#{memberNo}, 
+				#{deliveryCode}
+				)
+	</insert>
 
 </mapper>
 

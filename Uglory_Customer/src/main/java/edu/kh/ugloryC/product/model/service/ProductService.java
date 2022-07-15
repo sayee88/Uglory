@@ -3,6 +3,7 @@ package edu.kh.ugloryC.product.model.service;
 import java.util.Map;
 
 import edu.kh.ugloryC.product.model.vo.ProductDetail;
+import edu.kh.ugloryC.product.model.vo.ProductOrder;
 
 public interface ProductService {
 
@@ -12,10 +13,16 @@ public interface ProductService {
 	 */
 	ProductDetail productDetail(int productCode);
 
-	/** 총 가격 조회 서비스
-	 * @param map
+//	/** 총 가격 조회 서비스
+//	 * @param map
+//	 * @return result
+//	 */
+//	int totalAmount(Map<String, Object> map);
+
+	/** 주문 정보
+	 * @param pOrder
 	 * @return result
 	 */
-	int totalAmount(Map<String, Object> map);
+	int productOrder(ProductOrder pOrder);
 
 }
