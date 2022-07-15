@@ -43,11 +43,16 @@
     <main>
     
         <section class="container-xxl bg-white p-0">
+            
             <!-- review header -->
             <div class="container-xxl position-relative p-0">
                 <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0">
                     <a href="${contextPath}" class="navbar-brand p-0">
-                        <h1 class="text-primary m-0"><i class="me-3"></i>Uglory</h1>
+                        <span class="text-primary m-0">
+                        <i class="me-3" style="font-size:30px"></i>
+                        <img src="${contextPath}/resources/img/main/logo/Uglory_farmar.png">
+                        <img src="${contextPath}/resources/img/main/logo/Uglory_whitecali.png" width="150px">
+                    </span>
                         <!-- <img src="img/logo.png" alt="Logo"> -->
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -61,8 +66,8 @@
                             <a href="${contextPath}/product/list" class="nav-item nav-link">Market</a>
                             <a href="${contextPath}/review/list" class="nav-item nav-link icon">Review</a>
                         </div>
-                        <a href="#" class="nav-item icon"><img class="menu-chart" src="${contextPath}/resources/images/main/shopping-cart-white.png"></a>
-                        <a href="${contextPath}/member/login" class="nav-item icon"><img class="menu-chart" src="${contextPath}/resources/images/main/user-white.png"></a>
+                        <a href="#" class="nav-item icon"><img class="menu-chart" src="${contextPath}/resources/img/main/shopping-cart-white.png"></a>
+                        <a href="${contextPath}/member/login" class="nav-item icon"><img class="menu-chart" src="${contextPath}/resources/img/main/user-white.png"></a>
                     </div>
                 </nav>
 
@@ -149,15 +154,15 @@
             <div class="review-section">
                 <div class="review-list">
                     
-                    <c:choose>
+                    <%-- <c:choose>
                         <c:when test="">
 
                         </c:when>
-                    </c:choose>
+                    </c:choose> --%>
 
                 <div class="review-content">
                     <div data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        <img src="${contextPath}/resources/images/review/review_img1.png">
+                        <img src="${contextPath}/resources/img/review/review_img1.png">
                     </div>
                     <div class="review-content-text">
                         <div class="review-content-top-section">
@@ -356,13 +361,13 @@
                                 <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
                                     <div class="carousel-inner">
                                       <div class="carousel-item active" >
-                                        <img src="img/리뷰/이용후기1.png" class="d-block w-100" style="object-fit: contain;">
+                                        <img src="${contextPath}/resources/img/review/review_img1.png" class="d-block w-100" style="object-fit: contain;">
                                       </div>
                                       <div class="carousel-item">
-                                        <img src="img/리뷰/이용후기10.png" class="d-block w-100">
+                                        <img src="${contextPath}/resources/img/review/review_img10.png" class="d-block w-100">
                                       </div>
                                       <div class="carousel-item">
-                                        <img src="img/리뷰/이용후기11.png" class="d-block w-100" alt="...">
+                                        <img src="${contextPath}/resources/img/review/review_img11.png" class="d-block w-100" alt="...">
                                       </div>
                                     </div>
                                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
@@ -376,9 +381,9 @@
                                 </div>
                             </div>
                             <div class="modal-imgList">
-                                <div><img class="small" src="img/리뷰/이용후기1.png"></div>
-                                <div><img class="small" src="img/리뷰/이용후기10.png"></div>
-                                <div><img class="small" src="img/리뷰/이용후기11.png"></div>
+                                <div><img class="small" src="${contextPath}/resources/img/review/review_img1.png"></div>
+                                <div><img class="small" src="${contextPath}/resources/img/review/review_img10.png"></div>
+                                <div><img class="small" src="${contextPath}/resources/img/review/review_img11.png"></div>
                                 <div class="img4">x</div>
                             </div>
                         </div>
@@ -410,8 +415,8 @@
                             </div>
                             <div class="modal-bottom">
                                 <div class="modal-sub">
-                                    <img src="#">
-                                    <a href="#">구독 박스가 궁금하다면? >></a>
+                                    <img src="${contextPath}/resources/img/icon/tomato.png" width="50px">
+                                    <a href="#">   구독 박스가 궁금하다면? >></a>
                                 </div>
                             </div>
                         </div>
