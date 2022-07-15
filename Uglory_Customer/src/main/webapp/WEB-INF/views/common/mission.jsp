@@ -70,8 +70,8 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb justify-content-center text-uppercase">
                                 <li class="breadcrumb-item"><a href="${contextPath}">Home</a></li>
-                                <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                                <li class="breadcrumb-item text-white active" aria-current="page">Mission</li>
+                                <li class="breadcrumb-item"><a href="${contextPath}/common/about">about</a></li>
+                                <li class="breadcrumb-item"><a href="${contextPath}/common/mission">Mission</a></li>
                             </ol>
                         </nav>
                     </div>
