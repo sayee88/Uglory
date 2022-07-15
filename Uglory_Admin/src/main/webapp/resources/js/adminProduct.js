@@ -6,8 +6,6 @@
         dataType : "json",
         success : function(list){
 
-            console.log(list);
-
             // for문 안에서 switch로 카테고리별로 Box에 집어넣기
             for(let items of list ){
 
