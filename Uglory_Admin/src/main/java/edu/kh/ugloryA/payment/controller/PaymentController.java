@@ -17,7 +17,7 @@ import edu.kh.ugloryA.payment.model.service.PaymentService;
 import edu.kh.ugloryA.payment.model.vo.Payment;
 
 @Controller
-@RequestMapping("/selectPayment")
+@RequestMapping("/payment")
 @SessionAttributes({"message"})
 public class PaymentController {
 	
@@ -26,7 +26,7 @@ public class PaymentController {
 	@Autowired
 	private PaymentService service;
 	
-	@GetMapping("/selectAllPayment")
+	@GetMapping("/selectAll")
 	public String selectAll(@RequestParam(value="key", required = false) String key,
 			@RequestParam(value="query", required = false) String query,
 			Model model) {
