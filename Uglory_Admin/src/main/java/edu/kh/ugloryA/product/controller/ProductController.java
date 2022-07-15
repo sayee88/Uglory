@@ -53,8 +53,23 @@ public class ProductController {
 		return "adminProduct/adminPDetail";
 	}
 	
+	//상품 품절 처리
+	@ResponseBody
+	@GetMapping("/soldout")
+	public int soldout(int productCode) {
+		return service.soldout(productCode);
+	}
+	
+	//상품 입고 처리
+	@ResponseBody
+	@GetMapping("/stocked")
+	public int stocked(int productCode) {
+		return service.stocked(productCode);
+	}
+	
+	
 	//상품 등록 페이지 화면 전환
-	@GetMapping("/insert/data")
+	@GetMapping("/register")
 	public String productInsert() {
 		return "adminProduct/adminProductIn";
 	}

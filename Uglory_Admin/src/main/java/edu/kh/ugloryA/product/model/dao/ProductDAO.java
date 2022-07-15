@@ -61,6 +61,24 @@ public class ProductDAO {
 		return sqlSession.selectList("productMapper.selectPImage", productCode);
 	}
 
+	/**
+	 * 상품 품절 처리 DAO
+	 * @param productCode
+	 * @return result
+	 */
+	public int soldout(int productCode) {
+		return sqlSession.update("productMapper.soldout", productCode);
+	}
+
+	/**
+	 * 상품 입고 처리 DAO
+	 * @param productCode
+	 * @return result
+	 */
+	public int stocked(int productCode) {
+		return sqlSession.update("productMapper.stocked", productCode);
+	}
+
 	
 	
 

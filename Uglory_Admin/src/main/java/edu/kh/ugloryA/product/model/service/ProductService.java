@@ -20,4 +20,18 @@ public interface ProductService {
 	 */
 	Map<String, Object> productDetail(int productCode);
 
+	/**
+	 * 상품 품절 처리 서비스
+	 * @param productCode
+	 * @return result
+	 */
+	int soldout(int productCode);
+
+	/**
+	 * 상품 입고 처리 서비스
+	 * @param productCode
+	 * @return result
+	 */
+	int stocked(int productCode);
+
 }

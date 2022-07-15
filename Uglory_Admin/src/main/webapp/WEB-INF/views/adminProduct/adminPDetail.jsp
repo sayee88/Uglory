@@ -91,8 +91,6 @@
                                             <tr>
                                                 <th>상품 상태</th>
                                                 <td id="state-btn">
-                                                    <button class="btn btn-success in-btn">입고</button>
-                                                    <button class="btn btn-outline-secondary out-btn">품절</button>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -160,7 +158,7 @@
                         <div class="detail-info">${product.productInfo}</div>
 
                         <div class="detail-btn">
-                            <button type="button" class="btn btn-primary">목록으로</button>
+                            <button type="button" class="btn btn-primary" id="goToListBtn">목록으로</button>
                             <button type="button" class="btn btn-primary">수정</button>
                         </div>
                     </article>
@@ -187,25 +185,41 @@
                         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
                             
                             <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <img src="${contextPath}/resources/img/vegetables-2485055.jpg" class="d-block w-100" alt="채소">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="${contextPath}/resources/img/vegetables-2485055.jpg" class="d-block w-100" alt="채소">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="${contextPath}/resources/img/vegetables-2485055.jpg" class="d-block w-100" alt="채소">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="${contextPath}/resources/img/vegetables-2485055.jpg" class="d-block w-100" alt="채소">
-                                </div>
+
+                                <c:forEach var="image" items="${imageList}">
+                                        
+                                    <c:choose>
+                                        <c:when test="${image.imageLevel == 0}">
+                                            <div class="carousel-item active">
+                                                <img src="${contextPath}${image.imageRoot}" class="d-block w-100" alt="채소">
+                                            </div>
+                                        </c:when>
+
+                                        <c:otherwise>
+                                            <div class="carousel-item">
+                                                <img src="${contextPath}${image.imageRoot}" class="d-block w-100" alt="채소">
+                                            </div>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </c:forEach>
+
                             </div>
 
-                            <div class="carousel-indicators">
-                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                            <div class="carousel-indicators"> 
+
+                                <c:forEach var="image" items="${imageList}">
+                                        
+                                    <c:choose>
+                                        <c:when test="${image.imageLevel == 0}">
+                                            <button data-bs-target="#carouselExampleIndicators" data-bs-slide-to="${image.imageLevel}" class="active" aria-current="true" aria-label="Slide ${image.imageLevel}"></button>
+                                        </c:when>
+
+                                        <c:otherwise>
+                                            <button data-bs-target="#carouselExampleIndicators" data-bs-slide-to="${image.imageLevel}" aria-label="Slide ${image.imageLevel}"></button>
+                                        </c:otherwise>
+                                    </c:choose>
+                                </c:forEach>
+
                             </div>
 
                             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -229,11 +243,9 @@
     </div>
 
     <script>
-        console.log('${imageList[0].imageLevel}');
-        console.log('${imageList[0].imageRoot}');
-
-        console.log('${product.productState}');
-        const productState = '${product.productState}'
+        const productState = '${product.productState}';
+        const productCode = '${product.productCode}';
+        const contextPath = '${contextPath}';
     </script>
 
     <!-- JavaScript Libraries -->

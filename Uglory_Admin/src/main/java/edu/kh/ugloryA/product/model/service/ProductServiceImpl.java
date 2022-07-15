@@ -50,6 +50,18 @@ public class ProductServiceImpl implements ProductService {
 		
 		return detailMap;
 	}
+
+	//상품 품절 처리
+	@Override
+	public int soldout(int productCode) {
+		return dao.soldout(productCode);
+	}
+
+	//상품 입고 처리
+	@Override
+	public int stocked(int productCode) {
+		return dao.stocked(productCode);
+	}
 	
 	
 

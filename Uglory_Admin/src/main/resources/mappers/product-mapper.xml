@@ -91,5 +91,19 @@
 		FROM PRODUCT_IMG WHERE P_CD = #{productCode}
 	</select>
 	
+	<!-- 상품 품절 처리 -->
+	<update id="soldout">
+		UPDATE PRODUCT SET
+		PRODUCT_ST = 'O'
+		WHERE P_CD = #{procuctCode}
+	</update>
+	
+	<!-- 상품 입고 처리 -->
+	<update id="stocked">
+		UPDATE PRODUCT SET
+		PRODUCT_ST = 'I'
+		WHERE P_CD = #{procuctCode}
+	</update>
+	
 
 </mapper>

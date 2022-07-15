@@ -103,7 +103,7 @@
 .first-row{border-top: 1px solid rgb(53, 204, 182);}
 .last-row{border-bottom: 1px solid rgb(53, 204, 182);}
 
-.in-btn{font-size: 20px; font-weight: bold; padding: 5px 10px;}
+.in-btn{font-size: 20px; font-weight: bold; padding: 5px 10px; margin-right: 5px;}
 .out-btn{font-size: 20px; font-weight: bold; padding: 5px 10px;}
 
 .detail-btn{text-align: right;}
