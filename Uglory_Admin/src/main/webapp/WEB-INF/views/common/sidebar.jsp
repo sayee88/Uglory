@@ -48,13 +48,13 @@
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-carrot me-2"></i>상품 관리</a>
                 <div class="dropdown-menu bg-transparent border-0">
                     <div class="dropdown-item">
-                        <a href="adminProductList.html" class="sub-menu">상품 조회</a>
+                        <a href="${contextPath}/product/list" class="sub-menu">상품 조회</a>
                     </div>
                     <div class="dropdown-item">
-                        <a href="adminProductIn.html" class="sub-menu">상품 등록</a>
+                        <a href="${contextPath}/product/register?mode=insert" class="sub-menu">상품 등록</a>
                     </div>
                     <div class="dropdown-item">
-                        <a href="adminPList.html" class="sub-menu">구독 상품 알림</a>
+                        <a href="${contextPath}/product/subs/plist" class="sub-menu">구독 상품 알림</a>
                     </div>
                 </div>
             </div>
@@ -65,10 +65,10 @@
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-house me-2"></i>농장 관리</a>
                 <div class="dropdown-menu bg-transparent border-0">
                     <div class="dropdown-item">
-                        <a href="adminFarmList.html" class="sub-menu">농장 조회</a>
+                        <a href="${contextPath}/farm/list" class="sub-menu">농장 조회</a>
                     </div>
                     <div class="dropdown-item">
-                        <a href="adminFarmIn.html" class="sub-menu">농장 등록</a>
+                        <a href="${contextPath}/farm/insert" class="sub-menu">농장 등록</a>
                     </div>
                 </div>
             </div>
