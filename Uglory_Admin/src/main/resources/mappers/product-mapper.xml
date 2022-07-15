@@ -24,6 +24,29 @@
 		<result property="thumbnail" column="THUMBNAIL"/>
 	</resultMap>
 	
+	<resultMap type="farm" id="farm_rm">
+		<id property="farmNo" column="FARM_NO"/>
+		<result property="farmName" column="FARM_NM"/>
+		<result property="producer" column="PRODUCER"/>
+		<result property="origin" column="ORIGIN"/>
+		<result property="farmState" column="FARM_ST"/>
+	</resultMap>
+	
+	<resultMap type="optionType" id="option_rm">
+		<id property="optionCode" column="OPTION_CD"/>
+		<result property="productCode" column="P_CD"/>
+		<result property="optionName" column="OPTION_NM"/>
+		<result property="optionPrice" column="OPTION_PRICE"/>
+	</resultMap>
+	
+	<resultMap type="productImage" id="image_rm">
+		<id property="productImageNo" column="PRODUCT_IMG"/>
+		<result property="productCode" column="P_CD"/>
+		<result property="imageRename" column="IMG_RENAME"/>
+		<result property="imageRoot" column="IMG_ROOT"/>
+		<result property="imageLevel" column="IMG_LEVEL"/>
+	</resultMap>
+	
 	
 	<!-- 상품 전체 조회 -->
 	<select id="selectAll" resultMap="product_rm">

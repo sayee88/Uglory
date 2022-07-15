@@ -41,9 +41,9 @@
                     <div class="bg-light rounded p-4 p-sm-8 my-4 mx-3">
                         <div class="d-flex align-items-center justify-content-between mb-3">
                             <a href="${contextPath}">
-                                <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>UGLORY</h3>
+                                <img src="${contextPath}/resources/img/Uglory_AdminMintLogo.png" style="height:56px;" alt="Uglory">
                             </a>
-                            <h3>Sign In</h3>
+                            <h4 class="mb-0 mt-3 text-primary">Sign In</h4>
                         </div>
 
                         <form action="signIn" method="POST" name="login-form" onsubmit="return loginValidate()">

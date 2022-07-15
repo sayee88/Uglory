@@ -4,7 +4,7 @@
 <!-- Navbar Start -->
 <header class="navbar navbar-expand bg-light navbar-light sticky-top px-4 py-0">
     <a href="${contextPath}" class="navbar-brand d-flex d-lg-none me-4">
-        <h2 class="text-primary mb-0"><i class="fa fa-hashtag"></i></h2>
+        <img src="${contextPath}/resources/img/Uglory_farmarMint.png" style="height:60px;" alt="Uglory">
     </a>
     <a href="#" class="sidebar-toggler flex-shrink-0">
         <i class="fa fa-bars"></i>
