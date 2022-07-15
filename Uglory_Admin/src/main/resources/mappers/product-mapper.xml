@@ -40,7 +40,7 @@
 	</resultMap>
 	
 	<resultMap type="productImage" id="image_rm">
-		<id property="productImageNo" column="PRODUCT_IMG"/>
+		<id property="productImageNo" column="P_IMG_NO"/>
 		<result property="productCode" column="P_CD"/>
 		<result property="imageRename" column="IMG_RENAME"/>
 		<result property="imageRoot" column="IMG_ROOT"/>
@@ -63,5 +63,33 @@
 		ORDER BY P_CD
 	</select>
 
+	<!-- 상품 상세조회(상품) -->
+	<select id="selectProduct" resultMap="product_rm">
+		SELECT P_CD, PRODUCT_NM, PRODUCT_PRICE, PRODUCT_ST, P_CATEGORY_NM, PRODUCT_INFO,
+	       TO_CHAR(PR_DATE, 'YYYY-MM-DD') PR_DATE_CH,
+	       TO_CHAR(PU_DATE, 'YYYY-MM-DD') PU_DATE_CH
+		FROM PRODUCT
+		JOIN P_CATEGORY USING(P_CATEGORY_NO)
+		WHERE P_CD = #{productCode}
+	</select>
+	
+	<!-- 상품 상세조회(농장) -->
+	<select id="selectFarm" resultMap="farm_rm">
+		SELECT * FROM FARM
+		WHERE FARM_NO = (SELECT FARM_NO FROM PRODUCT WHERE P_CD = #{productCode})
+	</select>
+	
+	<!-- 상품 상세조회(옵션) -->
+	<select id="selectOptionType" resultMap="option_rm">
+		SELECT * FROM OPTION_TYPE
+		WHERE P_CD = #{productCode}
+	</select>
+	
+	<!-- 상품 상세조회(이미지) -->
+	<select id="selectPImage" resultMap="image_rm">
+		SELECT IMG_ROOT, IMG_LEVEL
+		FROM PRODUCT_IMG WHERE P_CD = #{productCode}
+	</select>
+	
 
 </mapper>

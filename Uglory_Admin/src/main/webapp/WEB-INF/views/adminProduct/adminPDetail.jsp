@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<c:set var="product" value="${detailMap.product}" />
+<c:set var="farm" value="${detailMap.farm}" />
+<c:set var="optionList" value="${detailMap.optionType}" />
+<c:set var="imageList" value="${detailMap.productImage}" />
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,12 +59,15 @@
             <main class="container-fluid pt-4 px-4">
                 <section class="row justify-content-center mx-0 m-5 p-4">
                     <article class="col-lg-12 p-1">
-                        <div class="productNo">1</div>
+                        <div class="productNo">${product.productCode}</div>
                         <div class="detailHead">
-                            <h1 class="">당근</h1>
+                            <h1 class="">${product.productName}</h1>
                             <div class="dateBox">
-                                <p>상품 등록일 : 2022-07-06</p>
-                                <p>최종 수정일 : 2022-07-06</p>
+                                <p>상품 등록일 : ${product.productDateCh}</p>
+
+                                <c:if test="${product.productUpdateCh} != ''">
+                                    <p>최종 수정일 : ${product.productUpdateCh}</p>
+                                </c:if>
                             </div>
                         </div>
                         <hr>
@@ -73,26 +82,26 @@
                                         <table class="table text-center">
                                             <tr class="first-row">
                                                 <th>상품 분류</th>
-                                                <td>근채류</td>
+                                                <td>${product.productCategory}</td>
                                             </tr>
                                             <tr>
                                                 <th>상품 가격</th>
-                                                <td>15,000원</td>
+                                                <td>${product.productPrice}원</td>
                                             </tr>
                                             <tr>
                                                 <th>상품 상태</th>
-                                                <td>
-                                                    <button class="btn btn-success" id="in-btn">입고</button>
-                                                    <button class="btn btn-outline-secondary" id="out-btn">품절</button>
+                                                <td id="state-btn">
+                                                    <button class="btn btn-success in-btn">입고</button>
+                                                    <button class="btn btn-outline-secondary out-btn">품절</button>
                                                 </td>
                                             </tr>
                                             <tr>
                                                 <th>원산지</th>
-                                                <td>뿌리채소 마을</td>
+                                                <td>${farm.origin}</td>
                                             </tr>
                                             <tr class="last-row">
                                                 <th>생산자</th>
-                                                <td>당근농장(당근쿵야)</td>
+                                                <td>${farm.farmName}(${farm.producer})</td>
                                             </tr>
                                         </table>
 
@@ -103,22 +112,34 @@
                                     <div class="bg-light rounded mb-2 p-3">
                                         <h4>옵션 정보</h4>
 
-                                        <table class="table text-center">
-                                            <tr class="first-row">
-                                                <th>1</th>
-                                                <td>3kg</td>
-                                                <td>15,000원</td>
-                                            </tr>
-                                            <tr class="last-row">
-                                                <th>2</th>
-                                                <td>5kg</td>
-                                                <td>27,000원</td>
-                                            </tr>
+                                        <table class="table text-center mb-0">
+                                            <div class="tableLine"></div>
+                                            <c:choose>
+                                                <c:when test="${empty optionList}">
+                                                    <tr>
+                                                        <th colspan="3">옵션 정보가 없습니다.</th>
+                                                    </tr>
+                                                </c:when>
+
+                                                <c:otherwise>
+
+                                                    <c:forEach var="option" items="${optionList}">
+                                                    
+                                                        <tr>
+                                                            <th>${option.optionCode}</th>
+                                                            <td>${option.optionName}</td>
+                                                            <td>${option.optionPrice}원</td>
+                                                        </tr>
+                                                        
+                                                    </c:forEach>
+                                                </c:otherwise>
+                                            </c:choose>
                                         </table>
+                                            <div class="tableLine"></div>
 
                                     </div>
                                     <div class="bg-light rounded p-2 mb-2 img-area">
-                                        <img src="${contextPath}/resources/img/vegetables-2485055.jpg" alt="상품이미지" class="detail-img">
+                                        <img src="${contextPath}${imageList[0].imageRoot}" alt="상품이미지" class="detail-img">
                                         <div>
                                             <h4>첨부 이미지</h4>
                                             <a href="#" id="pre-img" data-bs-toggle="modal" data-bs-target="#exampleModal">이미지 미리보기</a>
@@ -127,9 +148,6 @@
                                 </div>
                             </div>
 
-                            <div class="detail-btn">
-                                <button class="btn btn-primary">수정</button>
-                            </div>
                         </div>
                         
                     </article>
@@ -139,10 +157,11 @@
                     <article>
                         <h2>상품 설명</h2>
 
-                        <div class="detail-info">상품 설명을 작성해주세요.</div>
+                        <div class="detail-info">${product.productInfo}</div>
 
                         <div class="detail-btn">
-                            <button class="btn btn-primary">수정</button>
+                            <button type="button" class="btn btn-primary">목록으로</button>
+                            <button type="button" class="btn btn-primary">수정</button>
                         </div>
                     </article>
                 </section>
@@ -209,10 +228,17 @@
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
 
+    <script>
+        console.log('${imageList[0].imageLevel}');
+        console.log('${imageList[0].imageRoot}');
+
+        console.log('${product.productState}');
+        const productState = '${product.productState}'
+    </script>
+
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <%-- <script src="../lib/chart/chart.min.js"></script> --%>
     <script src="${contextPath}/resources/lib/easing/easing.min.js"></script>
     <script src="${contextPath}/resources/lib/waypoints/waypoints.min.js"></script>
     <script src="${contextPath}/resources/lib/owlcarousel/owl.carousel.min.js"></script>
@@ -220,10 +246,9 @@
     <script src="${contextPath}/resources/lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="${contextPath}/resources/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
-    <script src="${contextPath}/resources/js/product.js"></script>  
-    
     <!-- Template Javascript -->
     <script src="${contextPath}/resources/js/main.js"></script>  
+    <script src="${contextPath}/resources/js/adminPDetail.js"></script>  
 
 </body>
 
