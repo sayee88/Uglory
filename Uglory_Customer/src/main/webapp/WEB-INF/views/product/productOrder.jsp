@@ -12,6 +12,9 @@
     <meta content="" name="keywords">
     <meta content="" name="description">
 
+    <%-- favicon --%>
+    <link rel="icon" href="${contextPath}/resources/img/main/logo/favicon.ico" />
+
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -52,7 +55,7 @@
 
             <h4 class="order-info">배송지 정보</h4>
 
-            <form action="" method="POST" onsubmit="return orderValidate()">
+            <form action="order" method="POST" onsubmit="return orderValidate()">
                 <div class="product-order-area">
 
                     <label for="p-orderName">받으시는 분 이름</label>

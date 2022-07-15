@@ -13,5 +13,6 @@ public class Farm {
 	private String farmName;
 	private String producer;
 	private String origin;
+	private char farmState;
 	
 }

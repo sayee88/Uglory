@@ -25,11 +25,11 @@
 	</select>
 	
 	
-	<!-- 선택된 옵션 조회 -->
-	<select id="selectOption" resultMap="selectOption_rm">
+	<!-- 선택된 옵션 조회 - js로 구현 --> 
+<!-- 	<select id="selectOption" resultMap="selectOption_rm">
 		SELECT OPTION_NM, OPTION_PRICE, OPTION_COUNT
 		FROM OPTION_TYPE
 		JOIN OPTION_TB USING(OPTION_CD)
 		WHERE OPTION_CD = ${optionCode}
-	</select>
+	</select> -->
 </mapper>

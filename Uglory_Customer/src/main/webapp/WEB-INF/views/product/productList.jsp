@@ -11,8 +11,8 @@
     <meta content="" name="keywords">
     <meta content="" name="description">
 
-    <!-- Favicon -->
-    <link href="${contextPath}/resources/img/favicon.ico" rel="icon">
+    <%-- favicon --%>
+    <link rel="icon" href="${contextPath}/resources/img/main/logo/favicon.ico" />
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

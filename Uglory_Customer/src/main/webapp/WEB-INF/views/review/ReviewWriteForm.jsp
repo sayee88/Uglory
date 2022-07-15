@@ -12,6 +12,9 @@
     <meta content="" name="keywords">
     <meta content="" name="description">
 
+    <%-- favicon --%>
+    <link rel="icon" href="${contextPath}/resources/img/main/logo/favicon.ico" />
+
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,109 +38,127 @@
 
     <!-- Template Stylesheet -->
     <link href="${contextPath}/resources/css/style.css" rel="stylesheet">
-    <link href="${contextPath}/resources/css/review/review-style.css" rel="stylesheet">
+    <link href="${contextPath}/resources/css/review/review-writeform-style.css" rel="stylesheet">
 
 </head>
 
 <body>
     <div class="container-xxl bg-white p-0">
         
-       <!-- review header -->
-        <div class="container-xxl position-relative p-0">
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0">
-                <a href="${contextPath}" class="navbar-brand p-0">
-                    <h1 class="text-primary m-0"><i class="fa fa-utensils me-3"></i>Uglory</h1>
-                    <!-- <img src="img/logo.png" alt="Logo"> -->
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-                    <span class="fa fa-bars"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav ms-auto py-0 pe-4">
-                        <a href="${contextPath}" class="nav-item nav-link active">Home</a>
-                        <a href="${contextPath}/common/mission" class="nav-item nav-link">Mission</a>
-                        <a href="${contextPath}/common/about" class="nav-item nav-link">About</a>
-                        <a href="${contextPath}/product/list" class="nav-item nav-link">Market</a>
-                        <a href="${contextPath}/review/list" class="nav-item nav-link icon">Review</a>
+       <!-- reviewWriteForm header -->
+            <div class="container-xxl position-relative p-0">
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0">
+                    <a href="${contextPath}" class="navbar-brand p-0">
+                        <span class="text-primary m-0">
+                        <i class="me-3" style="font-size:30px"></i>
+                        <img src="${contextPath}/resources/img/main/logo/Uglory_farmar.png">
+                        <img src="${contextPath}/resources/img/main/logo/Uglory_whitecali.png" width="150px">
+                    </span>
+                        <!-- <img src="img/logo.png" alt="Logo"> -->
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                        <span class="fa fa-bars"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <div class="navbar-nav ms-auto py-0 pe-4">
+                            <a href="${contextPath}" class="nav-item nav-link active">Home</a>
+                            <a href="${contextPath}/common/mission" class="nav-item nav-link">Mission</a>
+                            <a href="${contextPath}/common/about" class="nav-item nav-link">About</a>
+                            <a href="${contextPath}/product/list" class="nav-item nav-link">Market</a>
+                            <a href="${contextPath}/review/list" class="nav-item nav-link icon">Review</a>
+                        </div>
+                        <a href="#" class="nav-item icon"><img class="menu-chart" src="${contextPath}/resources/img/main/shopping-cart-white.png"></a>
+                        <a href="${contextPath}/member/login" class="nav-item icon"><img class="menu-chart" src="${contextPath}/resources/img/main/user-white.png"></a>
                     </div>
-                    <a href="#" class="nav-item icon"><img class="menu-chart" src="${contextPath}/resources/images/main/shopping-cart-white.png"></a>
-                    <a href="${contextPath}/member/login" class="nav-item icon"><img class="menu-chart" src="${contextPath}/resources/images/main/user-white.png"></a>
-                </div>
-            </nav>
+                </nav>
 
-            <div class="container-xxl py-5 bg-dark hero-header mb-5">
-                <div class="container text-center my-5 pt-5 pb-4">
-                    <h2 class="display-3 text-white mb-3 animated slideInDown" style="font-size:50px">Review</h2>
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb justify-content-center text-uppercase">
-                            <li class="breadcrumb-item"><a href="${contextPath}">Home</a></li>
-                            <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                            <li class="breadcrumb-item text-white active" aria-current="page">Review</li>
-                        </ol>
-                    </nav>
+                <div class="container-xxl py-5 bg-dark hero-header mb-5">
+                    <div class="container text-center my-5 pt-5 pb-4">
+                        <h2 class="display-3 text-white mb-3 animated slideInDown" style="font-size:50px">Review</h2>
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb justify-content-center text-uppercase">
+                                <li class="breadcrumb-item"><a href="${contextPath}">Home</a></li>
+                                <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                                <li class="breadcrumb-item text-white active" aria-current="page">Review</li>
+                            </ol>
+                        </nav>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Contact Start -->
-        <div class="container-xxl py-5">
-            <div class="container">
-                <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                    <h5 class="section-title ff-secondary text-center text-primary fw-normal">Review</h5>
-                    <h1 class="mb-5">리뷰작성</h1>
-                </div>
-            </div>
-        </div>
-        <!-- Contact End -->
 
 
         <!-- 리뷰 작성 form -->
         <div class="review-container">
             <div class="review-writeform">
                 <h3>리뷰 작성</h3>
-                <div style="padding: 10px 0; font-size: 14px;" class="px-1">개별상품</div>
-                <div class="purchase-product">
-                    <div>
-                        <img src="img/리뷰/이용후기5.png">
+
+                <form action="#" enctype="multipart/form-data" method="POST" class="review-write">
+                    <div style="padding: 10px 0; font-size: 14px;" class="px-1">
+                    	<c:if test="${reviewCode == 1}">
+                    		구독상품
+                    	</c:if>
+                    	<c:if test="${reviewCode == 2}">
+                    		개별상품
+                   		</c:if>
                     </div>
-                    <div>
-                        <div>2022.07.07</div>
-                        <div>유기농 어글리 바나나 - 1.5kg</div>
-                        <!-- <div>15,000원</div> -->
+                    <div class="purchase-product">
+                        <div>
+                            <img src="img/리뷰/이용후기5.png">
+                        </div>
+                        <div>
+                            <div>2022.07.07</div>
+                            <div>유기농 어글리 바나나 - 1.5kg</div>
+                            <!-- <div>15,000원</div> -->
+                        </div>
                     </div>
-                </div>
 
-                <div class="review-star-section">
-                    <h3>상품은 어떠셨나요?</h3>
-                    <div>
-                        <span>★</span>
-                        <span>★</span>
-                        <span>★</span>
-                        <span>★</span>
-                        <span>★</span>
+                    <div class="review-star-section">
+                        <h3>상품은 어떠셨나요?</h3>
+                        <%-- <div>
+                            <span class="starR on">★</span>
+                            <span class="starR">★</span>
+                            <span class="starR">★</span>
+                            <span class="starR">★</span>
+                            <span class="starR">★</span>
+                        </div> --%>
+                        <form class="mb-3" name="myform" id="myform" method="post">
+                            <fieldest>
+                                <input type="radio" name="reviewStar" value="5" id="rate1"><label for="rate1">★</label>
+                                <input type="radio" name="reviewStar" value="4" id="rate2"><label for="rate2">★</label>
+                                <input type="radio" name="reviewStar" value="3" id="rate3"><label for="rate3">★</label>
+                                <input type="radio" name="reviewStar" value="2" id="rate4"><label for="rate4">★</label>
+                                <input type="radio" name="reviewStar" value="1" id="rate5"><label for="rate5">★</label>
+                            </fieldest>
+                        </form>
                     </div>
-                </div>
 
-                <div class="review-img-upload">
-                    <label for="img0">
-                        <img class="preview" src="#">
-                    </label>
-                    <input type="file" class="inputImage" id="img1" name="1" accept="image/*">
-                </div>
+                    <!-- 썸네일 이미지 (첫번째 등록 이미지가 썸네일 이미지) -->
+                    <div class="review-img-upload">
+                        
+                        <label for="img0">
+                            <img class="preview" src="#">
+                        </label>
+                        <input type="file" class="inputImage" id="img0" name="0" accept="image/*">
+                        <span class="delte-image">&times;</span> 
+                        
+                      	
+                        
+                    </div>
 
-                <div class="review-inputtext">
-                    <textarea name="boardContent"></textarea>
-                </div>
+                    <div class="review-inputtext">
+                        <textarea name="boardContent"></textarea>
+                    </div>
 
-                <div class="review-precautions">
-                    <h6>품질, 배송, 문의 응대 등 상품의 구매 경험을 알려주세요.</h6>
-                    <div>상품과 무관한 사진 및 욕설/비속어가 포함된 리뷰는 고지 없이 삭제될 수 있습니다.</div>
-                    <div>리뷰 작성에 대한 고지사항 알림사항 적어두기</div>
-                </div>
+                    <div class="review-precautions">
+                        <h6>품질, 배송, 문의 응대 등 상품의 구매 경험을 알려주세요.</h6>
+                        <div>상품과 무관한 사진 및 욕설/비속어가 포함된 리뷰는 고지 없이 삭제될 수 있습니다.</div>
+                        <div>리뷰 작성에 대한 고지사항 알림사항 적어두기</div>
+                    </div>
 
-                <div class="review-insert">
-                    <button type="submit" id="writeBtn">작성완료</button>
-                </div>
+                    <div class="review-insert">
+                        <button type="submit" id="writeBtn">작성완료</button>
+                    </div>
+                </form>
 
 
             </div>
@@ -165,8 +186,9 @@
     <script src="${contextPath}/resources/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
 
-        <%-- Template Javascript --%>
-        <script src="${contextPath}/resources/js/main.js"></script>
+    <%-- Template Javascript --%>
+    <script src="${contextPath}/resources/js/main.js"></script>
+    <script src="${contextPath}/resources/js/star-rating.js"></script>
 </body>
 
 </html>

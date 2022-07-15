@@ -4,8 +4,8 @@
 <!-- Sidebar Start -->
 <div class="sidebar pe-4 pb-3">
     <nav class="navbar bg-light navbar-light">
-        <a href="${contextPath}" class="navbar-brand mx-4 mb-3">
-            <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>UGLORY</h3>
+        <a href="${contextPath}" class="navbar-brand mx-3 mb-3 pt-0">
+            <img src="${contextPath}/resources/img/Uglory_AdminMintLogo.png" style="height:60px;" alt="Uglory">
         </a>
 
         <%-- 로그인 X --%>
@@ -78,7 +78,7 @@
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa-solid fa-credit-card me-2"></i>결제&매출</a>
                 <div class="dropdown-menu bg-transparent border-0">
                     <div class="dropdown-item">
-                        <a href="" class="sub-menu">결제 관리</a>
+                        <a href="${contextPath}/payment/selectAll" class="sub-menu">결제 관리</a>
                     </div>
                     <div class="dropdown-item">
                         <a href="signup.html" class="sub-menu">매출 관리</a>
@@ -88,7 +88,7 @@
 
             <!-- 리뷰게시판 관리 -->
             <div class="nav-item dropdown">
-                <a href="#" class="nav-link"><i class="fa-solid fa-clipboard-list me-2"></i>리뷰 관리</a>
+                <a href="${contextPath}/review/selectAll" class="nav-link"><i class="fa-solid fa-clipboard-list me-2"></i>리뷰 관리</a>
             </div>
 
         </div>

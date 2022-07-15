@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import edu.kh.ugloryC.product.model.vo.ProductDetail;
+import edu.kh.ugloryC.product.model.vo.ProductOrder;
 
 @Repository
 public class ProductDAO {
@@ -23,11 +24,20 @@ public class ProductDAO {
 		return sqlSession.selectOne("productMapper.productDetail", productCode);
 	}
 
-	/** 총 가격 조회 DAO
-	 * @param map
+//	/** 총 가격 조회 DAO
+//	 * @param map
+//	 * @return result
+//	 */
+//	public int totalAmount(Map<String, Object> map) {
+//		return sqlSession.selectOne("productMapper.totalAmount", map);
+//	}
+
+	/** 주문 정보
+	 * @param pOrder
 	 * @return result
 	 */
-	public int totalAmount(Map<String, Object> map) {
-		return sqlSession.selectOne("productMapper.totalAmount", map);
+	public int productOrder(ProductOrder pOrder) {
+
+		return sqlSession.insert("productMapper.productOrder", pOrder);
 	}
 }

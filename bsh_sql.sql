@@ -545,6 +545,12 @@ MODIFY FARM_ST NOT NULL;
 
 ALTER TABLE OPTION_TB DROP COLUMN P_ORDER_CD;
 
+ALTER TABLE MEMBER
+DROP COLUMN SECESSION_CNT;
+
+
+
+
 
 
 
@@ -612,6 +618,10 @@ INSERT INTO PRODUCT VALUES(SEQ_PRODUCT_NO.NEXTVAL, 1, 1, '연근', '10000', 'I',
 INSERT INTO PRODUCT VALUES(SEQ_PRODUCT_NO.NEXTVAL, 2, 1, '서리태', '10000', 'I', NULL, SYSDATE, NULL);
 INSERT INTO PRODUCT VALUES(SEQ_PRODUCT_NO.NEXTVAL, 2, 1, '밤', '10000', 'I', NULL, SYSDATE, NULL);
 
+
+INSERT INTO SUBS VALUES(1, '스탠다드', 15500);
+INSERT INTO SUBS VALUES(2, '점보', 25000);
+
 SELECT * FROM PRODUCT;
 
 INSERT INTO SUBS_ORDER VALUES(SEQ_S_ORDER_CD.NEXTVAL, DEFAULT, DEFAULT, 이름, 전화번호, 주소, 요청사항, 첫배송일,
@@ -624,11 +634,49 @@ TO_DATE ( '20220714', 'YYYYMMDD')
 AS NEXT_WEDNESDAY -- 다음 수요일
 FROM DUAL;
 
-
-INSERT INTO SUBS_ORDER VALUES(SEQ_S_ORDER_CD.NEXTVAL, DEFAULT, DEFAULT, '이름', '전화번호', '주소', '요청사항',
-                        (SELECT NEXT_DAY(SYSDATE, 'WEDNESDAY') AS NEXT_WED FROM DUAL;),
+-- 스탠다드 회원가입
+INSERT INTO SUBS_ORDER VALUES(
+                        (SELECT CONCAT(TO_CHAR(SYSDATE, '"S"YYYYMMDD-"00"'), SEQ_S_ORDER_CD.NEXTVAL) FROM DUAL),
+                         DEFAULT, DEFAULT, '이름', '전화번호', '주소', '요청사항',
+                        (SELECT NEXT_DAY(SYSDATE, 'WEDNESDAY') AS NEXT_WED FROM DUAL),
+                        DEFAULT, '1', '1', '1'
+);
+-- 점보 회원가입
+INSERT INTO SUBS_ORDER VALUES(
+                        (SELECT CONCAT(TO_CHAR(SYSDATE, '"J"YYYYMMDD-"00"'), SEQ_S_ORDER_CD.NEXTVAL) FROM DUAL),
+                         DEFAULT, DEFAULT, '이름', '전화번호', '주소', '요청사항',
+                        (SELECT NEXT_DAY(SYSDATE, 'WEDNESDAY') AS NEXT_WED FROM DUAL),
                         DEFAULT, '1', '1', '1'
 );
 
 
 SELECT NEXT_DAY(SYSDATE, 'WEDNESDAY') AS NEXT_WED FROM DUAL;
+
+SELECT * FROM SUBS;
+
+
+-- 스탠다드 주문번호
+SELECT CONCAT(TO_CHAR(SYSDATE, '"S"YYYYMMDD-"00"'), SEQ_S_ORDER_CD.NEXTVAL) FROM DUAL;
+
+-- 점보 주문번호
+SELECT CONCAT(TO_CHAR(SYSDATE, '"J"YYYYMMDD-"00"'), SEQ_S_ORDER_CD.NEXTVAL) FROM DUAL;
+
+
+
+-- 주문번호 생성(x)
+select concat(cast(d.receiptDate as char), right(concat("00000" , rowCount + 1),  6)) as receiptNo,
+       count(e.cntNo) + 1 as cntNo, rowCount + 1 as rowCount
+from tn_exp_hall as e, 
+     (select concat(substr(date_format(now(), '%Y-%m-%d'), 1, 8)) as receiptDate,
+     (select cntNo as cnt from tn_exp_hall order by cntNo desc limit 1) as rowCount FROM dual) d;
+
+   
+<choose>
+   <when test='box == "standard"'>
+
+   </when>
+   <otherwise>
+   
+   </otherwise>
+</choose>
+

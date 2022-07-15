@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import edu.kh.ugloryC.product.model.dao.ProductDAO;
 import edu.kh.ugloryC.product.model.vo.ProductDetail;
+import edu.kh.ugloryC.product.model.vo.ProductOrder;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -22,9 +23,18 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	// 총 가격 조회 서비스 구현
+//	@Override
+//	public int totalAmount(Map<String, Object> map) {
+//		
+//		return dao.totalAmount(map);
+//	}
+
+	// 주문 정보 
 	@Override
-	public int totalAmount(Map<String, Object> map) {
+	public int productOrder(ProductOrder pOrder) {
 		
-		return dao.totalAmount(map);
+		return dao.productOrder(pOrder);
 	}
+	
+	
 }

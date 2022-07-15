@@ -17,17 +17,23 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.gson.Gson;
 
+import edu.kh.ugloryC.member.model.vo.Member;
 import edu.kh.ugloryC.product.model.service.OptionService;
 import edu.kh.ugloryC.product.model.service.ProductService;
+import edu.kh.ugloryC.product.model.vo.OptionOBJ;
 import edu.kh.ugloryC.product.model.vo.OptionType;
 import edu.kh.ugloryC.product.model.vo.ProductDetail;
+import edu.kh.ugloryC.product.model.vo.ProductOrder;
 
 
 @Controller
 @RequestMapping("/product")
+@SessionAttributes({"loginMember"})
 public class ProductController {
 	
 	@Autowired
@@ -62,43 +68,67 @@ public class ProductController {
 		return "product/productDetail";
 	}			
 	
-	// 선택한 옵션 조회
-	@ResponseBody
-	@PostMapping("/detail/optionSelect")
-	public String optionSelect(int optionCode) {
-		
-		List<OptionType> optionList = optionService.selectOption(optionCode);
-		
-		return new Gson().toJson(optionList);
-	}
+// - js로 구현
+//	// 선택한 옵션 조회
+//	@ResponseBody
+//	@PostMapping("/detail/optionSelect")
+//	public String optionSelect(int optionCode) {
+//		
+//		List<OptionType> optionList = optionService.selectOption(optionCode);
+//		
+//		return new Gson().toJson(optionList);
+//	}
+//	
+//	// 옵션 선택에 따른 총 가격 조회
+//	@ResponseBody
+//	@PostMapping("/detail/optionTotal")
+//	public int optionTotal(int productCode,
+//							   int optionCode,
+//							   @RequestParam Map<String, Object> paramMap) {
+//		
+//		paramMap.put("productCode", productCode);
+//		paramMap.put("optionCode", optionCode);
+//		
+//		int result = service.totalAmount(paramMap);
+//		
+//		return result;
+//	}
 	
-	// 옵션 선택에 따른 총 가격 조회
-	@ResponseBody
-	@PostMapping("/detail/optionTotal")
-	public int optionTotal(int productCode,
-							   int optionCode,
-							   @RequestParam Map<String, Object> paramMap) {
-		
-		paramMap.put("productCode", productCode);
-		paramMap.put("optionCode", optionCode);
-		
-		int result = service.totalAmount(paramMap);
-		
-		return result;
-	}
-	
-	// 결제 페이지 전환
+	// 결제 페이지 화면 전환
 	@GetMapping("/order")
-	public String productOrder(
-							   // loginMember 가져오기
-							   Model model) {
-		
-		// 로그인되어있을 시 결제 페이지로 전환 가능 코드 추가
-		// if(loginMember != null){
-		
-		// else {
-			
+	public String productOrder() {
 		
 		return "product/productOrder";
+	}
+	
+	// 배송정보 입력
+	@PostMapping("/order")
+	public String productOrder(/*@PathVariable("productCode") int productCode,
+							   @PathVariable("optionObj") OptionOBJ optionObj,
+							   @PathVariable("sum") int sum*/
+							   Member loginMember, 
+							   ProductOrder pOrder,
+							   String[] orderAddress,
+							   RedirectAttributes ra) {
+		
+		// 로그인한 회원 번호 얻어와서 order에 세팅
+		pOrder.setMemberNo(loginMember.getMemberNo());
+		
+		pOrder.setProductOrderAddr(String.join(",,", orderAddress));
+	
+		int result = service.productOrder(pOrder);
+		
+		String message = null;
+		String path = null;
+		
+		if(result > 0) { // 주문 정보 입력 성공
+			path = "redirect:/";
+			
+		} else {
+			message = "배송지 정보 입력 실패";
+			path = "redirect:/product/productOrder";
+		}
+		ra.addFlashAttribute("message", message);
+		return path;
 	}
 }
