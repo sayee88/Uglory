@@ -33,6 +33,9 @@
     <!-- Fontawesome cdn 링크 -->
     <script src="https://kit.fontawesome.com/1ef9913073.js" crossorigin="anonymous"></script>
 
+    <!-- summernote css 파일 -->
+    <link rel="stylesheet" href="${contextPath}/resources/css/summernote/summernote-lite.min.css">
+
 </head>
 
 <body>
@@ -129,11 +132,11 @@
         <div class="modal-dialog modal-xl">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                <h5 class="modal-title" id="staticBackdropLabel">상품 설명 작성</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                ...
+                <textarea name="editordata" id="summernote"></textarea>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -157,8 +160,14 @@
     <script src="${contextPath}/resources/lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="${contextPath}/resources/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
+    <!-- summernote js 파일 -->
+    <script src="${contextPath}/resources/js/summernote/summernote-lite.min.js"></script>
+    <script src="${contextPath}/resources/js/summernote/lang/summernote-ko-KR.min.js"></script>
+
     <!-- Template Javascript -->
     <script src="${contextPath}/resources/js/main.js"></script>
+    <script src="${contextPath}/resources/js/adminPInsert.js"></script>
+
 </body>
 
 </html>
