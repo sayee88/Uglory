@@ -140,23 +140,71 @@ if(xbtn == true){
 // }
 
 
+// // merchant_uid(구독결제번호) 만들기 ->payNo
+// for (let i=0 ; i<count_check ; i++){
+//     let arr = new makePayNo()
+// }
 
 
 
-function orderNo(){
-    $.ajax({
+// 정기 결제
+const subBtn = document.getElementById("sub-btn");
+if(subBtn != undefined){
+    subBtn.addEventListener("click", function(){
+
+        var IMP = window.IMP; // 생략 가능
+        IMP.init("imp97143001"); // 예: imp00000000
     
-        url : "orderNo",
-        data : {},
-        type : "post",
-        success : function(){
+        IMP.request_pay({
+            pay_method : 'card', // 기능 없음.
+            merchant_uid: payNo,  // 구독결제번호
+            name : boxName, // 상품명
+            amount : 1, // 빌링키 발급과 함께 1원 결제승인을 시도합니다.
+            customer_uid : sOrderNo, // 필수 입력  / 주문번호 연결
+            buyer_name : memberName,
+        }, function(rsp) {
     
-        },
-        error: function(){
-            
-        }
+            if ( rsp.success ) {
+                $.ajax({
+        
+                    url : contextPath + "/subscription/kakaopay",
+                    data : {
+                        "sOrderNo" : sOrderNo,
+                        "orderName" : orderName,
+                        "orderPhone" : orderPhone,
+                        "orderAddress" : orderAddress,
+                        "delText" : delText,
+                        "cycle" : cycle,
+                        "memberNo" : memberNo,
+                        "box" : box,
+                        "amount" : amount ,
+                        "payNo" : payNo,
+                    },
     
-    });
+                    type : "POST",
+                    success : function(res){ 
+                        if(res>0){
+                            location.href = contextPath + "/member/subscribeCHK";
+                            alert("주문이 완료되었습니다:)");
+    
+                        }else{
+                            location.href = contextPath;
+                            alert("주문 실패:( - 에러 내용 : " +  rsp.error_msg);
+                        }
+                    },
+                    error: function(){
+                        console.log("에러 발생");
+                    }
+                
+                });
+            } else {
+                
+            }
+        });
+    
+    
+    })
 
 }
+
 

@@ -77,3 +77,10 @@
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
 </footer>
+
+<%--  message 출력 --%>
+<c:if test="${ !empty message }">
+    <script>
+        alert("${message}");
+    </script>
+</c:if> 

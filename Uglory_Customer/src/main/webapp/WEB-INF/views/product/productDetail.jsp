@@ -62,7 +62,7 @@
         <section class="product-detail">
             <!-- 상품, 옵션, FARM, 별점, 상품이미지, 리뷰 테이블 필요 -->
 
-            <form action="order" method="POST">
+            <form action="${contextPath}/product/order" method="GET" name="orderForm" onsubmit="return orderValidate()">
                 <div class="product-detail-area">
                     <!-- 상품 이미지 영역 최대 4개(썸네일 포함)-->
                     <div class="product-detail-img">
@@ -174,7 +174,7 @@
 
                         <!-- 상품 상세조회 버튼 영역 -->
                         <div class="detail-product-btnArea">
-                            <button type="button" id="buy-btn" onclick="productOrder()">구매하기</button>
+                            <button type="submit" id="buy-btn">구매하기</button>
                             <button type="button" class="cartBtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">장바구니</button>
                             <button id="share-btn" onclick="clip(); return false;">공유하기</button>
                         </div>
@@ -228,7 +228,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">쇼핑 계속하기</button>
-                                <button type="button" class="btn btn-primary" id="productCartBtn">장바구니보기</button>
+                                <button type="button" class="btn btn-primary" id="productCartBtn" onclick="optionSelectBox()">장바구니보기</button>
                             </div>
                         </div>
                     </div>
