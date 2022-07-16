@@ -1,5 +1,7 @@
 package edu.kh.ugloryC.subscription.controller;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -19,6 +21,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -59,13 +63,31 @@ public class SubscriptionController {
 		orderInfo.put("cycle", cycle);
 		orderInfo.put("choice", choice);
 		
+		// 결제번호 생성
+		LocalDate currentDate = LocalDate.now(); 
+		String date = currentDate.format(DateTimeFormatter.ofPattern("yyMMdd"));
+		int random = (int)(Math.random() * 5);
+		String payNo = "SP" + date + "-" + random;
+		
+		orderInfo.put("payNo", payNo);
+		
+		// 주문번호(구독 상품 주문 코드) 생성
+		String sOrderNo = service.createSOrderNo(orderInfo);
+		orderInfo.put("sOrderNo", sOrderNo);
+		orderInfo.put("sOrderNo", sOrderNo);
+		
 		model.addAttribute("orderInfo", orderInfo);
+		
+		
+		// 첫 배송일 지정
+		
 		
 		
 		return "subscription/subscription2";
 	}
 	
 	// 구독 페이지3
+	
 	@PostMapping("/subscription/pay")
 	public String subscription_pay(@RequestParam(value="s-orderName") String inputName,
 									@RequestParam(value="s-orderPhone") String inputPhone,
@@ -83,6 +105,10 @@ public class SubscriptionController {
 		
 		int memberNo = loginMember.getMemberNo();
 		
+		if(inputDelText.equals("")) {
+			inputDelText = "NULL";
+		}
+		
 //		Map<String, Object> deliveryInfo = new HashMap<String, Object>();
 		
 		orderInfo.put("inputName", inputName);
@@ -91,25 +117,8 @@ public class SubscriptionController {
 		orderInfo.put("inputDelText", inputDelText);
 		orderInfo.put("memberNo", memberNo);
 		
-//		model.addAttribute("deliveryInfo", deliveryInfo);
 		
-		
-		int result = service.insertSubsOrder(orderInfo);
-		String path = null;
-		String message = null;
-		
-		if(result>0) {
-			message = "주문이 완료되었습니다:)";
-			path = "redirect:/member/subscribeCHK"; 
-			
-		}else {
-			message = "주문 실패:(";
-			path = "redirect:/subscription"; 
-		}
-		
-		ra.addFlashAttribute("message", message);
-		
-		return path;
+		return "subscription/subscription3";
 		
 	}
 

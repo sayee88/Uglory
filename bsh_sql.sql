@@ -549,6 +549,51 @@ ALTER TABLE MEMBER
 DROP COLUMN SECESSION_CNT;
 
 
+ALTER TABLE PRODUCT_IMG
+RENAME COLUMN PRODUCT_IMG TO P_IMG_NO;
+
+ALTER SESSION SET NLS_DATE_FORMAT = 'YYYY/MM/DD HH24:MI:SS';
+SELECT SYSDATE FROM DUAL;
+
+
+--회원 탈퇴 사유 테이블
+CREATE TABLE "SECESSION_CNT" (
+   "SECESSION_CD"   NUMBER   NOT NULL,
+   "SECESSION_CNT"   VARCHAR2(200)   NOT NULL
+   
+);
+
+--MEMBER 테이블에 SECESSION_CD 추가
+ALTER TABLE MEMBER add (SECESSION_CD NUMBER); 
+
+--제약조건 추가
+ALTER TABLE "SECESSION_CNT" ADD CONSTRAINT "PK_SECESSION_CNT" PRIMARY KEY (
+   "SECESSION_CD"
+);
+
+--컬럼 추가
+COMMENT ON COLUMN "SECESSION_CNT"."SECESSION_CD" IS '회원 탈퇴 코드';
+COMMENT ON COLUMN "SECESSION_CNT"."SECESSION_CNT" IS '회원 탈퇴 사유 내용';
+
+--사유  샘플테이블 
+INSERT INTO SECESSION_CNT VALUES(1, '더 이상 서비스가 필요하지 않아요.');
+INSERT INTO SECESSION_CNT VALUES(2, '서비스가 마음에 들지 않아요.');
+INSERT INTO SECESSION_CNT VALUES(3, '구독료가 부담스러워요.');
+INSERT INTO SECESSION_CNT VALUES(4, '비밀!!');
+
+
+SELECT * FROM SECESSION_CNT;
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -643,7 +688,7 @@ INSERT INTO SUBS_ORDER VALUES(
 );
 -- 점보 회원가입
 INSERT INTO SUBS_ORDER VALUES(
-                        (SELECT CONCAT(TO_CHAR(SYSDATE, '"J"YYYYMMDD-"00"'), SEQ_S_ORDER_CD.NEXTVAL) FROM DUAL),
+                        (CONCAT(TO_CHAR(SYSDATE, '"J"YYYYMMDD-"00"'), SEQ_S_ORDER_CD.NEXTVAL)),
                          DEFAULT, DEFAULT, '이름', '전화번호', '주소', '요청사항',
                         (SELECT NEXT_DAY(SYSDATE, 'WEDNESDAY') AS NEXT_WED FROM DUAL),
                         DEFAULT, '1', '1', '1'
@@ -671,12 +716,6 @@ from tn_exp_hall as e,
      (select cntNo as cnt from tn_exp_hall order by cntNo desc limit 1) as rowCount FROM dual) d;
 
    
-<choose>
-   <when test='box == "standard"'>
+SELECT CONCAT(TO_CHAR(SYSDATE, '"S"YYYYMMDD-"00"'), SEQ_S_ORDER_CD.NEXTVAL) FROM DUAL;
 
-   </when>
-   <otherwise>
-   
-   </otherwise>
-</choose>
-
+SELECT NEXT_DAY(SYSDATE, 'WEDNESDAY') FROM DUAL

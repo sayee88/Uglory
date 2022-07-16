@@ -1,5 +1,6 @@
 package edu.kh.ugloryC.subscription.model.dao;
 
+import java.util.Date;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -11,10 +12,19 @@ public class SubscriptionDAO {
 	
 	@Autowired
 	private SqlSessionTemplate sqlSession;
-
-	public int insertSubsOrder(Map<String, Object> orderInfo) {
+	
+	public String createSOrderNo(Map<String, Object> orderInfo) {
 		
-		return sqlSession.insert("subscriptionMapper.insertSubsOrder", orderInfo);
+		return sqlSession.selectOne("subscriptionMapper.createSOrderNo", orderInfo);
+	}
+
+	public int insertSubsOrder(Map<String, Object> payInfo) {
+		
+		return sqlSession.insert("subscriptionMapper.insertSubsOrder", payInfo);
+	}
+
+	public Date createDelDate() {
+		return sqlSession.selectOne("subscriptionMapper.createDelDate");
 	}
 
 }
