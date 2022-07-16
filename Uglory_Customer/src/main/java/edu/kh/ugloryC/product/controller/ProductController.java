@@ -1,5 +1,6 @@
 package edu.kh.ugloryC.product.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 
 import edu.kh.ugloryC.member.model.vo.Member;
 import edu.kh.ugloryC.product.model.service.OptionService;
@@ -62,11 +64,11 @@ public class ProductController {
 		}
 		
 		// 별점 카운트, 리뷰 카운트 필요
-		
 		model.addAttribute("detail", detail);
 		
 		return "product/productDetail";
-	}			
+	}	
+	
 	
 // - js로 구현
 //	// 선택한 옵션 조회
@@ -96,17 +98,32 @@ public class ProductController {
 	
 	// 결제 페이지 화면 전환
 	@GetMapping("/order")
-	public String productOrder() {
+	public String productOrder(int totalAmount, String optionObj, Model model) {
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		// 넘어온 스트링을 객체 형태로 변환
+		map = (Map<String, Object>)new Gson().fromJson(optionObj, map.getClass());
+		
+		for(String key : map.keySet()) {
+			map.put( key , ((Double)map.get(key)).intValue() );
+			
+		}
+		
+		map.put("totalAmount", totalAmount);
+		
+
+		List<OptionOBJ> orderOptionList = service.selectOrderOption(map);
+		
+		model.addAttribute("orderOptionList", orderOptionList);
+
 		
 		return "product/productOrder";
 	}
 	
 	// 배송정보 입력
 	@PostMapping("/order")
-	public String productOrder(/*@PathVariable("productCode") int productCode,
-							   @PathVariable("optionObj") OptionOBJ optionObj,
-							   @PathVariable("sum") int sum*/
-							   Member loginMember, 
+	public String productOrder(Member loginMember, 
 							   ProductOrder pOrder,
 							   String[] orderAddress,
 							   RedirectAttributes ra) {
@@ -124,10 +141,12 @@ public class ProductController {
 		if(result > 0) { // 주문 정보 입력 성공
 			path = "redirect:/";
 			
+			
 		} else {
 			message = "배송지 정보 입력 실패";
 			path = "redirect:/product/productOrder";
 		}
+		
 		ra.addFlashAttribute("message", message);
 		return path;
 	}

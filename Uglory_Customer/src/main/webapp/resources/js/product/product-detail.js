@@ -15,13 +15,13 @@ function clip(){
 const productPrice = document.getElementsByClassName('product-price')[0].firstChild.innerText; // 상품 가격
 const delAmount = 3000; // 배송비
 let sum = 0; // 합계
-let productCode;
+//let productCode;
 
 // 선택한 옵션 정보 추가
 const optionObj = {};
 
 // 옵션선택 후 총 가격
-function optionSelectBox(){
+function 	optionSelectBox(){
 
 	// select
 	const optionCode = document.getElementsByClassName('product-option')[0];
@@ -189,12 +189,37 @@ function calcMinusPrice(){
 	}
 
 	document.getElementsByClassName("total-amount")[0].innerText = sum;
+
 }
 
-// 구매하기 버튼 (값 전달)
-// function productOrder(){
-// 	location.href = "../order/"+productCode+"/"+optionObj+"/"+sum;
-// }
+
+function orderValidate(){
+	// 유효성 검사
+
+	
+	// 유효할 때
+	
+	// document.orderForm
+
+	// document.getElementsByClassName("total-amount")[0]
+	// orderObj
+
+	const input1 = document.createElement("input");
+	input1.setAttribute("type", "hidden");
+	input1.setAttribute("name", "totalAmount");
+	input1.setAttribute("value", document.getElementsByClassName("total-amount")[0].innerText);
+
+	const input2 = document.createElement("input");
+	input2.setAttribute("type", "hidden");
+	input2.setAttribute("name", "optionObj");
+	input2.setAttribute("value", JSON.stringify(optionObj));
+
+
+	document.orderForm.append(input1, input2);
+
+	//return false;
+}	
+
 
 // // 보낼때 optionObj 랑 sum 보내야됨
 
@@ -205,81 +230,3 @@ function calcMinusPrice(){
 // 	let url = contextPath + "/product/cart" + categoryNo + "/" + pCode;
 // 	location.href = url;	
 // }); 
-
-// 	$.ajax({
-// 		url : "../optionTotal",
-// 		data : {"optionCode" : optionCode, 
-// 			   "productCode" : productCode},
-// 		type : "POST",
-// 		async : false,
-
-// 		success : function(result){
-
-// 			$.ajax({
-// 				url : "../optionSelect",
-// 				data : {"optionCode" : optionCode},
-// 				type : "POST",
-// 				dataType : "JSON",
-// 				async    : false,
-		
-// 				success : function(optionList){
-					
-// 					// if(!optionList.isEmpty()){ // 옵션 리스트가 비어이지 않을 경우
-		
-// 					for(let selectOption of optionList){
-		
-// 						// span 요소 추가
-// 						const span = document.createElement("span");
-		
-// 						// span 요소에 내용 추가
-// 						const optionName = document.createElement("h5");
-// 						optionName.innerText = selectOption.optionName; // 옵션 이름
-						
-// 						const optionPrice = document.createElement("h5");
-// 						optionPrice.innerText = selectOption.optionPrice; // 옵션 가격
-		
-// 						// 수량 변경
-// 						const optionDiv = document.createElement("div");
-		
-// 						const opMinus = document.createElement("button");
-// 						opMinus.innerText = "-";
-// 						opMinus.style.border = 0;
-// 						opMinus.style.backgroundColor = "#EAEAEA";
-// 						opMinus.style.color = "#BDBDBD";
-// 						opMinus.style.width = "10px";
-		
-// 						const opSapn = document.createElement("span");
-// 						opSapn.innerText = selectOption.optionCount;
-		
-// 						const opPlus = document.createElement("button");
-// 						opPlus.innerText = "+";
-// 						opPlus.style.border = 0;
-// 						opPlus.style.backgroundColor = "#EAEAEA";
-// 						opPlus.style.color = "#BDBDBD";
-// 						opPlus.style.width = "10px";
-		
-// 						const opDelete = document.createElement("button");
-// 						opDelete.innerText = "X";
-// 						opDelete.style.border = 0;
-// 						opDelete.style.backgroundColor = "#BDBDBD";
-// 						opDelete.style.color = "#EAEAEA";
-// 						opDelete.style.width = "10px";
-		
-// 						optionDiv.append(opMinus, opSapn, opPlus, opDelete);
-		
-// 						span.append(optionName, optionPrice, optionDiv);
-// 					}
-// 				}
-// 			});
-
-// 			document.getElementsByClassName("total-amount")[0].innerText = result;
-
-// 		},
-		
-// 		error : function(request, status, error){
-//             console.log("AJAX 에러 발생");
-//             console.log("상태코드 : " + request.status); 
-//         }
-// 	});
-
-	
