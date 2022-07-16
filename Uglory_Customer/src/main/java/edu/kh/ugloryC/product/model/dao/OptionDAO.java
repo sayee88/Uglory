@@ -24,12 +24,12 @@ public class OptionDAO {
 	}
 
 	
-	/** 선택된 옵션 리스트 DAO
-	 * @param optionCode
-	 * @return optionlist
-	 */
-	public List<OptionType> selectOption(int optionCode) {
-
-		return sqlSession.selectList("optionMapper.selectOption", optionCode);
-	}
+//	/** 선택된 옵션 리스트 DAO - js로 구현
+//	 * @param optionCode
+//	 * @return optionlist
+//	 */
+//	public List<OptionType> selectOption(int optionCode) {
+//
+//		return sqlSession.selectList("optionMapper.selectOption", optionCode);
+//	}
 }

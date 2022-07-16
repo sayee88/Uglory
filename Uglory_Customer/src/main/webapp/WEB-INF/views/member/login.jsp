@@ -9,6 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>login</title>
 
+    <%-- favicon --%>
+    <link rel="icon" href="${contextPath}/resources/img/main/logo/favicon.ico" />
+
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -79,9 +82,34 @@
                                 data : { "memberEmail" : kakao_account.email,
                                          "memberName" : kakao_account.profile.nickname},
                                 success : function(result){
-                                    
-                                    if(result > 0) location.href = "${contextPath}/member/myPage";
-                                    else alert("카카오 로그인 실패");
+                                    console.log("result-1 : " + result);
+                                    if(result == 1) location.href = "${contextPath}/member/myPage";
+                                    else if(result == 0) alert("카카오 로그인 실패");
+                                    else if(result == -2) alert("탈퇴 후 24시간이 경과되지 않아 로그인할 수 없습니다.");
+                                    else if(result == -1){
+
+                                        if(confirm("탈퇴된 회원입니다. 다시 Uglory에 가입 하시겠습니까?")){
+                                            $.ajax({
+                                                url : "reSignUp",
+                                                type : "post",
+                                                data : { "memberEmail" : kakao_account.email,
+                                                            "memberName" : kakao_account.profile.nickname},
+                                                success : function(result){
+                                                     console.log(kakao_account.email);
+                                                     console.log("result-2 : " + result);
+                                                    if(result == 1) location.href = "${contextPath}/member/myPage";
+                                                    else{
+                                                        alert("재가입 실패");
+                                                    }
+                                                },
+                                                error : function(){
+                                                      console.log("재가입 오류 발생");
+                                                }
+                                            });
+
+
+                                        }
+                                    }
 
                                 },
 

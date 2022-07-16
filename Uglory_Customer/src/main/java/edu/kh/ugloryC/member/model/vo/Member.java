@@ -15,7 +15,9 @@ public class Member {
 	private String memberName;
 	private String memberEmail;
 	private String secessionFlag;
-	private String secessionReason;
+	private String secessionCode;
+	private String secessionDate;
 	
+	private int passStatus;
 	
 }

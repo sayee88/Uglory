@@ -10,6 +10,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>login</title>
 
+    <%-- favicon --%>
+    <link rel="icon" href="${contextPath}/resources/img/main/logo/favicon.ico" />
+
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -62,29 +65,30 @@
                     <a href="${contextPath}/member/logout" class="logoutBtn">로그아웃</a>
                 </div>
                 <div class=empty1></div>  
-                <a href="${contextPath}/member/secession" class="myPageSecession"><img src="${contextPath}/resources/img/myPage/door.png" style="width:40px; height:40px;">회원 탈퇴를 원하세요?</a>
-            
-            
-            </div>
+                <a href="${contextPath}/member/secession" class="myPageSecession">
+                    <img src="${contextPath}/resources/img/myPage/door.png" style="width:40px; height:40px;">
+                    회원 탈퇴를 원하세요?</a>
+                </div>
             <hr>
             <div class="myPage-item">
                 
                 <div class="itemBox">
                     <div class="item">
-                        <img src="${contextPath}/resources/img/myPage/mypage_sub.png"  class="item-image">
-                        <a href="${contextPath}/member/subscribeCHK" class="item-text">내 구독 현황</a>
+                        
+                        <a href="${contextPath}/member/subscribeCHK" class="item-text"><img src="${contextPath}/resources/img/myPage/mypage_sub.png" style="padding-bottom:15px"  class="item-image">
+                        내 구독 현황</a>
                     </div>        
                 </div>
                 <div class="itemBox">
                     <div class="item">
-                        <img src="${contextPath}/resources/img/myPage/mypage_order.png"  class="item-image">
-                        <a href="${contextPath}/member/orderHistory" class="item-text">주문내역</a>
+                       
+                        <a href="${contextPath}/member/orderHistory" class="item-text"> <img src="${contextPath}/resources/img/myPage/mypage_order.png" style="padding-bottom:15px" class="item-image">주문내역</a>
                     </div>        
                 </div>
                 <div class="itemBox">
                     <div class="item">
-                        <img src="${contextPath}/resources/img/myPage/mypage_subOrder.png"  class="item-image">
-                        <a href="${contextPath}/member/subscriptionHistory" class="item-text">구독내역</a>
+                       
+                        <a href="${contextPath}/member/subscriptionHistory" class="item-text"> <img src="${contextPath}/resources/img/myPage/mypage_subOrder.png" style="padding-bottom:15px" class="item-image">구독내역</a>
                     </div>        
                 </div>
 

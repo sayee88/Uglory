@@ -9,6 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>login</title>
 
+    <%-- favicon --%>
+    <link rel="icon" href="${contextPath}/resources/img/main/logo/favicon.ico" />
+
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -46,42 +49,55 @@
         <div class="order-section">
 
             <div class="order-head">
-                <h2 class="orderTitle">주문내역</h2>
+                <h2 class="orderTitle"> 개별 주문 내역(AJAX)</h2>
             </div>
 
-                <div>
-                    <ul class="orderList">
-                        <li class="list-section">
-                            
-                            <div class="date">${orderHistory.orderDate}</div>
-                        
-                            <div class="order-goods">
-                            
-                                <div class="order-name">
-                                    <a href="">${orderHistory.productName}</a>
-                                </div>
-                            
-                            </div>
-                        
-                            <div class="order-info">
-                                <div class="description">
-                                    <dl>
-                                        <dt>주문번호</dt>
-                                        <dd>1646832984481${orderHistory.orderNo}</dd>
-                                    </dl>
-                                    <dl>
-                                        <dt>결제금액</dt>
-                                        <dd>${orderHistory.productPrice}</dd>
-                                    </dl>
-                                    <dl>
-                                        <dt>배송상태</dt>
-                                        <dd>${orderHistory.deliveryFlag}</dd>
-                                    </dl>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                    
+            <div id="result1">
+                <%-- 회원이 있을 경우 --%>
+                <c:choose>
+                    <c:when test="${empty selectOne}">
+                      <%-- 회원이 없을 경우  --%>
+                        <h4 style="color:red"> 주문내역이 없습니다.<h4>
+                    </c:when>
+
+                    <c:otherwise>
+                        <ul class="orderList">
+	                    	<c:forEach var="item" items="${selectOne}">
+	                            <li class="list-section">
+	                                
+	                                <div class="date">${item.orderDate}</div>
+	                            
+	                                <div class="order-goods">
+	                                
+	                                    <div class="order-name">
+	                                        <a href="">[${item.origin}] ${item.productName}</a><button id="select1">조회</button>
+	                                    </div>
+	                                
+	                                </div>
+	                            
+	                                <div class="order-info">
+	                                    <div class="description" id=selectOne>
+	                                        <dl>
+	                                            <dt>주문번호</dt>
+	                                            <dd>${item.orderNo}</dd>
+	                                        </dl>
+	                                        <dl>
+	                                            <dt>결제금액</dt>
+	                                            <dd>${item.productPrice}</dd>
+	                                        </dl>
+	                                        <dl>
+	                                            <dt>배송상태</dt>
+	                                            <dd>${item.deliveryFlag}</dd>
+	                                        </dl>
+	                                    </div>
+	                                </div>
+	                            </li>
+	                    	
+	                    	</c:forEach>
+                        </ul>
+                    </c:otherwise>
+                </c:choose>
+                
 
                 <!-- 페이지네이션 시작-->   
                 <nav aria-label="Page navigation example">
@@ -102,15 +118,36 @@
                 </ul>
                 </nav>
                 <!-- 페이지 네이션 끝 -->
-                </div>
+                
+            </div>
         </div>
     </main>
                 
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
     
-    <!-- bootstrap Javascript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+
+
+   <%-- <!— jQuery 추가 —> --%>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="${contextPath}/resources/lib/wow/wow.min.js"></script>
+    <script src="${contextPath}/resources/lib/easing/easing.min.js"></script>
+    <script src="${contextPath}/resources/lib/waypoints/waypoints.min.js"></script>
+    <script src="${contextPath}/resources/lib/counterup/counterup.min.js"></script>
+    <script src="${contextPath}/resources/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="${contextPath}/resources/lib/tempusdominus/js/moment.min.js"></script>
+    <script src="${contextPath}/resources/lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="${contextPath}/resources/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    
+    
+    <%-- Template Javascript --%>
+    <script src="${contextPath}/resources/js/main.js"></script>
+    <script src="${contextPath}/resources/js/orderList/orderHistory.js"></script>
     
 </body>
 </html>

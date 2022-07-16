@@ -12,84 +12,10 @@ function clip(){
 	alert("URL이 복사되었습니다.")
 }
 
-// 옵션 선택 후 수량 선택
-// function optionSelectCount(){
-
-// 	$.ajax({
-// 		url : "../optionSelect",
-// 		data : {"optionCode" : optionCode},
-// 		type : "POST",
-// 		dataType : "JSON",
-// 		async    : false,
-
-// 		success : function(optionList){
-			
-// 			// if(!optionList.isEmpty()){ // 옵션 리스트가 비어이지 않을 경우
-
-// 			for(let selectOption of optionList){
-
-// 				// span 요소 추가
-// 				const span = document.createElement("span");
-
-// 				// span 요소에 내용 추가
-// 				const optionName = document.createElement("h5");
-// 				optionName.innerText = selectOption.optionName; // 옵션 이름
-				
-// 				const optionPrice = document.createElement("h5");
-// 				optionPrice.innerText = selectOption.optionPrice; // 옵션 가격
-
-// 				// 수량 변경
-// 				const optionDiv = document.createElement("div");
-
-// 				const opMinus = document.createElement("button");
-// 				opMinus.innerText = "-";
-// 				opMinus.style.border = 0;
-// 				opMinus.style.backgroundColor = "#EAEAEA";
-// 				opMinus.style.color = "#BDBDBD";
-// 				opMinus.style.width = "10px";
-
-// 				const opSapn = document.createElement("span");
-// 				opSapn.innerText = selectOption.optionCount;
-
-// 				const opPlus = document.createElement("button");
-// 				opPlus.innerText = "+";
-// 				opPlus.style.border = 0;
-// 				opPlus.style.backgroundColor = "#EAEAEA";
-// 				opPlus.style.color = "#BDBDBD";
-// 				opPlus.style.width = "10px";
-
-// 				const opDelete = document.createElement("button");
-// 				opDelete.innerText = "X";
-// 				opDelete.style.border = 0;
-// 				opDelete.style.backgroundColor = "#BDBDBD";
-// 				opDelete.style.color = "#EAEAEA";
-// 				opDelete.style.width = "10px";
-
-// 				optionDiv.append(opMinus, opSapn, opPlus, opDelete);
-
-// 				span.append(optionName, optionPrice, optionDiv);
-// 			}
-// 			// } else { // 옵션 리스트가 비어있는 경우
-
-// 			// 	const h4 = document.createElement("h4");
-// 			// 	h4.innerText = "선택된 옵션이 없습니다.";
-// 			// 	h4.style.color = "#EAEAEA";
-
-// 			// 	div.append(h4);
-// 			// }
-// 		},
-
-// 		error : function(request, status, error){
-//             console.log("AJAX 에러 발생");
-//             console.log("상태코드 : " + request.status); 
-//         }
-// 	});
-
-// }
-
 const productPrice = document.getElementsByClassName('product-price')[0].firstChild.innerText; // 상품 가격
 const delAmount = 3000; // 배송비
 let sum = 0; // 합계
+let productCode;
 
 // 선택한 옵션 정보 추가
 const optionObj = {};
@@ -125,14 +51,20 @@ function optionSelectBox(){
 	// span 요소 추가
 	const span = document.createElement("span");
 	span.classList.add("optionSpan");
+
+	const spanDiv = document.createElement("div");
+	spanDiv.classList.add("spanDiv");
+
 	// span 요소에 내용 추가
 	const spanName = document.createElement("h6");
 	spanName.classList.add("spanName");
-	spanName.innerText = optionName; // 옵션 이름
+	spanName.innerText = optionName + " -  "; // 옵션 이름
 	
 	const spanPrice = document.createElement("h6");
 	spanPrice.classList.add("spanPrice");
-	spanPrice.innerText = optionPrice + "원"; // 옵션 가격
+	spanPrice.innerText = "\u00a0" + optionPrice + "원"; // 옵션 가격
+
+	spanDiv.append(spanName, spanPrice);
 
 	// 수량 변경
 	const optionDiv = document.createElement("div");
@@ -152,7 +84,7 @@ function optionSelectBox(){
 			this.nextElementSibling.innerText = Number(this.nextElementSibling.innerText) - 1;
 			optionObj[code] = optionObj[code] -1;
 		}
-		calcMinusPrice()
+		calcMinusPrice();
 	});
 
 	const opSapn = document.createElement("span");
@@ -172,6 +104,7 @@ function optionSelectBox(){
 		calcPrice();
 	});
 
+	// 옵션 영역 삭제 버튼
 	const opDelete = document.createElement("button");
 	opDelete.setAttribute("type", "button");
 	opDelete.innerText = "X";
@@ -180,11 +113,12 @@ function optionSelectBox(){
 	opDelete.addEventListener("click", function(){
 		const code = this.parentElement.getAttribute("id");
 		optionObj[code] = optionObj[code] ;
-
+		
+		span.remove();
 	});
 
 	optionDiv.append(opMinus, opSapn, opPlus, opDelete);
-	span.append(spanName, spanPrice, optionDiv);
+	span.append(spanDiv, optionDiv);
 
 	document.querySelector(".detail-product-farm").append(span);
 
@@ -209,7 +143,6 @@ function calcPrice(){
 	sum = Number(productPrice);
 	// 옵션 가격 계산
 	for(const key in optionObj){
-	
 
 		// 옵션 별 가격 검색
 		for(const op of options){
@@ -221,13 +154,12 @@ function calcPrice(){
 			}
 		}
 		sum += Number(optionPrice) * optionObj[key];
-							// 가격 * 수량
+		// 3만원 미만 배송비 추가
+		if(sum < 30000){
+			sum += delAmount;
+		}						
 	}
-
-	// 3만원 미만 배송비 추가
-	if(sum < 30000){
-		sum += delAmount;
-	}
+	// 가격 * 수량
 	document.getElementsByClassName("total-amount")[0].innerText = sum;
 }
 
@@ -240,8 +172,6 @@ function calcMinusPrice(){
 	const options = document.querySelectorAll(".product-option > option");
 	
 	let optionPrice;
-
-	sum = Number(productPrice);
 	// 옵션 가격 계산
 	for(const key in optionObj){
 	
@@ -250,7 +180,7 @@ function calcMinusPrice(){
 			if(op.value == key){ // 선택된 옵션코드와 key가 같다면 == 같은 상품
 	
 				const temp = op.innerText;
-				optionPrice =  temp.substring(temp.lastIndexOf("-") + 2 ,temp.lastIndexOf("원") )
+				optionPrice = temp.substring(temp.lastIndexOf("-") + 2 ,temp.lastIndexOf("원") )
 				break;
 			}
 		}
@@ -261,91 +191,95 @@ function calcMinusPrice(){
 	document.getElementsByClassName("total-amount")[0].innerText = sum;
 }
 
-// 보낼때 optionObj 랑 sum 보내야됨
+// 구매하기 버튼 (값 전달)
+// function productOrder(){
+// 	location.href = "../order/"+productCode+"/"+optionObj+"/"+sum;
+// }
+
+// // 보낼때 optionObj 랑 sum 보내야됨
 
 
-// 장바구니로 이동하기 버튼
-/* const productCartBtn = productCartBtn.addEventListener("click", function(){
+// // 장바구니로 이동하기 버튼
+//  const productCartBtn = productCartBtn.addEventListener("click", function(){
 
-	let url = contextPath + "/product/cart" + categoryNo + "/" + pCode;
-	location.href = url;	
-}); */
+// 	let url = contextPath + "/product/cart" + categoryNo + "/" + pCode;
+// 	location.href = url;	
+// }); 
 
+// 	$.ajax({
+// 		url : "../optionTotal",
+// 		data : {"optionCode" : optionCode, 
+// 			   "productCode" : productCode},
+// 		type : "POST",
+// 		async : false,
 
+// 		success : function(result){
 
-
-	// $.ajax({
-	// 	url : "../optionTotal",
-	// 	data : {"optionCode" : optionCode, 
-	// 		   "productCode" : productCode},
-	// 	type : "POST",
-	// 	async : false,
-
-	// 	success : function(result){
-
-	// 		$.ajax({
-	// 			url : "../optionSelect",
-	// 			data : {"optionCode" : optionCode},
-	// 			type : "POST",
-	// 			dataType : "JSON",
-	// 			async    : false,
+// 			$.ajax({
+// 				url : "../optionSelect",
+// 				data : {"optionCode" : optionCode},
+// 				type : "POST",
+// 				dataType : "JSON",
+// 				async    : false,
 		
-	// 			success : function(optionList){
+// 				success : function(optionList){
 					
-	// 				// if(!optionList.isEmpty()){ // 옵션 리스트가 비어이지 않을 경우
+// 					// if(!optionList.isEmpty()){ // 옵션 리스트가 비어이지 않을 경우
 		
-	// 				for(let selectOption of optionList){
+// 					for(let selectOption of optionList){
 		
-	// 					// span 요소 추가
-	// 					const span = document.createElement("span");
+// 						// span 요소 추가
+// 						const span = document.createElement("span");
 		
-	// 					// span 요소에 내용 추가
-	// 					const optionName = document.createElement("h5");
-	// 					optionName.innerText = selectOption.optionName; // 옵션 이름
+// 						// span 요소에 내용 추가
+// 						const optionName = document.createElement("h5");
+// 						optionName.innerText = selectOption.optionName; // 옵션 이름
 						
-	// 					const optionPrice = document.createElement("h5");
-	// 					optionPrice.innerText = selectOption.optionPrice; // 옵션 가격
+// 						const optionPrice = document.createElement("h5");
+// 						optionPrice.innerText = selectOption.optionPrice; // 옵션 가격
 		
-	// 					// 수량 변경
-	// 					const optionDiv = document.createElement("div");
+// 						// 수량 변경
+// 						const optionDiv = document.createElement("div");
 		
-	// 					const opMinus = document.createElement("button");
-	// 					opMinus.innerText = "-";
-	// 					opMinus.style.border = 0;
-	// 					opMinus.style.backgroundColor = "#EAEAEA";
-	// 					opMinus.style.color = "#BDBDBD";
-	// 					opMinus.style.width = "10px";
+// 						const opMinus = document.createElement("button");
+// 						opMinus.innerText = "-";
+// 						opMinus.style.border = 0;
+// 						opMinus.style.backgroundColor = "#EAEAEA";
+// 						opMinus.style.color = "#BDBDBD";
+// 						opMinus.style.width = "10px";
 		
-	// 					const opSapn = document.createElement("span");
-	// 					opSapn.innerText = selectOption.optionCount;
+// 						const opSapn = document.createElement("span");
+// 						opSapn.innerText = selectOption.optionCount;
 		
-	// 					const opPlus = document.createElement("button");
-	// 					opPlus.innerText = "+";
-	// 					opPlus.style.border = 0;
-	// 					opPlus.style.backgroundColor = "#EAEAEA";
-	// 					opPlus.style.color = "#BDBDBD";
-	// 					opPlus.style.width = "10px";
+// 						const opPlus = document.createElement("button");
+// 						opPlus.innerText = "+";
+// 						opPlus.style.border = 0;
+// 						opPlus.style.backgroundColor = "#EAEAEA";
+// 						opPlus.style.color = "#BDBDBD";
+// 						opPlus.style.width = "10px";
 		
-	// 					const opDelete = document.createElement("button");
-	// 					opDelete.innerText = "X";
-	// 					opDelete.style.border = 0;
-	// 					opDelete.style.backgroundColor = "#BDBDBD";
-	// 					opDelete.style.color = "#EAEAEA";
-	// 					opDelete.style.width = "10px";
+// 						const opDelete = document.createElement("button");
+// 						opDelete.innerText = "X";
+// 						opDelete.style.border = 0;
+// 						opDelete.style.backgroundColor = "#BDBDBD";
+// 						opDelete.style.color = "#EAEAEA";
+// 						opDelete.style.width = "10px";
 		
-	// 					optionDiv.append(opMinus, opSapn, opPlus, opDelete);
+// 						optionDiv.append(opMinus, opSapn, opPlus, opDelete);
 		
-	// 					span.append(optionName, optionPrice, optionDiv);
-	// 				}
-	// 			}
-	// 		});
+// 						span.append(optionName, optionPrice, optionDiv);
+// 					}
+// 				}
+// 			});
 
-	// 		document.getElementsByClassName("total-amount")[0].innerText = result;
+// 			document.getElementsByClassName("total-amount")[0].innerText = result;
 
-	// 	},
+// 		},
 		
-	// 	error : function(request, status, error){
-    //         console.log("AJAX 에러 발생");
-    //         console.log("상태코드 : " + request.status); 
-    //     }
-	// });
+// 		error : function(request, status, error){
+//             console.log("AJAX 에러 발생");
+//             console.log("상태코드 : " + request.status); 
+//         }
+// 	});
+
+	

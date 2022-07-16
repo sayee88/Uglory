@@ -102,10 +102,10 @@
     <script src="${contextPath}/resources/js/summernote/summernote-lite.min.js"></script>
     <script src="${contextPath}/resources/js/summernote/lang/summernote-ko-KR.min.js"></script>
 
-    <script src="${contextPath}/resources/js/adminPInfo.js"></script>
-
     <!-- Template Javascript -->
     <script src="${contextPath}/resources/js/main.js"></script>
+    <script src="${contextPath}/resources/js/adminPInfo.js"></script>
+    
 </body>
 
 </html>
