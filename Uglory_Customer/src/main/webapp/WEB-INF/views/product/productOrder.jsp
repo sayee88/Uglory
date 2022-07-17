@@ -55,7 +55,7 @@
 
             <h4 class="order-info">배송지 정보</h4>
 
-            <form action="order" method="POST" onsubmit="return orderValidate()">
+            <form action="../order/${option.productCode}" method="POST" onsubmit="return orderValidate()">
                 <div class="product-order-area">
 
                     <label for="p-orderName">받으시는 분 이름</label>
@@ -101,14 +101,14 @@
 
                         <!-- 상품명(클릭 시 상품 상세조회 화면)-->
                         <div class="order-product-info">
-                            <a href=""><span>유기농 어글리 바나나 (1.5kg/2.5kg)</span></a>
+                            <a href=""><span> ${option.productName} (${option.optionName})</span></a>
                             <!-- 선택된 상품 개수 -->
-                            <p><span>1</span>개</p>
+                            <p><span>${map.optionCount}</span>개</p>
                         </div>
 
                         <div class="orderPrice">
                             <!-- 옵션 선택에 따른 상품 가격 -->
-                            <p><span>14,800</span>원</p>
+                            <p><span>${map.totalAmount}</span>원</p>
                         </div>
                     </div>
 
@@ -121,18 +121,28 @@
 
                     <!-- 총 결제 금액 -->
                     <div class="total-pay">
-                        <p>총 결제 금액</p> <p><span>84,400</span>원</p>
+                        <p>총 결제 금액</p> <p><span>${map.totalAmount}</span>원</p>
                     </div>
 
                     <hr>
 
                     <!-- 금액 상세 내역 -->
                     <div class="product-total-pay">
-                        <p>총 상품금액</p> <p><span>81,400</span>원</p>
+                        <c:if test="${map.totalAmount < 30000}">
+                        <p>총 상품금액</p> <p><span>${map.totalAmount-3000}</span>원</p>
+                        </c:if>
+                        <c:if test="${map.totalAmount > 30000}">
+                        <p>총 상품금액</p> <p><span>${map.totalAmount}</span>원</p>
+                        </c:if>
                     </div>
 
                     <div class="delivery-total-pay">
+                        <c:if test="${map.totalAmount < 30000}">
                         <p>총 배송비</p> <p><span>3,000</span>원</p>
+                        </c:if>
+                        <c:if test="${map.totalAmount > 30000}">
+                        <p>총 배송비</p> <p><span>0</span>원</p>
+                        </c:if>
                     </div>
 
                     <div class="privacyPolicy">

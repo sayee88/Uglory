@@ -21,10 +21,9 @@
     </resultMap>
     
     <!-- 결제 페이지 내 옵션 및 총가격 조회용 resultMap -->
-    <resultMap type="pOrder" id="orderOption_rm">
-    	<id property="optionCode" column="OPTION_CD"/>
-    	<result property="optionCount" column="OPTION_COUNT"/>
-    	<result property="totalAmount" column="TOTAL_PRICE"/>
+    <resultMap type="option" id="orderOption_rm">
+    	<result property="optionName" column="OPTION_NM"/>
+    	<result property="productName" column="PRODUCT_NM"/>
     </resultMap>
       	 
     <!-- 상품 상세 조회 -->
@@ -58,14 +57,15 @@
 		WHERE P_CD = ${productCode}
 		AND OPTION_CD = #{optionCode}
 	</select> -->
-	
+
 	
 	<!-- 주문 페이지 내 옵션 조회 -->
 	<select id="selectOrderOption" resultMap="orderOption_rm">
-		SELECT OPTION_CD, OPTION_COUNT, TOTAL_PRICE
-		FROM OPTION_TB
-		JOIN PRODUCT_ORDER USING(P_ORDER_CD)
-		WHERE P_CD = ${productCode}
+		SELECT OPTION_TYPE.OPTION_CD, OPTION_NM, PRODUCT_NM, PRODUCT.P_CD
+		FROM OPTION_TYPE
+		JOIN PRODUCT ON (OPTION_TYPE.P_CD = PRODUCT.P_CD)
+		JOIN OPTION_TB ON (OPTION_TYPE.OPTION_CD = OPTION_TB.OPTION_CD)
+		WHERE PRODUCT.P_CD = ${productCode}
 	</select>
 	
 	<!-- 주문정보 입력 -->
