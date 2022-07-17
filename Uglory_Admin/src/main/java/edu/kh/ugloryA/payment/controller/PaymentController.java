@@ -9,12 +9,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import edu.kh.ugloryA.payment.model.service.PaymentService;
 import edu.kh.ugloryA.payment.model.vo.Payment;
+import edu.kh.ugloryA.payment.model.vo.PaymentDetail;
 
 @Controller
 @RequestMapping("/payment")
@@ -43,5 +46,38 @@ public class PaymentController {
 		
 		return "managePayment/PaymentList";
 	}
+	
+	@ResponseBody
+	@GetMapping("/checkOrder")
+	public int checkOrder(String orderCode, Model model) {
+		
+		return service.checkOrder(orderCode);
+	}
+	
+	
+	
+	@GetMapping("/PPaymentDetail")
+	public String selectProductPaymentDetail(String orderCode, Model model) {
+		
+		PaymentDetail pPaymentDetail = service.selectProductPaymentDetail(orderCode);
+		
+		model.addAttribute("pPaymentDetail", pPaymentDetail);
+		
+		return "managePayment/ProductPaymentDetail";
+	}
+	
+	
+	@GetMapping("/SPaymentDetail")
+	public String selectSubsPaymentDetail(String orderCode, Model model) {
+		
+		List<PaymentDetail> sPaymentDetailList = new ArrayList<PaymentDetail>();
+				
+		sPaymentDetailList = service.selectSubsPaymentDetail(orderCode);
+		
+		model.addAttribute("sPaymentDetailList", sPaymentDetailList);
+		
+		return "managePayment/SubsPaymentDetail";
+	}
+	
 
 }

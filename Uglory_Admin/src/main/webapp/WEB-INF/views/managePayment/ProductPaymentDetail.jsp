@@ -59,7 +59,7 @@
             <!-- Navbar End -->
 
 
-            <!-- 상품 등록 form태그 -->
+            <!-- 결제 상세 조회 -->
             <div class="container-fluid pt-4 px-4">
                 <div class="row bg-light rounded justify-content-center mx-0 m-5 p-4">
                     <div class="col-lg-12 text-center">
@@ -67,10 +67,11 @@
                         <hr>
 
                         <table class="table table-borderless mt-4">
+
                             <thead>
                                 <tr>
                                     <th scope="col" colspan="2">주문 번호</th>
-                                    <th scope="col" colspan="3">#2207071731-406</th>
+                                    <th scope="col" colspan="3">${detail.orderCode}</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -136,32 +137,6 @@
                                 </tr>
                             </tbody>
                         </table>
-
-
-
-                        <!-- 구독 조회 -->
-                        <div class="blank"></div>
-
-                        <table class="table table-borderless mt-4">
-                            <thead>
-                                <tr>
-                                    <th colspan="3">스탠다드</th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                <tr>
-                                    <td colspan="1">배송 주기</td>
-                                    <td colspan="2">2주</td>
-                                </tr>
-
-                                <tr>
-                                    <td colspan="1">구독 제외 상품</td>
-                                    <td colspan="2">당근, 시금치, 단호박, 대파, 옥수수</td>
-                                </tr>
-                            </tbody>
-                        </table>
-
 
                     </div>
                 </div>
