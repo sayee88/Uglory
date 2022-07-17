@@ -31,13 +31,14 @@ public class ProductServiceImpl implements ProductService {
 //		return dao.totalAmount(map);
 //	}
 
+	
 	// 주문 페이지 내 옵션 정보 조회
 	@Override
-	public List<OptionOBJ> selectOrderOption(Map<String, Object> map) {
+	public OptionOBJ selectOrderOption(int productCode) {
 
-		return dao.selectOrderOption(map);
+		return dao.selectOrderOption(productCode);
 	}
-	
+
 	// 주문 정보 
 	@Override
 	public int productOrder(ProductOrder pOrder) {

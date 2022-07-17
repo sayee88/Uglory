@@ -33,15 +33,15 @@ public class ProductDAO {
 //	public int totalAmount(Map<String, Object> map) {
 //		return sqlSession.selectOne("productMapper.totalAmount", map);
 //	}
-	
+
 	
 	/** 주문 페이지 내 옵션 정보 조회 DAO
 	 * @param map
 	 * @return orderOptionList
 	 */
-	public List<OptionOBJ> selectOrderOption(Map<String, Object> map) {
+	public OptionOBJ selectOrderOption(int productCode) {
 
-		return sqlSession.selectList("productMapper.selectOrderOption", map);
+		return sqlSession.selectOne("productMapper.selectOrderOption", productCode);
 	}
 	
 	/** 주문 정보 DAO
@@ -52,6 +52,5 @@ public class ProductDAO {
 
 		return sqlSession.insert("productMapper.productOrder", pOrder);
 	}
-
 
 }

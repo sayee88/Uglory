@@ -132,6 +132,13 @@ function orderValidate(){
     return true;
 }
 
-
+const orderBtn = document.getElementById("order-btn").addEventListener("click", function(){
+    
+    if(!confirm("정말 주문하시겠습니까?")){
+        return false;
+    } else {
+        return true;
+    }
+});
 
 
