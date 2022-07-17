@@ -6,6 +6,8 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import edu.kh.ugloryA.farm.model.vo.Farm;
 import edu.kh.ugloryA.product.model.dao.ProductDAO;
@@ -64,15 +66,33 @@ public class ProductServiceImpl implements ProductService {
 		return dao.stocked(productCode);
 	}
 
+	//상품 카테고리 조회
 	@Override
 	public List<ProductCategory> selectCategory() {
 		return dao.selectCategory();
 	}
 
+	//상품 농장 조회
 	@Override
 	public List<Farm> selectFarmList() {
 		return dao.selectFarmList();
 	}
+
+	//상품 등록 서비스 구현
+	@Transactional(rollbackFor = {Exception.class})
+	@Override
+	public int insertProduct(Product product, List<MultipartFile> imageList, String webPath, String folderPath) {
+		
+		//게시글 삽입
+		
+		//이미지 삽입
+		
+		//서버에 이미지 저장
+		
+		return 0;
+	}
+	
+	
 	
 	
 	

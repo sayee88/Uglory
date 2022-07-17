@@ -3,6 +3,8 @@ package edu.kh.ugloryA.product.model.service;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import edu.kh.ugloryA.farm.model.vo.Farm;
 import edu.kh.ugloryA.product.model.vo.Product;
 import edu.kh.ugloryA.product.model.vo.ProductCategory;
@@ -47,6 +49,16 @@ public interface ProductService {
 	 * @return farmList
 	 */
 	List<Farm> selectFarmList();
+
+	/**
+	 * 상품 등록 Service
+	 * @param product
+	 * @param imageList
+	 * @param webPath
+	 * @param folderPath
+	 * @return productCode
+	 */
+	int insertProduct(Product product, List<MultipartFile> imageList, String webPath, String folderPath);
 	
 	
 	

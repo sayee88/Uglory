@@ -35,6 +35,11 @@
 
     <!-- summernote css 파일 -->
     <link rel="stylesheet" href="${contextPath}/resources/css/summernote/summernote-lite.min.css">
+    
+    <!-- summernote 폰트 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
 
 </head>
 
@@ -55,8 +60,9 @@
             <!-- 상품 등록 form태그 -->
             <main class="container-fluid pt-4 px-4">
                 <section class="row justify-content-center mx-0 ">
-                    <article class="col-xl-6 col-md-8 text-center bg-light product-margin p-4 rounded">
-                        <form action="register?mode=${mode}">
+                    <article class="col-xl-6 col-md-8 bg-light product-margin p-4 rounded">
+                        <%-- onsubmit 추가 --%>
+                        <form action="register?mode=${mode}" enctype="multipart/form-data" method="POST">
                             <h2 class="text-start">상품 등록</h2>
                             <hr>
 
@@ -76,6 +82,7 @@
                             <div class="product-row">
                                 <span class="fw-bold">상품명</span>
                                 <div class="productWrap">
+                                    <%-- 상품명 중복검사 + 한글 입력 유효성 검사 --%>
                                     <input name="productName" id="productName" type="text" class="productInput ps-1" placeholder="상품명" value="">
                                     <div class="inputMessage text-danger">상품명은 한글만 입력해주세요</div>
                                 </div>
@@ -104,10 +111,11 @@
                             <div class="product-row">
                                 <span class="fw-bold">상품 이미지</span>
                                 <div class="productWrap">
-                                    <input type="file" class="productInput" name="productImage0" id="productImage0" accept="image/*">
-                                    <input type="file" class="productInput" name="productImage1" id="productImage1" accept="image/*">
-                                    <input type="file" class="productInput" name="productImage2" id="productImage2" accept="image/*">
-                                    <input type="file" class="productInput" name="productImage3" id="productImage3" accept="image/*">
+                                    <%-- 이미지 ㅂㄷㅂㄷ --%>
+                                    <input type="file" class="productInput" name="productImg" id="productImg0" accept="image/*">
+                                    <input type="file" class="productInput" name="productImg" id="productImg1" accept="image/*">
+                                    <input type="file" class="productInput" name="productImg" id="productImg2" accept="image/*">
+                                    <input type="file" class="productInput" name="productImg" id="productImg3" accept="image/*">
                                 </div>
                             </div>
 
@@ -117,11 +125,13 @@
                                     상품설명 작성
                                 </button>
                                 <p class="m-0">
+                                    <%-- summernote 내용 있을때 전구 모양 변하기 --%>
                                     <i id="info-st" class="fa-regular fa-lightbulb text-warning" style="font-size:36px;"></i>
                                 </p>
                             </div>
                             
                             <div class="product-row">
+                                <%-- 취소 버튼 클릭 시 alret 띄우고 insert -> list로 / update -> detail로 --%>
                                 <button type="button" class="btn btn-lg btn-secondary m-1 w-100">취소</button>
                                 <button class="btn btn-lg btn-primary m-1 w-100">등록</button>
                             </div>
@@ -137,6 +147,7 @@
                                         <textarea name="productInfo" id="summernote"></textarea>
                                     </div>
                                     <div class="modal-footer">
+                                        <%-- 취소 버튼 클릭 시 alret 띄우고 summernote 내용 삭제 --%>
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
                                         <button type="button" class="btn btn-primary" data-bs-dismiss="modal">저장</button>
                                     </div>
