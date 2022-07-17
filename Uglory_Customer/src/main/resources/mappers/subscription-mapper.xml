@@ -3,22 +3,36 @@
 <mapper namespace="subscriptionMapper">
 	
 	
+	<select id="createSOrderNo" resultType="string">
+		SELECT 
+		<choose>
+	   		<when test='box == 1'>
+				CONCAT(TO_CHAR(SYSDATE, '"S"YYYYMMDD-"00"'), SEQ_S_ORDER_CD.NEXTVAL) as temp
+			</when>
+	   		<otherwise>
+				CONCAT(TO_CHAR(SYSDATE, '"J"YYYYMMDD-"00"'), SEQ_S_ORDER_CD.NEXTVAL) as temp
+			</otherwise>
+		</choose>
+		FROM DUAL
+	</select>
+	
+	
+	
+	<select id="createDelDate" resultType="date">
+		SELECT NEXT_DAY(SYSDATE, '수요일') FROM DUAL
+	</select>
+	
+	
+	
 	<insert id="insertSubsOrder">
 		INSERT INTO SUBS_ORDER VALUES(
-			<choose>
-		   		<when test='box == "standard"'>
-					(SELECT CONCAT(TO_CHAR(SYSDATE, '"S"YYYYMMDD-"00"'), SEQ_S_ORDER_CD.NEXTVAL) FROM DUAL),
-				</when>
-		   		<otherwise>
-					(SELECT CONCAT(TO_CHAR(SYSDATE, '"J"YYYYMMDD-"00"'), SEQ_S_ORDER_CD.NEXTVAL) FROM DUAL),
-				</otherwise>
-			</choose>
+			#{sOrderNo},
 			DEFAULT, DEFAULT,
-			#{inputName},
-			#{inputPhone},
-			#{address},
-			#{inputDelText},
-			(SELECT NEXT_DAY(SYSDATE, 'WEDNESDAY') AS NEXT_WED FROM DUAL),
+			#{orderName},
+			#{orderPhone},
+			#{orderAddress},
+			#{delText},
+			#{firstDelDate},
 	        DEFAULT,
           	#{cycle},
            	#{memberNo},

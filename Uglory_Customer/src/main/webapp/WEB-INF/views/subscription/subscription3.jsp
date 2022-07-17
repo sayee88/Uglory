@@ -61,70 +61,68 @@
                     <h2>주문 확인 및 결제</h2>
                 </div>
                 
-                <form>
-                
-                    <div class="outer-table">
-                        <div class="gray-box">
-                            <table id="table3">
-                                <tr>
-                                    <th class="white-th" colspan="2">결제 금액</th>
-                                </tr>
-                                <tr>
+            
+                <div class="outer-table">
+                    <div class="gray-box">
+                        <table id="table3">
+                            <tr>
+                                <th class="white-th" colspan="2">결제 금액</th>
+                            </tr>
+                            <tr>
+                                <c:choose>
+                                    <c:when test="${orderInfo.box == 'standard'}">
+                                        <th>친환경 못난이 채소박스[스탠다드]</th>
+                                        <th>15,500원</th>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <th>친환경 못난이 채소박스[점보]</th>
+                                        <th>25,000원</th>
+                                    </c:otherwise>
+                                </c:choose>
+                            </tr>
+                            <tr>
+                                <th>배송비</th>
+                                <th>0원</th>
+                            </tr>
+                            <tr></tr>
+                            <tr>
+                                <th class="white-th">총 결제 금액</th>
+                                <c:choose>
+                                    <c:when test="${orderInfo.box == 'standard'}">
+                                        <th class="white-th">15,500원</th>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <th class="white-th">25,000원</th>
+                                    </c:otherwise>
+                                </c:choose>
+                            </tr>
+                            <tr>
+                                <th>첫 배송 날짜</th>
+                                <th>2022-07-09</th>
+                            </tr>
+                            <tr>
+                                <th colspan="2">-배송 주기 : <span style="color: red;">
                                     <c:choose>
-                                        <c:when test="${orderInfo.box == 'standard'}">
-                                            <th>친환경 못난이 채소박스[스탠다드]</th>
-                                            <th>15,500원</th>
-                                        </c:when>
-                                        <c:otherwise>
-                                            <th>친환경 못난이 채소박스[점보]</th>
-                                            <th>25,000원</th>
-                                        </c:otherwise>
+                                        <c:when test="${orderInfo.cycle == '1'}">매주</c:when>
+                                        <c:otherwise>격주</c:otherwise>
                                     </c:choose>
-                                </tr>
-                                <tr>
-                                    <th>배송비</th>
-                                    <th>0원</th>
-                                </tr>
-                                <tr></tr>
-                                <tr>
-                                    <th class="white-th">총 결제 금액</th>
-                                    <c:choose>
-                                        <c:when test="${orderInfo.box == 'standard'}">
-                                            <th class="white-th">15,500원</th>
-                                        </c:when>
-                                        <c:otherwise>
-                                            <th class="white-th">25,000원</th>
-                                        </c:otherwise>
-                                    </c:choose>
-                                </tr>
-                                <tr>
-                                    <th>첫 배송 날짜</th>
-                                    <th>2022-07-09</th>
-                                </tr>
-                                <tr>
-                                    <th colspan="2">-배송 주기 : <span style="color: red;">
-                                        <c:choose>
-                                            <c:when test="${orderInfo.cycle == '1'}">매주</c:when>
-                                            <c:otherwise>격주</c:otherwise>
-                                        </c:choose>
-                                    </span></th>
-                                </tr>
-                                <tr></tr>
-                                <tr>
-                                    <th class="white-th" colspan="2">결제 수단</th>
-                                </tr>
-                                <tr>
-                                    <th colspan="2"><input type="radio" checked> 카카오페이</th>
-                                </tr>
-                                <tr>
-                                    <th class="submit-btn-th" colspan="2"><button class="submit-btn">구독하기</button></th>
-                                </tr>
-                            </table>
-                            
-                        </div>
-
+                                </span></th>
+                            </tr>
+                            <tr></tr>
+                            <tr>
+                                <th class="white-th" colspan="2">결제 수단</th>
+                            </tr>
+                            <tr>
+                                <th colspan="2"><input type="radio" checked> 카카오페이</th>
+                            </tr>
+                            <tr>
+                                <th class="submit-btn-th" colspan="2"><button class="submit-btn" id="sub-btn">구독하기</button></th>
+                            </tr>
+                        </table>
+                        
                     </div>
-                </form>
+
+                </div>
 
             </div>
         </div>
@@ -138,8 +136,51 @@
     <%-- fotter --%>
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
+
+
+    <script>
+
+        console.log('${orderInfo.payNo}');
+
+        const contextPath = "${contextPath}";
+        const memberName = "${loginMember.memberName}";
+
+        const sOrderNo = "${orderInfo.sOrderNo}";
+        
+        const orderName = "${orderInfo.inputName}";
+        const orderPhone = "${orderInfo.inputPhone}";
+        const orderAddress = "${orderInfo.inputAddress}";
+        const delText = "${orderInfo.inputDelText}";
+        const payNo = "${orderInfo.payNo}";
+        const memberNo = "${loginMember.memberNo}";
+
+        const cycle = "${orderInfo.cycle}"
+        const box = "${orderInfo.box}";
+
+        let boxName = "";
+        let amount = "";
+
+        if("${orderInfo.box}" == 1){
+            boxName = "스탠다드";
+            amount = "15000";
+        }else{
+            boxName = "점보";
+            amount = "25000";
+
+        }
+
+        console.log(amount);
+
+
+
+
+    </script>
+
     <%-- jQuery --%>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+
+  
 
 
     <!-- JavaScript Libraries -->
@@ -160,6 +201,9 @@
     <!-- bootstrap Javascript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     
+    <!-- iamport.payment.js --> 
+    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+
     <script src="${contextPath}/resources/js/main.js"></script>
 
     <script src="${contextPath}/resources/js/subscription.js"></script>

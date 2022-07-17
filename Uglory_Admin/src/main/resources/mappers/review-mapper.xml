@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="reviewMapper">
+	<resultMap type="review" id="review_rm">
+		<id property="reviewNo" column="REVIEW_NO" />
+		<result property="enrollDate" column="REVIEW_ENROLL_DT" />
+		<result property="customerName" column="MEMBER_NAME" />
+		<result property="reviewContent" column="REVIEW_CONTENT" />
+	</resultMap>
+	
+	<select id="selectAllReview" resultMap="review_rm">
+		SELECT REVIEW_NO, REVIEW_ENROLL_DT, MEMBER_NAME, REVIEW_CONTENT
+		FROM REVIEW
+		JOIN MEMBER USING(MEMBER_NO)
+		ORDER BY REVIEW_ENROLL_DT DESC
+	</select>
+	
+	<select id="searchReview" resultMap="review_rm">
+		SELECT REVIEW_NO, REVIEW_ENROLL_DT, MEMBER_NAME, REVIEW_CONTENT
+		FROM REVIEW
+		JOIN MEMBER USING(MEMBER_NO)
+		<if test='query != null and query !=""'>
+			WHERE
+			<choose>
+				<when test='key == "enrollDate"'>
+					REVIEW_ENROLL_DT BETWEEN TO_DATE('${query}', 'YYYY/MM/DD') AND TO_DATE('${query}', 'YYYY/MM/DD') + 0.99999
+				</when>
+				<when test='key == "customerName"'>
+					MEMBER_NAME LIKE '%${query}%'
+				</when>
+			</choose>
+		</if>
+		ORDER BY REVIEW_ENROLL_DT DESC
+	</select>
+
+
+
+</mapper>

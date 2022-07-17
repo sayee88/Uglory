@@ -1,5 +1,6 @@
 package edu.kh.ugloryC.product.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonObject;
 
 import edu.kh.ugloryC.member.model.vo.Member;
 import edu.kh.ugloryC.product.model.service.OptionService;
@@ -48,8 +50,7 @@ public class ProductController {
 	@GetMapping("/detail/{categoryNo}/{productCode}")
 	public String productDetail(@PathVariable("categoryNo") int categoryNo,
 							    @PathVariable("productCode") int productCode,
-							    Model model,
-							    HttpServletRequest req, HttpServletResponse resp) {
+							    Model model) {
 							
 		ProductDetail detail = service.productDetail(productCode);
 	
@@ -62,11 +63,11 @@ public class ProductController {
 		}
 		
 		// 별점 카운트, 리뷰 카운트 필요
-		
 		model.addAttribute("detail", detail);
 		
 		return "product/productDetail";
-	}			
+	}	
+	
 	
 // - js로 구현
 //	// 선택한 옵션 조회
@@ -95,23 +96,39 @@ public class ProductController {
 //	}
 	
 	// 결제 페이지 화면 전환
-	@GetMapping("/order")
-	public String productOrder() {
+	@SuppressWarnings("unchecked") // 무점검 경고 억제 어노테이션
+	@GetMapping("/order/{productCode}")
+	public String productOrder(@PathVariable("productCode") int productCode,
+								int totalAmount, String optionObj, Model model) {
 		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		// 넘어온 스트링을 객체 형태로 변환
+		map = (Map<String, Object>)new Gson().fromJson(optionObj, map.getClass());
+		
+		for(String key : map.keySet()) {
+			map.put( key , ((Double)map.get(key)).intValue() );
+		}
+		
+		map.put("totalAmount", totalAmount);
+		
+		model.addAttribute("map", map);
+		
+		OptionOBJ option = service.selectOrderOption(productCode);
+			
+		model.addAttribute("option", option);
+
 		return "product/productOrder";
 	}
 	
 	// 배송정보 입력
-	@PostMapping("/order")
-	public String productOrder(/*@PathVariable("productCode") int productCode,
-							   @PathVariable("optionObj") OptionOBJ optionObj,
-							   @PathVariable("sum") int sum*/
-							   Member loginMember, 
+	@PostMapping("/order/{productCode}")
+	public String productOrder(Member loginMember, 
 							   ProductOrder pOrder,
 							   String[] orderAddress,
 							   RedirectAttributes ra) {
 		
-		// 로그인한 회원 번호 얻어와서 order에 세팅
+		// 로그인한 회원 번호 얻어와서 pOrder에 세팅
 		pOrder.setMemberNo(loginMember.getMemberNo());
 		
 		pOrder.setProductOrderAddr(String.join(",,", orderAddress));
@@ -124,10 +141,12 @@ public class ProductController {
 		if(result > 0) { // 주문 정보 입력 성공
 			path = "redirect:/";
 			
+			
 		} else {
 			message = "배송지 정보 입력 실패";
 			path = "redirect:/product/productOrder";
 		}
+		
 		ra.addFlashAttribute("message", message);
 		return path;
 	}

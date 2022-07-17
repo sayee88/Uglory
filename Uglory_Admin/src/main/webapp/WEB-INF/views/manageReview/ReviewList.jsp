@@ -59,23 +59,23 @@
             <!-- Navbar End -->
 
 
-            <!-- 상품 등록 form태그 -->
+            <!-- 리뷰 관리 -->
             <div class="container-fluid pt-4 px-4">
                 <div class="row bg-light rounded justify-content-center mx-0 m-5 p-4">
                     <div class="col-lg-12 text-center">
                         <h2 class="text-start">리뷰 관리</h2>
                         <hr>
 
-                        <%-- 검색창 --%>
+                        <%-- 검색창 form 태그 --%>
                         <div class="listHead">
-                            <form>
-                                <select name="" id="">
-                                    <option value="">작성일</option>
-                                    <option value="">회원 이름</option>
+                            <form action="selectAll">
+                                <select name="key">
+                                    <option value="enrollDate">작성일</option>
+                                    <option value="customerName">회원 이름</option>
                                 </select>
 
-                                <input type="text" id="reviewSearch">
-                                <button type="button" class="btn btn-secondary"><i class="fa-solid fa-magnifying-glass"></i></button>
+                                <input type="text" name="query" id="reviewSearch">
+                                <button type="submit" class="btn btn-secondary"><i class="fa-solid fa-magnifying-glass"></i></button>
                             </form>
                         </div>
 
@@ -91,50 +91,17 @@
                                         <th scope="col">내용</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>2022.04.06</td>
-                                        <td>블랙이</td>
-                                        <td>
-<pre>
-빨간 건 사과, 사과는 맛있어
-맛있으면 바나나. 최고의 바나나.
-</pre>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>2022.04.06</td>
-                                        <td>블랙이</td>
-                                        <td>
-<pre>
-빨간 건 사과, 사과는 맛있어
-맛있으면 바나나. 최고의 바나나.
-</pre>
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>2022.04.06</td>
-                                        <td>블랙이</td>
-                                        <td>
-                                            빨간 건 사과, 사과는 맛있어
-                                            맛있으면 바나나. 최고의 바나나.
-                                            자동줄바꿈이 안 되는 거 아닌가요
-                                            이거 자동줄바꿈 어떻게 넣어?
-                                            나중에 내용 들어갈 때 new line handling 하면 되려나?
-                                            띠발 좃댓당 짜증나아악
-                                            일단 이렇게 두긴 하는데
-                                            나중에 고민해보자요
-                                            분명 답이 나올 것이다 늘 그렇듯 
-                                            근데 작성일은 고정되어있는데 글쓴이만 고정이 안 되어있네? 
-                                            나중에 찾아봐 일단 html 만들고 생각해 
-                                        </td>
-                                    </tr>
-
+                                <tbody id="reviewList">
+                                    <c:forEach var="review" items="${reviewList}">
+                                        <tr>
+                                            <th scope="row">${review.reviewNo}</th>
+                                            <td>${review.enrollDate}</td>
+                                            <td>${review.customerName}</td>
+                                            <td>
+                                            <div>${review.reviewContent}</div>
+                                            </td>
+                                        </tr>
+                                    </c:forEach>
                                 </tbody>
                             </table>
                         </div>

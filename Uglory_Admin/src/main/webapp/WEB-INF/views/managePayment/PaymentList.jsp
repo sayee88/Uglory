@@ -69,7 +69,7 @@
 
                         <%-- 검색창 form 태그 --%>
                         <div class="listHead">
-                            <form action="selectAllPayment">
+                            <form action="selectAll">
                                 <select name="key">
                                     <option value="orderNo">주문번호</option>
                                     <option value="customerEmail">회원 이메일</option>

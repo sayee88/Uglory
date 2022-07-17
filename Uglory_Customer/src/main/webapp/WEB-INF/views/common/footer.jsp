@@ -35,7 +35,7 @@
                     <p>Partnering and Delivery Inquiries</p>
                     <div class="position-relative mx-auto" style="max-width: 400px;">
                         <input class="form-control border-primary w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
-                        <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
+                        <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2" href="${contextPath}/member/login">SignUp</button>
                     </div>
                 </div>
 
@@ -77,3 +77,10 @@
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
 </footer>
+
+<%--  message 출력 --%>
+<c:if test="${ !empty message }">
+    <script>
+        alert("${message}");
+    </script>
+</c:if> 

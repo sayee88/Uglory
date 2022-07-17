@@ -19,6 +19,12 @@
       	<result property="star" column="STAR_RATING"/>
 
     </resultMap>
+    
+    <!-- 결제 페이지 내 옵션 및 총가격 조회용 resultMap -->
+    <resultMap type="option" id="orderOption_rm">
+    	<result property="optionName" column="OPTION_NM"/>
+    	<result property="productName" column="PRODUCT_NM"/>
+    </resultMap>
       	 
     <!-- 상품 상세 조회 -->
     <!-- 별점 개수, 리뷰 개수 필요 -->
@@ -51,8 +57,18 @@
 		WHERE P_CD = ${productCode}
 		AND OPTION_CD = #{optionCode}
 	</select> -->
+
 	
-	<!-- 주문정보 -->
+	<!-- 주문 페이지 내 옵션 조회 -->
+	<select id="selectOrderOption" resultMap="orderOption_rm">
+		SELECT OPTION_TYPE.OPTION_CD, OPTION_NM, PRODUCT_NM, PRODUCT.P_CD
+		FROM OPTION_TYPE
+		JOIN PRODUCT ON (OPTION_TYPE.P_CD = PRODUCT.P_CD)
+		JOIN OPTION_TB ON (OPTION_TYPE.OPTION_CD = OPTION_TB.OPTION_CD)
+		WHERE PRODUCT.P_CD = ${productCode}
+	</select>
+	
+	<!-- 주문정보 입력 -->
 	<insert id="productOrder">
 		INSERT INTO PRODUCT_ORDER (P_ORDER_CD, P_ORDER_DT, P_ORDER_NM, P_ORDER_PHONE, P_ORDER_ADDR, TOTAL_PRICE, P_DL_REQ, P_REVIEW_ST, MEMBER_NO, DELIVERY_CD) 
 		VALUES (
