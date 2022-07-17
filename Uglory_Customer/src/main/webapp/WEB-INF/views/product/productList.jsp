@@ -100,14 +100,14 @@
 
             <!-- 상품 카테고리 -->
             <div class="category">
-                <input class="btn btn-primary" type="button" value="All">
-                <input class="btn btn-primary" type="button" value="뿌리채소">
-                <input class="btn btn-primary" type="button" value="두류/견과류">
-                <input class="btn btn-primary" type="button" value="채소">
-                <input class="btn btn-primary" type="button" value="과채">
-                <input class="btn btn-primary" type="button" value="나물">
-                <input class="btn btn-primary" type="button" value="버섯">
-                <input class="btn btn-primary" type="button" value="과일">
+                <input class="btn btn-primary" type="button" id="ca" name="ca" value="All">
+                <input class="btn btn-primary" type="button" id="c1" name="c1" value="근채류">
+                <input class="btn btn-primary" type="button" id="c2" name="c2" value="곡식류/견과류">
+                <input class="btn btn-primary" type="button" id="c3" name="c3" value="채소류">
+                <input class="btn btn-primary" type="button" id="c4" name="c4" value="과채류">
+                <input class="btn btn-primary" type="button" id="c5" name="c5" value="나물류">
+                <input class="btn btn-primary" type="button" id="c6" name="c6" value="버섯류">
+                <input class="btn btn-primary" type="button" id="c7" name="c7" value="과일류">
             </div>
 
 
@@ -297,6 +297,8 @@
 
     <!-- Template Javascript -->
     <script src="${contextPath}/resources/js/main.js"></script>
+
+    <script src="${contextPath}/resources/js/product/product-list.js"></script>
 
     <!-- bootstrap Javascript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
