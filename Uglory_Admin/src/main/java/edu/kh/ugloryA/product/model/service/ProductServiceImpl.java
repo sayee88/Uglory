@@ -11,6 +11,7 @@ import edu.kh.ugloryA.farm.model.vo.Farm;
 import edu.kh.ugloryA.product.model.dao.ProductDAO;
 import edu.kh.ugloryA.product.model.vo.OptionType;
 import edu.kh.ugloryA.product.model.vo.Product;
+import edu.kh.ugloryA.product.model.vo.ProductCategory;
 import edu.kh.ugloryA.product.model.vo.ProductImage;
 
 @Service
@@ -62,6 +63,17 @@ public class ProductServiceImpl implements ProductService {
 	public int stocked(int productCode) {
 		return dao.stocked(productCode);
 	}
+
+	@Override
+	public List<ProductCategory> selectCategory() {
+		return dao.selectCategory();
+	}
+
+	@Override
+	public List<Farm> selectFarmList() {
+		return dao.selectFarmList();
+	}
+	
 	
 	
 

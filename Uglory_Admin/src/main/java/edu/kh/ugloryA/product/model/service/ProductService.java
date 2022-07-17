@@ -3,7 +3,9 @@ package edu.kh.ugloryA.product.model.service;
 import java.util.List;
 import java.util.Map;
 
+import edu.kh.ugloryA.farm.model.vo.Farm;
 import edu.kh.ugloryA.product.model.vo.Product;
+import edu.kh.ugloryA.product.model.vo.ProductCategory;
 
 public interface ProductService {
 
@@ -33,5 +35,24 @@ public interface ProductService {
 	 * @return result
 	 */
 	int stocked(int productCode);
+
+	/**
+	 * 상품 카테고리 조회
+	 * @return catedoryList
+	 */
+	List<ProductCategory> selectCategory();
+
+	/**
+	 * 상품 농장 조회
+	 * @return farmList
+	 */
+	List<Farm> selectFarmList();
+	
+	
+	
+	
+	
+	
+	
 
 }

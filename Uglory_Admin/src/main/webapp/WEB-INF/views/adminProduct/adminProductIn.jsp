@@ -55,8 +55,8 @@
             <!-- 상품 등록 form태그 -->
             <main class="container-fluid pt-4 px-4">
                 <section class="row justify-content-center mx-0 ">
-                    <article class="col-xl-6 col-lg-8 text-center bg-light product-margin p-4 rounded">
-                        <form action="">
+                    <article class="col-xl-6 col-md-8 text-center bg-light product-margin p-4 rounded">
+                        <form action="register?mode=${mode}">
                             <h2 class="text-start">상품 등록</h2>
                             <hr>
 
@@ -64,9 +64,11 @@
                                 <span class="fw-bold">상품 분류</span>
                                 <div class="productWrap">
                                     <select name="productCategoryNo" id="category" class="productInput ps-1">
-                                        <option value="">근채류</option>
-                                        <option value="">두류/곡류/견과류</option>
-                                        <option value="">조미채소류</option>
+                                        <c:if test="${!empty categoryList}">
+                                            <c:forEach var="category" items="${categoryList}">
+                                                <option value="${category.productCategoryNo}">${category.productCategoryName}</option>
+                                            </c:forEach>
+                                        </c:if>
                                     </select>
                                 </div>
                             </div>
@@ -74,7 +76,7 @@
                             <div class="product-row">
                                 <span class="fw-bold">상품명</span>
                                 <div class="productWrap">
-                                    <input name="productName" id="productName" type="text" class="productInput ps-1" placeholder="상품명">
+                                    <input name="productName" id="productName" type="text" class="productInput ps-1" placeholder="상품명" value="">
                                     <div class="inputMessage text-danger">상품명은 한글만 입력해주세요</div>
                                 </div>
                             </div>
@@ -83,7 +85,11 @@
                                 <span class="fw-bold">생산자</span>
                                 <div class="productWrap">
                                     <select name="farmNo" id="farm" class="productInput ps-1">
-                                        <option value="">당근 농장</option>
+                                        <c:if test="${!empty farmList}">
+                                            <c:forEach var="farm" items="${farmList}">
+                                                <option value="${farm.farmNo}">${farm.farmName}</option>
+                                            </c:forEach>
+                                        </c:if>
                                     </select>
                                 </div>
                             </div>
@@ -98,12 +104,15 @@
                             <div class="product-row">
                                 <span class="fw-bold">상품 이미지</span>
                                 <div class="productWrap">
-                                    <input type="file" class="productInput" name="productImageList" id="productImageList" accept="image/*" multiple>
+                                    <input type="file" class="productInput" name="productImage0" id="productImage0" accept="image/*">
+                                    <input type="file" class="productInput" name="productImage1" id="productImage1" accept="image/*">
+                                    <input type="file" class="productInput" name="productImage2" id="productImage2" accept="image/*">
+                                    <input type="file" class="productInput" name="productImage3" id="productImage3" accept="image/*">
                                 </div>
                             </div>
 
                             <!-- Button trigger modal -->
-                            <div class="info-btn-area">
+                            <div class="info-btn-area ps-3 pe-3">
                                 <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                     상품설명 작성
                                 </button>

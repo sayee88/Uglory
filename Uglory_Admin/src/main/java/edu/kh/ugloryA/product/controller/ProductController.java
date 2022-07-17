@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -16,8 +17,10 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.google.gson.Gson;
 
+import edu.kh.ugloryA.farm.model.vo.Farm;
 import edu.kh.ugloryA.product.model.service.ProductService;
 import edu.kh.ugloryA.product.model.vo.Product;
+import edu.kh.ugloryA.product.model.vo.ProductCategory;
 
 @Controller
 @RequestMapping("/product")
@@ -80,16 +83,26 @@ public class ProductController {
 			
 		}
 		
+		List<ProductCategory> categoryList = service.selectCategory();
+		List<Farm> farmList = service.selectFarmList();
 		
+		model.addAttribute("mode", mode);
+		model.addAttribute("categoryList", categoryList);
+		model.addAttribute("farmList", farmList);
 		
 		return "adminProduct/adminProductIn";
 	}
 	
-	//상품 설명 등록 화면 전환
-	@GetMapping("/insert/info")
-	public String productInfo() {
-		return "adminProduct/adminProductInfo";
+	//상품 등록 및 수정
+	@PostMapping("/register")
+	public String productInsert() {
+		
+		
+		
+		return null;
 	}
+	
+
 	
 	// insert페이지에서
 	

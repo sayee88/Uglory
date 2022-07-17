@@ -149,12 +149,12 @@
 }
 
 .info-btn-area>button{
-    width: 95%;
+    width: 90%;
     height: 100%;
     font-size: 20px;
 }
 
 .info-btn-area>p{
-    width: 5%;
+    width: 10%;
     text-align: center;
 }

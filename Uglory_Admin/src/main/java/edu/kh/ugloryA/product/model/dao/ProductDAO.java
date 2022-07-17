@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import edu.kh.ugloryA.farm.model.vo.Farm;
 import edu.kh.ugloryA.product.model.vo.OptionType;
 import edu.kh.ugloryA.product.model.vo.Product;
+import edu.kh.ugloryA.product.model.vo.ProductCategory;
 import edu.kh.ugloryA.product.model.vo.ProductImage;
 
 @Repository
@@ -77,6 +78,14 @@ public class ProductDAO {
 	 */
 	public int stocked(int productCode) {
 		return sqlSession.update("productMapper.stocked", productCode);
+	}
+
+	public List<ProductCategory> selectCategory() {
+		return sqlSession.selectList("productMapper.selectCategory");
+	}
+
+	public List<Farm> selectFarmList() {
+		return sqlSession.selectList("productMapper.selectFarmList");
 	}
 
 	
