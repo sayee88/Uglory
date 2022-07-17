@@ -9,7 +9,11 @@ import lombok.Setter;
 @NoArgsConstructor
 public class OptionOBJ {
 	
+	private int productCode;
 	private int optionCode;
-	private String optionCount;
+	private int optionCount;
 	private int totalAmount;
+	private String optionName;
+	private String productName;
+	
 }

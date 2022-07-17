@@ -1,7 +1,5 @@
 package edu.kh.ugloryC.product.model.vo;
 
-import org.springframework.stereotype.Service;
-
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -23,7 +21,8 @@ public class ProductOrder {
     private int deliveryCode;
     
 	private int optionCode;
-	private String optionCount;
+	private int optionCount;
    
     private int memberNo;
+
 }

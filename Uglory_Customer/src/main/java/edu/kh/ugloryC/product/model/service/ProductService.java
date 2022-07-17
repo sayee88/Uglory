@@ -20,18 +20,22 @@ public interface ProductService {
 //	 * @return result
 //	 */
 //	int totalAmount(Map<String, Object> map);
-
-	/** 주문 페이지 내 옵션 정보 조회
+	
+	/** 주문 페이지 내 옵션 정보 조회 
 	 * @param map
-	 * @return orderOptionList
+	 * @return option
 	 */
-	List<OptionOBJ> selectOrderOption(Map<String, Object> map);
+	OptionOBJ selectOrderOption(int productCode);
 	
 	/** 주문 정보
 	 * @param pOrder
 	 * @return result
 	 */
 	int productOrder(ProductOrder pOrder);
+
+
+
+
 
 
 
