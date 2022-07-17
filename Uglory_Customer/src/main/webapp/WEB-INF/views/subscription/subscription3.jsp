@@ -149,7 +149,7 @@
         
         const orderName = "${orderInfo.inputName}";
         const orderPhone = "${orderInfo.inputPhone}";
-        const orderAddress = "${orderInfo.address}";
+        const orderAddress = "${orderInfo.inputAddress}";
         const delText = "${orderInfo.inputDelText}";
         const payNo = "${orderInfo.payNo}";
         const memberNo = "${loginMember.memberNo}";
