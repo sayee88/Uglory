@@ -60,7 +60,7 @@
                                 <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.5s" src="${contextPath}/resources/img/main/mission_3.jpg">
                             </div>
                             <div class="col-6 text-end">
-                                <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.7s" src="${contextPath}/resources/img/main/about-4.jpg">
+                                <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.7s" src="${contextPath}/resources/img/main/about-5.png">
                             </div>
                         </div>
                     </div>

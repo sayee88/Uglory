@@ -134,7 +134,7 @@
                                 <p>미작성 리뷰</p>
                                 <p>
                                     <span style="margin-right: 15px;">2</span>
-                                    <a href="${contextPath}/review/ReviewWriteForm.jsp">
+                                    <a id="unWritten">
                                         <span style="font-size: 15px; color: rgb(80, 124, 254);">쓰기 >></span>
                                     </a>
                                 </p>
@@ -454,6 +454,7 @@
 
     <!-- Template Javascript -->
     <script src="${contextPath}/resources/js/main.js"></script>
+    <script src="${contextPath}/resources/js/review/review.js"></script>
     
 </body>
 
