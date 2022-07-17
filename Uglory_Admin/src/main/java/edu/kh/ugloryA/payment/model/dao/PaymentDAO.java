@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import edu.kh.ugloryA.payment.model.vo.Payment;
+import edu.kh.ugloryA.payment.model.vo.PaymentDetail;
 
 @Repository
 public class PaymentDAO {
@@ -44,6 +45,36 @@ public class PaymentDAO {
 		map.put("query", query);
 		
 		return sqlSession.selectList("paymentMapper.searchPayment", map);
+	}
+
+
+	/**
+	 * 주문 번호로 개별 or 구독 여부 확인
+	 * @param orderCode
+	 * @return
+	 */
+	public int checkOrder(String orderCode) {
+		return sqlSession.selectOne("paymentMapper.checkOrder", orderCode);
+	}
+
+
+	/**
+	 * 개별 상품 상세 조회
+	 * @param orderCode
+	 * @return pPaymentDetail
+	 */
+	public PaymentDetail selectProductPaymentDetail(String orderCode) {
+		return sqlSession.selectOne("paymentMapper.selectProductPaymentDetail", orderCode);
+	}
+
+
+	/**
+	 * 구독 상품 상세 조회
+	 * @param orderCode
+	 * @return sPaymentDetail
+	 */
+	public List<PaymentDetail> selectSubsPaymentDetail(String orderCode) {
+		return sqlSession.selectList("paymentMapper.selectSubsPaymentDetailList", orderCode);
 	}
 	
 }

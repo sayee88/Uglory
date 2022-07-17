@@ -34,6 +34,7 @@
     <!-- 회원, 결제, 리뷰 조회 Style sheet -->
     <link href="${contextPath}/resources/css/adminselect-style.css" rel="stylesheet">
     
+
     <!-- Fontawesome cdn 링크 -->
     <script src="https://kit.fontawesome.com/1ef9913073.js" crossorigin="anonymous"></script>
 
@@ -41,7 +42,6 @@
 
 <body>
     <div class="container-xxl position-relative bg-white d-flex p-0">
-        
         <!-- Spinner Start -->
         <jsp:include page="/WEB-INF/views/common/spinner.jsp"/>
         <!-- Spinner End -->
@@ -51,65 +51,92 @@
         <jsp:include page="/WEB-INF/views/common/sidebar.jsp"/>
         <!-- Sidebar End -->
 
-        
+
         <!-- Content Start -->
         <div class="content">
-        
             <!-- Navbar Start -->
             <jsp:include page="/WEB-INF/views/common/header.jsp"/>
             <!-- Navbar End -->
 
 
-            <!-- 결제 관리 -->
+            <!-- 결제 상세 조회 -->
             <div class="container-fluid pt-4 px-4">
                 <div class="row bg-light rounded justify-content-center mx-0 m-5 p-4">
                     <div class="col-lg-12 text-center">
-                        <h2 class="text-start">결제 관리</h2>
+                        <h2 class="text-start">결제 상세 조회</h2>
                         <hr>
 
-                        <%-- 검색창 form 태그 --%>
-                        <div class="listHead">
-                            <form action="selectAll">
-                                <select name="key">
-                                    <option value="orderNo">주문번호</option>
-                                    <option value="customerEmail">회원 이메일</option>
-                                    <option value="orderDate">결제일</option>
-                                </select>
+                        <table class="table table-borderless mt-4">
 
-                                <input type="text" name="query" id="paymentSearch">
-                                <button type="submit" class="btn btn-secondary"><i class="fa-solid fa-magnifying-glass"></i></button>
-                            </form>
-                        </div>
+                            <thead>
+                                <tr>
+                                    <th scope="col" colspan="2">주문 번호</th>
+                                    <th scope="col" colspan="3">${detail.orderCode}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th>주문자</th>
+                                    <td>블랙이</td>
+                                    <th>주문자 아이디</th>
+                                    <td>test01@uglory.com</td>
+                                </tr>
+
+                                <tr>
+                                    <th>결제 금액</th>
+                                    <td>100,400원</td>
+                                    <th>결제일</th>
+                                    <td>2022-07-07 17:46:14</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="blank"></div>
+
+                        <table class="table table-borderless mt-4">
+                            <tbody>
+                                <tr>
+                                    <th>배송지</th>
+                                    <td>서울시 강서구 금낭화로11길 59-2</td>
+                                    <th>배송 상태</th>
+                                    <td>배송 완료</td>
+                                </tr>
+
+                                <tr>
+                                    <th>배송일</th>
+                                    <td>2022-07-10 17:46:16</td>
+                                    <th>배송 요청사항</th>
+                                    <td>배송 전 전화 부탁드립니다.</td>
+                                </tr>
+                            </tbody>
+                        </table>
 
 
-                        <%-- 메인 --%>
-                        <div class="listBody">
-                            <table class="table table-borderless farmTable mt-4">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">주문 번호</th>
-                                        <th scope="col">회원 이메일</th>
-                                        <th scope="col">결제금액</th>
-                                        <th scope="col">결제일</th>
-                                        <th scope="col">결제 상세</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="paymentList">
-                                    <c:forEach var="payment" items="${paymentList}" >
-                                        <tr>
-                                            <th scope="row">${payment.orderCode}</th>
-                                            <td>${payment.customerEmail}</td>
-                                            <td>${payment.payAmount}</td>
-                                            <td>${payment.payDate}</td>
-                                            <td>
-                                                <button type="button" class="btn btn-payment-detail selectDetail">상세</button>
-                                                <%-- onclick="location.href='../selectDetail/${payment.orderCode}'" --%>
-                                            </td>
-                                        </tr>
-                                    </c:forEach>
-                                </tbody>
-                            </table>
-                        </div>
+
+                        <!-- 구독 조회 -->
+                        <div class="blank"></div>
+
+                        <table class="table table-borderless mt-4">
+                            <thead>
+                                <tr>
+                                    <th colspan="3">스탠다드</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td colspan="1">배송 주기</td>
+                                    <td colspan="2">2주</td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="1">구독 제외 상품</td>
+                                    <td colspan="2">당근, 시금치, 단호박, 대파, 옥수수</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+
                     </div>
                 </div>
             </div>
@@ -138,11 +165,6 @@
 
     <!-- Template Javascript -->
     <script src="${contextPath}/resources/js/main.js"></script>
-
-    <script src="${contextPath}/resources/js/paymentList.js"></script>
-
-    <script>const contextPath = "${contextPath}";</script>
-
 </body>
 
 </html>
