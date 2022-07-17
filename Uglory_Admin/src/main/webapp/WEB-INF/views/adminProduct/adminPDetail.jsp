@@ -159,7 +159,7 @@
 
                         <div class="detail-btn">
                             <button type="button" class="btn btn-primary" id="goToListBtn">목록으로</button>
-                            <button type="button" class="btn btn-primary" onclick="location.href='${contextPath}/product/register?mode=update'">수정</button>
+                            <button type="button" class="btn btn-primary" onclick="location.href='${contextPath}/product/register?mode=update&productNo=${product.productCode}'">수정</button>
                         </div>
                     </article>
                 </section>

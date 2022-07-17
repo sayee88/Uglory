@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
@@ -70,7 +71,17 @@ public class ProductController {
 	
 	//상품 등록 페이지 화면 전환
 	@GetMapping("/register")
-	public String productInsert() {
+	public String productInsert(String mode,
+								@RequestParam(value="productNo", required = false, defaultValue = "0") int productNo,
+								Model model
+			) {
+		
+		if(mode.equals("update")) {
+			
+		}
+		
+		
+		
 		return "adminProduct/adminProductIn";
 	}
 	

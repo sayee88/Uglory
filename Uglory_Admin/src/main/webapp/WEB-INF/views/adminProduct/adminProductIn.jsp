@@ -63,7 +63,7 @@
                             <div class="product-row">
                                 <span class="fw-bold">상품 분류</span>
                                 <div class="productWrap">
-                                    <select name="" id="" class="productInput ps-1">
+                                    <select name="productCategoryNo" id="category" class="productInput ps-1">
                                         <option value="">근채류</option>
                                         <option value="">두류/곡류/견과류</option>
                                         <option value="">조미채소류</option>
@@ -74,15 +74,15 @@
                             <div class="product-row">
                                 <span class="fw-bold">상품명</span>
                                 <div class="productWrap">
-                                    <input type="text" class="productInput ps-1" placeholder="상품명">
-                                    <div class="inputMessage text-danger">상품은 한글만 입력해주세요</div>
+                                    <input name="productName" id="productName" type="text" class="productInput ps-1" placeholder="상품명">
+                                    <div class="inputMessage text-danger">상품명은 한글만 입력해주세요</div>
                                 </div>
                             </div>
                             
                             <div class="product-row">
                                 <span class="fw-bold">생산자</span>
                                 <div class="productWrap">
-                                    <select name="" id="" class="productInput ps-1">
+                                    <select name="farmNo" id="farm" class="productInput ps-1">
                                         <option value="">당근 농장</option>
                                     </select>
                                 </div>
@@ -91,30 +91,49 @@
                             <div class="product-row">
                                 <span class="fw-bold">상품 가격</span>
                                 <div class="productWrap">
-                                    <input type="number" class="productInput ps-1">
+                                    <input name="productPrice" id="productPrice" type="number" class="productInput ps-1">
                                 </div>
                             </div>
 
                             <div class="product-row">
                                 <span class="fw-bold">상품 이미지</span>
                                 <div class="productWrap">
-                                    <input type="file" class="productInput">
-                                    <input type="file" class="productInput">
-                                    <input type="file" class="productInput">
-                                    <input type="file" class="productInput">
+                                    <input type="file" class="productInput" name="productImageList" id="productImageList" accept="image/*" multiple>
                                 </div>
                             </div>
 
                             <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                상품설명 작성
-                            </button>
+                            <div class="info-btn-area">
+                                <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                    상품설명 작성
+                                </button>
+                                <p class="m-0">
+                                    <i id="info-st" class="fa-regular fa-lightbulb text-warning" style="font-size:36px;"></i>
+                                </p>
+                            </div>
                             
                             <div class="product-row">
-                                <button type="button" class="btn btn-lg btn-primary m-1 w-100">취소</button>
-                                <button class="btn btn-lg btn-primary m-1 w-100">다음</button>
+                                <button type="button" class="btn btn-lg btn-secondary m-1 w-100">취소</button>
+                                <button class="btn btn-lg btn-primary m-1 w-100">등록</button>
                             </div>
 
+                            <!-- Modal -->
+                            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-xl">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="staticBackdropLabel">상품 설명 작성</h5>
+                                    </div>
+                                    <div class="modal-body">
+                                        <textarea name="productInfo" id="summernote"></textarea>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
+                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">저장</button>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
                         </form>
                     </article>
                 </section>
@@ -125,26 +144,6 @@
             
         </div>
         <!-- Content End -->
-
-
-        <!-- Modal -->
-        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">상품 설명 작성</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <textarea name="editordata" id="summernote"></textarea>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Understood</button>
-            </div>
-            </div>
-        </div>
-        </div>
 
         <!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
