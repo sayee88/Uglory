@@ -27,7 +27,7 @@
 		<typeAlias type="edu.kh.ugloryC.product.model.vo.OptionType" alias="optionType"/>
 		<typeAlias type="edu.kh.ugloryC.product.model.vo.OptionOBJ" alias="option"/>
 		
-		<typeAlias type="edu.kh.ugloryC.review.model.vo.Review" alias="review"/>
+		<typeAlias type="edu.kh.ugloryC.review.model.vo.ReviewWrite" alias="reviewWrite"/>
 		<typeAlias type="edu.kh.ugloryC.review.model.vo.ReviewImage" alias="reviewImage"/>
 		
 		<typeAlias type="edu.kh.ugloryC.member.model.vo.Member" alias="member"/>
