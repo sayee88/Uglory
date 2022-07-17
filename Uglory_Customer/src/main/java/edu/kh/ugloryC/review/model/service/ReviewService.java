@@ -16,7 +16,7 @@ public interface ReviewService {
 	 * @param imageList
 	 * @param webPath
 	 * @param folderPath
-	 * @return reviewNo
+	 * @return result
 	 */
 	int insertReview(ReviewWrite reviewWrite, List<MultipartFile> imageList, String webPath, String folderPath);
 

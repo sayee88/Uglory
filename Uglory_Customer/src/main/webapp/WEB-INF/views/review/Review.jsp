@@ -165,7 +165,9 @@
 
                 <div class="review-content">
                     <div data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        <img src="${contextPath}/resources/img/review/review_img1.png">
+                        <a href="">
+                            <img src="${contextPath}/resources/img/review/review_img1.png">
+                        </a>
                     </div>
                     <div class="review-content-text">
                         <div class="review-content-top-section">

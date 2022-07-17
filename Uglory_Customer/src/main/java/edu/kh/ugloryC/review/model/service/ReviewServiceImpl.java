@@ -26,6 +26,8 @@ public class ReviewServiceImpl implements ReviewService{
 		reviewWrite.setReviewContent(Util.XSSHandling(reviewWrite.getReviewContent()));
 		reviewWrite.setReviewContent(Util.newLineHandling(reviewWrite.getReviewContent()));
 		
+		// 2) 리뷰글 삽입 DAO로 호출
+		int result = dao.insertReview(reviewWrite);
 		
 		
 		

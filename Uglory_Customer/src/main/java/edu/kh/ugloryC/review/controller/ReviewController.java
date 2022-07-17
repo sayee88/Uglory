@@ -38,7 +38,7 @@ public class ReviewController {
 	}
 	
 	
-	// 리뷰 후기 list 화면 전환
+	// 리뷰 후기 list 화면 전환 // 조회할 때 필요한 정보를 담아서
 	@GetMapping("/list")
 	public String reviewList(Model model){
 		
@@ -101,7 +101,7 @@ public class ReviewController {
 			
 			// insert 한 개라도 실패하면 rollback 
 			
-			int reviewNo = service.insertReview(reviewWrite ,imageList, webPath, folderPath);
+			int result = service.insertReview(reviewWrite ,imageList, webPath, folderPath);
 			
 			
 		} else {
