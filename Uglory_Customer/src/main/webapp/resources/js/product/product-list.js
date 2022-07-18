@@ -15,19 +15,19 @@ ca.addEventListener("click", function(){
     })
 });
 
-$("input:button[class='btn-primary']").on("click",function(){
-    var ca = $(this).val();
-    $.ajax({
-        url : "/ca",
-        type : "post",
-        data : {ca : $(this).val()},
-        success : function(res){
-            
-        },
-        error : function(res){
-            alert("error");
-        }
+// $("input:button[class='btn-primary']").on("click",function(){
+//     var ca = $(this).val();
+//     $.ajax({
+//         url : "/category",
+//         type : "post",
+//         data : {categoryName : $(this).val()},
+//         success : function(res){
+
+//         },
+//         error : function(res){
+//             alert("error");
+//         }
         
-    })
+//     })
     
-});
+// });

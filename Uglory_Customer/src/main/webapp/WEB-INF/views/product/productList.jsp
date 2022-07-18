@@ -112,7 +112,6 @@
 
 
 
-
             <!-- 상품 목록 -->
             <div class="container">
 
@@ -121,9 +120,9 @@
                     <div class="col">
                         <div class="box">
                             <img src="${contextPath}/resources/img/쿵야/마늘쫑쿵야.png" alt="" class="product-img soldout">
-                            <img src="${contextPath}/resources/img/product/품절스티커.png" alt="" class="soldout-sticker">
+                            <%-- <img src="${contextPath}/resources/img/product/품절스티커.png" alt="" class="soldout-sticker"> --%>
                             <div>
-                                <h5>친환경 초당 옥수수 - 10개/20개</h5>
+                                <h5>${pList.}</h5>
                                 <div class="flex-container">
                                     <h4>25,000</h4>
                                     <div class="sub-box">
