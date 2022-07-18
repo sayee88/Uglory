@@ -51,37 +51,37 @@
             <!-- 상품 등록 form태그 -->
             <main class="container-fluid pt-2 px-4">
                 <section class="row justify-content-center mx-0">
-                    <article class="col-xl-6 col-lg-8 text-center bg-light rounded farmIn-margin p-5">
-                        <form action="">
+                    <article class="col-xl-6 col-md-8 text-center bg-light rounded farmIn-margin p-5">
+                        <form action="insert" method="POST" onsubmit="return farmValidate()">
                             <h2 class="text-start">농장 등록</h2>
                             <hr>
                             
                             <div class="product-row">
                                 <span class="fw-bold">농장 이름</span>
                                 <div class="productWrap">
-                                    <input type="text" class="productInput ps-1" placeholder="농장 이름">
-                                    <div class="inputMessage text-danger">이미 존재하는 농장 이름입니다</div>
+                                    <input id="farmName" type="text" class="productInput ps-1" placeholder="농장 이름">
+                                    <div id="farmNameText" class="inputMessage text-danger">이미 존재하는 농장 이름입니다</div>
                                 </div>
                             </div>
 
                             <div class="product-row">
                                 <span class="fw-bold">생산자 이름</span>
                                 <div class="productWrap">
-                                    <input type="text" class="productInput ps-1" placeholder="생산자 이름">
+                                    <input id="producer" type="text" class="productInput ps-1" placeholder="생산자 이름">
                                 </div>
                             </div>
 
                             <div class="product-row">
                                 <span class="fw-bold">원산지</span>
                                 <div class="productWrap">
-                                    <input type="text" class="productInput ps-1" placeholder="원산지">
-                                    <div class="inputMessage text-danger">원산지는 한글만 입력해주세요</div>
+                                    <input id="origin" type="text" class="productInput ps-1" placeholder="원산지">
+                                    <div id="originText" class="inputMessage text-danger">원산지는 한글만 입력해주세요</div>
                                 </div>
                             </div>
                        
 
                             <div class="product-row">
-                                <button type="button" class="btn btn-lg btn-primary m-1 w-100">취소</button>
+                                <button id="cancelFarm" type="button" class="btn btn-lg btn-primary m-1 w-100">취소</button>
                                 <button class="btn btn-lg btn-primary m-1 w-100">등록</button>
                             </div>
 
@@ -98,6 +98,10 @@
         <!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
+
+    <script>
+        const contextPath = '${contextPath}';
+    </script>
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
