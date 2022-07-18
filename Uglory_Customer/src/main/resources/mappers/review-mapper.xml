@@ -1,5 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="reviewMapper">
-	
+
+
+	<!-- 리뷰글 삽입 -->
+	<insert id="insertReview">
+		
+	INSERT INTO REVIEW
+	VALUES (SEQ_REVIEW_NO.NEXTVAL, #{reviewContent}, SYSDATE, #{starRating}, #{memberNo}, #{productCode}, ${productOrderCode}, #{subOrderCode}, #{reviewCode})
+		
+	</insert>
+	 
+	 
+	 <!-- 리뷰 이미지 삽입 -->
+	 <insert id="insertReviewImage">
+	 	INSERT INTO REVIEW_IMG
+	 	SELECT SEQ_IMG_NO.NEXTVAL REVIEW_IMG_NO, A.* FROM(
+	 		<foreach collection="list" item="img" separator="UNION ALL">
+	 			SELECT 	#{img.reviewImageReName} REVIEW_IMG_RENAME
+	 					#{img.reviewImageLevel} REVIEW_IMG_LEVEL
+	 					#{img.reviewNo} REVIEW_NO
+	 			FROM DUAL
+	 		</foreach>
+	 	) A
+	 </insert>
+		
 </mapper>

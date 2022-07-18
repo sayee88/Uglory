@@ -42,7 +42,7 @@
                             <a href="${contextPath}/member/login" class="nav-item icon"><img class="menu-chart" src="${contextPath}/resources/img/main/user-white.png"></a>
                         </c:when>
 
-                        <c:otherwise >
+                        <c:otherwise>
                             <a href="${contextPath}/member/myPage" class="nav-item icon"><img class="menu-chart" src="${contextPath}/resources/img/main/user-white.png"></a>
                         </c:otherwise>
 

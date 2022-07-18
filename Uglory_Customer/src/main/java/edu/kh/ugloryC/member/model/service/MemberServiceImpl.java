@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import edu.kh.ugloryC.member.model.dao.MemberDAO;
 import edu.kh.ugloryC.member.model.vo.Member;
 import edu.kh.ugloryC.member.model.vo.OrderHistory;
+import edu.kh.ugloryC.member.model.vo.SubscriptionStatus;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -16,9 +17,7 @@ public class MemberServiceImpl implements MemberService {
 	@Autowired
 	private MemberDAO dao;
 	
-	/**로그인 서비스 구현 
-	 *
-	 */
+	//로그인 서비스 구현 
 	@Override
 	public Member login(Member inputMember) {
 		
@@ -41,7 +40,7 @@ public class MemberServiceImpl implements MemberService {
 		}
 	}
 
-		// 회원 탈퇴 서비스 구현
+	// 회원 탈퇴 서비스 구현
 	@Override
 	public int secession(Map<String, Object> map) {
 		
@@ -49,7 +48,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 
-	
+	// 24시간 경과 후 재가입
 	@Override
 	public Member reSignUp(String memberEmail) {
 		
@@ -58,18 +57,16 @@ public class MemberServiceImpl implements MemberService {
 		if(result > 0) return dao.login(memberEmail);
 		else return null;
 	}
-	
-	
-	
 
+	//구독 현황 서비스 구현 
 	@Override
-	public List<OrderHistory> selectOne() {
-		
-		return dao.selectOne();
+	public SubscriptionStatus subscriptionStatus(int memberNo) {
+
+		return dao.subscriptionStatus(memberNo);
 	}
 
-
 	
 
+	
 	
 }
