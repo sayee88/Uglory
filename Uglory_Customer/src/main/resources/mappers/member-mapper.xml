@@ -63,7 +63,7 @@
 		
 	<!-- 내구독 현황  -->
 	<resultMap type="subStatus" id="subStatus_rm">
-		<id property="memberNO" column="MEMBER_NO"/>
+		<id property="memberNo" column="MEMBER_NO"/>
 		<result property="memberName" column="MEMBER_NAME"/>
 		<result property="subName" column="S_NM"/>
 		<result property="subCycle" column="S_CYCLE"/>
@@ -114,17 +114,22 @@
 	
 	<!-- 내구독현황 -->
 	<select id="subscriptionStatus" resultMap="subStatus_rm">
-		SELECT COUNT(*) , MEMBER_NAME, S_NM, S_CYCLE
+		SELECT MEMBER_NAME, S_NM, S_CYCLE
 		FROM SUBS_ORDER
 		JOIN MEMBER
 		USING(MEMBER_NO)
 		JOIN SUBS USING(S_CD)
 		WHERE MEMBER_NO = #{memberNo}
+		AND S_CANCEL = 'N'
 		GROUP BY S_ORDER_CD,MEMBER_NAME, S_NM, S_CYCLE
 	</select>
 	
-	
-	
+	<!-- 내구독 상품 취소 -->
+	<update id="subCancel">
+		UPDATE SUBS_ORDER SET
+		S_CANCEL = 'Y'
+		WHERE MEMBER_NO = #{memberNo}
+	</update>
 	
 	
 </mapper>

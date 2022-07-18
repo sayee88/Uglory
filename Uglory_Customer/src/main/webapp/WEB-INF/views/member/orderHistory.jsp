@@ -146,7 +146,7 @@
     
     
     <%-- Template Javascript --%>
-    <script src="${contextPath}/resources/js/main.js"></script>
+    <%-- <script src="${contextPath}/resources/js/main.js"></script> --%>
     <script src="${contextPath}/resources/js/orderList/orderHistory.js"></script>
     
 </body>

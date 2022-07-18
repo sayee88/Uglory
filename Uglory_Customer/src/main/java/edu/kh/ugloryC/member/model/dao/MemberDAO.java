@@ -55,7 +55,13 @@ public class MemberDAO {
 	//내구독 현황 DAO
 	public SubscriptionStatus subscriptionStatus(int memberNo) {
 		
-		return sqlSession.selectOne("memberMapper.subscriptionStatus",memberNo);
+		return sqlSession.selectOne("memberMapper.subscriptionStatus", memberNo);
+	}
+
+	// 내 구독 상품 취소 dao
+	public int subCancel(int memberNo) {
+	
+		return sqlSession.update("memberMapper.subCancel",memberNo);
 	}
 
 	
