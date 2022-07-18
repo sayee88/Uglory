@@ -136,9 +136,8 @@ public class ProductController {
 			
 			product.setProductCode(updateCode);
 			
-			int result = 0;
-			
-			//int result = service.updateProduct(product, imageList, webPath, folderPath);
+			int result = service.updateProduct(product);
+											 //imageList, webPath, folderPath
 			
 			if(result>0) {
 				path = "detail/" + product.getProductCode();

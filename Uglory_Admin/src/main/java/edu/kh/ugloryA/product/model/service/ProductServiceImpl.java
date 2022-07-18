@@ -140,6 +140,14 @@ public class ProductServiceImpl implements ProductService {
 	public Product selectProduct(int productCode) {
 		return dao.selectProduct(productCode);
 	}
+
+	//상품 수정 서비스 구현
+	@Override
+	public int updateProduct(Product product) {
+		return dao.updateProduct(product);
+	}
+	
+	
 	
 	
 	

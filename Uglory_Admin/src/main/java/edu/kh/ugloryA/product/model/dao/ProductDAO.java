@@ -119,6 +119,15 @@ public class ProductDAO {
 		return sqlSession.insert("productMapper.insertProductImage", productImageList);
 	}
 
+	/**
+	 * 상품 수정 DAO
+	 * @param product
+	 * @return result
+	 */
+	public int updateProduct(Product product) {
+		return sqlSession.update("productMapper.updateProduct", product);
+	}
+
 	
 	
 

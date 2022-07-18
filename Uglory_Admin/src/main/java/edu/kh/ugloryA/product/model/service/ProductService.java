@@ -67,6 +67,13 @@ public interface ProductService {
 	 * @return product
 	 */
 	Product selectProduct(int productCode);
+
+	/**
+	 * 상품 수정 Service
+	 * @param product
+	 * @return result
+	 */
+	int updateProduct(Product product);
 	
 	
 	
