@@ -22,6 +22,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import edu.kh.ugloryC.member.model.vo.Member;
 import edu.kh.ugloryC.review.model.service.ReviewService;
 import edu.kh.ugloryC.review.model.vo.ReviewWrite;
+import edu.kh.ugloryC.review.model.vo.UnWrittenProduct;
 import edu.kh.ugloryC.review.model.vo.UnWrittenSubscription;
 import edu.kh.ugloryC.review.model.vo.ReviewSelectInfo;
 
@@ -70,7 +71,7 @@ public class ReviewController {
 		List<UnWrittenSubscription> subUnWrittenList = service.subUnWrittenList(loginMember);
 		
 		// 개별상품에 대한 미작성 리뷰 조회
-		List<ReviewSelectInfo> productUnWrittenList = service.productUnWrittenList(loginMember);
+		List<UnWrittenProduct> productUnWrittenList = service.productUnWrittenList(loginMember);
 		
 		// map 에 담기
 		Map<String, Object> map = new HashMap<String, Object>();

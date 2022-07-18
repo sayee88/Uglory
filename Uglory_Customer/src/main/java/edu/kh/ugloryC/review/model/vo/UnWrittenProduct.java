@@ -8,5 +8,12 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class UnWrittenProduct {
+	
+	private int productOrderCode;
+//	private String productImage;
+	private String productOrderDate;
+	private String productName;
+	private String optionName;
+	private int totalPrice;
 
 }

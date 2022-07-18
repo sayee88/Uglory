@@ -204,23 +204,23 @@
 
                 <c:choose>
 
-                    <c:when test="${empty map.subUnWrittenList}">
+                    <c:when test="${empty map.productUnWrittenList}">
                         작성할 리뷰 없음
                     </c:when>
 
                     <c:otherwise>
                     
                         <div class="unWrittenReview-List">
-                            <c:forEach var="sub" items="${map.subUnWrittenList}">
+                            <c:forEach var="pd" items="${map.productUnWrittenList}">
                                 <div>
                                     <div class="unWritten-list">
-                                        <div><img src="${contextPath}/resources/img/product/standard.png"></div>
+                                        <div><img src="${contextPath}/resources/img/review/review_img11.png"></div>
                                         <div>
-                                            <div>${sub.subDate}</div>
-                                            <div>${sub.subName}</div>
-                                            <div>구매가격 : ${sub.subPrice}</div>
+                                            <div>${pd.productOrderDate}</div>
+                                            <div>${pd.productName}</div>
+                                            <div>구매가격 : ${pd.totalPrice}</div>
                                             <div>
-                                                <button>${sub.subOrderCode}리뷰작성하기</button>
+                                                <button>${pd.productOrderCode}리뷰작성하기</button>
                                             </div>
                                         </div>
                                     </div>
