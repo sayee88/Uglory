@@ -20,11 +20,24 @@
 
     </resultMap>
     
-    <!-- 결제 페이지 내 옵션 및 총가격 조회용 resultMap -->
-    <resultMap type="option" id="orderOption_rm">
-    	<result property="optionName" column="OPTION_NM"/>
-    	<result property="productName" column="PRODUCT_NM"/>
-    </resultMap>
+    <!-- 주문 페이지 내 선택한 옵션에 따른 조회 결과를 담은 resultMap -->
+	<resultMap type="OptionType" id="orderOptionProduct_rm">
+		<id property="productCode" column="P_CD"/>
+		<result property="optionCode" column="OPTION_CD"/>
+		<result property="optionName" column="OPTION_NM"/>
+		<result property="optionPrice" column="OPTION_PRICE"/>
+		<result property="productName" column="PRODUCT_NM"/>
+		
+		<collection property="optionList" column="P_CD" javaType="java.util.ArrayList" ofType="option" select="selectOptionList"/>
+	</resultMap>
+	
+	<!-- 옵션 조회용 resultMap -->
+	<resultMap type="option" id="option_rm">
+		<id property="optionCode" column="OPTION_CD"/>
+		<result property="optionName" column="OPTION_NM"/>
+		<result property="optionPrice" column="OPTION_PRICE"/>
+	</resultMap>
+	
       	 
     <!-- 상품 상세 조회 -->
     <!-- 별점 개수, 리뷰 개수 필요 -->
@@ -45,27 +58,22 @@
 		WHERE P_CD = ${productCode}
 	</select>
 	
-	<!-- 총가격 계산 - JS로 구현 -->
-<!-- 	<select id="totalAmount" resultType="_int">
-		SELECT PRODUCT_PRICE + OPTION_PRICE
-		상품 가격이 3만원이 안 넘을 경우 (배송비 추가)
-  		<if test='productPrice &lt; 30000'>
-			+ 3000
-		</if>
-		FROM PRODUCT
-		JOIN OPTION_TYPE USING(P_CD)
-		WHERE P_CD = ${productCode}
-		AND OPTION_CD = #{optionCode}
-	</select> -->
-
+	<!-- for문을 위한 옵션 조회 -->
+	<select id="selectOptionList" resultMap="option_rm">
+		SELECT * FORM OPTION_TYPE
+		WHERE OPTION_CD = #{optionCode}
+	</select>
 	
 	<!-- 주문 페이지 내 옵션 조회 -->
-	<select id="selectOrderOption" resultMap="orderOption_rm">
-		SELECT OPTION_TYPE.OPTION_CD, OPTION_NM, PRODUCT_NM, PRODUCT.P_CD
+	<select id="orderOptionSelect" parameterType="list" resultMap="orderOptionProduct_rm">
+		SELECT OPTION_CD, OPTION_NM, OPTION_PRICE, PRODUCT_NM, P_CD
 		FROM OPTION_TYPE
-		JOIN PRODUCT ON (OPTION_TYPE.P_CD = PRODUCT.P_CD)
-		JOIN OPTION_TB ON (OPTION_TYPE.OPTION_CD = OPTION_TB.OPTION_CD)
-		WHERE PRODUCT.P_CD = ${productCode}
+		JOIN PRODUCT USING(P_CD)
+		WHERE P_CD = ${productCode}
+<!-- 		AND OPTION_CD IN 
+		<foreach item="item" collection="list" open="(" separator="," close=")">
+			#{optionCode}
+		</foreach> -->
 	</select>
 	
 	<!-- 주문정보 입력 -->
@@ -76,13 +84,12 @@
 				DEFAULT, 
 				#{productOrderName}, 
 				#{productOrderPhone}, 
-				#{productOrderAddr}, 
+				#{productOrderAddr},
 				#{totalPrice}, 
 				#{productDelReq}, 
 				DEFAULT, 
 				#{memberNo}, 
-				#{deliveryCode}
-				)
+				1)
 	</insert>
 
 </mapper>
