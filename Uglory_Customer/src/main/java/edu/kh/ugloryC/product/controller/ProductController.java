@@ -1,5 +1,7 @@
 package edu.kh.ugloryC.product.controller;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -141,19 +144,20 @@ public class ProductController {
 	}
 	
 	// 배송정보 입력
+	@ResponseBody
 	@PostMapping("/order")
-	public String productOrder(@RequestParam(value="p-orderName") String inputName,
+	public int productOrder(@RequestParam(value="p-orderName") String inputName,
 							   @RequestParam(value="p-orderPhone") String inputPhone,
 							   @RequestParam(value="p-orderAddress") String[] inputAddress,
 							   @RequestParam(value="p-orderReq" , required=false) String inputDelText,
 							   int totalAmount,
 							   @ModelAttribute("loginMember") Member loginMember,
 							   String[] orderAddress,
+							   Model model,
 							   RedirectAttributes ra, HttpServletRequest req) {
 		
-		// 로그인한 회원 번호 얻어와서 pOrder에 세팅
-		
 		int memberNo = loginMember.getMemberNo();
+		String memberName = loginMember.getMemberName();
 		
 		Map<String, Object> productOrder = new HashMap<String, Object>();
 		
@@ -171,8 +175,26 @@ public class ProductController {
 		productOrder.put("totalAmount", totalAmount);
 		productOrder.put("inputDelText", inputDelText);
 		productOrder.put("memberNo", memberNo);
-
+		productOrder.put("memberName", memberName);
+		
+		String pOrderCode = service.createProductOrderCode();
+		
+		productOrder.put("pOrderCode", pOrderCode);
+		
 		int result = service.productOrder(productOrder);
+		
+		if(result > 0) {
+			
+			// 결제번호 생성
+			LocalDate currentDate = LocalDate.now(); 
+			String date = currentDate.format(DateTimeFormatter.ofPattern("yyMMdd"));
+			int random = (int)(Math.random() * 5);
+			String productPayNo = "SP" + date + "-" + random;
+			
+			productOrder.put("productPayNo", productPayNo);
+		}
+		
+		model.addAttribute("productOrder", productOrder);
 
 		String message = null;
 		String path = null;
@@ -185,9 +207,10 @@ public class ProductController {
 			path = "product/order";
 		}
 		
+		
 		ra.addFlashAttribute("message", message);
 		
-		return "redirect:" + path;
+		return result;
 	}
 	
 }
