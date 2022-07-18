@@ -198,9 +198,6 @@ public class MemberController {
 			message = "구독 상품이 취소되었습니다.";
 			path = "subscriptionStatus";
 			
-			//int subCount = 0;
-			
-			//model.addAttribute("subCount", subCount);
 			ra.addFlashAttribute("message", message);
 			
 			return "redirect:" + path;
@@ -210,9 +207,6 @@ public class MemberController {
 			message = "구독 상품 취소 실패! 다시 시도해주세요.";
 			path = "subscriptionStatus";
 			
-			//int subCount = 1;
-			
-			//model.addAttribute("subCount", subCount);
 			ra.addFlashAttribute("message", message);
 			return "redirect:" + path;
 		}
