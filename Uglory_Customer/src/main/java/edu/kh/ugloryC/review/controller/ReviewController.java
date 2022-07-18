@@ -22,6 +22,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import edu.kh.ugloryC.member.model.vo.Member;
 import edu.kh.ugloryC.review.model.service.ReviewService;
 import edu.kh.ugloryC.review.model.vo.ReviewWrite;
+import edu.kh.ugloryC.review.model.vo.UnWrittenSubscription;
 import edu.kh.ugloryC.review.model.vo.ReviewSelectInfo;
 
 @Controller
@@ -46,7 +47,7 @@ public class ReviewController {
 		
 		
 		
-		return "review/Review";
+		return "review/Review copy";
 	}
 	
 	
@@ -61,12 +62,12 @@ public class ReviewController {
 	
 	// 미작성 리뷰 호출
 	@GetMapping("/list/unWritten")
-	public String unWritten(Member loginMember){
+	public String unWritten(@ModelAttribute("loginMember")  Member loginMember, Model model){
 		
 		
 		
 		// 구독상품에 대한 미작성 리뷰 조회 
-		List<ReviewSelectInfo> subUnWrittenList = service.subUnWrittenList(loginMember);
+		List<UnWrittenSubscription> subUnWrittenList = service.subUnWrittenList(loginMember);
 		
 		// 개별상품에 대한 미작성 리뷰 조회
 		List<ReviewSelectInfo> productUnWrittenList = service.productUnWrittenList(loginMember);
@@ -76,11 +77,10 @@ public class ReviewController {
 		map.put("subUnWrittenList", subUnWrittenList);
 		map.put("productUnWrittenList", productUnWrittenList);
 		
+		model.addAttribute("map", map);
 		
 		
-		
-		
-		return "review/ReviewWriteForm";
+		return "review/Review";
 	}
 	
 	
