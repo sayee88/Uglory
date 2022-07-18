@@ -51,6 +51,7 @@
                 <h1 class="subscribe-text">내 구독 정보</h1>
             </div>
 
+                <%-- 구독 상품이 없을 때  --%>
                 <c:if test="${substatus.subCount == 0}">
                 <div class=sub-area>
                     <div class="subscribe-box">
@@ -58,11 +59,13 @@
                     </div>
 
                     <div class="subscribeBtn">
-                        <button type="button" class="subscribe-btn" onclick="location.href='${contextPath}/subscription'">어글로리 구독하기</button>
+                        <button type="button" class="subscribe-btn" onclick="location.href='${contextPath}/SubscriptionStatus'">어글로리 구독하기</button>
                     </div>
                 </div>
                 </c:if>
                 
+
+                <%-- 구독 상품이 있을 때  --%>
                 <c:if test="${substatus.subCount == 1}">
                     <div class=sub-area>
 
@@ -75,13 +78,16 @@
                             </div>
 
                             <div class="subscribeBtn">
-                                <button type="button" class="subscribe-btn" onclick="location.href='${contextPath}/subscription'">어글로리 구독 취소</button>
+                                <a href="${contextPath}/member/subscriptionStatus" id="subCancle-btn" class="subscribe-btn">어글로리 구독 취소</a>
+                                <button class="subscribe-btn" onclick="location.href='${contextPath}/SubscriptionStatus'">어글로리 구독 취소</button>
                             </div>
                         </div>
 
 
                     </div>
                 </c:if>
+
+            </form>
 
 
 

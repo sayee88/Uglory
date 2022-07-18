@@ -1,8 +1,11 @@
 package edu.kh.ugloryC.product.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,7 +30,7 @@ import com.google.gson.JsonObject;
 import edu.kh.ugloryC.member.model.vo.Member;
 import edu.kh.ugloryC.product.model.service.OptionService;
 import edu.kh.ugloryC.product.model.service.ProductService;
-import edu.kh.ugloryC.product.model.vo.OptionOBJ;
+import edu.kh.ugloryC.product.model.vo.Option;
 import edu.kh.ugloryC.product.model.vo.OptionType;
 import edu.kh.ugloryC.product.model.vo.ProductDetail;
 import edu.kh.ugloryC.product.model.vo.ProductOrder;
@@ -56,10 +59,8 @@ public class ProductController {
 	
 		// 상품에 따른 옵션 조회
 		if(detail != null) { // 상세 조회 성공 시
-			
 			List<OptionType> optionList = optionService.selectOptionList(productCode);
 			model.addAttribute("optionList", optionList);
-			
 		}
 		
 		// 별점 카운트, 리뷰 카운트 필요
@@ -96,34 +97,48 @@ public class ProductController {
 //	}
 	
 	// 결제 페이지 화면 전환
-	@SuppressWarnings("unchecked") // 무점검 경고 억제 어노테이션
-	@GetMapping("/order/{productCode}")
-	public String productOrder(@PathVariable("productCode") int productCode,
-								int totalAmount, String optionObj, Model model) {
+	@SuppressWarnings({ "unchecked" }) // 무점검 경고 억제 어노테이션
+	@GetMapping("/order")
+	public String productOrder(int productCode, Option option,
+							   Integer totalAmount, String optionObj, Model model) {
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		
 		// 넘어온 스트링을 객체 형태로 변환
 		map = (Map<String, Object>)new Gson().fromJson(optionObj, map.getClass());
 		
+		//List<String> lm =  map.keySet().stream().collect(Collectors.toList());
+		// java.util.ConcurrentModificationException
+		// map을 List로 변환
+
+//		for(String key : lm) {
+//			map.put("key" , ((Double)map.get(key)).intValue() );
+//		}
+		
+		// 옵션코드 값 
+		
 		for(String key : map.keySet()) {
-			map.put( key , ((Double)map.get(key)).intValue() );
+			map.put(key , ((Double)map.get(key)).intValue() );
+
 		}
+				
+		map.put("productCode", productCode);
 		
+		// 주문 페이지 내 옵션 코드 상품 코드에 따른 옵션이름, 개수 조회
+		List<OptionType> selectOptionList = service.orderOptionSelect(map);
+		
+		map.put("selectOptionList", selectOptionList);
 		map.put("totalAmount", totalAmount);
-		
+
 		model.addAttribute("map", map);
 		
-		OptionOBJ option = service.selectOrderOption(productCode);
-			
-		model.addAttribute("option", option);
-
 		return "product/productOrder";
 	}
 	
 	// 배송정보 입력
-	@PostMapping("/order/{productCode}")
-	public String productOrder(Member loginMember, 
+	@PostMapping("/order")
+	public String productOrder(int productCode,
+							   Member loginMember, 
 							   ProductOrder pOrder,
 							   String[] orderAddress,
 							   RedirectAttributes ra) {
@@ -132,14 +147,20 @@ public class ProductController {
 		pOrder.setMemberNo(loginMember.getMemberNo());
 		
 		pOrder.setProductOrderAddr(String.join(",,", orderAddress));
-	
+
 		int result = service.productOrder(pOrder);
+		
+		String inputProductDelReq = pOrder.getProductDelReq(); // 선택 사항
+
+		if(inputProductDelReq.equals("")) {
+			inputProductDelReq = "NULL";
+		}
 		
 		String message = null;
 		String path = null;
 		
 		if(result > 0) { // 주문 정보 입력 성공
-			path = "redirect:/";
+			path = "redirect:/member/myPage";
 			
 			
 		} else {

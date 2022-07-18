@@ -1,6 +1,7 @@
 package edu.kh.ugloryC.product.model.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,15 @@ public class OptionDAO {
 	public List<OptionType> selectOptionList(int productCode) {
 
 		return sqlSession.selectList("optionMapper.selectOptionList", productCode);
+	}
+
+	/** 주문 페이지 내 옵션 조회 DAO
+	 * @param map
+	 * @return selectOptionList
+	 */
+	public List<OptionType> orderOptionSelect(Map<String, Object> map) {
+
+		return sqlSession.selectList("optionMapper.orderOptionSelect", map);
 	}
 
 	

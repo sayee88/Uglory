@@ -77,6 +77,15 @@ public class MemberController {
 		return "redirect:/"; // 메인페이지로 리다이렉트
 	}
 	
+	// 구독 취소 했을 때 
+//	@GetMapping("subscriptionStatus")
+//	public String subscriptionCancle(HttpSession session , SessionStatus status) {
+//		
+//		status.setComplete();
+//		
+//		return "member/subscriptionStatus";
+//	}
+
 	// 로그인
 	@ResponseBody
 	@PostMapping("/login")
@@ -156,7 +165,7 @@ public class MemberController {
 	
 	
 	// 내 구독 현황
-	@GetMapping("/SubscriptionStatus")
+	@GetMapping("/subscriptionStatus")
 	public String SubscriptionStatus(@ModelAttribute("loginMember") Member loginMember, Model model) {
 		
 		int memberNo = loginMember.getMemberNo();
@@ -165,7 +174,7 @@ public class MemberController {
 		
 		model.addAttribute("substatus", substatus);
 		
-		return "member/SubscriptionStatus";
+		return "member/subscriptionStatus";
 	}
 
 }
