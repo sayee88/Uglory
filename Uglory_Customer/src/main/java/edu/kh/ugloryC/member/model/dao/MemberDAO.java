@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import edu.kh.ugloryC.member.model.vo.Member;
 import edu.kh.ugloryC.member.model.vo.OrderHistory;
+import edu.kh.ugloryC.member.model.vo.SubscriptionStatus;
 
 @Repository
 public class MemberDAO {
@@ -39,15 +40,24 @@ public class MemberDAO {
 		return sqlSession.update("memberMapper.secession",map);
 	}
 	
+	
 	// 
 	public List<OrderHistory> selectOne() {
 		
 		return sqlSession.selectList("memberMapper.selectOne");
 	}
 
+	
 	public int reSignUp(String memberEmail) {
 		return sqlSession.update("memberMapper.reSignUp", memberEmail);
 	}
+
+	//내구독 현황 DAO
+	public SubscriptionStatus subscriptionStatus(int memberNo) {
+		return sqlSession.selectOne("memberMapper.subscriptionStatus",memberNo);
+	}
+
+	
 
 
 	
