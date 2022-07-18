@@ -5,6 +5,7 @@ import java.util.Map;
 
 import edu.kh.ugloryC.member.model.vo.Member;
 import edu.kh.ugloryC.member.model.vo.OrderHistory;
+import edu.kh.ugloryC.member.model.vo.SubscriptionStatus;
 
 public interface MemberService {
 	
@@ -15,11 +16,13 @@ public interface MemberService {
 	int secession(Map<String, Object> map);
 	
 	
-	// 개별 상품 조회 첫번째 뜨는 창
-	List<OrderHistory> selectOne();
-
 	// 24시간 경과 후 재가입
 	Member reSignUp(String memberEmail);
+
+	//내구독현황 
+	SubscriptionStatus subscriptionStatus(int memberNo);
+
+	
 
 
 	
