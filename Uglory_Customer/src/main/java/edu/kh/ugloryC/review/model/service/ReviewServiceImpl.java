@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 import edu.kh.ugloryC.common.Util;
 import edu.kh.ugloryC.review.model.dao.ReviewDAO;
 import edu.kh.ugloryC.review.model.vo.ReviewImage;
+import edu.kh.ugloryC.review.model.vo.ReviewSelectInfo;
 import edu.kh.ugloryC.review.model.vo.ReviewWrite;
 
 @Service
@@ -101,6 +102,21 @@ public class ReviewServiceImpl implements ReviewService{
 		return result;
 	}
 
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

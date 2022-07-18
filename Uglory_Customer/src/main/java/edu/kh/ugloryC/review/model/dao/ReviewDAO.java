@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import edu.kh.ugloryC.review.model.vo.ReviewImage;
+import edu.kh.ugloryC.review.model.vo.ReviewSelectInfo;
 import edu.kh.ugloryC.review.model.vo.ReviewWrite;
 
 @Repository
@@ -41,5 +42,9 @@ public class ReviewDAO {
 		
 		return imageResult;
 	}
+
+
+	
+	
 
 }

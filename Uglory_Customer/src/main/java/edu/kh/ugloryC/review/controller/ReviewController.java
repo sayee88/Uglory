@@ -42,6 +42,8 @@ public class ReviewController {
 	@GetMapping("/list")
 	public String reviewList(Model model){
 		
+		
+		
 		return "review/Review";
 	}
 	
@@ -52,6 +54,19 @@ public class ReviewController {
 		
 		
 		return null;
+	}
+	
+	
+	// 미작성 리뷰 호출
+	@GetMapping("/list/unWritten")
+	public String unWritten(){
+		
+		// 구독상품에 대한 미작성 리뷰 조회 
+		
+		
+		// 개별상품에 대한 미작성 리뷰 조회
+		
+		return "review/ReviewWriteForm";
 	}
 	
 	
