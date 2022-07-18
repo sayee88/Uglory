@@ -19,6 +19,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -40,18 +41,26 @@ public class SubscriptionController {
 	
 	// 구독 페이지1
 	@GetMapping("/subscription")
-	public String subscription(/*@PathVariable("categoryNo") int categoryNo,*/
+	public String subscription(/*@ModelAttribute("loginMember") Member loginMember,*/
+							   HttpSession session,
 							   Model model,
-							   
+							   RedirectAttributes ra,
 							   HttpServletRequest req,
 							   HttpServletResponse resp) {
 		
+		Member loginMember = (Member)session.getAttribute("loginMember");
+		
 		String path = "";
 		
+		if(loginMember == null) {
+			path = "member/login";
+			ra.addFlashAttribute("message", "로그인 후 이용해주세요");
+			
+		}else {
+			path = "subscription/subscription1";
+		}
 		
-		
-		
-		return "subscription/subscription1";
+		return "redirect:" + path;
 	}
 	
 	// 구독 페이지2

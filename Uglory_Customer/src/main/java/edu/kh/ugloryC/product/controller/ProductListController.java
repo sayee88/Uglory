@@ -45,6 +45,7 @@ public class ProductListController {
 	}
 	
 	
+	// 리스트 조회 AJAX
 	@ResponseBody
 	@GetMapping("/product/list/all")
 	public String productListAll() {
@@ -53,6 +54,21 @@ public class ProductListController {
 				
 		return new Gson().toJson(pList);
 	}
+	
+	@ResponseBody
+	@GetMapping("/product/list/category")
+	public String category(@RequestParam(value="selectCategoryNo") int selectCategoryNo,
+						   Model model) {
+		
+		List<ProductList> pcList = new ArrayList<ProductList>();
+		
+		pcList = service.category(selectCategoryNo);
+		
+		model.addAttribute(pcList);
+		
+		return new Gson().toJson(pcList);
+	}
+	
 
 
 }

@@ -21,5 +21,9 @@ public class ProductListDAO {
 		return productList;
 	}
 
+	public List<ProductList> category(int selectCategoryNo) {
+		return sqlSession.selectList("productListMapper.category", selectCategoryNo);
+	}
+
 	
 }
