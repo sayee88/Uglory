@@ -58,11 +58,12 @@
 
 function unWritten(){
 
-    const uwSection = document.getElementsByClassName("unWritten-section")[0];
-    const reviewAllList = document.getElementsByClassName("reviewAllList")[0];
+    // const uwSection = document.getElementsByClassName("unWritten-section")[0];
+    // const reviewAllList = document.getElementsByClassName("reviewAllList")[0];
     
-    uwSection.style.display = 'block';
-    reviewAllList.style.display = 'none';
+    // uwSection.style.display = 'block';
+    // reviewAllList.style.display = 'none';
+    
 }
 
     
