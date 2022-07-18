@@ -43,6 +43,9 @@
                 const p = document.createElement("p");
                 p.innerText = product.starCount;
             
+                // <%-- <a href="product/detail/"${categoryNo}/${productCode} --%>
+                const a = document.createElement("a");
+                a.setAttribute("href", "detail/"+product.categoryNo+"/"+product.productCode);
             
                 // 품절시 추가
                 if(pList.productList == 'O'){ 
@@ -53,6 +56,7 @@
                     starImg.classList.add("soldout-sticker");
                 }
             
+                
             
                 sub_box.append(starImg, p);
             
@@ -61,8 +65,10 @@
                 div.append(h5, flex_container);
             
                 box.append(product_img, div);
+                
+                a.append(box);
             
-                col.append(box);
+                col.append(a);
             
                 row.append(col);
 
