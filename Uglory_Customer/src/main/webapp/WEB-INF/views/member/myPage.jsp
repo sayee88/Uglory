@@ -75,7 +75,7 @@
                 <div class="itemBox">
                     <div class="item">
                         
-                        <a href="${contextPath}/member/subscribeCHK" class="item-text"><img src="${contextPath}/resources/img/myPage/mypage_sub.png" style="padding-bottom:15px"  class="item-image">
+                        <a href="${contextPath}/member/subscriptionStatus" class="item-text"><img src="${contextPath}/resources/img/myPage/mypage_sub.png" style="padding-bottom:15px"  class="item-image">
                         내 구독 현황</a>
                     </div>        
                 </div>
@@ -99,6 +99,25 @@
     </main>
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
+    <%-- <!— jQuery 추가 —> --%>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="${contextPath}/resources/lib/wow/wow.min.js"></script>
+    <script src="${contextPath}/resources/lib/easing/easing.min.js"></script>
+    <script src="${contextPath}/resources/lib/waypoints/waypoints.min.js"></script>
+    <script src="${contextPath}/resources/lib/counterup/counterup.min.js"></script>
+    <script src="${contextPath}/resources/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="${contextPath}/resources/lib/tempusdominus/js/moment.min.js"></script>
+    <script src="${contextPath}/resources/lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="${contextPath}/resources/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    
+    
+    <%-- Template Javascript --%>
+    <%-- <script src="${contextPath}/resources/js/main.js"></script> --%>
     
 </body>
 </html>

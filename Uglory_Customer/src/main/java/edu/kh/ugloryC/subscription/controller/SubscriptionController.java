@@ -42,8 +42,12 @@ public class SubscriptionController {
 	@GetMapping("/subscription")
 	public String subscription(/*@PathVariable("categoryNo") int categoryNo,*/
 							   Model model,
+							   
 							   HttpServletRequest req,
 							   HttpServletResponse resp) {
+		
+		String path = "";
+		
 		
 		
 		

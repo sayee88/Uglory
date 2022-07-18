@@ -65,6 +65,13 @@ public class MemberServiceImpl implements MemberService {
 		return dao.subscriptionStatus(memberNo);
 	}
 
+	// 내 구독 상품 취소 서비스 구현
+	@Override
+	public int subCancel(int memberNo) {
+	
+		return dao.subCancel(memberNo);
+	}
+
 	
 
 	

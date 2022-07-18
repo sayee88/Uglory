@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import edu.kh.ugloryC.common.Util;
+import edu.kh.ugloryC.member.model.vo.Member;
 import edu.kh.ugloryC.review.model.dao.ReviewDAO;
 import edu.kh.ugloryC.review.model.vo.ReviewImage;
 import edu.kh.ugloryC.review.model.vo.ReviewSelectInfo;
@@ -79,29 +80,53 @@ public class ReviewServiceImpl implements ReviewService{
 			} else {
 				
 			}
-			
-			
-			
-			
+		
 			
 		}
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		return result;
+		
 	}
 
+	
+	
+	// 구독상품 미작성 리뷰 조회 서비스 구현
+	@Override
+	public List<ReviewSelectInfo> subUnWrittenList(Member loginMember) {
+		
+		List<ReviewSelectInfo> subUnWrittenList = dao.subUnWrittenList(loginMember);
+		
+		return subUnWrittenList;
+	}
+
+
+
+	// 개별상품 미작성 리뷰 조회 서비스 구현
+	@Override
+	public List<ReviewSelectInfo> productUnWrittenList(Member loginMember) {
+		
+		List<ReviewSelectInfo> productUnWrittenList = dao.productUnWrittenList(loginMember);
+		
+		return productUnWrittenList;
+	}
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	
