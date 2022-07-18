@@ -22,9 +22,9 @@ public interface MemberService {
 	//내구독현황 
 	SubscriptionStatus subscriptionStatus(int memberNo);
 
-	
+	//내 구독 상품 취소
+	int subCancel(int memberNo);
 
 
-	
 
 }
