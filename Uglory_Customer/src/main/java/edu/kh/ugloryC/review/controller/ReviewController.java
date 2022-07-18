@@ -42,7 +42,7 @@ public class ReviewController {
 	@GetMapping("/list")
 	public String reviewList(Model model){
 		
-		return "review/ReviewSelectInfo";
+		return "review/Review";
 	}
 	
 	
@@ -104,11 +104,28 @@ public class ReviewController {
 			int result = service.insertReview(reviewWrite ,imageList, webPath, folderPath);
 			
 			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
 		} else {
 			
 		}
 		
-		return "";
+		return "/review/Review";
 	}
 	
 	

@@ -1,5 +1,6 @@
 package edu.kh.ugloryC.review.model.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import edu.kh.ugloryC.common.Util;
 import edu.kh.ugloryC.review.model.dao.ReviewDAO;
+import edu.kh.ugloryC.review.model.vo.ReviewImage;
 import edu.kh.ugloryC.review.model.vo.ReviewWrite;
 
 @Service
@@ -29,9 +31,74 @@ public class ReviewServiceImpl implements ReviewService{
 		// 2) 리뷰글 삽입 DAO로 호출
 		int result = dao.insertReview(reviewWrite);
 		
+		if(result > 0) {
+			
+			// 이미지를 삽입
+			// imageList : 파일 담겨있는 list
+			// reviewImageList : DB에 삽입할 이미지만 담겨있는
+			// reNameList : 변경된 파일명 담겨있는 list
+			
+			List<ReviewImage> reviewImageList = new ArrayList<ReviewImage>();
+			List<String> reNameList = new ArrayList<String>();
+			
+			// imageList에 담겨있는 파일 정보 중 실제 업로드된 파일만 분류
+			for(int i = 0; i < imageList.size(); i++) {
+				
+				if(imageList.get(i).getSize() > 0){
+					
+					// 변경된 파일명으로 저장
+					String reName = Util.fileRename(imageList.get(i).getOriginalFilename());
+					reNameList.add(reName);
+					
+					// reviewImage 객체를 생성 값 세팅 후 reviewImageList 추가
+					ReviewImage img = new ReviewImage();
+					img.setReviewNo(result);
+					img.setReviewImageLevel(i);
+					img.setReviewImageOriginal(imageList.get(i).getOriginalFilename());
+					img.setReviewImageReName(webPath + reName);
+					
+					reviewImageList.add(img);
+				}
+				
+			}
+			
+			// 파일이 업로드 되면 DB 저장
+			if(!reviewImageList.isEmpty()) {
+				
+				int imageResult = dao.insertReviewImage(reviewImageList);
+				
+				if(imageResult == reviewImageList.size()) {
+					
+					
+				} else {
+					
+				}
+				
+				
+			} else {
+				
+			}
+			
+			
+			
+			
+			
+		}
 		
 		
-		return 0;
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		return result;
 	}
 
 	

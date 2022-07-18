@@ -753,6 +753,9 @@ ALTER TABLE MEMBER ADD SECESSION_DT DATE ;
 ------------------------------------------------------- 회원 쪽 -------------------------------------------------------
 
 
+ALTER TABLE REVIEW MODIFY REVIEW_ENROLL_DT DEFAULT SYSDATE;
 
+INSERT INTO REVIEW
+VALUES (SEQ_REVIEW_NO.NEXTVAL, '안녕하세요', SYSDATE, 5, 1, 1, 23, NULL, 2);
 
--- 리뷰 이미지 샘플데이터
+SELECT * FROM REVIEW;
