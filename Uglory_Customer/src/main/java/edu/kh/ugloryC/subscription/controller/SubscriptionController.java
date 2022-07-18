@@ -40,18 +40,27 @@ public class SubscriptionController {
 	
 	// 구독 페이지1
 	@GetMapping("/subscription")
-	public String subscription(/*@PathVariable("categoryNo") int categoryNo,*/
+	public String subscription(/*@ModelAttribute("loginMember") Member loginMember,*/
+							   HttpSession session,
 							   Model model,
-							   
+							   RedirectAttributes ra,
 							   HttpServletRequest req,
 							   HttpServletResponse resp) {
+		
+		Member loginMember = (Member)session.getAttribute("loginMember");
 		
 		String path = "";
 		
 		
+		if(loginMember == null) {
+			ra.addFlashAttribute("message", "로그인 후 구독할 수 있습니다.");
+			path = "member/login";
+		}else {
+			path = "subscription/subscription1";
+		}
 		
 		
-		return "subscription/subscription1";
+		return path;
 	}
 	
 	// 구독 페이지2
