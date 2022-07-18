@@ -2,6 +2,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"  %>
 
+<c:set var="selectOptionList" value="${map.selectOptionList}" />
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -55,7 +57,7 @@
 
             <h4 class="order-info">배송지 정보</h4>
 
-            <form action="../order/${option.productCode}" method="POST" onsubmit="return orderValidate()">
+            <form action="../order" method="POST" onsubmit="return orderValidate()">
                 <div class="product-order-area">
 
                     <label for="p-orderName">받으시는 분 이름</label>
@@ -101,9 +103,13 @@
 
                         <!-- 상품명(클릭 시 상품 상세조회 화면)-->
                         <div class="order-product-info">
-                            <a href=""><span> ${option.productName} (${option.optionName})</span></a>
+                            <a href="${contextPath}/product/${selectOptionList.productCode}">${selectOptionList.productName}</a>
+                            <c:forEach var="selectOption" items="${selectOptionList}">
+                                <span>(${selectOption.optionName}) -
+                                ${selectOption.optionCount} 개 </span>
+                            </c:forEach>
                             <!-- 선택된 상품 개수 -->
-                            <p><span>${map.optionCount}</span>개</p>
+       
                         </div>
 
                         <div class="orderPrice">

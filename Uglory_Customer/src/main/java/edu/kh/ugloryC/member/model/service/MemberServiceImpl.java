@@ -58,9 +58,10 @@ public class MemberServiceImpl implements MemberService {
 		else return null;
 	}
 
+	//구독 현황 서비스 구현 
 	@Override
 	public SubscriptionStatus subscriptionStatus(int memberNo) {
-		// TODO Auto-generated method stub
+
 		return dao.subscriptionStatus(memberNo);
 	}
 

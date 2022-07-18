@@ -1,5 +1,7 @@
 package edu.kh.ugloryC.product.model.vo;
 
+import java.util.List;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,5 +14,8 @@ public class OptionType {
 	private int optionCode;
 	private String optionName;
 	private int optionPrice;
-	private int optionCount;
+	private String productName;
+	private int productCode;
+	
+	private List <Option> selectOptionList;
 }

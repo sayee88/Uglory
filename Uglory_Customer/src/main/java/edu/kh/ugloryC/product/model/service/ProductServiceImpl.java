@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.kh.ugloryC.product.model.dao.ProductDAO;
-import edu.kh.ugloryC.product.model.vo.OptionOBJ;
+import edu.kh.ugloryC.product.model.vo.OptionType;
 import edu.kh.ugloryC.product.model.vo.ProductDetail;
 import edu.kh.ugloryC.product.model.vo.ProductOrder;
 
@@ -31,12 +31,10 @@ public class ProductServiceImpl implements ProductService {
 //		return dao.totalAmount(map);
 //	}
 
-	
-	// 주문 페이지 내 옵션 정보 조회
-	@Override
-	public OptionOBJ selectOrderOption(int productCode) {
-
-		return dao.selectOrderOption(productCode);
+	// 주문 페이지 내 옵션에 따른 상품, 옵션 조회
+	public List<OptionType> orderOptionSelect(Map<String, Object> map) {
+		
+		return dao.orderOptionSelect(map);
 	}
 
 	// 주문 정보 
@@ -45,6 +43,8 @@ public class ProductServiceImpl implements ProductService {
 		
 		return dao.productOrder(pOrder);
 	}
+
+
 
 	
 }

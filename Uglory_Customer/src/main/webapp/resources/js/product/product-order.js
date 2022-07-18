@@ -127,18 +127,13 @@ function orderValidate(){
         alert("약관 동의 후 주문 버튼을 클릭해주세요.");
         agree.focus();
         return false;
+        
+    } else {
+        if(!confirm("정말 주문하시겠습니까?")){
+            return false;
+        } 
     }
-
     return true;
 }
-
-const orderBtn = document.getElementById("order-btn").addEventListener("click", function(){
-    
-    if(!confirm("정말 주문하시겠습니까?")){
-        return false;
-    } else {
-        return true;
-    }
-});
 
 
