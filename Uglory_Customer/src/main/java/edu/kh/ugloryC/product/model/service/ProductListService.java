@@ -7,7 +7,9 @@ import edu.kh.ugloryC.product.model.vo.ProductList;
 
 public interface ProductListService {
 
+	// 상품 목록 조회
 	List<ProductList> productList();
+
 
 	
 	

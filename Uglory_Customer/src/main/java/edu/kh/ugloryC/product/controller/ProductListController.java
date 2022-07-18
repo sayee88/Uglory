@@ -1,5 +1,6 @@
 package edu.kh.ugloryC.product.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,7 +16,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+
+import com.google.gson.Gson;
 
 import edu.kh.ugloryC.product.model.service.ProductListService;
 import edu.kh.ugloryC.product.model.vo.ProductDetail;
@@ -32,11 +36,22 @@ public class ProductListController {
 	@GetMapping("/product/list")
 	public String productList(Model model) {
 		
-		List<ProductList> pList = service.productList();
+		List<ProductList> pList = new ArrayList<ProductList>();
+		pList = service.productList();
 		
 		model.addAttribute("pList", pList);
 		
 		return "product/productList";
+	}
+	
+	
+	@ResponseBody
+	@GetMapping("/product/list/all")
+	public String productListAll() {
+		List<ProductList> pList = new ArrayList<ProductList>();
+		pList = service.productList();
+				
+		return new Gson().toJson(pList);
 	}
 
 
