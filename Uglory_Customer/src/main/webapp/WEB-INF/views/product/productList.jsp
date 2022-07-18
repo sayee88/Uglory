@@ -126,6 +126,7 @@
 
                    
                     <div class="col">
+                        <%-- <a href="product/detail/"${categoryNo}/${productCode} --%>
                         <div class="box">
                         <img src="${contextPath}/resources/img/쿵야/바나나쿵야.png" alt="" class="product-img soldout">
                             <div>
