@@ -28,5 +28,18 @@
 		SELECT COUNT(*) FROM PRODUCT
 		WHERE FARM_NO = #{farmNo}
 	</select>
+	
+	<!-- 농장명 중복 검사 -->
+	<select id="farmNameDupCheck" resultType="_int">
+		SELECT COUNT(*) FROM FARM
+		WHERE FARM_NM = #{farmName}
+	</select>
+	
+	<!-- 농장 등록 -->
+	<insert id="insertFarm">
+		INSERT INTO FARM VALUES(
+			SEQ_FARM_NO.NEXTVAL, #{farmName}, #{producer}, #{origin}, DEFAULT
+		)
+	</insert>
 
 </mapper>

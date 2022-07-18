@@ -40,4 +40,22 @@ public class FarmDAO {
 		return sqlSession.selectOne("farmMapper.countFarm", farmNo);
 	}
 
+	/**
+	 * 농장명 중복 검사 DAO
+	 * @param farmName
+	 * @return result
+	 */
+	public int farmNameDupCheck(String farmName) {
+		return sqlSession.selectOne("farmMapper.farmNameDupCheck", farmName);
+	}
+
+	/**
+	 * 농장 등록 DAO
+	 * @param farm
+	 * @return result
+	 */
+	public int insertFarm(Farm farm) {
+		return sqlSession.insert("farmMapper.insertFarm", farm);
+	}
+
 }

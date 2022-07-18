@@ -26,4 +26,18 @@ public interface FarmService {
 	 */
 	int countFarm(int farmNo);
 
+	/**
+	 * 농장명 중복 검사 Service
+	 * @param farmName
+	 * @return result
+	 */
+	int farmNameDupCheck(String farmName);
+
+	/**
+	 * 농장 등록 Service
+	 * @param farm
+	 * @return result
+	 */
+	int insertFarm(Farm farm);
+
 }

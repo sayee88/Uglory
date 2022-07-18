@@ -31,6 +31,22 @@ public class FarmServiceImpl implements FarmService {
 	public int countFarm(int farmNo) {
 		return dao.countFarm(farmNo);
 	}
+
+	//농장명 중복 검사
+	@Override
+	public int farmNameDupCheck(String farmName) {
+		return dao.farmNameDupCheck(farmName);
+	}
+
+	//농장 등록 서비스 구현
+	@Override
+	public int insertFarm(Farm farm) {
+		return dao.insertFarm(farm);
+	}
+	
+	
+	
+	
 	
 	
 	

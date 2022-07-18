@@ -59,29 +59,29 @@
                             <div class="product-row">
                                 <span class="fw-bold">농장 이름</span>
                                 <div class="productWrap">
-                                    <input id="farmName" type="text" class="productInput ps-1" placeholder="농장 이름">
-                                    <div id="farmNameText" class="inputMessage text-danger">이미 존재하는 농장 이름입니다</div>
+                                    <input id="farmName" name="farmName" type="text" class="productInput ps-1" placeholder="농장 이름">
+                                    <div id="farmNameText" class="inputMessage">농장 이름을 입력해주세요.</div>
                                 </div>
                             </div>
 
                             <div class="product-row">
                                 <span class="fw-bold">생산자 이름</span>
                                 <div class="productWrap">
-                                    <input id="producer" type="text" class="productInput ps-1" placeholder="생산자 이름">
+                                    <input id="producer" name="producer" type="text" class="productInput ps-1" placeholder="생산자 이름">
                                 </div>
                             </div>
 
                             <div class="product-row">
                                 <span class="fw-bold">원산지</span>
                                 <div class="productWrap">
-                                    <input id="origin" type="text" class="productInput ps-1" placeholder="원산지">
-                                    <div id="originText" class="inputMessage text-danger">원산지는 한글만 입력해주세요</div>
+                                    <input id="origin" name="origin" type="text" class="productInput ps-1" placeholder="원산지">
+                                    <div id="originText" class="inputMessage">원산지를 입력해주세요.</div>
                                 </div>
                             </div>
                        
 
                             <div class="product-row">
-                                <button id="cancelFarm" type="button" class="btn btn-lg btn-primary m-1 w-100">취소</button>
+                                <button id="cancelFarm" type="button" class="btn btn-lg btn-secondary m-1 w-100">취소</button>
                                 <button class="btn btn-lg btn-primary m-1 w-100">등록</button>
                             </div>
 
@@ -106,7 +106,6 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <%-- <script src="../lib/chart/chart.min.js"></script> --%>
     <script src="${contextPath}/resources/lib/easing/easing.min.js"></script>
     <script src="${contextPath}/resources/lib/waypoints/waypoints.min.js"></script>
     <script src="${contextPath}/resources/lib/owlcarousel/owl.carousel.min.js"></script>
@@ -116,6 +115,7 @@
 
     <!-- Template Javascript -->
     <script src="${contextPath}/resources/js/main.js"></script>
+    <script src="${contextPath}/resources/js/adminFarm.js"></script>
 </body>
 
 </html>

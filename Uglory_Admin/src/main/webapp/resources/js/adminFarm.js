@@ -51,7 +51,7 @@ if(cancelFarm != null){
     });
 
     //농장이름 중복검사
-    const regExp = /^[가-힣 ]*$/;
+    const regExp = /^[a-zA-Z0-9가-힣 ]{2,10}$/;
 
     farmName.addEventListener("input", function(){
 
@@ -69,22 +69,20 @@ if(cancelFarm != null){
                 data : { "farmName" : farmName.value }, // 서버로 전달할 값(파라미터)
                 type : "GET", // 데이터 전달 방식(기본값 GET)
     
-                success : function(res){ // 비동기 통신 성공 시(에러 발생 X)
+                success : function(result){ // 비동기 통신 성공 시(에러 발생 X)
     
-                    // 매개변수 res : Servlet에서 응답으로 출력된 데이터가 저장
-    
-                    if(res == 0){ // 닉네임 중복 X
-                        farmNameText.innerText = "사용 가능한 닉네임 입니다.";
-                        farmNameText.classList.add("confirm");
-                        farmNameText.classList.remove("error");
+                    if(result == 0){
+                        farmNameText.innerText = "등록 가능한 농장 이름입니다.";
+                        farmNameText.classList.add("text-success");
+                        farmNameText.classList.remove("text-danger");
     
                         checkObj.farmName = true;
 
-                    } else { // 닉네임 중복 O
-                        farmNameText.innerText = "이미 사용중인 닉네임 입니다.";
-                        farmNameText.classList.add("error");
-                        farmNameText.classList.remove("confirm");
-                        checkObj.farmName = false; // 유효 O 기록
+                    } else {
+                        farmNameText.innerText = "이미 등록된 농장 이름입니다.";
+                        farmNameText.classList.add("text-danger");
+                        farmNameText.classList.remove("text-success");
+                        checkObj.farmName = false; 
                     }
                 },
     
@@ -94,7 +92,7 @@ if(cancelFarm != null){
             });
 
         } else {
-            farmNameText.innerText = "농장 이름은 한글만 입력해주세요.";
+            farmNameText.innerText = "유효하지 않은 농장 이름 형식입니다.";
             farmNameText.classList.add('text-danger');
             farmNameText.classList.remove('text-success');
             checkObj.farmName = false;
@@ -111,6 +109,8 @@ if(cancelFarm != null){
         }
     });
 
+    const regExp2 = /^[가-힣 ]{2,10}$/;
+
     //원산지 한글
     origin.addEventListener("input", function(){
 
@@ -121,7 +121,7 @@ if(cancelFarm != null){
             checkObj.origin = false;
         }
         
-        if(regExp.test(origin.value)) {
+        if(regExp2.test(origin.value)) {
             originText.innerText = "유효한 원산지 형식입니다.";
             originText.classList.add('text-success');
             originText.classList.remove('text-danger');
