@@ -2,6 +2,18 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="reviewMapper">
 
+	<resultMap type="reviewSelectInfo" id="reviewSelectInfo_rm">
+		<id property="reviewNo" column="REVIEW_NO" />
+		<result property="reviewContent" column="REVIEW_CONTENT" />
+		<result property="reviewEnrollDate" column="REVIEW_ENROLL_DT" />
+		<result property="starRating" column="STAR_RATING" />
+		
+		<result property="memberNo" column="MEMBER_NO" />
+		<result property="memberName" column="MEMBER_NAME" />
+		
+	</resultMap>
+	
+
 
 	<!-- 리뷰글 삽입 -->
 	<insert id="insertReview">
@@ -27,7 +39,7 @@
 		
 		
 	<!-- 구독상품 미작성 리뷰 조회 -->
-	<select id="subUnWrittenList">
+	<select id="subUnWrittenList" resultMap="reviewSelectInfo_rm">
 		SELECT * FROM SUBS_ORDER
 		LEFT JOIN REVIEW USING(S_ORDER_CD)
 		JOIN SUBS USING(S_CD)
@@ -37,7 +49,7 @@
 	
 	
 	<!-- 개별상품 미작성 리뷰 조회 -->
-	<select id="productUnWrittenList">
+	<select id="productUnWrittenList" resultMap="reviewSelectInfo_rm">
 		SELECT * FROM PRODUCT_ORDER
 		LEFT JOIN REVIEW USING(P_ORDER_CD)
 		JOIN OPTION_TB USING(P_ORDER_CD)

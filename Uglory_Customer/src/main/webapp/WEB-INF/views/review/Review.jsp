@@ -136,7 +136,7 @@
                                 <p>미작성 리뷰</p>
                                 <p>
                                     <span style="margin-right: 15px;">2</span>
-                                    <a onclick="unWritten()">
+                                    <a href="list/unWritten">
                                         <span style="font-size: 15px; color: rgb(80, 124, 254);">쓰기 >></span>
                                     </a>
                                 </p>
@@ -145,62 +145,63 @@
                     </div>
                 </div>
 
+                <%-- <c:if test="${reviewCode} == 1"> --%>
 
-                <!-- 구독박스 / 개별상품 카테고리 구분 -->
-                <div class="unWritten-section" style="display : none;">
+                        <!-- 구독박스 / 개별상품 카테고리 구분 -->
+                        <div class="unWritten-section" style="display : none;">
 
-                    <div class="category_section">
-                        <div class="unWritten-reviewCode">
-                            <div class="subBox">
-                                <div>
-                                    <span class="unWritten">구독박스</span>
-                                    <span>1</span>
+                            <div class="category_section">
+                                <div class="unWritten-reviewCode">
+                                    <div class="subBox">
+                                        <div>
+                                            <span class="unWritten">구독박스</span>
+                                            <span>1</span>
+                                        </div>
+                                        <div></div>
+                                    </div>
+                                    
+                                    <div class="product">
+                                        <div>
+                                            <span>개별상품</span>
+                                            <span class="unWrittenNone">0</span>
+                                        </div>
+                                        <div></div>
+                                    </div>
                                 </div>
-                                <div></div>
                             </div>
-                            
-                            <div class="product">
-                                <div>
-                                    <span>개별상품</span>
-                                    <span class="unWrittenNone">0</span>
-                                </div>
-                                <div></div>
-                            </div>
-                        </div>
-                    </div>
                 
 
-                    <!-- 미작성 리뷰 목록 -->
-                    <div class="unWrittenReview-List">
+                        <!-- 미작성 리뷰 목록 -->
+                        <div class="unWrittenReview-List">
 
-                        <div>
-                            <div class="unWritten-list">
-                                <div><img src="${contextPath}/resources/img/product/standard.png"></div>
-                                <div>
-                                    <div>2022.07.07</div>
-                                    <div>정기구독상품 - 1~2인용</div>
-                                    <div>구매가격 : 16,900원</div>
+                            <div>
+                                <div class="unWritten-list">
+                                    <div><img src="${contextPath}/resources/img/product/standard.png"></div>
                                     <div>
-                                        <button>리뷰작성하기</button>
+                                        <div>2022.07.07</div>
+                                        <div>정기구독상품 - 1~2인용</div>
+                                        <div>구매가격 : 16,900원</div>
+                                        <div>
+                                            <button>리뷰작성하기</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="unWritten-list">
+                                    <div><img src="${contextPath}/resources/img/product/standard.png"></div>
+                                    <div>
+                                        <div>2022.07.07</div>
+                                        <div>정기구독상품 - 1~2인용</div>
+                                        <div>구매가격 : 16,900원</div>
+                                        <div>
+                                            <button>리뷰작성하기</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-                        <div>
-                            <div class="unWritten-list">
-                                <div><img src="${contextPath}/resources/img/product/standard.png"></div>
-                                <div>
-                                    <div>2022.07.07</div>
-                                    <div>정기구독상품 - 1~2인용</div>
-                                    <div>구매가격 : 16,900원</div>
-                                    <div>
-                                        <button>리뷰작성하기</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             
 
