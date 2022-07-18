@@ -223,6 +223,10 @@ function orderValidate(){
 		document.orderForm.append(input1, input2, input3);
 
 		return true;
+		
+	} else {
+		alert("옵션을 선택해주세요");
+		return false;
 	}
 	// document.orderForm
 

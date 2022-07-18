@@ -45,12 +45,12 @@ public class ProductDAO {
 	}
 	
 	/** 주문 정보 DAO
-	 * @param pOrder
+	 * @param productOrder
 	 * @return result
 	 */
-	public int productOrder(ProductOrder pOrder) {
+	public int productOrder(Map<String, Object> productOrder) {
 
-		return sqlSession.insert("productMapper.productOrder", pOrder);
+		return sqlSession.insert("productMapper.productOrder", productOrder);
 	}
 
 }

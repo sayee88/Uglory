@@ -95,10 +95,19 @@
     display: inline-block;
 }
 
+/* 주문 상품 이미지, 이름 영역 */
+.order-productImgName{
+    display: flex;
+    justify-content: space-between;
+}
+
+.orderProductName{
+    margin-left: 20px;
+}
+
 /* 상품명 상품개수 영역 */
 .order-product-info{
     display: flex;
-    justify-content: space-between;
     width: 250px;
 }
 
@@ -189,3 +198,4 @@
 
 .confirm{ color : rgb(113, 214, 199);}
 .error{  color : rgb(255, 89, 87);}
+
