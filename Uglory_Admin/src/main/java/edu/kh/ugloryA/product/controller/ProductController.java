@@ -1,5 +1,6 @@
 package edu.kh.ugloryA.product.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -79,12 +80,17 @@ public class ProductController {
 	//상품 등록 페이지 화면 전환
 	@GetMapping("/register")
 	public String productInsert(String mode,
-								@RequestParam(value="productNo", required = false, defaultValue = "0") int productNo,
+								@RequestParam(value="productCode", required = false, defaultValue = "0") int productCode,
 								Model model) {
+		
+		Product product = new Product();
 		
 		if(mode.equals("update")) {
 			
+			product = service.selectProduct(productCode);
 		}
+
+		model.addAttribute("product", product);
 		
 		List<ProductCategory> categoryList = service.selectCategory();
 		List<Farm> farmList = service.selectFarmList();
@@ -103,7 +109,7 @@ public class ProductController {
 								@RequestParam(value="productCode", required = false, defaultValue = "0") int updateCode,
 								@RequestParam(value="productImg", required=false) List<MultipartFile> imageList,
 								RedirectAttributes ra,
-								HttpServletRequest req) {
+								HttpServletRequest req) throws IOException {
 		
 		String path = null;
 		String message = null;

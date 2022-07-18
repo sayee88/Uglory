@@ -1,5 +1,6 @@
 package edu.kh.ugloryA.product.model.service;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -58,7 +59,14 @@ public interface ProductService {
 	 * @param folderPath
 	 * @return productCode
 	 */
-	int insertProduct(Product product, List<MultipartFile> imageList, String webPath, String folderPath);
+	int insertProduct(Product product, List<MultipartFile> imageList, String webPath, String folderPath) throws IOException;
+
+	/**
+	 * 상품 1개 조회 Service
+	 * @param productCode
+	 * @return product
+	 */
+	Product selectProduct(int productCode);
 	
 	
 	
