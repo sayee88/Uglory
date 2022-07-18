@@ -13,6 +13,7 @@ import edu.kh.ugloryC.review.model.dao.ReviewDAO;
 import edu.kh.ugloryC.review.model.vo.ReviewImage;
 import edu.kh.ugloryC.review.model.vo.ReviewSelectInfo;
 import edu.kh.ugloryC.review.model.vo.ReviewWrite;
+import edu.kh.ugloryC.review.model.vo.UnWrittenSubscription;
 
 @Service
 public class ReviewServiceImpl implements ReviewService{
@@ -92,9 +93,9 @@ public class ReviewServiceImpl implements ReviewService{
 	
 	// 구독상품 미작성 리뷰 조회 서비스 구현
 	@Override
-	public List<ReviewSelectInfo> subUnWrittenList(Member loginMember) {
+	public List<UnWrittenSubscription> subUnWrittenList(Member loginMember) {
 		
-		List<ReviewSelectInfo> subUnWrittenList = dao.subUnWrittenList(loginMember);
+		List<UnWrittenSubscription> subUnWrittenList = dao.subUnWrittenList(loginMember);
 		
 		return subUnWrittenList;
 	}

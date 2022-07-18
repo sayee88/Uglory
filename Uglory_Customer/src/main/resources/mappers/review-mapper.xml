@@ -10,16 +10,24 @@
 		
 		<result property="memberNo" column="MEMBER_NO" />
 		<result property="memberName" column="MEMBER_NAME" />
-		
 	</resultMap>
 	
+	
+	<resultMap type="unWrittenSubscription" id="unWrittenSubscription_rm">
+		<id property="subOrderCode" column="S_ORDER_CD" />
+		<result property="subDate" column="S_DT" />
+		<result property="reviewCode" column="REVIEW_CD" />
+		<result property="subName" column="S_NM" />
+		<result property="subPrice" column="S_PRICE" />
+	
+	</resultMap>
 
 
 	<!-- 리뷰글 삽입 -->
 	<insert id="insertReview">
 		
-	INSERT INTO REVIEW
-	VALUES (SEQ_REVIEW_NO.NEXTVAL, #{reviewContent}, SYSDATE, #{starRating}, #{memberNo}, #{productCode}, ${productOrderCode}, #{subOrderCode}, #{reviewCode})
+		INSERT INTO REVIEW
+		VALUES (SEQ_REVIEW_NO.NEXTVAL, #{reviewContent}, SYSDATE, #{starRating}, #{memberNo}, #{productCode}, ${productOrderCode}, #{subOrderCode}, #{reviewCode})
 		
 	</insert>
 	 
@@ -39,7 +47,7 @@
 		
 		
 	<!-- 구독상품 미작성 리뷰 조회 -->
-	<select id="subUnWrittenList" resultMap="reviewSelectInfo_rm">
+	<select id="subUnWrittenList" resultMap="unWrittenSubscription_rm">
 		SELECT * FROM SUBS_ORDER
 		LEFT JOIN REVIEW USING(S_ORDER_CD)
 		JOIN SUBS USING(S_CD)
