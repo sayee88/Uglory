@@ -37,7 +37,7 @@ public class CustomerController {
 		
 		List<Customer> customerList = new ArrayList<Customer>();
 		
-		if(key == null && query == null) { // °Ë»öÀÌ ¾Æ´Ñ °æ¿ì == key È¤Àº query°¡ ¾øÀ» °æ¿ì
+		if(key == null && query == null) { // ï¿½Ë»ï¿½ï¿½ï¿½ ï¿½Æ´ï¿½ ï¿½ï¿½ï¿½ == key È¤ï¿½ï¿½ queryï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 			customerList = service.selectAllCustomer();
 		} else {
 			customerList = service.searchCustomer(key, query);
@@ -54,6 +54,11 @@ public class CustomerController {
 		return service.changeStatement(customerNo);
 	}
 	
+//	// íšŒì› ìˆ˜ ì¡°íšŒ
+//	@GetMapping
+//	public int countCustomer(Model model) {
+//		 
+//	}
 	
 
 }

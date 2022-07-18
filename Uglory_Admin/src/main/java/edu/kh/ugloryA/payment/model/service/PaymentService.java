@@ -2,8 +2,10 @@ package edu.kh.ugloryA.payment.model.service;
 
 import java.util.List;
 
+import edu.kh.ugloryA.payment.model.vo.Chart;
 import edu.kh.ugloryA.payment.model.vo.Payment;
-import edu.kh.ugloryA.payment.model.vo.PaymentDetail;
+import edu.kh.ugloryA.payment.model.vo.ProductPaymentDetail;
+import edu.kh.ugloryA.payment.model.vo.SubsPaymentDetail;
 
 public interface PaymentService {
 
@@ -36,7 +38,7 @@ public interface PaymentService {
 	 * @param orderCode
 	 * @return
 	 */
-	PaymentDetail selectProductPaymentDetail(String orderCode);
+	ProductPaymentDetail selectProductPaymentDetail(String orderCode);
 
 
 	/**
@@ -44,6 +46,8 @@ public interface PaymentService {
 	 * @param orderCode
 	 * @return
 	 */
-	List<PaymentDetail> selectSubsPaymentDetail(String orderCode);
+	SubsPaymentDetail selectSubsPaymentDetail(String orderCode);
+
+
 
 }
