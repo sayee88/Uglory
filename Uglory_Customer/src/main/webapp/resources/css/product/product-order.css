@@ -97,7 +97,8 @@
 
 /* 상품명 상품개수 영역 */
 .order-product-info{
-    display: inline;
+    display: flex;
+    justify-content: space-between;
     width: 250px;
 }
 
