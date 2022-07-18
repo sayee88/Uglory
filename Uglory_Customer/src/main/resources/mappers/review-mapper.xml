@@ -1,5 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="reviewMapper">
+
+	<!-- 
+		useGeneratedKeys 속성 : DB 내부적으로 생성한 키( ex. 시퀀스)를 받는 
+							   JDBC getGeneratedKeys() 메서드를 사용하도록 설정한다. (기본값 false)
+							   
+		동적 SQL 중 <selectKey>
+		
+		- 동적 SQL : SQL이 수행되는 중에 if/for문 등을 이용해 SQL을 변경하는 기능
+					(마이바티스의 가장 강력한 기능)
+					
+		- <selectKey> : INSERT/UPDATE에 사용된 키(ex. 시퀀스)를 원하는 변수/필드에 담아서 반환하는 태그
+		
+		- keyProperty : key를 담을 변수/필드 지정하는 속성
+		- order : INSERT/UPDATE에 작성된 메인 SQL이 수행되기 전(BEFORE) 또는 후(AFTER)에
+					<selectKey> 내부 SQL이 수행되도록 순서를 지정하는 속성
+	 -->
+	 <insert id="insertReview" parameterType="reviewWrite" useGenerateKeys="true">
+	 	<selectKey keyproperty="reviewNo" resultType="_int" order="BEFORE">
+	 		SELECT SEQ_REVIEW_NO.NEXTVAL FROM DUAL
+	 	</selectKey>
+	 	
+	 	INSERT INTO REVIEW VALUES(
+	 		#{reviewNo}, #{reviewContent}, SYSDATE, #{starRating}, #{memberNo}, 
+	 		#{}
+	 	)
+	 	
+	 </insert>
 	
 </mapper>

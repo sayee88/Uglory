@@ -134,7 +134,7 @@
                                 <p>미작성 리뷰</p>
                                 <p>
                                     <span style="margin-right: 15px;">2</span>
-                                    <a href="${contextPath}/review/ReviewWriteForm.jsp">
+                                    <a id="unWritten">
                                         <span style="font-size: 15px; color: rgb(80, 124, 254);">쓰기 >></span>
                                     </a>
                                 </p>
@@ -165,7 +165,9 @@
 
                 <div class="review-content">
                     <div data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        <img src="${contextPath}/resources/img/review/review_img1.png">
+                        <a href="">
+                            <img src="${contextPath}/resources/img/review/review_img1.png">
+                        </a>
                     </div>
                     <div class="review-content-text">
                         <div class="review-content-top-section">
@@ -454,6 +456,7 @@
 
     <!-- Template Javascript -->
     <script src="${contextPath}/resources/js/main.js"></script>
+    <script src="${contextPath}/resources/js/review/review.js"></script>
     
 </body>
 

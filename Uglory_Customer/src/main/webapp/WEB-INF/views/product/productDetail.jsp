@@ -62,7 +62,7 @@
         <section class="product-detail">
             <!-- 상품, 옵션, FARM, 별점, 상품이미지, 리뷰 테이블 필요 -->
 
-            <form action="${contextPath}/product/order" method="GET" name="orderForm" onsubmit="return orderValidate()">
+            <form action="${contextPath}/product/order/${detail.productCode}" method="GET" name="orderForm" onsubmit="return orderValidate()">
                 <div class="product-detail-area">
                     <!-- 상품 이미지 영역 최대 4개(썸네일 포함)-->
                     <div class="product-detail-img">

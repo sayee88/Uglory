@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,7 +19,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.ugloryC.member.model.vo.Member;
 import edu.kh.ugloryC.review.model.service.ReviewService;
-import edu.kh.ugloryC.review.model.vo.Review;
+import edu.kh.ugloryC.review.model.vo.ReviewWrite;
+import edu.kh.ugloryC.review.model.vo.ReviewSelectInfo;
 
 @Controller
 @RequestMapping("/review")
@@ -36,12 +38,27 @@ public class ReviewController {
 	}
 	
 	
-	// 리뷰 후기
+	// 리뷰 후기 list 화면 전환 // 조회할 때 필요한 정보를 담아서
 	@GetMapping("/list")
-	public String review(){
+	public String reviewList(Model model){
 		
-		return "review/Review";
+		return "review/ReviewSelectInfo";
 	}
+	
+	
+	@PostMapping("/list")
+	public String reviewList(Member loginMember, ReviewSelectInfo reviewCode ) {
+		
+		
+		
+		return null;
+	}
+	
+	
+	
+	
+	
+	
 	
 	
 	// 리뷰 작성 화면 전환
@@ -61,9 +78,35 @@ public class ReviewController {
 			, RedirectAttributes ra
 			
 			,@RequestParam(value="deleteList", required=false) String deleteList
-			,Review review) {
+			,ReviewWrite reviewWrite) {
 		
+		// 로그인한 회원 (모달창에 보이게 해야함)
+		// (작성 완료 시 review/list로 이동)
+		
+		// 이미지 저장 경로 얻어와야해(webPath/ folderPath)
+		String webPath = "/resources/img/review/";
+		
+		// folderPath = webPath까지의 실제 컴퓨터 경로
+		String folderPath = req.getSession().getServletContext().getRealPath(webPath);
+		
+		// 삽입 / 수정 일때 구분
+		if(mode.equals("insert")) {
 			
+			// 리뷰 삽입 할 때
+			
+			// 회원번호, reviewCode, 별점, 별점 평균, 작성일, 리뷰 내용
+			
+			// 리뷰에 이미지 정보(0~4) 리뷰 번호도 필요
+			// -> 실제 파일로 변환 -> 서버에 저장 ( transFer() )
+			
+			// insert 한 개라도 실패하면 rollback 
+			
+			int result = service.insertReview(reviewWrite ,imageList, webPath, folderPath);
+			
+			
+		} else {
+			
+		}
 		
 		return "";
 	}
