@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import edu.kh.ugloryA.payment.model.service.PaymentService;
+import edu.kh.ugloryA.payment.model.vo.Chart;
 import edu.kh.ugloryA.payment.model.vo.Payment;
-import edu.kh.ugloryA.payment.model.vo.PaymentDetail;
+import edu.kh.ugloryA.payment.model.vo.ProductPaymentDetail;
+import edu.kh.ugloryA.payment.model.vo.SubsPaymentDetail;
 
 @Controller
 @RequestMapping("/payment")
@@ -47,19 +49,11 @@ public class PaymentController {
 		return "managePayment/PaymentList";
 	}
 	
-	@ResponseBody
-	@GetMapping("/checkOrder")
-	public int checkOrder(String orderCode, Model model) {
+	
+	@GetMapping("/PPaymentDetail/{orderCode}")
+	public String selectProductPaymentDetail(@PathVariable("orderCode") String orderCode, Model model) {
 		
-		return service.checkOrder(orderCode);
-	}
-	
-	
-	
-	@GetMapping("/PPaymentDetail")
-	public String selectProductPaymentDetail(String orderCode, Model model) {
-		
-		PaymentDetail pPaymentDetail = service.selectProductPaymentDetail(orderCode);
+		ProductPaymentDetail pPaymentDetail = (ProductPaymentDetail)service.selectProductPaymentDetail(orderCode);
 		
 		model.addAttribute("pPaymentDetail", pPaymentDetail);
 		
@@ -67,17 +61,69 @@ public class PaymentController {
 	}
 	
 	
-	@GetMapping("/SPaymentDetail")
-	public String selectSubsPaymentDetail(String orderCode, Model model) {
+	@GetMapping("/SPaymentDetail/{orderCode}")
+	public String selectSubsPaymentDetail(@PathVariable("orderCode") String orderCode, Model model) {
 		
-		List<PaymentDetail> sPaymentDetailList = new ArrayList<PaymentDetail>();
-				
-		sPaymentDetailList = service.selectSubsPaymentDetail(orderCode);
 		
-		model.addAttribute("sPaymentDetailList", sPaymentDetailList);
+		SubsPaymentDetail sPaymentDetail = (SubsPaymentDetail)service.selectSubsPaymentDetail(orderCode);
+		
+		model.addAttribute("sPaymentDetail", sPaymentDetail);
 		
 		return "managePayment/SubsPaymentDetail";
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+//	
+//	
+//	@ResponseBody
+//	@GetMapping("/checkOrder")
+//	public int checkOrder(String orderCode, Model model) {
+//		
+//		return service.checkOrder(orderCode);
+//	}
+//	
+//	
+//	
+
+	
+	
+	
+//	// 매출 per day 차트 데이터 조회
+//	@GetMapping
+//	public String selectChartData(Model model) {
+//		
+//		Chart chart = service.selectChartData();
+//		
+//		// 가져온 값을 ,를 기준으로 나눠야? 하나용????? 
+//		
+//		
+//		return null;
+//	}
+	
 	
 
 }
