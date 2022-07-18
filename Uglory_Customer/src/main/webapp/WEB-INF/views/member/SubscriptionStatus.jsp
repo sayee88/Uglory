@@ -46,19 +46,21 @@
 
         <section class="subscribe">
             <div>
-                <h1 class="subscribe-text">내 구독 정보</h1>
+                <h1 class="subscribe-text" style="margin-bottom: 2.5rem;">내 구독 정보</h1>
             </div>
                 <%-- 구독 상품이 없을 때  --%>
                 <c:if test="${subCount == 0}">
                 <div class=sub-area>
                     <div class="subscribe-box">
-                        <div class="subscribe-situation">구독 중인 박스가 없어요!!</div>
-                    </div>
+                        <div class="subscribe-situation">
+                            <p>구독 중인 박스가 없어요!!</p>
+                        </div>
 
-                    <div class="subscribeBtn">
-                        <button type="button" class="subscribe-btn" onclick="location.href='${contextPath}/subscriptionStatus'">어글로리 구독하기</button>
+                        <div class="subscribeBtn" style="padding-top: 35px;">
+                            <button type="button" class="subscribe-btn" onclick="location.href='${contextPath}/subscription'">어글로리 구독하기</button>
+                        </div>
                     </div>
-                </div>
+                </div>   
                 </c:if>
                 
 
@@ -71,7 +73,7 @@
 
                         <div class="subscribe-box">
                             
-                            <div style="padding-top:30px; padding-left:64px; font-weight:bold;">
+                            <div style="padding-top:45px; padding-left:100px; font-size:20px; font-weight:bold;">
                                 <p>${substatus.memberName} 고객님</p>
                                 <p>${substatus.subName} 박스 </p>
                                 <p>${substatus.subCycle}주 마다 이용 중 입니다.</p>

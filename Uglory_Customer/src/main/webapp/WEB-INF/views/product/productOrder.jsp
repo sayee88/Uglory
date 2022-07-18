@@ -57,7 +57,7 @@
 
             <h4 class="order-info">배송지 정보</h4>
 
-            <form action="../order" method="POST" onsubmit="return orderValidate()">
+            <form action="order" method="POST" onsubmit="return orderValidate()">
                 <div class="product-order-area">
 
                     <label for="p-orderName">받으시는 분 이름</label>
@@ -79,11 +79,11 @@
                     </div>
 
                     <div class="order-input-area">
-                        <input type="text" name="order-address" id="order-address" placeholder="주소를 입력해주세요" required>
+                        <input type="text" name="p-orderAddress" id="order-address" placeholder="주소를 입력해주세요" required>
                     </div>
 
                     <div class="order-input-area">
-                        <input type="text" name="order-detailAddress" id="order-detailAddress" placeholder="상세주소를 입력해주세요" required>
+                        <input type="text" name="p-orderAddress" id="order-detailAddress" placeholder="상세주소를 입력해주세요" required>
                     </div>
 
                     <label for="p-orderReq">배송 요청사항(선택)</label>
@@ -97,25 +97,44 @@
                     <!-- 결제상품 리스트 -->
                     <div class="order-product-area">
                         <!-- 상품 썸네일 이미지 -->
-                        <div>
-                            <img src="${contextPath}/resources/img/main/broccoli.jpg" width="150px" height="150px">
+                        <div class="order-productImgName">
+                            <div>
+                                <img src="${contextPath}/resources/img/main/broccoli.jpg" width="150px" height="150px">
+                            </div>
+
+                            <div class="orderProductName"> 
+                            <%-- 중복제거 --%>
+                                <c:forEach var="selectOption" items="${selectOptionList}">
+                                    <a href="${contextPath}/product/detail/${selectOptionList[0].productCategoryNo}/${selectOptionList[0].productCode}">${selectOptionList[0].productName}</a>
+                                </c:forEach>
+                                <br>
+                            
+                                <c:forEach var="selectOption" items="${selectOptionList}" varStatus="vs">
+                                    <span>${selectOption.optionName} - ${map.amountList[vs.index]}개</span>
+                                    <c:if test="${selectOption.optionName eq false}">
+                                    /
+                                    </c:if> 
+                                </c:forEach>
+
+                                <div class="orderPrice">
+                                    <!-- 옵션 선택에 따른 상품 가격 -->
+                                    <p><span>${map.totalAmount}</span>원</p>
+                                </div>
+                            </div>
                         </div>
 
                         <!-- 상품명(클릭 시 상품 상세조회 화면)-->
-                        <div class="order-product-info">
-                            <a href="${contextPath}/product/${selectOptionList.productCode}">${selectOptionList.productName}</a>
-                            <c:forEach var="selectOption" items="${selectOptionList}">
-                                <span>(${selectOption.optionName}) -
-                                ${selectOption.optionCount} 개 </span>
-                            </c:forEach>
+                        <%-- <div class="order-product-info"> --%>
+                            <%-- <a href="${contextPath}/product/detail/${selectOptionList[0].productCategoryNo}/${selectOptionList[0].productCode}">${selectOptionList[0].productName}</a> --%>
+<%--                            
+                            <c:forEach var="selectOption" items="${selectOptionList}" varStatus="vs">
+
+                                <span>${selectOption.optionName} - ${map.amountList[vs.index]}개</span> 
+
+                            </c:forEach> --%>
                             <!-- 선택된 상품 개수 -->
        
-                        </div>
-
-                        <div class="orderPrice">
-                            <!-- 옵션 선택에 따른 상품 가격 -->
-                            <p><span>${map.totalAmount}</span>원</p>
-                        </div>
+                        <%-- </div> --%>
                     </div>
 
                     <!-- 결제수단 카카오페이 -->
@@ -156,8 +175,9 @@
                     </div>
                     <button id="order-btn">주문하기</button>
                 </div>
+                
+                    <input type="hidden" name="totalAmount" value="${map.totalAmount}">
             </form>
-            
         </section>
     </main>
 

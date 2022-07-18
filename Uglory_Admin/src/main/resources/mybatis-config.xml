@@ -23,6 +23,15 @@
 		<typeAlias type="edu.kh.ugloryA.myPage.model.vo.Admin" alias="admin"/>
 		<typeAlias type="edu.kh.ugloryA.customer.model.vo.Customer" alias="customer"/>
 		
+		<typeAlias type="edu.kh.ugloryA.payment.model.vo.Payment" alias="payment"/>
+		<typeAlias type="edu.kh.ugloryA.payment.model.vo.ProductPaymentDetail" alias="productPaymentDetail"/>
+		<typeAlias type="edu.kh.ugloryA.payment.model.vo.SubsPaymentDetail" alias="subsPaymentDetail"/>
+		<typeAlias type="edu.kh.ugloryA.payment.model.vo.Option" alias="option"/>
+		
+		<typeAlias type="edu.kh.ugloryA.review.model.vo.Review" alias="review"/>
+		
+		<typeAlias type="edu.kh.ugloryA.payment.model.vo.Chart" alias="chart"/>
+
 		<typeAlias type="edu.kh.ugloryA.product.model.vo.Product" alias="product"/>
 		<typeAlias type="edu.kh.ugloryA.product.model.vo.ProductImage" alias="productImage"/>
 		<typeAlias type="edu.kh.ugloryA.product.model.vo.OptionType" alias="optionType"/>
@@ -41,8 +50,12 @@
 		<!-- <mapper resource="/mappers/member-mapper.xml" /> -->
 		<mapper resource="/mappers/admin-mapper.xml" />
 		<mapper resource="/mappers/customer-mapper.xml"/>
-		<mapper resource="/mappers/product-mapper.xml"/>
-		<mapper resource="/mappers/farm-mapper.xml"/>
+      	<mapper resource="/mappers/product-mapper.xml"/>
+      	<mapper resource="/mappers/farm-mapper.xml"/>
+
+		<mapper resource="/mappers/payment-mapper.xml"/>
+		<mapper resource="/mappers/review-mapper.xml"/>
+		
 		
 		
 	</mappers>
