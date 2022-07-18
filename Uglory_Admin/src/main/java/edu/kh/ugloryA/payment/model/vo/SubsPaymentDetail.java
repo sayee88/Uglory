@@ -1,5 +1,7 @@
 package edu.kh.ugloryA.payment.model.vo;
 
+import java.util.List;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,7 +11,7 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @ToString
-public class PaymentDetail {
+public class SubsPaymentDetail {
 	
 	// 공통
 	private String orderCode; // 주문번호
@@ -23,11 +25,6 @@ public class PaymentDetail {
 	private String deliveryStatement; // 배송 상태
 	private String deliveryRequest; // 배송 요청사항
 	
-	// 개별 상품 관련
-	private String orderDate; // 주문일
-	
-	private String productName; // 상품명(바나나)
-	private String optionName; // 옵션 이름(1kg)
 	
 	// 구독 상품 관련
 	private String deliveryDate; // 배송일
@@ -36,5 +33,6 @@ public class PaymentDetail {
 	private String subscriptionException; // 구독 제외 상품
 	
 
+		
 
 }

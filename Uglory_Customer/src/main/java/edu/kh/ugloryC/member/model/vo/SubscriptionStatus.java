@@ -9,10 +9,8 @@ import lombok.Setter;
 @NoArgsConstructor
 public class SubscriptionStatus {
 
-	
-	private String memberName;
-	private String subName;
-	private int subCycle;
-	
-	private int subCount;
+	private int memberNo;
+	private String memberName; //회원명
+	private String subName;//구독상품이름
+	private int subCycle; // 구독 주기
 }

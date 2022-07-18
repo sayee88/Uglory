@@ -154,7 +154,7 @@
     
     
     <%-- Template Javascript --%>
-    <script src="${contextPath}/resources/js/main.js"></script>
+    <%-- <script src="${contextPath}/resources/js/main.js"></script> --%>
     <script src="${contextPath}/resources/js/member/secession.js"></script>
 </body>
 </html>
