@@ -21,11 +21,11 @@ let sum = 0; // 합계
 const optionObj = {};
 
 // 옵션선택 후 총 가격
-function 	optionSelectBox(){
+function optionSelectBox(){
 
 	// select
 	const optionCode = document.getElementsByClassName('product-option')[0];
-	const options = document.querySelectorAll(".product-option > option")
+	const options = document.querySelectorAll(".product-option > option");
 
 	if(optionObj[optionCode.value] != undefined){
 		alert("이미 선택된 상품입니다.");
@@ -115,6 +115,7 @@ function 	optionSelectBox(){
 		optionObj[code] = optionObj[code] ;
 		
 		span.remove();
+		calcPrice();
 	});
 
 	optionDiv.append(opMinus, opSapn, opPlus, opDelete);
@@ -196,32 +197,41 @@ function calcMinusPrice(){
 function orderValidate(){
 	// 유효성 검사
 
-	
-	// 유효할 때
-	
+	const optionSpan = document.querySelectorAll(".optionSpan");
+
+	// 옵션 선택했을 때
+	if(optionSpan.length > 0){
+
+		// 총 가격
+		const input1 = document.createElement("input");
+		input1.setAttribute("type", "hidden");
+		input1.setAttribute("name", "totalAmount");
+		input1.setAttribute("value", document.getElementsByClassName("total-amount")[0].innerText);
+
+		// 옵션 코드, 옵션 수량
+		const input2 = document.createElement("input");
+		input2.setAttribute("type", "hidden");
+		input2.setAttribute("name", "optionObj");
+		input2.setAttribute("value", JSON.stringify(optionObj));
+
+		// // 상품 코드
+		const input3 = document.createElement("input");
+		input3.setAttribute("type", "hidden");
+		input3.setAttribute("name", "productCode");
+		input3.setAttribute("value", productCode);
+
+		document.orderForm.append(input1, input2, input3);
+
+		return true;
+	}
 	// document.orderForm
 
 	// document.getElementsByClassName("total-amount")[0]
 	// orderObj
 
-	const input1 = document.createElement("input");
-	input1.setAttribute("type", "hidden");
-	input1.setAttribute("name", "totalAmount");
-	input1.setAttribute("value", document.getElementsByClassName("total-amount")[0].innerText);
-
-	const input2 = document.createElement("input");
-	input2.setAttribute("type", "hidden");
-	input2.setAttribute("name", "optionObj");
-	input2.setAttribute("value", JSON.stringify(optionObj));
-
-
-	document.orderForm.append(input1, input2);
-
-	//return false;
+	return false;
 }	
 
-
-// // 보낼때 optionObj 랑 sum 보내야됨
 
 
 // // 장바구니로 이동하기 버튼

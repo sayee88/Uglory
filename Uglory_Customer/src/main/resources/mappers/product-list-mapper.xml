@@ -1,5 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="productListMapper">
+
+<!-- 	private String productName;
+	private int productPrice;
+	private String imgRoot; // 이미지 주소
+	private String categoryName;
+    private int starCount; // 리뷰 개수
+	private double starAvg; // 0.5단위
+	
+    private String productState; // 상품상태
+ -->
+	
+
+
+	<!-- 상품 목록용 resultMap -->   
+	<resultMap type="productList" id="product_list">
+		<id property="productCode" column="P_CD"/>
+		<result property="productName" column="PRODUCT_NM"/>
+		<result property="productPrice" column="PRODUCT_PRICE"/>
+		<result property="imgRoot" column="IMG_ROOT"/>
+		<result property="categoryName" column="P_CATEGORY_NM"/>
+		<result property="starCount" column="STAR_COUNT"/>
+		<result property="starAvg" column="STAR_AVG"/>
+		<result property="productState" column="PRODUCT_ST"/>
+		<result property="categoryNo" column="P_CATEGORY_NO"/>
+	</resultMap>
+	
+	
+	<select id="productList" resultMap="product_list">
+		SELECT DISTINCT PRODUCT_NM, PRODUCT_PRICE, IMG_ROOT,
+		   P_CATEGORY_NM, PRODUCT_ST, P_CD, P_CATEGORY_NO,
+		   (SELECT COUNT(*) FROM REVIEW WHERE R.P_CD=P.P_CD) STAR_COUNT,
+		   CASE WHEN  (SELECT COUNT(*) FROM REVIEW WHERE R.P_CD=P.P_CD) = 0 THEN 0
+		        ELSE  ((SELECT SUM(STAR_RATING) FROM REVIEW ) / 
+		               (SELECT COUNT(*) FROM REVIEW )) 
+		        END AS STAR_AVG
+		FROM PRODUCT P
+		LEFT JOIN REVIEW R ON(P.P_CD = R.P_CD)
+		LEFT JOIN PRODUCT_IMG I ON(P.P_CD = I.P_CD)
+		JOIN P_CATEGORY USING(P_CATEGORY_NO)
+	</select>
+	
 	
 </mapper>

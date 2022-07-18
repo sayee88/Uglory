@@ -1,6 +1,8 @@
 package edu.kh.ugloryC.review.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -59,12 +61,24 @@ public class ReviewController {
 	
 	// 미작성 리뷰 호출
 	@GetMapping("/list/unWritten")
-	public String unWritten(){
+	public String unWritten(Member loginMember){
+		
+		
 		
 		// 구독상품에 대한 미작성 리뷰 조회 
-		
+		List<ReviewSelectInfo> subUnWrittenList = service.subUnWrittenList(loginMember);
 		
 		// 개별상품에 대한 미작성 리뷰 조회
+		List<ReviewSelectInfo> productUnWrittenList = service.productUnWrittenList(loginMember);
+		
+		// map 에 담기
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("subUnWrittenList", subUnWrittenList);
+		map.put("productUnWrittenList", productUnWrittenList);
+		
+		
+		
+		
 		
 		return "review/ReviewWriteForm";
 	}

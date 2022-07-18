@@ -7,14 +7,7 @@
 		<id property="optionCode" column="OPTION_CD"/>
 		<result property="optionName" column="OPTION_NM"/>
 		<result property="optionPrice" column="OPTION_PRICE"/>
-	</resultMap>
-	
-	<!-- 선택 옵션 조회 결과를 담은 resultMap -->
-	<resultMap type="optionType" id="selectOption_rm">
-		<id property="optionCode" column="OPTION_CD"/>
-		<result property="optionName" column="OPTION_NM"/>
-		<result property="optionPrice" column="OPTION_PRICE"/>
-		<result property="optionCount" column="OPTION_COUNT"/>
+		
 	</resultMap>
 	
 	<!-- 옵션 조회 -->
