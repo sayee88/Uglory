@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import edu.kh.ugloryC.review.model.vo.ReviewSelectInfo;
 import edu.kh.ugloryC.review.model.vo.ReviewWrite;
 
 public interface ReviewService {
@@ -20,6 +21,10 @@ public interface ReviewService {
 	 */
 	int insertReview(ReviewWrite reviewWrite, List<MultipartFile> imageList, String webPath, String folderPath);
 
+	
+	
+	
+	
 	
 	
 
