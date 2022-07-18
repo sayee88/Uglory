@@ -16,7 +16,8 @@
                 card.classList.add("col-sm-5");
                 card.classList.add("col-xl-3");
 
-                // a (href="detail/${productCode}") : 2
+                // a (href="detail/${productCode}") : 
+                
                 const a = document.createElement("a");
                 a.setAttribute("href", "detail/" + items.productCode);
 

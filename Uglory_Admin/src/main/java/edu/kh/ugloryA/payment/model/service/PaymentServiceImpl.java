@@ -8,8 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.kh.ugloryA.payment.model.dao.PaymentDAO;
+import edu.kh.ugloryA.payment.model.vo.Chart;
 import edu.kh.ugloryA.payment.model.vo.Payment;
-import edu.kh.ugloryA.payment.model.vo.PaymentDetail;
+import edu.kh.ugloryA.payment.model.vo.ProductPaymentDetail;
+import edu.kh.ugloryA.payment.model.vo.SubsPaymentDetail;
 
 @Service
 public class PaymentServiceImpl implements PaymentService {
@@ -43,16 +45,20 @@ public class PaymentServiceImpl implements PaymentService {
 
 	// 개별 상품 상세 조회
 	@Override
-	public PaymentDetail selectProductPaymentDetail(String orderCode) {
+	public ProductPaymentDetail selectProductPaymentDetail(String orderCode) {
 		return dao.selectProductPaymentDetail(orderCode);
 	}
 
 
 	// 구독 상품 상세 조회
 	@Override
-	public List<PaymentDetail> selectSubsPaymentDetail(String orderCode) {
+	public SubsPaymentDetail selectSubsPaymentDetail(String orderCode) {
 		return dao.selectSubsPaymentDetail(orderCode);
 	}
+
+
+	
+	
 	
 	
 	

@@ -72,7 +72,7 @@
                             </div>
 
                             <p class="mt-2 mb-1" style="color: #757575;">Profile Image</p>
-                            <input type="file" class="productInput mb-4" name="uploadImage">
+                            <input type="file" class="productInput mb-4" name="uploadImage" accept="image/*">
                         
                             <button class="btn btn-primary py-3 w-100 mb-4" style="font-size: 20px;">Sign Up</button>
                         </form>
