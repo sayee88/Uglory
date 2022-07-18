@@ -71,22 +71,22 @@
                             <thead>
                                 <tr>
                                     <th scope="col" colspan="2">주문 번호</th>
-                                    <th scope="col" colspan="3">${detail.orderCode}</th>
+                                    <th scope="col" colspan="3">${pPaymentDetail.orderCode}</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <th>주문자</th>
-                                    <td>블랙이</td>
+                                    <td>${pPaymentDetail.customerName}</td>
                                     <th>주문자 아이디</th>
-                                    <td>test01@uglory.com</td>
+                                    <td>${pPaymentDetail.customerEmail}</td>
                                 </tr>
 
                                 <tr>
                                     <th>결제 금액</th>
-                                    <td>100,400원</td>
+                                    <td>${pPaymentDetail.payAmount}</td>
                                     <th>결제일</th>
-                                    <td>2022-07-07 17:46:14</td>
+                                    <td>${pPaymentDetail.payDate}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -97,16 +97,16 @@
                             <tbody>
                                 <tr>
                                     <th>배송지</th>
-                                    <td>서울시 강서구 금낭화로11길 59-2</td>
+                                    <td>${pPaymentDetail.deliveryAddress}</td>
                                     <th>배송 상태</th>
-                                    <td>배송 완료</td>
+                                    <td>${pPaymentDetail.deliveryStatement}</td>
                                 </tr>
 
                                 <tr>
-                                    <th>배송일</th>
-                                    <td>2022-07-10 17:46:16</td>
+                                    <th>주문일</th>
+                                    <td>${pPaymentDetail.orderDate}</td>
                                     <th>배송 요청사항</th>
-                                    <td>배송 전 전화 부탁드립니다.</td>
+                                    <td>${pPaymentDetail.deliveryRequest}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -124,17 +124,11 @@
                             </thead>
 
                             <tbody>
+                                <c:forEach var="option" items="${pPaymentDetail.optionList}">
                                 <tr>
-                                    <td>바나나 3kg</td>
+                                    <td>${option.productName} ${option.optionName}*${option.optionCount}</td>
                                 </tr>
-
-                                <tr>
-                                    <td>자두 1kg</td>
-                                </tr>
-
-                                <tr>
-                                    <td>감자 5kg</td>
-                                </tr>
+                                </c:forEach>
                             </tbody>
                         </table>
 

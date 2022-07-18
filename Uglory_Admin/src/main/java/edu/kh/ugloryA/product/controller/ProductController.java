@@ -1,22 +1,31 @@
 package edu.kh.ugloryA.product.controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.gson.Gson;
 
+import edu.kh.ugloryA.farm.model.vo.Farm;
 import edu.kh.ugloryA.product.model.service.ProductService;
 import edu.kh.ugloryA.product.model.vo.Product;
+import edu.kh.ugloryA.product.model.vo.ProductCategory;
 
 @Controller
 @RequestMapping("/product")
@@ -70,39 +79,80 @@ public class ProductController {
 	
 	//상품 등록 페이지 화면 전환
 	@GetMapping("/register")
-	public String productInsert() {
+	public String productInsert(String mode,
+								@RequestParam(value="productCode", required = false, defaultValue = "0") int productCode,
+								Model model) {
+		
+		Product product = new Product();
+		
+		if(mode.equals("update")) {
+			
+			product = service.selectProduct(productCode);
+		}
+
+		model.addAttribute("product", product);
+		
+		List<ProductCategory> categoryList = service.selectCategory();
+		List<Farm> farmList = service.selectFarmList();
+		
+		model.addAttribute("mode", mode);
+		model.addAttribute("categoryList", categoryList);
+		model.addAttribute("farmList", farmList);
+		
 		return "adminProduct/adminProductIn";
 	}
 	
-	//상품 설명 등록 화면 전환
-	@GetMapping("/insert/info")
-	public String productInfo() {
-		return "adminProduct/adminProductInfo";
+	//상품 등록 및 수정
+	@PostMapping("/register")
+	public String productInsert(String mode,
+								Product product,
+								@RequestParam(value="productCode", required = false, defaultValue = "0") int updateCode,
+								@RequestParam(value="productImg", required=false) List<MultipartFile> imageList,
+								RedirectAttributes ra,
+								HttpServletRequest req) throws IOException {
+		
+		String path = null;
+		String message = null;
+		
+		String webPath = "/resources/img/productImage/";
+		String folderPath = req.getSession().getServletContext().getRealPath(webPath);
+		
+		if(mode.equals("insert")) {
+			
+			int productCode = service.insertProduct(product, imageList, webPath, folderPath);
+			
+			if(productCode>0) {
+				path = "detail/" + productCode;
+				message = "상품이 등록되었습니다.";
+			} else {
+				path = req.getHeader("referer");
+				message = "상품 등록을 실패하였습니다.";
+			}
+			
+			ra.addFlashAttribute("message", message);
+			return "redirect:" + path;
+			
+		} else { // update일 때
+			
+			product.setProductCode(updateCode);
+			
+			int result = 0;
+			
+			//int result = service.updateProduct(product, imageList, webPath, folderPath);
+			
+			if(result>0) {
+				path = "detail/" + product.getProductCode();
+				message = "상품 수정을 성공하였습니다.";
+			} else {
+				path = req.getHeader("referer");
+				message = "상품 수정에 실패하였습니다.";
+			}
+			
+			ra.addFlashAttribute("message", message);
+			return "redirect:" + path;
+		}
 	}
 	
-	// insert페이지에서
-	
-	// 삽입일 경우
-	// 데이터 session에 올리고 sunnernote페이지 호출
-	
-	// 수정일 경우
-	// 원래 있던 정보 보여주기 + 업데이트 진행 후 detail 페이지 호출
-	
-	// summernote 페이지에서
-	
-	// 삽입일 경우
-	// session에 있는 데이터까지 받아서 데이터 insert 진행
-	
-	// 수정일 경우
-	// 데이터 update 진행
-	
-	// 삽입
-	// - 데이터/ 이미지/ 농장 + summernote
-	// 수정
-	// - 데이터/ 이미지/ 농장
-	// - summernote
-	
-	//삭제
 
 	//구독 리스트 페이지
 	@GetMapping("/subs/plist")
