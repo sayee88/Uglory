@@ -43,7 +43,6 @@ public class SubscriptionController {
 	public String subscription(/*@ModelAttribute("loginMember") Member loginMember,*/
 							   HttpSession session,
 							   Model model,
-							   RedirectAttributes ra,
 							   HttpServletRequest req,
 							   HttpServletResponse resp) {
 		
@@ -51,14 +50,14 @@ public class SubscriptionController {
 		
 		String path = "";
 		
-		
 		if(loginMember == null) {
-			ra.addFlashAttribute("message", "로그인 후 구독할 수 있습니다.");
 			path = "member/login";
+			
 		}else {
 			path = "subscription/subscription1";
 		}
 		
+
 		
 		return path;
 	}
