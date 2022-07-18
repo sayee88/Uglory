@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
+import edu.kh.ugloryC.member.model.vo.Member;
 import edu.kh.ugloryC.review.model.vo.ReviewImage;
 import edu.kh.ugloryC.review.model.vo.ReviewSelectInfo;
 import edu.kh.ugloryC.review.model.vo.ReviewWrite;
@@ -41,6 +42,32 @@ public class ReviewDAO {
 		int imageResult = sqlSession.insert("reviewMapper.insertReviewImage", reviewImageList);
 		
 		return imageResult;
+	}
+
+
+	/**
+	 * 구독상품 미작성 리뷰 조회 DAO
+	 * @return subUnWrittenList
+	 */
+	public List<ReviewSelectInfo> subUnWrittenList(Member loginMember) {
+		
+		List<ReviewSelectInfo> subUnWrittenList = sqlSession.selectList("reviewMapper.subUnWrittenList", loginMember);
+		
+		return subUnWrittenList;
+	}
+
+
+	
+	/**
+	 * 개별상품 미작성 리뷰 조회 DAO
+	 * @param loginMember
+	 * @return productUnWrittenList
+	 */
+	public List<ReviewSelectInfo> productUnWrittenList(Member loginMember) {
+		
+		List<ReviewSelectInfo> productUnWrittenList = sqlSession.selectList("reviewMapper.productUnWrittenList", loginMember);
+		
+		return productUnWrittenList;
 	}
 
 
