@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>login</title>
+    <title>SubscriptionStatus</title>
 
     <%-- favicon --%>
     <link rel="icon" href="${contextPath}/resources/img/main/logo/favicon.ico" />
@@ -46,51 +46,52 @@
 
     <jsp:include page="/WEB-INF/views/common/header-1.jsp" />
 
-        <div class="subscribe">
+        <section class="subscribe">
             <div>
                 <h1 class="subscribe-text">내 구독 정보</h1>
             </div>
-            
-            <%-- <c:choose>
 
-                <c:when test="${ }">
+                <%-- 구독 상품이 없을 때  --%>
+                <c:if test="${substatus.subCount == 0}">
                 <div class=sub-area>
                     <div class="subscribe-box">
                         <div class="subscribe-situation">구독 중인 박스가 없어요!!</div>
                     </div>
 
                     <div class="subscribeBtn">
-                        <button type="button" class="subscribe-btn" onclick="location.href='${contextPath}/subscription'">어글로리 구독하기</button>
+                        <button type="button" class="subscribe-btn" onclick="location.href='${contextPath}/SubscriptionStatus'">어글로리 구독하기</button>
                     </div>
                 </div>
-                </c:when>
-
-                <c:otherwise>
+                </c:if>
                 
+
+                <%-- 구독 상품이 있을 때  --%>
+                <c:if test="${substatus.subCount == 1}">
                     <div class=sub-area>
 
                         <div class="subscribe-box">
                             
                             <div style="padding-top:30px; padding-left:64px; font-weight:bold;">
-                                <p>박예진 고객님</p>
-                                <p>[친환경 못난이 채소 박스 (1-2인 가구용)]</p>
-                                <p>[ 매주 ] 이용 중 입니다.</p>
+                                <p>${substatus.memberName} 고객님</p>
+                                <p>[${substatus.subName}]</p>
+                                <p>[${substatus.subCycle }] 이용 중 입니다.</p>
                             </div>
 
                             <div class="subscribeBtn">
-                                <button type="button" class="subscribe-btn" onclick="location.href='${contextPath}/subscription'">어글로리 구독 취소</button>
+                                <a href="${contextPath}/member/subscriptionStatus" id="subCancle-btn" class="subscribe-btn">어글로리 구독 취소</a>
+                                <button class="subscribe-btn" onclick="location.href='${contextPath}/SubscriptionStatus'">어글로리 구독 취소</button>
                             </div>
                         </div>
 
 
                     </div>
-                </c:otherwise>
+                </c:if>
+
+            </form>
 
 
-            </c:choose> --%>
 
-
-        </div>
+        </section>
     </main>
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />

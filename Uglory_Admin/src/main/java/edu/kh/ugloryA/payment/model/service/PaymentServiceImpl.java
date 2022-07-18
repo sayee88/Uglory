@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import edu.kh.ugloryA.payment.model.dao.PaymentDAO;
 import edu.kh.ugloryA.payment.model.vo.Payment;
+import edu.kh.ugloryA.payment.model.vo.PaymentDetail;
 
 @Service
 public class PaymentServiceImpl implements PaymentService {
@@ -31,6 +32,30 @@ public class PaymentServiceImpl implements PaymentService {
 	public List<Payment> searchPayment(String key, String query) {
 		return dao.searchPayment(key, query);
 	}
+
+
+	// 주문 번호로 개별 or 구독 여부 확인
+	@Override
+	public int checkOrder(String orderCode) {
+		return dao.checkOrder(orderCode);
+	}
+
+
+	// 개별 상품 상세 조회
+	@Override
+	public PaymentDetail selectProductPaymentDetail(String orderCode) {
+		return dao.selectProductPaymentDetail(orderCode);
+	}
+
+
+	// 구독 상품 상세 조회
+	@Override
+	public List<PaymentDetail> selectSubsPaymentDetail(String orderCode) {
+		return dao.selectSubsPaymentDetail(orderCode);
+	}
+	
+	
+	
 	
 	
 	

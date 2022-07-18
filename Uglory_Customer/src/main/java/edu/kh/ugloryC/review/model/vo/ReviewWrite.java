@@ -10,19 +10,22 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Review {
+public class ReviewWrite {
 	
 	private int reviewNo;
 	private String reviewContent;
-	private Date reviewEnrollDate;
+	private String reviewEnrollDate;
 	private int starRating;
 	private int reviewCode;
 	private int memberNo;
 	
-	private int productImageNo;
 	private String productOrderDate;
 	private String productName;
 	private String optionName;
 	private int totalPrice;
+	
+	private int productCode;
+	private int productOrderCode;
+	private int subOrderCode;
 	
 }

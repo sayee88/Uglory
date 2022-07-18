@@ -26,6 +26,7 @@ import com.google.gson.Gson;
 import edu.kh.ugloryC.member.model.service.MemberService;
 import edu.kh.ugloryC.member.model.vo.Member;
 import edu.kh.ugloryC.member.model.vo.OrderHistory;
+import edu.kh.ugloryC.member.model.vo.SubscriptionStatus;
 
 @Controller
 @RequestMapping("/member")
@@ -50,16 +51,11 @@ public class MemberController {
 	public String secession() {
 		return "member/secession";
 	}
-	//내 구독 현황
-	@GetMapping("/subscribeCHK")
-	public String subscribeCHK() {
-		return "member/subscribeCHK";
-	}
+	
+	
 	//개별 주문 내역 조회
 	@GetMapping("/orderHistory")
 	public String orderHistory(Model model) {
-		List<OrderHistory> selectOne = service.selectOne();
-		model.addAttribute("selectOne", selectOne);
 		return "member/orderHistory";
 	}
 	//구독 주문 내역 조회
@@ -81,6 +77,15 @@ public class MemberController {
 		return "redirect:/"; // 메인페이지로 리다이렉트
 	}
 	
+	// 구독 취소 했을 때 
+//	@GetMapping("subscriptionStatus")
+//	public String subscriptionCancle(HttpSession session , SessionStatus status) {
+//		
+//		status.setComplete();
+//		
+//		return "member/subscriptionStatus";
+//	}
+
 	// 로그인
 	@ResponseBody
 	@PostMapping("/login")
@@ -144,7 +149,7 @@ public class MemberController {
 		return "redirect:"+path;
 	}
 	
-	
+	// 24시간 경과 후 재가입
 	@ResponseBody
 	@PostMapping("/reSignUp")
 	public int reSignUp(Member inputMember, Model model) {
@@ -159,15 +164,17 @@ public class MemberController {
 	}
 	
 	
-	
-	// 개별 상품 주문 조회
-//	@ResponseBody // 비동기 통신할때 사용 
-//	@GetMapping("/member/orderHistory/selectOne")
-//	public String selectOne(int memberNo) {
-//		
-//		 
-//		List<OrderHistory> selectOne = service.selectOne();
-//		
-//		return new Gson().toJson(selectOne);
-//	}
+	// 내 구독 현황
+	@GetMapping("/subscriptionStatus")
+	public String SubscriptionStatus(@ModelAttribute("loginMember") Member loginMember, Model model) {
+		
+		int memberNo = loginMember.getMemberNo();
+		
+		SubscriptionStatus substatus = service.subscriptionStatus(memberNo);
+		
+		model.addAttribute("substatus", substatus);
+		
+		return "member/subscriptionStatus";
+	}
+
 }

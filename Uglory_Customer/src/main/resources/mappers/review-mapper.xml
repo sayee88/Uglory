@@ -1,5 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="reviewMapper">
+
+
+	<!-- 리뷰글 삽입 -->
+	<insert id="insertReview">
+		
+	INSERT INTO REVIEW
+	VALUES (SEQ_REVIEW_NO.NEXTVAL, #{reviewContent}, SYSDATE, #{starRating}, #{memberNo}, #{productCode}, ${productOrderCode}, #{subOrderCode}, #{reviewCode})
+		
+	</insert>
+	 
+	 
+	 <!-- 리뷰 이미지 삽입 -->
+	 <insert id="insertReviewImage">
+	 	INSERT INTO REVIEW_IMG
+	 	SELECT SEQ_IMG_NO.NEXTVAL REVIEW_IMG_NO, A.* FROM(
+	 		<foreach collection="list" item="img" separator="UNION ALL">
+	 			SELECT 	#{img.reviewImageReName} REVIEW_IMG_RENAME
+	 					#{img.reviewImageLevel} REVIEW_IMG_LEVEL
+	 					#{img.reviewNo} REVIEW_NO
+	 			FROM DUAL
+	 		</foreach>
+	 	) A
+	 </insert>
+		
+		
+	<!-- 구독상품 미작성 리뷰 조회 -->
+	<select id="subUnWrittenList">
+		SELECT * FROM SUBS_ORDER
+		LEFT JOIN REVIEW USING(S_ORDER_CD)
+		JOIN SUBS USING(S_CD)
+		WHERE REVIEW_NO IS NULL
+		AND SUBS_ORDER.MEMBER_NO = #{memberNo}
+	</select>
 	
+	
+	<!-- 개별상품 미작성 리뷰 조회 -->
+	<select id="productUnWrittenList">
+		SELECT * FROM PRODUCT_ORDER
+		LEFT JOIN REVIEW USING(P_ORDER_CD)
+		JOIN OPTION_TB USING(P_ORDER_CD)
+		JOIN OPTION_TYPE USING(OPTION_CD)
+		JOIN PRODUCT ON(OPTION_TYPE.P_CD = PRODUCT.P_CD)
+		WHERE REVIEW_NO IS NULL
+		AND PRODUCT_ORDER.MEMBER_NO = #{memberNo}
+	</select>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 </mapper>

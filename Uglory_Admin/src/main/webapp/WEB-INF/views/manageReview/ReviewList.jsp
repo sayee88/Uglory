@@ -54,6 +54,7 @@
 
         <!-- Content Start -->
         <div class="content">
+            
             <!-- Navbar Start -->
             <jsp:include page="/WEB-INF/views/common/header.jsp"/>
             <!-- Navbar End -->
@@ -105,6 +106,95 @@
                                 </tbody>
                             </table>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <!-- 모달창 -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-lg" style="object-fit: contain;">
+                    <div class="modal-content">
+                        
+                        <div class="modal-header">
+                            <div class="modal-title" id="exampleModalLabel"></div>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        
+                        <div class="modal-body" style="display: flex;">
+                            <div class="modal-mainImage">
+                                <div>
+                                    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+                                        <div class="carousel-inner">
+                                        <div class="carousel-item active" >
+                                            <img src="${contextPath}/resources/img/review/review_img1.png" class="d-block w-100" style="object-fit: contain;">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="${contextPath}/resources/img/review/review_img10.png" class="d-block w-100">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="${contextPath}/resources/img/review/review_img11.png" class="d-block w-100" alt="...">
+                                        </div>
+                                        </div>
+                                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                        </button>
+                                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="modal-imgList">
+                                    <div><img class="small" src="${contextPath}/resources/img/review/review_img1.png"></div>
+                                    <div><img class="small" src="${contextPath}/resources/img/review/review_img10.png"></div>
+                                    <div><img class="small" src="${contextPath}/resources/img/review/review_img11.png"></div>
+                                    <div class="img4">x</div>
+                                </div>
+                            </div>
+                            
+                            <div class="modal-mycontent">
+                                <div class="modal-content-info">
+                                    
+                                    <div>
+                                        <div class="info-name-date">
+                                            <span>신*윤</span>
+                                            <span>2022.07.02</span>
+                                        </div>
+                                        <div class="purchase">정기구독박스</div>
+                                    </div>
+                                    <div class="modal-star">
+                                        <div>
+                                            <span>★</span>
+                                            <span>★</span>
+                                            <span>★</span>
+                                            <span>★</span>
+                                            <span>☆</span>
+                                        </div>
+                                        <div class="avgstar">4.0</div>
+                                    </div>
+            
+                                </div>
+                                <div class="modal-content-text">
+                                    신선한 토마토로 카프레제 해먹었어요~ 멋쟁이 토마토로 파스타도 해먹구 신이 나요~
+                                </div>
+                                <div class="modal-bottom">
+                                    <div class="modal-sub">
+                                        <img src="${contextPath}/resources/img/icon/tomato.png" width="50px">
+                                        <a href="#">   구독 박스가 궁금하다면? >></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                            style="background-color:rgb(113, 214, 199); border:0; font-weight: bold;">수정하기</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                            style="background-color:rgb(113, 214, 199); border:0; font-weight: bold;">삭제하기</button>
+                    </div>
                     </div>
                 </div>
             </div>
