@@ -47,6 +47,11 @@
 		<result property="imageLevel" column="IMG_LEVEL"/>
 	</resultMap>
 	
+	<resultMap type="productCategory" id="category_rm">
+		<id property="productCategoryNo" column="P_CATEGORY_NO"/>
+		<result property="productCategoryName" column="P_CATEGORY_NM"/>
+	</resultMap>
+	
 	
 	<!-- 상품 전체 조회 -->
 	<select id="selectAll" resultMap="product_rm">
@@ -65,7 +70,7 @@
 
 	<!-- 상품 상세조회(상품) -->
 	<select id="selectProduct" resultMap="product_rm">
-		SELECT P_CD, PRODUCT_NM, PRODUCT_PRICE, PRODUCT_ST, P_CATEGORY_NM, PRODUCT_INFO,
+		SELECT P_CD, PRODUCT_NM, PRODUCT_PRICE, PRODUCT_ST, FARM_NO, P_CATEGORY_NO, P_CATEGORY_NM, PRODUCT_INFO,
 	       TO_CHAR(PR_DATE, 'YYYY-MM-DD') PR_DATE_CH,
 	       TO_CHAR(PU_DATE, 'YYYY-MM-DD') PU_DATE_CH
 		FROM PRODUCT
@@ -104,6 +109,54 @@
 		PRODUCT_ST = 'I'
 		WHERE P_CD = #{procuctCode}
 	</update>
+	
+	<!-- 상품 카테고리 조회 -->
+	<select id="selectCategory" resultMap="category_rm">
+		SELECT * FROM P_CATEGORY
+		ORDER BY P_CATEGORY_NO 
+	</select>
+	
+	<!-- 상품 농장 조회 -->
+	<select id="selectFarmList" resultMap="farm_rm">
+		SELECT * FROM FARM
+		WHERE FARM_ST = 'Y'
+		ORDER BY FARM_NO
+	</select>
+	
+	<!-- 상품 등록 -->
+	<insert id="insertProduct" useGeneratedKeys="true">
+	
+		<selectKey keyProperty="productCode" resultType="_int" order="BEFORE">
+			SELECT SEQ_P_CD.NEXTVAL FROM DUAL
+		</selectKey>
+		
+		INSERT INTO PRODUCT VALUES(
+    		#{productCode}, #{productCategoryNo}, #{farmNo}, #{productName}, #{productPrice}, DEFAULT, #{productInfo}, DEFAULT, NULL
+		)
+	</insert>
+	
+	<!-- 상품 이미지 등록 -->
+	<insert id="insertProductImage" parameterType="list">
+		INSERT INTO PRODUCT_IMG
+		
+			SELECT SEQ_P_IMG_NO.NEXTVAL P_IMG_NO, A.* FROM(
+			
+				<foreach collection="list" item="img" separator="UNION ALL">
+				    SELECT 
+				        #{img.productCode} P_CD, 
+				        #{img.imageRename} IMG_RENAME,
+				        #{img.imageRoot} IMG_ROOT,
+				        #{img.imageLevel} IMG_LEVEL
+				    FROM DUAL			
+				</foreach>
+	
+			) A
+	</insert>
+	
+	
+	
+	
+	
 	
 
 </mapper>

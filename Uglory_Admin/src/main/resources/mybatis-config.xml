@@ -32,6 +32,11 @@
 		
 		<typeAlias type="edu.kh.ugloryA.payment.model.vo.Chart" alias="chart"/>
 
+		<typeAlias type="edu.kh.ugloryA.product.model.vo.Product" alias="product"/>
+		<typeAlias type="edu.kh.ugloryA.product.model.vo.ProductImage" alias="productImage"/>
+		<typeAlias type="edu.kh.ugloryA.product.model.vo.OptionType" alias="optionType"/>
+		<typeAlias type="edu.kh.ugloryA.product.model.vo.ProductCategory" alias="productCategory"/>
+		<typeAlias type="edu.kh.ugloryA.farm.model.vo.Farm" alias="farm"/>
 		
 	</typeAliases>
 	
