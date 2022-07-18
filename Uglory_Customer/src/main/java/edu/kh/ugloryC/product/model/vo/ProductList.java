@@ -18,6 +18,7 @@ public class ProductList {
 	private String categoryName;
     private int starCount; // 리뷰 개수
 	private double starAvg; // 0.5단위
+	private int categoryNo;
 	
     private String productState; // 상품상태
 

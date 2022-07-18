@@ -35,6 +35,11 @@
 
     <!-- summernote css 파일 -->
     <link rel="stylesheet" href="${contextPath}/resources/css/summernote/summernote-lite.min.css">
+    
+    <!-- summernote 폰트 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
 
 </head>
 
@@ -55,18 +60,23 @@
             <!-- 상품 등록 form태그 -->
             <main class="container-fluid pt-4 px-4">
                 <section class="row justify-content-center mx-0 ">
-                    <article class="col-xl-6 col-lg-8 text-center bg-light product-margin p-4 rounded">
-                        <form action="">
+                    <article class="col-xl-6 col-md-8 bg-light product-margin p-4 rounded">
+                        <form action="register?mode=${mode}" enctype="multipart/form-data" method="POST" onsubmit="return productValidate()">
                             <h2 class="text-start">상품 등록</h2>
                             <hr>
 
                             <div class="product-row">
                                 <span class="fw-bold">상품 분류</span>
                                 <div class="productWrap">
-                                    <select name="" id="" class="productInput ps-1">
-                                        <option value="">근채류</option>
-                                        <option value="">두류/곡류/견과류</option>
-                                        <option value="">조미채소류</option>
+                                    <select name="productCategoryNo" id="category" class="productInput ps-1">
+                                        <c:if test="${!empty categoryList}">
+                                            <c:forEach var="category" items="${categoryList}">
+                                                <c:if test="${category.productCategoryNo == product.productCategoryNo}">
+                                                    <option value="${category.productCategoryNo}" selected>${category.productCategoryName}</option>
+                                                </c:if>
+                                                <option value="${category.productCategoryNo}">${category.productCategoryName}</option>
+                                            </c:forEach>
+                                        </c:if>
                                     </select>
                                 </div>
                             </div>
@@ -74,16 +84,24 @@
                             <div class="product-row">
                                 <span class="fw-bold">상품명</span>
                                 <div class="productWrap">
-                                    <input type="text" class="productInput ps-1" placeholder="상품명">
-                                    <div class="inputMessage text-danger">상품은 한글만 입력해주세요</div>
+                                    <%-- 상품명 중복검사 + 한글 입력 유효성 검사 --%>
+                                    <input name="productName" id="productName" type="text" class="productInput ps-1" placeholder="상품명" value="${product.productName}">
+                                    <div class="inputMessage" id="pnameText">상품명을 입력해주세요.</div>
                                 </div>
                             </div>
                             
                             <div class="product-row">
                                 <span class="fw-bold">생산자</span>
                                 <div class="productWrap">
-                                    <select name="" id="" class="productInput ps-1">
-                                        <option value="">당근 농장</option>
+                                    <select name="farmNo" id="farm" class="productInput ps-1">
+                                        <c:if test="${!empty farmList}">
+                                            <c:forEach var="farm" items="${farmList}">
+                                                <c:if test="${farm.farmNo == product.farmNo}">
+                                                    <option value="${farm.farmNo}" selected>${farm.farmName}</option>
+                                                </c:if>
+                                                <option value="${farm.farmNo}">${farm.farmName}</option>
+                                            </c:forEach>
+                                        </c:if>
                                     </select>
                                 </div>
                             </div>
@@ -91,30 +109,57 @@
                             <div class="product-row">
                                 <span class="fw-bold">상품 가격</span>
                                 <div class="productWrap">
-                                    <input type="number" class="productInput ps-1">
+                                    <input name="productPrice" id="productPrice" type="number" class="productInput ps-1" value="${product.productPrice}">
                                 </div>
                             </div>
 
-                            <div class="product-row">
-                                <span class="fw-bold">상품 이미지</span>
-                                <div class="productWrap">
-                                    <input type="file" class="productInput">
-                                    <input type="file" class="productInput">
-                                    <input type="file" class="productInput">
-                                    <input type="file" class="productInput">
+                            <c:if test="${mode == 'insert'}">
+                                <div class="product-row">
+                                    <span class="fw-bold">상품 이미지</span>
+                                    <div class="productWrap">
+                                        <input type="file" class="productInput" name="productImg" id="productImg0" accept="image/*">
+                                        <input type="file" class="productInput" name="productImg" id="productImg1" accept="image/*">
+                                        <input type="file" class="productInput" name="productImg" id="productImg2" accept="image/*">
+                                        <input type="file" class="productInput" name="productImg" id="productImg3" accept="image/*">
+                                    </div>
                                 </div>
-                            </div>
+                            </c:if>
 
                             <!-- Button trigger modal -->
-                            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                상품설명 작성
-                            </button>
+                            <div class="info-btn-area ps-3 pe-3">
+                                <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                    상품설명 작성
+                                </button>
+                                <p class="m-0">
+                                    <%-- summernote 내용 있을때 전구 모양 변하기 --%>
+                                    <i id="info-st" class="fa-regular fa-lightbulb text-warning" style="font-size:36px;"></i>
+                                </p>
+                            </div>
                             
                             <div class="product-row">
-                                <button type="button" class="btn btn-lg btn-primary m-1 w-100">취소</button>
-                                <button class="btn btn-lg btn-primary m-1 w-100">다음</button>
+                                <%-- 취소 버튼 클릭 시 alret 띄우고 insert -> list로 / update -> detail로 --%>
+                                <button id="calcelInsert" type="button" class="btn btn-lg btn-secondary m-1 w-100">취소</button>
+                                <button class="btn btn-lg btn-primary m-1 w-100">등록</button>
                             </div>
 
+                            <!-- Modal -->
+                            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-xl">
+                                    <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="staticBackdropLabel">상품 설명 작성</h5>
+                                    </div>
+                                    <div class="modal-body">
+                                        <textarea name="productInfo" id="summernote"></textarea>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <%-- 취소 버튼 클릭 시 alret 띄우고 summernote 내용 삭제 --%>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="cancleNote">취소</button>
+                                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">저장</button>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
                         </form>
                     </article>
                 </section>
@@ -126,29 +171,16 @@
         </div>
         <!-- Content End -->
 
-
-        <!-- Modal -->
-        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">상품 설명 작성</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <textarea name="editordata" id="summernote"></textarea>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Understood</button>
-            </div>
-            </div>
-        </div>
-        </div>
-
         <!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
+
+    <script>
+        const contextPath = '${contextPath}';
+        const mode = '${mode}';
+        const productCode = '';
+        const productInfo = '${product.productInfo}';
+    </script>
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

@@ -25,8 +25,12 @@
 		<typeAlias type="edu.kh.ugloryC.product.model.vo.ProductDetail" alias="detail"/>
 		<typeAlias type="edu.kh.ugloryC.product.model.vo.ProductImage" alias="productImage"/>
 		<typeAlias type="edu.kh.ugloryC.product.model.vo.OptionType" alias="optionType"/>
+<<<<<<< HEAD
+		<typeAlias type="edu.kh.ugloryC.product.model.vo.ProductOrder" alias="productOrder"/>
+=======
 		<typeAlias type="edu.kh.ugloryC.product.model.vo.Option" alias="option"/>
 		<typeAlias type="edu.kh.ugloryC.product.model.vo.ProductList" alias="productList"/>
+>>>>>>> afba3eca5a730794d0fe2235855d1d761cb3cc28
 		
 		<typeAlias type="edu.kh.ugloryC.review.model.vo.ReviewWrite" alias="reviewWrite"/>
 		<typeAlias type="edu.kh.ugloryC.review.model.vo.ReviewImage" alias="reviewImage"/>

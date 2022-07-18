@@ -1,16 +1,24 @@
 package edu.kh.ugloryA.product.model.service;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import edu.kh.ugloryA.common.Util;
 import edu.kh.ugloryA.farm.model.vo.Farm;
 import edu.kh.ugloryA.product.model.dao.ProductDAO;
+import edu.kh.ugloryA.product.model.exception.InsertFailException;
 import edu.kh.ugloryA.product.model.vo.OptionType;
 import edu.kh.ugloryA.product.model.vo.Product;
+import edu.kh.ugloryA.product.model.vo.ProductCategory;
 import edu.kh.ugloryA.product.model.vo.ProductImage;
 
 @Service
@@ -62,6 +70,81 @@ public class ProductServiceImpl implements ProductService {
 	public int stocked(int productCode) {
 		return dao.stocked(productCode);
 	}
+
+	//상품 카테고리 조회
+	@Override
+	public List<ProductCategory> selectCategory() {
+		return dao.selectCategory();
+	}
+
+	//상품 농장 조회
+	@Override
+	public List<Farm> selectFarmList() {
+		return dao.selectFarmList();
+	}
+
+	//상품 등록 서비스 구현
+	@Transactional(rollbackFor = {Exception.class})
+	@Override
+	public int insertProduct(Product product, List<MultipartFile> imageList, String webPath, String folderPath) throws IOException {
+		
+		//게시글 삽입
+		int productCode = dao.insertProduct(product);
+		
+		if(productCode > 0) {
+			
+			List<ProductImage> productImageList = new ArrayList<ProductImage>();
+			List<String> reNameList = new ArrayList<String>();
+			
+			//이미지 삽입
+			for(int i=0; i<imageList.size(); i++) {
+				
+				if(imageList.get(i).getSize() > 0) {
+					
+					String reName = Util.fileRename( imageList.get(i).getOriginalFilename() );
+					reNameList.add(reName);
+					
+					ProductImage img = new ProductImage();
+					img.setProductCode(productCode);
+					img.setImageLevel(i);
+					img.setImageRename(reName);
+					img.setImageRoot(webPath + reName);
+					
+					productImageList.add(img);
+				}
+			}
+			
+			//서버에 이미지 저장
+			if(!productImageList.isEmpty()) {
+				int result = dao.insertProductImage(productImageList);
+				
+				if(result == productImageList.size()) {
+					
+					for(int i=0; i<productImageList.size(); i++) {
+						
+						int index = productImageList.get(i).getImageLevel();
+						imageList.get(index).transferTo(new File(folderPath + reNameList.get(i)));
+						
+					}
+					
+				} else {
+					throw new InsertFailException();
+				}
+			}
+		}
+		return productCode;
+	}
+
+	//상품 1개 조회
+	@Override
+	public Product selectProduct(int productCode) {
+		return dao.selectProduct(productCode);
+	}
+	
+	
+	
+	
+	
 	
 	
 

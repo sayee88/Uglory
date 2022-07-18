@@ -52,7 +52,6 @@ public class MemberController {
 		return "member/secession";
 	}
 	
-	
 	//개별 주문 내역 조회
 	@GetMapping("/orderHistory")
 	public String orderHistory(Model model) {
@@ -63,8 +62,7 @@ public class MemberController {
 	public String subscriptionHistory() {
 		return "member/subscriptionHistory";
 	}
-	
-	
+		
 	//로그아웃 
 	@GetMapping("/logout")
 	public String logout(HttpSession session , SessionStatus status) {
@@ -77,14 +75,7 @@ public class MemberController {
 		return "redirect:/"; // 메인페이지로 리다이렉트
 	}
 	
-	// 구독 취소 했을 때 
-//	@GetMapping("subscriptionStatus")
-//	public String subscriptionCancle(HttpSession session , SessionStatus status) {
-//		
-//		status.setComplete();
-//		
-//		return "member/subscriptionStatus";
-//	}
+	
 
 	// 로그인
 	@ResponseBody
@@ -166,15 +157,58 @@ public class MemberController {
 	
 	// 내 구독 현황
 	@GetMapping("/subscriptionStatus")
-	public String SubscriptionStatus(@ModelAttribute("loginMember") Member loginMember, Model model) {
+	public String SubscriptionStatus(@ModelAttribute("loginMember") Member loginMember, Model model
+										,SubscriptionStatus sub
+										,RedirectAttributes ra) {
 		
 		int memberNo = loginMember.getMemberNo();
 		
 		SubscriptionStatus substatus = service.subscriptionStatus(memberNo);
 		
-		model.addAttribute("substatus", substatus);
+		if(substatus == null) {
+			int subCount = 0;
+			model.addAttribute("subCount", subCount);
+			
+		} else {
+			
+			int subCount = 1;
+			model.addAttribute("subCount", subCount);
+
+		}
 		
+		model.addAttribute("substatus", substatus);
+
 		return "member/subscriptionStatus";
 	}
+	
+	// 내구독 상품 취소
+	@PostMapping("/subscriptionStatus")
+	public String subcancel(@ModelAttribute("loginMember") Member loginMember,
+							RedirectAttributes ra, Model model) {
+		
+		int memberNo = loginMember.getMemberNo();
+		
+		int result = service.subCancel(memberNo);
+		
+		String message = null;
+		String path = null;
 
+		if(result > 0) {
+			
+			message = "구독 상품이 취소되었습니다.";
+			path = "subscriptionStatus";
+			
+			ra.addFlashAttribute("message", message);
+			
+			return "redirect:" + path;
+			
+		} else {
+			
+			message = "구독 상품 취소 실패! 다시 시도해주세요.";
+			path = "subscriptionStatus";
+			
+			ra.addFlashAttribute("message", message);
+			return "redirect:" + path;
+		}
+	}
 }

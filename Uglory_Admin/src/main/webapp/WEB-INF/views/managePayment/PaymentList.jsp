@@ -102,7 +102,7 @@
                                             <td>${payment.payAmount}</td>
                                             <td>${payment.payDate}</td>
                                             <td>
-                                                <button type="button" class="btn btn-payment-detail selectDetail">상세</button>
+                                                <button type="button" class="btn btn-payment-detail selectDetail sort-${payment.sort}">상세</button>
                                                 <%-- onclick="location.href='../selectDetail/${payment.orderCode}'" --%>
                                             </td>
                                         </tr>
@@ -113,7 +113,6 @@
                     </div>
                 </div>
             </div>
-
 
             <!-- Footer Start -->
             <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
@@ -141,7 +140,17 @@
 
     <script src="${contextPath}/resources/js/paymentList.js"></script>
 
-    <script>const contextPath = "${contextPath}";</script>
+    <script>
+        const contextPath = "${contextPath}";
+        
+
+        for(var sort of sortlist){
+            console.log(sort);
+        }
+
+
+
+    </script>
 
 </body>
 

@@ -1,16 +1,18 @@
-package edu.kh.ugloryC.product.model.vo;
+package edu.kh.ugloryA.payment.model.vo;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
 @NoArgsConstructor
+@ToString
 public class Option {
 
-	private int optionCode;
+	private String orderCode;
 	private String optionName;
-	private int optionPrice;
-	private int oprionCount;
+	private String productName;
+	private String optionCount;
 }

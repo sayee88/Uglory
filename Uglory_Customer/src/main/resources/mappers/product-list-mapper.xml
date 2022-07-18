@@ -24,12 +24,13 @@
 		<result property="starCount" column="STAR_COUNT"/>
 		<result property="starAvg" column="STAR_AVG"/>
 		<result property="productState" column="PRODUCT_ST"/>
+		<result property="categoryNo" column="P_CATEGORY_NO"/>
 	</resultMap>
 	
 	
 	<select id="productList" resultMap="product_list">
 		SELECT DISTINCT PRODUCT_NM, PRODUCT_PRICE, IMG_ROOT,
-		   P_CATEGORY_NM, PRODUCT_ST,
+		   P_CATEGORY_NM, PRODUCT_ST, P_CD, P_CATEGORY_NO,
 		   (SELECT COUNT(*) FROM REVIEW WHERE R.P_CD=P.P_CD) STAR_COUNT,
 		   CASE WHEN  (SELECT COUNT(*) FROM REVIEW WHERE R.P_CD=P.P_CD) = 0 THEN 0
 		        ELSE  ((SELECT SUM(STAR_RATING) FROM REVIEW ) / 
