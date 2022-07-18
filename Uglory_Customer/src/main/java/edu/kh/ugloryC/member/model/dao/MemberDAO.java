@@ -41,19 +41,20 @@ public class MemberDAO {
 	}
 	
 	
-	// 
+	
 	public List<OrderHistory> selectOne() {
 		
 		return sqlSession.selectList("memberMapper.selectOne");
 	}
 
-	
+	//재가입 DAO
 	public int reSignUp(String memberEmail) {
 		return sqlSession.update("memberMapper.reSignUp", memberEmail);
 	}
 
 	//내구독 현황 DAO
 	public SubscriptionStatus subscriptionStatus(int memberNo) {
+		
 		return sqlSession.selectOne("memberMapper.subscriptionStatus",memberNo);
 	}
 
