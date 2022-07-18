@@ -134,7 +134,7 @@
                                 <p>미작성 리뷰</p>
                                 <p>
                                     <span style="margin-right: 15px;">2</span>
-                                    <a id="unWritten">
+                                    <a href="${contextPath}/list/unWritten" id="unWritten">
                                         <span style="font-size: 15px; color: rgb(80, 124, 254);">쓰기 >></span>
                                     </a>
                                 </p>
@@ -142,7 +142,10 @@
                         </div>
                     </div>
                 </div>
+                 
                 
+
+
                 <!-- category -->
                 <div class="category_section"> 
                     <div class="category_button">
@@ -165,9 +168,7 @@
 
                 <div class="review-content">
                     <div data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        <a href="">
-                            <img src="${contextPath}/resources/img/review/review_img1.png">
-                        </a>
+                        <img src="${contextPath}/resources/img/review/review_img1.png">
                     </div>
                     <div class="review-content-text">
                         <div class="review-content-top-section">

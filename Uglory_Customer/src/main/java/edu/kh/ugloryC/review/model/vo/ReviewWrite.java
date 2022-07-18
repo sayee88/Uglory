@@ -18,12 +18,14 @@ public class ReviewWrite {
 	private int starRating;
 	private int reviewCode;
 	private int memberNo;
-	private String memberName;
 	
-	private int productImageNo;
 	private String productOrderDate;
 	private String productName;
 	private String optionName;
 	private int totalPrice;
+	
+	private int productCode;
+	private int productOrderCode;
+	private int subOrderCode;
 	
 }
