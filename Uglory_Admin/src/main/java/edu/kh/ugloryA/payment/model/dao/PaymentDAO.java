@@ -10,8 +10,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import edu.kh.ugloryA.payment.model.vo.Chart;
 import edu.kh.ugloryA.payment.model.vo.Payment;
-import edu.kh.ugloryA.payment.model.vo.PaymentDetail;
+import edu.kh.ugloryA.payment.model.vo.ProductPaymentDetail;
+import edu.kh.ugloryA.payment.model.vo.SubsPaymentDetail;
 
 @Repository
 public class PaymentDAO {
@@ -63,7 +65,7 @@ public class PaymentDAO {
 	 * @param orderCode
 	 * @return pPaymentDetail
 	 */
-	public PaymentDetail selectProductPaymentDetail(String orderCode) {
+	public ProductPaymentDetail selectProductPaymentDetail(String orderCode) {
 		return sqlSession.selectOne("paymentMapper.selectProductPaymentDetail", orderCode);
 	}
 
@@ -73,8 +75,9 @@ public class PaymentDAO {
 	 * @param orderCode
 	 * @return sPaymentDetail
 	 */
-	public List<PaymentDetail> selectSubsPaymentDetail(String orderCode) {
-		return sqlSession.selectList("paymentMapper.selectSubsPaymentDetailList", orderCode);
+	public SubsPaymentDetail selectSubsPaymentDetail(String orderCode) {
+		return sqlSession.selectOne("paymentMapper.selectSubsPaymentDetail", orderCode);
 	}
+
 	
 }

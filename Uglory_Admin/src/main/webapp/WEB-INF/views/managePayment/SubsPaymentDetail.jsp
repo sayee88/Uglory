@@ -71,22 +71,22 @@
                             <thead>
                                 <tr>
                                     <th scope="col" colspan="2">주문 번호</th>
-                                    <th scope="col" colspan="3">${detail.orderCode}</th>
+                                    <th scope="col" colspan="3">${sPaymentDetail.orderCode}</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <th>주문자</th>
-                                    <td>블랙이</td>
+                                    <td>${sPaymentDetail.customerName}</td>
                                     <th>주문자 아이디</th>
-                                    <td>test01@uglory.com</td>
+                                    <td>${sPaymentDetail.customerEmail}</td>
                                 </tr>
 
                                 <tr>
                                     <th>결제 금액</th>
-                                    <td>100,400원</td>
+                                    <td>${sPaymentDetail.payAmount}</td>
                                     <th>결제일</th>
-                                    <td>2022-07-07 17:46:14</td>
+                                    <td>${sPaymentDetail.payDate}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -97,16 +97,16 @@
                             <tbody>
                                 <tr>
                                     <th>배송지</th>
-                                    <td>서울시 강서구 금낭화로11길 59-2</td>
+                                    <td>${sPaymentDetail.deliveryAddress}</td>
                                     <th>배송 상태</th>
-                                    <td>배송 완료</td>
+                                    <td>${sPaymentDetail.deliveryStatement}</td>
                                 </tr>
 
                                 <tr>
                                     <th>배송일</th>
-                                    <td>2022-07-10 17:46:16</td>
+                                    <td>${sPaymentDetail.deliveryDate}</td>
                                     <th>배송 요청사항</th>
-                                    <td>배송 전 전화 부탁드립니다.</td>
+                                    <td>${sPaymentDetail.deliveryRequest}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -119,19 +119,19 @@
                         <table class="table table-borderless mt-4">
                             <thead>
                                 <tr>
-                                    <th colspan="3">스탠다드</th>
+                                    <th colspan="3">${sPaymentDetail.subscriptionName}</th>
                                 </tr>
                             </thead>
 
                             <tbody>
                                 <tr>
                                     <td colspan="1">배송 주기</td>
-                                    <td colspan="2">2주</td>
+                                    <td colspan="2">${sPaymentDetail.subscriptionCycle}주</td>
                                 </tr>
 
                                 <tr>
                                     <td colspan="1">구독 제외 상품</td>
-                                    <td colspan="2">당근, 시금치, 단호박, 대파, 옥수수</td>
+                                    <td colspan="2">${sPaymentDetail.subscriptionException}</td>
                                 </tr>
                             </tbody>
                         </table>

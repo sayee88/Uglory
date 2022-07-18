@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import edu.kh.ugloryA.farm.model.vo.Farm;
 import edu.kh.ugloryA.product.model.vo.OptionType;
 import edu.kh.ugloryA.product.model.vo.Product;
+import edu.kh.ugloryA.product.model.vo.ProductCategory;
 import edu.kh.ugloryA.product.model.vo.ProductImage;
 
 @Repository
@@ -77,6 +78,45 @@ public class ProductDAO {
 	 */
 	public int stocked(int productCode) {
 		return sqlSession.update("productMapper.stocked", productCode);
+	}
+
+	/**
+	 * 카테고리 조회
+	 * @return categoryList
+	 */
+	public List<ProductCategory> selectCategory() {
+		return sqlSession.selectList("productMapper.selectCategory");
+	}
+
+	/**
+	 * 상품 농장리스트 조회
+	 * @return farmList
+	 */
+	public List<Farm> selectFarmList() {
+		return sqlSession.selectList("productMapper.selectFarmList");
+	}
+
+	/**
+	 * 상품 등록 DAO
+	 * @param product
+	 * @return result
+	 */
+	public int insertProduct(Product product) {
+		
+		int result = sqlSession.insert("productMapper.insertProduct", product);
+		
+		if(result>0) result = product.getProductCode();
+		
+		return result;
+	}
+
+	/**
+	 * 이미지 삽입(리스트)DAO
+	 * @param productImageList
+	 * @return result
+	 */
+	public int insertProductImage(List<ProductImage> productImageList) {
+		return sqlSession.insert("productMapper.insertProductImage", productImageList);
 	}
 
 	
