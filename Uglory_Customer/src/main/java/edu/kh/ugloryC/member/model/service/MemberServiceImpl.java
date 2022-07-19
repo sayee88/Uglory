@@ -40,6 +40,7 @@ public class MemberServiceImpl implements MemberService {
 		}
 	}
 
+	
 	// 회원 탈퇴 서비스 구현
 	@Override
 	public int secession(Map<String, Object> map) {
@@ -57,6 +58,8 @@ public class MemberServiceImpl implements MemberService {
 		if(result > 0) return dao.login(memberEmail);
 		else return null;
 	}
+	
+	
 
 	//구독 현황 서비스 구현 
 	@Override
@@ -65,6 +68,7 @@ public class MemberServiceImpl implements MemberService {
 		return dao.subscriptionStatus(memberNo);
 	}
 
+	
 	// 내 구독 상품 취소 서비스 구현
 	@Override
 	public int subCancel(int memberNo) {
