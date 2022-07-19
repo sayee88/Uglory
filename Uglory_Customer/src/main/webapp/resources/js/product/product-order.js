@@ -176,7 +176,7 @@ document.getElementById("order-btn").addEventListener("click", function(){
                             if(res>0){
                                 location.href = contextPath + "/member/orderHistory";
 
-                                alert("결제가 완료되었습니다.:)");
+                                alert("결제가 완료되었습니다 :D");
 
                             } else {
                                 location.href = contextPath;
