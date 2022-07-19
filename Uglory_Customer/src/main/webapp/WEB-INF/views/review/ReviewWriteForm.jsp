@@ -129,22 +129,30 @@
                             </fieldest>
                         </form> --%>
                     </div>
+                    <%-- <p>
+                        <a href="#" value="1">★</a>
+                        <a href="#" value="2">★</a>
+                        <a href="#" value="3">★</a>
+                        <a href="#" value="4">★</a>
+                        <a href="#" value="5">★</a>
+                    </p> --%>
 
                     <!-- 썸네일 이미지 (첫번째 등록 이미지가 썸네일 이미지) -->
                     <div class="review-img-upload">
                             
-                        <div class="reviewImg">
+                        <div class="reviewImg m-1">
                             <label for="img0">
-                                <img class="preview" src="${contextPath}/resources/img/review/review_img11.png">
+                                <img class="preview">
                             </label>
                             <input type="file" class="inputImage" id="img0" name="0" accept="image/*">
                             <span class="delete-image">&times;</span> 
                         </div>
+                        
                             
                     </div>
 
                     <div class="review-inputtext">
-                        <textarea placeholder="" name="boardContent"></textarea>
+                        <textarea placeholder="리뷰를 작성해주세요." name="boardContent"></textarea>
                     </div>
 
                     <div class="review-precautions">
@@ -187,6 +195,7 @@
     <%-- Template Javascript --%>
     <script src="${contextPath}/resources/js/main.js"></script>
     <script src="${contextPath}/resources/js/review/star-rating.js"></script>
+    <script src="${contextPath}/resources/js/review/reviewWriteForm.js"></script>
 </body>
 
 </html>

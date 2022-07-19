@@ -47,75 +47,146 @@
     <jsp:include page="/WEB-INF/views/common/header-1.jsp" />
 
         <div class="order-section">
+
             <div class="order-head">
-                <h2 class="orderTitle">구독내역</h2>
-                <div class="date">스탠다드 | 패밀리</div>
+                <h2 class="orderTitle"> 구독 내역(AJAX)</h2>
             </div>
 
-                <div>
-                    <ul class="orderList">
-                        <li class="list-section">
-                            
-                            <div class="date">2022.07.11 (17:00)</div>
+            <div id="result1">
+        
+                <ul class="orderList">
+            
+                    <li class="list-section">
                         
-                            <div class="order-goods">
-                            
-                                <div class="order-name">
-                                    <a href="">새콤달콤 당도선별 제주 감귤</a>
-                                </div>
-                            
+                        <div class="date">${item.orderDate}</div>
+                    
+                        <div class="order-goods">
+                        
+                            <div class="order-name">
+                                [스탠다드${item.subName}]
                             </div>
                         
+                        </div>
+                    
+                        <div class="order-info">
+                            <div class="description" id=selectOne>
+
+                                <dl>
+                                    <dt>주문번호</dt>
+                                    <a href="" id="goToDetail"><dd>${item.orderNo}</dd></a>
+                                </dl>
+                                <dl>
+
+                                    <dt>결제금액</dt>
+                                    <dd>${item.subPrice}</dd>
+                                </dl>
+
+                                <dl>
+                                    <dt>배송상태</dt>
+                                    <dd>${item.deliveryFlag}</dd>
+                                </dl>
+                            </div>
+                        </div>
+
+                        <c:forEach var="order" item="${oList}">
+
+                            <div class="order-head">
+                                <h2 class="orderTitle"> 주문 정보</h2>
+                            </div>
+
                             <div class="order-info">
-                                <div class="description">
-                                  
+                                <div class="description" id=selectOne>
+
                                     <dl>
-                                        <dt>주문번호</dt>
-                                        <dd>1646832984481</dd>
+                                        <dt>주문자 이름</dt>
+                                        <dd>박예진${item.memberName}</dd>
+                                        
                                     </dl>
                                     <dl>
-                                        <dt>결제금액</dt>
-                                        <dd>19,922원</dd>
+                                        <dt>결제 일시</dt>
+                                        <dd> 2022/07/19 11:28:50${item.subPayDate}</dd>
                                     </dl>
+
                                     <dl>
-                                        <dt>배송상태</dt>
-                                        <dd>배송완료</dd>
+                                        <dt> 구독 결제 금액</dt>
+                                        <dd>27,000원${item.subPayAmount}</dd>
                                     </dl>
+
                                 </div>
                             </div>
-                        </li>
-                    </ul>
-                     
-                    <!-- 페이지네이션 시작-->   
-                    <nav aria-label="Page navigation example">
-                    <ul class="pagination d-flex justify-content-center">
-                        <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                        </li>
-                    </ul>
-                    </nav>
-                     <!-- 페이지 네이션 끝 -->
-                  
 
-                </div>
-            
-            
+
+                            <div class="order-head">
+                                <h2 class="orderTitle"> 배송 정보</h2>
+                            </div>
+
+                                <div class="order-info">
+                                    <div class="description" id=selectOne>
+
+                                        <dl>
+                                            <dt>수령인 이름</dt>
+                                            <dd>박예진${item.subOrderName}</dd>
+                                            
+                                        </dl>
+                                        <dl>
+                                            <dt>수령인 전화번호</dt>
+                                            <dd>010-2222-3333${item.subOrderPhone}</dd>
+                                        </dl>
+
+                                        <dl>
+                                            <dt>수령인 주소</dt>
+                                            <dd>압구정로 79-16 1층${item.subOrderAddr}</dd>
+                                        </dl>
+
+                                        <dl>
+                                            <dt>알러지 제외 상품</dt>
+                                            <dd>${item.보류} 제외 된 상품만 배송 되었습니다.</dd>
+                                        </dl>
+
+
+                                        <dl>
+                                            <dt>배송 요청 사항</dt>
+                                            <dd>굿뜨${item.deliveryReq}</dd>
+                                        </dl>
+
+                                    </div>
+                                </div>
+
+                        </c:forEach>
+                    </li>
+                    
+                </ul>
+               
+
+                <!-- 페이지네이션 시작-->   
+                <nav aria-label="Page navigation example">
+                <ul class="pagination d-flex justify-content-center">
+                    <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                    </li>
+                </ul>
+                </nav>
+                <!-- 페이지 네이션 끝 -->
+                
+            </div>
         </div>
-
-
     </main>
+                
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
     
+
+
+
    <%-- <!— jQuery 추가 —> --%>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     
@@ -133,6 +204,17 @@
 
     
     
+    <%-- Template Javascript --%>
+    <%-- <script src="${contextPath}/resources/js/main.js"></script> --%>
+    <script>
+        const contextPath = "${contextPath}" ;
 
+        const loginMemberNo = "${loginMember.memberNo}";
+
+         const 
+    </script>
+
+    <script src="${contextPath}/resources/js/orderList/orderHistory.js"></script>
+    
 </body>
 </html>
