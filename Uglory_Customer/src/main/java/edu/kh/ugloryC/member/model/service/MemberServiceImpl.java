@@ -76,6 +76,21 @@ public class MemberServiceImpl implements MemberService {
 		return dao.subCancel(memberNo);
 	}
 
+
+	// 개별 상품 주문 내역 조회
+	@Override
+	public List<OrderHistory> selectOrderList(int orderNo) {
+	
+		return dao.selectOrderList(orderNo);
+	}
+
+
+	@Override
+	public List<OrderHistory> selectOrderHistoryList(int memberNo) {
+	
+		return dao.selectOrderHistoryList(memberNo);
+	}
+
 	
 
 	
