@@ -10,14 +10,15 @@
             for(let items of list ){
 
                 // div (class="card m-4 col-sm-5 col-xl-3") : 1
+                const wrap = document.createElement("div");
+                wrap.classList.add("col-md-5");
+                wrap.classList.add("col-xl-4");
+                wrap.classList.add("p-4");
+
                 const card = document.createElement("div");
                 card.classList.add("card");
-                card.classList.add("m-4");
-                card.classList.add("col-sm-5");
-                card.classList.add("col-xl-3");
 
-                // a (href="detail/${productCode}") : 
-                
+                // a (href="detail/${productCode}") : 2
                 const a = document.createElement("a");
                 a.setAttribute("href", "detail/" + items.productCode);
 
@@ -98,15 +99,16 @@
                 }
                 
                 card.append(a);
+                wrap.append(card);
 
                 switch(items.productCategoryNo){
-                    case 1 : document.getElementById("rootBox").append(card); break;
-                    case 2 : document.getElementById("beansBox").append(card); break;
-                    case 3 : document.getElementById("vegBox").append(card); break;
-                    case 4 : document.getElementById("fnvBox").append(card); break;
-                    case 5 : document.getElementById("herbsBox").append(card); break;
-                    case 6 : document.getElementById("mushBox").append(card); break;
-                    case 7 : document.getElementById("fruitBox").append(card); break;
+                    case 1 : document.getElementById("rootBox").append(wrap); break;
+                    case 2 : document.getElementById("beansBox").append(wrap); break;
+                    case 3 : document.getElementById("vegBox").append(wrap); break;
+                    case 4 : document.getElementById("fnvBox").append(wrap); break;
+                    case 5 : document.getElementById("herbsBox").append(wrap); break;
+                    case 6 : document.getElementById("mushBox").append(wrap); break;
+                    case 7 : document.getElementById("fruitBox").append(wrap); break;
                 }
 
             }

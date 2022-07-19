@@ -67,64 +67,32 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>당근 농장</td>
-                                    <td>당근 쿵야</td>
-                                    <td>뿌리채소 마을</td>
-                                    <td>
-                                        <button type="button" class="btn btn-danger">삭제</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>당근 농장</td>
-                                    <td>당근 쿵야</td>
-                                    <td>뿌리채소 마을</td>
-                                    <td>
-                                        <button type="button" class="btn btn-danger">삭제</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>당근 농장</td>
-                                    <td>당근 쿵야</td>
-                                    <td>뿌리채소 마을</td>
-                                    <td>
-                                        <button type="button" class="btn btn-danger">삭제</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>당근 농장</td>
-                                    <td>당근 쿵야</td>
-                                    <td>뿌리채소 마을</td>
-                                    <td>
-                                        <button type="button" class="btn btn-danger">삭제</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>당근 농장</td>
-                                    <td>당근 쿵야</td>
-                                    <td>뿌리채소 마을</td>
-                                    <td>
-                                        <button type="button" class="btn btn-danger">삭제</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>당근 농장</td>
-                                    <td>당근 쿵야</td>
-                                    <td>뿌리채소 마을</td>
-                                    <td>
-                                        <button type="button" class="btn btn-danger">삭제</button>
-                                    </td>
-                                </tr>
+                                <c:choose>
+                                    <c:when test="${empty farmList}">
+                                        <tr>
+                                            <td colspan="5">등록된 농장이 없습니다.</td>
+                                        </tr>
+                                    </c:when>
+
+                                    <c:otherwise>
+                                        <c:forEach var="farm" items="${farmList}">
+                                            <tr>
+                                                <th scope="row">${farm.farmNo}</th>
+                                                <td>${farm.farmName}</td>
+                                                <td>${farm.producer}</td>
+                                                <td>${farm.origin}</td>
+                                                <td>
+                                                    <button type="button" class="btn btn-danger" onclick="deleteFarm(${farm.farmNo})">삭제</button>
+                                                </td>
+                                            </tr>
+                                        </c:forEach>
+                                    </c:otherwise>
+                                </c:choose>
+                                
                             </tbody>
                         </table>
                         
-                        <a href="adminFarmIn.html" class="farmInBtn"><i class="fa-solid fa-plus"></i> 농장 추가하기</a>
+                        <a href="insert" class="farmInBtn"><i class="fa-solid fa-plus"></i> 농장 추가하기</a>
 
                     </article>
                 </section>
@@ -149,10 +117,9 @@
     <script src="${contextPath}/resources/lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="${contextPath}/resources/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
-    <script src="${contextPath}/resources/js/adminProduct.js"></script>  
-    
     <!-- Template Javascript -->
     <script src="${contextPath}/resources/js/main.js"></script>  
+    <script src="${contextPath}/resources/js/adminFarm.js"></script>
 
 </body>
 

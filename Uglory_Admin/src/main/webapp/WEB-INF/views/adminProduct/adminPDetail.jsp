@@ -70,14 +70,14 @@
                                 </c:if>
                             </div>
                         </div>
-                        <hr>
+                        <hr class="mt-2 mb-2">
 
                         <div class="detailBody">
-                            <h2>상품 정보</h2>
 
                             <div class="detail-con row justify-content-between">
                                 <div class="col-sm-12 col-md-6 p-2 mb-2">
-                                    <div class="bg-light rounded info-box p-3">
+                                    <div class="bg-light rounded p-2">
+                                        <h3 class="mb-2">상품 정보</h3>
 
                                         <table class="table text-center">
                                             <tr class="first-row">
@@ -104,11 +104,18 @@
                                         </table>
 
                                     </div>
+                                    <div class="bg-light rounded p-2 mb-2 img-area">
+                                        <img src="${contextPath}${imageList[0].imageRoot}" alt="상품이미지" class="detail-img">
+                                        <div>
+                                            <h4>첨부 이미지</h4>
+                                            <a href="#" id="pre-img" data-bs-toggle="modal" data-bs-target="#exampleModal">이미지 미리보기</a>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="col-sm-12 col-md-6 p-2">
-                                    <div class="bg-light rounded mb-2 p-3">
-                                        <h4>옵션 정보</h4>
+                                    <div class="bg-light rounded mb-2 p-2">
+                                        <h3 class="mb-2">옵션 정보</h3>
 
                                         <table class="table text-center mb-0">
                                             <div class="tableLine"></div>
@@ -127,21 +134,46 @@
                                                             <th>${option.optionCode}</th>
                                                             <td>${option.optionName}</td>
                                                             <td>${option.optionPrice}원</td>
+                                                            <td>
+                                                                <button type="button" class="btn btn-outline-danger option-delete" onclick="deleteOption(${option.optionCode})">
+                                                                    <i class="fa-solid fa-delete-left"></i>
+                                                                </button>
+                                                            </td>
                                                         </tr>
                                                         
                                                     </c:forEach>
                                                 </c:otherwise>
                                             </c:choose>
                                         </table>
-                                            <div class="tableLine"></div>
+                                        <div class="tableLine"></div>
 
-                                    </div>
-                                    <div class="bg-light rounded p-2 mb-2 img-area">
-                                        <img src="${contextPath}${imageList[0].imageRoot}" alt="상품이미지" class="detail-img">
-                                        <div>
-                                            <h4>첨부 이미지</h4>
-                                            <a href="#" id="pre-img" data-bs-toggle="modal" data-bs-target="#exampleModal">이미지 미리보기</a>
+                                        <div class="mt-3 mb-3 m-2 row">
+                                            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                                옵션 추가
+                                            </button>
                                         </div>
+
+                                        <form action="../option/insert" method="POST" class="collapse m-2" id="collapseExample" onsubmit="return optionValidate()">
+                                            <div class="card card-body p-2">
+                                                <div class="option-row">
+                                                    <p>옵션 명</p>
+                                                    <div class="opInputArea">
+                                                        <input name="optionName" id="optionName" class="w-100">
+                                                        <p id="optionNameText">옵션 명을 입력해주세요.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="option-row">
+                                                    <p>가격</p>
+                                                    <input class="opInputArea" type="number" name="optionPrice" id="optionPrice">
+                                                </div>
+                                                    <input type="hidden" name="productCode" value="${product.productCode}">
+                                                <div class="w-100 text-end">
+                                                    <button type="reset" class="btn btn-secondary" data-bs-toggle="collapse" data-bs-target="#collapseExample" onclick="resetOption()">취소</button>
+                                                    <button class="btn btn-primary">등록</button>
+                                                </div>
+                                            </div>
+                                        </form>
+
                                     </div>
                                 </div>
                             </div>
