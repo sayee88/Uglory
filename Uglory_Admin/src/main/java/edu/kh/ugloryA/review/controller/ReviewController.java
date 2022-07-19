@@ -43,5 +43,12 @@ public class ReviewController {
 		
 		return "manageReview/ReviewList";
 	}
+	
+	
+	
+	
+	
+	
+	
 
 }
