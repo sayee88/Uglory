@@ -11,6 +11,8 @@ import edu.kh.ugloryC.member.model.vo.Member;
 import edu.kh.ugloryC.review.model.vo.ReviewImage;
 import edu.kh.ugloryC.review.model.vo.ReviewSelectInfo;
 import edu.kh.ugloryC.review.model.vo.ReviewWrite;
+import edu.kh.ugloryC.review.model.vo.UnWrittenProduct;
+import edu.kh.ugloryC.review.model.vo.UnWrittenSubscription;
 
 @Repository
 public class ReviewDAO {
@@ -49,9 +51,9 @@ public class ReviewDAO {
 	 * 구독상품 미작성 리뷰 조회 DAO
 	 * @return subUnWrittenList
 	 */
-	public List<ReviewSelectInfo> subUnWrittenList(Member loginMember) {
+	public List<UnWrittenSubscription> subUnWrittenList(Member loginMember) {
 		
-		List<ReviewSelectInfo> subUnWrittenList = sqlSession.selectList("reviewMapper.subUnWrittenList", loginMember);
+		List<UnWrittenSubscription> subUnWrittenList = sqlSession.selectList("reviewMapper.subUnWrittenList", loginMember);
 		
 		return subUnWrittenList;
 	}
@@ -63,9 +65,9 @@ public class ReviewDAO {
 	 * @param loginMember
 	 * @return productUnWrittenList
 	 */
-	public List<ReviewSelectInfo> productUnWrittenList(Member loginMember) {
+	public List<UnWrittenProduct> productUnWrittenList(Member loginMember) {
 		
-		List<ReviewSelectInfo> productUnWrittenList = sqlSession.selectList("reviewMapper.productUnWrittenList", loginMember);
+		List<UnWrittenProduct> productUnWrittenList = sqlSession.selectList("reviewMapper.productUnWrittenList", loginMember);
 		
 		return productUnWrittenList;
 	}

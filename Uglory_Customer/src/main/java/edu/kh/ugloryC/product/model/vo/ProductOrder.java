@@ -9,12 +9,14 @@ import lombok.Setter;
 @NoArgsConstructor
 public class ProductOrder {
 	
-	private int productCode;
+	private String productCode;
+	private String productOrderDate;
 	private String productOrderName;
 	private String productOrderPhone;
 	private String productOrderAddr;
     private String productDelReq;
 	private int totalPrice;
-    
+    private String productReviewStatus;
     private int memberNo;
+    private int deliveryCode;
 }

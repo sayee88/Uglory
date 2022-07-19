@@ -7,6 +7,8 @@ import org.springframework.web.multipart.MultipartFile;
 import edu.kh.ugloryC.member.model.vo.Member;
 import edu.kh.ugloryC.review.model.vo.ReviewSelectInfo;
 import edu.kh.ugloryC.review.model.vo.ReviewWrite;
+import edu.kh.ugloryC.review.model.vo.UnWrittenProduct;
+import edu.kh.ugloryC.review.model.vo.UnWrittenSubscription;
 
 public interface ReviewService {
 
@@ -27,7 +29,7 @@ public interface ReviewService {
 	 * 구독상품 미작성 리뷰 조회 서비스
 	 * @return subUnWrittenList
 	 */
-	List<ReviewSelectInfo> subUnWrittenList(Member loginMember);
+	List<UnWrittenSubscription> subUnWrittenList(Member loginMember);
 
 
 	/**
@@ -35,7 +37,7 @@ public interface ReviewService {
 	 * @param loginMember
 	 * @return productUnWrittenList
 	 */
-	List<ReviewSelectInfo> productUnWrittenList(Member loginMember);
+	List<UnWrittenProduct> productUnWrittenList(Member loginMember);
 
 	
 	
