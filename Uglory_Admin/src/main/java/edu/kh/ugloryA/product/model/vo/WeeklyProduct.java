@@ -13,6 +13,7 @@ public class WeeklyProduct {
 	private int productListNo;
 	private int optionCode;
 	
+	private int productCode;
 	private String productName;
 	private String optionName;
 

@@ -1,5 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<c:if test="${!empty mapT}">
+    <c:set var="thisWeek" value="${mapT.weeklyList}"/>
+    <c:set var="thisProductList" value="${mapT.weeklyProductList}"/>
+</c:if>
+<c:if test="${!empty mapN}">
+    <c:set var="nextWeek" value="${mapN.weeklyList}"/>
+    <c:set var="nextProductList" value="${mapN.weeklyProductList}"/>
+</c:if>
+<c:if test="${!empty mapA}">
+    <c:set var="afterWeek" value="${mapA.weeklyList}"/>
+    <c:set var="afterProductList" value="${mapA.weeklyProductList}"/>
+</c:if>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -60,32 +74,19 @@
 
                             <div class="col-xl-4 p-4">
                                 <div class="pList-tit m-2">이번주 배송 상품</div>                           
-                                <div class="text-start p-3 dl-date">배송예정일 : 2022-07-06</div>                           
+                                <div class="text-start p-3 dl-date">배송예정일 : ${thisWeek.deliveryDate}</div>                           
                                 <ul class="pListBox">
-                                    <li>
-                                        <p>양파</p>
-                                        <p>1kg</p>
-                                    </li>
+
+                                    <c:if test="${!empty thisProductList}">
+                                    
+                                        <c:forEach var="product" items="${thisProductList}">
+                                            <li>
+                                                <p>${product.productName}</p>
+                                                <p>${product.optionName}</p>
+                                            </li>
+                                        </c:forEach>
+                                    </c:if>
     
-                                    <li>
-                                        <p>양파</p>
-                                        <p>1kg</p>
-                                    </li>
-    
-                                    <li>
-                                        <p>양파</p>
-                                        <p>1kg</p>
-                                    </li>
-    
-                                    <li>
-                                        <p>양파</p>
-                                        <p>1kg</p>
-                                    </li>
-    
-                                    <li>
-                                        <p>양파</p>
-                                        <p>1kg</p>
-                                    </li>
                                 </ul>
     
                                 <div class="p-btn-area">
@@ -96,91 +97,78 @@
 
                             <div class="col-xl-4 p-4">
                                 <div class="pList-tit m-2">다음주 배송 상품</div>                           
-                                <div class="text-start p-3 dl-date">배송예정일 : 2022-07-13</div>                           
+                                <div class="text-start p-3 dl-date">배송예정일 : ${nextWeek.deliveryDate}</div>                           
                                 <ul class="pListBox">
-                                    <li>
-                                        <p>양파</p>
-                                        <p>1kg</p>
-                                    </li>
-    
-                                    <li>
-                                        <p>양파</p>
-                                        <p>1kg</p>
-                                    </li>
-    
-                                    <li>
-                                        <p>양파</p>
-                                        <p>1kg</p>
-                                    </li>
-    
-                                    <li>
-                                        <p>양파</p>
-                                        <p>1kg</p>
-                                    </li>
-    
-                                    <li>
-                                        <p>양파</p>
-                                        <p>1kg</p>
-                                    </li>
-
-                                    <li>
-                                        <p>양파</p>
-                                        <p>1kg</p>
-                                    </li>
-
-                                    <li>
-                                        <p>양파</p>
-                                        <p>1kg</p>
-                                    </li>
-
-                                    <li>
-                                        <p>양파</p>
-                                        <p>1kg</p>
-                                    </li>
+                                    
+                                    <c:choose>
+                                        <c:when test="${!empty nextProductList}">
+                                        
+                                            <c:forEach var="product" items="${nextProductList}">
+                                                <li>
+                                                    <p>${product.productName}</p>
+                                                    <p>${product.optionName}</p>
+                                                </li>
+                                            </c:forEach>
+                                        </c:when>
+                                    
+                                        <c:otherwise>
+                                                <li class="row justify-content-center" style="color:#ccc; font-size:24px;">상품을 등록해주세요</li>
+                                        </c:otherwise>
+                                    </c:choose>
                                 </ul>
     
                                 <div class="p-btn-area">
-                                    <div>
-                                        <button type="button" class="btn btn-primary">수정</button>
-                                        <button type="button" class="btn btn-primary">알림</button>
-                                    </div>
-                                    <i class="fa-regular fa-lightbulb text-warning" style="font-size:36px;"></i>
+                                    <c:choose>
+                                        <c:when test="${!empty nextProductList}">
+                                            <div>
+                                                <button type="button" class="btn btn-primary" onclick="location.href='register?mode=update&ex=${nextWeek.expectedUploadDate}'">수정</button>
+                                                <button type="button" class="btn btn-primary">알림</button>
+                                            </div>
+                                            <i class="fa-solid fa-lightbulb text-warning" style="font-size:36px;"></i>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <div>
+                                                <button type="button" class="btn btn-primary" onclick="location.href='register?mode=insert&ex=N'">등록</button>
+                                                <button type="button" class="btn btn-secondary">알림</button>
+                                            </div>
+                                            <i class="fa-regular fa-lightbulb text-warning" style="font-size:36px;"></i>
+                                        </c:otherwise>
+                                    </c:choose>
                                 </div>                           
                             </div>
 
                             <div class="col-xl-4 p-4">
                                 <div class="pList-tit m-2">다다음주 배송 상품</div>                           
-                                <div class="text-start p-3 dl-date">배송예정일 : 2022-07-20</div>                           
+                                <div class="text-start p-3 dl-date">배송예정일 : ${afterWeek.deliveryDate}</div>                           
                                 <ul class="pListBox">
-                                    <li>
-                                        <p>양파</p>
-                                        <p>1kg</p>
-                                    </li>
-    
-                                    <li>
-                                        <p>양파</p>
-                                        <p>1kg</p>
-                                    </li>
-    
-                                    <li>
-                                        <p>양파</p>
-                                        <p>1kg</p>
-                                    </li>
-    
-                                    <li>
-                                        <p>양파</p>
-                                        <p>1kg</p>
-                                    </li>
-    
-                                    <li>
-                                        <p>양파</p>
-                                        <p>1kg</p>
-                                    </li>
+                                    <c:choose>
+                                        <c:when test="${!empty afterProductList}">
+                                            <c:forEach var="product" items="${afterProductList}">
+                                                <li>
+                                                    <p>${product.productName}</p>
+                                                    <p>${product.optionName}</p>
+                                                </li>
+                                            </c:forEach>
+                                        </c:when>
+
+                                        <c:otherwise>
+                                            <li class="row justify-content-center" style="color:#ccc; font-size:24px;">상품을 등록해주세요</li>
+                                        </c:otherwise>
+                                    </c:choose>
+
                                 </ul>
     
                                 <div class="p-btn-area">
-                                    <button type="button" class="btn btn-primary">등록</button>
-                                    <i class="fa-regular fa-lightbulb text-warning" style="font-size:36px;"></i>
+                                    <c:choose>
+                                        <c:when test="${!empty afterProductList}">
+                                            <button type="button" class="btn btn-primary" onclick="location.href='register?mode=update&ex=${afterWeek.expectedUploadDate}'">수정</button>
+                                            <i class="fa-solid fa-lightbulb text-warning" style="font-size:36px;"></i>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <button type="button" class="btn btn-primary" onclick="location.href='register?mode=insert&ex=A'">등록</button>
+                                            <i class="fa-regular fa-lightbulb text-warning" style="font-size:36px;"></i>
+                                        </c:otherwise>
+                                    </c:choose>
                                 </div>                           
                             </div>
                             

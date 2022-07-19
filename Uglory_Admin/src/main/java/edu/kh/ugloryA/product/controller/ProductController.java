@@ -181,15 +181,21 @@ public class ProductController {
 	@GetMapping("/weekly/list")
 	public String weeklyList(Model model) {
 		
+		//이번주
 		String key = "T";
 		Map<String, Object> mapT = service.selectWeeklyList(key);
 
+		//다음주
 		key = "N";
 		Map<String, Object> mapN = service.selectWeeklyList(key);
 		
+		//다다음주
 		key = "A";		
 		Map<String, Object> mapA = service.selectWeeklyList(key);
 		
+		model.addAttribute("mapT", mapT);
+		model.addAttribute("mapN", mapN);
+		model.addAttribute("mapA", mapA);
 		
 		return "adminProduct/adminWeeklyList";
 	}

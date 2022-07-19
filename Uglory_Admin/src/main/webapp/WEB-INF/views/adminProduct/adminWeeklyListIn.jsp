@@ -52,10 +52,11 @@
             <!-- 상품 등록 form태그 -->
             <main class="container-fluid pt-4 px-4">
                 <section class="row justify-content-center mx-0">
-                    <article class="col-xl-6 col-lg-8 text-center bg-light rounded product-margin p-4">
+                    <article class="col-xl-6 col-md-8 bg-light rounded product-margin p-4">
+                        <h2 class="text-start">다음주 배송 상품</h2>
+                        <hr>
+                        <%-- form X ajax로 --%>
                         <form action="">
-                            <h2 class="text-start">다음주 배송 상품</h2>
-                            <hr>
                             
                             <div class="product-row">
                                 <span class="fw-bold">배송 예정일</span>
@@ -64,14 +65,6 @@
                                 </div>
                             </div>
 
-                            <div class="product-row">
-                                <span class="fw-bold">상품 개수 입력</span>
-                                <div class="pListCount">
-                                    <input type="number" class="text-center">
-                                    <button type="button" class="btn btn-primary ms-1">입력</button>
-                                </div>
-                            </div>
-                            
                             <!-- ajax로 만들어야 하는 부분 -->
                             <div class="product-row">
                                 <select name="" id="" class="pListItem ps-1">
@@ -83,25 +76,7 @@
                             </div>
 
                             <div class="product-row">
-                                <select name="" id="" class="pListItem ps-1">
-                                    <option value="">상품</option>
-                                </select>
-                                <select name="" id="" class="pListItem ps-1">
-                                    <option value="">옵션</option>
-                                </select>
-                            </div>
-
-                            <div class="product-row">
-                                <select name="" id="" class="pListItem ps-1">
-                                    <option value="">상품</option>
-                                </select>
-                                <select name="" id="" class="pListItem ps-1">
-                                    <option value="">옵션</option>
-                                </select>
-                            </div>
-
-                            <div class="product-row">
-                                <button type="button" class="btn btn-lg btn-primary m-1 w-100">취소</button>
+                                <button type="button" class="btn btn-lg btn-secondary m-1 w-100">취소</button>
                                 <button class="btn btn-lg btn-primary m-1 w-100">등록</button>
                             </div>
 
@@ -115,15 +90,11 @@
             
         </div>
         <!-- Content End -->
-
-        <!-- Back to Top -->
-        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <%-- <script src="../lib/chart/chart.min.js"></script> --%>
     <script src="${contextPath}/resources/lib/easing/easing.min.js"></script>
     <script src="${contextPath}/resources/lib/waypoints/waypoints.min.js"></script>
     <script src="${contextPath}/resources/lib/owlcarousel/owl.carousel.min.js"></script>
@@ -133,6 +104,7 @@
 
     <!-- Template Javascript -->
     <script src="${contextPath}/resources/js/main.js"></script>
+    <script src="${contextPath}/resources/js/weeklyList.js"></script>
 </body>
 
 </html>

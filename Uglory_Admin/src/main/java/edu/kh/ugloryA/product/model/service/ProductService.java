@@ -93,7 +93,7 @@ public interface ProductService {
 	/**
 	 * 주별 상품 리스트 조회
 	 * @param key
-	 * @return mapT
+	 * @return map
 	 */
 	Map<String, Object> selectWeeklyList(String key);
 	

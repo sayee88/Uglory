@@ -20,6 +20,8 @@ import edu.kh.ugloryA.product.model.vo.OptionType;
 import edu.kh.ugloryA.product.model.vo.Product;
 import edu.kh.ugloryA.product.model.vo.ProductCategory;
 import edu.kh.ugloryA.product.model.vo.ProductImage;
+import edu.kh.ugloryA.product.model.vo.WeeklyList;
+import edu.kh.ugloryA.product.model.vo.WeeklyProduct;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -162,7 +164,23 @@ public class ProductServiceImpl implements ProductService {
 	//주별 상품 리스트 조회
 	@Override
 	public Map<String, Object> selectWeeklyList(String key) {
-		return null;
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		// 상태별 리스트 조회
+		WeeklyList weeklyList = dao.selectWeeklyList(key);
+		
+		if(weeklyList != null) {
+			
+			int productListNo = weeklyList.getProductListNo();
+			
+			// 리스트 내 상품 모두 조회
+			List<WeeklyProduct> weeklyProductList = dao.selectWeeklyProduct(productListNo);
+			
+			map.put("weeklyProductList", weeklyProductList);
+			map.put("weeklyList", weeklyList);			
+		}
+		
+		return map;
 	}
 	
 	
