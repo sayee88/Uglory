@@ -154,25 +154,23 @@ public class ReviewController {
 			String path = null;
 			String message = null;
 			
+			if(result > 0) {
+				
+				path = "../list";
+				message = "리뷰 등록 완료!";
+				
+			} else {
+				path = req.getHeader("referer");
+				message = "리뷰 등록 실패ㅜㅜ";
+			}
 			
+			ra.addFlashAttribute("message", message);
+			return "redierct:" + path;
 			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-		} else {
+		} else { // 수정일 부분
 			
 		}
+		
 		
 		return "/review/Review";
 	}
