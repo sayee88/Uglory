@@ -62,11 +62,16 @@
 		</foreach>
 	</select>
 	
+	<!-- 주문번호 생성 -->
+	<select id="createProductOrderCode" resultType="string">
+		SELECT CONCAT(TO_CHAR(SYSDATE, 'YYYYMMDD-"00"'), SEQ_P_ORDER_CD.NEXTVAL) as temp FROM DUAL
+	</select>
+	
 	<!-- 주문정보 입력 -->
 	<insert id="productOrder">
 		INSERT INTO PRODUCT_ORDER 
 		VALUES (
-				CONCAT(TO_CHAR(SYSDATE, 'YYYYMMDD-"00"'), SEQ_P_ORDER_CD.NEXTVAL),
+				#{pOrderCode},
 				SYSDATE, 
 				#{inputName}, 
 				#{inputPhone}, 
@@ -77,6 +82,7 @@
 				#{memberNo}, 
 				1)
 	</insert>
+	
 
 </mapper>
 

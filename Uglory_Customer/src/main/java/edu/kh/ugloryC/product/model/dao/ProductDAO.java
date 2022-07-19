@@ -53,4 +53,12 @@ public class ProductDAO {
 		return sqlSession.insert("productMapper.productOrder", productOrder);
 	}
 
+	/** 상품 주문번호 생성
+	 * @return pOrderCode
+	 */
+	public String createProductOrderCode() {
+
+		return sqlSession.selectOne("productMapper.createProductOrderCode");
+	}
+
 }

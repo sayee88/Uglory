@@ -187,6 +187,26 @@
     </div>
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
+
+     <script>
+
+        const contextPath = "${contextPath}";
+
+        const pOrderCode = "${productOrder.pOrderCode}";
+        
+        const productName = "${selectOptionList[0].productName}";
+        const inputName = "${productOrder.inputName}";
+        const inputPhone = "${productOrder.inputPhone}";
+        const inputAddress = "${productOrder.inputAddress}";
+        const totalAmount = "${productOrder.totalAmount}";
+        const inputDelText = "${productOrder.inputDelText}";
+        const productPayNo = "${productOrder.productPayNo}";
+        const memberNo = "${productOrder.memberNo}";
+
+     </script>
+
+    <%-- 아임포트  --%>
+    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
         
     <%-- <!— jQuery 추가 —> --%>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>

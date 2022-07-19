@@ -127,13 +127,66 @@ function orderValidate(){
         alert("약관 동의 후 주문 버튼을 클릭해주세요.");
         agree.focus();
         return false;
-        
+
     } else {
+
         if(!confirm("정말 주문하시겠습니까?")){
             return false;
-        } 
+
+        } else {
+
+            var IMP = window.IMP; 
+            IMP.init("imp33404182"); 
+
+            IMP.request_pay({ // param
+                pg : 'kakaopay',
+                pay_method: "card",
+                merchant_uid: productPayNo,
+                name: productName,
+                amount: totalAmount,
+                customer_uid : pOrderCode, // 필수 입력  / 주문번호 연결
+                buyer_name : inputName,
+                buyer_tel : inputPhone
+
+            }, function (rsp) { // callback
+
+                if (rsp.success) {
+                    $.ajax({
+                        url : contextPath + "/product/order",
+                        data : {
+                            "pOrderCode" : pOrderCode,
+                            "inputName" : inputName,
+                            "inputPhone" : inputPhone,
+                            "inputAddress" : inputAddress,
+                            "inputDelText" : inputDelText,
+                            "memberNo" : memberNo,
+                            "totalAmount" : totalAmount ,
+                            "productPayNo" : productPayNo,
+                        },
+
+                        type : "POST",
+                        success : function(res){ 
+
+                            if(res>0){
+                                location.href = contextPath + "/member/orderHistory";
+                                alert("결제가 완료되었습니다.:)");
+
+                            } else {
+                                location.href = contextPath + "/product/order";
+                                alert("결제 실패 ㅠ");
+                            }
+                        },
+                        error: function(){
+                            console.log("에러 발생" + rsp.error_msg);
+                        }
+                    });
+                } else {
+
+                }
+            });
+        }
     }
-    return true;
 }
+
 
 
