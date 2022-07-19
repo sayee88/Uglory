@@ -32,6 +32,23 @@
 		<result property="reviewCode" column="REVIEW_CD" />
 	
 	</resultMap>
+	
+	<resultMap type="reviewWrite" id="reviewWrite_rm">
+		<id property="reviewNo" column="REVIEW_NO" />
+		<result property="reviewContent" column="REVIEW_CONTENT" />
+		<result property="reviewEnrollDate" column="REVIEW_ENROLL_DT" />
+		<result property="starRating" column="STAR_RATING" />
+		<result property="memberNo" column="MEMBER_NO" />
+		<result property="memberName" column="MEMBER_NAME" />
+		
+<result property="productOrderDate" column="P_ORDER_DT" />
+		<result property="productName" column="PRODUCT_NM" />
+		<result property="productName" column="PRODUCT_NM" />
+		<result property="optionName" column="OPTION_NM" />
+		<result property="totalPrice" column="TOTAL_PRICE" />
+		<result property="reviewCode" column="REVIEW_CD" />
+		
+	</resultMap>
 
 
 	<!-- 리뷰글 삽입 -->
