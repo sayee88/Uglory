@@ -26,9 +26,10 @@
 		<id property="productOrderCode" column="P_ORDER_CD" />
 		<!-- 이미지 경로 불러와야할까? -->
 		<result property="productOrderDate" column="P_ORDER_DT" />
-		<result property="productName" column="P_ORDER_NAME" />
+		<result property="productName" column="PRODUCT_NM" />
 		<result property="optionName" column="OPTION_NM" />
 		<result property="totalPrice" column="TOTAL_PRICE" />
+		<result property="reviewCode" column="REVIEW_CD" />
 	
 	</resultMap>
 

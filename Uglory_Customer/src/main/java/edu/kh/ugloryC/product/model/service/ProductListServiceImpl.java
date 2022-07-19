@@ -20,6 +20,12 @@ public class ProductListServiceImpl implements ProductListService{
 		return dao.productList();
 	}
 
+	@Override
+	public List<ProductList> category(int selectCategoryNo) {
+		return dao.category(selectCategoryNo);
+	}
+
+	
 	
 	
 

@@ -16,4 +16,6 @@ public class UnWrittenProduct {
 	private String optionName;
 	private int totalPrice;
 
+	private int reviewCode;
+
 }

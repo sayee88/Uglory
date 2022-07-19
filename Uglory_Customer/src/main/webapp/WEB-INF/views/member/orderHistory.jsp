@@ -54,15 +54,15 @@
 
             <div id="result1">
                 <%-- 회원이 있을 경우 --%>
-                <c:choose>
-                    <c:when test="${empty selectOne}">
-                      <%-- 회원이 없을 경우  --%>
+                <%-- <c:choose> --%>
+                    <%-- <c:when test="${empty selectOne}"> --%>
+                      <%-- 주문 내역이  없을 경우  --%>
                         <h4 style="color:red"> 주문내역이 없습니다.<h4>
-                    </c:when>
-
-                    <c:otherwise>
-                        <ul class="orderList">
-	                    	<c:forEach var="item" items="${selectOne}">
+                    <%-- </c:when> --%>
+<%-- 
+                    <c:otherwise> --%>
+                         <ul class="orderList">
+	                    <%--	<c:forEach var="item" items="${selectOne}"> --%>
 	                            <li class="list-section">
 	                                
 	                                <div class="date">${item.orderDate}</div>
@@ -70,7 +70,7 @@
 	                                <div class="order-goods">
 	                                
 	                                    <div class="order-name">
-	                                        <a href="">[${item.origin}] ${item.productName}</a><button id="select1">조회</button>
+	                                        [${item.origin}] ${item.productName}
 	                                    </div>
 	                                
 	                                </div>
@@ -79,7 +79,7 @@
 	                                    <div class="description" id=selectOne>
 	                                        <dl>
 	                                            <dt>주문번호</dt>
-	                                            <dd>${item.orderNo}</dd>
+	                                            <a href="" id="goToDetail"><dd>${item.orderNo}</dd></a>
 	                                        </dl>
 	                                        <dl>
 	                                            <dt>결제금액</dt>
@@ -93,11 +93,11 @@
 	                                </div>
 	                            </li>
 	                    	
-	                    	</c:forEach>
+	                    	<%-- </c:forEach> --%>
                         </ul>
-                    </c:otherwise>
+                    <%-- </c:otherwise>
                 </c:choose>
-                
+                 --%>
 
                 <!-- 페이지네이션 시작-->   
                 <nav aria-label="Page navigation example">
