@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import edu.kh.ugloryC.member.model.dao.MemberDAO;
 import edu.kh.ugloryC.member.model.vo.Member;
 import edu.kh.ugloryC.member.model.vo.OrderHistory;
+import edu.kh.ugloryC.member.model.vo.OrderHistoryDetail;
 import edu.kh.ugloryC.member.model.vo.SubscriptionStatus;
 
 @Service
@@ -79,18 +80,17 @@ public class MemberServiceImpl implements MemberService {
 
 	// 개별 상품 주문 내역 조회
 	@Override
-	public List<OrderHistory> selectOrderList(int orderNo) {
-	
-		return dao.selectOrderList(orderNo);
+	public List<OrderHistory> selectOrderHistoryList(int memberNo) {
+		return dao.selectOrderHistoryList(memberNo);
 	}
 
 
 	@Override
-	public List<OrderHistory> selectOrderHistoryList(int memberNo) {
-	
-		return dao.selectOrderHistoryList(memberNo);
+	public OrderHistoryDetail selectOrderHistoryDetail(int orderNo) {
+		return dao.selectOrderHistoryDetail(orderNo);
 	}
 
+	
 	
 
 	

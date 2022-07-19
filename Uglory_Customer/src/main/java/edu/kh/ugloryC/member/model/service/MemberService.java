@@ -5,6 +5,7 @@ import java.util.Map;
 
 import edu.kh.ugloryC.member.model.vo.Member;
 import edu.kh.ugloryC.member.model.vo.OrderHistory;
+import edu.kh.ugloryC.member.model.vo.OrderHistoryDetail;
 import edu.kh.ugloryC.member.model.vo.SubscriptionStatus;
 
 public interface MemberService {
@@ -26,9 +27,9 @@ public interface MemberService {
 	int subCancel(int memberNo);
 
 	//개별 상품 주문 내역 조회
-	List<OrderHistory> selectOrderList(int orderNo);
-
 	List<OrderHistory> selectOrderHistoryList(int memberNo);
+
+	OrderHistoryDetail selectOrderHistoryDetail(int orderNo);
 
 
 

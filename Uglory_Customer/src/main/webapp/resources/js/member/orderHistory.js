@@ -3,138 +3,217 @@
 
 const orderDetailBtn = document.getElementsByClassName("orderDetailBtn");
 
-for(let btn of orderDetailBtn){
-    btn.addEventListener("click", function(){
-    
+for (let btn of orderDetailBtn) {
+    btn.addEventListener("click", function () {
+
+        const orderNo = this.getAttribute("id");
+
+        //console.log( this.parentElement.parentElement.nextElementSibling );
+
+        const target = this.parentElement.parentElement.parentElement;
+
         $.ajax({
 
-            url : "orderHistoryList",
-            data : {"orderNo" : orderNo, "memberNo" : memberNo } ,
+            url: "OrderHistoryDetail",
+            data: { "orderNo": orderNo },
 
-            type : "GET",
+            type: "GET",
             dataType: "JSON",
-            success : function(orderHistoryList){
-           
-            console.log(orderHistoryList);
-         
-            
-            //
+            success: function (orderHistoryDetail) {
+
+                console.log(orderHistoryDetail);
 
 
-                // 층 버튼의 모든 배경색 제거
-                for(let temp of floorBtn){
-                    temp.classList.remove("floor-select");
-                }
-
-                // 선택한 층 버튼에만 배경색 추가
-                btn.classList.add("floor-select");
-
-
-                // 목록 지우기
-                const top = document.querySelector(".top");
-                top.innerHTML = "";
+                // 주문 내역 상세 조회 (타이틀)
+                const orderHead = document.createElement("div");
+                orderHead.classList.add("order-head");
                 
-                // 객실 목록 만들기 (201,202,203)
-                const arr = [];
-                const num = btn.innerText.substring(0,1);
-                for(let i=1 ; i<=3; i++){
-                    arr.push(num * 100 + i);
-                }
+                const orderTitle = document.createElement("h2");
+                orderTitle.classList.add("orderTitle");
+                orderTitle.innerText = "주문 내역 상세 조회";
 
-                console.log(arr);
+                orderHead.append(orderTitle);
+                target.append(orderHead);
 
-
-                // 객실 출력
-                for(let i=0 ; i<3; i++){
-
-                    // 객실 테두리
-                    const roomInfo = document.createElement("div");
-                    roomInfo.classList.add("room-info");
-
-                    // 객실 번호
-                    const roomNo = document.createElement("div");
-                    roomNo.innerText = arr[i];
-                    roomInfo.append(roomNo);
-
-                    // 예약된 객실인 경우
-                    if(room[i] != undefined && ( room[i].roomNo == arr[i] ) ){ 
-                        roomInfo.classList.add("in");
-                        
-                        const name = document.createElement("div");
-                        name.innerText = room[i].memberName + " 님";
+                // 주문 내역 상세 조회(콘텐트)
+                const orderInfo = document.createElement("div");
+                orderInfo.classList.add("order-info");
 
 
-                        const rDate = document.createElement("div");
-                        rDate.innerText = room[i].checkIn + "~(" + room[i].dateRange + "박)";
+                for(let proc of orderHistoryDetail.productList){
+                    // 모든 상품 정보를 담을 div
+                    const description = document.createElement("div");
+                    description.classList.add("description");
+                    
+                    orderInfo.append(description);
 
-                        const btnArea = document.createElement("div");
-                        const b = document.createElement("button");
-                        b.classList.add("reserve-detail");
-                        b.innerText = "예약상세";
+                    // 상품 1개 정보를 담을 dl
+                    const oBox = document.createElement("dl");
+                    oBox.classList.add("oBox");
 
-                        btnArea.append(b);
-                        
-                        roomInfo.append(name, rDate, btnArea);
+                    // 상품 이미지
+                    const img = document.createElement("img");
+                    img.classList.add("orderImg");
 
-
-                    }else{ // 예약되지 않은 객실인 경우
-                        const div = document.createElement("div");
-                        div.innerText = "예약가능";
-
-                        roomInfo.append(div);
+                    if(proc.imageRename == null){
+                        img.setAttribute("src", contextPath + "/resources/img/쿵야/바나나쿵야.png" );
+                    }else{
+                        img.setAttribute("src", contextPath +  proc.imageRename);
                     }
 
-                    top.append(roomInfo);
+                    
+                    const div = document.createElement("div");
+                    
+                    const dl1 = document.createElement("dl");
+                    const dt1 = document.createElement("dt");
+                    dt1.innerText = "상품이름"
+                    const dd1 = document.createElement("dd");
+                    dd1.innerText = proc.productName;
+                    dl1.append(dt1, dd1);
+                    
+                    
+                    const dl2 = document.createElement("dl");
+                    const dt2 = document.createElement("dt");
+                    dt2.innerText = "상품 가격 / 옵션명 / 수량"
+                    const dd2 = document.createElement("dd");
+                    dd2.innerText = (Number(proc.productPrice) + Number(proc.optionPrice))+ " / " + proc.optionName + " / " + proc.optionCount + "개";
+                    dl2.append(dt2, dd2);
+                    
+                    
+                    const dl3 = document.createElement("dl");
+                    const dt3 = document.createElement("dt");
+                    dt3.innerText = "배송 현황"
+                    const dd3 = document.createElement("dd");
+                    dd3.innerText = proc.deliveryFlag;
+                    dl3.append(dt3, dd3);
+
+
+                    div.append(dl1, dl2, dl3);
+                    oBox.append(img, div);
+                    description.append(oBox);
+                    orderInfo.append(description);
                 }
-    
+
+
+                target.append(orderInfo);
+
+
+
+                
+                // 주문 정보 (타이틀)
+                const orderHead2 = document.createElement("div");
+                orderHead2.classList.add("order-head");
+                
+                const orderTitle2 = document.createElement("h2");
+                orderTitle2.classList.add("orderTitle");
+                orderTitle2.innerText = "주문 정보 조회";
+
+                orderHead2.append(orderTitle2);
+                target.append(orderHead2);
+
+                
+                // 주문 정보(콘텐트)
+                const orderInfo2 = document.createElement("div");
+                orderInfo2.classList.add("order-info");
+
+
+                const description2 = document.createElement("div");
+                description2.classList.add("description");
+                orderInfo2.append(description2);
+
+
+                const dl2_1 = document.createElement("dl");
+                const dt2_1 = document.createElement("dt");
+                dt2_1.innerText = "주문자 이름"
+                const dd2_1 = document.createElement("dd");
+                dd2_1.innerText = orderHistoryDetail.memberName;
+                dl2_1.append(dt2_1, dd2_1);
+                
+                
+                const dl2_2 = document.createElement("dl");
+                const dt2_2 = document.createElement("dt");
+                dt2_2.innerText = "결제 일시"
+                const dd2_2 = document.createElement("dd");
+                dd2_2.innerText = orderHistoryDetail.payDate;
+                dl2_2.append(dt2_2, dd2_2);
+                
+                
+                const dl2_3 = document.createElement("dl");
+                const dt2_3 = document.createElement("dt");
+                dt2_3.innerText = "총 결제 금액"
+                const dd2_3 = document.createElement("dd");
+                dd2_3.innerText = orderHistoryDetail.totalPrice + "원";
+                dl2_3.append(dt2_3, dd2_3);
+
+
+                orderInfo2.append(dl2_1, dl2_2, dl2_3);
+
+                target.append(orderInfo2);
+
+
+                // 주문 정보 (타이틀)
+                const orderHead3 = document.createElement("div");
+                orderHead3.classList.add("order-head");
+                
+                const orderTitle3 = document.createElement("h2");
+                orderTitle3.classList.add("orderTitle");
+                orderTitle3.innerText = "배송 정보 조회";
+
+                orderHead3.append(orderTitle3);
+                target.append(orderHead3);
+
+
+                // 주문 정보(콘텐트)
+                const orderInfo3 = document.createElement("div");
+                orderInfo3.classList.add("order-info");
+
+
+                const description3 = document.createElement("div");
+                description3.classList.add("description");
+                orderInfo3.append(description3);
+
+
+                const dl3_1 = document.createElement("dl");
+                const dt3_1 = document.createElement("dt");
+                dt3_1.innerText = "수령인 이름"
+                const dd3_1 = document.createElement("dd");
+                dd3_1.innerText = orderHistoryDetail.orderName;
+                dl3_1.append(dt3_1, dd3_1);
+                
+                
+                const dl3_2 = document.createElement("dl");
+                const dt3_2 = document.createElement("dt");
+                dt3_2.innerText = "수령인 전화번호"
+                const dd3_2 = document.createElement("dd");
+                dd3_2.innerText = orderHistoryDetail.orderPhone;
+                dl3_2.append(dt3_2, dd3_2);
+                
+                
+                const dl3_3 = document.createElement("dl");
+                const dt3_3 = document.createElement("dt");
+                dt3_3.innerText = "수령인 주소"
+                const dd3_3 = document.createElement("dd");
+                dd3_3.innerText = orderHistoryDetail.orderAddress;
+                dl3_3.append(dt3_3, dd3_3);
+
+
+                const dl3_4 = document.createElement("dl");
+                const dt3_4 = document.createElement("dt");
+                dt3_4.innerText = "배송 요청 사항"
+                const dd3_4 = document.createElement("dd");
+                dd3_4.innerText = orderHistoryDetail.deliveryReq;
+                dl3_4.append(dt3_4, dd3_4);
+
+                orderInfo3.append(dl3_1, dl3_2, dl3_3, dl3_4);
+
+                target.append(orderInfo3);
+
+
             },
-            error : function(request, status, error){
+            error: function (request, status, error) {
                 console.log('error');
             }
-    
+
         });
     });
 }
-// function orderHistory(){
-
-//     $.ajax({
- 
-//         url : contextPath + "/member/selectOrderList",
-//         data : {"orderNo" : orderNo},
-//         type : "GET",
-//         dataType: "JSON",
-//         success : function(oList){
-//             console.log(oList);
-
-           
-
-//             // oList에 저장된 요소 하나씩 접근
-//             for(let orderHistory of oList){
-
-//                 const orderHead = document.createElement("div");
-//                 orderHead.classList.add("orderHead");
-
-
-
-//                 const orderInfo = document.createElement("div");
-//                 orderInfo.classList.add("orderInfo")
-
-//                 const description = document.createElement("div");
-//                 description.classList.add("description");
-
-//                 const oBox = document.createElement("dl")
-//                 oBox.classList.add("oBox");
-
-//                 const oTitle = document.createElement("dt")
-                
-
-//                 const orderImg = document.createElement("img");
-//                 orderImg.classList.add("orderImg");
-//                 orderImg.setAttribute("src",window.location);
-//             }
-//         },
-//         error:function(){
-//             console.log("에러발생");
-//         }
-//     })
-// }
