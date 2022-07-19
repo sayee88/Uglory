@@ -140,6 +140,26 @@ public class ProductServiceImpl implements ProductService {
 	public Product selectProduct(int productCode) {
 		return dao.selectProduct(productCode);
 	}
+
+	//상품 수정 서비스 구현
+	@Override
+	public int updateProduct(Product product) {
+		return dao.updateProduct(product);
+	}
+
+	//옵션 등록 서비스 구현
+	@Override
+	public int insertOption(OptionType optionType) {
+		return dao.insertOption(optionType);
+	}
+
+	//옵션 삭제 서비스 구현
+	@Override
+	public int deleteOption(int optionCode) {
+		return dao.deleteOption(optionCode);
+	}
+	
+	
 	
 	
 	

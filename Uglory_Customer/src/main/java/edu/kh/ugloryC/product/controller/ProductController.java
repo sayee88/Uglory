@@ -1,6 +1,10 @@
 package edu.kh.ugloryC.product.controller;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +22,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -94,7 +99,7 @@ public class ProductController {
 	// 결제 페이지 화면 전환
 	@SuppressWarnings({ "unchecked" }) // 무점검 경고 억제 어노테이션
 	@GetMapping("/order")
-	public String productOrder(int productCode,
+	public String productOrder(Integer productCode,
 							   Integer totalAmount, String optionObj, Model model) {
 		
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -129,6 +134,28 @@ public class ProductController {
 		
 		map.put("productCode", productCode);
 		
+		// 주문 번호 생성
+		String pOrderCode = service.createProductOrderCode();
+		
+		map.put("pOrderCode", pOrderCode);
+		
+		if(pOrderCode != null) {
+			
+			// 결제번호 생성
+			//LocalDate currentDate = LocalDate.now(); 
+			//String date = currentDate.format(DateTimeFormatter.ofPattern("yyMMddhh24mmss"));
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("yyMMddhhmmss");
+			
+			String date = sdf.format(new Date());
+			
+			
+			int random = (int)(Math.random() * 5);
+			String productPayNo = "SP" + date + "-" + random;
+			
+			map.put("productPayNo", productPayNo);
+		}
+		
 		// 주문 페이지 내 옵션 코드 상품 코드에 따른 옵션이름, 개수 조회
 		List<OptionType> selectOptionList = service.orderOptionSelect(map);
 		
@@ -141,53 +168,55 @@ public class ProductController {
 	}
 	
 	// 배송정보 입력
+	@ResponseBody
 	@PostMapping("/order")
-	public String productOrder(@RequestParam(value="p-orderName") String inputName,
-							   @RequestParam(value="p-orderPhone") String inputPhone,
-							   @RequestParam(value="p-orderAddress") String[] inputAddress,
-							   @RequestParam(value="p-orderReq" , required=false) String inputDelText,
-							   int totalAmount,
-							   @ModelAttribute("loginMember") Member loginMember,
-							   String[] orderAddress,
-							   RedirectAttributes ra, HttpServletRequest req) {
-		
-		// 로그인한 회원 번호 얻어와서 pOrder에 세팅
+	public int productOrder(@RequestParam(value="pOrderCode", required=false) String pOrderCode,
+							@RequestParam(value="pOrderName", required=false) String pOrderName,
+							@RequestParam(value="pOrderPhone", required=false) String pOrderPhone,
+							@RequestParam(value="pOrderAddress1", required=false) String pOrderAddress1,
+							@RequestParam(value="pOrderAddress2", required=false) String pOrderAddress2,
+							@RequestParam(value="pOrderReq" , required=false) String pOrderReq,
+							@RequestParam(value="productPayNo") String productPayNo,
+							int totalAmount,
+							@ModelAttribute("loginMember") Member loginMember,
+							Model model,
+							RedirectAttributes ra, HttpServletRequest req) {
 		
 		int memberNo = loginMember.getMemberNo();
 		
 		Map<String, Object> productOrder = new HashMap<String, Object>();
 		
-		String address = String.join(",,", inputAddress);
+		String address1 = pOrderAddress1 + pOrderAddress2;
 		
-		//pOrder.setProductOrderAddr(String.join(",,", orderAddress));
+		String address = String.join(",,", address1);
 		
-		if(inputDelText.equals("")) {
-			inputDelText = "NULL";
+		if(pOrderReq.equals("")) {
+			pOrderReq = "NULL";
 		}
 		
-		productOrder.put("inputName", inputName);
-		productOrder.put("inputPhone", inputPhone);
-		productOrder.put("inputAddress", address);
+		productOrder.put("pOrderCode", pOrderCode);
+		productOrder.put("pOrderName", pOrderName);
+		productOrder.put("pOrderPhone", pOrderPhone);
+		productOrder.put("pOrderAddress", address);
 		productOrder.put("totalAmount", totalAmount);
-		productOrder.put("inputDelText", inputDelText);
+		productOrder.put("pOrderReq", pOrderReq);
 		productOrder.put("memberNo", memberNo);
+		productOrder.put("productPayNo", productPayNo);
 
 		int result = service.productOrder(productOrder);
-
-		String message = null;
-		String path = null;
 		
-		if(result > 0) { // 주문 정보 입력 성공
-			path = "../member/myPage";
-			
-		} else {
-			message = "배송지 정보 입력 실패";
-			path = "product/order";
+		if(result > 0) { // 주문 정보 입력 성공 시 결제 테이블 삽입
+			int productPay = service.productPay(productOrder);
 		}
+		model.addAttribute("productOrder", productOrder);
 		
-		ra.addFlashAttribute("message", message);
+		return result;
+	}
+	
+	@GetMapping("/cart")
+	public String productCart() {
 		
-		return "redirect:" + path;
+		return "product/productCart";
 	}
 	
 }

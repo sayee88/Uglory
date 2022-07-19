@@ -53,4 +53,22 @@ public class ProductDAO {
 		return sqlSession.insert("productMapper.productOrder", productOrder);
 	}
 
+	/** 상품 주문번호 생성
+	 * @return pOrderCode
+	 */
+	public String createProductOrderCode() {
+
+		return sqlSession.selectOne("productMapper.createProductOrderCode");
+	}
+
+	
+	/** 결제 정보 삽입
+	 * @param productOrder
+	 * @return productOrder
+	 */
+	public int productPay(Map<String, Object> productOrder) {
+		
+		return sqlSession.insert("productMapper.productPay", productOrder);
+	}
+
 }

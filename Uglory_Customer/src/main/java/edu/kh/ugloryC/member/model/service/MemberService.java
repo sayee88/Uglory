@@ -25,6 +25,11 @@ public interface MemberService {
 	//내 구독 상품 취소
 	int subCancel(int memberNo);
 
+	//개별 상품 주문 내역 조회
+	List<OrderHistory> selectOrderList(int orderNo);
+
+	List<OrderHistory> selectOrderHistoryList(int memberNo);
+
 
 
 }
