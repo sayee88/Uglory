@@ -26,12 +26,26 @@ public interface ProductService {
 	 * @return selectOptionList
 	 */
 	List<OptionType> orderOptionSelect(Map<String, Object> map);
-	
+
 	/** 주문 정보
-	 * @param pOrder
+	 * @param paramMap
 	 * @return result
 	 */
-	int productOrder(ProductOrder pOrder);
+	int productOrder(Map<String, Object> productOrder);
+
+	/** 상품 주문번호 생성
+	 * @return pOrderCode
+	 */
+	String createProductOrderCode();
+
+	/** 결제 정보 삽입
+	 * @param productOrder
+	 * @return productPay
+	 */
+	int productPay(Map<String, Object> productOrder);
+	
+	
+	
 
 
 

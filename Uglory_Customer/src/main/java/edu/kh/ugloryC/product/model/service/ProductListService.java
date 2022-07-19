@@ -10,6 +10,9 @@ public interface ProductListService {
 	// 상품 목록 조회
 	List<ProductList> productList();
 
+	// 카테고리별 상품 조회
+	List<ProductList> category(int selectCategoryNo);
+
 
 	
 	

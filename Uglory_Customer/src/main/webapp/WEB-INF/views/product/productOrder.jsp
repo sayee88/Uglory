@@ -54,10 +54,9 @@
         <!-- 상품, 옵션, 개별상품주문정보, 결제 테이블 -->
         <!-- 결제페이지 -->
         <section class="product-order">
-
             <h4 class="order-info">배송지 정보</h4>
-
-            <form action="../order" method="POST" onsubmit="return orderValidate()">
+                       <%--  onsubmit="return orderValidate()" --%>
+            <form action="order" method="POST">
                 <div class="product-order-area">
 
                     <label for="p-orderName">받으시는 분 이름</label>
@@ -79,11 +78,11 @@
                     </div>
 
                     <div class="order-input-area">
-                        <input type="text" name="order-address" id="order-address" placeholder="주소를 입력해주세요" required>
+                        <input type="text" name="p-orderAddress" class ="p-orderAddress" id="order-address" placeholder="주소를 입력해주세요" required>
                     </div>
 
                     <div class="order-input-area">
-                        <input type="text" name="order-detailAddress" id="order-detailAddress" placeholder="상세주소를 입력해주세요" required>
+                        <input type="text" name="p-orderAddress" class="p-orderAddress" id="order-detailAddress" placeholder="상세주소를 입력해주세요" required>
                     </div>
 
                     <label for="p-orderReq">배송 요청사항(선택)</label>
@@ -97,25 +96,68 @@
                     <!-- 결제상품 리스트 -->
                     <div class="order-product-area">
                         <!-- 상품 썸네일 이미지 -->
-                        <div>
-                            <img src="${contextPath}/resources/img/main/broccoli.jpg" width="150px" height="150px">
+                        <div class="order-productImgName">
+                            <div>
+                                <img src="${contextPath}/resources/img/main/broccoli.jpg" width="150px" height="150px">
+                            </div>
+
+                            <div class="orderProductName"> 
+                            <%-- 중복제거 --%>
+                                <c:forEach var="selectOption" items="${selectOptionList}" varStatus="vs1">
+
+                                    <c:set var="fl" value="true"/>
+
+                                    <c:if test="${!vs1.first}">
+                                        <c:forEach var="temp" items="${selectOptionList}" varStatus="vs2" begin="0" end="${vs1.index-1}">
+                                            <c:if test="${selectOption.productName == temp.productName}">
+                                                <c:set var="fl" value="false"/>
+                                            </c:if>
+                                        </c:forEach>
+                                    </c:if>
+
+                                    <c:if test="${fl == 'true'}">
+                                        <a href="${contextPath}/product/detail/${selectOption.productCategoryNo}/${selectOption.productCode}">${selectOption.productName}</a>
+                                    </c:if>
+
+                                </c:forEach>
+                                <br>
+                                <%-- <c:forEach var="selectOption" items="${selectOptionList}" varStatus="vs"> --%>
+                                <c:forEach var="optionCode" items="${map.optionCodeList}" varStatus="vs">
+                                    <span>
+                                        <c:forEach var="selectOption" items="${selectOptionList}">
+                                            <c:if test="${optionCode == selectOption.optionCode}">
+                                                ${selectOption.optionName}
+                                            </c:if>
+                                        </c:forEach>
+                                    
+                                         - ${map.amountList[vs.index]}개
+                                    </span>
+                                   
+                                   
+                                    <c:if test="${!vs.last}">
+                                    /
+                                    </c:if> 
+                                </c:forEach>
+
+                                <div class="orderPrice">
+                                    <!-- 옵션 선택에 따른 상품 가격 -->
+                                    <p><span>${map.totalAmount}</span>원</p>
+                                </div>
+                            </div>
                         </div>
 
                         <!-- 상품명(클릭 시 상품 상세조회 화면)-->
-                        <div class="order-product-info">
-                            <a href="${contextPath}/product/${selectOptionList.productCode}">${selectOptionList.productName}</a>
-                            <c:forEach var="selectOption" items="${selectOptionList}">
-                                <span>(${selectOption.optionName}) -
-                                ${selectOption.optionCount} 개 </span>
-                            </c:forEach>
+                        <%-- <div class="order-product-info"> --%>
+                            <%-- <a href="${contextPath}/product/detail/${selectOptionList[0].productCategoryNo}/${selectOptionList[0].productCode}">${selectOptionList[0].productName}</a> --%>
+<%--                            
+                            <c:forEach var="selectOption" items="${selectOptionList}" varStatus="vs">
+
+                                <span>${selectOption.optionName} - ${map.amountList[vs.index]}개</span> 
+
+                            </c:forEach> --%>
                             <!-- 선택된 상품 개수 -->
        
-                        </div>
-
-                        <div class="orderPrice">
-                            <!-- 옵션 선택에 따른 상품 가격 -->
-                            <p><span>${map.totalAmount}</span>원</p>
-                        </div>
+                        <%-- </div> --%>
                     </div>
 
                     <!-- 결제수단 카카오페이 -->
@@ -154,10 +196,11 @@
                     <div class="privacyPolicy">
                         <input type="checkbox" name="agree" id="agree"><label for="agree">개인정보 수집 및 이용 동의</label>
                     </div>
-                    <button id="order-btn">주문하기</button>
+                    <button type="button" id="order-btn">주문하기</button>
                 </div>
+                    
+                    <input type="hidden" name="totalAmount" value="${map.totalAmount}">
             </form>
-            
         </section>
     </main>
 
@@ -167,6 +210,19 @@
     </div>
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
+
+     <script>
+        const contextPath = "${contextPath}";
+        const pOrderCode = "${map.pOrderCode}";
+        const productName = "${selectOptionList[0].productName}";
+        const totalAmount = "${map.totalAmount}"
+        const productPayNo = "${map.productPayNo}";
+        const memberNo = "${loginMember.memberNo}";
+
+     </script>
+
+    <%-- 아임포트  --%>
+    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
         
     <%-- <!— jQuery 추가 —> --%>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>

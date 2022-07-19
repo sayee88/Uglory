@@ -98,7 +98,6 @@
 
 .detailHead{display: flex; justify-content: space-between;}
 .detailHead p{margin: 0;}
-.info-box{height: 100%; display: flex; align-items: center; justify-content: center;}
 
 .first-row{border-top: 1px solid rgb(53, 204, 182);}
 .last-row{border-bottom: 1px solid rgb(53, 204, 182);}
@@ -107,7 +106,7 @@
 .out-btn{font-size: 20px; font-weight: bold; padding: 5px 10px;}
 
 .detail-btn{text-align: right;}
-.detail-btn>button{font-size: 20px; font-weight: bold; margin-bottom: 10px;}
+.detail-btn>button{font-size: 20px; margin-bottom: 10px;}
 
 .detail-info{border: 1px solid #ddd; border-radius: 2px; margin: 10px 0;}
 
@@ -165,7 +164,17 @@
 
 .listBody{
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-wrap: wrap;
 }
+
+.option-row{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.option-row>p{width:30%; font-weight: bold; padding: 2px;}
+.option-row input{border-radius: 5px; border: 1px solid #ccc; font-size: 16px; padding: 5px;}
+.opInputArea{width:70%;}
+#optionNameText{font-size: 16px;}
+
+.option-delete{border: 0; font-size: 26px; padding: 0 4px; height: 32px; display: flex; align-items: center;}

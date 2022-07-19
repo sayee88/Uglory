@@ -4,7 +4,6 @@
 
 	<!-- 상품 상세조회용 resultMap -->   
   	<resultMap type="detail" id="detail_rm">
-  	
     	<id property="productCode" column="P_CD"/>
       	<result property="productName" column="PRODUCT_NM"/>
       	<result property="productPrice" column="PRODUCT_PRICE"/>
@@ -27,18 +26,9 @@
 		<result property="optionName" column="OPTION_NM"/>
 		<result property="optionPrice" column="OPTION_PRICE"/>
 		<result property="productName" column="PRODUCT_NM"/>
-		
-		<collection property="optionList" column="P_CD" javaType="java.util.ArrayList" ofType="option" select="selectOptionList"/>
+		<result property="productCategoryNo" column="P_CATEGORY_NO"/>
 	</resultMap>
-	
-	<!-- 옵션 조회용 resultMap -->
-	<resultMap type="option" id="option_rm">
-		<id property="optionCode" column="OPTION_CD"/>
-		<result property="optionName" column="OPTION_NM"/>
-		<result property="optionPrice" column="OPTION_PRICE"/>
-	</resultMap>
-	
-      	 
+     
     <!-- 상품 상세 조회 -->
     <!-- 별점 개수, 리뷰 개수 필요 -->
 	<select id="productDetail" resultMap="detail_rm">
@@ -58,38 +48,48 @@
 		WHERE P_CD = ${productCode}
 	</select>
 	
-	<!-- for문을 위한 옵션 조회 -->
-	<select id="selectOptionList" resultMap="option_rm">
-		SELECT * FORM OPTION_TYPE
-		WHERE OPTION_CD = #{optionCode}
-	</select>
 	
 	<!-- 주문 페이지 내 옵션 조회 -->
-	<select id="orderOptionSelect" parameterType="list" resultMap="orderOptionProduct_rm">
-		SELECT OPTION_CD, OPTION_NM, OPTION_PRICE, PRODUCT_NM, P_CD
+	<select id="orderOptionSelect"  resultMap="orderOptionProduct_rm">
+		SELECT OPTION_CD, OPTION_NM, OPTION_PRICE, PRODUCT_NM, P_CD, P_CATEGORY.P_CATEGORY_NO
 		FROM OPTION_TYPE
 		JOIN PRODUCT USING(P_CD)
+		JOIN P_CATEGORY ON(PRODUCT.P_CATEGORY_NO = P_CATEGORY.P_CATEGORY_NO)
 		WHERE P_CD = ${productCode}
-<!-- 		AND OPTION_CD IN 
-		<foreach item="item" collection="list" open="(" separator="," close=")">
-			#{optionCode}
-		</foreach> -->
+		AND OPTION_CD IN 
+		<foreach item="item" collection="optionCodeList" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</select>
+	
+	<!-- 주문번호 생성 -->
+	<select id="createProductOrderCode" resultType="string">
+		SELECT CONCAT(TO_CHAR(SYSDATE, 'YYYYMMDD-"00"'), SEQ_P_ORDER_CD.NEXTVAL) as temp FROM DUAL
 	</select>
 	
 	<!-- 주문정보 입력 -->
 	<insert id="productOrder">
-		INSERT INTO PRODUCT_ORDER (P_ORDER_CD, P_ORDER_DT, P_ORDER_NM, P_ORDER_PHONE, P_ORDER_ADDR, TOTAL_PRICE, P_DL_REQ, P_REVIEW_ST, MEMBER_NO, DELIVERY_CD) 
-		VALUES (
-				CONCAT(TO_CHAR(SYSDATE, 'YYYYMMDD-"00"'), SEQ_P_ORDER_CD.NEXTVAL),
-				DEFAULT, 
-				#{productOrderName}, 
-				#{productOrderPhone}, 
-				#{productOrderAddr},
-				#{totalPrice}, 
-				#{productDelReq}, 
-				DEFAULT, 
+		INSERT INTO PRODUCT_ORDER VALUES (
+				#{pOrderCode},
+				SYSDATE, 
+				#{pOrderName}, 
+				#{pOrderPhone}, 
+				#{pOrderAddress},
+				#{totalAmount}, 
+				#{pOrderReq}, 
+				'N', 
 				#{memberNo}, 
 				1)
+	</insert>
+	
+	<!-- 결제 정보 삽입 -->
+	<insert id="productPay">
+		INSERT INTO PRODUCT_PAY VALUES(
+			#{productPayNo},
+			SYSDATE,
+			#{totalAmount},
+			#{memberNo},
+			#{pOrderCode})		
 	</insert>
 
 </mapper>

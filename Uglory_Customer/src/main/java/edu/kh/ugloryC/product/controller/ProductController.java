@@ -1,14 +1,15 @@
 package edu.kh.ugloryC.product.controller;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,12 +27,10 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
 
 import edu.kh.ugloryC.member.model.vo.Member;
 import edu.kh.ugloryC.product.model.service.OptionService;
 import edu.kh.ugloryC.product.model.service.ProductService;
-import edu.kh.ugloryC.product.model.vo.Option;
 import edu.kh.ugloryC.product.model.vo.OptionType;
 import edu.kh.ugloryC.product.model.vo.ProductDetail;
 import edu.kh.ugloryC.product.model.vo.ProductOrder;
@@ -99,7 +99,7 @@ public class ProductController {
 	// 결제 페이지 화면 전환
 	@SuppressWarnings({ "unchecked" }) // 무점검 경고 억제 어노테이션
 	@GetMapping("/order")
-	public String productOrder(int productCode, Option option,
+	public String productOrder(Integer productCode,
 							   Integer totalAmount, String optionObj, Model model) {
 		
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -115,14 +115,46 @@ public class ProductController {
 //			map.put("key" , ((Double)map.get(key)).intValue() );
 //		}
 		
-		// 옵션코드 값 
 		
-		for(String key : map.keySet()) {
-			map.put(key , ((Double)map.get(key)).intValue() );
+		// 옵션코드 리스트
+		List<String> optionCodeList = new ArrayList<String>(map.keySet());
 
+		// 수량 리스트
+		List<Integer> amountList = new ArrayList<Integer>();
+		for(String key : map.keySet()) {
+			amountList.add( ((Double)map.get(key)).intValue() );
 		}
+
+		// 	옵션코드 리스트 인덱스 == 수량 리스트 인덱스
 				
+		map.clear();
+		
+		map.put("optionCodeList", optionCodeList);
+		map.put("amountList", amountList);
+		
 		map.put("productCode", productCode);
+		
+		// 주문 번호 생성
+		String pOrderCode = service.createProductOrderCode();
+		
+		map.put("pOrderCode", pOrderCode);
+		
+		if(pOrderCode != null) {
+			
+			// 결제번호 생성
+			//LocalDate currentDate = LocalDate.now(); 
+			//String date = currentDate.format(DateTimeFormatter.ofPattern("yyMMddhh24mmss"));
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("yyMMddhhmmss");
+			
+			String date = sdf.format(new Date());
+			
+			
+			int random = (int)(Math.random() * 5);
+			String productPayNo = "SP" + date + "-" + random;
+			
+			map.put("productPayNo", productPayNo);
+		}
 		
 		// 주문 페이지 내 옵션 코드 상품 코드에 따른 옵션이름, 개수 조회
 		List<OptionType> selectOptionList = service.orderOptionSelect(map);
@@ -136,39 +168,55 @@ public class ProductController {
 	}
 	
 	// 배송정보 입력
+	@ResponseBody
 	@PostMapping("/order")
-	public String productOrder(int productCode,
-							   Member loginMember, 
-							   ProductOrder pOrder,
-							   String[] orderAddress,
-							   RedirectAttributes ra) {
+	public int productOrder(@RequestParam(value="pOrderCode", required=false) String pOrderCode,
+							@RequestParam(value="pOrderName", required=false) String pOrderName,
+							@RequestParam(value="pOrderPhone", required=false) String pOrderPhone,
+							@RequestParam(value="pOrderAddress1", required=false) String pOrderAddress1,
+							@RequestParam(value="pOrderAddress2", required=false) String pOrderAddress2,
+							@RequestParam(value="pOrderReq" , required=false) String pOrderReq,
+							@RequestParam(value="productPayNo") String productPayNo,
+							int totalAmount,
+							@ModelAttribute("loginMember") Member loginMember,
+							Model model,
+							RedirectAttributes ra, HttpServletRequest req) {
 		
-		// 로그인한 회원 번호 얻어와서 pOrder에 세팅
-		pOrder.setMemberNo(loginMember.getMemberNo());
+		int memberNo = loginMember.getMemberNo();
 		
-		pOrder.setProductOrderAddr(String.join(",,", orderAddress));
-
-		int result = service.productOrder(pOrder);
+		Map<String, Object> productOrder = new HashMap<String, Object>();
 		
-		String inputProductDelReq = pOrder.getProductDelReq(); // 선택 사항
-
-		if(inputProductDelReq.equals("")) {
-			inputProductDelReq = "NULL";
+		String address1 = pOrderAddress1 + pOrderAddress2;
+		
+		String address = String.join(",,", address1);
+		
+		if(pOrderReq.equals("")) {
+			pOrderReq = "NULL";
 		}
 		
-		String message = null;
-		String path = null;
+		productOrder.put("pOrderCode", pOrderCode);
+		productOrder.put("pOrderName", pOrderName);
+		productOrder.put("pOrderPhone", pOrderPhone);
+		productOrder.put("pOrderAddress", address);
+		productOrder.put("totalAmount", totalAmount);
+		productOrder.put("pOrderReq", pOrderReq);
+		productOrder.put("memberNo", memberNo);
+		productOrder.put("productPayNo", productPayNo);
+
+		int result = service.productOrder(productOrder);
 		
-		if(result > 0) { // 주문 정보 입력 성공
-			path = "redirect:/member/myPage";
-			
-			
-		} else {
-			message = "배송지 정보 입력 실패";
-			path = "redirect:/product/productOrder";
+		if(result > 0) { // 주문 정보 입력 성공 시 결제 테이블 삽입
+			int productPay = service.productPay(productOrder);
 		}
+		model.addAttribute("productOrder", productOrder);
 		
-		ra.addFlashAttribute("message", message);
-		return path;
+		return result;
 	}
+	
+	@GetMapping("/cart")
+	public String productCart() {
+		
+		return "product/productCart";
+	}
+	
 }

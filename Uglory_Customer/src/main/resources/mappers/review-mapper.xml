@@ -2,12 +2,60 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="reviewMapper">
 
+	<resultMap type="reviewSelectInfo" id="reviewSelectInfo_rm">
+		<id property="reviewNo" column="REVIEW_NO" />
+		<result property="reviewContent" column="REVIEW_CONTENT" />
+		<result property="reviewEnrollDate" column="REVIEW_ENROLL_DT" />
+		<result property="starRating" column="STAR_RATING" />
+		
+		<result property="memberNo" column="MEMBER_NO" />
+		<result property="memberName" column="MEMBER_NAME" />
+	</resultMap>
+	
+	
+	<resultMap type="unWrittenSubscription" id="unWrittenSubscription_rm">
+		<id property="subOrderCode" column="S_ORDER_CD" />
+		<result property="subDate" column="S_DT" />
+		<result property="reviewCode" column="REVIEW_CD" />
+		<result property="subName" column="S_NM" />
+		<result property="subPrice" column="S_PRICE" />
+	
+	</resultMap>
+	
+	<resultMap type="unWrittenProduct" id="unWrittenProduct_rm">
+		<id property="productOrderCode" column="P_ORDER_CD" />
+		<!-- 이미지 경로 불러와야할까? -->
+		<result property="productOrderDate" column="P_ORDER_DT" />
+		<result property="productName" column="PRODUCT_NM" />
+		<result property="optionName" column="OPTION_NM" />
+		<result property="totalPrice" column="TOTAL_PRICE" />
+		<result property="reviewCode" column="REVIEW_CD" />
+	
+	</resultMap>
+	
+	<resultMap type="reviewWrite" id="reviewWrite_rm">
+		<id property="reviewNo" column="REVIEW_NO" />
+		<result property="reviewContent" column="REVIEW_CONTENT" />
+		<result property="reviewEnrollDate" column="REVIEW_ENROLL_DT" />
+		<result property="starRating" column="STAR_RATING" />
+		<result property="memberNo" column="MEMBER_NO" />
+		<result property="memberName" column="MEMBER_NAME" />
+		
+<result property="productOrderDate" column="P_ORDER_DT" />
+		<result property="productName" column="PRODUCT_NM" />
+		<result property="productName" column="PRODUCT_NM" />
+		<result property="optionName" column="OPTION_NM" />
+		<result property="totalPrice" column="TOTAL_PRICE" />
+		<result property="reviewCode" column="REVIEW_CD" />
+		
+	</resultMap>
+
 
 	<!-- 리뷰글 삽입 -->
 	<insert id="insertReview">
 		
-	INSERT INTO REVIEW
-	VALUES (SEQ_REVIEW_NO.NEXTVAL, #{reviewContent}, SYSDATE, #{starRating}, #{memberNo}, #{productCode}, ${productOrderCode}, #{subOrderCode}, #{reviewCode})
+		INSERT INTO REVIEW
+		VALUES (SEQ_REVIEW_NO.NEXTVAL, #{reviewContent}, SYSDATE, #{starRating}, #{memberNo}, #{productCode}, ${productOrderCode}, #{subOrderCode}, #{reviewCode})
 		
 	</insert>
 	 
@@ -27,7 +75,7 @@
 		
 		
 	<!-- 구독상품 미작성 리뷰 조회 -->
-	<select id="subUnWrittenList">
+	<select id="subUnWrittenList" resultMap="unWrittenSubscription_rm">
 		SELECT * FROM SUBS_ORDER
 		LEFT JOIN REVIEW USING(S_ORDER_CD)
 		JOIN SUBS USING(S_CD)
@@ -37,7 +85,7 @@
 	
 	
 	<!-- 개별상품 미작성 리뷰 조회 -->
-	<select id="productUnWrittenList">
+	<select id="productUnWrittenList" resultMap="unWrittenProduct_rm">
 		SELECT * FROM PRODUCT_ORDER
 		LEFT JOIN REVIEW USING(P_ORDER_CD)
 		JOIN OPTION_TB USING(P_ORDER_CD)

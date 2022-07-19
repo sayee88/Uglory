@@ -39,10 +39,27 @@ public class ProductServiceImpl implements ProductService {
 
 	// 주문 정보 
 	@Override
-	public int productOrder(ProductOrder pOrder) {
+	public int productOrder(Map<String, Object> productOrder) {
 		
-		return dao.productOrder(pOrder);
+		return dao.productOrder(productOrder);
 	}
+
+	// 상품 주문번호 생성
+	@Override
+	public String createProductOrderCode() {
+
+		return dao.createProductOrderCode();
+	}
+
+	// 결제 정보 삽입
+	@Override
+	public int productPay(Map<String, Object> productOrder) {
+		
+		return dao.productPay(productOrder);
+	}
+	
+	
+	
 
 
 

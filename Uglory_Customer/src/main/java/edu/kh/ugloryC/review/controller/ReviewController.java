@@ -22,6 +22,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import edu.kh.ugloryC.member.model.vo.Member;
 import edu.kh.ugloryC.review.model.service.ReviewService;
 import edu.kh.ugloryC.review.model.vo.ReviewWrite;
+import edu.kh.ugloryC.review.model.vo.UnWrittenProduct;
+import edu.kh.ugloryC.review.model.vo.UnWrittenSubscription;
 import edu.kh.ugloryC.review.model.vo.ReviewSelectInfo;
 
 @Controller
@@ -46,7 +48,7 @@ public class ReviewController {
 		
 		
 		
-		return "review/Review";
+		return "review/Review copy";
 	}
 	
 	
@@ -61,26 +63,25 @@ public class ReviewController {
 	
 	// 미작성 리뷰 호출
 	@GetMapping("/list/unWritten")
-	public String unWritten(Member loginMember){
+	public String unWritten(@ModelAttribute("loginMember")  Member loginMember, Model model){
 		
 		
 		
 		// 구독상품에 대한 미작성 리뷰 조회 
-		List<ReviewSelectInfo> subUnWrittenList = service.subUnWrittenList(loginMember);
+		List<UnWrittenSubscription> subUnWrittenList = service.subUnWrittenList(loginMember);
 		
 		// 개별상품에 대한 미작성 리뷰 조회
-		List<ReviewSelectInfo> productUnWrittenList = service.productUnWrittenList(loginMember);
+		List<UnWrittenProduct> productUnWrittenList = service.productUnWrittenList(loginMember);
 		
 		// map 에 담기
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("subUnWrittenList", subUnWrittenList);
 		map.put("productUnWrittenList", productUnWrittenList);
 		
+		model.addAttribute("map", map);
 		
 		
-		
-		
-		return "review/ReviewWriteForm";
+		return "review/Review";
 	}
 	
 	
@@ -92,7 +93,21 @@ public class ReviewController {
 	
 	// 리뷰 작성 화면 전환
 	@GetMapping("/write/{reviewCode}")
-	public String write( @PathVariable("reviewCode") int reviewCode ) {
+	public String write( @PathVariable("reviewCode") int reviewCode,
+			@ModelAttribute("loginMember")  Member loginMember, Model model) {
+		
+		// 구독상품에 대한 미작성 리뷰 조회 
+		List<UnWrittenSubscription> subUnWrittenList = service.subUnWrittenList(loginMember);
+		
+		// 개별상품에 대한 미작성 리뷰 조회
+		List<UnWrittenProduct> productUnWrittenList = service.productUnWrittenList(loginMember);
+		
+		// map 에 담기
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("subUnWrittenList", subUnWrittenList);
+		map.put("productUnWrittenList", productUnWrittenList);
+		
+		model.addAttribute("map", map);
 		
 		return "review/ReviewWriteForm";
 	}
@@ -107,16 +122,20 @@ public class ReviewController {
 			, RedirectAttributes ra
 			
 			,@RequestParam(value="deleteList", required=false) String deleteList
-			,ReviewWrite reviewWrite) {
+			,ReviewWrite reviewWrite
+			,ReviewSelectInfo reviewSelectInfo) {
 		
 		// 로그인한 회원 (모달창에 보이게 해야함)
 		// (작성 완료 시 review/list로 이동)
+		// reviewSelectInfo 에 세팅
+		reviewSelectInfo.setMemberNo(loginMember.getMemberNo());
 		
 		// 이미지 저장 경로 얻어와야해(webPath/ folderPath)
 		String webPath = "/resources/img/review/";
 		
 		// folderPath = webPath까지의 실제 컴퓨터 경로
 		String folderPath = req.getSession().getServletContext().getRealPath(webPath);
+		
 		
 		// 삽입 / 수정 일때 구분
 		if(mode.equals("insert")) {
@@ -132,27 +151,26 @@ public class ReviewController {
 			
 			int result = service.insertReview(reviewWrite ,imageList, webPath, folderPath);
 			
+			String path = null;
+			String message = null;
 			
+			if(result > 0) {
+				
+				path = "../list";
+				message = "리뷰 등록 완료!";
+				
+			} else {
+				path = req.getHeader("referer");
+				message = "리뷰 등록 실패ㅜㅜ";
+			}
 			
+			ra.addFlashAttribute("message", message);
+			return "redierct:" + path;
 			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-		} else {
+		} else { // 수정일 부분
 			
 		}
+		
 		
 		return "/review/Review";
 	}

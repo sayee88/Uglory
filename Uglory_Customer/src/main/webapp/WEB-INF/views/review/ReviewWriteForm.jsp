@@ -132,19 +132,40 @@
 
                     <!-- 썸네일 이미지 (첫번째 등록 이미지가 썸네일 이미지) -->
                     <div class="review-img-upload">
-                        
-                        <label for="img0">
-                            <img class="preview" src="#">
-                        </label>
-                        <input type="file" class="inputImage" id="img0" name="0" accept="image/*">
-                        <span class="delte-image">&times;</span> 
-                        
-                      	
-                        
+                            
+                        <div class="reviewImg m-1">
+                            <label for="img0">
+                                <img class="preview" src="#">
+                            </label>
+                            <input type="file" class="inputImage" id="img0" name="0" accept="image/*">
+                            <span class="delete-image">&times;</span> 
+                        </div>
+                        <div class="reviewImg m-1 imgHidden" id="imgHi0">
+                            <label for="img1">
+                                <img class="preview" src="#">
+                            </label>
+                            <input type="file" class="inputImage" id="img1" name="1" accept="image/*">
+                            <span class="delete-image">&times;</span> 
+                        </div>
+                        <div class="reviewImg m-1 imgHidden"  id="imgHi1">
+                            <label for="img2">
+                                <img class="preview" src="#">
+                            </label>
+                            <input type="file" class="inputImage" id="img2" name="2" accept="image/*">
+                            <span class="delete-image">&times;</span> 
+                        </div>
+                        <div class="reviewImg m-1 imgHidden"  id="imgHi2">
+                            <label for="img3">
+                                <img class="preview" src="#">
+                            </label>
+                            <input type="file" class="inputImage" id="img3" name="3" accept="image/*">
+                            <span class="delete-image">&times;</span> 
+                        </div>
+                            
                     </div>
 
                     <div class="review-inputtext">
-                        <textarea name="boardContent"></textarea>
+                        <textarea placeholder="리뷰를 작성해주세요." name="boardContent"></textarea>
                     </div>
 
                     <div class="review-precautions">
@@ -187,6 +208,7 @@
     <%-- Template Javascript --%>
     <script src="${contextPath}/resources/js/main.js"></script>
     <script src="${contextPath}/resources/js/review/star-rating.js"></script>
+    <script src="${contextPath}/resources/js/review/reviewWriteForm.js"></script>
 </body>
 
 </html>
