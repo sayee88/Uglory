@@ -24,6 +24,7 @@ import com.google.gson.Gson;
 
 import edu.kh.ugloryA.farm.model.vo.Farm;
 import edu.kh.ugloryA.product.model.service.ProductService;
+import edu.kh.ugloryA.product.model.vo.OptionType;
 import edu.kh.ugloryA.product.model.vo.Product;
 import edu.kh.ugloryA.product.model.vo.ProductCategory;
 
@@ -136,9 +137,8 @@ public class ProductController {
 			
 			product.setProductCode(updateCode);
 			
-			int result = 0;
-			
-			//int result = service.updateProduct(product, imageList, webPath, folderPath);
+			int result = service.updateProduct(product);
+											 //imageList, webPath, folderPath
 			
 			if(result>0) {
 				path = "detail/" + product.getProductCode();
@@ -151,6 +151,29 @@ public class ProductController {
 			ra.addFlashAttribute("message", message);
 			return "redirect:" + path;
 		}
+	}
+	
+	//옵션 추가
+	@PostMapping("/option/insert")
+	public String insertOption(OptionType optionType,
+							   RedirectAttributes ra,
+							   HttpServletRequest req) {
+		String message = null;
+		
+		int result = service.insertOption(optionType);
+		
+		if(result > 0)	message = "옵션이 등록되었습니다.";
+		else			message = "옵션 등록에 실패하였습니다.";
+		
+		ra.addFlashAttribute("message", message);
+		return "redirect:" + req.getHeader("referer");
+	}
+	
+	//옵션 삭제
+	@ResponseBody
+	@GetMapping("/option/delete")
+	public int deleteOption(int optionCode) {
+		return service.deleteOption(optionCode);
 	}
 	
 

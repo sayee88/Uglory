@@ -119,6 +119,33 @@ public class ProductDAO {
 		return sqlSession.insert("productMapper.insertProductImage", productImageList);
 	}
 
+	/**
+	 * 상품 수정 DAO
+	 * @param product
+	 * @return result
+	 */
+	public int updateProduct(Product product) {
+		return sqlSession.update("productMapper.updateProduct", product);
+	}
+
+	/**
+	 * 옵션 등록 DAO
+	 * @param optionType
+	 * @return result
+	 */
+	public int insertOption(OptionType optionType) {
+		return sqlSession.insert("productMapper.insertOption", optionType);
+	}
+
+	/**
+	 * 옵션 삭제 DAO
+	 * @param optionCode
+	 * @return result
+	 */
+	public int deleteOption(int optionCode) {
+		return sqlSession.delete("productMapper.deleteOption", optionCode);
+	}
+
 	
 	
 

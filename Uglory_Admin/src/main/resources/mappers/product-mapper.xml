@@ -153,10 +153,28 @@
 			) A
 	</insert>
 	
+	<!-- 상품 정보 수정 -->
+	<update id="updateProduct">
+		UPDATE PRODUCT SET
+			P_CATEGORY_NO = #{productCategoryNo},
+			FARM_NO = #{farmNo},
+			PRODUCT_NM = #{productName},
+			PRODUCT_PRICE = #{productPrice},
+			PRODUCT_INFO = #{productInfo},
+			PU_DATE = SYSDATE
+		WHERE P_CD = #{productCode}
+	</update>
 	
+	<!-- 옵션 등록 -->
+	<insert id="insertOption">
+		INSERT INTO OPTION_TYPE VALUES(
+    		SEQ_OPTION_CD.NEXTVAL, #{productCode}, #{optionName}, #{optionPrice}
+		)
+	</insert>
 	
-	
-	
-	
+	<!-- 옵션 삭제 -->
+	<delete id="deleteOption">
+		DELETE OPTION_TYPE WHERE OPTION_CD = #{optionCode}
+	</delete>
 
 </mapper>
