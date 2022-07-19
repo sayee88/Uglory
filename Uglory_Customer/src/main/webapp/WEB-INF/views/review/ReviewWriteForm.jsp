@@ -144,7 +144,7 @@
                     </div>
 
                     <div class="review-inputtext">
-                        <textarea placeholder="" name="boardContent"></textarea>
+                        <textarea placeholder="최대 " name="boardContent"></textarea>
                     </div>
 
                     <div class="review-precautions">
