@@ -36,7 +36,7 @@ import edu.kh.ugloryC.product.model.vo.ProductOrder;
 
 @Controller
 @RequestMapping("/product")
-@SessionAttributes({"loginMember"})
+@SessionAttributes({"loginMember", "pOrderCode"})
 public class ProductController {
 	
 	@Autowired
@@ -157,7 +157,6 @@ public class ProductController {
 							   RedirectAttributes ra, HttpServletRequest req) {
 		
 		int memberNo = loginMember.getMemberNo();
-		String memberName = loginMember.getMemberName();
 		
 		Map<String, Object> productOrder = new HashMap<String, Object>();
 		
@@ -175,7 +174,6 @@ public class ProductController {
 		productOrder.put("totalAmount", totalAmount);
 		productOrder.put("inputDelText", inputDelText);
 		productOrder.put("memberNo", memberNo);
-		productOrder.put("memberName", memberName);
 		
 		String pOrderCode = service.createProductOrderCode();
 		
@@ -195,20 +193,6 @@ public class ProductController {
 		}
 		
 		model.addAttribute("productOrder", productOrder);
-
-		String message = null;
-		String path = null;
-		
-		if(result > 0) { // 주문 정보 입력 성공
-			path = "../member/myPage";
-			
-		} else {
-			message = "배송지 정보 입력 실패";
-			path = "product/order";
-		}
-		
-		
-		ra.addFlashAttribute("message", message);
 		
 		return result;
 	}

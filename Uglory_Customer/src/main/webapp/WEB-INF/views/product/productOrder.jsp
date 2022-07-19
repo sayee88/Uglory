@@ -191,15 +191,15 @@
      <script>
 
         const contextPath = "${contextPath}";
-        const memberName = "${productOrder.memberName}";
 
-        const sOrderNo = "${productOrder.pOrderCode}";
+        const pOrderCode = "${productOrder.pOrderCode}";
         
-        const orderName = "${productOrder.inputName}";
-        const orderPhone = "${productOrder.inputPhone}";
-        const orderAddress = "${productOrder.inputAddress}";
+        const productName = "${selectOptionList[0].productName}";
+        const inputName = "${productOrder.inputName}";
+        const inputPhone = "${productOrder.inputPhone}";
+        const inputAddress = "${productOrder.inputAddress}";
         const totalAmount = "${productOrder.totalAmount}";
-        const delText = "${productOrder.inputDelText}";
+        const inputDelText = "${productOrder.inputDelText}";
         const productPayNo = "${productOrder.productPayNo}";
         const memberNo = "${productOrder.memberNo}";
 

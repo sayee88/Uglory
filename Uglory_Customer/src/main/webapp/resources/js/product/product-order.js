@@ -132,88 +132,61 @@ function orderValidate(){
 
         if(!confirm("정말 주문하시겠습니까?")){
             return false;
+
         } else {
-            var IMP = window.IMP; // 생략 가능
-            IMP.init("imp33404182"); // 예: imp00000000 
+
+            var IMP = window.IMP; 
+            IMP.init("imp33404182"); 
 
             IMP.request_pay({ // param
-                pg: "html5_inicis",
+                pg : 'kakaopay',
                 pay_method: "card",
-                merchant_uid: "ORD20180131-0000011",
-                name: "노르웨이 회전 의자",
-                amount: 64900,
-                buyer_email: "gildong@gmail.com",
-                buyer_name: "홍길동",
-                buyer_tel: "010-4242-4242",
-                buyer_addr: "서울특별시 강남구 신사동",
-                buyer_postcode: "01181"
+                merchant_uid: productPayNo,
+                name: productName,
+                amount: totalAmount,
+                customer_uid : pOrderCode, // 필수 입력  / 주문번호 연결
+                buyer_name : inputName,
+                buyer_tel : inputPhone
+
             }, function (rsp) { // callback
+
                 if (rsp.success) {
-                    ...,
-                    // 결제 성공 시 로직,
-                    ...
+                    $.ajax({
+                        url : contextPath + "/product/order",
+                        data : {
+                            "pOrderCode" : pOrderCode,
+                            "inputName" : inputName,
+                            "inputPhone" : inputPhone,
+                            "inputAddress" : inputAddress,
+                            "inputDelText" : inputDelText,
+                            "memberNo" : memberNo,
+                            "totalAmount" : totalAmount ,
+                            "productPayNo" : productPayNo,
+                        },
+
+                        type : "POST",
+                        success : function(res){ 
+
+                            if(res>0){
+                                location.href = contextPath + "/member/orderHistory";
+                                alert("결제가 완료되었습니다.:)");
+
+                            } else {
+                                location.href = contextPath + "/product/order";
+                                alert("결제 실패 ㅠ");
+                            }
+                        },
+                        error: function(){
+                            console.log("에러 발생" + rsp.error_msg);
+                        }
+                    });
                 } else {
-                    ...,
-                    // 결제 실패 시 로직,
-                    ...
+
                 }
             });
-          }
-        </script>
-
         }
     }
-    return true;
 }
 
-IMP.request_pay({
-    pay_method : 'card', // 기능 없음.
-    merchant_uid: payNo,  // 구독결제번호
-    name : boxName, // 상품명
-    amount : 1, // 빌링키 발급과 함께 1원 결제승인을 시도합니다.
-    customer_uid : sOrderNo, // 필수 입력  / 주문번호 연결
-    buyer_name : memberName,
-}, function(rsp) {
-
-    if ( rsp.success ) {
-        $.ajax({
-
-            url : contextPath + "/subscription/kakaopay",
-            data : {
-                "sOrderNo" : sOrderNo,
-                "orderName" : orderName,
-                "orderPhone" : orderPhone,
-                "orderAddress" : orderAddress,
-                "delText" : delText,
-                "cycle" : cycle,
-                "memberNo" : memberNo,
-                "box" : box,
-                "amount" : amount ,
-                "payNo" : payNo,
-            },
-
-            type : "POST",
-            success : function(res){ 
-                if(res>0){
-                    location.href = contextPath + "/member/subscribeCHK";
-                    alert("주문이 완료되었습니다:)");
-
-                }else{
-                    location.href = contextPath;
-                    alert("주문 실패:( - 에러 내용 : " +  rsp.error_msg);
-                }
-            },
-            error: function(){
-                console.log("에러 발생");
-            }
-        
-        });
-    } else {
-        
-    }
-});
-
-
-})
 
 
