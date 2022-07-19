@@ -178,15 +178,32 @@ public class ProductController {
 	
 
 	//구독 리스트 페이지
-	@GetMapping("/subs/plist")
-	public String subsPList() {
-		return "adminProduct/adminPList";
+	@GetMapping("/weekly/list")
+	public String weeklyList(Model model) {
+		
+		//이번주
+		String key = "T";
+		Map<String, Object> mapT = service.selectWeeklyList(key);
+
+		//다음주
+		key = "N";
+		Map<String, Object> mapN = service.selectWeeklyList(key);
+		
+		//다다음주
+		key = "A";		
+		Map<String, Object> mapA = service.selectWeeklyList(key);
+		
+		model.addAttribute("mapT", mapT);
+		model.addAttribute("mapN", mapN);
+		model.addAttribute("mapA", mapA);
+		
+		return "adminProduct/adminWeeklyList";
 	}
 	
 	//구독 리스트 등록 페이지
-	@GetMapping("/subs/presister")
-	public String subsPInsert() {
-		return "adminProduct/adminPListIn";
+	@GetMapping("/weekly/register")
+	public String weeklyInsert() {
+		return "adminProduct/adminWeeklyListIn";
 	}
 	
 	//수정

@@ -11,6 +11,8 @@ import edu.kh.ugloryA.product.model.vo.OptionType;
 import edu.kh.ugloryA.product.model.vo.Product;
 import edu.kh.ugloryA.product.model.vo.ProductCategory;
 import edu.kh.ugloryA.product.model.vo.ProductImage;
+import edu.kh.ugloryA.product.model.vo.WeeklyList;
+import edu.kh.ugloryA.product.model.vo.WeeklyProduct;
 
 @Repository
 public class ProductDAO {
@@ -145,6 +147,26 @@ public class ProductDAO {
 	public int deleteOption(int optionCode) {
 		return sqlSession.delete("productMapper.deleteOption", optionCode);
 	}
+
+	/**
+	 * 주별 상품 조회
+	 * @param key
+	 * @return weeklyList
+	 */
+	public WeeklyList selectWeeklyList(String key) {
+		return sqlSession.selectOne("productMapper.selectWeeklyList", key);
+	}
+
+	/**
+	 * 리스트 내 상품 모두 조회
+	 * @param productListNo
+	 * @return weeklyProductList
+	 */
+	public List<WeeklyProduct> selectWeeklyProduct(int productListNo) {
+		return sqlSession.selectList("productMapper.selectWeeklyProduct", productListNo);
+	}
+
+
 
 	
 	

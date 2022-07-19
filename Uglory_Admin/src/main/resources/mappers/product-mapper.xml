@@ -52,6 +52,21 @@
 		<result property="productCategoryName" column="P_CATEGORY_NM"/>
 	</resultMap>
 	
+	<resultMap type="weeklyList" id="weeklyList_rm">
+		<id property="productListNo" column="P_LIST_NO"/>
+		<result property="expectedUploadDate" column="EX_UPLOAD_DATE"/>
+		<result property="deliveryDate" column="DELIVERY_DATE"/>
+	</resultMap>
+	
+	<resultMap type="weeklyProduct" id="weeklyProduct_rm">
+		<id property="productNo" column="PRODUCT_NO"/>
+		<result property="productListNo" column="P_LIST_NO"/>
+		<result property="optionCode" column="OPTION_CD"/>
+		<result property="productCode" column="P_CD"/>
+		<result property="productName" column="PRODUCT_NM"/>
+		<result property="optionName" column="OPTION_NM"/>
+	</resultMap>
+	
 	
 	<!-- 상품 전체 조회 -->
 	<select id="selectAll" resultMap="product_rm">
@@ -176,5 +191,22 @@
 	<delete id="deleteOption">
 		DELETE OPTION_TYPE WHERE OPTION_CD = #{optionCode}
 	</delete>
+
+
+	<!-- 주별 상품 리스트 조회 -->
+	<select id="selectWeeklyList" resultMap="weeklyList_rm">
+		SELECT P_LIST_NO, EX_UPLOAD_DATE, TO_CHAR(DELIVERY_DATE, 'YYYY-MM-DD') DELIVERY_DATE
+		FROM WEEKLY_LIST 
+		WHERE EX_UPLOAD_DATE = #{key}
+	</select>
+	
+	<!-- 리스트 내 상품 모두 조회 -->
+	<select id="selectWeeklyProduct" resultMap="weeklyProduct_rm">
+		SELECT PRODUCT_NO, P_CD, PRODUCT_NM, OPTION_CD, OPTION_NM
+		FROM WEEKLY_P
+		JOIN OPTION_TYPE USING(OPTION_CD)
+		JOIN PRODUCT USING(P_CD)
+		WHERE P_LIST_NO = #{productListNo}
+	</select>
 
 </mapper>
