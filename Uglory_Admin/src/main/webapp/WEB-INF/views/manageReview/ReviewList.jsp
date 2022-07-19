@@ -38,6 +38,20 @@
     <!-- Fontawesome cdn 링크 -->
     <script src="https://kit.fontawesome.com/1ef9913073.js" crossorigin="anonymous"></script>
 
+    <style>
+    .openModal:hover{
+        cursor: pointer;
+    }
+
+    .review_content{
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        width: 460px;
+    }
+    </style>
+
+
 </head>
 
 <body>
@@ -99,7 +113,13 @@
                                             <td>${review.enrollDate}</td>
                                             <td>${review.customerName}</td>
                                             <td>
-                                            <div>${review.reviewContent}</div>
+                                                <div class="review_content">${review.reviewContent}</div>
+                                            </td>
+                                            <td>
+                                                <%-- 버튼 클릭시 모달창 open --%>
+                                                <a data-bs-toggle="modal" data-bs-target="#exampleModal" class="openModal">
+                                                    <button type="button" class="btn btn-review-detail selectDetail">상세</button>
+                                                </a>
                                             </td>
                                         </tr>
                                     </c:forEach>
@@ -127,33 +147,41 @@
                             <div class="modal-mainImage">
                                 <div>
                                     <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+
                                         <div class="carousel-inner">
-                                        <div class="carousel-item active" >
-                                            <img src="${contextPath}/resources/img/review/review_img1.png" class="d-block w-100" style="object-fit: contain;">
+                                            <div class="carousel-item active" >
+                                                <img src="${contextPath}/resources/img/review/review_img1.png" class="d-block w-100" style="object-fit: contain;">
+                                            </div>
+
+                                            <div class="carousel-item">
+                                                <img src="${contextPath}/resources/img/review/review_img10.png" class="d-block w-100">
+                                            </div>
+
+                                            <div class="carousel-item">
+                                                <img src="${contextPath}/resources/img/review/review_img11.png" class="d-block w-100">
+                                            </div>
                                         </div>
-                                        <div class="carousel-item">
-                                            <img src="${contextPath}/resources/img/review/review_img10.png" class="d-block w-100">
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img src="${contextPath}/resources/img/review/review_img11.png" class="d-block w-100" alt="...">
-                                        </div>
-                                        </div>
+
                                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                        <span class="visually-hidden">Previous</span>
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Previous</span>
                                         </button>
+
                                         <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                        <span class="visually-hidden">Next</span>
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Next</span>
                                         </button>
+
                                     </div>
                                 </div>
+
                                 <div class="modal-imgList">
                                     <div><img class="small" src="${contextPath}/resources/img/review/review_img1.png"></div>
                                     <div><img class="small" src="${contextPath}/resources/img/review/review_img10.png"></div>
                                     <div><img class="small" src="${contextPath}/resources/img/review/review_img11.png"></div>
                                     <div class="img4">x</div>
                                 </div>
+
                             </div>
                             
                             <div class="modal-mycontent">
@@ -161,40 +189,38 @@
                                     
                                     <div>
                                         <div class="info-name-date">
-                                            <span>신*윤</span>
-                                            <span>2022.07.02</span>
+                                            <span>${reviewDetail.customerName}</span>
+                                            <span>${reviewDetail.enrollDate}</span>
                                         </div>
-                                        <div class="purchase">정기구독박스</div>
+
+                                        <div class="purchase">${reviewDetail.productName}</div>
                                     </div>
+
                                     <div class="modal-star">
-                                        <div>
-                                            <span>★</span>
-                                            <span>★</span>
-                                            <span>★</span>
-                                            <span>★</span>
-                                            <span>☆</span>
-                                        </div>
-                                        <div class="avgstar">4.0</div>
+                                        <div class="avgstar">${reviewDetail.starRating}</div>
                                     </div>
             
                                 </div>
+
                                 <div class="modal-content-text">
-                                    신선한 토마토로 카프레제 해먹었어요~ 멋쟁이 토마토로 파스타도 해먹구 신이 나요~
+                                    ${reviewDetail.reviewContent}
                                 </div>
+
                                 <div class="modal-bottom">
                                     <div class="modal-sub">
                                         <img src="${contextPath}/resources/img/icon/tomato.png" width="50px">
                                         <a href="#">   구독 박스가 궁금하다면? >></a>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-                            style="background-color:rgb(113, 214, 199); border:0; font-weight: bold;">수정하기</button>
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-                            style="background-color:rgb(113, 214, 199); border:0; font-weight: bold;">삭제하기</button>
-                    </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                                style="background-color:rgb(113, 214, 199); border:0; font-weight: bold;">삭제하기</button>
+                        </div>
+
                     </div>
                 </div>
             </div>
@@ -223,6 +249,7 @@
 
     <!-- Template Javascript -->
     <script src="${contextPath}/resources/js/main.js"></script>
+    <script src="${contextPath}/resources/js/review.js"></script>
 </body>
 
 </html>
