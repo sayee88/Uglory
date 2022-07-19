@@ -477,13 +477,21 @@
     width: 400px;
 }
 
-.unWritten-list img{
+.unWritten-subList > img{
     /* border: 1px solid red; */
     margin-left: 40px;
-    padding: 20px;
     width: 250px;
-
 }
+
+.unWritten-productList > img{
+    /* border: 1px solid red; */
+    margin-left: 80px;
+    padding: 18px 10px 10px 10px;
+    width: 160px;
+    height: 165px;
+    object-fit: cover;
+}
+
 
 .unWritten-list > div:nth-of-type(2){
     /* border: 1px solid red; */
