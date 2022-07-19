@@ -124,7 +124,10 @@
                         <h3 class="product-name" style="color: gray;"><span>${detail.productName}</span></h3>
 
                         <h3 class="option-name" style="color: gray;"><span>(
-                            <c:forEach var="option_type" items="${optionList}"> ${option_type.optionName}</span>
+                            <c:forEach var="option_type" items="${optionList}" varStatus="vs"> ${option_type.optionName}</span>
+                                    <c:if test="${!vs.last}">
+                                    /
+                                    </c:if> 
                             </c:forEach>
                         )
                         </h3>
@@ -183,7 +186,7 @@
 
                 <hr>
                 <!-- 상품 상세 조회, 리뷰 페이지 이동 -->
-                <a href="#">Detail</a>
+                <a href="location.reload()">Detail</a>
                 <a href="#">Review</a>
                 <hr>
 
@@ -228,7 +231,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">쇼핑 계속하기</button>
-                                <button type="button" class="btn btn-primary" id="productCartBtn" onclick="optionSelectBox()">장바구니보기</button>
+                                <button type="button" class="btn btn-primary" id="productCartBtn">장바구니보기</button>
                             </div>
                         </div>
                     </div>

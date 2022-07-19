@@ -69,20 +69,40 @@
 	
 	<!-- 주문정보 입력 -->
 	<insert id="productOrder">
-		INSERT INTO PRODUCT_ORDER 
-		VALUES (
+		INSERT INTO PRODUCT_ORDER VALUES (
 				#{pOrderCode},
 				SYSDATE, 
-				#{inputName}, 
-				#{inputPhone}, 
-				#{inputAddress},
+				#{pOrderName}, 
+				#{pOrderPhone}, 
+				#{pOrderAddress},
 				#{totalAmount}, 
-				#{inputDelText}, 
+				#{pOrderReq}, 
 				'N', 
 				#{memberNo}, 
 				1)
 	</insert>
 	
-
+	<!-- 결제 정보 삽입 -->
+	<insert id="productPay">
+		INSERT INTO PRODUCT_PAY VALUES(
+			#{productPayNo},
+			SYSDATE,
+			#{totalAmount},
+			#{memberNo},
+			#{pOrderCode})		
+	</insert>
+	
+	<!-- 장바구니 페이지 내 옵션 조회 -->
+	<select id="cartOptionList"  resultMap="orderOptionProduct_rm">
+		SELECT OPTION_CD, OPTION_NM, OPTION_PRICE, PRODUCT_NM, P_CD, P_CATEGORY.P_CATEGORY_NO
+		FROM OPTION_TYPE
+		JOIN PRODUCT USING(P_CD)
+		JOIN P_CATEGORY ON(PRODUCT.P_CATEGORY_NO = P_CATEGORY.P_CATEGORY_NO)
+		WHERE P_CD = ${productCode}
+		OR OPTION_CD IN 
+		<foreach item="item" collection="optionCodeList" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</select>
 </mapper>
 

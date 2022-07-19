@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"  %>
+
+<c:set var="selectOptionList" value="${map.selectOptionList}" />
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,24 +30,24 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="resources/lib/animate/animate.min.css" rel="stylesheet">
-    <link href="resources/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="resources/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    <link href="${contextPath}/resources/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="${contextPath}/resources/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="${contextPath}/resources/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="resources/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="resources/css/style-1.css" rel="stylesheet">
-
-    <link href="resources/css/product/product-cart.css" rel="stylesheet">
+    <link href="${contextPath}/resources/css/style-1.css" rel="stylesheet">
+    <link href="${contextPath}/resources/css/product/product-cart.css" rel="stylesheet">
     
 </head>
 <body>
+
     <main>
 
-        <jsp:include page="/WEB-INF/views/common/header.jsp" />
+        <jsp:include page="/WEB-INF/views/common/header-1.jsp" />
 
         <!-- 상품, 옵션, 개별상품주문정보 테이블 -->
         <!-- 장바구니 -->
@@ -52,28 +55,27 @@
 
             <!-- 장바구니 개수 -->
             <h4 class="cart-count">장바구니 상품(<span>2</span>)</h4>
-
             <!-- 장바구니에 담긴 상품이 없을 경우 -->
             <!-- <div class="empty-product-cart">
                 <p>장바구니에 담긴 상품이 없습니다.</p>
             </div> -->
 
-            <form>
+            <form action="${contextPath}/product/order" method="GET">
                 <!-- 장바구니에 담긴 상품이 있을 경우 -->
                 <div class="product-cart-area">
                     
                     <!-- 장바구니 상품 선택 및 삭제 영역 -->
                     <div class="cart-check-delete">
                         <!-- 장바구니 담은 상품 선택 -->
-                        <input type="checkbox" name="cart-check" value="cart-1" id="cart-check" checked>
+                       <%--  <input type="checkbox" name="cart-check" value="cart-1" id="cart-check" checked>
 
                         <!-- 장바구니 담은 상품 삭제 버튼 -->
-                        <button id="cart-delete" onclick="pDelete()">X</button>
+                        <button id="cart-delete" onclick="pDelete()">X</button> --%>
                     </div> 
 
                     <!-- 장바구니 담은 상품 리스트 -->
                     <div class="cart-info-area">
-                        <!-- 상품 썸네일 이미지 -->
+                        <%-- <!-- 상품 썸네일 이미지 -->
                         <div>
                             <img src="img/broccoli.jpg" width="150px" height="150px">
                         </div>
@@ -81,7 +83,7 @@
                         <!-- 상품명(클릭 시 상품 상세조회 화면)-->
                         <div>
                             <a href=""><span>유기농 어글리 바나나 (1.5kg/2.5kg)</span></a>
-                        </div>
+                        </div> --%>
                     </div>
 
                     <!-- 선택된 옵션 조회 영역 -->
@@ -168,6 +170,9 @@
         </section>
     </main>
 
+    <script>
+        const contextPath = "${contextPath}";
+    </script>
         <jsp:include page="/WEB-INF/views/common/footer.jsp" />
         
         <%-- <!— jQuery 추가 —> --%>
@@ -187,5 +192,6 @@
     
         <%-- <!— Template Javascript —> --%>
         <script src="${contextPath}/resources/js/main.js"></script>
+        <script src="${contextPath}/resources/js/product/product-cart.js"></script>
 </body>
 </html>

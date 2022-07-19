@@ -121,44 +121,50 @@ p_orderPhone.addEventListener("input", function(){
     }
 });
 
-function orderValidate(){
+
+document.getElementById("order-btn").addEventListener("click", function(){
     
+    const pOrderName = document.getElementById("p-orderName").value;
+    const pOrderPhone = document.getElementById("p-orderPhone").value;
+    const pOrderAddress1 = document.getElementsByClassName("p-orderAddress")[0].value;
+    const pOrderAddress2 = document.getElementsByClassName("p-orderAddress")[1].value;
+    const pOrderReq = document.getElementById("p-orderReq").value;
+
     if( !agree.checked ){ // 체크를 안했을 때
         alert("약관 동의 후 주문 버튼을 클릭해주세요.");
         agree.focus();
-        return false;
+        return;
 
     } else {
 
         if(!confirm("정말 주문하시겠습니까?")){
-            return false;
+            return;
 
         } else {
-
+            // 개별상품 결제
             var IMP = window.IMP; 
             IMP.init("imp33404182"); 
 
             IMP.request_pay({ // param
-                pg : 'kakaopay',
+                pg : "kakaopay",
                 pay_method: "card",
                 merchant_uid: productPayNo,
                 name: productName,
                 amount: totalAmount,
-                customer_uid : pOrderCode, // 필수 입력  / 주문번호 연결
-                buyer_name : inputName,
-                buyer_tel : inputPhone
+                buyer_name : pOrderName,
+                buyer_tel : pOrderPhone
 
             }, function (rsp) { // callback
-
                 if (rsp.success) {
                     $.ajax({
                         url : contextPath + "/product/order",
                         data : {
                             "pOrderCode" : pOrderCode,
-                            "inputName" : inputName,
-                            "inputPhone" : inputPhone,
-                            "inputAddress" : inputAddress,
-                            "inputDelText" : inputDelText,
+                            "pOrderName" : pOrderName,
+                            "pOrderPhone" : pOrderPhone,
+                            "pOrderAddress1" : pOrderAddress1,
+                            "pOrderAddress2" : pOrderAddress2,
+                            "pOrderReq" : pOrderReq,
                             "memberNo" : memberNo,
                             "totalAmount" : totalAmount ,
                             "productPayNo" : productPayNo,
@@ -169,24 +175,26 @@ function orderValidate(){
 
                             if(res>0){
                                 location.href = contextPath + "/member/orderHistory";
-                                alert("결제가 완료되었습니다.:)");
+
+                                alert("결제가 완료되었습니다 :D");
 
                             } else {
-                                location.href = contextPath + "/product/order";
-                                alert("결제 실패 ㅠ");
+                                location.href = contextPath;
+                                alert("결제 실패 ㅠ / 에러 내용 : " + + rsp.error_msg);
                             }
                         },
                         error: function(){
-                            console.log("에러 발생" + rsp.error_msg);
+                            console.log("에러 발생");
+                            console.log("상태코드 : " + request.status); 
                         }
                     });
                 } else {
-
                 }
             });
         }
     }
-}
+});
+
 
 
 

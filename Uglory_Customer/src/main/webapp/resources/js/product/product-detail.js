@@ -84,7 +84,8 @@ function optionSelectBox(){
 			this.nextElementSibling.innerText = Number(this.nextElementSibling.innerText) - 1;
 			optionObj[code] = optionObj[code] -1;
 		}
-		calcMinusPrice();
+		// calcMinusPrice();
+		calcPrice()
 	});
 
 	const opSapn = document.createElement("span");
@@ -112,10 +113,9 @@ function optionSelectBox(){
 
 	opDelete.addEventListener("click", function(){
 		const code = this.parentElement.getAttribute("id");
-		optionObj[code] = optionObj[code] ;
-		
+		optionObj[code] = optionObj[code];
+		calcPrice()
 		span.remove();
-		calcPrice();
 	});
 
 	optionDiv.append(opMinus, opSapn, opPlus, opDelete);
@@ -128,7 +128,6 @@ function optionSelectBox(){
 	options[0].selected = true;
 
 	calcPrice();
-
 }
 
 // 가격 플러스 계산
@@ -148,7 +147,7 @@ function calcPrice(){
 		// 옵션 별 가격 검색
 		for(const op of options){
 			if(op.value == key){ // 선택된 옵션코드와 key가 같다면 == 같은 상품
-	
+
 				const temp = op.innerText;
 				optionPrice =  temp.substring(temp.lastIndexOf("-") + 2 ,temp.lastIndexOf("원") )
 				break;
@@ -156,9 +155,9 @@ function calcPrice(){
 		}
 		sum += Number(optionPrice) * optionObj[key];
 		// 3만원 미만 배송비 추가
-		if(sum < 30000){
-			sum += delAmount;
-		}						
+		// if(sum < 30000){
+		// 	sum += delAmount;
+		// }						
 	}
 	// 가격 * 수량
 	document.getElementsByClassName("total-amount")[0].innerText = sum;
@@ -173,29 +172,33 @@ function calcMinusPrice(){
 	const options = document.querySelectorAll(".product-option > option");
 	
 	let optionPrice;
+
+	// sum = Number(productPrice);
 	// 옵션 가격 계산
 	for(const key in optionObj){
 	
-		// 옵션 별 가격 검색
 		for(const op of options){
+					// 옵션 별 가격 검색
+			if(optionObj[key] < 1){
+				return;
+			}
 			if(op.value == key){ // 선택된 옵션코드와 key가 같다면 == 같은 상품
 	
 				const temp = op.innerText;
 				optionPrice = temp.substring(temp.lastIndexOf("-") + 2 ,temp.lastIndexOf("원") )
+				console.log(optionPrice);
+				console.log(sum);
 				break;
 			}
 		}
-		sum -= Number(optionPrice) * optionObj[key];
-							// 가격 * 수량
 	}
-
+	sum -= Number(optionPrice);
 	document.getElementsByClassName("total-amount")[0].innerText = sum;
 
 }
 
-
+// 총 가격, 옵션 코드,수량, 상품 코드 보내는 함수
 function orderValidate(){
-	// 유효성 검사
 
 	const optionSpan = document.querySelectorAll(".optionSpan");
 
@@ -222,25 +225,41 @@ function orderValidate(){
 
 		document.orderForm.append(input1, input2, input3);
 
-		return true;
-		
 	} else {
 		alert("옵션을 선택해주세요");
 		return false;
 	}
-	// document.orderForm
-
-	// document.getElementsByClassName("total-amount")[0]
-	// orderObj
 
 	return false;
 }	
 
+document.getElementById("productCartBtn").addEventListener("click", function(){ // 장바구니 보기 버튼 클릭 시 
 
+	const totalAmount =  document.getElementsByClassName("total-amount")[0].innerText;
 
-// // 장바구니로 이동하기 버튼
-//  const productCartBtn = productCartBtn.addEventListener("click", function(){
+	orderValidate();
 
-// 	let url = contextPath + "/product/cart" + categoryNo + "/" + pCode;
-// 	location.href = url;	
-// }); 
+	if(orderValidate()){ // 함수 정상 실행됐을 때
+
+		$.ajax({
+			url : contextPath + "/product/cart",
+			data : {
+				"totalAmount" : totalAmount,
+				"optionObj" : optionObj,
+				"productCode" : productCode,
+			},
+		
+			dataType : "JSON",
+			type : "POST",
+
+			success : function(){
+				location.href = contextPath + "/product/cart"
+			},
+		
+			error: function(){
+				console.log("에러 발생");
+				console.log("상태코드 : " + request.status); 
+			}
+		});
+	}
+});
