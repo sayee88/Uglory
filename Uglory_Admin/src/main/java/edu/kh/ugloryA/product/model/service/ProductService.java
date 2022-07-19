@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.web.multipart.MultipartFile;
 
 import edu.kh.ugloryA.farm.model.vo.Farm;
+import edu.kh.ugloryA.product.model.vo.OptionType;
 import edu.kh.ugloryA.product.model.vo.Product;
 import edu.kh.ugloryA.product.model.vo.ProductCategory;
 
@@ -67,6 +68,27 @@ public interface ProductService {
 	 * @return product
 	 */
 	Product selectProduct(int productCode);
+
+	/**
+	 * 상품 수정 Service
+	 * @param product
+	 * @return result
+	 */
+	int updateProduct(Product product);
+
+	/**
+	 * 옵션 등록 Service
+	 * @param optionType
+	 * @return result
+	 */
+	int insertOption(OptionType optionType);
+
+	/**
+	 * 옵션 삭제 Service
+	 * @param optionCode
+	 * @return result
+	 */
+	int deleteOption(int optionCode);
 	
 	
 	

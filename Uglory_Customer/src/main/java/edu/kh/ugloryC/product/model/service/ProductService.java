@@ -32,6 +32,17 @@ public interface ProductService {
 	 * @return result
 	 */
 	int productOrder(Map<String, Object> productOrder);
+
+	/** 상품 주문번호 생성
+	 * @return pOrderCode
+	 */
+	String createProductOrderCode();
+
+	/** 결제 정보 삽입
+	 * @param productOrder
+	 * @return productPay
+	 */
+	int productPay(Map<String, Object> productOrder);
 	
 	
 	

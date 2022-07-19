@@ -1,6 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="farmMapper">
+	
+	<resultMap type="farm" id="farm_rm">
+		<id property="farmNo" column="FARM_NO"/>
+		<result property="farmName" column="FARM_NM"/>
+		<result property="producer" column="PRODUCER"/>
+		<result property="origin" column="ORIGIN"/>
+		<result property="farmState" column="FARM_ST"/>
+	</resultMap>
+	
+	<!-- 농장 전체 조회 -->
+	<select id="seletFarmList" resultMap="farm_rm">
+		SELECT * FROM FARM
+		WHERE FARM_ST = 'Y'
+	</select>
+	
+	<!-- 농장 삭제 -->
+	<update id="deleteFarm">
+		UPDATE FARM SET
+		FARM_ST = 'N'
+		WHERE FARM_NO = #{farmNo}
+	</update>
 
+	<!-- 농장 상품 수 세기 -->
+	<select id="countFarm" resultType="_int">
+		SELECT COUNT(*) FROM PRODUCT
+		WHERE FARM_NO = #{farmNo}
+	</select>
+	
+	<!-- 농장명 중복 검사 -->
+	<select id="farmNameDupCheck" resultType="_int">
+		SELECT COUNT(*) FROM FARM
+		WHERE FARM_NM = #{farmName}
+	</select>
+	
+	<!-- 농장 등록 -->
+	<insert id="insertFarm">
+		INSERT INTO FARM VALUES(
+			SEQ_FARM_NO.NEXTVAL, #{farmName}, #{producer}, #{origin}, DEFAULT
+		)
+	</insert>
 
 </mapper>

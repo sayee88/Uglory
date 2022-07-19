@@ -152,18 +152,22 @@
 
                     <div class="category_section">
                         <div class="unWritten-reviewCode">
-                            <div class="subBox">
+                            <div class="subBox unWritten">
                                 <div>
-                                    <span class="unWritten">구독박스</span>
-                                    <span>1</span>
+                                    <span>구독박스</span>
+                                    <span>${fn:length(map.subUnWrittenList)}
+                                        <c:if test="${empty map.subUnWrittenList}"> 0 </c:if>
+                                    </span>
                                 </div>
                                 <div></div>
                             </div>
                             
-                            <div class="product">
+                            <div class="product unWrittenNone">
                                 <div>
                                     <span>개별상품</span>
-                                    <span class="unWrittenNone">0</span>
+                                    <span>${fn:length(map.productUnWrittenList)}
+                                        <c:if test="${empty map.productUnWrittenList}"> 0 </c:if>
+                                    </span>
                                 </div>
                                 <div></div>
                             </div>
@@ -180,7 +184,7 @@
 
                     <c:otherwise>
                     
-                        <div class="unWrittenReview-List">
+                        <div class="unWrittenReview-List" id="subUnWrittenList">
                             <c:forEach var="sub" items="${map.subUnWrittenList}">
                                 <div>
                                     <div class="unWritten-list">
@@ -192,7 +196,8 @@
                                             <div>${sub.subName}</div>
                                             <div>구매가격 : ${sub.subPrice} 원</div>
                                             <div>
-                                                <button onclick="location.href='../write/${sub.reviewCode}">${sub.subOrderCode}리뷰작성하기</button>
+                                                                <%-- /review/list/unWritten --%>
+                                                <button onclick="location.href='../write/${sub.reviewCode}'">${sub.subOrderCode}리뷰작성하기</button>
                                             </div>
                                         </div>
                                     </div>
@@ -212,7 +217,7 @@
 
                     <c:otherwise>
                     
-                        <div class="unWrittenReview-List">
+                        <div class="unWrittenReview-List" id="productUnWrittenList">
                             <c:forEach var="pd" items="${map.productUnWrittenList}">
                                 <div>
                                     <div class="unWritten-list">
