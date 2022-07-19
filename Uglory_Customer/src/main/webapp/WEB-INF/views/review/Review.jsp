@@ -184,13 +184,15 @@
                             <c:forEach var="sub" items="${map.subUnWrittenList}">
                                 <div>
                                     <div class="unWritten-list">
-                                        <div><img src="${contextPath}/resources/img/product/standard.png"></div>
+                                        <div class="unWritten-subList">
+                                            <img src="${contextPath}/resources/img/product/standard.png">
+                                        </div>
                                         <div>
                                             <div>${sub.subDate}</div>
                                             <div>${sub.subName}</div>
-                                            <div>구매가격 : ${sub.subPrice}</div>
+                                            <div>구매가격 : ${sub.subPrice} 원</div>
                                             <div>
-                                                <button>${sub.subOrderCode}리뷰작성하기</button>
+                                                <button onclick="location.href='../write/${sub.reviewCode}">${sub.subOrderCode}리뷰작성하기</button>
                                             </div>
                                         </div>
                                     </div>
@@ -214,11 +216,13 @@
                             <c:forEach var="pd" items="${map.productUnWrittenList}">
                                 <div>
                                     <div class="unWritten-list">
-                                        <div><img src="${contextPath}/resources/img/review/review_img11.png"></div>
+                                        <div class="unWritten-productList">
+                                            <img src="${contextPath}/resources/img/product/banana.png">
+                                        </div>
                                         <div>
                                             <div>${pd.productOrderDate}</div>
                                             <div>${pd.productName}</div>
-                                            <div>구매가격 : ${pd.totalPrice}</div>
+                                            <div>구매가격 : ${pd.totalPrice} 원</div>
                                             <div>
                                                 <button>${pd.productOrderCode}리뷰작성하기</button>
                                             </div>
