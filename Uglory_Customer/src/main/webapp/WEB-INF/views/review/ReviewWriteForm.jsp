@@ -132,19 +132,19 @@
 
                     <!-- 썸네일 이미지 (첫번째 등록 이미지가 썸네일 이미지) -->
                     <div class="review-img-upload">
-                        
-                        <label for="img0">
-                            <img class="preview" src="#">
-                        </label>
-                        <input type="file" class="inputImage" id="img0" name="0" accept="image/*">
-                        <span class="delte-image">&times;</span> 
-                        
-                      	
-                        
+                            
+                        <div class="reviewImg">
+                            <label for="img0">
+                                <img class="preview" src="${contextPath}/resources/img/review/review_img11.png">
+                            </label>
+                            <input type="file" class="inputImage" id="img0" name="0" accept="image/*">
+                            <span class="delete-image">&times;</span> 
+                        </div>
+                            
                     </div>
 
                     <div class="review-inputtext">
-                        <textarea name="boardContent"></textarea>
+                        <textarea placeholder="" name="boardContent"></textarea>
                     </div>
 
                     <div class="review-precautions">

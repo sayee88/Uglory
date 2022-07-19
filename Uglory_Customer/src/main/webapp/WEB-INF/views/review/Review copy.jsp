@@ -145,179 +145,90 @@
                     </div>
                 </div>
 
-                <!-- 구독박스 / 개별상품 카테고리 구분 -->
-                <div class="unWritten-section">
-
-                    <div class="category_section">
-                        <div class="unWritten-reviewCode">
-                            <div class="subBox">
-                                <div>
-                                    <span class="unWritten">구독박스</span>
-                                    <span>1</span>
-                                </div>
-                                <div></div>
-                            </div>
-                            
-                            <div class="product">
-                                <div>
-                                    <span>개별상품</span>
-                                    <span class="unWrittenNone">0</span>
-                                </div>
-                                <div></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 미작성 리뷰 목록 -->
-                <div class="unWrittenReview-List">
-
-                    <div>
-                        <div class="unWritten-list">
-                            <div><img src="${contextPath}/resources/img/product/standard.png"></div>
-                            <div>
-                                <div>2022.07.07</div>
-                                <div>정기구독상품 - 1~2인용</div>
-                                <div>구매가격 : 16,900원</div>
-                                <div>
-                                    <button>리뷰작성하기</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="unWritten-list">
-                            <div><img src="${contextPath}/resources/img/product/standard.png"></div>
-                            <div>
-                                <div>2022.07.07</div>
-                                <div>정기구독상품 - 1~2인용</div>
-                                <div>구매가격 : 16,900원</div>
-                                <div>
-                                    <button>리뷰작성하기</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            
-            
-
-            <div class="reviewAllList">
-
-                <!-- category -->
-                <div class="category_section"> 
-                    <div class="category_button">
-                        <div style="background-color: rgb(113, 214, 199); color:white">모두보기</div>
-                        <div>구독박스</div>
-                        <div>상점</div>
-                    </div>
-                </div>
                 
+                <div class="reviewAllList">
 
-                <!-- 리뷰 목록 -->
-                <div class="review-section">
-                    <div class="review-list">
-
-                    <div class="review-content">
-                        <div data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            <img src="${contextPath}/resources/img/review/review_img1.png">
-                        </div>
-                        <div class="review-content-text">
-                            <div class="review-content-top-section">
-                                <div class="review-content-top-left">
-                                    <div>고*비</div>
-                                    <div>2022.07.10</div>
-                                </div>
-                                <div class="review-star">
-                                    <span>★</span>
-                                    <span>★</span>
-                                    <span>★</span>
-                                    <span>★</span>
-                                    <span>★</span>
-                                </div>
-                            </div>
-                            <div class="review-content-text-section modal-open">
-                                <div href="#" style="color: black;" >
-                                    신선한 토마토로 카프레제 해먹었어요~ 멋쟁이 토마토로 파스타도 해먹구 신이 나요~
-                                </div> 
-                            </div>
-                            <div class="review-content-bottom-section">
-                                <div>정기구독박스</div>
-                            </div>
+                    <!-- category -->
+                    <div class="category_section"> 
+                        <div class="category_button">
+                            <div style="background-color: rgb(113, 214, 199); color:white">모두보기</div>
+                            <div>구독박스</div>
+                            <div>상점</div>
                         </div>
                     </div>
                     
-                    <div class="review-content">
-                        <div>
-                            <img src="img/리뷰/이용후기2.jpeg">
-                        </div>
-                        <div class="review-content-text">
-                            <div class="review-content-top-section">
-                                <div class="review-content-top-left">
-                                    <div>김*희</div>
-                                    <div>2022.07.06</div>
-                                </div>
-                                <div class="review-star">
-                                    <span>★</span>
-                                    <span>★</span>
-                                    <span>★</span>
-                                    <span>★</span>
-                                    <span>☆</span>
-                                </div>
-                            </div>
-                            <div class="review-content-text-section">
-                                <div href="#" style="color: black;">
-                                    모히또가서 몰디브 한잔?
-                                </div>
-                            </div>
-                            <div class="review-content-bottom-section">
-                                <div>개별상품구매</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="review-content">
-                        <div>
-                            <img src="img/리뷰/이용후기3.jpeg">
-                        </div>
-                        <div class="review-content-text">
-                            <div class="review-content-top-section">
-                                <div class="review-content-top-left">
-                                    <div>박*진</div>
-                                    <div>2022.07.05</div>
-                                </div>
-                                <div class="review-star">
-                                    <span>★</span>
-                                    <span>★</span>
-                                    <span>★</span>
-                                    <span>★</span>
-                                    <span>★</span>
-                                </div>
-                            </div>
-                            <div class="review-content-text-section">
-                                <div href="#" style="color: black;">
-                                    양상추로 푸짐한 샐러드완성~ 아삭아삭 신선해요!
-                                </div>
-                            </div>
-                            <div class="review-content-bottom-section">
-                                <div>정기구독박스</div>
-                            </div>
-                        </div>
-                    </div>
 
-                    </div>
-                    <div class="review-list">
-                        
+                    <!-- 리뷰 목록 -->
+                    <div class="review-section">
+                        <div class="review-list">
+
                         <div class="review-content">
-                            <div>
-                                <img src="img/리뷰/이용후기4.jpeg">
+                            <div data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <img src="${contextPath}/resources/img/review/review_img1.png">
                             </div>
                             <div class="review-content-text">
                                 <div class="review-content-top-section">
                                     <div class="review-content-top-left">
-                                        <div>백*현</div>
-                                        <div>2022.07.04</div>
+                                        <div>고*비</div>
+                                        <div>2022.07.10</div>
+                                    </div>
+                                    <div class="review-star">
+                                        <span>★</span>
+                                        <span>★</span>
+                                        <span>★</span>
+                                        <span>★</span>
+                                        <span>★</span>
+                                    </div>
+                                </div>
+                                <div class="review-content-text-section modal-open">
+                                    <div href="#" style="color: black;" >
+                                        신선한 토마토로 카프레제 해먹었어요~ 멋쟁이 토마토로 파스타도 해먹구 신이 나요~
+                                    </div> 
+                                </div>
+                                <div class="review-content-bottom-section">
+                                    <div>정기구독박스</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="review-content">
+                            <div>
+                                <img src="img/리뷰/이용후기2.jpeg">
+                            </div>
+                            <div class="review-content-text">
+                                <div class="review-content-top-section">
+                                    <div class="review-content-top-left">
+                                        <div>김*희</div>
+                                        <div>2022.07.06</div>
+                                    </div>
+                                    <div class="review-star">
+                                        <span>★</span>
+                                        <span>★</span>
+                                        <span>★</span>
+                                        <span>★</span>
+                                        <span>☆</span>
+                                    </div>
+                                </div>
+                                <div class="review-content-text-section">
+                                    <div href="#" style="color: black;">
+                                        모히또가서 몰디브 한잔?
+                                    </div>
+                                </div>
+                                <div class="review-content-bottom-section">
+                                    <div>개별상품구매</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="review-content">
+                            <div>
+                                <img src="img/리뷰/이용후기3.jpeg">
+                            </div>
+                            <div class="review-content-text">
+                                <div class="review-content-top-section">
+                                    <div class="review-content-top-left">
+                                        <div>박*진</div>
+                                        <div>2022.07.05</div>
                                     </div>
                                     <div class="review-star">
                                         <span>★</span>
@@ -329,7 +240,7 @@
                                 </div>
                                 <div class="review-content-text-section">
                                     <div href="#" style="color: black;">
-                                        버섯으로 라비올리 뚝딱 만들어 먹기 버섯이 달다~
+                                        양상추로 푸짐한 샐러드완성~ 아삭아삭 신선해요!
                                     </div>
                                 </div>
                                 <div class="review-content-bottom-section">
@@ -338,71 +249,103 @@
                             </div>
                         </div>
 
-                        <div class="review-content">
-                            <div>
-                                <img src="img/리뷰/이용후기5.png">
-                            </div>
-                            <div class="review-content-text">
-                                <div class="review-content-top-section">
-                                    <div class="review-content-top-left">
-                                        <div>신*윤</div>
-                                        <div>2022.07.03</div>
-                                    </div>
-                                    <div class="review-star">
-                                        <span>★</span>
-                                        <span>★</span>
-                                        <span>★</span>
-                                        <span>★</span>
-                                        <span>★</span>
-                                    </div>
-                                </div>
-                                <div class="review-content-text-section">
-                                    <div href="#" style="color: black;">
-                                        발그레한 복숭아>< 나는 말랑이 복숭아파
-                                    </div>
-                                </div>
-                                <div class="review-content-bottom-section">
-                                    <div>개별상품구매</div>
-                                </div>
-                            </div>
                         </div>
-
-                        <div class="review-content">
-                            <div>
-                                <img src="img/리뷰/이용후기6.png">
+                        <div class="review-list">
+                            
+                            <div class="review-content">
+                                <div>
+                                    <img src="img/리뷰/이용후기4.jpeg">
+                                </div>
+                                <div class="review-content-text">
+                                    <div class="review-content-top-section">
+                                        <div class="review-content-top-left">
+                                            <div>백*현</div>
+                                            <div>2022.07.04</div>
+                                        </div>
+                                        <div class="review-star">
+                                            <span>★</span>
+                                            <span>★</span>
+                                            <span>★</span>
+                                            <span>★</span>
+                                            <span>★</span>
+                                        </div>
+                                    </div>
+                                    <div class="review-content-text-section">
+                                        <div href="#" style="color: black;">
+                                            버섯으로 라비올리 뚝딱 만들어 먹기 버섯이 달다~
+                                        </div>
+                                    </div>
+                                    <div class="review-content-bottom-section">
+                                        <div>정기구독박스</div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="review-content-text">
-                                <div class="review-content-top-section">
-                                    <div class="review-content-top-left">
-                                        <div>전*영</div>
-                                        <div>2022.07.03</div>
+
+                            <div class="review-content">
+                                <div>
+                                    <img src="img/리뷰/이용후기5.png">
+                                </div>
+                                <div class="review-content-text">
+                                    <div class="review-content-top-section">
+                                        <div class="review-content-top-left">
+                                            <div>신*윤</div>
+                                            <div>2022.07.03</div>
+                                        </div>
+                                        <div class="review-star">
+                                            <span>★</span>
+                                            <span>★</span>
+                                            <span>★</span>
+                                            <span>★</span>
+                                            <span>★</span>
+                                        </div>
                                     </div>
-                                    <div class="review-star">
-                                        <span>★</span>
-                                        <span>★</span>
-                                        <span>★</span>
-                                        <span>★</span>
-                                        <span>★</span>
-                                        
+                                    <div class="review-content-text-section">
+                                        <div href="#" style="color: black;">
+                                            발그레한 복숭아>< 나는 말랑이 복숭아파
+                                        </div>
+                                    </div>
+                                    <div class="review-content-bottom-section">
+                                        <div>개별상품구매</div>
                                     </div>
                                 </div>
-                                <div class="review-content-text-section">
-                                    <div href="#" style="color: black;">
-                                        비빔면에 오이 팍팍 넣어 먹어야 맛이쥬
-                                    </div>
+                            </div>
+
+                            <div class="review-content">
+                                <div>
+                                    <img src="img/리뷰/이용후기6.png">
                                 </div>
-                                <div class="review-content-bottom-section">
-                                    <div>개별상품구매</div>
+                                <div class="review-content-text">
+                                    <div class="review-content-top-section">
+                                        <div class="review-content-top-left">
+                                            <div>전*영</div>
+                                            <div>2022.07.03</div>
+                                        </div>
+                                        <div class="review-star">
+                                            <span>★</span>
+                                            <span>★</span>
+                                            <span>★</span>
+                                            <span>★</span>
+                                            <span>★</span>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="review-content-text-section">
+                                        <div href="#" style="color: black;">
+                                            비빔면에 오이 팍팍 넣어 먹어야 맛이쥬
+                                        </div>
+                                    </div>
+                                    <div class="review-content-bottom-section">
+                                        <div>개별상품구매</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-    </main>
+            </section>
+        </main>
 
-       
+        
 
 
         <!-- 모달창 -->
@@ -420,23 +363,23 @@
                             <div>
                                 <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
                                     <div class="carousel-inner">
-                                      <div class="carousel-item active" >
+                                    <div class="carousel-item active" >
                                         <img src="${contextPath}/resources/img/review/review_img1.png" class="d-block w-100" style="object-fit: contain;">
-                                      </div>
-                                      <div class="carousel-item">
+                                    </div>
+                                    <div class="carousel-item">
                                         <img src="${contextPath}/resources/img/review/review_img10.png" class="d-block w-100">
-                                      </div>
-                                      <div class="carousel-item">
+                                    </div>
+                                    <div class="carousel-item">
                                         <img src="${contextPath}/resources/img/review/review_img11.png" class="d-block w-100" alt="...">
-                                      </div>
+                                    </div>
                                     </div>
                                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
-                                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                      <span class="visually-hidden">Previous</span>
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
                                     </button>
                                     <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
-                                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                      <span class="visually-hidden">Next</span>
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
                                     </button>
                                 </div>
                             </div>
