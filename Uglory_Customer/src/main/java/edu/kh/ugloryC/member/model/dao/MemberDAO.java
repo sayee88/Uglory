@@ -64,6 +64,17 @@ public class MemberDAO {
 		return sqlSession.update("memberMapper.subCancel",memberNo);
 	}
 
+	// 개별 상품 주문 내역 조회 DAO
+	public List<OrderHistory> selectOrderList(int orderNo) {
+		
+		return sqlSession.selectList("memberMapper.selectOrderList",orderNo);
+	}
+
+	public List<OrderHistory> selectOrderHistoryList(int memberNo) {
+	
+		return sqlSession.selectList("memberMapper.selectOrderHistoryList",memberNo);
+	}
+
 	
 
 
