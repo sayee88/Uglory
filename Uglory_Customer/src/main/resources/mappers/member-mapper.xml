@@ -29,6 +29,35 @@
 		
 	</resultMap>
 	
+	<resultMap type="orderHistoryDetail" id="orderHistoryDetail_rm">
+		<id property="orderNo" column="P_ORDER_CD"/>
+		
+		<result property="memberName" column="MEMBER_NAME"/>
+		<result property="payDate" column="P_PAY_DT"/>
+		<result property="totalPrice" column="TOTAL_PRICE"/>
+		<result property="orderName" column="P_ORDER_NM"/>
+		<result property="orderPhone" column="P_ORDER_PHONE"/>
+		<result property="orderAddress" column="P_ORDER_ADDR"/>
+		<result property="deliveryReq" column="P_DL_REQ"/>
+		
+		<collection property="productList" column="P_ORDER_CD" ofType="orderHistoryProduct" 
+				javaType="java.util.ArrayList" select="selectOrderHistoryProduct"/>
+	</resultMap>
+	
+	<resultMap type="orderHistoryProduct" id="orderHistoryProduct_rm">
+		<id property="orderNo" column="P_ORDER_CD"/>
+		
+		<result property="productName" column="PRODUCT_NM"/>
+		<result property="productPrice" column="PRODUCT_PRICE"/>
+		<result property="optionPrice" column="OPTION_PRICE"/>
+		<result property="optionName" column="OPTION_NM"/>
+		<result property="optionCount" column="OPTION_COUNT"/>
+		<result property="deliveryFlag" column="DELIVERY_ST"/>
+		<result property="imageRename" column="IMG_RENAME"/>
+	</resultMap>
+	
+	
+	
 	
 	<!-- 내구독 현황  -->
 	<resultMap type="subStatus" id="subStatus_rm">
@@ -134,4 +163,32 @@
 		WHERE MEMBER_NO = #{memberNo}
 	
 	</select>
+	
+	<!-- 주문 정보 조회 -->
+	<select id="selectOrderHistoryDetail" resultMap="orderHistoryDetail_rm">
+		SELECT P_ORDER_CD, MEMBER_NAME, P_PAY_DT,TOTAL_PRICE,  P_ORDER_NM,P_ORDER_PHONE,P_ORDER_ADDR,P_DL_REQ
+		FROM PRODUCT_ORDER 
+		JOIN MEMBER USING(MEMBER_NO)
+		JOIN PRODUCT_PAY USING(P_ORDER_CD)
+		WHERE P_ORDER_CD = ${orderNo}
+	</select>
+	
+	
+	<!--  주문 내역 상세 조회 -->
+	<select id="selectOrderHistoryProduct" resultMap="orderHistoryProduct_rm">
+		SELECT P_ORDER_CD, PRODUCT_NM, PRODUCT_PRICE, OPTION_PRICE, OPTION_NM, DELIVERY_ST, OPTION_COUNT, IMG_RENAME
+		FROM PRODUCT_ORDER
+		JOIN OPTION_TB USING(P_ORDER_CD)
+		JOIN OPTION_TYPE USING(OPTION_CD)
+		JOIN PRODUCT ON(OPTION_TYPE.P_CD = PRODUCT.P_CD)
+		JOIN PRODUCT_DELIVERY USING(DELIVERY_CD)
+		LEFT JOIN PRODUCT_IMG ON(PRODUCT.P_CD = PRODUCT_IMG.P_CD)
+		WHERE P_ORDER_CD = ${orderNo}
+	</select>
+	
+	
+	
+	
+	
+	
 </mapper>
