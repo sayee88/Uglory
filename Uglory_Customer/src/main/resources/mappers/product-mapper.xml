@@ -69,20 +69,28 @@
 	
 	<!-- 주문정보 입력 -->
 	<insert id="productOrder">
-		INSERT INTO PRODUCT_ORDER 
-		VALUES (
+		INSERT INTO PRODUCT_ORDER VALUES (
 				#{pOrderCode},
 				SYSDATE, 
-				#{inputName}, 
-				#{inputPhone}, 
-				#{inputAddress},
+				#{pOrderName}, 
+				#{pOrderPhone}, 
+				#{pOrderAddress},
 				#{totalAmount}, 
-				#{inputDelText}, 
+				#{pOrderReq}, 
 				'N', 
 				#{memberNo}, 
 				1)
 	</insert>
 	
+	<!-- 결제 정보 삽입 -->
+	<insert id="productPay">
+		INSERT INTO PRODUCT_PAY VALUES(
+			#{productPayNo},
+			SYSDATE,
+			#{totalAmount},
+			#{memberNo},
+			#{pOrderCode})		
+	</insert>
 
 </mapper>
 

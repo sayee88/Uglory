@@ -61,7 +61,8 @@
             <main class="container-fluid pt-4 px-4">
                 <section class="row justify-content-center mx-0 ">
                     <article class="col-xl-6 col-md-8 bg-light product-margin p-4 rounded">
-                        <form action="register?mode=${mode}" enctype="multipart/form-data" method="POST" onsubmit="return productValidate()">
+
+                        <form action="register?mode=${mode}&productCode=${product.productCode}" enctype="multipart/form-data" method="POST" onsubmit="return productValidate()">
                             <h2 class="text-start">상품 등록</h2>
                             <hr>
 

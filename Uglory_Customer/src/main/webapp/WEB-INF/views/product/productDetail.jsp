@@ -124,7 +124,10 @@
                         <h3 class="product-name" style="color: gray;"><span>${detail.productName}</span></h3>
 
                         <h3 class="option-name" style="color: gray;"><span>(
-                            <c:forEach var="option_type" items="${optionList}"> ${option_type.optionName}</span>
+                            <c:forEach var="option_type" items="${optionList}" varStatus="vs"> ${option_type.optionName}</span>
+                                    <c:if test="${!vs.last}">
+                                    /
+                                    </c:if> 
                             </c:forEach>
                         )
                         </h3>
