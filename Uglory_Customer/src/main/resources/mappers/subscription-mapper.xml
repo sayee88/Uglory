@@ -26,7 +26,7 @@
 	
 	<insert id="insertSubsOrder">
 		INSERT INTO SUBS_ORDER VALUES(
-			#{sOrderNo},
+			#{subsOrderNo},
 			DEFAULT, DEFAULT,
 			#{orderName},
 			#{orderPhone},
@@ -40,5 +40,16 @@
 	       )
 	</insert>
 	
+	
+<!-- 	<insert id="exception">
+		INSERT INTO SUBS_EXCEPTION 
+		
+		<foreach collection="payInfo.choice" item="item" open="(" close=")" separator=" UNION ALL ">
+			SELECT #{item}, #{payInfo.subsOrderNo} FROM DUAL
+		</foreach>
+		
+		
+		
+	</insert> -->
 	
 </mapper>

@@ -43,6 +43,9 @@
 		<typeAlias type="edu.kh.ugloryC.member.model.vo.OrderHistory" alias="orderList"/>
 		<typeAlias type="edu.kh.ugloryC.member.model.vo.OrderHistory" alias="deliveryList"/>
 		<typeAlias type="edu.kh.ugloryC.member.model.vo.SubscriptionStatus" alias="subStatus"/>
+
+		<typeAlias type="edu.kh.ugloryC.subscription.model.vo.Subscription" alias="subscription"/>
+		<typeAlias type="edu.kh.ugloryC.subscription.model.vo.OrderInfo" alias="orderInfo"/>
 		
 		
 	</typeAliases>

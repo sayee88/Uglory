@@ -159,8 +159,8 @@ if(subBtn != undefined){
             pay_method : 'card', // 기능 없음.
             merchant_uid: payNo,  // 구독결제번호
             name : boxName, // 상품명
-            amount : 1, // 빌링키 발급과 함께 1원 결제승인을 시도합니다.
-            customer_uid : sOrderNo, // 필수 입력  / 주문번호 연결
+            amount : amount, // 빌링키 발급과 함께 amount원 결제승인을 시도합니다.
+            customer_uid : subsOrderNo, // 필수 입력  / 주문번호 연결
             buyer_name : memberName,
         }, function(rsp) {
     
@@ -169,7 +169,7 @@ if(subBtn != undefined){
         
                     url : contextPath + "/subscription/kakaopay",
                     data : {
-                        "sOrderNo" : sOrderNo,
+                        "subsOrderNo" : subsOrderNo,
                         "orderName" : orderName,
                         "orderPhone" : orderPhone,
                         "orderAddress" : orderAddress,
@@ -177,14 +177,14 @@ if(subBtn != undefined){
                         "cycle" : cycle,
                         "memberNo" : memberNo,
                         "box" : box,
-                        "amount" : amount ,
-                        "payNo" : payNo,
+                        "amount" : amount,
+                        "payNo" : payNo
                     },
     
                     type : "POST",
                     success : function(res){ 
                         if(res>0){
-                            location.href = contextPath + "/member/subscribeCHK";
+                            location.href = contextPath + "/member/subscriptionStatus";
                             alert("주문이 완료되었습니다:)");
     
                         }else{

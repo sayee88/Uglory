@@ -3,6 +3,7 @@ package edu.kh.ugloryC.subscription.controller;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,8 +30,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.ugloryC.member.model.vo.Member;
 import edu.kh.ugloryC.subscription.model.service.SubscriptionService;
+import edu.kh.ugloryC.subscription.model.vo.OrderInfo;
 
-@SessionAttributes({"orderInfo", "deliveryInfo", "loginMember", "message"})
+@SessionAttributes({"orderInfo", "deliveryInfo", "loginMember", "message", "choice"})
 @Controller
 public class SubscriptionController {
 	
@@ -53,14 +55,14 @@ public class SubscriptionController {
 		String path = "";
 		
 		if(loginMember == null) {
-			path = "member/login";
+			path = "redirect: member/login";
 			ra.addFlashAttribute("message", "로그인 후 이용해주세요");
 			
 		}else {
 			path = "subscription/subscription1";
 		}
 		
-		return "redirect:" + path;
+		return path;
 	}
 	
 	// 구독 페이지2
@@ -70,11 +72,17 @@ public class SubscriptionController {
 									HttpServletRequest req,
 									HttpServletResponse resp) {
 		
-		Map<String, Object> orderInfo = new HashMap<String, Object>();
+//		Map<String, Object> orderInfo = new HashMap<String, Object>();
 		
-		orderInfo.put("box", box);
-		orderInfo.put("cycle", cycle);
-		orderInfo.put("choice", choice);
+		OrderInfo orderInfo = new OrderInfo();
+		
+		orderInfo.setBox(box);
+		orderInfo.setCycle(cycle);
+//		orderInfo.setChoice(choice); -> list는 set 못함 -> 따로 모델로 담음
+		
+//		orderInfo.put("box", box);
+//		orderInfo.put("cycle", cycle);
+//		orderInfo.put("choice", choice);
 		
 		// 결제번호 생성
 		LocalDate currentDate = LocalDate.now(); 
@@ -82,18 +90,21 @@ public class SubscriptionController {
 		int random = (int)(Math.random() * 5);
 		String payNo = "SP" + date + "-" + random;
 		
-		orderInfo.put("payNo", payNo);
+		orderInfo.setPayNo(payNo);
+//		orderInfo.put("payNo", payNo);
 		
 		// 주문번호(구독 상품 주문 코드) 생성
-		String sOrderNo = service.createSOrderNo(orderInfo);
-		orderInfo.put("sOrderNo", sOrderNo);
-		orderInfo.put("sOrderNo", sOrderNo);
+		String subsOrderNo = service.createSOrderNo(orderInfo);
+		orderInfo.setSubsOrderNo(subsOrderNo);
+//		orderInfo.put("sOrderNo", sOrderNo);
 		
-		model.addAttribute("orderInfo", orderInfo);
+		// 첫배송일 지정
+		Date firstDelDate = service.setFirstDelDate();
 		
 		
-		// 첫 배송일 지정
-		
+		model.addAttribute("orderInfo", orderInfo);		
+		model.addAttribute("choice", choice);
+		model.addAttribute("firstDelDate", firstDelDate);
 		
 		
 		return "subscription/subscription2";
@@ -106,9 +117,10 @@ public class SubscriptionController {
 									@RequestParam(value="s-orderPhone") String inputPhone,
 									@RequestParam(value="s-orderAddress") String[] inputAddress,
 									@RequestParam(value="s-orderReq") String inputDelText,
-									@ModelAttribute("orderInfo") Map<String, Object> orderInfo,
+									@ModelAttribute("orderInfo") OrderInfo orderInfo,
 									@ModelAttribute("loginMember") Member loginMember,
-									
+									@ModelAttribute("choice") List<String> choice,
+									@ModelAttribute("firstDelDate") Date firstDelDate,
 									Model model,
 									RedirectAttributes ra,
 									HttpServletRequest req,
@@ -119,17 +131,16 @@ public class SubscriptionController {
 		int memberNo = loginMember.getMemberNo();
 		
 		if(inputDelText.equals("")) {
-			inputDelText = "NULL";
-		}
+			inputDelText = " ";
+		}		
 		
-//		Map<String, Object> deliveryInfo = new HashMap<String, Object>();
 		
-		orderInfo.put("inputName", inputName);
-		orderInfo.put("inputPhone", inputPhone);
-		orderInfo.put("inputAddress", address);
-		orderInfo.put("inputDelText", inputDelText);
-		orderInfo.put("memberNo", memberNo);
-		
+		orderInfo.setInputName(inputName);
+		orderInfo.setInputPhone(inputPhone);
+		orderInfo.setAddress(address);
+		orderInfo.setInputDelText(inputDelText);
+		orderInfo.setMemberNo(memberNo);
+		orderInfo.setFirstDelDate(firstDelDate);
 		
 		return "subscription/subscription3";
 		
