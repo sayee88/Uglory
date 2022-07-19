@@ -54,9 +54,24 @@ public class MemberController {
 	
 	//개별 주문 내역 조회
 	@GetMapping("/orderHistory")
-	public String orderHistory(Model model) {
+	public String orderHistory(Model model, @ModelAttribute("loginMember") Member loginMember) {
+		List<OrderHistory> orderHistoryList = service.selectOrderHistoryList(loginMember.getMemberNo());
+
+		model.addAttribute("orderHistoryList", orderHistoryList);
+		
 		return "member/orderHistory";
 	}
+	
+	//개별 주문 상품 조회
+	@ResponseBody
+	@GetMapping("/OrderHistoryDetail")
+	public String selectOrderHistoryDetail(int orderNo) {
+		
+		return new Gson().toJson(service.selectOrderHistoryDetail(orderNo));
+		
+	}
+	
+	
 	//구독 주문 내역 조회
 	@GetMapping("/subscriptionHistory")
 	public String subscriptionHistory() {
@@ -211,4 +226,6 @@ public class MemberController {
 			return "redirect:" + path;
 		}
 	}
+	
+
 }

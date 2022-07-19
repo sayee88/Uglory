@@ -39,9 +39,8 @@
 		<typeAlias type="edu.kh.ugloryC.member.model.vo.Member" alias="member"/>
 		
 		<typeAlias type="edu.kh.ugloryC.member.model.vo.OrderHistory" alias="orderHistory"/>
-		<typeAlias type="edu.kh.ugloryC.member.model.vo.OrderHistory" alias="orderHistory_detail"/>
-		<typeAlias type="edu.kh.ugloryC.member.model.vo.OrderHistory" alias="orderList"/>
-		<typeAlias type="edu.kh.ugloryC.member.model.vo.OrderHistory" alias="deliveryList"/>
+		<typeAlias type="edu.kh.ugloryC.member.model.vo.OrderHistoryDetail" alias="orderHistoryDetail"/>
+		<typeAlias type="edu.kh.ugloryC.member.model.vo.OrderHistoryProduct" alias="orderHistoryProduct"/>
 		<typeAlias type="edu.kh.ugloryC.member.model.vo.SubscriptionStatus" alias="subStatus"/>
 		
 		
