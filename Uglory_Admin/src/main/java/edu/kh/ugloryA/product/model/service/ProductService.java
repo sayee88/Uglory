@@ -89,6 +89,13 @@ public interface ProductService {
 	 * @return result
 	 */
 	int deleteOption(int optionCode);
+
+	/**
+	 * 주별 상품 리스트 조회
+	 * @param key
+	 * @return mapT
+	 */
+	Map<String, Object> selectWeeklyList(String key);
 	
 	
 	

@@ -158,6 +158,12 @@ public class ProductServiceImpl implements ProductService {
 	public int deleteOption(int optionCode) {
 		return dao.deleteOption(optionCode);
 	}
+
+	//주별 상품 리스트 조회
+	@Override
+	public Map<String, Object> selectWeeklyList(String key) {
+		return null;
+	}
 	
 	
 	

@@ -38,6 +38,9 @@
 		<typeAlias type="edu.kh.ugloryA.product.model.vo.ProductCategory" alias="productCategory"/>
 		<typeAlias type="edu.kh.ugloryA.farm.model.vo.Farm" alias="farm"/>
 		
+		<typeAlias type="edu.kh.ugloryA.product.model.vo.WeeklyProduct" alias="weeklyProduct"/>
+		<typeAlias type="edu.kh.ugloryA.product.model.vo.WeeklyList" alias="weeklyList"/>
+		
 	</typeAliases>
 	
 	
