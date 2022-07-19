@@ -107,14 +107,14 @@
 
             <!-- 상품 카테고리 -->
             <div class="category">
-                <input class="btn btn-primary" type="button" id="ca" name="ca" value="All">
-                <input class="btn btn-primary" type="button" id="c1" name="c1" value="근채류">
-                <input class="btn btn-primary" type="button" id="c2" name="c2" value="곡식류/견과류">
-                <input class="btn btn-primary" type="button" id="c3" name="c3" value="채소류">
-                <input class="btn btn-primary" type="button" id="c4" name="c4" value="과채류">
-                <input class="btn btn-primary" type="button" id="c5" name="c5" value="나물류">
-                <input class="btn btn-primary" type="button" id="c6" name="c6" value="버섯류">
-                <input class="btn btn-primary" type="button" id="c7" name="c7" value="과일류">
+                <button class="btn btn-primary"><a href="${contextPath}/product/list"  style="color: white;">ALL</a> </button>
+                <button class="btn btn-primary" id="c1" onclick="category(1)">근채류</button>
+                <button class="btn btn-primary" id="c2" onclick="category(2)">곡식류/견과류</button>
+                <button class="btn btn-primary" id="c3" onclick="category(3)">채소류</button>
+                <button class="btn btn-primary" id="c4" onclick="category(4)">과채류</button>
+                <button class="btn btn-primary" id="c5" onclick="category(5)">나물류</button>
+                <button class="btn btn-primary" id="c6" onclick="category(6)">버섯류</button>
+                <button class="btn btn-primary" id="c7" onclick="category(7)">과일류</button>
             </div>
 
 
