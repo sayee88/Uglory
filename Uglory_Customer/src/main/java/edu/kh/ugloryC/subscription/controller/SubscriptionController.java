@@ -69,6 +69,7 @@ public class SubscriptionController {
 	@GetMapping("/subscription/order")
 	public String subscription_order(String box, String cycle, @RequestParam(value="choice", required = false) List<String> choice,
 									Model model,
+									HttpSession session,
 									HttpServletRequest req,
 									HttpServletResponse resp) {
 		
@@ -101,6 +102,11 @@ public class SubscriptionController {
 		// 첫배송일 지정
 		Date firstDelDate = service.setFirstDelDate();
 		
+		session.setAttribute("orderInfo", orderInfo);
+		session.setAttribute("choice", choice);
+		session.setAttribute("firstDelDate", firstDelDate);
+
+		
 		
 		model.addAttribute("orderInfo", orderInfo);		
 		model.addAttribute("choice", choice);
@@ -121,6 +127,7 @@ public class SubscriptionController {
 									@ModelAttribute("loginMember") Member loginMember,
 									@ModelAttribute("choice") List<String> choice,
 									@ModelAttribute("firstDelDate") Date firstDelDate,
+									HttpSession session,
 									Model model,
 									RedirectAttributes ra,
 									HttpServletRequest req,
@@ -142,6 +149,10 @@ public class SubscriptionController {
 		orderInfo.setMemberNo(memberNo);
 		orderInfo.setFirstDelDate(firstDelDate);
 		
+		model.addAttribute(orderInfo);
+		
+		session.setAttribute("orderInfo", orderInfo);
+				
 		return "subscription/subscription3";
 		
 	}

@@ -8,9 +8,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
 import javax.swing.text.DateFormatter;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -48,31 +50,37 @@ public class SubscriptionPay {
 								  @RequestParam int box,
 								  @RequestParam int amount,
 								  @RequestParam String payNo,
+								  // @RequestParam String firstDelDate,
 								  @ModelAttribute("loginMember") Member loginMember,
 								  @ModelAttribute("orderInfo") OrderInfo orderInfo,
-								  @ModelAttribute("choice") List<String> choice,
-								  @ModelAttribute("firstDelDate") Date firstDelDate,
+								 // @ModelAttribute("choice") List<String> choice,
+								  HttpSession session,
 								  Model model,
 								  RedirectAttributes ra) {
 		
 		
 		Map<String, Object> payInfo = new HashMap<String, Object>();
 		
+		
 //		List<String> choice = orderInfo.getChoice();		
 
-//		payInfo.put("firstDelDate", firstDelDate);
+		
+		Date firstDelDate = (Date)session.getAttribute("firstDelDate");
+		payInfo.put("firstDelDate", firstDelDate);
+		
+		List<String> choice = (List<String>)session.getAttribute("choice");
+		payInfo.put("choice", choice);
+
 		payInfo.put("subsOrderNo", subsOrderNo);
 		payInfo.put("orderName", orderName);
 		payInfo.put("orderPhone", orderPhone);
 		payInfo.put("orderAddress", orderAddress);
 		payInfo.put("delText", delText);
 		payInfo.put("cycle", cycle);
-		payInfo.put("choice", choice);
 		payInfo.put("memberNo", memberNo);
 		payInfo.put("box", box);
 		payInfo.put("amount", amount);
 		payInfo.put("payNo", payNo);
-		payInfo.put("choice", choice);
 		
 		// 주문 삽입
 		int result = service.insertSubsOrder(payInfo);
@@ -83,3 +91,4 @@ public class SubscriptionPay {
 	
 
 }
+

@@ -24,17 +24,14 @@ public class SubscriptionDAO {
 		return subsOrderNo;
 	}
 
-	// 주문 삽입
-	public int insertSubsOrder(Map<String, Object> payInfo) {
-		
-		int result = sqlSession.insert("subscriptionMapper.insertSubsOrder", payInfo);
-		
-		return result;
-	}
 
 	// 첫 배송일 지정 
 	public Date createDelDate() {
 		return sqlSession.selectOne("subscriptionMapper.createDelDate");
 	}
 
+	// 주문 삽입
+	public int insertSubsOrder(Map<String, Object> payInfo) {
+		return sqlSession.insert("subscriptionMapper.insertSubsOrder", payInfo);
+	}
 }

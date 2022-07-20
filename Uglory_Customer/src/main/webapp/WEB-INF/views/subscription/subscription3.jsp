@@ -124,7 +124,7 @@
                                 <th colspan="2"><input type="radio" checked> 카카오페이</th>
                             </tr>
                             <tr>
-                                <th class="submit-btn-th" colspan="2"><button class="submit-btn" id="sub-btn">구독하기</button></th>
+                                <th class="submit-btn-th" colspan="2"><button class="submit-btn" type="button" id="sub-btn">구독하기</button></th>
                             </tr>
                         </table>
                         
@@ -161,6 +161,7 @@
         const delText = "${orderInfo.inputDelText}";
         const payNo = "${orderInfo.payNo}";
         const memberNo = "${loginMember.memberNo}";
+        const firstDelDate = "${orderInfo.firstDelDate}";
 
         const cycle = "${orderInfo.cycle}"
         const box = "${orderInfo.box}";
