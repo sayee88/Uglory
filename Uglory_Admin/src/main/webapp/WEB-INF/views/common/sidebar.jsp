@@ -54,7 +54,7 @@
                         <a href="${contextPath}/product/register?mode=insert" class="sub-menu">상품 등록</a>
                     </div>
                     <div class="dropdown-item">
-                        <a href="${contextPath}/product/subs/plist" class="sub-menu">구독 상품 알림</a>
+                        <a href="${contextPath}/product/weekly/list" class="sub-menu">구독 상품 알림</a>
                     </div>
                 </div>
             </div>
