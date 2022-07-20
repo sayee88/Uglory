@@ -229,7 +229,7 @@
                                             <div>${pd.productName}</div>
                                             <div>구매가격 : ${pd.totalPrice} 원</div>
                                             <div>
-                                                <button>${pd.productOrderCode}리뷰작성하기</button>
+                                                <button onclick="location.href='../write/${pd.reviewCode}'">${pd.productOrderCode}리뷰작성하기</button>
                                             </div>
                                         </div>
                                     </div>

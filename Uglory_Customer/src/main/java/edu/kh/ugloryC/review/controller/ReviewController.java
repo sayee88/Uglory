@@ -48,7 +48,7 @@ public class ReviewController {
 		
 		
 		
-		return "review/Review copy";
+		return "review/ReviewList";
 	}
 	
 	
@@ -59,6 +59,19 @@ public class ReviewController {
 		
 		return null;
 	}
+	
+	
+	
+	// 나의 리뷰
+	@GetMapping("/list/myReview")
+	public String myReview(){
+		
+		return null;
+	}
+	
+	
+	
+	
 	
 	
 	// 미작성 리뷰 호출
@@ -81,7 +94,7 @@ public class ReviewController {
 		model.addAttribute("map", map);
 		
 		
-		return "review/Review";
+		return "review/UnWrittenReview";
 	}
 	
 	

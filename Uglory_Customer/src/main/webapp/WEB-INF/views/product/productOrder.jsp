@@ -129,7 +129,6 @@
                                                 ${selectOption.optionName}
                                             </c:if>
                                         </c:forEach>
-                                    
                                          - ${map.amountList[vs.index]}개
                                     </span>
                                    
