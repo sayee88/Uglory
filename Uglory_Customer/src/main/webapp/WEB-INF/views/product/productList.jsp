@@ -128,7 +128,10 @@
                     <div class="col">
                         <%-- <a href="product/detail/"${categoryNo}/${productCode} --%>
                         <div class="box">
-                        <img src="${contextPath}/resources/img/쿵야/바나나쿵야.png" alt="" class="product-img soldout">
+                            <div class="img-box">
+                                <img src="${contextPath}/resources/img/쿵야/바나나쿵야.png" alt="" class="product-img soldout">                            
+                            </div>
+                            
                             <div>
                                 <h5>친환경 초당 옥수수 - 10개/20개</h5>
                                 <div class="flex-container">

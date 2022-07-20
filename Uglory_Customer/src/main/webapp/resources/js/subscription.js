@@ -159,7 +159,7 @@ if(subBtn != undefined){
             pay_method : 'card', // 기능 없음.
             merchant_uid: payNo,  // 구독결제번호
             name : boxName, // 상품명
-            amount : 1, // 빌링키 발급과 함께 amount원 결제승인을 시도합니다.
+            amount : amount, // 빌링키 발급과 함께 amount원 결제승인을 시도합니다.
             customer_uid : subsOrderNo, // 필수 입력  / 주문번호 연결
             buyer_name : memberName
         }, function(rsp) {
@@ -190,7 +190,7 @@ if(subBtn != undefined){
     
                         }else{
                             location.href = contextPath;
-                            alert("주문 실패:( - 에러 내용 : " +  rsp.error_msg);
+                            alert("주문 실패:(  에러 내용 : " +  rsp.error_msg);
                         }
                     },
                     error: function(){
@@ -199,7 +199,7 @@ if(subBtn != undefined){
                 
                 });
             } else {
-                console.log("에러에러");
+                console.log("결제 실패 :(  에러내용 :" + rsp.error_msg);
             }
         });
     

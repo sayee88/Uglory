@@ -116,14 +116,13 @@ public class SubscriptionController {
 		Date firstDelDate = service.setFirstDelDate();
 		
 		session.setAttribute("orderInfo", orderInfo);
-		session.setAttribute("choice", choice);
+		
+		if(choice != null) {
+			session.setAttribute("choice", choice);
+		}
 		session.setAttribute("firstDelDate", firstDelDate);
 
 		
-		
-		model.addAttribute("orderInfo", orderInfo);		
-		model.addAttribute("choice", choice);
-		model.addAttribute("firstDelDate", firstDelDate);
 		
 		
 		return "subscription/subscription2";
@@ -138,7 +137,6 @@ public class SubscriptionController {
 									@RequestParam(value="s-orderReq") String inputDelText,
 									@ModelAttribute("orderInfo") OrderInfo orderInfo,
 									@ModelAttribute("loginMember") Member loginMember,
-									@ModelAttribute("choice") List<String> choice,
 									@ModelAttribute("firstDelDate") Date firstDelDate,
 									HttpSession session,
 									Model model,
@@ -162,7 +160,7 @@ public class SubscriptionController {
 		orderInfo.setMemberNo(memberNo);
 		orderInfo.setFirstDelDate(firstDelDate);
 		
-		model.addAttribute(orderInfo);
+//		model.addAttribute(orderInfo);
 		
 		session.setAttribute("orderInfo", orderInfo);
 				
