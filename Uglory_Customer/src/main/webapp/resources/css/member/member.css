@@ -673,4 +673,8 @@ dd{
 
 
 .oBox{display: flex;}
-.oBox > div {margin-left: 70px;}
+.oBox > div {margin-left: 70px};
+.orderDetailBtn{
+    border:none;
+    font-weight: bold;
+}
