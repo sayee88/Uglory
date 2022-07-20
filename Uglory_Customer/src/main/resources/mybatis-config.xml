@@ -42,8 +42,13 @@
 		<typeAlias type="edu.kh.ugloryC.member.model.vo.OrderHistoryDetail" alias="orderHistoryDetail"/>
 		<typeAlias type="edu.kh.ugloryC.member.model.vo.OrderHistoryProduct" alias="orderHistoryProduct"/>
 		<typeAlias type="edu.kh.ugloryC.member.model.vo.SubscriptionStatus" alias="subStatus"/>
+
 		<typeAlias type="edu.kh.ugloryC.member.model.vo.SubHistory" alias="subHistory"/>
 		<typeAlias type="edu.kh.ugloryC.member.model.vo.SubHistoryDetail" alias="subHistoryDetail"/>
+
+		<typeAlias type="edu.kh.ugloryC.subscription.model.vo.Subscription" alias="subscription"/>
+		<typeAlias type="edu.kh.ugloryC.subscription.model.vo.OrderInfo" alias="orderInfo"/>
+
 		
 		
 	</typeAliases>

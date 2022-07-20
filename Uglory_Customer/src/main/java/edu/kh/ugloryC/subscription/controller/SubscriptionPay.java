@@ -5,11 +5,14 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
 import javax.swing.text.DateFormatter;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,9 +26,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.ugloryC.member.model.vo.Member;
 import edu.kh.ugloryC.subscription.model.service.SubscriptionService;
+import edu.kh.ugloryC.subscription.model.vo.OrderInfo;
 import edu.kh.ugloryC.subscription.model.vo.Subscription;
 
-@SessionAttributes({"orderInfo", "loginMember", "message"})
+@SessionAttributes({"orderInfo", "loginMember", "message", "choice", "firstDelDate"})
 @Controller
 public class SubscriptionPay {
 	
@@ -33,28 +37,43 @@ public class SubscriptionPay {
 	private SubscriptionService service;
 	
 	
-	
 	// 구독 결제
 	@ResponseBody
 	@PostMapping("/subscription/kakaopay")
-	public int subscriptionPay(@RequestParam String sOrderNo,
+	public int subscriptionPay(@RequestParam String subsOrderNo,
 								  @RequestParam String orderName,
 								  @RequestParam int orderPhone,
 								  @RequestParam String orderAddress,
-//								  @RequestParam String delText ,
 								  @RequestParam(value="delText", required=false) String delText,
 								  @RequestParam int cycle,
 								  @RequestParam int memberNo,
 								  @RequestParam int box,
 								  @RequestParam int amount,
 								  @RequestParam String payNo,
+								  // @RequestParam String firstDelDate,
 								  @ModelAttribute("loginMember") Member loginMember,
+								  @ModelAttribute("orderInfo") OrderInfo orderInfo,
+								 // @ModelAttribute("choice") List<String> choice,
+								  HttpSession session,
 								  Model model,
 								  RedirectAttributes ra) {
 		
+		
 		Map<String, Object> payInfo = new HashMap<String, Object>();
 		
-		payInfo.put("sOrderNo", sOrderNo);
+		
+//		List<String> choice = orderInfo.getChoice();		
+
+		
+		Date firstDelDate = (Date)session.getAttribute("firstDelDate");
+		payInfo.put("firstDelDate", firstDelDate);
+		
+		List<String> choice = (List<String>)session.getAttribute("choice");
+		payInfo.put("choice", choice);
+		
+		System.out.println(choice);
+
+		payInfo.put("subsOrderNo", subsOrderNo);
 		payInfo.put("orderName", orderName);
 		payInfo.put("orderPhone", orderPhone);
 		payInfo.put("orderAddress", orderAddress);
@@ -67,11 +86,11 @@ public class SubscriptionPay {
 		
 		// 주문 삽입
 		int result = service.insertSubsOrder(payInfo);
-		
-		
+				
 		return result;
 				
 	}
 	
 
 }
+
