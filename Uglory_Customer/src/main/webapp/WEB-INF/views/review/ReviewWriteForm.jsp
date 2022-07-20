@@ -129,38 +129,25 @@
                             </fieldest>
                         </form> --%>
                     </div>
+                    <%-- <p>
+                        <a href="#" value="1">★</a>
+                        <a href="#" value="2">★</a>
+                        <a href="#" value="3">★</a>
+                        <a href="#" value="4">★</a>
+                        <a href="#" value="5">★</a>
+                    </p> --%>
 
                     <!-- 썸네일 이미지 (첫번째 등록 이미지가 썸네일 이미지) -->
                     <div class="review-img-upload">
                             
                         <div class="reviewImg m-1">
                             <label for="img0">
-                                <img class="preview" src="#">
+                                <img class="preview">
                             </label>
                             <input type="file" class="inputImage" id="img0" name="0" accept="image/*">
                             <span class="delete-image">&times;</span> 
                         </div>
-                        <div class="reviewImg m-1 imgHidden" id="imgHi0">
-                            <label for="img1">
-                                <img class="preview" src="#">
-                            </label>
-                            <input type="file" class="inputImage" id="img1" name="1" accept="image/*">
-                            <span class="delete-image">&times;</span> 
-                        </div>
-                        <div class="reviewImg m-1 imgHidden"  id="imgHi1">
-                            <label for="img2">
-                                <img class="preview" src="#">
-                            </label>
-                            <input type="file" class="inputImage" id="img2" name="2" accept="image/*">
-                            <span class="delete-image">&times;</span> 
-                        </div>
-                        <div class="reviewImg m-1 imgHidden"  id="imgHi2">
-                            <label for="img3">
-                                <img class="preview" src="#">
-                            </label>
-                            <input type="file" class="inputImage" id="img3" name="3" accept="image/*">
-                            <span class="delete-image">&times;</span> 
-                        </div>
+                        
                             
                     </div>
 

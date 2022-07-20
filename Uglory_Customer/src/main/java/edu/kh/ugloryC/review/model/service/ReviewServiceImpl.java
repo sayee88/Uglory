@@ -1,5 +1,6 @@
 package edu.kh.ugloryC.review.model.service;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -71,19 +72,21 @@ public class ReviewServiceImpl implements ReviewService{
 				
 				int imageResult = dao.insertReviewImage(reviewImageList);
 				
-				if(imageResult == reviewImageList.size()) {
+				if(imageResult == reviewImageList.size()) { // 삽입 
 					
+					// 서버에 이미지 여러개 저장
+					for(int i = 0; i<reviewImageList.size(); i++) {
+						
+						int index = reviewImageList.get(i).getReviewImageLevel();
+						
+//						imageList.get(index).transferTo(new File(folderPath + reNameList.get(i)));
+						
+					}
 					
 				} else {
-					
+//					throw new InsertFailException();
 				}
-				
-				
-			} else {
-				
-			}
-		
-			
+			} 
 		}
 		
 		return result;

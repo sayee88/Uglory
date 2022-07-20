@@ -108,7 +108,8 @@
 .detail-btn{text-align: right;}
 .detail-btn>button{font-size: 20px; margin-bottom: 10px;}
 
-.detail-info{border: 1px solid #ddd; border-radius: 2px; margin: 10px 0;}
+.detail-info{border: 1px solid #ddd; border-radius: 2px; margin: 10px 0; padding: 5px;}
+.detail-info>p{margin: 0;}
 
 .img-area{height: 150px; display: flex;}
 .detail-img{max-width: 40%; max-height: 100%; border-radius: 5px;}
