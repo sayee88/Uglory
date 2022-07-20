@@ -47,6 +47,9 @@ public class SubscriptionServiceImpl implements SubscriptionService{
 		// 구독 제외 상품 삽입
 		int exception = dao.insertException(payInfo);
 		
+		// 구독 배송 내역 삽입
+		int del = dao.insertDel(payInfo);
+		
 		int subPay = dao.insertPay(payInfo);
 		
 		return result;
