@@ -47,12 +47,16 @@
     <jsp:include page="/WEB-INF/views/common/header-1.jsp" />
 
         <div class="order-section">
-
             <div class="order-head">
-                <h2 class="orderTitle"> 개별 주문 내역(AJAX)</h2>
+                <h2 class="orderTitle"> 개별 주문 내역</h2>
             </div>
 
             <div id="result1">
+            <c:if test="${empty orderHistoryList}">
+            주문 내역이 없습니다.
+            </c:if>
+            <c:if test="${!empty orderHistoryList}">
+            
                 <ul class="orderList">
 
                     <c:forEach var="item" items="${orderHistoryList}">
@@ -68,7 +72,7 @@
                                      외 ${item.count} 개
                                     </c:if>
 
-                                    <button class="orderDetailBtn" id="${item.orderNo}">상세 조회</button>
+                                    <button class="orderDetailBtn" id="${item.orderNo}" style="border:none; font-weight:bold; color: #FF5957;">></button>
                                 </div>
                             
                             </div>
@@ -95,16 +99,17 @@
 
                         </li>
                     </c:forEach>
+            </c:if>
 
                     <hr><hr>
                     <li class="list-section">
                         
-                        <div class="date">${item.orderDate}</div>
+                        <%-- <div class="date">${item.orderDate}</div>
                     
                         <div class="order-goods">
                         
                             <div class="order-name">
-                                [${item.origin}] ${item.productName}
+                                ${item.origin} ${item.productName}
                             </div>
                         
                         </div>
@@ -127,10 +132,10 @@
                                     <dd>${item.deliveryFlag}</dd>
                                 </dl>
                             </div>
-                        </div>
+                        </div> --%>
 
 
-                        <div class="order-head">
+                        <%-- <div class="order-head">
                             <h2 class="orderTitle"> 주문 내역 상세 조회</h2>
                         </div>
 
@@ -223,7 +228,7 @@
                                 </dl>
 
                             </div>
-                        </div>
+                        </div> --%>
 
                     </li>
                     
