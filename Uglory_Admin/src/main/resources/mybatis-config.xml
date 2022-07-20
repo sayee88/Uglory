@@ -29,6 +29,8 @@
 		<typeAlias type="edu.kh.ugloryA.payment.model.vo.Option" alias="option"/>
 		
 		<typeAlias type="edu.kh.ugloryA.review.model.vo.Review" alias="review"/>
+		<typeAlias type="edu.kh.ugloryA.review.model.vo.ReviewDetail" alias="reviewDetail"/>
+		<typeAlias type="edu.kh.ugloryA.review.model.vo.ReviewImage" alias="reviewImage"/>
 		
 		<typeAlias type="edu.kh.ugloryA.payment.model.vo.Chart" alias="chart"/>
 
