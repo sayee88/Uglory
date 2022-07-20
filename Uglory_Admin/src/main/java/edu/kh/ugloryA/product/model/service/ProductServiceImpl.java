@@ -45,9 +45,6 @@ public class ProductServiceImpl implements ProductService {
 		//농장 정보
 		Farm farm = dao.selectFarm(productCode);
 		
-		//옵션 정보
-		List<OptionType> optionList = dao.selectOptionType(productCode);
-		
 		//상품이미지
 		List<ProductImage> imageList = dao.selectPImage(productCode);
 		
@@ -55,7 +52,6 @@ public class ProductServiceImpl implements ProductService {
 		
 		detailMap.put("product", product);
 		detailMap.put("farm", farm);
-		detailMap.put("optionType", optionList);
 		detailMap.put("productImage", imageList);
 		
 		return detailMap;

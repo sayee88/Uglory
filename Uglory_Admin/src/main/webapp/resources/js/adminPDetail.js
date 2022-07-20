@@ -8,7 +8,77 @@ const stateBtn = document.getElementById("state-btn");
         makeOutBtn();
     }
 
+    selectOption();
+
 })();
+
+
+//옵션조회
+const optionTable = document.getElementById("optionTable");
+
+function selectOption(){
+
+    $.ajax({
+        url : "../option/select",
+        data : {"productCode" : productCode},
+        type : "POST",
+        dataType : "JSON",
+        success : function(optionList){
+            
+            optionTable.innerHTML='';
+
+            if(optionList!=null){
+
+                for(let op of optionList){
+                    const tr = document.createElement("tr");
+                    const th = document.createElement("th");
+                    th.innerText = op.optionCode;
+
+                    const opName = document.createElement("td");
+                    opName.innerText = op.optionName;
+
+                    const opPrice = document.createElement("td");
+                    opPrice.innerText = op.optionPrice + "원";
+
+                    const btnArea = document.createElement("td");
+                    const button = document.createElement("button");
+                    button.classList.add("btn");
+                    button.classList.add("btn-outline-danger");
+                    // button.classList.add("p-0");
+                    button.classList.add("option-delete");
+                    button.setAttribute("onclick", "deleteOption(" + op.optionCode + ")");
+
+                    const icon = document.createElement("i");
+                    icon.classList.add("fa-solid");
+                    icon.classList.add("fa-delete-left");
+
+                    button.append(icon);
+                    btnArea.append(button);
+
+                    tr.append(th, opName, opPrice, btnArea);
+                    optionTable.append(tr);
+
+                }
+
+            } else {
+                const tr = document.createElement("tr");
+                const th = document.createElement("th");
+                th.innerText = '옵션 정보가 없습니다.';
+                th.classList.add("blur");
+                th.setAttribute("colspan", "3");
+
+                tr.append(th);
+                optionTable.append(tr);
+            }
+
+        },
+        error : function(req, status, error){
+            console.log("옵션 조회 중 에러 발생");
+            console.log(req.responseText);
+        }
+    });
+}
+
 
 //입고 버튼 만들기
 function makeInBtn() {
@@ -105,29 +175,6 @@ function activeInBtn(){
 
 }
 
-const goToListBtn = document.getElementById("goToListBtn");
-
-goToListBtn.addEventListener("click", function(){
-
-    let url = contextPath + "/product/list" + "?";
-    //   /ugloryA + /product/list/
-
-    // http://localhost:8080/community/board/detail?no=249&cp=6&type=1&key=c&query=9
-    const params = new URL(location.href).searchParams;
-
-    // 검색 key, query가 존재하는 경우 url에 추가
-    if(params.get("key") != null){
-        const key = "key=" + params.get("key");
-        const query = "&query=" + params.get("query");
-
-        url += key + query; // url 뒤에 붙이기
-    }
-
-    // location.href = "주소";  -> 해당 주소로 이동
-    location.href = url; 
-
-});
-
 //옵션 추가 유효성 검사
 const checkObj = {
     "optionName" : false,
@@ -178,27 +225,37 @@ optionPrice.addEventListener("input", function(){
     }
 });
 
-function optionValidate(){
+//옵션 삽입 메서드
+const insertBtn = document.getElementById("insertBtn");
+
+insertBtn.addEventListener("click", function(){
 
     let str;
-
+    
     for( let key  in checkObj ){ // 객체용 향상된 for문
-
+    
         if( !checkObj[key] ){ 
-
+    
             switch(key){
             case "optionName" :    str="옵션 명이 유효하지 않습니다."; break;
             case "optionPrice":    str="옵션 가격을 입력해주세요."; break;    
             }
-
+    
             alert(str);
             document.getElementById(key).focus();
             
-            return false; // form태그 기본 이벤트 제거
+            return;
         }
     }
-    return true; // form태그 기본 이벤트 수행
-}
+    
+    $.ajax({
+        url : "../option/insert",
+        data : {}
+    });
+
+
+
+});
 
 //옵션 삭제 메소드
 function deleteOption(optionCode) {
@@ -215,7 +272,7 @@ function deleteOption(optionCode) {
 
             if(result>0){
                 alert('옵션이 삭제되었습니다.');
-                location.reload();
+                selectOption();
             } else {
                 alert('옵션 삭제를 실패하였습니다.');
             }

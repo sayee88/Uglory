@@ -176,7 +176,7 @@
 .opInputArea{width:70%;}
 #optionNameText{font-size: 16px;}
 
-.option-delete{border: 0; font-size: 26px; padding: 0 4px; height: 32px; display: flex; align-items: center;}
+.option-delete{margin:0; border: 0; font-size: 24px; height: 32px; display: flex; align-items: center;}
 
 .deleteWeek{font-size: 18px; font-weight: bold; width:25px; height: 25px; text-align: center; padding: 0; border: 2px solid #DC3545;}
 

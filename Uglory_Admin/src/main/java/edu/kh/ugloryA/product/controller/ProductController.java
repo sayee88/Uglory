@@ -156,6 +156,17 @@ public class ProductController {
 		}
 	}
 	
+	
+	//옵션 조회
+	@ResponseBody
+	@PostMapping("/option/select")
+	public String selectOption(int productCode) {
+
+		List<OptionType> optionList = service.selectOption(productCode);
+
+		return new Gson().toJson(optionList);
+	}
+	
 	//옵션 추가
 	@PostMapping("/option/insert")
 	public String insertOption(OptionType optionType,
