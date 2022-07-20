@@ -30,4 +30,12 @@ public interface ReviewService {
 	 */
 	ReviewDetail selectReviewDetail(int reviewNo);
 
+
+	/**
+	 * 리뷰 삭제
+	 * @param reviewNo
+	 * @return
+	 */
+	int deleteReview(int reviewNo);
+
 }

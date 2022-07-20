@@ -30,6 +30,7 @@
 		SELECT REVIEW_NO, REVIEW_ENROLL_DT, MEMBER_NAME, REVIEW_CONTENT
 		FROM REVIEW
 		JOIN MEMBER USING(MEMBER_NO)
+		WHERE REVIEW_CD IN (1,2)
 		ORDER BY REVIEW_ENROLL_DT DESC
 	</select>
 	
@@ -48,6 +49,7 @@
 				</when>
 			</choose>
 		</if>
+		AND REVIEW_CD IN (1,2)
 		ORDER BY REVIEW_ENROLL_DT DESC
 	</select>
 	
@@ -70,11 +72,17 @@
 		FROM REVIEW
 		JOIN MEMBER USING(MEMBER_NO)
 		WHERE REVIEW_NO = #{reviewNo}
+		AND REVIEW_CD IN (1,2)
 	</select>
 	
 	<select id="selectReviewImage" resultMap="reviewImage_rm">
 		SELECT * FROM REVIEW_IMG WHERE REVIEW_NO = #{reviewNo}
 	</select>
+	
+	<update id="deleteReview">
+		UPDATE REVIEW SET REVIEW_CD = (SELECT REVIEW_CD FROM REVIEW WHERE REVIEW_NO = #{reviewNo}) + 2
+		WHERE REVIEW_NO = #{reviewNo}
+	</update>
 
 
 

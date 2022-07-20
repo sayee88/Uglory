@@ -38,6 +38,16 @@ public class ReviewServiceImpl implements ReviewService {
 	public ReviewDetail selectReviewDetail(int reviewNo) {
 		return dao.selectReviewDetail(reviewNo);
 	}
+
+
+	// 리뷰 삭제
+	@Override
+	public int deleteReview(int reviewNo) {
+		return dao.deleteReview(reviewNo);
+	}
+	
+	
+	
 	
 	
 	

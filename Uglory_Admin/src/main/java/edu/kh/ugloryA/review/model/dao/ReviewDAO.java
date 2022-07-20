@@ -53,5 +53,15 @@ public class ReviewDAO {
 	public ReviewDetail selectReviewDetail(int reviewNo) {
 		return sqlSession.selectOne("reviewMapper.selectReviewDetail", reviewNo);
 	}
+
+
+	/**
+	 * 리뷰 삭제
+	 * @param reviewNo
+	 * @return
+	 */
+	public int deleteReview(int reviewNo) {
+		return sqlSession.update("reviewMapper.deleteReview", reviewNo);
+	}
 	
 }

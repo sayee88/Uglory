@@ -63,11 +63,21 @@ public class ReviewController {
 	
 	@ResponseBody
 	@GetMapping("/reviewDetail")
-	public String selectReviewDetail(int reviewNo, Model model) {
+	public String selectReviewDetail(int reviewNo) {
 		
 		ReviewDetail reviewDetail = service.selectReviewDetail(reviewNo);
 		
 		return new Gson().toJson(reviewDetail);
+	}
+	
+	
+	@ResponseBody
+	@GetMapping("/deleteReview")
+	public int deleteReview(int reviewNo) {
+		
+		int result = service.deleteReview(reviewNo);
+		
+		return result; 
 	}
 	
 	
