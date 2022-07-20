@@ -48,9 +48,14 @@
     position: relative;
 }
 
+.img-box{
+    height: 300px;
+}
+
 .product-img{
-    width: 100%;
-    height: auto;
+    height:300px;
+    width: 300px;
+    object-fit: cover
 }
 
 .sub-box > img{
@@ -75,6 +80,7 @@
     width: 50px;
     height: 50px;
 }
+
 
 .btn-outline-success{
     border: 1px solid #ff4444;

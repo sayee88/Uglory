@@ -49,6 +49,10 @@
         white-space: nowrap;
         width: 460px;
     }
+
+    .small{
+        width: 40px;
+    }
     </style>
 
 
@@ -91,6 +95,7 @@
 
                                 <input type="text" name="query" id="reviewSearch">
                                 <button type="submit" class="btn btn-secondary"><i class="fa-solid fa-magnifying-glass"></i></button>
+
                             </form>
                         </div>
 
@@ -118,9 +123,10 @@
                                             <td>
                                                 <%-- 버튼 클릭시 모달창 open --%>
                                                 <a data-bs-toggle="modal" data-bs-target="#exampleModal" class="openModal">
-                                                    <button type="button" class="btn btn-review-detail selectDetail">상세</button>
+                                                    <button type="button" class="btn btn-review-detail selectDetail detail-${review.reviewNo}">상세</button>
                                                 </a>
                                             </td>
+                                            <%-- <input type="hidden" class="saveReviewNo" name="reviewNo" value="${review.reviewNo}"> --%>
                                         </tr>
                                     </c:forEach>
                                 </tbody>
@@ -148,19 +154,8 @@
                                 <div>
                                     <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
 
-                                        <div class="carousel-inner">
-                                            <div class="carousel-item active" >
-                                                <img src="${contextPath}/resources/img/review/review_img1.png" class="d-block w-100" style="object-fit: contain;">
-                                            </div>
-
-                                            <div class="carousel-item">
-                                                <img src="${contextPath}/resources/img/review/review_img10.png" class="d-block w-100">
-                                            </div>
-
-                                            <div class="carousel-item">
-                                                <img src="${contextPath}/resources/img/review/review_img11.png" class="d-block w-100">
-                                            </div>
-                                        </div>
+                                        <%-- 이미지 슬라이드 --%>
+                                        <div class="carousel-inner"></div>
 
                                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
                                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -175,50 +170,39 @@
                                     </div>
                                 </div>
 
-                                <div class="modal-imgList">
-                                    <div><img class="small" src="${contextPath}/resources/img/review/review_img1.png"></div>
-                                    <div><img class="small" src="${contextPath}/resources/img/review/review_img10.png"></div>
-                                    <div><img class="small" src="${contextPath}/resources/img/review/review_img11.png"></div>
-                                    <div class="img4">x</div>
-                                </div>
+                                <%-- 이미지 리스트 --%>
+                                <div class="modal-imgList"></div>
 
                             </div>
                             
                             <div class="modal-mycontent">
                                 <div class="modal-content-info">
                                     
+                                    <%-- 리뷰 내용 --%>
                                     <div>
-                                        <div class="info-name-date">
-                                            <span>${reviewDetail.customerName}</span>
-                                            <span>${reviewDetail.enrollDate}</span>
+                                        <div class="info-name-date" id="detail-1">
+                                            <span></span>
+                                            <span style="display: inline-block"></span>
                                         </div>
 
-                                        <div class="purchase">${reviewDetail.productName}</div>
+                                        <div class="purchase" id="detail-2"></div>
                                     </div>
 
                                     <div class="modal-star">
-                                        <div class="avgstar">${reviewDetail.starRating}</div>
+                                        <div class="avgstar" id="detail-3"></div>
                                     </div>
             
                                 </div>
 
-                                <div class="modal-content-text">
-                                    ${reviewDetail.reviewContent}
-                                </div>
+                                <div class="modal-content-text" id="detail-4"></div>
 
-                                <div class="modal-bottom">
-                                    <div class="modal-sub">
-                                        <img src="${contextPath}/resources/img/icon/tomato.png" width="50px">
-                                        <a href="#">   구독 박스가 궁금하다면? >></a>
-                                    </div>
-                                </div>
+                                <div class="modal-bottom"></div>
 
                             </div>
                         </div>
 
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-                                style="background-color:rgb(113, 214, 199); border:0; font-weight: bold;">삭제하기</button>
+                            <button type="button" class="btn btn-secondary btn-delete" data-bs-dismiss="modal">삭제하기</button>
                         </div>
 
                     </div>
@@ -250,6 +234,10 @@
     <!-- Template Javascript -->
     <script src="${contextPath}/resources/js/main.js"></script>
     <script src="${contextPath}/resources/js/review.js"></script>
+
+    <script> 
+        const contextPath = "${contextPath}"; 
+    </script>
 </body>
 
 </html>
