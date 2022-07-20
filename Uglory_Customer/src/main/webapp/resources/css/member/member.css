@@ -670,3 +670,11 @@ dd{
 .pagiDD{
     background-image: url(/resources/img/PYJ/pagination4.webp);
 } */
+
+
+.oBox{display: flex;}
+.oBox > div {margin-left: 70px};
+.orderDetailBtn{
+    border:none;
+    font-weight: bold;
+}

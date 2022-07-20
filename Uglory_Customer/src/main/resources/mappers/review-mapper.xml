@@ -2,6 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="reviewMapper">
 
+	<!-- 리뷰 전체 조회  -->
 	<resultMap type="reviewSelectInfo" id="reviewSelectInfo_rm">
 		<id property="reviewNo" column="REVIEW_NO" />
 		<result property="reviewContent" column="REVIEW_CONTENT" />
@@ -12,16 +13,16 @@
 		<result property="memberName" column="MEMBER_NAME" />
 	</resultMap>
 	
-	
+	<!-- 구독 상품 미작성 리뷰 -->
 	<resultMap type="unWrittenSubscription" id="unWrittenSubscription_rm">
 		<id property="subOrderCode" column="S_ORDER_CD" />
 		<result property="subDate" column="S_DT" />
 		<result property="reviewCode" column="REVIEW_CD" />
 		<result property="subName" column="S_NM" />
 		<result property="subPrice" column="S_PRICE" />
-	
 	</resultMap>
 	
+	<!-- 개별 상품 미작성 리뷰 -->
 	<resultMap type="unWrittenProduct" id="unWrittenProduct_rm">
 		<id property="productOrderCode" column="P_ORDER_CD" />
 		<!-- 이미지 경로 불러와야할까? -->
@@ -33,6 +34,7 @@
 	
 	</resultMap>
 	
+	<!-- 리뷰 작성 -->
 	<resultMap type="reviewWrite" id="reviewWrite_rm">
 		<id property="reviewNo" column="REVIEW_NO" />
 		<result property="reviewContent" column="REVIEW_CONTENT" />
@@ -41,13 +43,21 @@
 		<result property="memberNo" column="MEMBER_NO" />
 		<result property="memberName" column="MEMBER_NAME" />
 		
-<result property="productOrderDate" column="P_ORDER_DT" />
+		<result property="productOrderDate" column="P_ORDER_DT" />
 		<result property="productName" column="PRODUCT_NM" />
 		<result property="productName" column="PRODUCT_NM" />
 		<result property="optionName" column="OPTION_NM" />
 		<result property="totalPrice" column="TOTAL_PRICE" />
 		<result property="reviewCode" column="REVIEW_CD" />
 		
+	</resultMap>
+	
+	<!-- 리뷰 이미지 조회용 -->
+	<resultMap type="reviewImage" id="reviewImage_rm">
+		<id property="reviewImageNo" column="REVIEW_IMG_NO" />
+		<result property="reviewImageRename" column="REVIEW_IMG_RENAME" />
+		<result property="reviewImageLevel" column="REVIEW_IMG_LEVEL" />
+		<result property="reviewNo" column="REVIEW_NO" />
 	</resultMap>
 
 
@@ -60,8 +70,8 @@
 	</insert>
 	 
 	 
-	 <!-- 리뷰 이미지 삽입 -->
-	 <insert id="insertReviewImage">
+	 <!-- 리뷰 이미지 삽입 List -->
+	 <insert id="insertReviewImage" parameterType="list">
 	 	INSERT INTO REVIEW_IMG
 	 	SELECT SEQ_IMG_NO.NEXTVAL REVIEW_IMG_NO, A.* FROM(
 	 		<foreach collection="list" item="img" separator="UNION ALL">

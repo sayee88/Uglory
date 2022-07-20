@@ -47,12 +47,16 @@
     <jsp:include page="/WEB-INF/views/common/header-1.jsp" />
 
         <div class="order-section">
-
             <div class="order-head">
-                <h2 class="orderTitle"> 개별 주문 내역(AJAX)</h2>
+                <h2 class="orderTitle"> 개별 주문 내역</h2>
             </div>
 
             <div id="result1">
+            <c:if test="${empty orderHistoryList}">
+            주문 내역이 없습니다.
+            </c:if>
+            <c:if test="${!empty orderHistoryList}">
+            
                 <ul class="orderList">
 
                     <c:forEach var="item" items="${orderHistoryList}">
@@ -68,7 +72,7 @@
                                      외 ${item.count} 개
                                     </c:if>
 
-                                    <button class="orderDetailBtn"> 상세 조회</button>
+                                    <button class="orderDetailBtn" id="${item.orderNo}" style="border:none; font-weight:bold; color: #FF5957;">></button>
                                 </div>
                             
                             </div>
@@ -91,18 +95,21 @@
                                     </dl>
                                 </div>
                             </div>
+
+
                         </li>
                     </c:forEach>
+            </c:if>
 
                     <hr><hr>
                     <li class="list-section">
                         
-                        <div class="date">${item.orderDate}</div>
+                        <%-- <div class="date">${item.orderDate}</div>
                     
                         <div class="order-goods">
                         
                             <div class="order-name">
-                                [${item.origin}] ${item.productName}
+                                ${item.origin} ${item.productName}
                             </div>
                         
                         </div>
@@ -125,27 +132,30 @@
                                     <dd>${item.deliveryFlag}</dd>
                                 </dl>
                             </div>
+                        </div> --%>
+
+
+                        <%-- <div class="order-head">
+                            <h2 class="orderTitle"> 주문 내역 상세 조회</h2>
                         </div>
 
 
-                            <div class="order-head">
-                                <h2 class="orderTitle"> 주문 내역 상세 조회</h2>
-                            </div>
 
-                                <div class="order-info">
-                                    <div class="description" id=selectOne>
-                                        <dl class=oBox>
-                                            <dt class=oTitle>이미지</dt>
-                                            <img src="${contextPath}/resources/img/쿵야/바나나쿵야.png" class="orderImg">
-                                        </dl>
 
+                        <div class="order-info">
+
+                            <div class="description" >
+                                <dl class=oBox>
+                                    <img src="${contextPath}/resources/img/쿵야/바나나쿵야.png" class="orderImg">
+
+                                    <div>
                                         <dl>
                                             <dt>상품이름</dt>
                                             <dd>과즙 팡팡 딱복숭아${item.productName}</dd>
                                         </dl>
 
                                         <dl>
-                                            <dt>상품 가격 / 수량 </dt>
+                                            <dt>상품 가격 / 옵션명 / 수량 </dt>
                                             <dd>27,000원 / 2.5KG${item.productPrice}/${item.optionName}</dd>
                                         </dl>
 
@@ -153,66 +163,72 @@
                                             <dt>배송 현황</dt>
                                             <dd>배송중${item.deliveryFlag}</dd>
                                         </dl>
-                                        
                                     </div>
-                                </div>
+                                    
+                                </dl>
 
-
-                            <div class="order-head">
-                                <h2 class="orderTitle"> 주문 정보</h2>
+                                
                             </div>
 
-                            <div class="order-info">
-                                <div class="description" id=selectOne>
+                            
+                        </div>
 
-                                    <dl>
-                                        <dt>주문자 이름</dt>
-                                        <dd>박예진${item.memberName}</dd>
-                                        
-                                    </dl>
-                                    <dl>
-                                        <dt>결제 일시</dt>
-                                        <dd> 2022/07/19 11:28:50${item.payDate}</dd>
-                                    </dl>
 
-                                    <dl>
-                                        <dt>총 결제 금액</dt>
-                                        <dd>27,000원${item.totalPirce}</dd>
-                                    </dl>
+                        <div class="order-head">
+                            <h2 class="orderTitle"> 주문 정보</h2>
+                        </div>
 
-                                </div>
+                        <div class="order-info">
+                            <div class="description" id=selectOne>
+
+                                <dl>
+                                    <dt>주문자 이름</dt>
+                                    <dd>박예진${item.memberName}</dd>
+                                    
+                                </dl>
+                                <dl>
+                                    <dt>결제 일시</dt>
+                                    <dd> 2022/07/19 11:28:50${item.payDate}</dd>
+                                </dl>
+
+                                <dl>
+                                    <dt>총 결제 금액</dt>
+                                    <dd>27,000원${item.totalPirce}</dd>
+                                </dl>
+
                             </div>
+                        </div>
 
 
-                            <div class="order-head">
-                                <h2 class="orderTitle"> 배송 정보</h2>
+                        <div class="order-head">
+                            <h2 class="orderTitle"> 배송 정보</h2>
+                        </div>
+
+                        <div class="order-info">
+                            <div class="description" id=selectOne>
+
+                                <dl>
+                                    <dt>수령인 이름</dt>
+                                    <dd>박예진${item.orderName}</dd>
+                                    
+                                </dl>
+                                <dl>
+                                    <dt>수령인 전화번호</dt>
+                                    <dd>010-2222-3333${item.orderPhone}</dd>
+                                </dl>
+
+                                <dl>
+                                    <dt>수령인 주소</dt>
+                                    <dd>압구정로 79-16 1층${item.orderaddress}</dd>
+                                </dl>
+
+                                <dl>
+                                    <dt>배송 요청 사항</dt>
+                                    <dd>굿뜨${item.deliveryReq}</dd>
+                                </dl>
+
                             </div>
-
-                                <div class="order-info">
-                                    <div class="description" id=selectOne>
-
-                                        <dl>
-                                            <dt>수령인 이름</dt>
-                                            <dd>박예진${item.orderName}</dd>
-                                            
-                                        </dl>
-                                        <dl>
-                                            <dt>수령인 전화번호</dt>
-                                            <dd>010-2222-3333${item.orderPhone}</dd>
-                                        </dl>
-
-                                        <dl>
-                                            <dt>수령인 주소</dt>
-                                            <dd>압구정로 79-16 1층${item.orderaddress}</dd>
-                                        </dl>
-
-                                        <dl>
-                                            <dt>배송 요청 사항</dt>
-                                            <dd>굿뜨${item.deliveryReq}</dd>
-                                        </dl>
-
-                                    </div>
-                                </div>
+                        </div> --%>
 
                     </li>
                     
@@ -266,16 +282,13 @@
     
     
     <%-- Template Javascript --%>
-    <script src="${contextPath}/resources/js/main.js"></script>
+    <%-- <script src="${contextPath}/resources/js/main.js"></script> --%>
     <script>
         const contextPath = "${contextPath}" ;
-
         const loginMemberNo = "${loginMember.memberNo}";
-
-         const 
     </script>
 
-    <script src="${contextPath}/resources/js/orderList/orderHistory.js"></script>
+    <script src="${contextPath}/resources/js/member/orderHistory.js"></script>
     
 </body>
 </html>

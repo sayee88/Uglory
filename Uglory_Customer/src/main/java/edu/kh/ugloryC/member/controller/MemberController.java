@@ -61,6 +61,17 @@ public class MemberController {
 		
 		return "member/orderHistory";
 	}
+	
+	//개별 주문 상품 조회
+	@ResponseBody
+	@GetMapping("/OrderHistoryDetail")
+	public String selectOrderHistoryDetail(int orderNo) {
+		
+		return new Gson().toJson(service.selectOrderHistoryDetail(orderNo));
+		
+	}
+	
+	
 	//구독 주문 내역 조회
 	@GetMapping("/subscriptionHistory")
 	public String subscriptionHistory() {
@@ -216,15 +227,5 @@ public class MemberController {
 		}
 	}
 	
-	//개별 주문 상품 조회
-//	@ResponseBody
-//	@GetMapping("/orderHistory")
-//	public String orderHistory(int orderNo) {
-//		
-//		//List<OrderHistory> oList = service.selectOrderList(orderNo);
-//		
-//		
-//		
-//		return new Gson().toJson(oList);
-//	}
+
 }

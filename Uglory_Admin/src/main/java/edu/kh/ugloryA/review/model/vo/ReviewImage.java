@@ -9,15 +9,10 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @ToString
-public class Review {
-	
-	private int reviewNo;
-	private String enrollDate;
-	private String reviewContent;
-	
-	private String customerName;
-	
-	
-	
+public class ReviewImage {
 
+	private int reviewImageNo;
+	private String reviewImageRename;
+	private int reviewImageLevel;
+	private int reviewNo;
 }
