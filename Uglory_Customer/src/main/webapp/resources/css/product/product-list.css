@@ -48,6 +48,11 @@
     position: relative;
 }
 
+.col > a{
+    justify-content: center;
+    margin: 0 auto;
+}
+
 .img-box{
     height: 300px;
 }

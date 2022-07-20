@@ -24,16 +24,7 @@
                 product_img.classList.add("product-img");
                 product_img.setAttribute("src",  window.location.origin+'/ugloryA' + product.imgRoot);
                 
-                // 품절시 추가
-                if(pList.productState = "O"){ 
-                    // 접근하는 해당 객체에만 추가하고싶음
-                    // 품절 스티커 css 왜 안돼~!~!~~
-                    product_img.classList.add("soldout");
-            
-                    const soldoutImg = document.createElement("img");
-                    starImg.setAttribute("src", contextPath + "/resources/img/product/품절스티커.png");
-                    starImg.classList.add("soldout-sticker");
-                }
+                
             
                 const div = document.createElement("div");
             
@@ -59,7 +50,16 @@
                 const a = document.createElement("a");
                 a.setAttribute("href", "detail/"+product.categoryNo+"/"+product.productCode);
             
-                
+                // 품절시 추가
+                // 접근하는 해당 객체에만 추가하고싶음
+                // 품절 스티커 css 왜 안돼~!~!~~
+                if(pList.productState = "O"){ 
+                    product_img.classList.add("soldout");
+            
+                    const soldoutImg = document.createElement("img");
+                    starImg.setAttribute("src", contextPath + "/resources/img/product/품절스티커.png");
+                    starImg.classList.add("soldout-sticker");
+                }
             
                 
             
