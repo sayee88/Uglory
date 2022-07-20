@@ -44,6 +44,22 @@ public class SubscriptionDAO {
 
 	public int insertException(Map<String, Object> payInfo) {
 		System.out.println(payInfo);
-		return sqlSession.insert("subscriptionMapper.exception", payInfo);
+		
+		int result = 0;
+		
+		if( payInfo.get("choice") != null) {
+			result =  sqlSession.insert("subscriptionMapper.exception", payInfo);	
+		}else {
+			result = 0;
+		}
+		
+		return result;
 	}
+
+
+	public int insertPay(Map<String, Object> payInfo) {
+		return sqlSession.insert("subscriptionMapper.insertPay", payInfo);
+	}
+	
+	
 }
