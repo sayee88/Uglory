@@ -91,6 +91,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col" style="margin: 20px;">
+
                         <h2 >상품보기</h2>
                     </div>
                     <div class="col container-fluid" style="justify-content: flex-end; margin: 20px;">

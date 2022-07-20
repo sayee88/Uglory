@@ -178,7 +178,7 @@
                         <!-- 상품 상세조회 버튼 영역 -->
                         <div class="detail-product-btnArea">
                             <button type="submit" id="buy-btn">구매하기</button>
-                            <button type="button" class="cartBtn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">장바구니</button>
+                            <button type="submit" class="cartBtn" id="cartButton" data-bs-toggle="modal" data-bs-target="#staticBackdrop">장바구니</button>
                             <button id="share-btn" onclick="clip(); return false;">공유하기</button>
                         </div>
                     </div>
@@ -260,6 +260,7 @@
         <script>
             const productCode = "${productCode}";
             const categoryNo = "${categoryNo}";
+            const contextPath = "${contextPath}";
         </script>
 
         <%-- Template Javascript --%>
