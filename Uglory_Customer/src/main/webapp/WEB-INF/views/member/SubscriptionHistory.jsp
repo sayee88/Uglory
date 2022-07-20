@@ -42,120 +42,132 @@
 </head>
 <body>
     
-    <main class="main">
+<main class="main">
 
-    <jsp:include page="/WEB-INF/views/common/header-1.jsp" />
+
+<jsp:include page="/WEB-INF/views/common/header-1.jsp" />
 
         <div class="order-section">
-
             <div class="order-head">
-                <h2 class="orderTitle"> 구독 내역(AJAX)</h2>
+                <h2 class="orderTitle"> 구독 상품 주문 내역</h2>
             </div>
 
             <div id="result1">
-        
-                <ul class="orderList">
-            
-                    <li class="list-section">
+                <c:if test="${empty subHistoryList}">
+                구독 배송 내역이 없습니다.
+                </c:if>
+
+                
+            <ul class="orderList">
+
+                <c:if test="${!empty subHistoryList}">
+
+                    <c:forEach var="item" items="${subHistoryList}">
+                        <li class="list-section">
+                            <div class="date">${item.subDate}</div>
                         
-                        <div class="date">${item.orderDate}</div>
-                    
-                        <div class="order-goods">
+                            <div class="order-goods">
+                            
+                                <div class="order-name">
+                                    [ ${item.subName} ] BOX 구독 중
                         
-                            <div class="order-name">
-                                [스탠다드${item.subName}]
+                                    <button class="orderDetailBtn" id="${item.subOrderNo}" style="border:none; font-weight:bold; color: #FF5957;">></button>
+                                </div>
+                            
                             </div>
                         
-                        </div>
-                    
-                        <div class="order-info">
-                            <div class="description" id=selectOne>
-
-                                <dl>
-                                    <dt>주문번호</dt>
-                                    <a href="" id="goToDetail"><dd>${item.orderNo}</dd></a>
-                                </dl>
-                                <dl>
-
-                                    <dt>결제금액</dt>
-                                    <dd>${item.subPrice}</dd>
-                                </dl>
-
-                                <dl>
-                                    <dt>배송상태</dt>
-                                    <dd>${item.deliveryFlag}</dd>
-                                </dl>
-                            </div>
-                        </div>
-
-                        <c:forEach var="order" item="${oList}">
-
-                            <div class="order-head">
-                                <h2 class="orderTitle"> 주문 정보</h2>
-                            </div>
-
                             <div class="order-info">
                                 <div class="description" id=selectOne>
-
                                     <dl>
-                                        <dt>주문자 이름</dt>
-                                        <dd>박예진${item.memberName}</dd>
-                                        
+                                        <dt>주문번호</dt>
+                                        <dd>${item.subOrderNo}</dd>
                                     </dl>
                                     <dl>
-                                        <dt>결제 일시</dt>
-                                        <dd> 2022/07/19 11:28:50${item.subPayDate}</dd>
+
+                                        <dt>구독 결제금액</dt>
+                                        <dd>${item.subPrice}</dd>
                                     </dl>
 
                                     <dl>
-                                        <dt> 구독 결제 금액</dt>
-                                        <dd>27,000원${item.subPayAmount}</dd>
+                                        <dt>배송상태</dt>
+                                        <dd>${item.deliveryFlag}</dd>
                                     </dl>
-
                                 </div>
                             </div>
 
 
-                            <div class="order-head">
-                                <h2 class="orderTitle"> 배송 정보</h2>
-                            </div>
+                        </li>
+                    </c:forEach>
 
-                                <div class="order-info">
-                                    <div class="description" id=selectOne>
+                </c:if>
 
-                                        <dl>
-                                            <dt>수령인 이름</dt>
-                                            <dd>박예진${item.subOrderName}</dd>
-                                            
-                                        </dl>
-                                        <dl>
-                                            <dt>수령인 전화번호</dt>
-                                            <dd>010-2222-3333${item.subOrderPhone}</dd>
-                                        </dl>
+<%--             
+                <li class="list-section">
 
-                                        <dl>
-                                            <dt>수령인 주소</dt>
-                                            <dd>압구정로 79-16 1층${item.subOrderAddr}</dd>
-                                        </dl>
+                    <div class="order-head">
+                        <h2 class="orderTitle">주문 정보</h2>
+                    </div>
 
-                                        <dl>
-                                            <dt>알러지 제외 상품</dt>
-                                            <dd>${item.보류} 제외 된 상품만 배송 되었습니다.</dd>
-                                        </dl>
+                    <div class="order-info">
+                        <div class="description" id=selectOne>
+
+                            <dl>
+                                <dt>주문자 이름</dt>
+                                <dd>박예진${item.memberName}</dd>
+                            </dl>
+
+                            <dl>
+                                <dt>결제 일시</dt>
+                                <dd> 2022/07/19 11:28:50${item.subDate}</dd>
+                            </dl>
+
+                            <dl>
+                                <dt>총 결제 금액</dt>
+                                <dd>27,000원${item.subPrice}</dd>
+                            </dl>
+
+                        </div>
+
+                    </div>
 
 
-                                        <dl>
-                                            <dt>배송 요청 사항</dt>
-                                            <dd>굿뜨${item.deliveryReq}</dd>
-                                        </dl>
+                    <div class="order-head">
+                        <h2 class="orderTitle">배송 정보</h2>
+                    </div>
 
-                                    </div>
-                                </div>
+                    <div class="order-info">
+                        <div class="description" id=selectOne>
 
-                        </c:forEach>
-                    </li>
+                            <dl>
+                                <dt>수령인 이름</dt>
+                                <dd>박예진${item.subOrderName}</dd>
+                                
+                            </dl>
+                            <dl>
+                                <dt>수령인 전화번호</dt>
+                                <dd>010-2222-3333${item.subOrderPhone}</dd>
+                            </dl>
+
+                            <dl>
+                                <dt>수령인 주소</dt>
+                                <dd>압구정로 79-16 1층${item.subOrderAddress}</dd>
+                            </dl>
+
+                            <dl>
+                                <dt>알러지 제외 상품</dt>
+                                <dd>굿뜨${item.productName}</dd>
+                            </dl>
+                            <dl>
+                                <dt>배송 요청 사항</dt>
+                                <dd>굿뜨${item.subDeliveryReq}</dd>
+                            </dl>
+
+                        </div>
+                    </div> 
+
+                </li> --%>
                     
-                </ul>
+            </ul>
                
 
                 <!-- 페이지네이션 시작-->   
@@ -180,41 +192,46 @@
                 
             </div>
         </div>
-    </main>
-                
-    <jsp:include page="/WEB-INF/views/common/footer.jsp" />
+
+            
+
+</main>
+
+
+
+<jsp:include page="/WEB-INF/views/common/footer.jsp" />
     
 
 
 
-   <%-- <!— jQuery 추가 —> --%>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="${contextPath}/resources/lib/wow/wow.min.js"></script>
-    <script src="${contextPath}/resources/lib/easing/easing.min.js"></script>
-    <script src="${contextPath}/resources/lib/waypoints/waypoints.min.js"></script>
-    <script src="${contextPath}/resources/lib/counterup/counterup.min.js"></script>
-    <script src="${contextPath}/resources/lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="${contextPath}/resources/lib/tempusdominus/js/moment.min.js"></script>
-    <script src="${contextPath}/resources/lib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="${contextPath}/resources/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+<%-- <!— jQuery 추가 —> --%>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
-    
-    
-    <%-- Template Javascript --%>
-    <%-- <script src="${contextPath}/resources/js/main.js"></script> --%>
-    <script>
-        const contextPath = "${contextPath}" ;
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="${contextPath}/resources/lib/wow/wow.min.js"></script>
+<script src="${contextPath}/resources/lib/easing/easing.min.js"></script>
+<script src="${contextPath}/resources/lib/waypoints/waypoints.min.js"></script>
+<script src="${contextPath}/resources/lib/counterup/counterup.min.js"></script>
+<script src="${contextPath}/resources/lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="${contextPath}/resources/lib/tempusdominus/js/moment.min.js"></script>
+<script src="${contextPath}/resources/lib/tempusdominus/js/moment-timezone.min.js"></script>
+<script src="${contextPath}/resources/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
 
-        const loginMemberNo = "${loginMember.memberNo}";
 
-         const 
-    </script>
 
-    <script src="${contextPath}/resources/js/orderList/orderHistory.js"></script>
+<%-- Template Javascript --%>
+<%-- <script src="${contextPath}/resources/js/main.js"></script> --%>
+<script>
+    const contextPath = "${contextPath}" ;
+
+    const loginMemberNo = "${loginMember.memberNo}";
+
+     
+</script>
+
+<script src="${contextPath}/resources/js/member/subOrderHistory.js"></script>
     
 </body>
 </html>
