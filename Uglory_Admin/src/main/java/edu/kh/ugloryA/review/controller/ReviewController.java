@@ -9,12 +9,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+
+import com.google.gson.Gson;
 
 import edu.kh.ugloryA.review.model.service.ReviewService;
 import edu.kh.ugloryA.review.model.vo.Review;
+import edu.kh.ugloryA.review.model.vo.ReviewDetail;
 
 @Controller
 @RequestMapping("/review")
@@ -39,9 +44,30 @@ public class ReviewController {
 			reviewList = service.searchReview(key, query);
 		}
 		
+		
 		model.addAttribute("reviewList", reviewList);
 		
 		return "manageReview/ReviewList";
+	}
+	
+	
+//	@GetMapping("/reviewDetail/{reviewNo}")
+//	public String selectReviewDetail(@PathVariable("reviewNo") int reviewNo, Model model) {
+//		
+//		ReviewDetail reviewDetail = service.selectReviewDetail(reviewNo);
+//		
+//		model.addAttribute("reviewDetail", reviewDetail);
+//		
+//		return "manageReview/ReviewList";
+//	}
+	
+	@ResponseBody
+	@GetMapping("/reviewDetail")
+	public String selectReviewDetail(int reviewNo, Model model) {
+		
+		ReviewDetail reviewDetail = service.selectReviewDetail(reviewNo);
+		
+		return new Gson().toJson(reviewDetail);
 	}
 	
 	

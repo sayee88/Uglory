@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import edu.kh.ugloryA.review.model.dao.ReviewDAO;
 import edu.kh.ugloryA.review.model.vo.Review;
+import edu.kh.ugloryA.review.model.vo.ReviewDetail;
 
 @Service
 public class ReviewServiceImpl implements ReviewService {
@@ -30,6 +31,16 @@ public class ReviewServiceImpl implements ReviewService {
 	public List<Review> searchReview(String key, String query) {
 		return dao.searchReview(key, query);
 	}
+
+
+	// 리뷰 상세 내역 조회
+	@Override
+	public ReviewDetail selectReviewDetail(int reviewNo) {
+		return dao.selectReviewDetail(reviewNo);
+	}
+	
+	
+	
 	
 	
 	

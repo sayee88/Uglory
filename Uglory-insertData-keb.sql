@@ -694,22 +694,22 @@ FROM DUAL;
 
 -- REVIEW_NO 기준으로 리뷰 등록일, 글쓴이, 리뷰 내용, 별점, 상품명 얻어오는 SQL 
 SELECT REVIEW_ENROLL_DT, MEMBER_NAME, REVIEW_CONTENT, STAR_RATING, 
-    (SELECT CASE WHEN (SELECT REVIEW_CD FROM REVIEW WHERE REVIEW_NO = 21) = 1
+    (SELECT CASE WHEN (SELECT REVIEW_CD FROM REVIEW WHERE REVIEW_NO = 2) = 1
             THEN (SELECT S_NM 
                  FROM REVIEW
                  JOIN SUBS_ORDER USING(S_ORDER_CD)
                  JOIN SUBS  USING(S_CD)
-                 WHERE REVIEW_NO = 21)    
+                 WHERE REVIEW_NO = 2)    
         
         ELSE (SELECT PRODUCT_NM 
              FROM REVIEW
              JOIN PRODUCT USING(P_CD)
-             WHERE REVIEW_NO = 21)
+             WHERE REVIEW_NO = 2)
         END 
     FROM DUAL) AS PRODUCT_NM
 FROM REVIEW
 JOIN MEMBER USING(MEMBER_NO)
-WHERE REVIEW_NO = 21;
+WHERE REVIEW_NO = 2;
 
 SELECT * FROM PRODUCT_ORDER;
 SELECT * FROM REVIEW;
@@ -718,7 +718,25 @@ INSERT INTO REVIEW VALUES(
     SEQ_REVIEW_NO.NEXTVAL, '흔들리는 나침반이 답답해도 우리 함께라면 다 알지 못해도 다 알 수 있어요 내 뜻대로 안 되는 하루하루가 안개처럼 흐릿하지만 수많은 길이 내 앞에 있어', 
     SYSDATE, '4', 1, 1, 1, NULL, 2);
 
+SELECT * FROM REVIEW_IMG WHERE REVIEW_NO = 1;
 
+INSERT INTO REVIEW_IMG VALUES(
+    SEQ_REVIEW_IMG_NO.NEXTVAL, '/resources/img/review/review_img1.jpg', 1, 1
+);
+INSERT INTO REVIEW_IMG VALUES(
+    SEQ_REVIEW_IMG_NO.NEXTVAL, '/resources/img/review/review_img2.jpg', 2, 1
+);
+INSERT INTO REVIEW_IMG VALUES(
+    SEQ_REVIEW_IMG_NO.NEXTVAL, '/resources/img/review/review_img3.jpg', 3, 1
+);
+INSERT INTO REVIEW_IMG VALUES(
+    SEQ_REVIEW_IMG_NO.NEXTVAL, '/resources/img/review/review_img4.jpg', 4, 1
+);
+INSERT INTO REVIEW_IMG VALUES(
+    SEQ_REVIEW_IMG_NO.NEXTVAL, '/resources/img/review/review_img5.jpg', 5, 1
+);
+
+DELETE FROM REVIEW_IMG;
 
 
 
@@ -860,4 +878,3 @@ ALTER TABLE PRODUCT_PAY MODIFY P_PAY_NO VARCHAR2(20);
 INSERT INTO PRODUCT_PAY VALUES(
     '220719151742-3', TO_DATE('20220714', 'YYYY-MM-DD'), 27000, 1, 2
 );
-

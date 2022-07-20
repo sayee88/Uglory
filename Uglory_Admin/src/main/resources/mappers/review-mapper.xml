@@ -8,6 +8,24 @@
 		<result property="reviewContent" column="REVIEW_CONTENT" />
 	</resultMap>
 	
+	<resultMap type="reviewDetail" id="reviewDetail_rm">
+		<id property="reviewNo" column="REVIEW_NO" />
+		<result property="enrollDate" column="REVIEW_ENROLL_DT" />
+		<result property="customerName" column="MEMBER_NAME" />
+		<result property="reviewContent" column="REVIEW_CONTENT" />
+		<result property="starRating" column="STAR_RATING" />
+		<result property="productName" column="PRODUCT_NM" />
+		<collection property="imageList"  column="REVIEW_NO" javaType="java.util.ArrayList" ofType="reviewImage" select="selectReviewImage"/>
+	</resultMap>
+	
+	<resultMap type="reviewImage" id="reviewImage_rm">
+		<id property="reviewImageNo" column="REVIEW_IMG_NO"/>
+		<result property="reviewImageRename" column="REVIEW_IMG_ORIGINAL"/>
+		<result property="reviewImageLevel" column="REVIEW_IMG_LEVEL"/>
+		<result property="reviewNo" column="REVIEW_NO"/>
+	</resultMap>
+	
+	
 	<select id="selectAllReview" resultMap="review_rm">
 		SELECT REVIEW_NO, REVIEW_ENROLL_DT, MEMBER_NAME, REVIEW_CONTENT
 		FROM REVIEW
@@ -31,6 +49,31 @@
 			</choose>
 		</if>
 		ORDER BY REVIEW_ENROLL_DT DESC
+	</select>
+	
+	
+	<select id="selectReviewDetail" resultMap="reviewDetail_rm">
+		SELECT REVIEW_NO, REVIEW_ENROLL_DT, MEMBER_NAME, REVIEW_CONTENT, STAR_RATING, 
+		    (SELECT CASE WHEN (SELECT REVIEW_CD FROM REVIEW WHERE REVIEW_NO = #{reviewNo}) = 1
+		            THEN (SELECT S_NM 
+		                 FROM REVIEW
+		                 JOIN SUBS_ORDER USING(S_ORDER_CD)
+		                 JOIN SUBS  USING(S_CD)
+		                 WHERE REVIEW_NO = #{reviewNo})    
+		        
+		        ELSE (SELECT PRODUCT_NM 
+		             FROM REVIEW
+		             JOIN PRODUCT USING(P_CD)
+		             WHERE REVIEW_NO = #{reviewNo})
+		        END 
+		    FROM DUAL) AS PRODUCT_NM
+		FROM REVIEW
+		JOIN MEMBER USING(MEMBER_NO)
+		WHERE REVIEW_NO = #{reviewNo}
+	</select>
+	
+	<select id="selectReviewImage" resultMap="reviewImage_rm">
+		SELECT * FROM REVIEW_IMG WHERE REVIEW_NO = #{reviewNo}
 	</select>
 
 

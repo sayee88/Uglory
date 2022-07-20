@@ -91,6 +91,7 @@
 
                                 <input type="text" name="query" id="reviewSearch">
                                 <button type="submit" class="btn btn-secondary"><i class="fa-solid fa-magnifying-glass"></i></button>
+
                             </form>
                         </div>
 
@@ -118,9 +119,10 @@
                                             <td>
                                                 <%-- 버튼 클릭시 모달창 open --%>
                                                 <a data-bs-toggle="modal" data-bs-target="#exampleModal" class="openModal">
-                                                    <button type="button" class="btn btn-review-detail selectDetail">상세</button>
+                                                    <button type="button" class="btn btn-review-detail selectDetail detail-${review.reviewNo}">상세</button>
                                                 </a>
                                             </td>
+                                            <%-- <input type="hidden" class="saveReviewNo" name="reviewNo" value="${review.reviewNo}"> --%>
                                         </tr>
                                     </c:forEach>
                                 </tbody>
@@ -188,23 +190,21 @@
                                 <div class="modal-content-info">
                                     
                                     <div>
-                                        <div class="info-name-date">
-                                            <span>${reviewDetail.customerName}</span>
-                                            <span>${reviewDetail.enrollDate}</span>
+                                        <div class="info-name-date" id="detail-1">
+                                            <span></span>
+                                            <span></span>
                                         </div>
 
-                                        <div class="purchase">${reviewDetail.productName}</div>
+                                        <div class="purchase" id="detail-2"></div>
                                     </div>
 
                                     <div class="modal-star">
-                                        <div class="avgstar">${reviewDetail.starRating}</div>
+                                        <div class="avgstar" id="detail-3"></div>
                                     </div>
             
                                 </div>
 
-                                <div class="modal-content-text">
-                                    ${reviewDetail.reviewContent}
-                                </div>
+                                <div class="modal-content-text" id="detail-4"></div>
 
                                 <div class="modal-bottom">
                                     <div class="modal-sub">
@@ -250,6 +250,8 @@
     <!-- Template Javascript -->
     <script src="${contextPath}/resources/js/main.js"></script>
     <script src="${contextPath}/resources/js/review.js"></script>
+
+    <script> const contextPath = "${contextPath}"; </script>
 </body>
 
 </html>
