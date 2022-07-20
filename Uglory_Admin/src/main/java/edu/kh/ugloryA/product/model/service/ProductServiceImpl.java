@@ -163,25 +163,56 @@ public class ProductServiceImpl implements ProductService {
 
 	//주별 상품 리스트 조회
 	@Override
-	public Map<String, Object> selectWeeklyList(String key) {
-		
-		Map<String, Object> map = new HashMap<String, Object>();
-		// 상태별 리스트 조회
-		WeeklyList weeklyList = dao.selectWeeklyList(key);
-		
-		if(weeklyList != null) {
-			
-			int productListNo = weeklyList.getProductListNo();
-			
-			// 리스트 내 상품 모두 조회
-			List<WeeklyProduct> weeklyProductList = dao.selectWeeklyProduct(productListNo);
-			
-			map.put("weeklyProductList", weeklyProductList);
-			map.put("weeklyList", weeklyList);			
-		}
-		
-		return map;
+	public WeeklyList selectWeeklyList(String key) {	
+		return dao.selectWeeklyList(key);
 	}
+
+	//주별 상품 리스트 만들기
+	@Override
+	public int insertWeeklyList(String key) {
+		return dao.insertWeeklyList(key);
+	}
+
+	//주별 상품 목록 조회
+	@Override
+	public List<WeeklyProduct> selectWeeklyProduct(int productListNo) {
+		return dao.selectWeeklyProduct(productListNo);
+	}
+
+	//상품 옵션 조회
+	@Override
+	public List<OptionType> selectOption(int productCode) {
+		return dao.selectOptionType(productCode);
+	}
+
+	//상품 목록 중복 검사
+	@Override
+	public int listDupCheck(Map<String, Object> map) {
+		return dao.listDupCheck(map);
+	}
+
+	//상품 목록 추가
+	@Override
+	public int insertWeeklyProduct(Map<String, Object> map) {
+		return dao.insertWeeklyProduct(map);
+	}
+
+	//상품 목록 삭제
+	@Override
+	public int deleteWeeklyProduct(int productNo) {
+		return dao.deleteWeeklyProduct(productNo);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

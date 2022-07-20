@@ -53,34 +53,48 @@
             <main class="container-fluid pt-4 px-4">
                 <section class="row justify-content-center mx-0">
                     <article class="col-xl-6 col-md-8 bg-light rounded product-margin p-4">
-                        <h2 class="text-start">다음주 배송 상품</h2>
+                        <h2 class="text-start">배송 상품 목록</h2>
                         <hr>
                         <%-- form X ajax로 --%>
-                        <form action="">
-                            
-                            <div class="product-row">
-                                <span class="fw-bold">배송 예정일</span>
-                                <div class="productWrap">
-                                    <input type="date" class="productInput text-center">
-                                </div>
+                        <div class="product-row">
+                            <div class="w-100 text-center exdelDate p-1">
+                                <span class="text-center fw-bold">배송 예정일</span>
+                                <span class="rounded bg-white delDate">${weeklyList.deliveryDate}</span>
                             </div>
+                        </div>
 
-                            <!-- ajax로 만들어야 하는 부분 -->
-                            <div class="product-row">
-                                <select name="" id="" class="pListItem ps-1">
-                                    <option value="">상품</option>
-                                </select>
-                                <select name="" id="" class="pListItem ps-1">
-                                    <option value="">옵션</option>
-                                </select>
-                            </div>
+                        <div class="rounded p-2 m-2 bg-white">
+                            <table class="table table-hover text-center">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">상품명</th>
+                                        <th scope="col">Standard / Jumbo</th>
+                                        <th scope="col">삭제</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="del-p-list"></tbody>
+                            </table>
+                        </div>
 
-                            <div class="product-row">
-                                <button type="button" class="btn btn-lg btn-secondary m-1 w-100">취소</button>
-                                <button class="btn btn-lg btn-primary m-1 w-100">등록</button>
-                            </div>
+                        <!-- ajax로 만들어야 하는 부분 -->
+                        <div class="product-row m-2 mb-4 bg-white rounded p-2">
+                            <select id="pList" class="pListItem">
+                                <option value="0">상품</option>
+                                <c:if test="${!empty productList}">
+                                    <c:forEach var="product" items="${productList}">
+                                        <option value="${product.productCode}">${product.productName}</option>
+                                    </c:forEach>
+                                </c:if>
+                            </select>
+                            <select id="opList" class="pListItem">
+                                <option value="0">옵션</option>
+                            </select>
+                            <button id="addListBtn" class="btn btn-primary productBtn">추가</button>
+                        </div>
 
-                        </form>
+                        <div class="product-row">
+                            <button type="button" class="btn btn-lg btn-primary w-100" onclick="location.href='list'">저장</button>
+                        </div>
                     </article>
                 </section>
             </main>
@@ -91,6 +105,10 @@
         </div>
         <!-- Content End -->
     </div>
+
+    <script>
+        const productListNo = '${weeklyList.productListNo}'
+    </script>
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

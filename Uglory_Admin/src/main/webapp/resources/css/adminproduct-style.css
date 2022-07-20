@@ -34,8 +34,8 @@
 .pListCount>input{width: 75%;}
 .pListCount>button{width:25%; height: 100%; font-size: 20px;}
 
-.pListItem{width: 50%; font-size: 20px; height: 40px; margin: 5px;}
-
+.pListItem{width: 40%; font-size: 20px; height: 40px;}
+.productBtn{height: 40px;}
 
 /* 상품 목록 페이지 */
 .listHead{display: flex; justify-content: end;}
@@ -63,23 +63,21 @@
 /* 구독 상품 알림 페이지 */
 .pListBox{
     margin: 10px 0;
-    padding: 10px;
-    list-style: none;
+    padding: 5px;
     border: 1px solid rgb(53, 204, 182);
-    height: 300px;
+    height: 360px;
     border-radius: 4px;
+    font-size: 18px;
 }
-
-.pListBox>li{display: flex; justify-content: space-between; margin:4px;}
-.pListBox>li>p{margin: 0;}
 
 .p-btn-area{display: flex; justify-content: space-between;}
 .p-btn-area button{font-size: 18px; padding: 6px;}
 
 .pListBody{display: flex; justify-content: space-around; flex-wrap: wrap;}
 
-.pList-tit{color: rgb(53, 204, 182); font-size: 24px; font-weight: bold;}
-.dl-date{border-top: 1px solid rgb(53, 204, 182); border-bottom: 1px solid rgb(53, 204, 182);}
+.pList-tit{color: rgb(53, 204, 182); font-size: 24px; font-weight: bold; border-bottom: 1px solid rgb(53, 204, 182);}
+/* .dl-date{border-top: 1px solid rgb(53, 204, 182); border-bottom: 1px solid rgb(53, 204, 182);} */
+.blur{color:#ccc}
 
 /* 상품 상세조회 페이지 */
 .productNo{
@@ -179,3 +177,8 @@
 #optionNameText{font-size: 16px;}
 
 .option-delete{border: 0; font-size: 26px; padding: 0 4px; height: 32px; display: flex; align-items: center;}
+
+.deleteWeek{font-size: 18px; font-weight: bold; width:25px; height: 25px; text-align: center; padding: 0; border: 2px solid #DC3545;}
+
+.exdelDate{display: flex; justify-content: space-around;}
+.delDate{width: 180px; text-align: center; border: 1px solid #ccc;}
