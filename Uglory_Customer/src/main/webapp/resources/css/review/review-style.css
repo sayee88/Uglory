@@ -545,3 +545,106 @@
 #productUnWrittenList{ display: none;}
 
 .subBox , .product{ cursor: pointer;}
+
+
+/* ====================================================== */
+
+/* 나의 리뷰 */
+.myreview-list{
+    /* margin-bottom: 20px; */
+    border-bottom: 1px solid rgb(176, 176, 176);
+    margin-top: 40px;
+}
+
+
+.myreview-section{
+    /* border: 1px solid red; */
+    margin-top: 40px;
+}
+
+.myreview-content{
+    /* border: 1px solid red; */
+    justify-content: center;
+    display: flex;
+}
+
+.myreview-content > div:nth-of-type(1){
+    /* border: 1px solid red; */
+    width: 300px;
+    padding: 20px 0;
+    margin-left: 40px;
+    text-align: center;
+
+}
+
+.myreview-content > div:nth-of-type(2){
+    /* border: 1px solid red; */
+    width: 100%;
+    padding: 20px 0 10px 30px;
+}
+
+
+.myreview-content > div > img{
+    width: 160px;
+    height: 160px;
+}
+
+.content-info > div:nth-of-type(1){
+    /* border: 1px solid red; */
+    color: rgb(254, 161, 22);
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.content-info > div:nth-of-type(2){
+    /* border: 1px solid red; */
+    font-size: 14px;
+    color: rgb(157, 157, 157);
+}
+
+.content-info > div:nth-of-type(3){
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: rgb(131, 131, 131);
+}
+
+.content-info > div:nth-of-type(4){
+    /* border: 1px solid red; */
+    font-weight: bold;
+    margin-top: 20px;
+    color: rgb(85, 85, 85);
+    font-size: 18px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: break-all;
+}
+
+.myreview-button{
+    /* border: 1px solid red; */
+    margin: 0 20px 30px 0;
+    text-align: end;
+}
+
+#updateBtn{
+    border: 0;
+    width: 80px;
+    height: 30px;
+    color: white;
+    background-color: rgb(113, 214, 199);
+    font-weight: bold;
+    border-radius: 7px;
+    margin-right: 10px;
+}
+
+#deleteBtn{
+    border: 0;
+    width: 80px;
+    height: 30px;
+    color: white;
+    background-color: rgb(113, 214, 199);
+    font-weight: bold;
+    border-radius: 7px;
+    margin-right: 10px;
+}

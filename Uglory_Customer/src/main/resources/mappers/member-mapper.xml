@@ -116,14 +116,18 @@
 	
 	<!-- 내구독현황 -->
 	<select id="subscriptionStatus" resultMap="subStatus_rm">
-		SELECT MEMBER_NAME, S_NM, S_CYCLE
-		FROM SUBS_ORDER
-		JOIN MEMBER
-		USING(MEMBER_NO)
-		JOIN SUBS USING(S_CD)
-		WHERE MEMBER_NO = #{memberNo}
-		AND S_CANCEL = 'N'
-		GROUP BY S_ORDER_CD,MEMBER_NAME, S_NM, S_CYCLE
+	
+	SELECT * FROM
+		(SELECT MEMBER_NAME, S_NM, S_CYCLE
+				FROM SUBS_ORDER
+				JOIN MEMBER
+				USING(MEMBER_NO)
+				JOIN SUBS USING(S_CD)
+				WHERE MEMBER_NO = #{memberNo}
+				AND S_CANCEL = 'N'
+				GROUP BY S_ORDER_CD,MEMBER_NAME, S_NM, S_CYCLE, S_DT
+		      ORDER BY S_DT DESC)
+		WHERE ROWNUM=1
 	</select>
 	
 	
