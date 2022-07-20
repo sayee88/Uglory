@@ -35,7 +35,7 @@ import edu.kh.ugloryC.product.model.vo.ProductDetail;
 
 @Controller
 @RequestMapping("/product")
-@SessionAttributes({"loginMember", "cartMap"})
+@SessionAttributes({"loginMember"})
 public class ProductController {
 	
 	@Autowired
@@ -199,64 +199,56 @@ public class ProductController {
 		if(result > 0) { // 주문 정보 입력 및 결제 성공 시 결제 테이블 삽입
 			int productPay = service.productPay(productOrder);
 		}
+		
 		model.addAttribute("productOrder", productOrder);
 		
 		return result;
 	}
 	
 	// 장바구니 화면 전환
-	@SuppressWarnings({ "unchecked" })
+	@SuppressWarnings({"unchecked"})
 	@GetMapping("/cart")
-	@ResponseBody
-	public Map<String, Object> cart(@RequestParam(value="productCode", required=false) Integer productCode,
-					   @RequestParam(value="totalAmount", required=false) Integer totalAmount, 
-					   @RequestParam(value="optionObj", required=false) String optionObj,
-					   Model model) {
+	public String cart(Model model, @ModelAttribute("loginMember") Member loginMember,
+					   Integer productCode,
+					   Integer totalAmount, String optionObj) {
 		
 		Map<String, Object> cartMap = new HashMap<String, Object>();
 		
-		if(optionObj == null) {
-			
-			cartMap = null;
-			
-			return cartMap;
+		cartMap = (Map<String, Object>)new Gson().fromJson(optionObj,cartMap.getClass());
 		
-		} else {
-			
-			// 넘어온 스트링을 객체 형태로 변환
-			cartMap = (Map<String, Object>)new Gson().fromJson(optionObj, cartMap.getClass());
+		// 옵션코드 리스트
+		List<String> optionCodeList = new ArrayList<String>(cartMap.keySet());
 		
-			// 옵션코드 리스트
-			List<String> optionCodeList = new ArrayList<String>(cartMap.keySet());
-			
-			// 수량 리스트
-			List<Integer> amountList = new ArrayList<Integer>();
-			
-			for(String key : cartMap.keySet()) {
-				amountList.add( ((Double)cartMap.get(key)).intValue() );
-			}
-			// 	옵션코드 리스트 인덱스 == 수량 리스트 인덱스
-					
-			cartMap.clear();
-			
-			cartMap.put("optionCodeList", optionCodeList);
-			cartMap.put("amountList", amountList);
-			
-			cartMap.put("productCode", productCode);
-			
-			// 주문 페이지 내 옵션 코드 상품 코드에 따른 옵션이름, 개수 조회
-			List<OptionType> cartOptionList = service.cartOptionList(cartMap);
-			
-			cartMap.put("cartOptionList", cartOptionList);
-			cartMap.put("totalAmount", totalAmount);
+		// 수량 리스트
+		List<Integer> amountList = new ArrayList<Integer>();
+
+		for(String key : cartMap.keySet()) {
+			amountList.add( ((Double)cartMap.get(key)).intValue() );
 		}
-
-		return cartMap;
+		
+		cartMap.clear();
+		
+		cartMap.put("optionCodeList", optionCodeList);
+		cartMap.put("amountList", amountList);
+		
+		// 주문 페이지 내 옵션 코드 상품 코드에 따른 옵션이름, 개수 조회
+		List<OptionType> cartOptionList = service.cartOptionList(cartMap);
+				
+		cartMap.put("cartOptionList", cartOptionList);
+		cartMap.put("totalAmount", totalAmount);
+				
+		model.addAttribute(cartMap);
+		
+		return "product/productCart";
 	}
-
-	@PostMapping("/cart")
-	public String productCart() {
-
-		return "product/productOrder";
-	}
+	
+//	// 장바구니에 담기 (insert)
+//	@GetMapping("/cartInsert")
+//	@ResponseBody
+//	public Map<String, Object> cart(Model model) {
+//	
+//		
+//		return cartMap;
+//	}
+	
 }

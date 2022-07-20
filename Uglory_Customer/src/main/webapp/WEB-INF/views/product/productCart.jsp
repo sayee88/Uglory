@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"  %>
 
-<c:set var="selectOptionList" value="${map.selectOptionList}" />
+<c:set var="cartOptionList" value="${cartMap.cartOptionList}" />
 
 <!DOCTYPE html>
 <html lang="en">
@@ -55,118 +55,135 @@
 
             <!-- 장바구니 개수 -->
             <h4 class="cart-count">장바구니 상품(<span>2</span>)</h4>
+
             <!-- 장바구니에 담긴 상품이 없을 경우 -->
-            <!-- <div class="empty-product-cart">
-                <p>장바구니에 담긴 상품이 없습니다.</p>
-            </div> -->
+            <c:if test="${empty cartOptionList}">
+                <div class="empty-product-cart">
+                    <p>장바구니에 담긴 상품이 없습니다.</p>
+                </div> 
+            </c:if>
 
-            <form action="${contextPath}/product/order" method="GET">
-                <!-- 장바구니에 담긴 상품이 있을 경우 -->
-                <div class="product-cart-area">
-                    
-                    <!-- 장바구니 상품 선택 및 삭제 영역 -->
-                    <div class="cart-check-delete">
-                        <!-- 장바구니 담은 상품 선택 -->
-                       <%--  <input type="checkbox" name="cart-check" value="cart-1" id="cart-check" checked>
+            <c:if test="${!empty cartOptionList}">
 
-                        <!-- 장바구니 담은 상품 삭제 버튼 -->
-                        <button id="cart-delete" onclick="pDelete()">X</button> --%>
-                    </div> 
+                <form action="${contextPath}/product/order" method="POST">
+                    <!-- 장바구니에 담긴 상품이 있을 경우 -->
+                    <div class="product-cart-area">
+                        
+                        <!-- 장바구니 상품 선택 및 삭제 영역 -->
+                        <div class="cart-check-delete">
+                            <!-- 장바구니 담은 상품 선택 -->
+                            <input type="checkbox" name="cart-check" value="cart-1" id="cart-check" checked>
+                            <!-- 장바구니 담은 상품 삭제 버튼 -->
+                            <button id="cart-delete" onclick="pDelete()">X</button>
+                        </div> 
 
-                    <!-- 장바구니 담은 상품 리스트 -->
-                    <div class="cart-info-area">
-                        <%-- <!-- 상품 썸네일 이미지 -->
-                        <div>
-                            <img src="img/broccoli.jpg" width="150px" height="150px">
-                        </div>
-
-                        <!-- 상품명(클릭 시 상품 상세조회 화면)-->
-                        <div>
-                            <a href=""><span>유기농 어글리 바나나 (1.5kg/2.5kg)</span></a>
-                        </div> --%>
-                    </div>
-
-                    <!-- 선택된 옵션 조회 영역 -->
-                    <div class="cart-option-info">
-                        <!-- 상품명 + 옵션명 -->
-                        <p>옵션 - <span>유기농 어글리 바나나 1.5kg</span></p>
-
-                        <!-- 상품 수량 변경 -->
-                        <div class="option-info">
-                            <div class="option-updown">
-                                <button id="option-minus">-</button>
-                                <span class="option-count"> 1 </span>
-                                <button id="option-plus">+</button>
+                        <!-- 장바구니 담은 상품 리스트 -->
+                        <div class="cart-info-area">
+                            <!-- 상품 썸네일 이미지 -->
+                            <div>
+                                <img src="img/broccoli.jpg" width="150px" height="150px">
                             </div>
-                            <p><span>14,800</span>원</p>
-                        </div>
-                    </div>
 
-                    <p class="cart-option-amount">상품 <span>14,800</span> + 배송비 <span>3,000</span>원</p>
+                            <!-- 상품명(클릭 시 상품 상세조회 화면)-->
+                            <div>
+                                <a href="${contextPath}/product/detail/${cartOptionList.productCategoryNo}/${cartOptionList.productCode}"> 
+                                    <span>${cartOptionList.productName}   
 
-                </div>
-                <!-- 장바구니에 담긴 상품이 있을 경우 끝 -->
-                
-                <div class="product-cart-area">
-                    
-                    <!-- 장바구니 상품 선택 및 삭제 영역 -->
-                    <div class="cart-check-delete">
-                        <!-- 장바구니 담은 상품 선택 -->
-                        <input type="checkbox" name="cart-check" value="cart-1" id="cart-check" checked>
-
-                        <!-- 장바구니 담은 상품 삭제 버튼 -->
-                        <button id="cart-delete" onclick="pDelete()">X</button>
-                    </div> 
-
-                    <!-- 장바구니 담은 상품 리스트 -->
-                    <div class="cart-info-area">
-                        <!-- 상품 썸네일 이미지 -->
-                        <div>
-                            <img src="img/broccoli.jpg" width="150px" height="150px">
-                        </div>
-
-                        <!-- 상품명(클릭 시 상품 상세조회 화면)-->
-                        <div>
-                            <a href="#"><span>유기농 어글리 바나나 (1.5kg/2.5kg)</span></a>
-                        </div>
-                    </div>
-
-                    <!-- 선택된 옵션 조회 영역 -->
-                    <div class="cart-option-info">
-                        <!-- 상품명 + 옵션명 -->
-                        <p>옵션 - <span>유기농 어글리 바나나 1.5kg</span></p>
-
-                        <!-- 상품 수량 변경 -->
-                        <div class="option-info">
-                            <div class="option-updown">
-                                <button id="option-minus">-</button>
-                                <span class="option-count"> 1 </span>
-                                <button id="option-plus">+</button>
+                                    <c:forEach var="optionCode" items="${map.optionCodeList}" varStatus="vs">
+                                        <span>
+                                            <c:forEach var="cartOptionList" items="${cartOptionList}">
+                                                <c:if test="${optionCode == cartOptionList.optionCode}">
+                                                    ${cartOptionList.optionName}
+                                                </c:if>
+                                            </c:forEach>
+                                            - ${map.amountList[vs.index]}개
+                                        </span>
+                                    </c:forEach>
                             </div>
-                            <p><span>14,800</span>원</p>
                         </div>
+
+                        <!-- 선택된 옵션 조회 영역 -->
+                        <div class="cart-option-info">
+                            <!-- 상품명 + 옵션명 -->
+                            <p>옵션 - <span>유기농 어글리 바나나 1.5kg</span></p>
+
+                            <!-- 상품 수량 변경 -->
+                            <div class="option-info">
+                                <div class="option-updown">
+                                    <button id="option-minus">-</button>
+                                    <span class="option-count"> 1 </span>
+                                    <button id="option-plus">+</button>
+                                </div>
+                                <p><span>14,800</span>원</p>
+                            </div>
+                        </div>
+
+                        <p class="cart-option-amount">상품 <span>14,800</span> + 배송비 <span>3,000</span>원</p>
+
+                    </div>
+                    <!-- 장바구니에 담긴 상품이 있을 경우 끝 -->
+                    
+                    <div class="product-cart-area">
+                        
+                        <!-- 장바구니 상품 선택 및 삭제 영역 -->
+                        <div class="cart-check-delete">
+                            <!-- 장바구니 담은 상품 선택 -->
+                            <input type="checkbox" name="cart-check" value="cart-1" id="cart-check" checked>
+
+                            <!-- 장바구니 담은 상품 삭제 버튼 -->
+                            <button id="cart-delete" onclick="pDelete()">X</button>
+                        </div> 
+
+                        <!-- 장바구니 담은 상품 리스트 -->
+                        <div class="cart-info-area">
+                            <!-- 상품 썸네일 이미지 -->
+                            <div>
+                                <img src="img/broccoli.jpg" width="150px" height="150px">
+                            </div>
+
+                            <!-- 상품명(클릭 시 상품 상세조회 화면)-->
+                            <div>
+                                <a href="#"><span>유기농 어글리 바나나 (1.5kg/2.5kg)</span></a>
+                            </div>
+                        </div>
+
+                        <!-- 선택된 옵션 조회 영역 -->
+                        <div class="cart-option-info">
+                            <!-- 상품명 + 옵션명 -->
+                            <p>옵션 - <span>유기농 어글리 바나나 1.5kg</span></p>
+
+                            <!-- 상품 수량 변경 -->
+                            <div class="option-info">
+                                <div class="option-updown">
+                                    <button id="option-minus">-</button>
+                                    <span class="option-count"> 1 </span>
+                                    <button id="option-plus">+</button>
+                                </div>
+                                <p><span>14,800</span>원</p>
+                            </div>
+                        </div>
+
+                        <p class="cart-option-amount">상품 <span>14,800</span> + 배송비 <span>3,000</span>원</p>
+
                     </div>
 
-                    <p class="cart-option-amount">상품 <span>14,800</span> + 배송비 <span>3,000</span>원</p>
+                    <div class="cart-total-amount">
+                        <p>총 주문 금액</p> <p><span>84,400</span> 원</p>
+                    </div>
+                    <hr>
 
-                </div>
+                    <!-- 가격 상세 내역 -->
+                    <div class="total-product-amount">
+                        <p>총 상품금액</p> <p><span>81,400</span>원</p>
+                    </div>
 
-                <div class="cart-total-amount">
-                    <p>총 주문 금액</p> <p><span>84,400</span> 원</p>
-                </div>
-                <hr>
+                    <div class="total-del-amount">
+                        <p>총 배송비</p> <p><span>3,000</span>원</p>
+                    </div>
 
-                <!-- 가격 상세 내역 -->
-                <div class="total-product-amount">
-                    <p>총 상품금액</p> <p><span>81,400</span>원</p>
-                </div>
-
-                <div class="total-del-amount">
-                    <p>총 배송비</p> <p><span>3,000</span>원</p>
-                </div>
-
-                <button id="product-order">주문하기</button>
-            </form>
+                    <button id="product-order">주문하기</button>
+                </form>
+            </c:if>
         </section>
     </main>
 
