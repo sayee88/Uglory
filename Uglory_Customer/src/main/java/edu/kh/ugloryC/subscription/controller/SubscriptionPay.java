@@ -70,6 +70,8 @@ public class SubscriptionPay {
 		
 		List<String> choice = (List<String>)session.getAttribute("choice");
 		payInfo.put("choice", choice);
+		
+		System.out.println(choice);
 
 		payInfo.put("subsOrderNo", subsOrderNo);
 		payInfo.put("orderName", orderName);

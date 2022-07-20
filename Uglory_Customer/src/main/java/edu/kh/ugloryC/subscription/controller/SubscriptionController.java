@@ -1,5 +1,6 @@
 package edu.kh.ugloryC.subscription.controller;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -59,6 +60,15 @@ public class SubscriptionController {
 			ra.addFlashAttribute("message", "로그인 후 이용해주세요");
 			
 		}else {
+			int memberNo = loginMember.getMemberNo();
+			
+			String result = service.checkSubs(memberNo);
+			if(result != null) { // 구독 중
+				path = "redirect: /member/subscriptionStatus";
+				ra.addFlashAttribute("message", "구독 중인 상품이 있습니다. 확인해주세요.");
+
+			}
+			
 			path = "subscription/subscription1";
 		}
 		
@@ -86,8 +96,11 @@ public class SubscriptionController {
 //		orderInfo.put("choice", choice);
 		
 		// 결제번호 생성
-		LocalDate currentDate = LocalDate.now(); 
-		String date = currentDate.format(DateTimeFormatter.ofPattern("yyMMdd"));
+//		LocalDate currentDate = LocalDate.now(); 
+//		String date = currentDate.format(DateTimeFormatter.ofPattern("yyMMdd"));
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddhhmmss");
+		String date = sdf.format(new Date());
 		int random = (int)(Math.random() * 5);
 		String payNo = "SP" + date + "-" + random;
 		

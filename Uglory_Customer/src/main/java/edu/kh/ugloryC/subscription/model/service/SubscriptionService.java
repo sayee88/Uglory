@@ -17,4 +17,7 @@ public interface SubscriptionService {
 	// 첫배송일 지정
 	Date setFirstDelDate();
 
+	// 구독 여부 확인
+	String checkSubs(int memberNo);
+
 }
