@@ -20,9 +20,7 @@
                 const product_img = document.createElement("img");
                 product_img.classList.add("product-img");
                 product_img.setAttribute("src",  window.location.origin+'/ugloryA' + product.imgRoot);
-                
-                
-            
+
                 const div = document.createElement("div");
             
                 const h5 = document.createElement("h5");

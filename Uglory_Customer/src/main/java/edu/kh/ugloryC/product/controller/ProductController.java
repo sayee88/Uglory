@@ -206,47 +206,57 @@ public class ProductController {
 	
 	// 장바구니 화면 전환
 	@SuppressWarnings({ "unchecked" })
-	@ResponseBody
 	@GetMapping("/cart")
-	public String cart(Integer productCode,
-			      	   Integer totalAmount, 
-			           String optionObj, Model model) {
+	@ResponseBody
+	public Map<String, Object> cart(@RequestParam(value="productCode", required=false) Integer productCode,
+					   @RequestParam(value="totalAmount", required=false) Integer totalAmount, 
+					   @RequestParam(value="optionObj", required=false) String optionObj,
+					   Model model) {
 		
 		Map<String, Object> cartMap = new HashMap<String, Object>();
 		
-		// 넘어온 스트링을 객체 형태로 변환
-		cartMap = (Map<String, Object>)new Gson().fromJson(optionObj, cartMap.getClass());
+		if(optionObj == null) {
+			
+			cartMap = null;
+			
+			return cartMap;
 		
-		// 옵션코드 리스트
-		List<String> optionCodeList = new ArrayList<String>(cartMap.keySet());
-
-		// 수량 리스트
-		List<Integer> amountList = new ArrayList<Integer>();
-		for(String key : cartMap.keySet()) {
-			amountList.add( ((Double)cartMap.get(key)).intValue() );
+		} else {
+			
+			// 넘어온 스트링을 객체 형태로 변환
+			cartMap = (Map<String, Object>)new Gson().fromJson(optionObj, cartMap.getClass());
+		
+			// 옵션코드 리스트
+			List<String> optionCodeList = new ArrayList<String>(cartMap.keySet());
+			
+			// 수량 리스트
+			List<Integer> amountList = new ArrayList<Integer>();
+			
+			for(String key : cartMap.keySet()) {
+				amountList.add( ((Double)cartMap.get(key)).intValue() );
+			}
+			// 	옵션코드 리스트 인덱스 == 수량 리스트 인덱스
+					
+			cartMap.clear();
+			
+			cartMap.put("optionCodeList", optionCodeList);
+			cartMap.put("amountList", amountList);
+			
+			cartMap.put("productCode", productCode);
+			
+			// 주문 페이지 내 옵션 코드 상품 코드에 따른 옵션이름, 개수 조회
+			List<OptionType> cartOptionList = service.cartOptionList(cartMap);
+			
+			cartMap.put("cartOptionList", cartOptionList);
+			cartMap.put("totalAmount", totalAmount);
 		}
 
-		// 	옵션코드 리스트 인덱스 == 수량 리스트 인덱스
-				
-		cartMap.clear();
-		
-		cartMap.put("optionCodeList", optionCodeList);
-		cartMap.put("amountList", amountList);
-		
-		cartMap.put("productCode", productCode);
-		
-		// 주문 페이지 내 옵션 코드 상품 코드에 따른 옵션이름, 개수 조회
-		List<OptionType> cartOptionList = service.cartOptionList(cartMap);
-		
-		cartMap.put("cartOptionList", cartOptionList);
-		cartMap.put("totalAmount", totalAmount);
-
-		return new Gson().toJson(cartMap);
+		return cartMap;
 	}
 
 	@PostMapping("/cart")
 	public String productCart() {
 
-		return "product/productCart";
+		return "product/productOrder";
 	}
 }

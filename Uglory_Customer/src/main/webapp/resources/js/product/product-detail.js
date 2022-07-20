@@ -130,7 +130,7 @@ function optionSelectBox(){
 	calcPrice();
 }
 
-// 가격 플러스 계산
+// 가격 계산
 function calcPrice(){
 	
 	// productPrice 상품가격
@@ -161,40 +161,6 @@ function calcPrice(){
 	}
 	// 가격 * 수량
 	document.getElementsByClassName("total-amount")[0].innerText = sum;
-}
-
-// 가격 마이너스 계산
-function calcMinusPrice(){
-	
-	// productPrice 상품가격
-	// optionObj 옵션 코드, 옵션 수량
-	// delAmount 배송비
-	const options = document.querySelectorAll(".product-option > option");
-	
-	let optionPrice;
-
-	// sum = Number(productPrice);
-	// 옵션 가격 계산
-	for(const key in optionObj){
-	
-		for(const op of options){
-					// 옵션 별 가격 검색
-			if(optionObj[key] < 1){
-				return;
-			}
-			if(op.value == key){ // 선택된 옵션코드와 key가 같다면 == 같은 상품
-	
-				const temp = op.innerText;
-				optionPrice = temp.substring(temp.lastIndexOf("-") + 2 ,temp.lastIndexOf("원") )
-				console.log(optionPrice);
-				console.log(sum);
-				break;
-			}
-		}
-	}
-	sum -= Number(optionPrice);
-	document.getElementsByClassName("total-amount")[0].innerText = sum;
-
 }
 
 // 총 가격, 옵션 코드,수량, 상품 코드 보내는 함수
@@ -239,27 +205,24 @@ document.getElementById("productCartBtn").addEventListener("click", function(){ 
 
 	orderValidate();
 
-	if(orderValidate()){ // 함수 정상 실행됐을 때
+	$.ajax({
+		url : "../product/cart",
+		data : {
+			"totalAmount" : totalAmount,
+			"optionObj" : JSON.stringify(optionObj),
+			"productCode" : productCode,
+		},
+	
+		dataType : "JSON",
+		type : "GET",
 
-		$.ajax({
-			url : contextPath + "/product/cart",
-			data : {
-				"totalAmount" : totalAmount,
-				"optionObj" : optionObj,
-				"productCode" : productCode,
-			},
-		
-			dataType : "JSON",
-			type : "POST",
-
-			success : function(){
-				location.href = contextPath + "/product/cart"
-			},
-		
-			error: function(){
-				console.log("에러 발생");
-				console.log("상태코드 : " + request.status); 
-			}
-		});
-	}
+		success : function(){
+			location.href = "../product/cart";
+		},
+	
+		error: function(request, status, error){
+			console.log("에러 발생");
+			console.log("상태코드 : " + request.status); 
+		}
+	});
 });
