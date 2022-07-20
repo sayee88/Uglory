@@ -49,10 +49,18 @@
     <div id="box">
         <div style="width: 70%;">
 
-            ${orderInfo}
-            <hr>
-            ${deliveryInfo}
-            <hr>
+            memberName = ${loginMember.memberName}<hr>
+            memberNo = ${loginMember.memberNo}<hr>
+            choice = ${choice}<hr>
+            subsOrderNo = ${orderInfo.subsOrderNo}<hr>
+            inputName = ${orderInfo.inputName}<hr>
+            inputPhone = ${orderInfo.inputPhone}<hr>
+            address = ${orderInfo.address}<hr>
+            inputDelText = ${orderInfo.inputDelText}  <hr>          
+            firstDelDate = ${orderInfo.firstDelDate}<hr>
+            payNo = ${orderInfo.payNo}<hr>
+            cycle = ${orderInfo.cycle}<hr>
+            box = ${orderInfo.box}<hr>
             ${loginMember}
             
             <div class="inner-box" >
@@ -98,7 +106,7 @@
                             </tr>
                             <tr>
                                 <th>첫 배송 날짜</th>
-                                <th>2022-07-09</th>
+                                <th>${orderInfo.firstDelDate}</th>
                             </tr>
                             <tr>
                                 <th colspan="2">-배송 주기 : <span style="color: red;">
@@ -116,7 +124,7 @@
                                 <th colspan="2"><input type="radio" checked> 카카오페이</th>
                             </tr>
                             <tr>
-                                <th class="submit-btn-th" colspan="2"><button class="submit-btn" id="sub-btn">구독하기</button></th>
+                                <th class="submit-btn-th" colspan="2"><button class="submit-btn" type="button" id="sub-btn">구독하기</button></th>
                             </tr>
                         </table>
                         
@@ -145,14 +153,15 @@
         const contextPath = "${contextPath}";
         const memberName = "${loginMember.memberName}";
 
-        const sOrderNo = "${orderInfo.sOrderNo}";
+        const subsOrderNo = "${orderInfo.subsOrderNo}";
         
         const orderName = "${orderInfo.inputName}";
         const orderPhone = "${orderInfo.inputPhone}";
-        const orderAddress = "${orderInfo.inputAddress}";
+        const orderAddress = "${orderInfo.address}";
         const delText = "${orderInfo.inputDelText}";
         const payNo = "${orderInfo.payNo}";
         const memberNo = "${loginMember.memberNo}";
+        const firstDelDate = "${orderInfo.firstDelDate}";
 
         const cycle = "${orderInfo.cycle}"
         const box = "${orderInfo.box}";
