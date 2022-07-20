@@ -1,5 +1,6 @@
 package edu.kh.ugloryC.review.controller;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -66,7 +67,7 @@ public class ReviewController {
 	@GetMapping("/list/myReview")
 	public String myReview(){
 		
-		return null;
+		return "review/myReview";
 	}
 	
 	
@@ -109,6 +110,8 @@ public class ReviewController {
 	public String write( @PathVariable("reviewCode") int reviewCode,
 			@ModelAttribute("loginMember")  Member loginMember, Model model) {
 		
+		// 상품 정보 불러오기
+		
 		// 구독상품에 대한 미작성 리뷰 조회 
 		List<UnWrittenSubscription> subUnWrittenList = service.subUnWrittenList(loginMember);
 		
@@ -136,7 +139,7 @@ public class ReviewController {
 			
 			,@RequestParam(value="deleteList", required=false) String deleteList
 			,ReviewWrite reviewWrite
-			,ReviewSelectInfo reviewSelectInfo) {
+			,ReviewSelectInfo reviewSelectInfo) throws IOException {
 		
 		// 로그인한 회원 (모달창에 보이게 해야함)
 		// (작성 완료 시 review/list로 이동)

@@ -1,5 +1,6 @@
 package edu.kh.ugloryC.review.model.service;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -21,8 +22,9 @@ public interface ReviewService {
 	 * @param webPath
 	 * @param folderPath
 	 * @return result
+	 * @throws IOException
 	 */
-	int insertReview(ReviewWrite reviewWrite, List<MultipartFile> imageList, String webPath, String folderPath);
+	int insertReview(ReviewWrite reviewWrite, List<MultipartFile> imageList, String webPath, String folderPath) throws IOException;
 
 	
 	/**

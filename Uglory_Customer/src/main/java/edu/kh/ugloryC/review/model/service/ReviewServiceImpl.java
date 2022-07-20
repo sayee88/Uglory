@@ -1,6 +1,7 @@
 package edu.kh.ugloryC.review.model.service;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +26,7 @@ public class ReviewServiceImpl implements ReviewService{
 
 	// 리뷰 + 이미지 삽입 서비스 구현
 	@Override
-	public int insertReview(ReviewWrite reviewWrite, List<MultipartFile> imageList, String webPath, String folderPath) {
+	public int insertReview(ReviewWrite reviewWrite, List<MultipartFile> imageList, String webPath, String folderPath) throws IOException {
 		
 		// 1. 리뷰 삽입
 		
@@ -64,7 +65,7 @@ public class ReviewServiceImpl implements ReviewService{
 					
 					reviewImageList.add(img);
 				}
-				
+						
 			}
 			
 			// 파일이 업로드 되면 DB 저장
@@ -79,11 +80,12 @@ public class ReviewServiceImpl implements ReviewService{
 						
 						int index = reviewImageList.get(i).getReviewImageLevel();
 						
-//						imageList.get(index).transferTo(new File(folderPath + reNameList.get(i)));
+						imageList.get(index).transferTo(new File(folderPath + reNameList.get(i)));
 						
 					}
 					
 				} else {
+					
 //					throw new InsertFailException();
 				}
 			} 

@@ -129,7 +129,9 @@
                                 <p>나의 리뷰</p>
                                 <p>
                                     <span style="margin-right: 7px;">1</span>
-                                    <span style="background-color: rgb(190, 190, 190); color:white; font-size: 15px; padding: 3px 8px; border-radius: 10px;">OFF</span>
+                                    <a href="${contextPath}/review/list/myReview">
+                                        <span style="background-color: rgb(190, 190, 190); color:white; font-size: 15px; padding: 3px 8px; border-radius: 10px;">OFF</span>
+                                    </a>
                                 </p>
                             </div>
                             <div class="box_review_section box_center">

@@ -117,7 +117,7 @@
                         <span class="star">
                             ★★★★★
                             <span>★★★★★</span>
-                            <input type="range" oninput="drawStar(this)" value="1" step="1" min="0" max="10">
+                            <input type="range" name="reviewStar" oninput="drawStar(this)" value="1" step="1" min="0" max="10">
                         </span>
                         <%-- <form class="mb-3" name="myform" id="myform" method="post">
                             <fieldest>
