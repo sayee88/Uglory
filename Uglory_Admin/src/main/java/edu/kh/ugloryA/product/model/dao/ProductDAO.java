@@ -1,6 +1,7 @@
 package edu.kh.ugloryA.product.model.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -149,13 +150,23 @@ public class ProductDAO {
 	}
 
 	/**
-	 * 주별 상품 조회
+	 * 주별 상품 리스트 조회
 	 * @param key
 	 * @return weeklyList
 	 */
 	public WeeklyList selectWeeklyList(String key) {
 		return sqlSession.selectOne("productMapper.selectWeeklyList", key);
 	}
+
+	/**
+	 * 리스트 만들기 DAO
+	 * @param ex
+	 * @return result
+	 */
+	public int insertWeeklyList(String key) {
+		return sqlSession.insert("productMapper.insertWeeklyList", key);
+	}
+
 
 	/**
 	 * 리스트 내 상품 모두 조회
@@ -166,7 +177,32 @@ public class ProductDAO {
 		return sqlSession.selectList("productMapper.selectWeeklyProduct", productListNo);
 	}
 
+	/**
+	 * 상품 목록 중복 검사
+	 * @param map
+	 * @return result
+	 */
+	public int listDupCheck(Map<String, Object> map) {
+		return sqlSession.selectOne("productMapper.listDupCheck", map);
+	}
 
+	/**
+	 * 상품 목록 추가
+	 * @param map
+	 * @return result
+	 */
+	public int insertWeeklyProduct(Map<String, Object> map) {
+		return sqlSession.insert("productMapper.insertWeeklyProduct", map);
+	}
+
+	/**
+	 * 상품 목록 삭제
+	 * @param productNo
+	 * @return result
+	 */
+	public int deleteWeeklyProduct(int productNo) {
+		return sqlSession.delete("productMapper.deleteWeeklyProduct", productNo);
+	}
 
 	
 	
