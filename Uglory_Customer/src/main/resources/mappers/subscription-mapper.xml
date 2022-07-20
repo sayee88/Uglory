@@ -40,16 +40,24 @@
 	       )
 	</insert>
 	
+	<select id="checkSubs" resultType="string">
+		SELECT * FROM
+		   (SELECT * FROM SUBS_ORDER
+		   WHERE MEMBER_NO = #{memberNo}
+		   AND S_CANCEL = 'N')
+		WHERE ROWNUM=1
+	</select>
 	
-<!-- 	<insert id="exception">
+	
+	<insert id="exception">
 		INSERT INTO SUBS_EXCEPTION 
 		
-		<foreach collection="payInfo.choice" item="item" open="(" close=")" separator=" UNION ALL ">
-			SELECT #{item}, #{payInfo.subsOrderNo} FROM DUAL
+		<foreach collection="choice" item="item" open="(" close=")" separator=" UNION ALL ">
+			SELECT #{item}, #{subsOrderNo} FROM DUAL
 		</foreach>
 		
 		
 		
-	</insert> -->
+	</insert>
 	
 </mapper>

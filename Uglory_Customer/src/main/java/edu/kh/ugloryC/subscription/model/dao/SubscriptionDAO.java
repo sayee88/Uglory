@@ -32,6 +32,18 @@ public class SubscriptionDAO {
 
 	// 주문 삽입
 	public int insertSubsOrder(Map<String, Object> payInfo) {
+		
 		return sqlSession.insert("subscriptionMapper.insertSubsOrder", payInfo);
+	}
+
+
+	public String checkSubs(int memberNo) {
+		return sqlSession.selectOne("subscriptionMapper.checkSubs", memberNo);
+	}
+
+
+	public int insertException(Map<String, Object> payInfo) {
+		System.out.println(payInfo);
+		return sqlSession.insert("subscriptionMapper.exception", payInfo);
 	}
 }

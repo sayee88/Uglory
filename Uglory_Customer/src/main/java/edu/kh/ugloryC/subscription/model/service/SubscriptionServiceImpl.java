@@ -44,7 +44,15 @@ public class SubscriptionServiceImpl implements SubscriptionService{
 		// 주문 삽입 SQL
 		int result = dao.insertSubsOrder(payInfo);
 		
+		int exception = dao.insertException(payInfo);
+		
 		return result;
+	}
+
+
+	@Override
+	public String checkSubs(int memberNo) {
+		return dao.checkSubs(memberNo);
 	}
 
 	

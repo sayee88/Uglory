@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt"%>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -48,6 +50,7 @@
 
     <div id="box">
         <div style="width: 70%;">
+
 
             memberName = ${loginMember.memberName}<hr>
             memberNo = ${loginMember.memberNo}<hr>
@@ -106,7 +109,7 @@
                             </tr>
                             <tr>
                                 <th>첫 배송 날짜</th>
-                                <th>${orderInfo.firstDelDate}</th>
+                                <th><fmt:formatDate value="${orderInfo.firstDelDate}" pattern="yyyy.MM.dd" /></th>
                             </tr>
                             <tr>
                                 <th colspan="2">-배송 주기 : <span style="color: red;">
