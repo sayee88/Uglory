@@ -10,6 +10,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class OrderHistoryDetail {
+	//주문정보 / 배송 정보
 	private int orderNo; // 주문 번호
 	private String memberName; // 회원이름(주문자명)
 	private String payDate; // 결제일

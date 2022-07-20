@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import edu.kh.ugloryC.member.model.vo.Member;
 import edu.kh.ugloryC.subscription.model.dao.SubscriptionDAO;
+import edu.kh.ugloryC.subscription.model.vo.OrderInfo;
 
 @Service
 public class SubscriptionServiceImpl implements SubscriptionService{
@@ -16,29 +17,43 @@ public class SubscriptionServiceImpl implements SubscriptionService{
 	@Autowired
 	private SubscriptionDAO dao;
 	
-	
-	@Override
-	public String createSOrderNo(Map<String, Object> orderInfo) {
-		String sOrderNo = dao.createSOrderNo(orderInfo);
-		return sOrderNo;
-	}
-	
+
+
 
 	@Override
-	public int insertSubsOrder(Map<String, Object> payInfo) {
+	public String createSOrderNo(OrderInfo orderInfo) {
+						
+		String subsOrderNo = dao.createSOrderNo(orderInfo);
+		
+		return subsOrderNo;
+	}
+
+
+	@Override
+	public Date setFirstDelDate() {
 		
 		// 첫 배송일 생성 SQL
 		Date firstDelDate = dao.createDelDate();
-		payInfo.put("firstDelDate", firstDelDate);
+		return firstDelDate;
+	}
+
+	
+	@Override
+	public int insertSubsOrder(Map<String, Object> payInfo) {
 		
 		// 주문 삽입 SQL
 		int result = dao.insertSubsOrder(payInfo);
 		
+		int exception = dao.insertException(payInfo);
 		
 		return result;
 	}
 
-	
+
+	@Override
+	public String checkSubs(int memberNo) {
+		return dao.checkSubs(memberNo);
+	}
 
 	
 }

@@ -26,6 +26,7 @@ import com.google.gson.Gson;
 import edu.kh.ugloryC.member.model.service.MemberService;
 import edu.kh.ugloryC.member.model.vo.Member;
 import edu.kh.ugloryC.member.model.vo.OrderHistory;
+import edu.kh.ugloryC.member.model.vo.SubHistory;
 import edu.kh.ugloryC.member.model.vo.SubscriptionStatus;
 
 @Controller
@@ -52,7 +53,7 @@ public class MemberController {
 		return "member/secession";
 	}
 	
-	//개별 주문 내역 조회
+	// 개별 주문 목록 내역 조회
 	@GetMapping("/orderHistory")
 	public String orderHistory(Model model, @ModelAttribute("loginMember") Member loginMember) {
 		List<OrderHistory> orderHistoryList = service.selectOrderHistoryList(loginMember.getMemberNo());
@@ -62,7 +63,7 @@ public class MemberController {
 		return "member/orderHistory";
 	}
 	
-	//개별 주문 상품 조회
+	// 개별 주문 상세 조회 조회
 	@ResponseBody
 	@GetMapping("/OrderHistoryDetail")
 	public String selectOrderHistoryDetail(int orderNo) {
@@ -72,12 +73,26 @@ public class MemberController {
 	}
 	
 	
-	//구독 주문 내역 조회
+	//구독 주문 목록 내역 조회
 	@GetMapping("/subscriptionHistory")
-	public String subscriptionHistory() {
+	public String subscriptionHistory(Model model , @ModelAttribute("loginMember")Member loginMember) {
+		
+		List<SubHistory> subHistoryList = service.selectSubHistoryList(loginMember.getMemberNo());
+		
+		model.addAttribute("subHistoryList",subHistoryList);
+		
 		return "member/subscriptionHistory";
 	}
 		
+	
+	// 구독 주문 상세 조회
+	@ResponseBody
+	@GetMapping("/SubHistoryDetail")
+	public String selectSubHistoryDetail(int subOrderNo) {
+		
+		return new Gson().toJson(service.selectSubHistoryDetail(subOrderNo));
+	}
+	
 	//로그아웃 
 	@GetMapping("/logout")
 	public String logout(HttpSession session , SessionStatus status) {
