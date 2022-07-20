@@ -7,9 +7,13 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.google.gson.JsonElement;
+
 import edu.kh.ugloryC.member.model.vo.Member;
 import edu.kh.ugloryC.member.model.vo.OrderHistory;
 import edu.kh.ugloryC.member.model.vo.OrderHistoryDetail;
+import edu.kh.ugloryC.member.model.vo.SubHistory;
+import edu.kh.ugloryC.member.model.vo.SubHistoryDetail;
 import edu.kh.ugloryC.member.model.vo.SubscriptionStatus;
 
 @Repository
@@ -65,15 +69,29 @@ public class MemberDAO {
 		return sqlSession.update("memberMapper.subCancel",memberNo);
 	}
 
-	// 개별 상품 주문 내역 조회 DAO
+	// 개별 상품 주문 목록 조회 DAO
 	public List<OrderHistory> selectOrderHistoryList(int memberNo) {
 	
 		return sqlSession.selectList("memberMapper.selectOrderHistoryList",memberNo);
 	}
 
+	//개별 상품 상세 주문 조회 DAO
 	public OrderHistoryDetail selectOrderHistoryDetail(int orderNo) {
 		return sqlSession.selectOne("memberMapper.selectOrderHistoryDetail", orderNo);
 	}
+
+	// 구독 상품 주문 목록 조회 DAO
+	public List<SubHistory> selectSubHistoryList(int memberNo) {
+
+		return sqlSession.selectList("memberMapper.selectSubHistoryList",memberNo);
+	}
+
+	public SubHistoryDetail selectSubHistoryDetail(int subOrderNo) {
+	
+		return sqlSession.selectOne("memberMapper.selectSubHistoryDetail",subOrderNo);
+	}
+
+
 
 	
 

@@ -204,9 +204,14 @@ for (let btn of orderDetailBtn) {
                 dd3_4.innerText = orderHistoryDetail.deliveryReq;
                 dl3_4.append(dt3_4, dd3_4);
 
+
                 orderInfo3.append(dl3_1, dl3_2, dl3_3, dl3_4);
 
                 target.append(orderInfo3);
+
+
+
+
 
 
             },
