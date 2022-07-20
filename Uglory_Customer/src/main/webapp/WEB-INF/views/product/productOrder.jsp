@@ -102,6 +102,7 @@
                             </div>
 
                             <div class="orderProductName"> 
+
                             <%-- 중복제거 --%>
                                 <c:forEach var="selectOption" items="${selectOptionList}" varStatus="vs1">
 
@@ -120,6 +121,7 @@
                                     </c:if>
 
                                 </c:forEach>
+
                                 <br>
                                 <%-- <c:forEach var="selectOption" items="${selectOptionList}" varStatus="vs"> --%>
                                 <c:forEach var="optionCode" items="${map.optionCodeList}" varStatus="vs">
@@ -168,7 +170,12 @@
 
                     <!-- 총 결제 금액 -->
                     <div class="total-pay">
+                        <c:if test="${map.totalAmount < 30000}">
+                        <p>총 결제 금액</p> <p><span>${map.totalAmount+3000}</span>원</p>
+                        </c:if>
+                        <c:if test="${map.totalAmount > 30000}">
                         <p>총 결제 금액</p> <p><span>${map.totalAmount}</span>원</p>
+                        </c:if>
                     </div>
 
                     <hr>

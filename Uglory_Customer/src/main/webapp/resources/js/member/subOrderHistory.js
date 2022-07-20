@@ -24,7 +24,79 @@ for (let btn of orderDetailBtn) {
                 console.log(SubHistoryDetail);
 
 
-         
+                // // 주문 내역 상세 조회 (타이틀)
+                // const orderHead = document.createElement("div");
+                // orderHead.classList.add("order-head");
+                
+                // const orderTitle = document.createElement("h2");
+                // orderTitle.classList.add("orderTitle");
+                // orderTitle.innerText = "주문 내역 상세 조회";
+
+                // orderHead.append(orderTitle);
+                // target.append(orderHead);
+
+                // // 주문 내역 상세 조회(콘텐트)
+                // const orderInfo = document.createElement("div");
+                // orderInfo.classList.add("order-info");
+
+
+                // for(let proc of SubHistoryDetail.productList){
+                //     // 모든 상품 정보를 담을 div
+                //     const description = document.createElement("div");
+                //     description.classList.add("description");
+                    
+                //     orderInfo.append(description);
+
+                //     // 상품 1개 정보를 담을 dl
+                //     const oBox = document.createElement("dl");
+                //     oBox.classList.add("oBox");
+
+                //     // 상품 이미지
+                //     const img = document.createElement("img");
+                //     img.classList.add("orderImg");
+
+                //     if(proc.imageRename == null){
+                //         img.setAttribute("src", contextPath + "/resources/img/쿵야/바나나쿵야.png" );
+                //     }else{
+                //         img.setAttribute("src", contextPath +  proc.imageRename);
+                //     }
+
+                    
+                //     const div = document.createElement("div");
+                    
+                //     const dl1 = document.createElement("dl");
+                //     const dt1 = document.createElement("dt");
+                //     dt1.innerText = "상품이름"
+                //     const dd1 = document.createElement("dd");
+                //     dd1.innerText = proc.productName;
+                //     dl1.append(dt1, dd1);
+                    
+                    
+                //     const dl2 = document.createElement("dl");
+                //     const dt2 = document.createElement("dt");
+                //     dt2.innerText = "상품 가격 / 옵션명 / 수량"
+                //     const dd2 = document.createElement("dd");
+                //     dd2.innerText = (Number(proc.productPrice) + Number(proc.optionPrice))+ " / " + proc.optionName + " / " + proc.optionCount + "개";
+                //     dl2.append(dt2, dd2);
+                    
+                    
+                //     const dl3 = document.createElement("dl");
+                //     const dt3 = document.createElement("dt");
+                //     dt3.innerText = "배송 현황"
+                //     const dd3 = document.createElement("dd");
+                //     dd3.innerText = proc.deliveryFlag;
+                //     dl3.append(dt3, dd3);
+
+
+                //     div.append(dl1, dl2, dl3);
+                //     oBox.append(img, div);
+                //     description.append(oBox);
+                //     orderInfo.append(description);
+                // }
+
+
+                // target.append(orderInfo);
+
 
 
                 

@@ -113,9 +113,14 @@ function optionSelectBox(){
 
 	opDelete.addEventListener("click", function(){
 		const code = this.parentElement.getAttribute("id");
-		optionObj[code] = optionObj[code];
-		calcPrice()
+		delete optionObj[code]
 		span.remove();
+		calcPrice();
+
+		if(optionObj[optionCode.value] == undefined){
+			options[0].selected = true;
+			return;
+		}
 	});
 
 	optionDiv.append(opMinus, opSapn, opPlus, opDelete);
@@ -130,7 +135,7 @@ function optionSelectBox(){
 	calcPrice();
 }
 
-// 가격 플러스 계산
+// 가격 계산
 function calcPrice(){
 	
 	// productPrice 상품가격
@@ -163,39 +168,37 @@ function calcPrice(){
 	document.getElementsByClassName("total-amount")[0].innerText = sum;
 }
 
-// 가격 마이너스 계산
-function calcMinusPrice(){
+// 장바구니 담기 버튼 클릭 시 
+document.getElementById("cartButton").addEventListener("click", function(){
 	
-	// productPrice 상품가격
-	// optionObj 옵션 코드, 옵션 수량
-	// delAmount 배송비
-	const options = document.querySelectorAll(".product-option > option");
-	
-	let optionPrice;
+	orderValidate()
 
-	// sum = Number(productPrice);
-	// 옵션 가격 계산
-	for(const key in optionObj){
-	
-		for(const op of options){
-					// 옵션 별 가격 검색
-			if(optionObj[key] < 1){
-				return;
-			}
-			if(op.value == key){ // 선택된 옵션코드와 key가 같다면 == 같은 상품
-	
-				const temp = op.innerText;
-				optionPrice = temp.substring(temp.lastIndexOf("-") + 2 ,temp.lastIndexOf("원") )
-				console.log(optionPrice);
-				console.log(sum);
-				break;
-			}
-		}
-	}
-	sum -= Number(optionPrice);
-	document.getElementsByClassName("total-amount")[0].innerText = sum;
+	// const totalAmount =  document.getElementsByClassName("total-amount")[0].innerText;
 
-}
+	// let cartMap = {"totalAmount":totalAmount, "optionObj":JSON.stringify(optionObj), "productCode" : productCode};
+
+	// $.ajax({
+	// 	url : contextPath + "/product/cart",
+	// 	data : cartMap,
+	// 	dataType : "JSON",
+	// 	type : "GET",
+
+	// 	success : function(){
+			
+	// 	},
+
+	// 	error: function(request, status, error){
+	// 		console.log("에러 발생");
+	// 		console.log("상태코드 : " + request.status); 
+	// 	}
+	// });
+});
+
+// 장바구니 보기 버튼 클릭 시 
+document.getElementById("productCartBtn").addEventListener("click", function(){ 
+	location.href = "../../cart";
+
+});
 
 // 총 가격, 옵션 코드,수량, 상품 코드 보내는 함수
 function orderValidate(){
@@ -225,41 +228,13 @@ function orderValidate(){
 
 		document.orderForm.append(input1, input2, input3);
 
+		console.log("성공?");
+
 	} else {
 		alert("옵션을 선택해주세요");
 		return false;
 	}
 
-	return false;
+	// return false;
 }	
 
-document.getElementById("productCartBtn").addEventListener("click", function(){ // 장바구니 보기 버튼 클릭 시 
-
-	const totalAmount =  document.getElementsByClassName("total-amount")[0].innerText;
-
-	orderValidate();
-
-	if(orderValidate()){ // 함수 정상 실행됐을 때
-
-		$.ajax({
-			url : contextPath + "/product/cart",
-			data : {
-				"totalAmount" : totalAmount,
-				"optionObj" : optionObj,
-				"productCode" : productCode,
-			},
-		
-			dataType : "JSON",
-			type : "POST",
-
-			success : function(){
-				location.href = contextPath + "/product/cart"
-			},
-		
-			error: function(){
-				console.log("에러 발생");
-				console.log("상태코드 : " + request.status); 
-			}
-		});
-	}
-});
