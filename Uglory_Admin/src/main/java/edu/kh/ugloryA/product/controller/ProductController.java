@@ -168,19 +168,13 @@ public class ProductController {
 	}
 	
 	//옵션 추가
+	@ResponseBody
 	@PostMapping("/option/insert")
-	public String insertOption(OptionType optionType,
-							   RedirectAttributes ra,
-							   HttpServletRequest req) {
-		String message = null;
+	public int insertOption(OptionType optionType,
+							RedirectAttributes ra,
+							HttpServletRequest req) {
 		
-		int result = service.insertOption(optionType);
-		
-		if(result > 0)	message = "옵션이 등록되었습니다.";
-		else			message = "옵션 등록에 실패하였습니다.";
-		
-		ra.addFlashAttribute("message", message);
-		return "redirect:" + req.getHeader("referer");
+		return service.insertOption(optionType);
 	}
 	
 	//옵션 삭제

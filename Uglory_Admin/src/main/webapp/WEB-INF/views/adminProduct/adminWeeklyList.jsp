@@ -67,7 +67,7 @@
                                     <table class="table table-borderless text-center">
                                         <thead>
                                             <tr>
-                                                <th>상품명</th>
+                                                <th class="col-width">상품명</th>
                                                 <th>Standard / Jumbo</th>
                                             </tr>
                                         </thead>
@@ -90,7 +90,7 @@
                                     <table class="table table-borderless text-center">
                                         <thead>
                                             <tr>
-                                                <th>상품명</th>
+                                                <th class="col-width">상품명</th>
                                                 <th>Standard / Jumbo</th>
                                             </tr>
                                         </thead>
@@ -127,7 +127,7 @@
                                     <table class="table table-borderless text-center">
                                         <thead>
                                             <tr>
-                                                <th>상품명</th>
+                                                <th class="col-width">상품명</th>
                                                 <th>Standard / Jumbo</th>
                                             </tr>
                                         </thead>

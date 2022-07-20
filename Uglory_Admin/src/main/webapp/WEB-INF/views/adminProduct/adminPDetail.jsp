@@ -62,10 +62,10 @@
                         <div class="detailHead">
                             <h1 class="">${product.productName}</h1>
                             <div class="dateBox">
-                                <p>상품 등록일 : ${product.productDateCh}</p>
+                                <p>상품 등록일 : ${product.productDate}</p>
 
-                                <c:if test="${product.productUpdateCh} != ''">
-                                    <p>최종 수정일 : ${product.productUpdateCh}</p>
+                                <c:if test="${product.productUpdate} != ''">
+                                    <p>최종 수정일 : ${product.productUpdate}</p>
                                 </c:if>
                             </div>
                         </div>
@@ -103,7 +103,7 @@
                                         </table>
 
                                     </div>
-                                    <div class="bg-light rounded p-2 mb-2 img-area">
+                                    <div class="bg-light rounded p-2 mt-2 mb-2 img-area">
                                         <img src="${contextPath}${imageList[0].imageRoot}" alt="상품이미지" class="detail-img">
                                         <div>
                                             <h4>첨부 이미지</h4>
@@ -117,21 +117,7 @@
                                         <h3 class="mb-2">옵션 정보</h3>
 
                                         <div class="tableLine"></div>
-                                        <table class="table mt-2 mb-2 text-center" id="optionTable">
-                                            <%-- <tr>
-                                                <th colspan="3">옵션 정보가 없습니다.</th>
-                                            </tr> --%>
-                                            <%-- <tr>
-                                                <th>${option.optionCode}</th>
-                                                <td>${option.optionName}</td>
-                                                <td>${option.optionPrice}원</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-outline-danger option-delete" onclick="deleteOption(${option.optionCode})">
-                                                        <i class="fa-solid fa-delete-left"></i>
-                                                    </button>
-                                                </td>
-                                            </tr> --%>
-                                        </table>
+                                        <table class="table mt-2 mb-2 text-center" id="optionTable"></table>
                                         <div class="tableLine"></div>
 
                                         <div class="mt-3 mb-3 m-2 row">

@@ -27,7 +27,7 @@ function selectOption(){
             
             optionTable.innerHTML='';
 
-            if(optionList!=null){
+            if(optionList.length != 0){
 
                 for(let op of optionList){
                     const tr = document.createElement("tr");
@@ -44,7 +44,6 @@ function selectOption(){
                     const button = document.createElement("button");
                     button.classList.add("btn");
                     button.classList.add("btn-outline-danger");
-                    // button.classList.add("p-0");
                     button.classList.add("option-delete");
                     button.setAttribute("onclick", "deleteOption(" + op.optionCode + ")");
 
@@ -145,7 +144,6 @@ function activeOutBtn(){
             console.log("에러 발생");
             console.log(req.responseText);
         }
-
     });
 }
 
@@ -170,16 +168,11 @@ function activeInBtn(){
             console.log("에러 발생");
             console.log(req.responseText);
         }
-
     });
-
 }
 
 //옵션 추가 유효성 검사
-const checkObj = {
-    "optionName" : false,
-    "optionPrice" : false
-}
+let flag = false;
 
 const optionName = document.getElementById("optionName");
 const optionNameText = document.getElementById("optionNameText");
@@ -189,7 +182,7 @@ function resetOption(){
     optionNameText.innerText = "옵션 명을 입력해주세요.";
     optionNameText.classList.remove('text-success');
     optionNameText.classList.remove('text-danger');
-    checkObj.optionName = false;
+    flag = false;
 }
 
 optionName.addEventListener("input", function(){
@@ -200,28 +193,20 @@ optionName.addEventListener("input", function(){
         optionNameText.innerText = "옵션 명을 입력해주세요.";
         optionNameText.classList.remove('text-success');
         optionNameText.classList.remove('text-danger');
-        checkObj.optionName = false;
+        flag = false;
     } else {
 
         if(regExp.test(optionName.value)){
             optionNameText.innerText = "유효한 옵션 명입니다";
             optionNameText.classList.add('text-success');
             optionNameText.classList.remove('text-danger');
-            checkObj.optionName = true;
+            flag = true;
         } else {
             optionNameText.innerText = "옵션 명이 유효하지 않습니다.";
             optionNameText.classList.remove('text-success');
             optionNameText.classList.add('text-danger');
-            checkObj.optionName = false;
+            flag = false;
         }
-    }
-});
-
-optionPrice.addEventListener("input", function(){
-    if(this.value.trim().length == 0){
-        checkObj.optionPrice = false;
-    } else {
-        checkObj.optionPrice = true;
     }
 });
 
@@ -230,31 +215,43 @@ const insertBtn = document.getElementById("insertBtn");
 
 insertBtn.addEventListener("click", function(){
 
-    let str;
-    
-    for( let key  in checkObj ){ // 객체용 향상된 for문
-    
-        if( !checkObj[key] ){ 
-    
-            switch(key){
-            case "optionName" :    str="옵션 명이 유효하지 않습니다."; break;
-            case "optionPrice":    str="옵션 가격을 입력해주세요."; break;    
-            }
-    
-            alert(str);
-            document.getElementById(key).focus();
-            
-            return;
-        }
+    if(optionPrice.value.trim().length == 0){
+        alert('옵션 가격을 입력해 주세요.');
+        return;
+    }
+
+    if(!flag){
+        alert('옵션 명이 유효하지 않습니다.');
+        return;
     }
     
     $.ajax({
         url : "../option/insert",
-        data : {}
+        data : {
+            "optionName" : optionName.value,
+            "optionPrice" : optionPrice.value,
+            "productCode" : productCode
+        },
+        type : "POST",
+        success : function(result){
+
+            if(result>0){
+                alert('옵션이 등록되었습니다.');
+                selectOption();
+                resetOption();
+
+                optionName.value = '';
+                optionPrice.value = '';
+            } else {
+                alert('옵션 등록을 실패하였습니다.');
+            }
+
+        },
+        error : function(req, status, error){
+            console.log("에러 발생");
+            console.log(req.responseText);
+        }
     });
-
-
-
 });
 
 //옵션 삭제 메소드

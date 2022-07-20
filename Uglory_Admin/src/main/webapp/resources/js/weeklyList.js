@@ -140,6 +140,11 @@ if(delPList!=null){
 
                 if(result > 0){
                     addList();
+
+                    opList.innerHTML = '';
+                    opList.append(defaultOp);
+                    pList.value = 0;
+
                 } else {
                     alert("이미 존재하는 상품입니다.");
                 }
@@ -239,6 +244,11 @@ function jumboOp(param) {
 
     let standard = param.replaceAll(regex,"");
     let jumbo = Number(standard)*1.5;
+
+    //소수점 둘째 자리까지 표시
+    jumbo *= 100;
+    jumbo = Math.round(jumbo);
+    jumbo /= 100;
 
     let unit = param.replaceAll(regex2, "");
     

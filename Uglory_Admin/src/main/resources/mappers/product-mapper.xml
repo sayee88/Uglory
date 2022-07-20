@@ -19,8 +19,6 @@
 		<result property="productDate" column="PR_DATE"/>
 		<result property="productUpdate" column="PU_DATE"/>
 		
-		<result property="productDateCh" column="PR_DATE_CH"/>
-		<result property="productUpdateCh" column="PU_DATE_CH"/>
 		<result property="thumbnail" column="THUMBNAIL"/>
 	</resultMap>
 	
@@ -71,7 +69,7 @@
 	<!-- 상품 전체 조회 -->
 	<select id="selectAll" resultMap="product_rm">
 		SELECT P_CD, PRODUCT_NM, P_CATEGORY_NO, P_CATEGORY_NM, 
-	       TO_CHAR(PR_DATE, 'YY-MM-DD') PR_DATE_CH, 
+	       TO_CHAR(PR_DATE, 'YYYY-MM-DD') PR_DATE, 
 	       FARM_NM, PRODUCT_ST,
 	      (SELECT IMG_ROOT FROM PRODUCT_IMG I
 	       WHERE IMG_LEVEL = 0
@@ -86,8 +84,8 @@
 	<!-- 상품 상세조회(상품) -->
 	<select id="selectProduct" resultMap="product_rm">
 		SELECT P_CD, PRODUCT_NM, PRODUCT_PRICE, PRODUCT_ST, FARM_NO, P_CATEGORY_NO, P_CATEGORY_NM, PRODUCT_INFO,
-	       TO_CHAR(PR_DATE, 'YYYY-MM-DD') PR_DATE_CH,
-	       TO_CHAR(PU_DATE, 'YYYY-MM-DD') PU_DATE_CH
+	       TO_CHAR(PR_DATE, 'YYYY-MM-DD') PR_DATE,
+	       TO_CHAR(PU_DATE, 'YYYY-MM-DD') PU_DATE
 		FROM PRODUCT
 		JOIN P_CATEGORY USING(P_CATEGORY_NO)
 		WHERE P_CD = #{productCode}
@@ -103,6 +101,7 @@
 	<select id="selectOptionType" resultMap="option_rm">
 		SELECT * FROM OPTION_TYPE
 		WHERE P_CD = #{productCode}
+		ORDER BY OPTION_CD
 	</select>
 	
 	<!-- 상품 상세조회(이미지) -->
