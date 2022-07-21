@@ -114,17 +114,38 @@
                                 </div>
                             </div>
 
-                            <c:if test="${mode == 'insert'}">
-                                <div class="product-row">
-                                    <span class="fw-bold">상품 이미지</span>
-                                    <div class="productWrap">
-                                        <input type="file" class="productInput" name="productImg" id="productImg0" accept="image/*">
-                                        <input type="file" class="productInput" name="productImg" id="productImg1" accept="image/*">
-                                        <input type="file" class="productInput" name="productImg" id="productImg2" accept="image/*">
-                                        <input type="file" class="productInput" name="productImg" id="productImg3" accept="image/*">
-                                    </div>
+                            <div class="product-row">
+                                <span class="fw-bold">상품 이미지</span>
+                                <div class="imgWrap thumbnailWrap">
+                                    <label for="productImg0">
+                                        <img class="preview" src="">
+                                    </label>
+                                    <input type="file" class="inputImage" name="productImg" id="productImg0" accept="image/*">
                                 </div>
-                            </c:if>
+                            </div>
+
+                            <div class="product-row">
+                                <div class="imgWrap">
+                                    <label for="productImg1">
+                                        <img class="preview" src="">
+                                    </label>
+                                    <input type="file" class="inputImage" name="productImg" id="productImg1" accept="image/*">
+                                </div>
+
+                                <div class="imgWrap">
+                                    <label for="productImg2">
+                                        <img class="preview" src="">
+                                    </label>
+                                    <input type="file" class="inputImage" name="productImg" id="productImg2" accept="image/*">
+                                </div>
+
+                                <div class="imgWrap">
+                                    <label for="productImg3">
+                                        <img class="preview" src="">
+                                    </label>
+                                    <input type="file" class="inputImage" name="productImg" id="productImg3" accept="image/*">
+                                </div>
+                            </div>
 
                             <!-- Button trigger modal -->
                             <div class="info-btn-area ps-3 pe-3">
