@@ -103,7 +103,7 @@
 
                             <div class="orderProductName"> 
 
-                            <%-- 중복제거 --%>
+                                <%-- 중복제거 --%>
                                 <c:forEach var="selectOption" items="${selectOptionList}" varStatus="vs1">
 
                                     <c:set var="fl" value="true"/>
@@ -185,7 +185,7 @@
                         <c:if test="${map.totalAmount < 30000}">
                         <p>총 상품금액</p> <p><span>${map.totalAmount-3000}</span>원</p>
                         </c:if>
-                        <c:if test="${map.totalAmount > 30000}">
+                        <c:if test="${map.totalAmount >= 30000}">
                         <p>총 상품금액</p> <p><span>${map.totalAmount}</span>원</p>
                         </c:if>
                     </div>
@@ -194,7 +194,7 @@
                         <c:if test="${map.totalAmount < 30000}">
                         <p>총 배송비</p> <p><span>3,000</span>원</p>
                         </c:if>
-                        <c:if test="${map.totalAmount > 30000}">
+                        <c:if test="${map.totalAmount >= 30000}">
                         <p>총 배송비</p> <p><span>0</span>원</p>
                         </c:if>
                     </div>

@@ -133,16 +133,62 @@ public class ProductServiceImpl implements ProductService {
 		return productCode;
 	}
 
-	//상품 1개 조회
-	@Override
-	public Product selectProduct(int productCode) {
-		return dao.selectProduct(productCode);
-	}
-
 	//상품 수정 서비스 구현
 	@Override
-	public int updateProduct(Product product) {
-		return dao.updateProduct(product);
+	public int updateProduct(Product product, List<MultipartFile> imageList, String webPath, String folderPath) throws IOException {
+		
+		int result = dao.updateProduct(product);
+		
+		if(result > 0){
+			
+			int productCode = product.getProductCode();
+			
+			List<ProductImage> productImageList = new ArrayList<ProductImage>();
+			List<String> reNameList = new ArrayList<String>();
+			
+			//이미지 삽입
+			for(int i=0; i<imageList.size(); i++) {
+				
+				if(imageList.get(i).getSize() > 0) {
+					
+					String reName = Util.fileRename( imageList.get(i).getOriginalFilename() );
+					reNameList.add(reName);
+					
+					ProductImage img = new ProductImage();
+					img.setProductCode(productCode);
+					img.setImageLevel(i);
+					img.setImageRename(reName);
+					img.setImageRoot(webPath + reName);
+					
+					productImageList.add(img);
+				}
+			}
+			
+			//서버에 이미지 저장
+			if(!productImageList.isEmpty()) {
+				
+				for(ProductImage img : productImageList) {
+					
+					result = dao.updateProductImage(img);
+					
+					if(result == 0) {
+						
+						result = dao.insertImageOne(img);
+					}
+				}
+				
+				if(result != 0) {
+					
+					for(int i=0; i<productImageList.size(); i++) {
+						
+						int index = productImageList.get(i).getImageLevel();
+						imageList.get(index).transferTo(new File(folderPath + reNameList.get(i)));
+					}
+				} 
+			}
+		}
+		
+		return result;
 	}
 
 	//옵션 등록 서비스 구현
