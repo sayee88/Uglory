@@ -71,5 +71,10 @@
 		AND MEMBER_ST = 'P'
 	</update>
 	
+	<select id="countCustomer" resultType="_int">
+		SELECT COUNT(*) FROM MEMBER
+		WHERE MEMBER_ST = 'N'
+	</select>
+	
 
 </mapper>
