@@ -177,8 +177,10 @@
 
                         <!-- 상품 상세조회 버튼 영역 -->
                         <div class="detail-product-btnArea">
-                            <button type="submit" id="buy-btn">구매하기</button>
-                            <button type="submit" class="cartBtn" id="cartButton" data-bs-toggle="modal" data-bs-target="#staticBackdrop">장바구니</button>
+                            <c:if test="${!empty loginMember}">
+                                <button type="submit" id="buy-btn">구매하기</button>
+                                <button type="button" class="cartBtn" id="cartButton" data-bs-toggle="modal" data-bs-target="#staticBackdrop">장바구니</button>
+                            </c:if>
                             <button id="share-btn" onclick="clip(); return false;">공유하기</button>
                         </div>
                     </div>
@@ -186,10 +188,11 @@
 
                 <hr>
                 <!-- 상품 상세 조회, 리뷰 페이지 이동 -->
-                <a href="location.reload()">Detail</a>
+                <a href="#" onclick="location.reload()">Detail</a>
                 <a href="#">Review</a>
                 <hr>
 
+                ${detail.productInfo}
                 <!-- 썸머노트 조회 영역(확인 필요) -->
                 <%-- <div id="summernote"><p>Hello Summernote</p>
                     <script>
