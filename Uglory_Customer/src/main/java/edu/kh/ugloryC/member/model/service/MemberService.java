@@ -39,7 +39,7 @@ public interface MemberService {
 	// 구독 주문 목록 내역 조회
 	List<SubHistory> selectSubHistoryList(int memberNo);
 
-	SubHistoryDetail selectSubHistoryDetail(int subOrderNo);
+	SubHistoryDetail selectSubHistoryDetail(String subOrderNo);
 
 
 

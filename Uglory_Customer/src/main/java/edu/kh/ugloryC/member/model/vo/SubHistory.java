@@ -9,11 +9,11 @@ import lombok.Setter;
 @NoArgsConstructor
 public class SubHistory {
 
-	private int subOrderNo; // 주문번호
-	private String subDate;// 주문 날짜
+	private String subOrderNo; // 주문번호
+	private String subPayDate;// 주문 날짜
 	
 	private String subName;	//구독상품 이름
-	private int subPrice;// 총가격
+	private int subPayAmount;// 총가격
 	private String deliveryFlag; // 배송 상태
 	
 }

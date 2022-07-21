@@ -86,7 +86,7 @@ public class MemberDAO {
 		return sqlSession.selectList("memberMapper.selectSubHistoryList",memberNo);
 	}
 
-	public SubHistoryDetail selectSubHistoryDetail(int subOrderNo) {
+	public SubHistoryDetail selectSubHistoryDetail(String subOrderNo) {
 	
 		return sqlSession.selectOne("memberMapper.selectSubHistoryDetail",subOrderNo);
 	}

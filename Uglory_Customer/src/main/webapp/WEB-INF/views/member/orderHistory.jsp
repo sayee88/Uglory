@@ -101,7 +101,6 @@
                 </c:forEach>
         </c:if>
 
-                <hr><hr>
                 <li class="list-section">
                     
                     <%-- <div class="date">${item.orderDate}</div>
