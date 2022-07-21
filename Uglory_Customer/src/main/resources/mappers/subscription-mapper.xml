@@ -65,7 +65,7 @@
 	<!-- 구독 결제정보 삽입 -->
 	<insert id="insertPay">
 		INSERT INTO SUBS_PAY VALUES(
-		   SEQ_S_PAY_NO,
+		   SEQ_S_PAY_NO.NEXTVAL,
 		   SYSDATE,
 		   #{amount},
 		   #{memberNo},
@@ -77,9 +77,9 @@
 	
 	<insert id="insertDel">
 		INSERT INTO SUBS_DELIVERY VALUES (
-		   SEQ_S_DELIVERY_CD,
+		   SEQ_S_DELIVERY_CD.NEXTVAL,
 		   #{firstDelDate},
-		   1,
+		   #{memberNo},
 		   #{subsOrderNo}
 		)
 	</insert>
