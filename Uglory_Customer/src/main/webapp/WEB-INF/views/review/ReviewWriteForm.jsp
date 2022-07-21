@@ -92,7 +92,7 @@
             <div class="review-writeform">
                 <h3>리뷰 작성</h3>
 
-                <form action="#" enctype="multipart/form-data" method="POST" class="review-write">
+                <form action="${reviewCode}" enctype="multipart/form-data" method="POST" class="review-write">
                     <div style="padding: 10px 0; font-size: 14px;" class="px-1">
                     	<c:if test="${reviewCode == 1}">
                     		구독상품

@@ -3,7 +3,6 @@
 
 <c:set var="product" value="${detailMap.product}" />
 <c:set var="farm" value="${detailMap.farm}" />
-<c:set var="optionList" value="${detailMap.optionType}" />
 <c:set var="imageList" value="${detailMap.productImage}" />
 
 <!DOCTYPE html>
@@ -63,10 +62,10 @@
                         <div class="detailHead">
                             <h1 class="">${product.productName}</h1>
                             <div class="dateBox">
-                                <p>상품 등록일 : ${product.productDateCh}</p>
+                                <p>상품 등록일 : ${product.productDate}</p>
 
-                                <c:if test="${product.productUpdateCh} != ''">
-                                    <p>최종 수정일 : ${product.productUpdateCh}</p>
+                                <c:if test="${product.productUpdate} != ''">
+                                    <p>최종 수정일 : ${product.productUpdate}</p>
                                 </c:if>
                             </div>
                         </div>
@@ -104,7 +103,7 @@
                                         </table>
 
                                     </div>
-                                    <div class="bg-light rounded p-2 mb-2 img-area">
+                                    <div class="bg-light rounded p-2 mt-2 mb-2 img-area">
                                         <img src="${contextPath}${imageList[0].imageRoot}" alt="상품이미지" class="detail-img">
                                         <div>
                                             <h4>첨부 이미지</h4>
@@ -117,34 +116,8 @@
                                     <div class="bg-light rounded mb-2 p-2">
                                         <h3 class="mb-2">옵션 정보</h3>
 
-                                        <table class="table text-center mb-0">
-                                            <div class="tableLine"></div>
-                                            <c:choose>
-                                                <c:when test="${empty optionList}">
-                                                    <tr>
-                                                        <th colspan="3">옵션 정보가 없습니다.</th>
-                                                    </tr>
-                                                </c:when>
-
-                                                <c:otherwise>
-
-                                                    <c:forEach var="option" items="${optionList}">
-                                                    
-                                                        <tr>
-                                                            <th>${option.optionCode}</th>
-                                                            <td>${option.optionName}</td>
-                                                            <td>${option.optionPrice}원</td>
-                                                            <td>
-                                                                <button type="button" class="btn btn-outline-danger option-delete" onclick="deleteOption(${option.optionCode})">
-                                                                    <i class="fa-solid fa-delete-left"></i>
-                                                                </button>
-                                                            </td>
-                                                        </tr>
-                                                        
-                                                    </c:forEach>
-                                                </c:otherwise>
-                                            </c:choose>
-                                        </table>
+                                        <div class="tableLine"></div>
+                                        <table class="table mt-2 mb-2 text-center" id="optionTable"></table>
                                         <div class="tableLine"></div>
 
                                         <div class="mt-3 mb-3 m-2 row">
@@ -153,7 +126,7 @@
                                             </button>
                                         </div>
 
-                                        <form action="../option/insert" method="POST" class="collapse m-2" id="collapseExample" onsubmit="return optionValidate()">
+                                        <form class="collapse m-2" id="collapseExample">
                                             <div class="card card-body p-2">
                                                 <div class="option-row">
                                                     <p>옵션 명</p>
@@ -169,7 +142,7 @@
                                                     <input type="hidden" name="productCode" value="${product.productCode}">
                                                 <div class="w-100 text-end">
                                                     <button type="reset" class="btn btn-secondary" data-bs-toggle="collapse" data-bs-target="#collapseExample" onclick="resetOption()">취소</button>
-                                                    <button class="btn btn-primary">등록</button>
+                                                    <button type="button" class="btn btn-primary" id="insertBtn">등록</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -190,7 +163,7 @@
                         <div class="detail-info">${product.productInfo}</div>
 
                         <div class="detail-btn">
-                            <button type="button" class="btn btn-primary" id="goToListBtn">목록으로</button>
+                            <button type="button" class="btn btn-primary" onclick="location.href = '${contextPath}/product/list'">목록으로</button>
                             <button type="button" class="btn btn-primary" onclick="location.href='${contextPath}/product/register?mode=update&productCode=${product.productCode}'">수정</button>
                         </div>
                     </article>

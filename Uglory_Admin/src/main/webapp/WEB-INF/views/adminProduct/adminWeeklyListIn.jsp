@@ -67,9 +67,9 @@
                             <table class="table table-hover text-center">
                                 <thead>
                                     <tr>
-                                        <th scope="col">상품명</th>
-                                        <th scope="col">Standard / Jumbo</th>
-                                        <th scope="col">삭제</th>
+                                        <th>상품명</th>
+                                        <th>Standard / Jumbo</th>
+                                        <th>삭제</th>
                                     </tr>
                                 </thead>
                                 <tbody id="del-p-list"></tbody>

@@ -211,18 +211,3 @@
 })(jQuery);
 
 
-
-// 회원 수 조회
-(function(){
-    $.ajax({
-        url : contextPath + "/customer/countCustomer",
-        data : {},
-        type : "GET",
-        success : function(countCustomer){
-            document.getElementById("countCustomer").children[1].innerText = countCustomer;
-        },
-        error : function(){
-            console.log("조회 실패");
-        }
-    })
-})();
