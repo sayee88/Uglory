@@ -63,6 +63,12 @@ public class SubscriptionDAO {
 	public int insertDel(Map<String, Object> payInfo) {
 		return sqlSession.insert("subscriptionMapper.insertDel", payInfo);
 	}
+
+
+	public List<String> selectEveryList() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 }

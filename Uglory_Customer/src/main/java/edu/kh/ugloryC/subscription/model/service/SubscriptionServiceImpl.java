@@ -2,6 +2,7 @@ package edu.kh.ugloryC.subscription.model.service;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,16 +29,15 @@ public class SubscriptionServiceImpl implements SubscriptionService{
 		return subsOrderNo;
 	}
 
-
+	// 첫 배송일 지정
 	@Override
 	public Date setFirstDelDate() {
 		
-		// 첫 배송일 생성 SQL
 		Date firstDelDate = dao.createDelDate();
 		return firstDelDate;
 	}
 
-	
+	// 주문 삽입
 	@Override
 	public int insertSubsOrder(Map<String, Object> payInfo) {
 		
@@ -50,15 +50,23 @@ public class SubscriptionServiceImpl implements SubscriptionService{
 		// 구독 배송 내역 삽입
 		int del = dao.insertDel(payInfo);
 		
+		
 		int subPay = dao.insertPay(payInfo);
 		
 		return result;
 	}
 
-
+	// 구독 여부 확인
 	@Override
 	public String checkSubs(int memberNo) {
 		return dao.checkSubs(memberNo);
+	}
+
+
+	// 배송주기가 '1'인 구독 목록 조회
+	@Override
+	public List<String> selectEveryList() {
+		return dao.selectEveryList();
 	}
 
 	
