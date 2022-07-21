@@ -230,3 +230,14 @@ for (let btn of orderDetailBtn) {
         });
     });
 }
+
+
+//개별 상품 환불 btn
+function refundValidate(){
+
+    if(!confirm("환불 신청을 하시겠습니까?")){
+        return false;
+    }
+    return true;
+    
+}
