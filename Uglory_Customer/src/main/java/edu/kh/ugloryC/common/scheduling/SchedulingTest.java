@@ -40,10 +40,10 @@ public class SchedulingTest {
 	        
 	private Logger logger = LoggerFactory.getLogger(SchedulingTest.class);
 	
-	@Scheduled(cron="0 0 9 * * 4") // 수요일 9시마다
-	@Scheduled(cron="0 0 9 * * 4#2, 4#4") // 둘째 넷째 수요일 9시마다
+//	@Scheduled(cron="0 0 9 * * 4") // 수요일 9시마다
+	@Scheduled(cron="0 0 9 * * 4#2,4#4") // 둘째 넷째 수요일 9시마다
 	public void test() {
-		logger.info("5초마다 출력");
+		logger.info("둘째 넷째 수요일 9시마다");
 	}
 
 }

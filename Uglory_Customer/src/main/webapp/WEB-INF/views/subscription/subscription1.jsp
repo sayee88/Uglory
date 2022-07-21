@@ -109,12 +109,18 @@
                         <h2>배송 주기를 선택해주세요</h2>
                     </div>
                     <div class="container" style="display: flex; justify-content: center;">
-                        <input type="radio" class="btn-check" name="cycle" id="danger-outlined1" autocomplete="off" value="1">
-                        <label class="btn btn-outline-danger week-btn" for="danger-outlined1">매주</label>  
-
-                        <input type="radio" class="btn-check" name="cycle" id="danger-outlined2" autocomplete="off" value="2">
-                        <label class="btn btn-outline-danger week-btn" for="danger-outlined2">격주</label>   
+                        <div>
+                            <input type="radio" class="btn-check" name="cycle" id="danger-outlined1" autocomplete="off" value="1">
+                            <label class="btn btn-outline-danger week-btn" for="danger-outlined1">매주</label> 
+                            <div class="wed">매주 수요일 발송됩니다</div>
+                        </div>
+                        <div>
+                            <input type="radio" class="btn-check" name="cycle" id="danger-outlined2" autocomplete="off" value="2">
+                            <label class="btn btn-outline-danger week-btn" for="danger-outlined2">격주</label>   
+                            <div class="wed">둘째, 넷째주 수요일 발송됩니다</div>
+                        </div>
                     </div>
+
                 </div>
 
                 

@@ -42,6 +42,7 @@
 		JOIN P_CATEGORY USING(P_CATEGORY_NO)
 	</select>
 	
+	
 	<select id="category" resultMap="product_list">
 		SELECT DISTINCT PRODUCT_NM, PRODUCT_PRICE, IMG_ROOT,
 		   P_CATEGORY_NM, PRODUCT_ST, P_CD, P_CATEGORY_NO,

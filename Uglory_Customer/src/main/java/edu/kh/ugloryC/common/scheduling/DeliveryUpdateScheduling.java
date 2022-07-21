@@ -8,5 +8,9 @@ import org.slf4j.LoggerFactory;
 public class DeliveryUpdateScheduling {
 	
 	private Logger logger = LoggerFactory.getLogger(DeliveryUpdateScheduling.class);
+	
+	
+	// 목록 조회 
+	
 
 }
