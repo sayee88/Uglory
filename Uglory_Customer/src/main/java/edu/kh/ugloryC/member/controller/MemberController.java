@@ -88,7 +88,7 @@ public class MemberController {
 	// 구독 주문 상세 조회
 	@ResponseBody
 	@GetMapping("/SubHistoryDetail")
-	public String selectSubHistoryDetail(int subOrderNo) {
+	public String selectSubHistoryDetail(String subOrderNo) {
 		
 		return new Gson().toJson(service.selectSubHistoryDetail(subOrderNo));
 	}

@@ -103,7 +103,7 @@ public class MemberServiceImpl implements MemberService {
 
 
 	@Override
-	public SubHistoryDetail selectSubHistoryDetail(int subOrderNo) {
+	public SubHistoryDetail selectSubHistoryDetail(String subOrderNo) {
 
 		return dao.selectSubHistoryDetail(subOrderNo);
 	}
