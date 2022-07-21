@@ -30,6 +30,7 @@ import edu.kh.ugloryC.member.model.vo.Member;
 import edu.kh.ugloryC.product.model.service.OptionService;
 import edu.kh.ugloryC.product.model.service.ProductService;
 import edu.kh.ugloryC.product.model.vo.OptionType;
+import edu.kh.ugloryC.product.model.vo.ProductCart;
 import edu.kh.ugloryC.product.model.vo.ProductDetail;
 
 
@@ -205,50 +206,61 @@ public class ProductController {
 		return result;
 	}
 	
-	// 장바구니 화면 전환
+	// 장바구니 담기
 	@SuppressWarnings({"unchecked"})
-	@GetMapping("/cart")
-	public String cart(Model model, @ModelAttribute("loginMember") Member loginMember,
+	@ResponseBody
+	@PostMapping("/cart")
+	public int cart(@ModelAttribute("loginMember") Member loginMember,
 					   Integer productCode,
-					   Integer totalAmount, String optionObj) {
+					   Integer totalAmount, String cartOption) {
 		
 		Map<String, Object> cartMap = new HashMap<String, Object>();
 		
-		cartMap = (Map<String, Object>)new Gson().fromJson(optionObj,cartMap.getClass());
+		int memberNo = loginMember.getMemberNo();
 		
-		// 옵션코드 리스트
-		List<String> optionCodeList = new ArrayList<String>(cartMap.keySet());
-		
-		// 수량 리스트
-		List<Integer> amountList = new ArrayList<Integer>();
+		if(productCode != null || totalAmount != null || cartOption != null) {
+			
+			cartMap = (Map<String, Object>)new Gson().fromJson(cartOption, cartMap.getClass());
 
-		for(String key : cartMap.keySet()) {
-			amountList.add( ((Double)cartMap.get(key)).intValue() );
-		}
+			// 옵션코드 리스트
+			List<String> optionCodeList = new ArrayList<String>(cartMap.keySet());
+			
+			// 수량 리스트
+			List<Integer> amountList = new ArrayList<Integer>();
+
+			for(String key : cartMap.keySet()) {
+				amountList.add( ((Double)cartMap.get(key)).intValue() );
+			}
+			
+			cartMap.clear();
+			
+			cartMap.put("optionCodeList", optionCodeList);
+			cartMap.put("amountList", amountList);
+			cartMap.put("totalAmount", totalAmount);
+			
+			// 옵션 tb 삽입
+			List<Integer> optionNoList = service.insertOptionInfo(optionCodeList, amountList);
+			
+			Map<String, Object> cartInsertMap = new HashMap<String, Object>();
+			
+			cartInsertMap.put("optionNoList", optionNoList);
+			cartInsertMap.put("memberNo", memberNo);
+			
+			return service.insertProductCart(cartInsertMap);
+
+		} 
+		return 0;
+	}
+	
+	@GetMapping("/cart")
+	public String selectCart(@ModelAttribute("loginMember") Member loginMember, 
+							Model model) {
 		
-		cartMap.clear();
+		ProductCart productCart = service.productCart(loginMember.getMemberNo()); 
 		
-		cartMap.put("optionCodeList", optionCodeList);
-		cartMap.put("amountList", amountList);
-		
-		// 주문 페이지 내 옵션 코드 상품 코드에 따른 옵션이름, 개수 조회
-		List<OptionType> cartOptionList = service.cartOptionList(cartMap);
-				
-		cartMap.put("cartOptionList", cartOptionList);
-		cartMap.put("totalAmount", totalAmount);
-				
-		model.addAttribute(cartMap);
+		model.addAttribute("productCart", productCart);
 		
 		return "product/productCart";
 	}
-	
-//	// 장바구니에 담기 (insert)
-//	@GetMapping("/cartInsert")
-//	@ResponseBody
-//	public Map<String, Object> cart(Model model) {
-//	
-//		
-//		return cartMap;
-//	}
 	
 }

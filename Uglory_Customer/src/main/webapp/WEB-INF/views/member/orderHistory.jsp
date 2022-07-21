@@ -89,10 +89,26 @@
                                     <dd>${item.totalPrice}</dd>
                                 </dl>
 
+
+                            <form action="orderHistoryRefund" method="POST" name="myPage-subscription" onsubmit="return refundValidate()">
                                 <dl>
                                     <dt>배송상태</dt>
-                                    <dd>${item.deliveryFlag}</dd>
+                                        <c:if test="${item.deliveryFlag == '배송 전'}">
+                                                <div id="deliveryBox">
+                                                    <dd>${item.deliveryFlag}</dd>
+                                                    <button class=refundBtn >환불신청</button>
+                                                </div>
+                                            </c:if>
+
+                                            <c:if test="${item.deliveryFlag != '배송 전'}">
+                                                <div id="deliveryBox">
+                                                    <dd>${item.deliveryFlag}</dd>
+                                                </div>
+                                            </c:if>
                                 </dl>
+
+                            </form>
+
                             </div>
                         </div>
 

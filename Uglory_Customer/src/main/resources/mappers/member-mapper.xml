@@ -190,6 +190,7 @@
 		FROM PRODUCT_ORDER
 		JOIN PRODUCT_DELIVERY USING(DELIVERY_CD)
 		WHERE MEMBER_NO = #{memberNo}
+		ORDER BY P_ORDER_DT DESC
 	
 	</select>
 	
@@ -199,7 +200,7 @@
 		FROM PRODUCT_ORDER 
 		JOIN MEMBER USING(MEMBER_NO)
 		JOIN PRODUCT_PAY USING(P_ORDER_CD)
-		WHERE P_ORDER_CD = ${orderNo}
+		WHERE P_ORDER_CD = #{orderNo}
 	</select>
 	
 	
@@ -212,13 +213,15 @@
 		JOIN PRODUCT ON(OPTION_TYPE.P_CD = PRODUCT.P_CD)
 		JOIN PRODUCT_DELIVERY USING(DELIVERY_CD)
 		LEFT JOIN PRODUCT_IMG ON(PRODUCT.P_CD = PRODUCT_IMG.P_CD)
-		WHERE P_ORDER_CD = ${orderNo}
+		WHERE P_ORDER_CD = #{orderNo}
 	</select>
+	
+	
 	
 	<!-- 구독 내역 목록 조회 -->
 	<select id="selectSubHistoryList" resultMap="subHistory_rm">
 	SELECT S_ORDER_CD,S_NM,
-	TO_CHAR(S_DT,'YYYY/MM/DD') S_PAY_DT,
+	TO_CHAR(S_PAY_DT,'YYYY/MM/DD') S_PAY_DT,
 	S_PAY_AMOUNT,
 	DELIVERY_ST
 
@@ -228,8 +231,11 @@
 	JOIN SUBS_DELIVERY USING(S_ORDER_CD)
 	JOIN PRODUCT_DELIVERY USING(DELIVERY_CD)
 	WHERE A.MEMBER_NO = #{memberNo}
+	ORDER BY S_PAY_DT DESC
 		
 	</select>
+	
+	
 	
 	<!--구독 내역 상세 조회  -->
 	<select id="selectSubHistoryDetail" resultMap="subHistoryDetail_rm">
