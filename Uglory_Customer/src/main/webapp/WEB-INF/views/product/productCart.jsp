@@ -57,13 +57,13 @@
             <h4 class="cart-count">장바구니 상품(<span>2</span>)</h4>
 
             <!-- 장바구니에 담긴 상품이 없을 경우 -->
-            <c:if test="${empty cartOptionList}">
+            <c:if test="${empty productCart}">
                 <div class="empty-product-cart">
                     <p>장바구니에 담긴 상품이 없습니다.</p>
                 </div> 
             </c:if>
 
-            <c:if test="${!empty cartOptionList}">
+            <c:if test="${!empty productCart}">
 
                 <form action="${contextPath}/product/order" method="POST">
                     <!-- 장바구니에 담긴 상품이 있을 경우 -->
@@ -89,7 +89,7 @@
                                 <a href="${contextPath}/product/detail/${cartOptionList.productCategoryNo}/${cartOptionList.productCode}"> 
                                     <span>${cartOptionList.productName}   
 
-                                    <c:forEach var="optionCode" items="${map.optionCodeList}" varStatus="vs">
+                                    <c:forEach var="optionCode" items="${productCart.optionCodeList}" varStatus="vs">
                                         <span>
                                             <c:forEach var="cartOptionList" items="${cartOptionList}">
                                                 <c:if test="${optionCode == cartOptionList.optionCode}">
