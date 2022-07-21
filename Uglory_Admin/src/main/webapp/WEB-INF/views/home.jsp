@@ -66,7 +66,7 @@
                             <i class="fa fa-thin fa-people-group fa-3x text-primary"></i>
                             <div class="ms-3" id="countCustomer">
                                 <p class="mb-2">회원 수</p>
-                                <h6 class="mb-0"></h6>
+                                <h6 class="mb-0">${mainDataMap.countCustomer}</h6>
                             </div>
                         </div>
                     </div>
@@ -75,7 +75,7 @@
                             <i class="fa fa-solid fa-heart fa-3x text-primary"></i>
                             <div class="ms-3">
                                 <p class="mb-2">전체 리뷰 수</p>
-                                <h6 class="mb-0">395</h6>
+                                <h6 class="mb-0">${mainDataMap.countReview}</h6>
                             </div>
                         </div>
                     </div>
@@ -84,7 +84,7 @@
                             <i class="fa fa-solid fa-hand-holding-dollar fa-3x text-primary"></i>
                             <div class="ms-3">
                                 <p class="mb-2">당일 매출</p>
-                                <h6 class="mb-0">6,135,456</h6>
+                                <h6 class="mb-0">${mainDataMap.dailySales}</h6>
                             </div>
                         </div>
                     </div>
@@ -93,7 +93,7 @@
                             <i class="fa fa-solid fa-piggy-bank fa-3x text-primary"></i>
                             <div class="ms-3">
                                 <p class="mb-2">총 매출</p>
-                                <h6 class="mb-0">17,359,692</h6>
+                                <h6 class="mb-0">${mainDataMap.totalSales}</h6>
                             </div>
                         </div>
                     </div>
