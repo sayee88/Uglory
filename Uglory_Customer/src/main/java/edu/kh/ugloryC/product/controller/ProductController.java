@@ -205,17 +205,19 @@ public class ProductController {
 		return result;
 	}
 	
-	// 장바구니 화면 전환
+	// 장바구니 담기
 	@SuppressWarnings({"unchecked"})
 	@GetMapping("/cart")
 	public String cart(Model model, @ModelAttribute("loginMember") Member loginMember,
 					   Integer productCode,
-					   Integer totalAmount, String optionObj) {
+					   Integer totalAmount, String cartOption) {
 		
 		Map<String, Object> cartMap = new HashMap<String, Object>();
 		
-		cartMap = (Map<String, Object>)new Gson().fromJson(optionObj,cartMap.getClass());
+		int memberNo = loginMember.getMemberNo();
 		
+		cartMap = (Map<String, Object>)new Gson().fromJson(cartOption, cartMap.getClass());
+
 		// 옵션코드 리스트
 		List<String> optionCodeList = new ArrayList<String>(cartMap.keySet());
 		
@@ -230,14 +232,30 @@ public class ProductController {
 		
 		cartMap.put("optionCodeList", optionCodeList);
 		cartMap.put("amountList", amountList);
-		
-		// 주문 페이지 내 옵션 코드 상품 코드에 따른 옵션이름, 개수 조회
-		List<OptionType> cartOptionList = service.cartOptionList(cartMap);
-				
-		cartMap.put("cartOptionList", cartOptionList);
 		cartMap.put("totalAmount", totalAmount);
+		
+		// 옵션 tb 삽입
+		int insertOptionInfo = service.insertOptionInfo(optionCodeList, amountList);
+		
+		// 장바구니 테이블 삽입
+		if(insertOptionInfo > 0) {
+			
+			Map<String, Object> cartOptionMap = new HashMap<String, Object>();
+			
+			cartOptionMap.put("optionCodeList", optionCodeList);
+			cartOptionMap.put("amountList", amountList);
+			
+			List<Integer> selectOptionNo = service.selectOptionNo(cartOptionMap);
+					
+			cartOptionMap.put("memberNo", memberNo);
+			
+//			
+//			int insertProductCart = service.insertProductCart(loginMember.getMemberNo(), );			
+		}
+		// 주문 페이지 내 옵션 코드 상품 코드에 따른 옵션이름, 개수 조회
+		//List<OptionType> cartOptionList = service.cartOptionList(cartMap);
 				
-		model.addAttribute(cartMap);
+		//cartMap.put("cartOptionList", cartOptionList);
 		
 		return "product/productCart";
 	}

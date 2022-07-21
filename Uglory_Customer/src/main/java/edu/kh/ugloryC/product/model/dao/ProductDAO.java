@@ -71,12 +71,30 @@ public class ProductDAO {
 		return sqlSession.insert("productMapper.productPay", productOrder);
 	}
 
-	/** 장바구니 페이지 내 옵션 , 상품 조회
-	 * @param cartMap
-	 * @return cartOptionList
-	 */
-	public List<OptionType> cartOptionList(Map<String, Object> cartMap) {
 
-		return sqlSession.selectList("productMapper.cartOptionList", cartMap);
+	/** 장바구니 삽입을 위한 옵션 TB 삽입 (옵션 코드)
+	 * @param string
+	 * @return result
+	 */
+	public int insertOptionInfo(Map<String, Object> optionMap) {
+
+		return sqlSession.insert("productMapper.insertOptionInfo", optionMap);
+	}
+
+	/** 장바구니 테이블 삽입
+	 * @return insertProductCart
+	 */
+	public int insertProductCart() {
+
+		return sqlSession.insert("productMapper.insertProductCart");
+	}
+
+	/** 옵션 No 조회
+	 * @param cartOptionMap
+	 * @return selectOptionNo
+	 */
+	public List<Integer> selectOptionNo(Map<String, Object> cartOptionMap) {
+
+		return sqlSession.selectList("productMapper.selectOptionNo", cartOptionMap);
 	}
 }

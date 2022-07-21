@@ -1,10 +1,12 @@
 package edu.kh.ugloryC.product.model.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import edu.kh.ugloryC.product.model.dao.ProductDAO;
 import edu.kh.ugloryC.product.model.vo.OptionType;
@@ -58,11 +60,31 @@ public class ProductServiceImpl implements ProductService {
 		return dao.productPay(productOrder);
 	}
 
-	// 장바구니 페이지 내 옵션, 상품 조회
+	// 장바구니 삽입을 위한 옵션 TB 삽입
+	@Transactional(rollbackFor = {Exception.class})
 	@Override
-	public List<OptionType> cartOptionList(Map<String, Object> cartMap) {
+	public int insertOptionInfo(List<String> optionCodeList, List<Integer> amountList) {
+		
+		int result = 0;
+		
+		Map<String, Object> optionMap = new HashMap<String, Object>();
+		
+		for(int i=0; i<optionCodeList.size(); i++) {
+			
+			optionMap.put("optionCode", optionCodeList.get(i));
+			optionMap.put("optionAmout", amountList.get(i));
 
-		return dao.cartOptionList(cartMap);
+			result = dao.insertOptionInfo(optionMap);
+		}
+		
+		return result;
+	}
+
+	// 옵션 No 조회
+	@Override
+	public List<Integer> selectOptionNo(Map<String, Object> cartOptionMap) {
+		
+		return dao.selectOptionNo(cartOptionMap);
 	}
 
 }

@@ -7,6 +7,10 @@ import edu.kh.ugloryC.product.model.vo.OptionType;
 import edu.kh.ugloryC.product.model.vo.ProductDetail;
 import edu.kh.ugloryC.product.model.vo.ProductOrder;
 
+/**
+ * @author user1
+ *
+ */
 public interface ProductService {
 
 	/** 상품 상세 조회 서비스
@@ -44,11 +48,17 @@ public interface ProductService {
 	 */
 	int productPay(Map<String, Object> productOrder);
 
-	/** 장바구니 페이지 내 옵션, 상품 조회
+	/** 장바구니 삽입을 위한 옵션 TB 삽입
 	 * @param cartMap
-	 * @return cartOptionList
+	 * @return insertOptionInfo
 	 */
-	List<OptionType> cartOptionList(Map<String, Object> cartMap);
+	int insertOptionInfo(List<String> optionCodeList, List<Integer> amountList);
+	
+	/** 옵션 No 조회
+	 * @param cartOptionMap
+	 * @return selectOptionNo
+	 */
+	List<Integer> selectOptionNo(Map<String, Object> cartOptionMap);
 	
 	
 	

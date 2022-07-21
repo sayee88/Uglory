@@ -168,38 +168,6 @@ function calcPrice(){
 	document.getElementsByClassName("total-amount")[0].innerText = sum;
 }
 
-// 장바구니 담기 버튼 클릭 시 
-document.getElementById("cartButton").addEventListener("click", function(){
-	
-	orderValidate()
-
-	// const totalAmount =  document.getElementsByClassName("total-amount")[0].innerText;
-
-	// let cartMap = {"totalAmount":totalAmount, "optionObj":JSON.stringify(optionObj), "productCode" : productCode};
-
-	// $.ajax({
-	// 	url : contextPath + "/product/cart",
-	// 	data : cartMap,
-	// 	dataType : "JSON",
-	// 	type : "GET",
-
-	// 	success : function(){
-			
-	// 	},
-
-	// 	error: function(request, status, error){
-	// 		console.log("에러 발생");
-	// 		console.log("상태코드 : " + request.status); 
-	// 	}
-	// });
-});
-
-// 장바구니 보기 버튼 클릭 시 
-document.getElementById("productCartBtn").addEventListener("click", function(){ 
-	location.href = "../../cart";
-
-});
-
 // 총 가격, 옵션 코드,수량, 상품 코드 보내는 함수
 function orderValidate(){
 
@@ -237,4 +205,50 @@ function orderValidate(){
 
 	// return false;
 }	
+
+// 장바구니 담기 버튼 클릭 시 
+document.getElementById("cartButton").addEventListener("click", function(){
+
+	const optionSpan = document.querySelectorAll(".optionSpan");
+	
+	// 옵션 선택했을 때
+	if(optionSpan.length > 0){
+	
+		const totalAmount = document.getElementsByClassName("total-amount")[0].innerText;
+		
+		//let cartMap = {"totalAmount":totalAmount, "optionObj":JSON.stringify(optionObj), "productCode" : productCode};
+
+		$.ajax({
+			url : contextPath + "/product/cart",
+			data : {
+				"totalAmount": totalAmount,
+				"cartOption": JSON.stringify(optionObj),
+				"productCode" : productCode},
+
+			dataType : "JSON",
+			type : "GET",
+
+			succcess : function(){
+
+			} ,
+			error : function(request, status, error){
+				console.log("에러 발생");
+				console.log("상태코드 : " + request.status); 
+			}
+		});
+
+	} else {
+		alert("옵션을 선택해주세요");
+		return false;
+	}
+});
+
+
+// 장바구니 보기 버튼 클릭 시 
+document.getElementById("productCartBtn").addEventListener("click", function(){ 
+	location.href = "../../cart";
+
+});
+
+
 
