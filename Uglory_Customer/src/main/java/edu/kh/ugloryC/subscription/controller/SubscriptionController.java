@@ -99,8 +99,6 @@ public class SubscriptionController {
 //		orderInfo.put("choice", choice);
 		
 		// 결제번호 생성
-//		LocalDate currentDate = LocalDate.now(); 
-//		String date = currentDate.format(DateTimeFormatter.ofPattern("yyMMdd"));
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddhhmmss");
 		String date = sdf.format(new Date());
