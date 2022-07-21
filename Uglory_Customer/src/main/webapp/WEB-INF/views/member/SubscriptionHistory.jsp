@@ -78,20 +78,25 @@
                         
                             <div class="order-info">
                                 <div class="description" id=selectOne>
+
                                     <dl>
                                         <dt>주문번호</dt>
                                         <dd>${item.subOrderNo}</dd>
                                     </dl>
+                                    
                                     <dl>
 
                                         <dt>구독 결제금액</dt>
-                                        <dd>${item.subPayAmount}</dd>
+                                        <dd>${item.subPayAmount}원</dd>
                                     </dl>
 
                                     <dl>
                                         <dt>배송상태</dt>
-                                        <dd>${item.deliveryFlag}</dd>
+                                        <div id="deliveryBox">
+                                            <dd>${item.deliveryFlag}</dd>
+                                        </div>
                                     </dl>
+
                                 </div>
                             </div>
 
@@ -118,7 +123,7 @@
 
                             <dl>
                                 <dt>결제 일시</dt>
-                                <dd> 2022/07/19 11:28:50${item.subDate}</dd>
+                                <dd> 2022/07/19 11:28:50${item.subPayDate}</dd>
                             </dl>
 
                             <dl>

@@ -63,7 +63,7 @@ public class MemberController {
 		return "member/orderHistory";
 	}
 	
-	// 개별 주문 상세 조회 조회
+	// 개별 주문 상세 조회
 	@ResponseBody
 	@GetMapping("/OrderHistoryDetail")
 	public String selectOrderHistoryDetail(String orderNo) {
@@ -241,6 +241,21 @@ public class MemberController {
 			return "redirect:" + path;
 		}
 	}
+	
+	
+	// 개별 상품 환불
+	@PostMapping("/orderHistoryRefund")
+	public String orderHistoryRefund(@ModelAttribute("loginMember") Member loginMember
+									 ,RedirectAttributes ra
+									 , Model model	) {
+		
+	
+		
+		
+		return null;
+		
+	}
+
 	
 
 }
