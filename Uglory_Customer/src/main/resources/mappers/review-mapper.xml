@@ -31,6 +31,8 @@
 		<result property="optionName" column="OPTION_NM" />
 		<result property="totalPrice" column="TOTAL_PRICE" />
 		<result property="reviewCode" column="REVIEW_CD" />
+		<result property="productCode" column="P_CD" />
+		
 	
 	</resultMap>
 	
@@ -50,7 +52,12 @@
 		<result property="totalPrice" column="TOTAL_PRICE" />
 		<result property="reviewCode" column="REVIEW_CD" />
 		
+		<collection property="imageList" column="REVIEW_NO" javaType="java.util.ArrayList" ofType="reviewImage" select="selectImageList" />
 	</resultMap>
+	
+	
+	
+	
 	
 	<!-- 리뷰 이미지 조회용 -->
 	<resultMap type="reviewImage" id="reviewImage_rm">
@@ -61,11 +68,45 @@
 	</resultMap>
 
 
+
+
+
+
+
+
 	<!-- 리뷰글 삽입 -->
 	<insert id="insertReview">
 		
+		<selectKey keyProperty="reviewNo" resultType="_int" order="BEFORE">
+			SELECT SEQ_REVIEW_NO.NEXTVAL FROM DUAL
+		</selectKey>
+		
 		INSERT INTO REVIEW
-		VALUES (SEQ_REVIEW_NO.NEXTVAL, #{reviewContent}, SYSDATE, #{starRating}, #{memberNo}, #{productCode}, ${productOrderCode}, #{subOrderCode}, #{reviewCode})
+		VALUES (SEQ_REVIEW_NO.NEXTVAL, #{reviewWrite.reviewContent}, SYSDATE, #{starRating}, 
+		#{reviewWrite.memberNo}, 
+		
+		<if test="reviewWrite.productCode == 0">
+			NULL,
+		</if>
+		<if test="reviewWrite.productCode != 0">
+			#{reviewWrite.productCode},
+		</if>
+		
+		<if test="reviewWrite.productOrderCode == 0">
+			NULL,
+		</if>
+		<if test="reviewWrite.productOrderCode != 0">
+			#{reviewWrite.productOrderCode},
+		</if>
+		
+		<if test="reviewWrite.subOrderCode == 0">
+			NULL,
+		</if>
+		<if test="reviewWrite.subOrderCode != 0">
+			#{reviewWrite.subOrderCode},
+		</if>
+		
+		 #{reviewWrite.reviewCode})
 		
 	</insert>
 	 
@@ -74,6 +115,7 @@
 	 <insert id="insertReviewImage" parameterType="list">
 	 	INSERT INTO REVIEW_IMG
 	 	SELECT SEQ_IMG_NO.NEXTVAL REVIEW_IMG_NO, A.* FROM(
+	 		
 	 		<foreach collection="list" item="img" separator="UNION ALL">
 	 			SELECT 	#{img.reviewImageReName} REVIEW_IMG_RENAME
 	 					#{img.reviewImageLevel} REVIEW_IMG_LEVEL
@@ -89,19 +131,20 @@
 		SELECT * FROM SUBS_ORDER
 		LEFT JOIN REVIEW USING(S_ORDER_CD)
 		JOIN SUBS USING(S_CD)
-		WHERE REVIEW_NO IS NULL
+		WHERE S_REVIEW_ST = 'N'
 		AND SUBS_ORDER.MEMBER_NO = #{memberNo}
+		ORDER BY S_ORDER_CD
 	</select>
 	
 	
 	<!-- 개별상품 미작성 리뷰 조회 -->
 	<select id="productUnWrittenList" resultMap="unWrittenProduct_rm">
-		SELECT * FROM PRODUCT_ORDER
+		SELECT P_ORDER_CD, P_ORDER_DT, PRODUCT_NM,OPTION_NM, TOTAL_PRICE,REVIEW_CD, PRODUCT.P_CD FROM PRODUCT_ORDER
 		LEFT JOIN REVIEW USING(P_ORDER_CD)
 		JOIN OPTION_TB USING(P_ORDER_CD)
 		JOIN OPTION_TYPE USING(OPTION_CD)
 		JOIN PRODUCT ON(OPTION_TYPE.P_CD = PRODUCT.P_CD)
-		WHERE REVIEW_NO IS NULL
+		WHERE P_REVIEW_ST = 'N'
 		AND PRODUCT_ORDER.MEMBER_NO = #{memberNo}
 	</select>
 		
