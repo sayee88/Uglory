@@ -78,37 +78,24 @@
                         
                             <div class="order-info">
                                 <div class="description" id=selectOne>
+
                                     <dl>
                                         <dt>주문번호</dt>
                                         <dd>${item.subOrderNo}</dd>
                                     </dl>
+                                    
                                     <dl>
 
                                         <dt>구독 결제금액</dt>
-                                        <dd>${item.subPayAmount}</dd>
+                                        <dd>${item.subPayAmount}원</dd>
                                     </dl>
 
-
-                                    <form action="subHistoryRefund" method="POST" name="myPage-subscription" onsubmit="return subscriptionCancelValidate()">
-                                      
-                                        <dl>
-                                            <dt>배송상태</dt>
-
-                                                <c:if test="${item.deliveryFlag == '배송 전'}">
-                                                    <div id="deliveryBox">
-                                                        <dd>${item.deliveryFlag}</dd>
-                                                        <button class=refundBtn >환불신청</button>
-                                                    </div>
-                                                </c:if>
-
-                                                <c:if test="${item.deliveryFlag != '배송 전'}">
-                                                    <div id="deliveryBox">
-                                                        <dd>${item.deliveryFlag}</dd>
-                                                    </div>
-                                                </c:if>
-                                        </dl>
-                                    
-                                    </form>
+                                    <dl>
+                                        <dt>배송상태</dt>
+                                        <div id="deliveryBox">
+                                            <dd>${item.deliveryFlag}</dd>
+                                        </div>
+                                    </dl>
 
                                 </div>
                             </div>
