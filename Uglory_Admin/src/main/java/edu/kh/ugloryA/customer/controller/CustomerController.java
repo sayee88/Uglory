@@ -53,17 +53,6 @@ public class CustomerController {
 	public int changeStatement(int customerNo) {
 		return service.changeStatement(customerNo);
 	}
-	
-	// 회원 수 조회
-	@GetMapping("/countCustomer")
-	@ResponseBody
-	public int countCustomer() {
 		
-		int countCustomer = service.countCustomer();
-		
-		return countCustomer;
-	}
-
-	
 
 }
