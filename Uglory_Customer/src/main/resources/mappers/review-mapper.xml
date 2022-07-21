@@ -47,7 +47,11 @@
 		
 		<result property="productOrderDate" column="P_ORDER_DT" />
 		<result property="productName" column="PRODUCT_NM" />
-		<result property="productName" column="PRODUCT_NM" />
+		
+		<result property="productCode" column="P_CD" />
+		<result property="productOrderCode" column="P_ORDER_CD" />
+		<result property="subOrderCode" column="S_ORDER_CD" />
+		
 		<result property="optionName" column="OPTION_NM" />
 		<result property="totalPrice" column="TOTAL_PRICE" />
 		<result property="reviewCode" column="REVIEW_CD" />
@@ -77,12 +81,12 @@
 	<!-- 리뷰글 삽입 -->
 	<insert id="insertReview">
 		
-		<selectKey keyProperty="reviewNo" resultType="_int" order="BEFORE">
+		<selectKey keyProperty="reviewWrite.reviewNo" resultType="_int" order="BEFORE">
 			SELECT SEQ_REVIEW_NO.NEXTVAL FROM DUAL
 		</selectKey>
 		
 		INSERT INTO REVIEW
-		VALUES (SEQ_REVIEW_NO.NEXTVAL, #{reviewWrite.reviewContent}, SYSDATE, #{starRating}, 
+		VALUES (#{reviewWrite.reviewNo}, #{reviewWrite.reviewContent}, SYSDATE, #{starRating}, 
 		#{reviewWrite.memberNo}, 
 		
 		<if test="reviewWrite.productCode == 0">
@@ -114,11 +118,11 @@
 	 <!-- 리뷰 이미지 삽입 List -->
 	 <insert id="insertReviewImage" parameterType="list">
 	 	INSERT INTO REVIEW_IMG
-	 	SELECT SEQ_IMG_NO.NEXTVAL REVIEW_IMG_NO, A.* FROM(
+	 	SELECT SEQ_REVIEW_IMG_NO.NEXTVAL REVIEW_IMG_NO, A.* FROM(
 	 		
 	 		<foreach collection="list" item="img" separator="UNION ALL">
-	 			SELECT 	#{img.reviewImageReName} REVIEW_IMG_RENAME
-	 					#{img.reviewImageLevel} REVIEW_IMG_LEVEL
+	 			SELECT 	#{img.reviewImageReName} REVIEW_IMG_RENAME,
+	 					#{img.reviewImageLevel} REVIEW_IMG_LEVEL,
 	 					#{img.reviewNo} REVIEW_NO
 	 			FROM DUAL
 	 		</foreach>
@@ -148,8 +152,21 @@
 		AND PRODUCT_ORDER.MEMBER_NO = #{memberNo}
 	</select>
 		
-		
-		
+	
+	<!-- 구독 리뷰 상태 'Y' -->
+	<update id="updateSubReviewST">
+		UPDATE SUBS_ORDER
+		SET S_REVIEW_ST = 'Y'
+		WHERE S_ORDER_CD = #{subOrderCode}
+	</update>
+	
+	
+	<!-- 상품 리뷰 상태 'Y' -->
+	<update id="updateProductReviewST">
+		UPDATE PRODUCT_ORDER
+		SET P_REVIEW_ST = 'Y'
+		WHERE P_ORDER_CD = #{productOrderCode}
+	</update>
 		
 		
 		
