@@ -61,7 +61,10 @@
 
                             <div class="col-xl-4 p-4">
                                 <div class="pList-tit m-2">이번주 배송 상품</div>                           
-                                <div class="text-center p-2">배송예정일 : ${thisWeek.deliveryDate}</div>                           
+                                <div class="p-2 detailHead">
+                                    <div class="ms-2">배송예정일 :</div>
+                                    <div class="me-2">${thisWeek.deliveryDate}</div>
+                                </div>                           
                                 <div class="pListBox">
 
                                     <table class="table table-borderless text-center">
@@ -84,7 +87,10 @@
 
                             <div class="col-xl-4 p-4">
                                 <div class="pList-tit m-2">다음주 배송 상품</div>                           
-                                <div class="text-center p-2">배송예정일 : ${nextWeek.deliveryDate}</div>                           
+                                <div class="p-2 detailHead">
+                                    <div class="ms-2">배송예정일 :</div>
+                                    <div class="me-2">${nextWeek.deliveryDate}</div>
+                                </div>                           
                                 <div class="pListBox">
 
                                     <table class="table table-borderless text-center">
@@ -121,7 +127,10 @@
 
                             <div class="col-xl-4 p-4">
                                 <div class="pList-tit m-2">다다음주 배송 상품</div>                           
-                                <div class="text-center p-2">배송예정일 : ${afterWeek.deliveryDate}</div>                           
+                                <div class="p-2 detailHead">
+                                    <div class="ms-2">배송예정일 :</div>
+                                    <div class="me-2">${afterWeek.deliveryDate}</div>
+                                </div>                           
                                 <div class="pListBox">
 
                                     <table class="table table-borderless text-center">

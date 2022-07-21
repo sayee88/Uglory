@@ -198,6 +198,39 @@ public class ProductServiceImpl implements ProductService {
 	public int deleteWeeklyProduct(int productNo) {
 		return dao.deleteWeeklyProduct(productNo);
 	}
+
+	//주별 상품 업데이트(스케쥴러 용)
+	@Transactional(rollbackFor = {Exception.class})
+	@Override
+	public int weeklyUpdate() {
+		
+		int result = 0;
+		int count = 0;
+		String key = "T";
+		
+		result = dao.weeklyUpdate(key);
+		
+		if(result > 0) {
+			
+			count++;
+			
+			key = "N";
+			result = dao.weeklyUpdate(key);
+			
+			if(result > 0) {
+				
+				count++;
+				
+				key = "A";
+				result = dao.weeklyUpdate(key);
+				
+				if(result > 0) {
+					count++;					
+				}
+			}
+		}
+		return count;
+	}
 	
 	
 	

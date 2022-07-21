@@ -250,5 +250,26 @@
 	<delete id="deleteWeeklyProduct">
 		DELETE FROM WEEKLY_P WHERE PRODUCT_NO = #{productNo}
 	</delete>
+	
+	<!-- 주별 상품 업데이트 -->
+	<update id="weeklyUpdate">
+		UPDATE WEEKLY_LIST SET
+		
+		<choose>
+				<when test='key == "T"'>
+					EX_UPLOAD_DATE = 'E'
+				</when>
+				
+				<when test='key == "N"'>
+					EX_UPLOAD_DATE = 'T'
+				</when>
+				
+				<when test='key == "A"'>
+					EX_UPLOAD_DATE = 'N'
+				</when>
+		</choose>
+		
+		WHERE EX_UPLOAD_DATE = #{key}
+	</update>
 
 </mapper>
