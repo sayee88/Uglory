@@ -60,7 +60,7 @@
                 <div class="outer-table">
                     <div class="gray-box">
 
-                        <form action="${contextPath}/subscription/pay" method="POST">
+                        <form action="${contextPath}/subscription/pay" method="POST" onsubmit="return orderValidate()">
 
                             <table id="table2">
                                 <tr>

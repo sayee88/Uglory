@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="subscriptionMapper">
+
+
+	<!-- 상품 목록용 resultMap -->   
+	<resultMap type="delivery" id="delivery_rm">
+		<id property="subsOrderCode" column="S_ORDER_CD"/>
+		<result property="sCancel" column="S_CANCEL"/>
+		<result property="cycle" column="S_CYCLE"/>
+		<result property="memberNo" column="MEMBER_NO"/>
+		<result property="box" column="S_CD"/>
+		<result property="amount" column="S_PRICE"/>
+		<result property="payNo" column="S_PAY_NO"/>
+		<result property="payDate" column="S_PAY_DT"/>
+	</resultMap>
+
+
 	
 	
 	<!-- 결제 번호 생성 -->
@@ -83,5 +98,84 @@
 		   #{subsOrderNo}
 		)
 	</insert>
+	
+	<!-- 배송주기가 '1'인 구독 목록 조회 -->
+	<select id="selectEveryList" resultMap="delivery_rm">
+		SELECT MEMBER_NO, S_ORDER_CD, S_PRICE
+		FROM SUBS_ORDER
+		JOIN SUBS USING(S_CD)
+		WHERE S_CYCLE='1'
+		AND S_CANCEL='N'
+	</select>
+	
+	<!-- 매주 수요일 배송전->배송중으로 변경 -->
+	<update id="updateDel">
+		UPDATE SUBS_DELIVERY A
+		SET DELIVERY_CD ='2'
+		WHERE DELIVERY_CD ='1'
+		AND S_ORDER_CD IN (SELECT S_ORDER_CD FROM SUBS_ORDER
+		              WHERE S_CYCLE ='1')
+	</update>
+	
+	<!-- 구독 결제 추가  -->
+	<insert id="insertAddPay">
+		INSERT INTO SUBS_PAY VALUES(
+			
+		   #{payNo},
+		   SYSDATE,
+		   #{amount},
+		   #{memberNo},
+		   #{subsOrderCode}
+		)
+	</insert>
+	
+	<!-- 매주 금요일 배송중->배송완으로 변경 -->
+	<update id="updateEveryFri">
+		UPDATE SUBS_DELIVERY A
+		SET DELIVERY_CD ='3'
+		WHERE DELIVERY_CD ='2'
+		AND S_ORDER_CD IN (SELECT S_ORDER_CD FROM SUBS_ORDER
+		              WHERE S_CYCLE ='1')
+	</update>
+	
+	
+	<!-- 격주 구독 내역 조회 -->
+	<select id="selectBiList" resultMap="delivery_rm">
+		SELECT MEMBER_NO, S_ORDER_CD, S_PRICE
+		FROM SUBS_ORDER
+		JOIN SUBS USING(S_CD)
+		WHERE S_CYCLE='2'
+		AND S_CANCEL='N'
+	</select>
+	
+	<!-- 격주 구독 결제내역 추가 --> 
+	<insert id="insertBiAddPay">
+		INSERT INTO SUBS_PAY VALUES(
+		   #{payNo},
+		   SYSDATE,
+		   #{amount},
+		   #{memberNo},
+		   #{subsOrderCode}
+		)
+	</insert>
+	
+	<!-- 격주 금요일 배송중->배송완으로 변경 -->
+	<update id="updateBiFri">
+		UPDATE SUBS_DELIVERY A
+		SET DELIVERY_CD ='3'
+		WHERE DELIVERY_CD ='2'
+		AND S_ORDER_CD IN (SELECT S_ORDER_CD FROM SUBS_ORDER
+		              WHERE S_CYCLE ='2')
+	</update>
+	
+	<!-- 격주 수요일 배송전->배송중으로 변경 -->
+	<update id="updateBiDel">
+		UPDATE SUBS_DELIVERY A
+		SET DELIVERY_CD ='2'
+		WHERE DELIVERY_CD ='1'
+		AND S_ORDER_CD IN (SELECT S_ORDER_CD FROM SUBS_ORDER
+		              WHERE S_CYCLE ='2')
+	</update>
+	
 	
 </mapper>
