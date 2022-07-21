@@ -7,14 +7,14 @@ import edu.kh.ugloryA.customer.model.vo.Customer;
 public interface CustomerService {
 
 	/**
-	 * ÀüÃ¼ °í°´ ¸ñ·Ï Á¶È¸
+	 * ï¿½ï¿½Ã¼ ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½È¸
 	 * @return customerList
 	 */
 	List<Customer> selectAllCustomer();
 
 	
 	/**
-	 * Æ¯Á¤ Á¶°ÇÀ» ¸¸Á·ÇÏ´Â °í°´ ¸ñ·Ï Á¶È¸
+	 * Æ¯ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½È¸
 	 * @param key
 	 * @param query
 	 * @return customerList
@@ -23,11 +23,18 @@ public interface CustomerService {
 
 
 	/**
-	 * È¸¿ø »óÅÂ º¯°æ
+	 * È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 * @param customerNo
 	 * @return
 	 */
 	int changeStatement(int customerNo);
+
+
+	/**
+	 * íšŒì› ìˆ˜ ì¡°íšŒ
+	 * @return
+	 */
+	int countCustomer();
 
 
 	
