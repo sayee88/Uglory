@@ -27,7 +27,9 @@ for(let i=0; i<inputImage.length; i++){
                 preview[i].setAttribute("src", e.target.result);
                 
                 reviewImgCount++;
-                deleteSet.delete(i);
+
+                inputImage[i].removeAttribute("id");
+
                 addReviewImg();
             }
         } else {
@@ -113,8 +115,8 @@ function addReviewImg(){
                     input.previousElementSibling.children[0].setAttribute("src", e.target.result);
                     reviewImgCount++;
 
-                    //변경된 이미지가 몇번째 인덱스인가 ..... 오 제발 ...
-                    //deleteSet.delete(i);
+                    input.removeAttribute("id");
+
                     addReviewImg();
                 }
             } else {
@@ -130,10 +132,6 @@ function addReviewImg(){
                 
                 preview.removeAttribute("src");
         
-                inputImage[i].value = "";
-                
-                deleteSet.add[i];
-    
                 if(document.getElementsByClassName("reviewImg").length > 1){
                     this.parentElement.remove();
 

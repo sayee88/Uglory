@@ -34,12 +34,12 @@ public interface MemberService {
 	List<OrderHistory> selectOrderHistoryList(int memberNo);
 
 	// 개별 주문 상세 조회 조회
-	OrderHistoryDetail selectOrderHistoryDetail(int orderNo);
+	OrderHistoryDetail selectOrderHistoryDetail(String orderNo);
 
 	// 구독 주문 목록 내역 조회
 	List<SubHistory> selectSubHistoryList(int memberNo);
 
-	SubHistoryDetail selectSubHistoryDetail(int subOrderNo);
+	SubHistoryDetail selectSubHistoryDetail(String subOrderNo);
 
 
 

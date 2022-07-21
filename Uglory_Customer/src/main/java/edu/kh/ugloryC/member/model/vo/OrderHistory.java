@@ -11,7 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class OrderHistory {
 	//주문내역
-	private int orderNo; // 주문번호
+	private String orderNo; // 주문번호
 	private String origin; // 원산지
 	private String deliveryFlag; // 배송 상태
 	private String orderDate;// 주문 날짜

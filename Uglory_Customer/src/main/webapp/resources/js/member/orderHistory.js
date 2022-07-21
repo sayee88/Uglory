@@ -12,6 +12,14 @@ for (let btn of orderDetailBtn) {
 
         const target = this.parentElement.parentElement.parentElement;
 
+        if(this.parentElement.parentElement.nextElementSibling.nextElementSibling != undefined){
+            
+            for(let i=8 ; i>2 ; i--){
+                target.children[i].remove();
+            }
+            return;
+        }
+
         $.ajax({
 
             url: "OrderHistoryDetail",
@@ -56,9 +64,9 @@ for (let btn of orderDetailBtn) {
                     img.classList.add("orderImg");
 
                     if(proc.imageRename == null){
-                        img.setAttribute("src", contextPath + "/resources/img/쿵야/바나나쿵야.png" );
+                        img.setAttribute("src", contextPath + "/resources/img/about/xmark.png" );
                     }else{
-                        img.setAttribute("src", contextPath +  proc.imageRename);
+                        img.setAttribute("src", window.location.origin+'/ugloryA' +  proc.imageRename);
                     }
 
                     

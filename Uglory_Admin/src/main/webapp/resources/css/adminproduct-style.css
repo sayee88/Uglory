@@ -176,9 +176,10 @@
 .opInputArea{width:70%;}
 #optionNameText{font-size: 16px;}
 
-.option-delete{border: 0; font-size: 26px; padding: 0 4px; height: 32px; display: flex; align-items: center;}
+.option-delete{margin:auto; border: 0; font-size: 28px; height: 32px; display: flex; align-items: center;}
 
 .deleteWeek{font-size: 18px; font-weight: bold; width:25px; height: 25px; text-align: center; padding: 0; border: 2px solid #DC3545;}
 
 .exdelDate{display: flex; justify-content: space-around;}
 .delDate{width: 180px; text-align: center; border: 1px solid #ccc;}
+.col-width{width:33%; min-width: 33%; max-width: 33%;}
