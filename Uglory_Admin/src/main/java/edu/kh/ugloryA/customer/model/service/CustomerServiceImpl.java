@@ -18,21 +18,21 @@ public class CustomerServiceImpl implements CustomerService {
 	
 	private Logger logger = LoggerFactory.getLogger(CustomerServiceImpl.class);
 
-	// ÀüÃ¼ °í°´ ¸ñ·Ï Á¶È¸
+	// ï¿½ï¿½Ã¼ ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½È¸
 	@Override
 	public List<Customer> selectAllCustomer() {
 		return dao.selectAllCustomer();
 	}
 
 	
-	// Æ¯Á¤ Á¶°ÇÀ» ¸¸Á·ÇÏ´Â °í°´ ¸ñ·Ï Á¶È¸
+	// Æ¯ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½È¸
 	@Override
 	public List<Customer> searchCustomer(String key, String query) {
 		return dao.searchCustomer(key, query);
 	}
 
 
-	// °èÁ¤ »óÅÂ º¯°æ
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	@Override
 	public int changeStatement(int customerNo) {
 		
@@ -48,6 +48,15 @@ public class CustomerServiceImpl implements CustomerService {
 		
 		return result;
 	}
+
+
+	@Override
+	public int countCustomer() {
+		return dao.countCustomer();
+	}
+	
+	
+	
 
 
 	

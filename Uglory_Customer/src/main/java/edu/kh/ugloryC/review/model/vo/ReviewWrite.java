@@ -14,7 +14,6 @@ public class ReviewWrite {
 	
 	private int reviewNo;
 	private String reviewContent;
-	private String reviewEnrollDate;
 	private int starRating;
 	private int reviewCode;
 	private int memberNo;

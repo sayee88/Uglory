@@ -49,7 +49,7 @@
                 <div class="login-text">로그인</div>
                 <div class="login-full">
                     <a href="javascript:kakaoLogin();">
-                        <img class="kakao" src="${contextPath}/resources/img/PYJ/kakao_login_medium_narrow.png" alt="카카오로그인"></a>
+                        <img class="kakao" src="${contextPath}/resources/img/login/kakao_login_medium_narrow.png" alt="카카오로그인"></a>
                 </div>
             </section>
             

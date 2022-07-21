@@ -76,7 +76,7 @@ public class MemberDAO {
 	}
 
 	//개별 상품 상세 주문 조회 DAO
-	public OrderHistoryDetail selectOrderHistoryDetail(int orderNo) {
+	public OrderHistoryDetail selectOrderHistoryDetail(String orderNo) {
 		return sqlSession.selectOne("memberMapper.selectOrderHistoryDetail", orderNo);
 	}
 
@@ -86,7 +86,7 @@ public class MemberDAO {
 		return sqlSession.selectList("memberMapper.selectSubHistoryList",memberNo);
 	}
 
-	public SubHistoryDetail selectSubHistoryDetail(int subOrderNo) {
+	public SubHistoryDetail selectSubHistoryDetail(String subOrderNo) {
 	
 		return sqlSession.selectOne("memberMapper.selectSubHistoryDetail",subOrderNo);
 	}

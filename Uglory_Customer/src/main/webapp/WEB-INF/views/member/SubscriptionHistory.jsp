@@ -64,7 +64,7 @@
 
                     <c:forEach var="item" items="${subHistoryList}">
                         <li class="list-section">
-                            <div class="date">${item.subDate}</div>
+                            <div class="date">${item.subPayDate}</div>
                         
                             <div class="order-goods">
                             
@@ -85,7 +85,7 @@
                                     <dl>
 
                                         <dt>구독 결제금액</dt>
-                                        <dd>${item.subPrice}</dd>
+                                        <dd>${item.subPayAmount}</dd>
                                     </dl>
 
                                     <dl>
@@ -101,8 +101,8 @@
 
                 </c:if>
 
-<%--             
-                <li class="list-section">
+            
+                <%-- <li class="list-section">
 
                     <div class="order-head">
                         <h2 class="orderTitle">주문 정보</h2>

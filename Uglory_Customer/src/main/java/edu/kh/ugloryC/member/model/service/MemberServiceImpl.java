@@ -90,7 +90,7 @@ public class MemberServiceImpl implements MemberService {
 
 	// 개별 주문 상품 상세 조회 
 	@Override
-	public OrderHistoryDetail selectOrderHistoryDetail(int orderNo) {
+	public OrderHistoryDetail selectOrderHistoryDetail(String orderNo) {
 		return dao.selectOrderHistoryDetail(orderNo);
 	}
 
@@ -103,7 +103,7 @@ public class MemberServiceImpl implements MemberService {
 
 
 	@Override
-	public SubHistoryDetail selectSubHistoryDetail(int subOrderNo) {
+	public SubHistoryDetail selectSubHistoryDetail(String subOrderNo) {
 
 		return dao.selectSubHistoryDetail(subOrderNo);
 	}

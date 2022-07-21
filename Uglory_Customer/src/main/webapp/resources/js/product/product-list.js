@@ -16,6 +16,9 @@
             
                 const box = document.createElement("div");
                 box.classList.add("box");
+
+                const img_box = document.createElement("div");
+                img_box.classList.add("img-box");
             
                 const product_img = document.createElement("img");
                 product_img.classList.add("product-img");
@@ -48,7 +51,9 @@
                 a.setAttribute("href", "detail/"+product.categoryNo+"/"+product.productCode);
             
                 // 품절시 추가
-                if(pList.productList == 'O'){ 
+                // 접근하는 해당 객체에만 추가하고싶음
+                // 품절 스티커 css 왜 안돼~!~!~~
+                if(pList.productState = "O"){ 
                     product_img.classList.add("soldout");
             
                     const soldoutImg = document.createElement("img");
@@ -61,7 +66,8 @@
                 sub_box.append(starImg, p);
                 flex_container.append(h4, sub_box);
                 div.append(h5, flex_container);
-                box.append(product_img, div);
+                img_box.append(product_img);
+                box.append(img_box, div);
                 a.append(box);
                 col.append(a);
                 row.append(col);
@@ -107,6 +113,9 @@ function category(selectCategoryNo){
             
                 const box = document.createElement("div");
                 box.classList.add("box");
+
+                const img_box = document.createElement("div");
+                img_box.classList.add("img-box");
             
                 const product_img = document.createElement("img");
                 product_img.classList.add("product-img");
@@ -139,7 +148,7 @@ function category(selectCategoryNo){
                 a.setAttribute("href", "detail/"+product.categoryNo+"/"+product.productCode);
             
                 // 품절시 추가
-                if(pcList.productList == 'O'){ 
+                if(pcList.productState = "O"){ 
                     product_img.classList.add("soldout");
             
                     const soldoutImg = document.createElement("img");
@@ -152,7 +161,8 @@ function category(selectCategoryNo){
                 sub_box.append(starImg, p);
                 flex_container.append(h4, sub_box);
                 div.append(h5, flex_container);
-                box.append(product_img, div);
+                img_box.append(product_img);
+                box.append(img_box, div);
                 a.append(box);
                 col.append(a);
                 row.append(col);

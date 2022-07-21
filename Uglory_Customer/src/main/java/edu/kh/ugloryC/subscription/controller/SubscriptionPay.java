@@ -53,7 +53,6 @@ public class SubscriptionPay {
 								  // @RequestParam String firstDelDate,
 								  @ModelAttribute("loginMember") Member loginMember,
 								  @ModelAttribute("orderInfo") OrderInfo orderInfo,
-								 // @ModelAttribute("choice") List<String> choice,
 								  HttpSession session,
 								  Model model,
 								  RedirectAttributes ra) {
@@ -68,8 +67,12 @@ public class SubscriptionPay {
 		Date firstDelDate = (Date)session.getAttribute("firstDelDate");
 		payInfo.put("firstDelDate", firstDelDate);
 		
+		
 		List<String> choice = (List<String>)session.getAttribute("choice");
-		payInfo.put("choice", choice);
+		if((List<String>)session.getAttribute("choice") != null) {
+			
+			payInfo.put("choice", choice);
+		}
 		
 		System.out.println(choice);
 

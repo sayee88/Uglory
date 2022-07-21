@@ -117,25 +117,11 @@
                         <span class="star">
                             ★★★★★
                             <span>★★★★★</span>
-                            <input type="range" oninput="drawStar(this)" value="1" step="1" min="0" max="10">
+                            <input type="range" name="reviewStar" oninput="drawStar(this)" value="1" step="1" min="0" max="10">
                         </span>
-                        <%-- <form class="mb-3" name="myform" id="myform" method="post">
-                            <fieldest>
-                                <input type="radio" name="reviewStar" value="5" id="rate1"><label for="rate1">★</label>
-                                <input type="radio" name="reviewStar" value="4" id="rate2"><label for="rate2">★</label>
-                                <input type="radio" name="reviewStar" value="3" id="rate3"><label for="rate3">★</label>
-                                <input type="radio" name="reviewStar" value="2" id="rate4"><label for="rate4">★</label>
-                                <input type="radio" name="reviewStar" value="1" id="rate5"><label for="rate5">★</label>
-                            </fieldest>
-                        </form> --%>
+                        
                     </div>
-                    <%-- <p>
-                        <a href="#" value="1">★</a>
-                        <a href="#" value="2">★</a>
-                        <a href="#" value="3">★</a>
-                        <a href="#" value="4">★</a>
-                        <a href="#" value="5">★</a>
-                    </p> --%>
+            
 
                     <!-- 썸네일 이미지 (첫번째 등록 이미지가 썸네일 이미지) -->
                     <div class="review-img-upload">
@@ -144,15 +130,14 @@
                             <label for="img0">
                                 <img class="preview">
                             </label>
-                            <input type="file" class="inputImage" id="img0" name="0" accept="image/*">
+                            <input type="file" class="inputImage" id="img0" name="images" accept="image/*">
                             <span class="delete-image">&times;</span> 
                         </div>
-                        
                             
                     </div>
 
                     <div class="review-inputtext">
-                        <textarea placeholder="리뷰를 작성해주세요." name="boardContent"></textarea>
+                        <textarea placeholder="리뷰를 작성해주세요." name="reviewContent"></textarea>
                     </div>
 
                     <div class="review-precautions">
@@ -164,6 +149,7 @@
                     <div class="review-insert">
                         <button type="submit" id="writeBtn">작성완료</button>
                     </div>
+
                 </form>
 
 

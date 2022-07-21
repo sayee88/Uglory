@@ -1,6 +1,8 @@
 package edu.kh.ugloryC.review.model.dao;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,12 +25,19 @@ public class ReviewDAO {
 	
 	/**
 	 * 리뷰글 삽입 DAO
-	 * @param reviewWrite
-	 * @return result
+	 * @param reviewMap
+	 * @param reviewNo 
+	 * @return reviewNo
 	 */
-	public int insertReview(ReviewWrite reviewWrite) {
+	public int insertReview(Map<String, Object> reviewMap) {
 		
-		int result = sqlSession.insert("reviewMapper.insertReview", reviewWrite);
+		int result = sqlSession.insert("reviewMapper.insertReview", reviewMap);
+		
+//		List<String> reviewList = new ArrayList<String>(reviewMap.keySet());
+		
+		ReviewWrite reviewWrite = (ReviewWrite)reviewMap.get("reviewWrite");
+		
+		if(result > 0) result = reviewWrite.getReviewNo();
 		
 		return result;
 	}
