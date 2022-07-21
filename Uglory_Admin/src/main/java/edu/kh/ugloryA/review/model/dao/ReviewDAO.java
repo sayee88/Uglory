@@ -63,5 +63,14 @@ public class ReviewDAO {
 	public int deleteReview(int reviewNo) {
 		return sqlSession.update("reviewMapper.deleteReview", reviewNo);
 	}
+
+
+	/**
+	 * 리뷰 수 조회
+	 * @return
+	 */
+	public int countReview() {
+		return sqlSession.selectOne("reviewMapper.countReview");
+	}
 	
 }

@@ -49,6 +49,19 @@
 		<result property="subscriptionException" column="PRODUCT_NM"/>
 	</resultMap>
 	
+	
+	<resultMap type="refund" id="refund_rm">
+		<id property="orderCode" column="P_ORDER_CD"/>
+		<result property="refundAmount" column="P_REFUND_AMOUNT"/>
+		<result property="refundDate" column="P_REFUND_DT"/>
+		<result property="orderDate" column="P_ORDER_DT"/>
+		<result property="customerEmail" column="MEMBER_EMAIL"/>
+		<result property="customerName" column="MEMBER_NAME"/>
+		<result property="productName" column="PRODUCT_NM"/>
+		<result property="optionName" column="OPTION_NM"/>
+		<result property="optionCount" column="OPTION_COUNT"/>
+	</resultMap>
+	
 
 	
 	
@@ -159,7 +172,50 @@
 		WHERE S_ORDER_CD = #{orderCode}
 	</select>
 	
+	
+	<select id="dailySales" resultType="_int">
+		SELECT NVL(SUM(TODAY_PAY_AMOUNT), 0) - NVL(SELECT_REFUND_AMOUNT( SYSDATE ), 0) PAY_AMOUNT_PER_DAY
+		FROM(
+		    SELECT SUM(P_PAY_AMOUNT) TODAY_PAY_AMOUNT
+		    FROM PRODUCT_PAY
+		    WHERE P_PAY_DT BETWEEN TO_DATE(SYSDATE, 'YY-MM-DD') AND TO_DATE(SYSDATE, 'YY-MM-DD') +0.99999
+		
+		    UNION ALL
+		
+		    SELECT SUM(S_PAY_AMOUNT) TODAY_PAY_AMOUNT
+		    FROM SUBS_PAY
+		    WHERE S_PAY_DT BETWEEN TO_DATE(SYSDATE, 'YY-MM-DD') AND TO_DATE(SYSDATE, 'YY-MM-DD') +0.99999)
+	</select>
 
+
+	<select id="totalSales" resultType="_int">
+		SELECT NVL(SUM(TODAY_PAY_AMOUNT), 0) PAY_AMOUNT_TOTAL
+		FROM(
+		    SELECT SUM(P_PAY_AMOUNT) TODAY_PAY_AMOUNT
+		    FROM PRODUCT_PAY
+		
+		    UNION ALL
+		
+		    SELECT SUM(S_PAY_AMOUNT) TODAY_PAY_AMOUNT
+		    FROM SUBS_PAY
+		
+		    UNION ALL
+		    SELECT NVL(SUM(P_REFUND_AMOUNT), 0)  * -1 FROM PRODUCT_REFUND WHERE P_REFUND_ST = 'Y')
+	</select>
+	
+	
+	
+	<select id="selectRefundList">
+		SELECT  P_ORDER_CD, P_REFUND_AMOUNT, P_REFUND_DT, P_ORDER_DT,
+		        MEMBER_EMAIL, MEMBER_NAME, 
+		        PRODUCT_NM, OPTION_NM, OPTION_COUNT
+		FROM PRODUCT_REFUND
+		JOIN PRODUCT_ORDER USING(P_ORDER_CD)
+		JOIN MEMBER USING(MEMBER_NO)
+		JOIN OPTION_TB USING(P_ORDER_CD)
+		JOIN OPTION_TYPE USING(OPTION_CD)
+		JOIN PRODUCT USING(P_CD)
+	</select>
 	
 	
 	

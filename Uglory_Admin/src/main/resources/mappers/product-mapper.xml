@@ -166,6 +166,22 @@
 	
 			) A
 	</insert>
+
+	<!-- 상품 이미지 수정 -->	
+	<update id="updateProductImage">
+		UPDATE PRODUCT_IMG SET
+			IMG_RENAME = #{imageRename},
+			IMG_ROOT = #{imageRoot}
+		WHERE P_CD = #{productCode}
+		AND IMG_LEVEL = #{imageLevel}
+	</update>
+	
+	<!-- 상품 이미지 삽입(1개) -->
+	<insert id="insertImageOne">
+		INSERT INTO PRODUCT_IMG VALUES(
+			SEQ_P_IMG_NO.NEXTVAL, #{productCode}, #{imageRename}, #{imageRoot}, #{imageLevel}
+		)
+	</insert>
 	
 	<!-- 상품 정보 수정 -->
 	<update id="updateProduct">

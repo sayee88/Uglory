@@ -50,6 +50,7 @@
 
 		<typeAlias type="edu.kh.ugloryC.subscription.model.vo.Subscription" alias="subscription"/>
 		<typeAlias type="edu.kh.ugloryC.subscription.model.vo.OrderInfo" alias="orderInfo"/>
+		<typeAlias type="edu.kh.ugloryC.subscription.model.vo.Delivery" alias="delivery"/>
 
 		
 		

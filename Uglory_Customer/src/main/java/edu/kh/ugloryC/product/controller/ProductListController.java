@@ -45,7 +45,7 @@ public class ProductListController {
 	}
 	
 	
-	// 리스트 조회 AJAX
+	// 상품 리스트 조회 AJAX
 	@ResponseBody
 	@GetMapping("/product/list/all")
 	public String productListAll() {
@@ -55,6 +55,7 @@ public class ProductListController {
 		return new Gson().toJson(pList);
 	}
 	
+	// 카테고리별 상품 리스트 조회 AJAX
 	@ResponseBody
 	@GetMapping("/product/list/category")
 	public String category(@RequestParam(value="selectCategoryNo") int selectCategoryNo,

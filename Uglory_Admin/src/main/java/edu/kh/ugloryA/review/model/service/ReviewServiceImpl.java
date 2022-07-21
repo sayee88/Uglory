@@ -45,6 +45,16 @@ public class ReviewServiceImpl implements ReviewService {
 	public int deleteReview(int reviewNo) {
 		return dao.deleteReview(reviewNo);
 	}
+
+
+	// 리뷰 수 조회
+	@Override
+	public int countReview() {
+		return dao.countReview();
+	}
+	
+	
+	
 	
 	
 	

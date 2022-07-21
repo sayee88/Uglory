@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 import edu.kh.ugloryA.payment.model.vo.Chart;
 import edu.kh.ugloryA.payment.model.vo.Payment;
 import edu.kh.ugloryA.payment.model.vo.ProductPaymentDetail;
+import edu.kh.ugloryA.payment.model.vo.Refund;
 import edu.kh.ugloryA.payment.model.vo.SubsPaymentDetail;
 
 @Repository
@@ -77,6 +78,33 @@ public class PaymentDAO {
 	 */
 	public SubsPaymentDetail selectSubsPaymentDetail(String orderCode) {
 		return sqlSession.selectOne("paymentMapper.selectSubsPaymentDetail", orderCode);
+	}
+
+
+	/**
+	 * 당일 매출 조회
+	 * @return
+	 */
+	public int dailySales() {
+		return sqlSession.selectOne("paymentMapper.dailySales");
+	}
+
+
+	/**
+	 * 총 매출 조회
+	 * @return
+	 */
+	public int totalSales() {
+		return sqlSession.selectOne("paymentMapper.totalSales");
+	}
+
+
+	/**
+	 * 환불 내역 조회
+	 * @return
+	 */
+	public List<Refund> selectRefundList() {
+		return sqlSession.selectList("paymentMapper.selectRefundList");
 	}
 
 	

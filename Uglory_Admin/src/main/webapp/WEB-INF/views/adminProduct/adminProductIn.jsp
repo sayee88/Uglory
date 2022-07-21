@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<c:set var="product" value="${detailMap.product}" />
+<c:set var="imageList" value="${detailMap.productImage}" />
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -62,9 +66,13 @@
                 <section class="row justify-content-center mx-0 ">
                     <article class="col-xl-6 col-md-8 bg-light product-margin p-4 rounded">
 
-                        <form action="register?mode=${mode}&productCode=${product.productCode}" enctype="multipart/form-data" method="POST" onsubmit="return productValidate()">
+                        <form action="register?mode=${mode}" enctype="multipart/form-data" method="POST" onsubmit="return productValidate()">
                             <h2 class="text-start">상품 등록</h2>
                             <hr>
+
+                            <c:if test="${mode == 'update'}" >
+                                <input name="productCode" type="hidden" value="${product.productCode}">
+                            </c:if>
 
                             <div class="product-row">
                                 <span class="fw-bold">상품 분류</span>
@@ -114,17 +122,61 @@
                                 </div>
                             </div>
 
-                            <c:if test="${mode == 'insert'}">
-                                <div class="product-row">
-                                    <span class="fw-bold">상품 이미지</span>
-                                    <div class="productWrap">
-                                        <input type="file" class="productInput" name="productImg" id="productImg0" accept="image/*">
-                                        <input type="file" class="productInput" name="productImg" id="productImg1" accept="image/*">
-                                        <input type="file" class="productInput" name="productImg" id="productImg2" accept="image/*">
-                                        <input type="file" class="productInput" name="productImg" id="productImg3" accept="image/*">
-                                    </div>
+                            <c:forEach var="image" items="${imageList}">
+
+                                <c:choose>
+                                    <c:when test="${image.imageLevel == 0}">
+                                        <%-- c:set 변수는 page scope가 기본값 (조건문이 끝나도 사용 가능)  --%>
+                                        <c:set var="img0"  value="${contextPath}${image.imageRoot}" />
+                                    </c:when>
+
+                                    <c:when test="${image.imageLevel == 1}">
+                                        <c:set var="img1"  value="${contextPath}${image.imageRoot}" />
+                                    </c:when>
+
+                                    <c:when test="${image.imageLevel == 2}">
+                                        <c:set var="img2"  value="${contextPath}${image.imageRoot}" />
+                                    </c:when>
+
+                                    <c:when test="${image.imageLevel == 3}">
+                                        <c:set var="img3"  value="${contextPath}${image.imageRoot}" />
+                                    </c:when>
+                                    
+                                </c:choose>
+                            </c:forEach>
+
+                            <div class="product-row">
+                                <span class="fw-bold">상품 이미지</span>
+                                <div class="imgWrap thumbnailWrap">
+                                    <label for="productImg0">
+                                        <img class="preview" src="${img0}">
+                                    </label>
+                                    <input type="file" class="inputImage" name="productImg" id="productImg0" accept="image/*">
                                 </div>
-                            </c:if>
+                            </div>
+
+                            <div class="product-row">
+                                <div class="imgWrap">
+                                    <label for="productImg1">
+                                        <img class="preview" src="${img1}">
+                                    </label>
+                                    <input type="file" class="inputImage" name="productImg" id="productImg1" accept="image/*">
+                                </div>
+
+                                <div class="imgWrap">
+                                    <label for="productImg2">
+                                        <img class="preview" src="${img2}">
+                                    </label>
+                                    <input type="file" class="inputImage" name="productImg" id="productImg2" accept="image/*">
+                                </div>
+
+                                <div class="imgWrap">
+                                    <label for="productImg3">
+                                        <img class="preview" src="${img3}">
+                                    </label>
+                                    <input type="file" class="inputImage" name="productImg" id="productImg3" accept="image/*">
+                                </div>
+                            </div>
 
                             <!-- Button trigger modal -->
                             <div class="info-btn-area ps-3 pe-3">
@@ -139,7 +191,7 @@
                             
                             <div class="product-row">
                                 <%-- 취소 버튼 클릭 시 alret 띄우고 insert -> list로 / update -> detail로 --%>
-                                <button id="calcelInsert" type="button" class="btn btn-lg btn-secondary m-1 w-100">취소</button>
+                                <button id="cancelInsert" type="button" class="btn btn-lg btn-secondary m-1 w-100">취소</button>
                                 <button class="btn btn-lg btn-primary m-1 w-100">등록</button>
                             </div>
 
@@ -155,7 +207,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <%-- 취소 버튼 클릭 시 alret 띄우고 summernote 내용 삭제 --%>
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="cancleNote">취소</button>
+                                        <button type="button" class="btn btn-secondary" id="cancleNote">취소</button>
                                         <button type="button" class="btn btn-primary" data-bs-dismiss="modal">저장</button>
                                     </div>
                                     </div>
@@ -179,7 +231,7 @@
     <script>
         const contextPath = '${contextPath}';
         const mode = '${mode}';
-        const productCode = '';
+        const productCode = '${product.productCode}';
         const productInfo = '${product.productInfo}';
     </script>
 

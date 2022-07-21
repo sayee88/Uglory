@@ -88,6 +88,7 @@
 		INSERT INTO REVIEW
 		VALUES (#{reviewWrite.reviewNo}, #{reviewWrite.reviewContent}, SYSDATE, #{starRating}, 
 		#{reviewWrite.memberNo}, 
+	
 		
 		<if test="reviewWrite.productCode == 0">
 			NULL,
@@ -132,8 +133,8 @@
 		
 	<!-- 구독상품 미작성 리뷰 조회 -->
 	<select id="subUnWrittenList" resultMap="unWrittenSubscription_rm">
-		SELECT * FROM SUBS_ORDER
-		LEFT JOIN REVIEW USING(S_ORDER_CD)
+		SELECT S_ORDER_CD, S_DT, S_NM, S_PRICE
+		FROM SUBS_ORDER
 		JOIN SUBS USING(S_CD)
 		WHERE S_REVIEW_ST = 'N'
 		AND SUBS_ORDER.MEMBER_NO = #{memberNo}
@@ -143,8 +144,8 @@
 	
 	<!-- 개별상품 미작성 리뷰 조회 -->
 	<select id="productUnWrittenList" resultMap="unWrittenProduct_rm">
-		SELECT P_ORDER_CD, P_ORDER_DT, PRODUCT_NM,OPTION_NM, TOTAL_PRICE,REVIEW_CD, PRODUCT.P_CD FROM PRODUCT_ORDER
-		LEFT JOIN REVIEW USING(P_ORDER_CD)
+		SELECT P_ORDER_CD, P_ORDER_DT, PRODUCT_NM, OPTION_NM, TOTAL_PRICE, OPTION_TYPE.P_CD
+		FROM PRODUCT_ORDER
 		JOIN OPTION_TB USING(P_ORDER_CD)
 		JOIN OPTION_TYPE USING(OPTION_CD)
 		JOIN PRODUCT ON(OPTION_TYPE.P_CD = PRODUCT.P_CD)

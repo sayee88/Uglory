@@ -33,7 +33,7 @@ import edu.kh.ugloryC.member.model.vo.Member;
 import edu.kh.ugloryC.subscription.model.service.SubscriptionService;
 import edu.kh.ugloryC.subscription.model.vo.OrderInfo;
 
-@SessionAttributes({"orderInfo", "deliveryInfo", "loginMember", "message", "choice"})
+@SessionAttributes({"orderInfo", "deliveryInfo", "loginMember","choice"})
 @Controller
 public class SubscriptionController {
 	
@@ -57,20 +57,23 @@ public class SubscriptionController {
 		
 		if(loginMember == null) {
 			path = "redirect: member/login";
-			ra.addFlashAttribute("message", "로그인 후 이용해주세요");
-			
+			session.setAttribute("message", "로그인 후 이용해주세요");
 		}else {
 			int memberNo = loginMember.getMemberNo();
 			
 			String result = service.checkSubs(memberNo);
 			if(result != null) { // 구독 중
-				path = "redirect: /member/subscriptionStatus";
-				ra.addFlashAttribute("message", "구독 중인 상품이 있습니다. 확인해주세요.");
+				path = "redirect: member/subscriptionStatus";
+				session.setAttribute("message", "구독 중인 상품이 있습니다. 확인해주세요.");
 
 			}
+			if(result == null) {
+				path = "subscription/subscription1";
+				
+			}
 			
-			path = "subscription/subscription1";
 		}
+		
 		
 		return path;
 	}

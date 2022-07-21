@@ -109,13 +109,13 @@ public class ReviewServiceImpl implements ReviewService{
 			}
 			
 			
-//			String subOrderCode = reviewWrite.getSubOrderCode()
+			String subOrderCode = reviewWrite.getSubOrderCode();
 			
-			if(!reviewWrite.getSubOrderCode().equals("") ) {
+			if( subOrderCode != null ) {
 				int subRSTUpdate = dao.updateSubReviewST(reviewWrite);
 				
 			} else {
-				int productRSTUpdate = dao.updateSubReviewST(reviewWrite);
+				int productRSTUpdate = dao.updateProductReviewST(reviewWrite);
 				
 			}
 			
