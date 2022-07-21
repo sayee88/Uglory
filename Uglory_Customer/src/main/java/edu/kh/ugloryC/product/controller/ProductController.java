@@ -256,10 +256,18 @@ public class ProductController {
 	public String selectCart(@ModelAttribute("loginMember") Member loginMember, 
 							Model model) {
 		
-		ProductCart productCart = service.productCart(loginMember.getMemberNo()); 
+		// 장바구니 상품 조회
+		List<ProductCart> productCartList = service.productCart(loginMember.getMemberNo()); 
 		
-		model.addAttribute("productCart", productCart);
+		model.addAttribute("productCartList", productCartList);
 		
+		if(productCartList != null) {
+			
+			// 장바구니 개수 카운트
+			int cartCount = service.cartCount(loginMember.getMemberNo());
+			
+			model.addAttribute("cartCount", cartCount);
+		}
 		return "product/productCart";
 	}
 	

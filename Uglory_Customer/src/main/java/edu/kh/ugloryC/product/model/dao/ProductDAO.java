@@ -100,8 +100,17 @@ public class ProductDAO {
 	 * @param memberNo
 	 * @return productCart
 	 */
-	public ProductCart productCart(int memberNo) {
+	public List<ProductCart> productCart(int memberNo) {
 
-		return sqlSession.selectOne("productMapper.productCart", memberNo);
+		return sqlSession.selectList("productMapper.productCart", memberNo);
+	}
+
+	/** 장바구니 개수 조회
+	 * @param memberNo
+	 * @return cartCount
+	 */
+	public int cartCount(int memberNo) {
+
+		return sqlSession.selectOne("productMapper.cartCount", memberNo);
 	}
 }

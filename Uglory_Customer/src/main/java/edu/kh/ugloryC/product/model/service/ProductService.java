@@ -61,7 +61,13 @@ public interface ProductService {
 	 * @param memberNo
 	 * @return productCart
 	 */
-	ProductCart productCart(int memberNo);
+	List<ProductCart> productCart(int memberNo);
+
+	/** 장바구니 개수 조회
+	 * @param memberNo
+	 * @return cartCount
+	 */
+	int cartCount(int memberNo);
 	
 	
 	
