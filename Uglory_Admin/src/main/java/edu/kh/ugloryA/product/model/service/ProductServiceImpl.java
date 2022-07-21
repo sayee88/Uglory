@@ -45,9 +45,6 @@ public class ProductServiceImpl implements ProductService {
 		//농장 정보
 		Farm farm = dao.selectFarm(productCode);
 		
-		//옵션 정보
-		List<OptionType> optionList = dao.selectOptionType(productCode);
-		
 		//상품이미지
 		List<ProductImage> imageList = dao.selectPImage(productCode);
 		
@@ -55,7 +52,6 @@ public class ProductServiceImpl implements ProductService {
 		
 		detailMap.put("product", product);
 		detailMap.put("farm", farm);
-		detailMap.put("optionType", optionList);
 		detailMap.put("productImage", imageList);
 		
 		return detailMap;
@@ -201,6 +197,39 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public int deleteWeeklyProduct(int productNo) {
 		return dao.deleteWeeklyProduct(productNo);
+	}
+
+	//주별 상품 업데이트(스케쥴러 용)
+	@Transactional(rollbackFor = {Exception.class})
+	@Override
+	public int weeklyUpdate() {
+		
+		int result = 0;
+		int count = 0;
+		String key = "T";
+		
+		result = dao.weeklyUpdate(key);
+		
+		if(result > 0) {
+			
+			count++;
+			
+			key = "N";
+			result = dao.weeklyUpdate(key);
+			
+			if(result > 0) {
+				
+				count++;
+				
+				key = "A";
+				result = dao.weeklyUpdate(key);
+				
+				if(result > 0) {
+					count++;					
+				}
+			}
+		}
+		return count;
 	}
 	
 	
