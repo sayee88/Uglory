@@ -19,6 +19,7 @@ import edu.kh.ugloryA.payment.model.service.PaymentService;
 import edu.kh.ugloryA.payment.model.vo.Chart;
 import edu.kh.ugloryA.payment.model.vo.Payment;
 import edu.kh.ugloryA.payment.model.vo.ProductPaymentDetail;
+import edu.kh.ugloryA.payment.model.vo.Refund;
 import edu.kh.ugloryA.payment.model.vo.SubsPaymentDetail;
 
 @Controller
@@ -72,6 +73,15 @@ public class PaymentController {
 		return "managePayment/SubsPaymentDetail";
 	}
 	
+	@GetMapping("/refundList")
+	public String selectRefundList(Model model) {
+		
+		List<Refund> refundList = service.selectRefundList();
+		
+		model.addAttribute("refundList", refundList);
+		
+		return "managePayment/SalesList";
+	}
 	
 	
 	

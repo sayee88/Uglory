@@ -27,6 +27,7 @@
 		<typeAlias type="edu.kh.ugloryA.payment.model.vo.ProductPaymentDetail" alias="productPaymentDetail"/>
 		<typeAlias type="edu.kh.ugloryA.payment.model.vo.SubsPaymentDetail" alias="subsPaymentDetail"/>
 		<typeAlias type="edu.kh.ugloryA.payment.model.vo.Option" alias="option"/>
+		<typeAlias type="edu.kh.ugloryA.payment.model.vo.Refund" alias="refund"/>
 		
 		<typeAlias type="edu.kh.ugloryA.review.model.vo.Review" alias="review"/>
 		<typeAlias type="edu.kh.ugloryA.review.model.vo.ReviewDetail" alias="reviewDetail"/>

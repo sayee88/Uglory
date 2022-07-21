@@ -11,6 +11,7 @@ import edu.kh.ugloryA.payment.model.dao.PaymentDAO;
 import edu.kh.ugloryA.payment.model.vo.Chart;
 import edu.kh.ugloryA.payment.model.vo.Payment;
 import edu.kh.ugloryA.payment.model.vo.ProductPaymentDetail;
+import edu.kh.ugloryA.payment.model.vo.Refund;
 import edu.kh.ugloryA.payment.model.vo.SubsPaymentDetail;
 
 @Service
@@ -56,6 +57,35 @@ public class PaymentServiceImpl implements PaymentService {
 		return dao.selectSubsPaymentDetail(orderCode);
 	}
 
+
+	// 당일 매출
+	@Override
+	public int dailySales() {
+		return dao.dailySales();
+	}
+
+
+	// 총 매출
+	@Override
+	public int totalSales() {
+		return dao.totalSales();
+	}
+
+
+	// 환불 내역 조회
+	@Override
+	public List<Refund> selectRefundList() {
+		return dao.selectRefundList();
+	}
+	
+	
+	
+	
+	
+
+	
+	
+	
 
 	
 	
