@@ -18,4 +18,5 @@ public class UnWrittenProduct {
 
 	private int reviewCode;
 
+	private int productCode;
 }

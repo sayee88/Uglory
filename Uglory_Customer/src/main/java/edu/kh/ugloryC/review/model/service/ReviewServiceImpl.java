@@ -3,14 +3,18 @@ package edu.kh.ugloryC.review.model.service;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import edu.kh.ugloryC.common.Util;
 import edu.kh.ugloryC.member.model.vo.Member;
+import edu.kh.ugloryC.review.exception.InsertFailException;
 import edu.kh.ugloryC.review.model.dao.ReviewDAO;
 import edu.kh.ugloryC.review.model.vo.ReviewImage;
 import edu.kh.ugloryC.review.model.vo.ReviewSelectInfo;
@@ -25,8 +29,12 @@ public class ReviewServiceImpl implements ReviewService{
 	private ReviewDAO dao;
 
 	// 리뷰 + 이미지 삽입 서비스 구현
+	
+	// Spring 에서 트랜잭션 처리하는 방법
+	// insert update 많이 진행되는 코드에 작성 
+	@Transactional(rollbackFor = {Exception.class})
 	@Override
-	public int insertReview(ReviewWrite reviewWrite, List<MultipartFile> imageList, String webPath, String folderPath) throws IOException {
+	public int insertReview(ReviewWrite reviewWrite, List<MultipartFile> imageList, int reviewStar, String folderPath, String webPath) throws IOException {
 		
 		// 1. 리뷰 삽입
 		
@@ -34,10 +42,15 @@ public class ReviewServiceImpl implements ReviewService{
 		reviewWrite.setReviewContent(Util.XSSHandling(reviewWrite.getReviewContent()));
 		reviewWrite.setReviewContent(Util.newLineHandling(reviewWrite.getReviewContent()));
 		
-		// 2) 리뷰글 삽입 DAO로 호출
-		int result = dao.insertReview(reviewWrite);
+		// reviewWrite VO, reviewStar 담기 위한 Map 
+		Map<String, Object> reviewMap = new HashMap<String, Object>();
+		reviewMap.put("reviewWrite", reviewWrite);
+		reviewMap.put("starRating", reviewStar);
 		
-		if(result > 0) {
+		// 2) 리뷰글 삽입 DAO로 호출
+		int reviewNo = dao.insertReview(reviewMap);
+		
+		if(reviewNo > 0) {
 			
 			// 이미지를 삽입
 			// imageList : 파일 담겨있는 list
@@ -58,7 +71,7 @@ public class ReviewServiceImpl implements ReviewService{
 					
 					// reviewImage 객체를 생성 값 세팅 후 reviewImageList 추가
 					ReviewImage img = new ReviewImage();
-					img.setReviewNo(result);
+					img.setReviewNo(reviewNo);
 					img.setReviewImageLevel(i);
 					img.setReviewImageOriginal(imageList.get(i).getOriginalFilename());
 					img.setReviewImageReName(webPath + reName);
@@ -86,12 +99,12 @@ public class ReviewServiceImpl implements ReviewService{
 					
 				} else {
 					
-//					throw new InsertFailException();
+					throw new InsertFailException();
 				}
 			} 
 		}
 		
-		return result;
+		return reviewNo;
 		
 	}
 

@@ -129,7 +129,7 @@
                                 <p>나의 리뷰</p>
                                 <p>
                                     <span style="margin-right: 7px;">1</span>
-                                     <a href="${contextPath}/review/list/myReview">
+                                     <a href="${contextPath}/review/list">
                                         <span style="background-color: rgb(113, 214, 199); color:white; font-size: 15px; padding: 3px 8px; border-radius: 10px; font-weigth: bold;">ON</span>
                                     </a>
                                 </p>

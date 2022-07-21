@@ -157,9 +157,7 @@
                             <div class="subBox unWritten">
                                 <div>
                                     <span>구독박스</span>
-                                    <span>${fn:length(map.subUnWrittenList)}
-                                        <c:if test="${empty map.subUnWrittenList}"> 0 </c:if>
-                                    </span>
+                                    <span>${fn:length(map.subUnWrittenList)}</span>
                                 </div>
                                 <div></div>
                             </div>
@@ -167,9 +165,7 @@
                             <div class="product unWrittenNone">
                                 <div>
                                     <span>개별상품</span>
-                                    <span>${fn:length(map.productUnWrittenList)}
-                                        <c:if test="${empty map.productUnWrittenList}"> 0 </c:if>
-                                    </span>
+                                    <span>${fn:length(map.productUnWrittenList)} </span>
                                 </div>
                                 <div></div>
                             </div>
@@ -199,7 +195,7 @@
                                             <div>구매가격 : ${sub.subPrice} 원</div>
                                             <div>
                                                                 <%-- /review/list/unWritten --%>
-                                                <button onclick="location.href='../write/${sub.reviewCode}'">${sub.subOrderCode}리뷰작성하기</button>
+                                                <button onclick="location.href='../write/${sub.subOrderCode}?mode=insert&reviewCode=1'">리뷰작성하기</button>
                                             </div>
                                         </div>
                                     </div>
@@ -221,6 +217,7 @@
                     
                         <div class="unWrittenReview-List" id="productUnWrittenList">
                             <c:forEach var="pd" items="${map.productUnWrittenList}">
+
                                 <div>
                                     <div class="unWritten-list">
                                         <div class="unWritten-productList">
@@ -231,7 +228,7 @@
                                             <div>${pd.productName}</div>
                                             <div>구매가격 : ${pd.totalPrice} 원</div>
                                             <div>
-                                                <button onclick="location.href='../write/${pd.reviewCode}'">${pd.productOrderCode}리뷰작성하기</button>
+                                                <button onclick="location.href='../write/${pd.productOrderCode}?mode=insert&reviewCode=2&productCode=${pd.productCode}'">리뷰작성하기</button>
                                             </div>
                                         </div>
                                     </div>
