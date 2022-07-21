@@ -115,6 +115,7 @@ public class ReviewController {
 		
 		// 상품 정보 불러오기
 		// 구독 (구독이미지, 구독일, 구독상품명, 구독결제금액)
+		
 //		int sub = service.subSelect(loginMember, reviewCode);
 		
 		// 상품 (상품이미지, 구매일, 개별상품명, 옵션명, 총가격)
