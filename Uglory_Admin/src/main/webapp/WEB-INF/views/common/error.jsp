@@ -50,7 +50,7 @@
             <jsp:include page="/WEB-INF/views/common/header.jsp"/>
 
 
-            <!-- 404 Start -->
+            <!-- Error Start -->
             <main class="container-fluid pt-4 px-4">
                 <section class="row vh-100 bg-light rounded align-items-center justify-content-center mx-0">
                     <article class="col-md-8 text-center p-4">
@@ -61,7 +61,7 @@
                     </article>
                 </section>
             </main>
-            <!-- 404 End -->
+            <!-- Error End -->
 
             <!-- Footer include -->
             <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

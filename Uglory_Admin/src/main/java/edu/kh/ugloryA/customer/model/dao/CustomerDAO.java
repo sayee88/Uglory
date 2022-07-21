@@ -21,7 +21,7 @@ public class CustomerDAO {
 	private Logger logger = LoggerFactory.getLogger(CustomerDAO.class);
 
 	/**
-	 * ÀüÃ¼ °í°´ ¸ñ·Ï Á¶È¸ DAO
+	 * ï¿½ï¿½Ã¼ ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½È¸ DAO
 	 * @return customerList
 	 */
 	public List<Customer> selectAllCustomer() {
@@ -30,7 +30,7 @@ public class CustomerDAO {
 
 	
 	/**
-	 * Æ¯Á¤ Á¶°ÇÀ» ¸¸Á·ÇÏ´Â °í°´ ¸ñ·Ï Á¶È¸ DAO
+	 * Æ¯ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½È¸ DAO
 	 * @param key
 	 * @param query
 	 * @return customerList
@@ -46,7 +46,7 @@ public class CustomerDAO {
 
 	
 	/**
-	 * È¸¿ø »óÅÂ Á¶È¸ DAO
+	 * È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¸ DAO
 	 * @param customerNo
 	 * @return
 	 */
@@ -56,7 +56,7 @@ public class CustomerDAO {
 
 
 	/**
-	 * È¸¿ø °èÁ¤ Á¤Áö DAO
+	 * È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ DAO
 	 * @param customerNo
 	 * @return
 	 */
@@ -66,12 +66,17 @@ public class CustomerDAO {
 
 
 	/**
-	 * È¸¿ø °èÁ¤ È°¼ºÈ­ DAO
+	 * È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È°ï¿½ï¿½È­ DAO
 	 * @param customerNo
 	 * @return
 	 */
 	public int activeAccount(int customerNo) {
 		return sqlSession.update("customerMapper.activeAccount", customerNo);
+	}
+
+
+	public int countCustomer() {
+		return sqlSession.selectOne("customerMapper.countCustomer");
 	}
 
 
