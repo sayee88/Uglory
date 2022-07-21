@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import edu.kh.ugloryC.product.model.vo.OptionType;
+import edu.kh.ugloryC.product.model.vo.ProductCart;
 import edu.kh.ugloryC.product.model.vo.ProductDetail;
 import edu.kh.ugloryC.product.model.vo.ProductOrder;
 
@@ -71,30 +72,36 @@ public class ProductDAO {
 		return sqlSession.insert("productMapper.productPay", productOrder);
 	}
 
-
 	/** 장바구니 삽입을 위한 옵션 TB 삽입 (옵션 코드)
 	 * @param string
 	 * @return result
 	 */
 	public int insertOptionInfo(Map<String, Object> optionMap) {
 
-		return sqlSession.insert("productMapper.insertOptionInfo", optionMap);
+		int result =  sqlSession.insert("productMapper.insertOptionInfo", optionMap);
+		
+		if(result > 0) {
+			result = (int)optionMap.get("optionNo");
+		}
+		
+		return result;
 	}
 
-	/** 장바구니 테이블 삽입
+	/** 장바구니 테이블 삽입   
+	 * @param cartInsertMap
 	 * @return insertProductCart
 	 */
-	public int insertProductCart() {
-
-		return sqlSession.insert("productMapper.insertProductCart");
+	public int insertProductCart(Map<String, Object> cartInsertMap) {
+		
+		return sqlSession.insert("productMapper.insertProductCart", cartInsertMap);
 	}
 
-	/** 옵션 No 조회
-	 * @param cartOptionMap
-	 * @return selectOptionNo
+	/** 장바구니 조회
+	 * @param memberNo
+	 * @return productCart
 	 */
-	public List<Integer> selectOptionNo(Map<String, Object> cartOptionMap) {
+	public ProductCart productCart(int memberNo) {
 
-		return sqlSession.selectList("productMapper.selectOptionNo", cartOptionMap);
+		return sqlSession.selectOne("productMapper.productCart", memberNo);
 	}
 }

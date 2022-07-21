@@ -4,13 +4,10 @@ import java.util.List;
 import java.util.Map;
 
 import edu.kh.ugloryC.product.model.vo.OptionType;
+import edu.kh.ugloryC.product.model.vo.ProductCart;
 import edu.kh.ugloryC.product.model.vo.ProductDetail;
 import edu.kh.ugloryC.product.model.vo.ProductOrder;
 
-/**
- * @author user1
- *
- */
 public interface ProductService {
 
 	/** 상품 상세 조회 서비스
@@ -50,15 +47,22 @@ public interface ProductService {
 
 	/** 장바구니 삽입을 위한 옵션 TB 삽입
 	 * @param cartMap
-	 * @return insertOptionInfo
+	 * @return optionNoList
 	 */
-	int insertOptionInfo(List<String> optionCodeList, List<Integer> amountList);
+	List<Integer> insertOptionInfo(List<String> optionCodeList, List<Integer> amountList);
+
+	/** 장바구니 테이블 삽입
+	 * @param cartInsertMap
+	 * @return insertProductCart
+	 */
+	int insertProductCart(Map<String, Object> cartInsertMap);
+
+	/** 장바구니 조회
+	 * @param memberNo
+	 * @return productCart
+	 */
+	ProductCart productCart(int memberNo);
 	
-	/** 옵션 No 조회
-	 * @param cartOptionMap
-	 * @return selectOptionNo
-	 */
-	List<Integer> selectOptionNo(Map<String, Object> cartOptionMap);
 	
 	
 	

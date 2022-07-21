@@ -1,5 +1,6 @@
 package edu.kh.ugloryC.product.model.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import edu.kh.ugloryC.product.model.dao.ProductDAO;
 import edu.kh.ugloryC.product.model.vo.OptionType;
+import edu.kh.ugloryC.product.model.vo.ProductCart;
 import edu.kh.ugloryC.product.model.vo.ProductDetail;
 import edu.kh.ugloryC.product.model.vo.ProductOrder;
 
@@ -63,28 +65,37 @@ public class ProductServiceImpl implements ProductService {
 	// 장바구니 삽입을 위한 옵션 TB 삽입
 	@Transactional(rollbackFor = {Exception.class})
 	@Override
-	public int insertOptionInfo(List<String> optionCodeList, List<Integer> amountList) {
+	public List<Integer> insertOptionInfo(List<String> optionCodeList, List<Integer> amountList) {
 		
 		int result = 0;
 		
 		Map<String, Object> optionMap = new HashMap<String, Object>();
+		List<Integer> optionNoList = new ArrayList<Integer>();
 		
 		for(int i=0; i<optionCodeList.size(); i++) {
 			
 			optionMap.put("optionCode", optionCodeList.get(i));
 			optionMap.put("optionAmout", amountList.get(i));
-
+			
 			result = dao.insertOptionInfo(optionMap);
+			
+			optionNoList.add(result);
 		}
 		
-		return result;
+		return optionNoList;
 	}
 
-	// 옵션 No 조회
+	// 장바구니 테이블 삽입
 	@Override
-	public List<Integer> selectOptionNo(Map<String, Object> cartOptionMap) {
+	public int insertProductCart(Map<String, Object> cartInsertMap) {
 		
-		return dao.selectOptionNo(cartOptionMap);
+		return dao.insertProductCart(cartInsertMap);
 	}
 
+	// 장바구니 조회
+	@Override
+	public ProductCart productCart(int memberNo) {
+
+		return dao.productCart(memberNo);
+	}
 }

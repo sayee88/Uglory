@@ -13,6 +13,6 @@ public class ProductCart {
 	private String optionName;
 	private int productCode;
 	private int optionCode;
+	private int optionNo;
 	private int optionCount;
-	private int totalAmount;
 }

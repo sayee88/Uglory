@@ -210,7 +210,7 @@ function orderValidate(){
 document.getElementById("cartButton").addEventListener("click", function(){
 
 	const optionSpan = document.querySelectorAll(".optionSpan");
-	
+
 	// 옵션 선택했을 때
 	if(optionSpan.length > 0){
 	
@@ -225,11 +225,10 @@ document.getElementById("cartButton").addEventListener("click", function(){
 				"cartOption": JSON.stringify(optionObj),
 				"productCode" : productCode},
 
-			dataType : "JSON",
-			type : "GET",
+			type : "POST",
 
-			succcess : function(){
-
+			success : function(){
+				console.log("담기 성공");
 			} ,
 			error : function(request, status, error){
 				console.log("에러 발생");
