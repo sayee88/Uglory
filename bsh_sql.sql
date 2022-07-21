@@ -602,8 +602,9 @@ ALTER TABLE WEEKLY_P
 ADD FOREIGN KEY(OPTION_CD) REFERENCES OPTION_TYPE(OPTION_CD);
 
 COMMENT ON COLUMN WEEKLY_P.OPTION_CD IS '옵션 코드';
+SELECT * FROM SUBS_EXCEPTION;
 
-
+ALTER TABLE SUBS_EXCEPTION MODIFY P_CD NULL;
 
 
 
@@ -861,6 +862,27 @@ INSERT INTO PRODUCT_IMG VALUES(
 );
 
 
+INSERT INTO PRODUCT_IMG VALUES(
+    SEQ_P_IMG_NO.NEXTVAL, 4, 'vegsample.jpg', '/resources/img/productImage/vegsample.jpg', 0
+);
+INSERT INTO PRODUCT_IMG VALUES(
+    SEQ_P_IMG_NO.NEXTVAL, 5, 'vegsample.jpg', '/resources/img/productImage/vegsample.jpg', 0
+);
+INSERT INTO PRODUCT_IMG VALUES(
+    SEQ_P_IMG_NO.NEXTVAL, 6, 'vegsample.jpg', '/resources/img/productImage/vegsample.jpg', 0
+);
+INSERT INTO PRODUCT_IMG VALUES(
+    SEQ_P_IMG_NO.NEXTVAL, 7, 'vegsample.jpg', '/resources/img/productImage/vegsample.jpg', 0
+);
+
+UPDATE PRODUCT_IMG SET
+IMG_ROOT = '/resources/img/productImage/우엉.jpg'
+WHERE P_CD = 4;
+
+
+SELECT * FROM PRODUCT_IMG;
+SELECT * FROM PRODUCT;
+
 
 
 
@@ -973,14 +995,6 @@ JOIN P_CATEGORY USING(P_CATEGORY_NO);
 
 
 
-
-SELECT COUNT(*) FROM REVIEW
-WHERE P_CD = 1; 가 0보다 크다면
-
-
-
-
-
 SELECT (SELECT COUNT(*) FROM REVIEW
 WHERE P_CD = '1') STAR_COUNT
 FROM PRODUCT
@@ -1076,3 +1090,38 @@ SELECT * FROM
    WHERE MEMBER_NO = 1
    AND S_CANCEL = 'N')
 WHERE ROWNUM=1;
+
+INSERT INTO SUBS_PAY VALUES(
+   SEQ_S_PAY_NO.NEXTVAL,
+   SYSDATE,
+   #{amount},
+   #{memberNo},
+   #{subsOrderNo}
+);
+
+
+-- 구독 결제번호 데이터타입 변경 -- 필요없음!!!!!!!!!!!
+ALTER TABLE SUBS_PAY MODIFY S_PAY_NO VARCHAR2(50);
+-- 구독 제외 테이블 null 허용으로 변경
+ALTER TABLE SUBS_EXCEPTION MODIFY P_CD NULL;
+
+SELECT * FROM SUBS_ORDER;
+SELECT * FROM SUBS_DELIVERY;
+SELECT * FROM SUBS_PAY;
+
+INSERT INTO SUBS_DELIVERY VALUES (
+   SEQ_S_DELIVERY_CD.NEXTVAL,
+   #{firstDelDate},
+   1,
+   #{subsOrderNo}
+);
+
+-------
+INSERT INTO SUBS_DELIVERY VALUES (
+   SEQ_S_DELIVERY_CD,
+   SYSDATE,
+   1,
+   #{subsOrderNo}
+);
+
+SELECT * FROM PRODUCT;

@@ -45,6 +45,9 @@
     <jsp:include page="/WEB-INF/views/common/header-1.jsp" />
 
         <section class="subscribe">
+        
+        <form action="subscriptionStatus" method="POST" name="myPage-subscription" onsubmit="return subscriptionCancelValidate()">
+            
             <div>
                 <h1 class="subscribe-text" style="margin-bottom: 2.5rem;">내 구독 정보</h1>
             </div>
@@ -66,7 +69,7 @@
 
                 <%-- 구독 상품이 있을 때  --%>
 
-            <form action="subscriptionStatus" method="POST" name="myPage-subscription" onsubmit="return subscriptionCancelValidate()">
+            
 
                 <c:if test="${subCount > 0}">
                     <div class=sub-area>

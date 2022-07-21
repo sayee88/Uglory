@@ -79,17 +79,6 @@
                                 aria-controls="nav-fruit" aria-selected="false">과일류</button>
                         </div>
 
-                        <div class="listHead mt-3">
-                            <form>
-                                <select name="" id="">
-                                    <option value="">상품명</option>
-                                    <option value="">생산자</option>
-                                    <option value="">상품상태</option>
-                                </select>
-                                <input type="text" id="pSearch">
-                                <button type="button" class="btn btn-secondary"><i class="fa-solid fa-magnifying-glass"></i></button>
-                            </form>
-                        </div>
                     </nav>
 
                     <!-- 상품 리스트 시작 -->

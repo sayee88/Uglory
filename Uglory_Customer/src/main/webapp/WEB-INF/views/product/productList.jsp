@@ -91,14 +91,15 @@
             <div class="container">
                 <div class="row">
                     <div class="col" style="margin: 20px;">
+
                         <h2 >상품보기</h2>
                     </div>
-                    <div class="col container-fluid" style="justify-content: flex-end; margin: 20px;">
+                    <%-- <div class="col container-fluid" style="justify-content: flex-end; margin: 20px;">
                         <form action="Market" method="get" class="d-flex" style="height: 40px;">
                             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                             <button class="btn btn-outline-success" type="button" onclick="searchBtn()">Search</button>
                         </form>
-                    </div>
+                    </div> --%>
                 </div>
                 </div>
             
@@ -127,8 +128,11 @@
                    
                     <div class="col">
                         <%-- <a href="product/detail/"${categoryNo}/${productCode} --%>
-                        <div class="box">
-                        <img src="${contextPath}/resources/img/쿵야/바나나쿵야.png" alt="" class="product-img soldout">
+                        <div class="box" style="display : flex; justify-content:center;">
+                            <div class="img-box">
+                                <img src="${contextPath}/resources/img/쿵야/바나나쿵야.png" alt="" class="product-img soldout">                            
+                            </div>
+                            
                             <div>
                                 <h5>친환경 초당 옥수수 - 10개/20개</h5>
                                 <div class="flex-container">

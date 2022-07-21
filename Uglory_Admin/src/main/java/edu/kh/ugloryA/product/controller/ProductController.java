@@ -2,6 +2,7 @@ package edu.kh.ugloryA.product.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -27,6 +28,8 @@ import edu.kh.ugloryA.product.model.service.ProductService;
 import edu.kh.ugloryA.product.model.vo.OptionType;
 import edu.kh.ugloryA.product.model.vo.Product;
 import edu.kh.ugloryA.product.model.vo.ProductCategory;
+import edu.kh.ugloryA.product.model.vo.WeeklyList;
+import edu.kh.ugloryA.product.model.vo.WeeklyProduct;
 
 @Controller
 @RequestMapping("/product")
@@ -183,30 +186,99 @@ public class ProductController {
 		
 		//이번주
 		String key = "T";
-		Map<String, Object> mapT = service.selectWeeklyList(key);
+		WeeklyList thisWeek = service.selectWeeklyList(key);
 
 		//다음주
 		key = "N";
-		Map<String, Object> mapN = service.selectWeeklyList(key);
+		WeeklyList nextWeek = service.selectWeeklyList(key);
 		
 		//다다음주
 		key = "A";		
-		Map<String, Object> mapA = service.selectWeeklyList(key);
+		WeeklyList afterWeek = service.selectWeeklyList(key);
 		
-		model.addAttribute("mapT", mapT);
-		model.addAttribute("mapN", mapN);
-		model.addAttribute("mapA", mapA);
+		model.addAttribute("thisWeek", thisWeek);
+		model.addAttribute("nextWeek", nextWeek);
+		model.addAttribute("afterWeek", afterWeek);
 		
 		return "adminProduct/adminWeeklyList";
 	}
 	
 	//구독 리스트 등록 페이지
 	@GetMapping("/weekly/register")
-	public String weeklyInsert() {
+	public String weeklyInsert(Model model,
+							   String mode,
+							   String key) {
+		
+		WeeklyList weeklyList = new WeeklyList();
+		
+		if(mode.equals("insert")) {
+		
+			int result = service.insertWeeklyList(key);
+			
+			if(result>0) {
+				weeklyList = service.selectWeeklyList(key);
+			}
+			
+		} else {
+			weeklyList = service.selectWeeklyList(key);
+		}
+		
+		//상품 전부 조회
+		List<Product> productList = service.selectAll();
+		
+		model.addAttribute("weeklyList", weeklyList);
+		model.addAttribute("productList", productList);
+		
 		return "adminProduct/adminWeeklyListIn";
 	}
 	
-	//수정
+	//수정 페이지에서 리스트 목록 불러오기
+	@ResponseBody
+	@PostMapping("/weekly/selectAll")
+	public String selectWeeklyAll(int productListNo) {
+		
+		List<WeeklyProduct> deliveryList = service.selectWeeklyProduct(productListNo);
+		
+		return new Gson().toJson(deliveryList);
+	}
+	
+	//수정 페이지에서 옵션 목록 불러오기
+	@ResponseBody
+	@PostMapping("/weekly/selectOption")
+	public String selectWeeklyOption(int productCode) {
+		
+		List<OptionType> optionList = service.selectOption(productCode);
+		
+		return new Gson().toJson(optionList);
+	}
+	
+	@ResponseBody
+	@PostMapping("weekly/register")
+	public int insertWeeklyProduct(int optionCode,
+								   int productListNo) {
+
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("optionCode", optionCode);
+		map.put("productListNo", productListNo);
+		
+		//중복 검사
+		int result = service.listDupCheck(map);
+		
+		if(result>0) {
+			return 0;
+		}
+		
+		//상품 삽입
+		return service.insertWeeklyProduct(map);
+	}
+	
 	//삭제
+	@ResponseBody
+	@GetMapping("weekly/delete")
+	public int deleteWeeklyProduct(int productNo) {
+		return service.deleteWeeklyProduct(productNo);
+	}
+	
 	
 }
