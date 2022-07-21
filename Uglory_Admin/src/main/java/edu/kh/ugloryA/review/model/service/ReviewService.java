@@ -38,4 +38,11 @@ public interface ReviewService {
 	 */
 	int deleteReview(int reviewNo);
 
+
+	/**
+	 * 리뷰 수 조회
+	 * @return
+	 */
+	int countReview();
+
 }
