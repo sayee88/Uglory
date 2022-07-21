@@ -39,6 +39,7 @@ for(const selectDetailBtn of selectDetailList){
                 if(reviewDetail.imageList != null){
 
                     imageSlide.innerHTML = "";
+                    imgbox.innerHTML = "";
 
                     let idx = 0;
                     for(let reviewImage of reviewDetail.imageList){
@@ -51,10 +52,9 @@ for(const selectDetailBtn of selectDetailList){
                         imgSlide.setAttribute("src", window.location.origin+'/ugloryC' + reviewImage.reviewImageRename);
 
 
-                        // 여기가 문제야!!! ㅠㅠ 첫번째에만 어떻게 클래스 속성이랑 스타일 추가하지요?????? 
                         if(idx == 0){
-                            imgSlide.classList.add("active");
-                            imgSlide.setAttribute("style", "object-fit: contain;");
+                            divSlide.classList.add("active");
+                            divSlide.setAttribute("style", "object-fit: contain;");
                             idx++;
                         }
 
