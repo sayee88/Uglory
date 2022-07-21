@@ -56,3 +56,184 @@
 .listHead>form>*{height: 36px; border-radius: 5px; margin: 0 2px;}
 .listHead select{color:#6c757d; border:1px solid #ccc;}
 .listHead input{color:#6c757d; border:1px solid #ccc; width:200px;}
+
+
+/* 모달창 */
+.mymodal{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(160, 160, 160, 0.429);
+    border-radius: 1px;
+    border: 1px solid red; 
+}
+
+.modal-close{
+    background-color: rgb(50, 50, 50);
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.modal-close:hover{
+    cursor: pointer;
+}
+
+.modal-window{
+    background-color: white;
+    border-radius: 3px;
+    /* border: 1px solid red; */
+    width: 800px;
+    height: 500px;
+
+    position: absolute;
+
+    display: flex;
+}
+
+.modal-body > div{
+    /* border: 1px solid red; */
+    width: 50%;
+}
+
+.modal-mainImage > div:nth-of-type(1){
+    /* border: 1px solid red; */
+    height: 80%;
+}
+
+.active > img{
+    /* border: 1px solid red; */
+    width: 100%;
+    object-fit: contain;
+}
+
+.modal-imgList > div:hover{
+    cursor: pointer;
+}
+
+.modal-mainImage > div img{
+    /* border: 1px solid red; */
+    height: 20%;
+    object-fit: cover;
+}
+
+.modal-imgList{
+    display: flex;
+    /* height: 20%; */
+}
+
+.modal-imgList > div{
+    /* border: 1px solid red; */
+    width: 25%;
+}
+
+.img4{
+    background-color: rgb(255, 255, 255);
+    color: rgb(216, 216, 216);
+    text-align: center;
+    line-height: 0.9;
+    font-size: 100px;
+}
+
+.modal-imgList > div>img{
+    /* border: 1px solid red; */
+    width: 100%;
+    height: 100%;
+    object-fit: covers;
+}
+
+.modal-mycontent{
+    border-radius: 0;
+    padding: 20px;
+    /* border-left: 1px solid red; */
+}
+
+.modal-content-info{
+    display: flex;
+    /* padding: 20px 0; */
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgb(160, 160, 160);
+}
+
+.modal-content-info > div{
+    /* border: 1px solid red; */
+    width: 50%;
+}
+
+.modal-content-info > div:nth-of-type(1){
+    padding: 0 0 0 10px;
+}
+
+.purchase{
+    margin-top: 5px;
+    font-size: 13px;
+}
+
+.info-name-date > span:nth-of-type(1){
+    font-weight: bold;
+    font-size: 18px;
+    color: rgb(50, 50, 50);
+}
+
+.info-name-date > span:nth-of-type(2){
+    margin-left: 5px;
+    color: rgb(158, 158, 158);
+    padding-top: 10px;
+    font-size: 14px;
+}
+
+.modal-star > div{
+    text-align: end;
+    padding-right: 5px;
+}
+
+.modal-star > div > span{
+    font-size: 18px;
+    color: rgb(113, 214, 199);
+}
+
+.avgstar{
+    font-size: 20px;
+    font-weight: bold;
+    color:rgb(254, 161, 22);
+}
+
+
+
+.modal-content-text{
+    /* border: 1px solid red; */
+    padding: 20px 0;
+    font-size: 15px;
+    color: rgb(60, 60, 60);
+    height: 400px;
+}
+
+.modal-bottom{
+    /* border: 1px solid red; */
+    height: 20px;
+}
+
+.modal-sub{
+    /* border: 1px solid red; */
+    text-align: end;
+    bottom: 0;
+}
+
+.modal-sub > a{
+    color: blue;
+}
+
+.review-content-text-section:hover{
+    cursor: pointer;
+}

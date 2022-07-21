@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import edu.kh.ugloryA.review.model.vo.Review;
+import edu.kh.ugloryA.review.model.vo.ReviewDetail;
 
 @Repository
 public class ReviewDAO {
@@ -41,6 +42,26 @@ public class ReviewDAO {
 		map.put("query", query);
 		
 		return sqlSession.selectList("reviewMapper.searchReview", map);
+	}
+
+
+	/**
+	 * 리뷰 상세 내역 조회
+	 * @param reviewNo
+	 * @return
+	 */
+	public ReviewDetail selectReviewDetail(int reviewNo) {
+		return sqlSession.selectOne("reviewMapper.selectReviewDetail", reviewNo);
+	}
+
+
+	/**
+	 * 리뷰 삭제
+	 * @param reviewNo
+	 * @return
+	 */
+	public int deleteReview(int reviewNo) {
+		return sqlSession.update("reviewMapper.deleteReview", reviewNo);
 	}
 	
 }

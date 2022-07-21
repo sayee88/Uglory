@@ -3,6 +3,7 @@
 <mapper namespace="subscriptionMapper">
 	
 	
+	<!-- 결제 번호 생성 -->
 	<select id="createSOrderNo" resultType="string">
 		SELECT 
 		<choose>
@@ -17,16 +18,16 @@
 	</select>
 	
 	
-	
+	<!-- 첫배송일 지정 -->
 	<select id="createDelDate" resultType="date">
 		SELECT NEXT_DAY(SYSDATE, '수요일') FROM DUAL
 	</select>
 	
 	
-	
+	<!-- 주문 삽입 -->
 	<insert id="insertSubsOrder">
 		INSERT INTO SUBS_ORDER VALUES(
-			#{sOrderNo},
+			#{subsOrderNo},
 			DEFAULT, DEFAULT,
 			#{orderName},
 			#{orderPhone},
@@ -40,5 +41,47 @@
 	       )
 	</insert>
 	
+	<!-- 구독 중인지 확인 -->
+	<select id="checkSubs" resultType="string">
+		SELECT * FROM
+		   (SELECT * FROM SUBS_ORDER
+		   WHERE MEMBER_NO = #{memberNo}
+		   AND S_CANCEL = 'N')
+		WHERE ROWNUM=1
+	</select>
+	
+	
+	<!-- 제외 상품 삽입 -->
+	<insert id="exception">
+		INSERT INTO SUBS_EXCEPTION 
+		
+		<foreach collection="choice" item="item" open="(" close=")" separator=" UNION ALL ">
+			SELECT #{item}, #{subsOrderNo} FROM DUAL
+		</foreach>
+		
+	</insert>
+	
+	
+	<!-- 구독 결제정보 삽입 -->
+	<insert id="insertPay">
+		INSERT INTO SUBS_PAY VALUES(
+		   SEQ_S_PAY_NO.NEXTVAL,
+		   SYSDATE,
+		   #{amount},
+		   #{memberNo},
+		   #{subsOrderNo}
+		)
+	</insert>
+	
+	
+	
+	<insert id="insertDel">
+		INSERT INTO SUBS_DELIVERY VALUES (
+		   SEQ_S_DELIVERY_CD.NEXTVAL,
+		   #{firstDelDate},
+		   #{memberNo},
+		   #{subsOrderNo}
+		)
+	</insert>
 	
 </mapper>

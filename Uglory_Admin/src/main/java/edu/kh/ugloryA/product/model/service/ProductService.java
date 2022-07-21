@@ -10,6 +10,8 @@ import edu.kh.ugloryA.farm.model.vo.Farm;
 import edu.kh.ugloryA.product.model.vo.OptionType;
 import edu.kh.ugloryA.product.model.vo.Product;
 import edu.kh.ugloryA.product.model.vo.ProductCategory;
+import edu.kh.ugloryA.product.model.vo.WeeklyList;
+import edu.kh.ugloryA.product.model.vo.WeeklyProduct;
 
 public interface ProductService {
 
@@ -93,9 +95,51 @@ public interface ProductService {
 	/**
 	 * 주별 상품 리스트 조회
 	 * @param key
-	 * @return map
+	 * @return weeklyList
 	 */
-	Map<String, Object> selectWeeklyList(String key);
+	WeeklyList selectWeeklyList(String key);
+
+	/**
+	 * 주별 상품 리스트 만들기
+	 * @param key
+	 * @return result
+	 */
+	int insertWeeklyList(String key);
+
+	/**
+	 * 주별 상품 목록 조회
+	 * @param productListNo
+	 * @return deliveryList
+	 */
+	List<WeeklyProduct> selectWeeklyProduct(int productListNo);
+
+	/**
+	 * 상품 옵션 조회
+	 * @param productCode
+	 * @return optionList
+	 */
+	List<OptionType> selectOption(int productCode);
+
+	/**
+	 * 상품 목록 중복 검사
+	 * @param map
+	 * @return result
+	 */
+	int listDupCheck(Map<String, Object> map);
+
+	/**
+	 * 상품 목록 추가
+	 * @param map
+	 * @return result
+	 */
+	int insertWeeklyProduct(Map<String, Object> map);
+
+	/**
+	 * 상품 목록 삭제
+	 * @param productNo
+	 * @return result
+	 */
+	int deleteWeeklyProduct(int productNo);
 	
 	
 	
