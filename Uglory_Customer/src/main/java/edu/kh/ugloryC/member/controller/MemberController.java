@@ -66,7 +66,7 @@ public class MemberController {
 	// 개별 주문 상세 조회 조회
 	@ResponseBody
 	@GetMapping("/OrderHistoryDetail")
-	public String selectOrderHistoryDetail(int orderNo) {
+	public String selectOrderHistoryDetail(String orderNo) {
 		
 		return new Gson().toJson(service.selectOrderHistoryDetail(orderNo));
 		
