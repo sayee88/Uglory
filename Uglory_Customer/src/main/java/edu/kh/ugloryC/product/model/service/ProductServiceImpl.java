@@ -94,8 +94,17 @@ public class ProductServiceImpl implements ProductService {
 
 	// 장바구니 조회
 	@Override
-	public ProductCart productCart(int memberNo) {
+	public List<ProductCart> productCart(int memberNo) {
 
 		return dao.productCart(memberNo);
 	}
+
+	// 장바구니 개수 조회
+	@Override
+	public int cartCount(int memberNo) {
+		
+		return dao.cartCount(memberNo);
+	}
+	
+	
 }
