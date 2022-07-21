@@ -65,7 +65,20 @@
     font-weight: bold;
 }
 
+.box_review_section > a > p:nth-of-type(1){
+    text-align: left;
+    color: rgb(55, 55, 55);
+    font-weight: bold;
+}
+
 .box_review_section > p:nth-of-type(2){
+    text-align: left;
+    color: rgb(254, 161, 22);
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.box_review_section > a > p:nth-of-type(2){
     text-align: left;
     color: rgb(254, 161, 22);
     font-weight: bold;
@@ -541,6 +554,7 @@
 .box_review_section a:hover{
     cursor: pointer;
 }
+
 
 #productUnWrittenList{ display: none;}
 

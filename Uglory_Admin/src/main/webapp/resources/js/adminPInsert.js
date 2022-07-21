@@ -1,5 +1,5 @@
 //취소 버튼 클릭 시 alret 띄우고 insert -> list로 / update -> detail로
-document.getElementById("calcelInsert").addEventListener("click", function(){
+document.getElementById("cancelInsert").addEventListener("click", function(){
 
   console.log(mode);
   if(confirm('상품 등록을 취소하시겠습니까?')){
@@ -13,8 +13,6 @@ document.getElementById("calcelInsert").addEventListener("click", function(){
     return;
   }
 });
-
-
 
 // 상품 등록 유효성 검사
 const checkObj = {
@@ -124,6 +122,29 @@ productPrice.addEventListener("input", function(){
 
 });
 
+
+const inputImage = document.getElementsByClassName("inputImage");
+const preview = document.getElementsByClassName("preview");
+
+for(let i=0; i<inputImage.length; i++){
+
+  // 파일이 선택 되었을 때의 동작
+  inputImage[i].addEventListener("change", function(){
+
+    if(this.files[0] != undefined){ // 파일이 선택 되었을 때
+        const reader = new FileReader(); // 선택된 파일을 읽을 객체 생성
+        reader.readAsDataURL(this.files[0]);
+
+        reader.onload = function(e){ // reader가 파일을 다 읽어온 경우
+            preview[i].setAttribute("src", e.target.result);
+        }
+
+    } else { // 파일이 선택되지 않았을 때 (취소)
+        preview[i].removeAttribute("src"); // src 속성 제거
+    }
+  });
+
+}
 
 function productValidate(){
 

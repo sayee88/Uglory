@@ -15,5 +15,7 @@ public class SubHistory {
 	private String subName;	//구독상품 이름
 	private int subPayAmount;// 총가격
 	private String deliveryFlag; // 배송 상태
+
+	
 	
 }

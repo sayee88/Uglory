@@ -113,11 +113,11 @@
                     </div>
                     <div class="box_content">
                         <div class="box_content_d">
-                            <div class="box_review_section" onclick="location.reload()" style="cursor: pointer;">
-                                
-                                <p>전체 후기 수</p>
-                                <p>2000</p>
-                                
+                            <div class="box_review_section" style="cursor: pointer;">
+                                <a href="${contextPath}/review/list">
+                                    <p>전체 후기 수</p>
+                                    <p>2000</p>
+                                </a>
                             </div>
                             <div class="box_review_section box_center">
                                 <p>전체만족도</p>
@@ -177,7 +177,7 @@
                 <c:choose>
 
                     <c:when test="${empty map.subUnWrittenList}">
-                        작성할 리뷰 없음
+                        <div>작성할 리뷰 없음</div>
                     </c:when>
 
                     <c:otherwise>
@@ -210,7 +210,7 @@
                 <c:choose>
 
                     <c:when test="${empty map.productUnWrittenList}">
-                        작성할 리뷰 없음
+                        <div>작성할 리뷰 없음</div>
                     </c:when>
 
                     <c:otherwise>

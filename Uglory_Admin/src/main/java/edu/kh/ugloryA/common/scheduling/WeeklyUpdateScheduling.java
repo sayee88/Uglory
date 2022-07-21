@@ -25,7 +25,7 @@ public class WeeklyUpdateScheduling {
 	@Scheduled(cron="0 0 12 * * 1")
 	public void weeklyUpdate() {
 		
-		logger.info("weekly에서 1분마다 출력");
+		//logger.info("weekly에서 1분마다 출력");
 		
 		int count = service.weeklyUpdate();
 		

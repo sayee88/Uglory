@@ -29,6 +29,40 @@ function sample4_execDaumPostcode() {
 
 
 
+function subscriptionValidate(){
+
+    const box = document.getElementsByName("box");
+    const cycle = document.getElementsByName("cycle");
+
+    let boxChk = false;
+    let cycleChk = false;
+    
+    for(var i=0 ; i<box.length; i++){
+        if(box[i].checked == true){
+            boxChk = true;
+            break;
+        }
+    }
+    if(!boxChk){
+        alert("구독 상품을 선택해주세요.")
+        return false;
+    }
+    for(var i=0 ; i<cycle.length; i++){
+        if(cycle[i].checked == true){
+            cycleChk = true;
+            break;
+        }
+    }
+    if(!cycleChk){
+        alert("배송 주기를 선택해주세요.")
+        return false;
+    }
+
+
+}
+
+
+
 
 
 
