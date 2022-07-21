@@ -14,7 +14,7 @@ public class ReviewSelectInfo {
 	private int reviewTotalCount;
 	private int starAvg;
 	private int myReviewCount;
-	private int unWritten;
+	private int unWrittenCount;
 	
 	private int reviewCode;
 	
@@ -25,5 +25,7 @@ public class ReviewSelectInfo {
 	
 	private int memberNo;
 	private String memberName;
+	
+	private String thumbnail;
 
 }
