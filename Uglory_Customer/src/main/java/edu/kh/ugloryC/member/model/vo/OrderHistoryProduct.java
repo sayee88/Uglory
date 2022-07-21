@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class OrderHistoryProduct {
-	private int orderNo;
+	private String orderNo;
 	private String productName; // 상품 이름
 	private String productPrice; // 상품 가격
 	private String optionPrice; // 옵션 가격 
