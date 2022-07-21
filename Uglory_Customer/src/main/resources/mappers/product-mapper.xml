@@ -28,6 +28,16 @@
 		<result property="productName" column="PRODUCT_NM"/>
 		<result property="productCategoryNo" column="P_CATEGORY_NO"/>
 	</resultMap>
+	
+	<!-- 장바구니 조회 resultMap -->
+	<resultMap type="productCart" id="productCart_rm">
+		<id property="optionNo" column="OPTION_NO"/>
+		<result property="optionCode" column="OPTION_CD"/>
+		<result property="optionName" column="OPTION_NM"/>
+		<result property="productName" column="PRODUCT_NM"/>
+		<result property="productCode" column="P_CD"/>
+		<result property="optionCount" column="OPTION_COUNT"/>
+	</resultMap>
      
     <!-- 상품 상세 조회 -->
     <!-- 별점 개수, 리뷰 개수 필요 -->
@@ -92,17 +102,35 @@
 			#{pOrderCode})		
 	</insert>
 	
-	<!-- 장바구니 페이지 내 옵션 조회 -->
-	<select id="cartOptionList"  resultMap="orderOptionProduct_rm">
-		SELECT OPTION_CD, OPTION_NM, OPTION_PRICE, PRODUCT_NM, P_CD, P_CATEGORY.P_CATEGORY_NO
-		FROM OPTION_TYPE
-		JOIN PRODUCT USING(P_CD)
-		JOIN P_CATEGORY ON(PRODUCT.P_CATEGORY_NO = P_CATEGORY.P_CATEGORY_NO)
-		WHERE P_CD = ${productCode}
-		OR OPTION_CD IN 
-		<foreach item="item" collection="optionCodeList" open="(" separator="," close=")">
-			#{item}
+	<!-- 장바구니 테이블에 삽입을 위한 옵션TB 삽입 -->
+	<insert id="insertOptionInfo" useGeneratedKeys="true">
+	
+		<selectKey keyProperty="optionNo" resultType="_int" order="BEFORE">
+			SELECT SEQ_OPTION_NO.NEXTVAL FROM DUAL
+		</selectKey>
+		
+		INSERT INTO OPTION_TB VALUES
+		(#{optionNo}, #{optionCode}, #{optionAmout} , NULL)
+	</insert>
+	
+	<!-- 장바구니 삽입 -->
+	<insert id="insertProductCart">
+
+		INSERT INTO CART 
+		<foreach collection="optionNoList" item="optionNo" separator=" UNION ALL">
+			SELECT #{memberNo}, #{optionNo} FROM DUAL
 		</foreach>
+	</insert>
+	
+	<select id="productCart" resultMap="productCart_rm">
+		SELECT PRODUCT.P_CD, PRODUCT_NM, OPTION_TYPE.OPTION_CD, OPTION_NM, OPTION_TB.OPTION_NO
+		FROM PRODUCT
+		JOIN OPTION_TYPE ON (PRODUCT.P_CD = OPTION_TYPE.P_CD)
+		JOIN OPTION_TB ON (OPTION_TYPE.OPTION_CD = OPTION_TB.OPTION_CD)
+		JOIN CART ON (OPTION_TB.OPTION_NO = CART.OPTION_NO)
+		JOIN MEMBER ON(CART.MEMBER_NO = MEMBER.MEMBER_NO)
+		WHERE MEMBER.MEMBER_NO = #{memberNo}
 	</select>
+	
 </mapper>
 

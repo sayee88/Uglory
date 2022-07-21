@@ -51,9 +51,7 @@
                 a.setAttribute("href", "detail/"+product.categoryNo+"/"+product.productCode);
             
                 // 품절시 추가
-                // 접근하는 해당 객체에만 추가하고싶음
-                // 품절 스티커 css 왜 안돼~!~!~~
-                if(pList.productState = "O"){ 
+                if(product.productState == "O"){ 
                     product_img.classList.add("soldout");
             
                     const soldoutImg = document.createElement("img");
@@ -148,7 +146,7 @@ function category(selectCategoryNo){
                 a.setAttribute("href", "detail/"+product.categoryNo+"/"+product.productCode);
             
                 // 품절시 추가
-                if(pcList.productState = "O"){ 
+                if(product.productState == "O"){ 
                     product_img.classList.add("soldout");
             
                     const soldoutImg = document.createElement("img");

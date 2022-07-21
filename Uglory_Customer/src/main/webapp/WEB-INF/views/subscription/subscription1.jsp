@@ -50,8 +50,7 @@
 
 <body>
     <jsp:include page="/WEB-INF/views/common/header-1.jsp" />
-
-    <form action="${contextPath}/subscription/order">
+    <form action="${contextPath}/subscription/order" onsubmit="return subscriptionValidate()">
 
         <div id="box" style="padding-bottom: 200px;">
             <div style="width: 70%;">
@@ -117,7 +116,7 @@
                         <div>
                             <input type="radio" class="btn-check" name="cycle" id="danger-outlined2" autocomplete="off" value="2">
                             <label class="btn btn-outline-danger week-btn" for="danger-outlined2">격주</label>   
-                            <div class="wed">둘째, 넷째주 수요일 발송됩니다</div>
+                            <div class="wed">둘째, 넷째 주 수요일 발송됩니다</div>
                         </div>
                     </div>
 
@@ -164,7 +163,7 @@
                                         
                                             <div class="row">
                                                 <div class="col">
-                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="potato" value="1" disabled>
+                                                    <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="potato" value="1" >
                                                     <label class="form-check-label" for="potato">감자</label>
                                                 </div>
                                                 <div class="col">
@@ -437,7 +436,7 @@
                         </div>
                         
                         <div style="text-align: center; margin: 100px 0">
-                            <button class="submit-btn" onclick="location.href='${contextPath}/subscription/order'"> 다음</button>
+                            <button class="submit-btn"> 다음</button>
                         </div>
 
                     </div>

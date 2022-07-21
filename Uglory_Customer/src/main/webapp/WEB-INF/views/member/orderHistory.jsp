@@ -86,7 +86,7 @@
                                 <dl>
 
                                     <dt>결제금액</dt>
-                                    <dd>${item.totalPrice}</dd>
+                                    <dd>${item.totalPrice}원</dd>
                                 </dl>
 
 
@@ -236,11 +236,11 @@
                                 <dt>수령인 주소</dt>
                                 <dd>압구정로 79-16 1층${item.orderaddress}</dd>
                             </dl>
-
-                            <dl>
-                                <dt>배송 요청 사항</dt>
-                                <dd>굿뜨${item.deliveryReq}</dd>
-                            </dl>
+                            
+                                <dl>
+                                    <dt>배송 요청 사항</dt>
+                                    <dd>굿뜨${item.deliveryReq}</dd>
+                                </dl>
 
                         </div>
                     </div> --%>
