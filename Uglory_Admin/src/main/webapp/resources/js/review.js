@@ -40,6 +40,7 @@ for(const selectDetailBtn of selectDetailList){
 
                     imageSlide.innerHTML = "";
 
+                    let idx = 0;
                     for(let reviewImage of reviewDetail.imageList){
                         const divSlide = document.createElement("div");
                         divSlide.classList.add("carousel-item");
@@ -51,8 +52,11 @@ for(const selectDetailBtn of selectDetailList){
 
 
                         // 여기가 문제야!!! ㅠㅠ 첫번째에만 어떻게 클래스 속성이랑 스타일 추가하지요?????? 
-                        imageSlide.children[0].classList.add("active");
-                        imageSlide.children[0].setAttribute("style", "object-fit: contain;");
+                        if(idx == 0){
+                            imgSlide.classList.add("active");
+                            imgSlide.setAttribute("style", "object-fit: contain;");
+                            idx++;
+                        }
 
                         divSlide.append(imgSlide);
                         imageSlide.append(divSlide);
