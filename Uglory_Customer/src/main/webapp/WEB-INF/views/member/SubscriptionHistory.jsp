@@ -88,10 +88,28 @@
                                         <dd>${item.subPayAmount}</dd>
                                     </dl>
 
-                                    <dl>
-                                        <dt>배송상태</dt>
-                                        <dd>${item.deliveryFlag}</dd>
-                                    </dl>
+
+                                    <form action="subHistoryRefund" method="POST" name="myPage-subscription" onsubmit="return subscriptionCancelValidate()">
+                                      
+                                        <dl>
+                                            <dt>배송상태</dt>
+
+                                                <c:if test="${item.deliveryFlag == '배송 전'}">
+                                                    <div id="deliveryBox">
+                                                        <dd>${item.deliveryFlag}</dd>
+                                                        <button class=refundBtn >환불신청</button>
+                                                    </div>
+                                                </c:if>
+
+                                                <c:if test="${item.deliveryFlag != '배송 전'}">
+                                                    <div id="deliveryBox">
+                                                        <dd>${item.deliveryFlag}</dd>
+                                                    </div>
+                                                </c:if>
+                                        </dl>
+                                    
+                                    </form>
+
                                 </div>
                             </div>
 
@@ -118,7 +136,7 @@
 
                             <dl>
                                 <dt>결제 일시</dt>
-                                <dd> 2022/07/19 11:28:50${item.subDate}</dd>
+                                <dd> 2022/07/19 11:28:50${item.subPayDate}</dd>
                             </dl>
 
                             <dl>
