@@ -204,6 +204,15 @@ public class ProductDAO {
 		return sqlSession.delete("productMapper.deleteWeeklyProduct", productNo);
 	}
 
+	/**
+	 * 주별 상품 업데이트(스케쥴러용)
+	 * @param key
+	 * @return result
+	 */
+	public int weeklyUpdate(String key) {
+		return sqlSession.update("productMapper.weeklyUpdate", key);
+	}
+
 	
 	
 

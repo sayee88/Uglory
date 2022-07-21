@@ -24,11 +24,9 @@ public class Product {
 	private char productState;
 	private String productInfo;
 	
-	private Date productDate;
-	private Date productUpdate;
+	private String productDate;
+	private String productUpdate;
 	
-	private String productDateCh;
-	private String productUpdateCh;
 	private String thumbnail;
 	
 }
