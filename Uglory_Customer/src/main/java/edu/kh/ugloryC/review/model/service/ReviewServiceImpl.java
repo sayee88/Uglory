@@ -34,7 +34,7 @@ public class ReviewServiceImpl implements ReviewService{
 	// insert update 많이 진행되는 코드에 작성 
 	@Transactional(rollbackFor = {Exception.class})
 	@Override
-	public int insertReview(ReviewWrite reviewWrite, List<MultipartFile> imageList, int reviewStar, String folderPath, String webPath) throws IOException {
+	public int insertReview(ReviewWrite reviewWrite, List<MultipartFile> imageList, int reviewStar, String webPath, String folderPath) throws IOException {
 		
 		// 1. 리뷰 삽입
 		
@@ -97,11 +97,28 @@ public class ReviewServiceImpl implements ReviewService{
 						
 					}
 					
+					// 리뷰 작성 상태 update
+					// 구독
+					// 상품 
+					
+					
 				} else {
 					
 					throw new InsertFailException();
 				}
-			} 
+			}
+			
+			
+//			String subOrderCode = reviewWrite.getSubOrderCode()
+			
+			if(!reviewWrite.getSubOrderCode().equals("") ) {
+				int subRSTUpdate = dao.updateSubReviewST(reviewWrite);
+				
+			} else {
+				int productRSTUpdate = dao.updateSubReviewST(reviewWrite);
+				
+			}
+			
 		}
 		
 		return reviewNo;
