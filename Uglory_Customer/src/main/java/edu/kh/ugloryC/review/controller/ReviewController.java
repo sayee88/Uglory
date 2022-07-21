@@ -109,12 +109,12 @@ public class ReviewController {
 	
 	
 	// 리뷰 작성 화면 전환
-	@GetMapping("/write/{reviewCode}")
-	public String write( @PathVariable("reviewCode") int reviewCode,
+	@GetMapping("/write/{orderCode}")
+	public String write( @PathVariable("orderCode") int orderCode,
 			@ModelAttribute("loginMember")  Member loginMember, Model model, String mode) {
 		
 		// 상품 정보 불러오기
-		// 구독 (구독이미지, 구독일, 구독상품명, 구독결제금액)
+		// 구독 (구독이미지(따로 불러오고), 구독일, 구독상품명, 구독결제금액)
 		
 //		int sub = service.subSelect(loginMember, reviewCode);
 		
@@ -127,7 +127,7 @@ public class ReviewController {
 	// 리뷰 작성
 	@PostMapping("/write/{orderCode}")
 	public String write(@RequestParam(value="images", required=false) List<MultipartFile> imageList // 업로드 파일(이미지) 리스트
-			, @PathVariable("orderCode") int orderCode
+			, @PathVariable("orderCode") String orderCode
 			, int reviewCode
 			, String mode
 			, @ModelAttribute("loginMember") Member loginMember

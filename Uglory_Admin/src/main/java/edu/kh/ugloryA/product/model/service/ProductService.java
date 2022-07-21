@@ -140,6 +140,12 @@ public interface ProductService {
 	 * @return result
 	 */
 	int deleteWeeklyProduct(int productNo);
+
+	/**
+	 * 주별 상품 업데이트(스케쥴러용)
+	 * @return count
+	 */
+	int weeklyUpdate();
 	
 	
 	

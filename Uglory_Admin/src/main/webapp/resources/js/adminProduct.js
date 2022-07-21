@@ -58,7 +58,7 @@
                 // p (class="pData", ${productDateCh}) : 5
                 const pData1 = document.createElement("p");
                 pData1.classList.add("pData");
-                pData1.innerText = items.productDateCh;
+                pData1.innerText = items.productDate;
 
                 // div (class="card-con")    : 4
                 const cardCon2 = document.createElement("div");

@@ -1,25 +1,49 @@
 //조회 페이지일 때
 const thisWeekList = document.getElementById("thisWeekList");
-const nextWeekList = document.getElementById("nextWeekList");
-const afterWeekList = document.getElementById("afterWeekList");
 
 if(thisWeekList != null){
 
     (function(){
 
-        let productListNo = thisListNo;
-        selectList(productListNo);
+        let box = document.getElementById("thisWeekList");
 
-        productListNo = nextListNo;
-        selectList(productListNo);
+        if(thisListNo != ''){
+            selectList(thisListNo, box);
+        } else {
+            emptyWeeklyList(box);
+        }
+        
+        box = document.getElementById("nextWeekList");
 
-        productListNo = afterListNo;
-        selectList(productListNo);
+        if(nextListNo != ''){
+            selectList(nextListNo, box);
+        } else {
+            emptyWeeklyList(box);
+        }
+        
+        box = document.getElementById("afterWeekList");
+
+        if(afterListNo != ''){
+            selectList(afterListNo, box);
+        } else {
+            emptyWeeklyList(box);
+        }
 
     })();
 }
 
-function selectList(productListNo){
+function emptyWeeklyList(box){
+    const tr = document.createElement("tr");
+    const td = document.createElement("td");
+    td.classList.add("blur");
+    td.setAttribute("colspan", "2");
+    td.innerText = '상품 정보를 등록해주세요.';
+
+    tr.append(td);
+    box.append(tr);
+}
+
+function selectList(productListNo, box){
 
     $.ajax({
         url : "selectAll",
@@ -27,16 +51,6 @@ function selectList(productListNo){
         type : "POST",
         dataType : "JSON",
         success : function(deliveryList){
-
-            let box = document.getElementById("thisWeekList");
-
-            if(productListNo == nextListNo){
-                box = document.getElementById("nextWeekList");
-            }
-            
-            if(productListNo == afterListNo){
-                box = document.getElementById("afterWeekList");
-            }
 
             box.innerHTML = '';
 
@@ -53,16 +67,8 @@ function selectList(productListNo){
                     tr.append(td1, td2);
                     box.append(tr);
                 }
-
             } else {
-                const tr = document.createElement("tr");
-                const td = document.createElement("td");
-                td.classList.add("blur");
-                td.setAttribute("colspan", "2");
-                td.innerText = '상품 정보를 등록해주세요.';
-
-                tr.append(td);
-                box.append(tr);
+                emptyWeeklyList(box);
             }
         },
         error : function(req, status, error){
@@ -140,6 +146,11 @@ if(delPList!=null){
 
                 if(result > 0){
                     addList();
+
+                    opList.innerHTML = '';
+                    opList.append(defaultOp);
+                    pList.value = 0;
+
                 } else {
                     alert("이미 존재하는 상품입니다.");
                 }
@@ -239,6 +250,11 @@ function jumboOp(param) {
 
     let standard = param.replaceAll(regex,"");
     let jumbo = Number(standard)*1.5;
+
+    //소수점 둘째 자리까지 표시
+    jumbo *= 100;
+    jumbo = Math.round(jumbo);
+    jumbo /= 100;
 
     let unit = param.replaceAll(regex2, "");
     
