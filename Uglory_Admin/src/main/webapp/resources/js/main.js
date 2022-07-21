@@ -59,6 +59,11 @@
     });
 
 
+
+
+
+
+
     // Worldwide Sales Chart
     // var ctx1 = $("#worldwide-sales").get(0).getContext("2d");
     // var myChart1 = new Chart(ctx1, {
@@ -205,3 +210,19 @@
     
 })(jQuery);
 
+
+
+// 회원 수 조회
+(function(){
+    $.ajax({
+        url : contextPath + "/customer/countCustomer",
+        data : {},
+        type : "GET",
+        success : function(countCustomer){
+            document.getElementById("countCustomer").children[1].innerText = countCustomer;
+        },
+        error : function(){
+            console.log("조회 실패");
+        }
+    })
+})();

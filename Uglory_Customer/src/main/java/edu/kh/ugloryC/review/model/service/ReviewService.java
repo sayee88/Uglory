@@ -1,5 +1,6 @@
 package edu.kh.ugloryC.review.model.service;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
@@ -21,9 +22,13 @@ public interface ReviewService {
 	 * @param webPath
 	 * @param folderPath
 	 * @return result
+	 * @throws IOException
 	 */
-	int insertReview(ReviewWrite reviewWrite, List<MultipartFile> imageList, String webPath, String folderPath);
+	int insertReview(ReviewWrite reviewWrite, List<MultipartFile> imageList, int reviewStar, String folderPath, String webPath) throws IOException;
 
+	
+	
+//	int statusUpdate(int subOrderCode);
 	
 	/**
 	 * 구독상품 미작성 리뷰 조회 서비스
@@ -38,6 +43,10 @@ public interface ReviewService {
 	 * @return productUnWrittenList
 	 */
 	List<UnWrittenProduct> productUnWrittenList(Member loginMember);
+
+
+	
+	
 
 	
 	

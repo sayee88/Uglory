@@ -1,5 +1,6 @@
 package edu.kh.ugloryC.review.controller;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -46,14 +47,17 @@ public class ReviewController {
 	@GetMapping("/list")
 	public String reviewList(Model model){
 		
+		// 리뷰 목록 조회
+//		Map<String, Object> map = service.selectReviewList();
 		
+		model.addAttribute("");
 		
 		return "review/ReviewList";
 	}
 	
 	
 	@PostMapping("/list")
-	public String reviewList(Member loginMember, ReviewSelectInfo reviewCode ) {
+	public String reviewList(Member loginMember, ReviewSelectInfo reviewCode) {
 		
 		
 		
@@ -62,11 +66,11 @@ public class ReviewController {
 	
 	
 	
-	// 나의 리뷰
+	// 나의 리뷰 화면 전환
 	@GetMapping("/list/myReview")
 	public String myReview(){
 		
-		return null;
+		return "review/MyReview";
 	}
 	
 	
@@ -107,48 +111,44 @@ public class ReviewController {
 	// 리뷰 작성 화면 전환
 	@GetMapping("/write/{reviewCode}")
 	public String write( @PathVariable("reviewCode") int reviewCode,
-			@ModelAttribute("loginMember")  Member loginMember, Model model) {
+			@ModelAttribute("loginMember")  Member loginMember, Model model, String mode) {
 		
-		// 구독상품에 대한 미작성 리뷰 조회 
-		List<UnWrittenSubscription> subUnWrittenList = service.subUnWrittenList(loginMember);
+		// 상품 정보 불러오기
+		// 구독 (구독이미지, 구독일, 구독상품명, 구독결제금액)
 		
-		// 개별상품에 대한 미작성 리뷰 조회
-		List<UnWrittenProduct> productUnWrittenList = service.productUnWrittenList(loginMember);
+//		int sub = service.subSelect(loginMember, reviewCode);
 		
-		// map 에 담기
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("subUnWrittenList", subUnWrittenList);
-		map.put("productUnWrittenList", productUnWrittenList);
+		// 상품 (상품이미지, 구매일, 개별상품명, 옵션명, 총가격)
 		
-		model.addAttribute("map", map);
 		
 		return "review/ReviewWriteForm";
 	}
 	
 	// 리뷰 작성
-	@PostMapping("/write/{reviewCode}")
+	@PostMapping("/write/{orderCode}")
 	public String write(@RequestParam(value="images", required=false) List<MultipartFile> imageList // 업로드 파일(이미지) 리스트
-			, @PathVariable("reviewCode") int reviewCode
+			, @PathVariable("orderCode") int orderCode
+			, int reviewCode
 			, String mode
 			, @ModelAttribute("loginMember") Member loginMember
+			, @RequestParam("reviewStar") int reviewStar
 			, HttpServletRequest req
 			, RedirectAttributes ra
 			
 			,@RequestParam(value="deleteList", required=false) String deleteList
-			,ReviewWrite reviewWrite
-			,ReviewSelectInfo reviewSelectInfo) {
+			,ReviewWrite reviewWrite) throws IOException {
 		
 		// 로그인한 회원 (모달창에 보이게 해야함)
 		// (작성 완료 시 review/list로 이동)
 		// reviewSelectInfo 에 세팅
-		reviewSelectInfo.setMemberNo(loginMember.getMemberNo());
+		reviewWrite.setMemberNo(loginMember.getMemberNo());
+		
 		
 		// 이미지 저장 경로 얻어와야해(webPath/ folderPath)
 		String webPath = "/resources/img/review/";
 		
 		// folderPath = webPath까지의 실제 컴퓨터 경로
 		String folderPath = req.getSession().getServletContext().getRealPath(webPath);
-		
 		
 		// 삽입 / 수정 일때 구분
 		if(mode.equals("insert")) {
@@ -162,13 +162,19 @@ public class ReviewController {
 			
 			// insert 한 개라도 실패하면 rollback 
 			
-			int result = service.insertReview(reviewWrite ,imageList, webPath, folderPath);
+			if(reviewCode == 1) reviewWrite.setSubOrderCode(orderCode);
+			else 				reviewWrite.setProductOrderCode(orderCode);
+			
+			
+			
+			int reviewNo = service.insertReview(reviewWrite ,imageList, reviewStar, webPath, folderPath);
 			
 			String path = null;
 			String message = null;
 			
-			if(result > 0) {
+			if(reviewNo > 0) {
 				
+//				int statusUpdate = service.statusUpdate(reviewWrite.getSubOrderCode());
 				path = "../list";
 				message = "리뷰 등록 완료!";
 				
@@ -178,14 +184,14 @@ public class ReviewController {
 			}
 			
 			ra.addFlashAttribute("message", message);
-			return "redierct:" + path;
+			return "redirect:" + path;
 			
 		} else { // 수정일 부분
 			
 		}
 		
 		
-		return "/review/Review";
+		return "/review/ReviewList";
 	}
 	
 	

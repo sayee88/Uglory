@@ -64,9 +64,9 @@
                     <div class="col-sm-6 col-xl-3">
                         <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
                             <i class="fa fa-thin fa-people-group fa-3x text-primary"></i>
-                            <div class="ms-3">
+                            <div class="ms-3" id="countCustomer">
                                 <p class="mb-2">회원 수</p>
-                                <h6 class="mb-0">173</h6>
+                                <h6 class="mb-0"></h6>
                             </div>
                         </div>
                     </div>
@@ -151,6 +151,10 @@
 
     <%-- 차트 JS --%>
     <script src="${contextPath}/resources/js/chart.js"></script>
+
+    <script> 
+        const contextPath = "${contextPath}"; 
+    </script>
 
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
