@@ -24,7 +24,7 @@ public class ReviewWrite {
 	private int totalPrice;
 	
 	private int productCode;
-	private int productOrderCode;
-	private int subOrderCode;
+	private String productOrderCode;
+	private String subOrderCode;
 	
 }

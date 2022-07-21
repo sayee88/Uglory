@@ -82,6 +82,24 @@ public class ReviewDAO {
 	}
 
 
+	// 구독 리뷰 상태 'Y'
+	public int updateSubReviewST(ReviewWrite reviewWrite) {
+		
+		int subRSTUpdate = sqlSession.update("reviewMapper.updateSubReviewST");
+		
+		return subRSTUpdate;
+	}
+
+
+	// 상품 리뷰 상태 'Y'
+	public int updateProductReviewST() {
+		
+		int productRSTUpdate = sqlSession.update("reviewMapper.updateProductReviewST");
+		
+		return productRSTUpdate;
+	}
+
+
 	
 	
 
