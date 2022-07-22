@@ -1,7 +1,6 @@
 package edu.kh.ugloryA.product.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,18 +16,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.gson.Gson;
 
+import edu.kh.ugloryA.common.Util;
 import edu.kh.ugloryA.farm.model.vo.Farm;
 import edu.kh.ugloryA.product.model.service.ProductService;
 import edu.kh.ugloryA.product.model.vo.OptionType;
 import edu.kh.ugloryA.product.model.vo.Product;
 import edu.kh.ugloryA.product.model.vo.ProductCategory;
-import edu.kh.ugloryA.product.model.vo.ProductImage;
 import edu.kh.ugloryA.product.model.vo.WeeklyList;
 import edu.kh.ugloryA.product.model.vo.WeeklyProduct;
 
@@ -38,6 +36,7 @@ public class ProductController {
 	
 	@Autowired
 	private ProductService service;
+	
 	
 	//상품 조회 페이지
 	@GetMapping("/list")
@@ -280,6 +279,19 @@ public class ProductController {
 	@GetMapping("weekly/delete")
 	public int deleteWeeklyProduct(int productNo) {
 		return service.deleteWeeklyProduct(productNo);
+	}
+	
+	
+	//알림 보내기
+	@ResponseBody
+	@GetMapping("weekly/message")
+	public String sendMessage() {
+		
+		String result = "오류없음?";
+		
+		Util.sendMessage();
+		
+		return result;
 	}
 	
 	
