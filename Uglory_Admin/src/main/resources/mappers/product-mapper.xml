@@ -59,10 +59,14 @@
 	<resultMap type="weeklyProduct" id="weeklyProduct_rm">
 		<id property="productNo" column="PRODUCT_NO"/>
 		<result property="productListNo" column="P_LIST_NO"/>
-		<result property="optionCode" column="OPTION_CD"/>
+		
 		<result property="productCode" column="P_CD"/>
 		<result property="productName" column="PRODUCT_NM"/>
+		<result property="productPrice" column="PRODUCT_PRICE"/>
+
+		<result property="optionCode" column="OPTION_CD"/>
 		<result property="optionName" column="OPTION_NM"/>
+		<result property="optionPrice" column="OPTION_PRICE"/>
 	</resultMap>
 	
 	
@@ -217,7 +221,7 @@
 	
 	<!-- 리스트 내 상품 모두 조회 -->
 	<select id="selectWeeklyProduct" resultMap="weeklyProduct_rm">
-		SELECT PRODUCT_NO, P_CD, PRODUCT_NM, OPTION_CD, OPTION_NM
+		SELECT PRODUCT_NO, P_CD, PRODUCT_NM, PRODUCT_PRICE, OPTION_CD, OPTION_NM, OPTION_PRICE
 		FROM WEEKLY_P
 		JOIN OPTION_TYPE USING(OPTION_CD)
 		JOIN PRODUCT USING(P_CD)
@@ -292,6 +296,16 @@
 		SELECT S_ORDER_PHONE
 		FROM SUBS_ORDER
 		WHERE S_CANCEL = 'N'
+	</select>
+	
+	<select id="selectThisWeek" resultMap="weeklyProduct_rm">
+		SELECT PRODUCT_NM, OPTION_NM 
+		FROM WEEKLY_P
+		JOIN WEEKLY_LIST USING(P_LIST_NO)
+		JOIN OPTION_TYPE USING(OPTION_CD)
+		JOIN PRODUCT USING(P_CD)
+		WHERE EX_UPLOAD_DATE = 'T'
+		ORDER BY PRODUCT_NO
 	</select>
 
 </mapper>
