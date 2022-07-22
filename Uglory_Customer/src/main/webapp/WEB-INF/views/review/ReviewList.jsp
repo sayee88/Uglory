@@ -120,7 +120,7 @@
                                 </a>
                             </div>
                             <div class="box_review_section box_center">
-                                <p>전체만족도</p>
+                                <p>나의 리뷰 평점</p>
                                 <p>${map.result2}</p>
                             </div>
                         </div>
