@@ -203,7 +203,6 @@ function orderValidate(){
 		return false;
 	}
 
-	// return false;
 }	
 
 // 장바구니 담기 버튼 클릭 시 
