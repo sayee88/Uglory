@@ -45,6 +45,9 @@
 <body>
     <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
+            ${paramValues.choice}<hr>
+            ${requestScope.choice}<hr>
+            ${sessionScope.choice}<hr>
 
     <div id="box">
         <div style="width: 70%;">

@@ -11,10 +11,12 @@ public class WeeklyProduct {
 	
 	private int productNo;
 	private int productListNo;
-	private int optionCode;
 	
 	private int productCode;
 	private String productName;
+	private int productPrice;
+	
+	private int optionCode;
 	private String optionName;
-
+	private int optionPrice;
 }

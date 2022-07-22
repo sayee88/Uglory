@@ -51,7 +51,6 @@
     <div id="box">
         <div style="width: 70%;">
 
-
             memberName = ${loginMember.memberName}<hr>
             memberNo = ${loginMember.memberNo}<hr>
             choice = ${choice}<hr>
@@ -174,10 +173,10 @@
 
         if("${orderInfo.box}" == 1){
             boxName = "스탠다드";
-            amount = "15000";
+            amount = "20000";
         }else{
             boxName = "점보";
-            amount = "25000";
+            amount = "30000";
 
         }
 

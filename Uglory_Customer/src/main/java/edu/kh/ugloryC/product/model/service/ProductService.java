@@ -63,14 +63,14 @@ public interface ProductService {
 	 */
 	List<ProductCart> productCart(int memberNo);
 
-	/** 장바구니 개수 조회
-	 * @param memberNo
-	 * @return cartCount
+	/** 결제 시 OPTION_TB 테이블 삽입
+	 * @param optionCodeList
+	 * @param amountList
+	 * @param pOrderCode
+	 * @return
 	 */
-	int cartCount(int memberNo);
-	
-	
-	
+	int insertOptionTb(List<String> optionCodeList, List<String> amountList, String pOrderCode);
+
 	
 
 

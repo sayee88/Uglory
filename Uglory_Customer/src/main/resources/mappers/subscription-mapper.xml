@@ -128,7 +128,7 @@
 		INSERT INTO SUBS_DELIVERY VALUES (
 		   SEQ_S_DELIVERY_CD.NEXTVAL,
 		   #{firstDelDate},
-		   #{memberNo},
+		   1,
 		   #{subsOrderNo}
 		)
 	</insert>

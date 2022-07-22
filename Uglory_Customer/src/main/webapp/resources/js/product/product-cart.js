@@ -32,12 +32,23 @@ for(const deleteBtn of deleteBtnList){
 
         const cartDiv = deleteBtn.parentElement.parentElement;
         cartDiv.previousElementSibling.firstElementChild.innerText =  cartDiv.previousElementSibling.firstElementChild.innerText -1;
-        cartDiv.remove();
         
+        cartDiv.remove();
+
         // OPTIONnO
         $.ajax({
             url : contextPath + "/product/cartDelete",
-            data : 
+            data : {},
+            type : "POST",
+
+            success : function(){
+                console.log("담기 성공");
+            },
+            
+            error : function(request, status, error){
+				console.log("에러 발생");
+				console.log("상태코드 : " + request.status); 
+			}
         });
     });
 }
