@@ -159,6 +159,52 @@ public class ReviewServiceImpl implements ReviewService{
 		
 		return dao.subSelect(map);
 	}
+
+
+
+	// 리뷰 전체 후기 수 조회 서비스 구현
+	@Override
+	public int selectReviewAllCount() {
+		
+		return dao.selectReviewAllCount();
+	}
+
+
+
+	// 별점 평균 조회 서비스 구현
+	@Override
+	public double selectAvgStar() {
+		
+		return dao.selectAvgStar();
+	}
+
+
+
+	// 나의 리뷰 수 조회 서비스 구현
+	@Override
+	public int selectMyReviewCount(int memberNo) {
+		
+		return dao.selectMyReviewCount(memberNo);
+	}
+
+
+
+	// 나의 미작성 리뷰 수 조회 서비스 구현
+	@Override
+	public int selectUnWrittenCount(int memberNo) {
+		
+		return dao.selectUnWrittenCount(memberNo);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

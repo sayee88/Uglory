@@ -29,7 +29,7 @@ import edu.kh.ugloryC.review.model.vo.ReviewSelectInfo;
 
 @Controller
 @RequestMapping("/review")
-@SessionAttributes({"loginMember", })
+@SessionAttributes({"loginMember"})
 public class ReviewController {
 	
 	@Autowired
@@ -45,12 +45,30 @@ public class ReviewController {
 	
 	// 리뷰 후기 list 화면 전환 // 조회할 때 필요한 정보를 담아서
 	@GetMapping("/list")
-	public String reviewList(Model model){
+	public String reviewList(Model model, 
+			@ModelAttribute("loginMember") Member loginMember){
 		
-		// 리뷰 목록 조회
-//		Map<String, Object> map = service.selectReviewList();
+		// 리뷰 박스
+		// 리뷰 전체 후기 수 조회
+		int result1 = service.selectReviewAllCount();
 		
-		model.addAttribute("");
+		// 별점 평균 조회
+		double result2 = service.selectAvgStar();
+		
+		// 나의 리뷰 수 조회
+												// Member 객체를 가져오기위한 loginMember 변수명에서 memberNo를 꺼내 호출
+		int result3 = service.selectMyReviewCount(loginMember.getMemberNo());
+		
+		// 나의 미작성 리뷰 수 조회
+		int result4 = service.selectUnWrittenCount(loginMember.getMemberNo());
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("result1", result1);
+		map.put("result2", result2);
+		map.put("result3", result3);
+		map.put("result4", result4);
+		
+		model.addAttribute("map", map);
 		
 		return "review/ReviewList";
 	}
@@ -68,7 +86,30 @@ public class ReviewController {
 	
 	// 나의 리뷰 화면 전환
 	@GetMapping("/list/myReview")
-	public String myReview(){
+	public String myReview(Model model, 
+			@ModelAttribute("loginMember") Member loginMember){
+		
+		// 리뷰 박스
+		// 리뷰 전체 후기 수 조회
+		int result1 = service.selectReviewAllCount();
+		
+		// 별점 평균 조회
+		double result2 = service.selectAvgStar();
+		
+		// 나의 리뷰 수 조회
+												// Member 객체를 가져오기위한 loginMember 변수명에서 memberNo를 꺼내 호출
+		int result3 = service.selectMyReviewCount(loginMember.getMemberNo());
+		
+		// 나의 미작성 리뷰 수 조회
+		int result4 = service.selectUnWrittenCount(loginMember.getMemberNo());
+		
+		Map<String, Object> mybox = new HashMap<String, Object>();
+		mybox.put("result1", result1);
+		mybox.put("result2", result2);
+		mybox.put("result3", result3);
+		mybox.put("result4", result4);
+		
+		model.addAttribute("mybox", mybox);
 		
 		return "review/MyReview";
 	}
@@ -83,6 +124,20 @@ public class ReviewController {
 	public String unWritten(@ModelAttribute("loginMember")  Member loginMember, Model model){
 		
 		
+		// 리뷰 박스
+		// 리뷰 전체 후기 수 조회
+		int result1 = service.selectReviewAllCount();
+		
+		// 별점 평균 조회
+		double result2 = service.selectAvgStar();
+		
+		// 나의 리뷰 수 조회
+												// Member 객체를 가져오기위한 loginMember 변수명에서 memberNo를 꺼내 호출
+		int result3 = service.selectMyReviewCount(loginMember.getMemberNo());
+		
+		// 나의 미작성 리뷰 수 조회
+		int result4 = service.selectUnWrittenCount(loginMember.getMemberNo());
+		
 		
 		// 구독상품에 대한 미작성 리뷰 조회 
 		List<UnWrittenSubscription> subUnWrittenList = service.subUnWrittenList(loginMember);
@@ -94,6 +149,10 @@ public class ReviewController {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("subUnWrittenList", subUnWrittenList);
 		map.put("productUnWrittenList", productUnWrittenList);
+		map.put("result1", result1);
+		map.put("result2", result2);
+		map.put("result3", result3);
+		map.put("result4", result4);
 		
 		model.addAttribute("map", map);
 		
