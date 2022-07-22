@@ -60,9 +60,6 @@
 	</resultMap>
 	
 	
-	
-	
-	
 	<!-- 리뷰 이미지 조회용 -->
 	<resultMap type="reviewImage" id="reviewImage_rm">
 		<id property="reviewImageNo" column="REVIEW_IMG_NO" />
@@ -72,6 +69,31 @@
 	</resultMap>
 
 
+	<!-- 리뷰 작성 시 상품 조회용 -->
+	<resultMap type="unWrittenProduct" id="selectProduct_rm">
+		<id property="productOrderCode" column="P_ORDER_CD" />
+		<result property="productOrderDate" column="P_ORDER_DT" />
+		<result property="productName" column="PRODUCT_NM" />
+		<result property="optionName" column="OPTION_NM" />
+		<result property="totalPrice" column="TOTAL_PRICE" />
+	
+	</resultMap>
+
+	<!-- 리뷰 작성 시 구독 조회용 -->
+	<resultMap type="unWrittenSubscription" id="selectSub_rm">
+		<id property="subOrderCode" column="S_ORDER_CD" />
+		<result property="subDate" column="S_DT" />
+		<result property="subName" column="S_NM" />
+		<result property="subPrice" column="S_PRICE" />
+	</resultMap>
+	
+	
+	
+	
+	
+	
+	
+	
 
 
 
@@ -168,7 +190,30 @@
 		SET P_REVIEW_ST = 'Y'
 		WHERE P_ORDER_CD = #{productOrderCode}
 	</update>
-		
+	
+	
+	<!-- 리뷰 작성 시 상품 정보 조회 -->
+	<select id="productSelect" resultMap="selectProduct_rm">
+		SELECT P_ORDER_CD, PRODUCT_NM, P_ORDER_DT, OPTION_NM, TOTAL_PRICE
+		FROM PRODUCT_ORDER
+		JOIN MEMBER USING(MEMBER_NO)
+		JOIN OPTION_TB USING(P_ORDER_CD)
+		JOIN OPTION_TYPE USING(OPTION_CD)
+		JOIN PRODUCT ON(OPTION_TYPE.P_CD = PRODUCT.P_CD)
+		WHERE P_ORDER_CD = #{orderCode}
+		AND MEMBER_NO = #{memberNo}
+	</select>
+	
+	
+	<!-- 리뷰 작성 시 구독 정보 조회 -->
+	<select id="subSelect" resultMap="selectSub_rm">
+		SELECT S_ORDER_CD, S_DT, S_NM, S_PRICE
+		FROM SUBS_ORDER
+		JOIN MEMBER USING(MEMBER_NO)
+		JOIN SUBS USING(S_CD)
+		WHERE S_ORDER_CD = #{orderCode}
+		AND MEMBER_NO = #{memberNo}
+	</select>
 		
 		
 		
