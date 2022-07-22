@@ -53,7 +53,7 @@
 
         <div id="result1">
         <c:if test="${empty orderHistoryList}">
-        주문 내역이 없습니다.
+            <p>주문 내역이 없습니다.</p>
         </c:if>
         <c:if test="${!empty orderHistoryList}">
         
@@ -81,34 +81,56 @@
                             <div class="description" id=selectOne>
                                 <dl>
                                     <dt>주문번호</dt>
-                                    <a href="" id="goToDetail"><dd>${item.orderNo}</dd></a>
+                                  <dd>${item.orderNo}</dd>
                                 </dl>
-                                <dl>
 
-                                    <dt>결제금액</dt>
+                                <c:if test="${item.refundStatus == 0}">
+                                <dl>
+                                    <dt>환불금액</dt>
                                     <dd>${item.totalPrice}원</dd>
                                 </dl>
 
 
-                            <form action="orderHistoryRefund" method="POST" name="myPage-subscription" onsubmit="return refundValidate()">
+                
                                 <dl>
+                                    <%-- <c:if test="${item.refundStatus == 0}"> --%>
+
                                     <dt>배송상태</dt>
-                                        <c:if test="${item.deliveryFlag == '배송 전'}">
-                                                <div id="deliveryBox">
-                                                    <dd>${item.deliveryFlag}</dd>
-                                                    <button class=refundBtn >환불신청</button>
-                                                </div>
-                                            </c:if>
+                                
+                                    <div id="deliveryBox">
+                                        <dd>${item.deliveryFlag}</dd>
+                                        <button type="button" class="refundBtn" onclick="productRefund('${item.orderNo}', this)">환불신청</button>
+                                    </div>
 
-                                            <c:if test="${item.deliveryFlag != '배송 전'}">
-                                                <div id="deliveryBox">
-                                                    <dd>${item.deliveryFlag}</dd>
-                                                </div>
-                                            </c:if>
+                            </c:if>
+
+
+                            <c:if test="${item.refundStatus == 1}">
+                                <dl>
+                                    <dt>환불금액</dt>
+                                    <dd>${item.totalPrice}원</dd>
                                 </dl>
+            
+                                <dl>
+                                    <%-- <c:if test="${item.refundStatus == 0}"> --%>
 
-                            </form>
+                                    <dt>배송상태</dt>
+                                
+                                    <div id="deliveryBox">
+                                        <dd>${item.deliveryFlag}</dd>
+                                        
+                                    </div>
+                                    </c:if>
+                                    <%-- <c:if test="${item.refundStatus == 1}">
 
+                                    <dt>환불 처리 상태</dt>
+                                
+                                    <div id="deliveryBox">
+                                        <dd>환불 완료</dd>
+                                    </div>
+                                    </c:if> --%>
+                                        
+                                </dl>
                             </div>
                         </div>
 
@@ -151,8 +173,8 @@
 
 
                     <%-- <div class="order-head">
-                        <h2 class="orderTitle"> 주문 내역 상세 조회</h2>
-                    </div>
+                            <h2 class="orderTitle"> 주문 내역 상세 조회</h2>
+                         </div>
 
 
 

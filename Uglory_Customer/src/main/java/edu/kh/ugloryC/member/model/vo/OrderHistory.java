@@ -17,5 +17,6 @@ public class OrderHistory {
 	private String orderDate;// 주문 날짜
 	private int totalPrice; // 총가격
 	private int count; // 상품 개수 - 1개
+	private int refundStatus; // 환불 상태-> 0 정상 , 1 환불
 
 }
