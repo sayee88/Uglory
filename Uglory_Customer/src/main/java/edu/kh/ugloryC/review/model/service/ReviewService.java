@@ -64,6 +64,40 @@ public interface ReviewService {
 	UnWrittenSubscription subSelect(Map<String, Object> map);
 
 
+
+	/**
+	 * 리뷰 전체 후기 수 조회 서비스
+	 * @return result1
+	 */
+	int selectReviewAllCount();
+
+
+
+	/**
+	 * 별점 평균 조회 서비스
+	 * @return result2
+	 */
+	double selectAvgStar();
+
+
+
+	/**
+	 * 나의 리뷰 수 조회 서비스
+	 * @param memberNo
+	 * @return result3
+	 */
+	int selectMyReviewCount(int memberNo);
+
+
+
+	/**
+	 * 나의 미작성 리뷰 수 조회 서비스
+	 * @param memberNo
+	 * @return result4
+	 */
+	int selectUnWrittenCount(int memberNo);
+
+
 	
 	
 

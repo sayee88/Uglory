@@ -40,7 +40,6 @@
 		<result property="productName" column="PRODUCT_NM"/>
 		<result property="productPrice" column="PRODUCT_PRICE"/>
 		<result property="optionCount" column="OPTION_COUNT"/>
-		<result property="optionCount" column="OPTION_COUNT"/>
 	</resultMap>
      
     <!-- 상품 상세 조회 -->
