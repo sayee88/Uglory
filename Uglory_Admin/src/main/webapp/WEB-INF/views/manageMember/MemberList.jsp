@@ -108,7 +108,7 @@
                                             <td>${customer.customerName}</td>
 
                                             <c:choose>
-                                                <c:when test="${customer.subscriptionFlag == 'N'}">
+                                                <c:when test="${customer.subscriptionFlag != 0}">
                                                     <td>
                                                         <div>구독 회원</div>
                                                     </td>
