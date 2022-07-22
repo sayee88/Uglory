@@ -30,6 +30,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.ugloryC.member.model.vo.Member;
+import edu.kh.ugloryC.product.model.vo.ProductList;
 import edu.kh.ugloryC.subscription.model.service.SubscriptionService;
 import edu.kh.ugloryC.subscription.model.vo.OrderInfo;
 
@@ -68,6 +69,11 @@ public class SubscriptionController {
 
 			}
 			if(result == null) {
+				
+				List<ProductList> productList = service.selectProductList();
+				
+				model.addAttribute("productList", productList);
+				
 				path = "subscription/subscription1";
 				
 			}
@@ -87,6 +93,7 @@ public class SubscriptionController {
 									HttpServletResponse resp) {
 		
 //		Map<String, Object> orderInfo = new HashMap<String, Object>();
+		
 		
 		OrderInfo orderInfo = new OrderInfo();
 		
