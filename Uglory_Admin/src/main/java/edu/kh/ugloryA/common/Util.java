@@ -4,6 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.HashMap;
 
 import org.json.simple.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import net.nurigo.java_sdk.api.Message;
 import net.nurigo.java_sdk.exceptions.CoolsmsException;
@@ -25,32 +27,36 @@ public class Util {
 	}
 
 	
-	public static void sendMessage() {
+	public static int sendMessage(String text, String memberPhone) {
 		
-		String content = "";
+		int result = 0;
+		
+		Logger logger = LoggerFactory.getLogger(Util.class);
 		
 		//메세지 보내기 예제
-		
 		String api_key = "NCSHMUJDRA5SEMJV";
 	    String api_secret = "3BRDUZ0EWAXWXI7MUXPJBOTBN4LWOCZB";
 	    Message coolsms = new Message(api_key, api_secret);
+	    
 
 	    HashMap<String, String> params = new HashMap<String, String>();
-	    params.put("to", "01053262570");	// 수신전화번호
+	    params.put("to", memberPhone);	// 수신전화번호
 	    params.put("from", "01053262570");	// 발신전화번호. 테스트시에는 발신,수신 둘다 본인 번호로 하면 됨
-	    params.put("text", "첫번째 보내는 테스트 문자 메시지!");
-	    params.put("type", "SMS");
+	    params.put("text", text);
+	    params.put("type", "LMS");
 	    //params.put("app_version", "test app 1.2"); // application name and version
 
 	    try {
 	        JSONObject obj = (JSONObject) coolsms.send(params);
-	        System.out.println(obj.toString());
+	        logger.info(obj.toString());
+	        result = Integer.parseInt(obj.get("success_count").toString());
+	        
 	      } catch (CoolsmsException e) {
-	        System.out.println(e.getMessage());
-	        System.out.println(e.getCode());
-	      }      
+	    	logger.info(e.getMessage());
+	    	logger.info( Integer.toString(e.getCode()) );
+	      }
 	    
-		//return content;
+	    return result;
 	}
 
 }

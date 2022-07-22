@@ -23,6 +23,7 @@ import com.google.gson.Gson;
 
 import edu.kh.ugloryA.common.Util;
 import edu.kh.ugloryA.farm.model.vo.Farm;
+import edu.kh.ugloryA.payment.model.vo.SubsPaymentDetail;
 import edu.kh.ugloryA.product.model.service.ProductService;
 import edu.kh.ugloryA.product.model.vo.OptionType;
 import edu.kh.ugloryA.product.model.vo.Product;
@@ -254,7 +255,7 @@ public class ProductController {
 	}
 	
 	@ResponseBody
-	@PostMapping("weekly/register")
+	@PostMapping("/weekly/register")
 	public int insertWeeklyProduct(int optionCode,
 								   int productListNo) {
 
@@ -276,7 +277,7 @@ public class ProductController {
 	
 	//삭제
 	@ResponseBody
-	@GetMapping("weekly/delete")
+	@GetMapping("/weekly/delete")
 	public int deleteWeeklyProduct(int productNo) {
 		return service.deleteWeeklyProduct(productNo);
 	}
@@ -284,12 +285,28 @@ public class ProductController {
 	
 	//알림 보내기
 	@ResponseBody
-	@GetMapping("weekly/message")
-	public String sendMessage() {
+	@GetMapping("/weekly/message")
+	public int sendMessage(int productListNo) {
 		
-		String result = "오류없음?";
+		//text 만들기
+		String text = "[이번주 배송 상품 목록]\n";
 		
-		Util.sendMessage();
+		List<WeeklyProduct> deliveryList = service.selectWeeklyProduct(productListNo);
+		
+		String delivery = "";
+		
+		for(WeeklyProduct del : deliveryList) {
+			delivery += "- " + del.getProductName() + " " + del.getOptionName() + "\n";
+		}
+		
+		text += delivery + "\n* 표시된 상품 수량(용량)은 Standard 상품 기준입니다.";
+				
+		//phone 조회해오기
+		//조회해온 값 "value, value, ..." 형태로 만들기
+		List<String> phoneList = service.selectPhoneList();
+		String memberPhone = String.join(", ", phoneList);
+		
+		int result = Util.sendMessage(text, memberPhone);
 		
 		return result;
 	}

@@ -287,5 +287,11 @@
 		
 		WHERE EX_UPLOAD_DATE = #{key}
 	</update>
+	
+	<select id="selectPhoneList" resultType="string">
+		SELECT S_ORDER_PHONE
+		FROM SUBS_ORDER
+		WHERE S_CANCEL = 'N'
+	</select>
 
 </mapper>

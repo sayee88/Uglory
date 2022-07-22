@@ -30,6 +30,7 @@ if(thisWeekList != null){
         }
 
     })();
+
 }
 
 function emptyWeeklyList(box){
@@ -78,6 +79,29 @@ function selectList(productListNo, box){
     });
 
 }
+
+function sendMessage(productListNo){
+
+    $.ajax({
+        url : "message",
+        data : {"productListNo" : productListNo},
+        type : "GET",
+        success : function(result){
+
+            if(result > 0){
+                alert('알림 발송 성공!');
+            } else {
+                alert('알림 발송 실패ㅜㅜ');
+            }
+
+        },
+        error : function(req, status, error){
+            console.log("배송 알림 발송 중 에러 발생");
+            console.log(req.responseText);
+        }
+    });
+}
+
 
 //등록 페이지 일때
 const delPList = document.getElementById("del-p-list");
