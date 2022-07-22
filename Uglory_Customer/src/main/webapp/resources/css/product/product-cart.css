@@ -16,7 +16,7 @@
 /* 장바구니에 담긴 상품이 없을 경우 */
 .empty-product-cart{
     height: 30px;
-    background-color: #F6F6F6;
+    background-color: #EAEAEA;
     padding: 5px;
 }
 
@@ -33,13 +33,13 @@
 }
 
 /* 상품 선택 input */
-#cart-check{
+.cart-check{
     width: 16px;
     height: 16px;
 }
 
 /* 상품 삭제 버튼 */
-#cart-delete{
+.cart-delete{
     border: 0;
     background-color: transparent;
     color: gray;
@@ -61,7 +61,9 @@
 /* 상품 옵션 조회 영역 */
 .cart-option-info{
     height: 70px;
-    background-color: #F6F6F6;
+    background-color: white;
+    margin-top: 10px;
+    border-radius: 3px;
     padding: 10px;
     margin: 0px;
 }
@@ -78,9 +80,11 @@
 }
 
 /* 수량 감소 버튼 */
-#option-minus{
+.option-minus{
     border: 0;
-    background-color: white;
+    background-color: #EAEAEA;
+    border-radius: 3px;
+    text-align: center;
     width: 20px;
     height: 20px;
     font-size: 15px;
@@ -88,9 +92,11 @@
 }
 
 /* 수량 증가 버튼 */
-#option-plus{
+.option-plus{
     border: 0;
-    background-color: white;
+    background-color: #EAEAEA;
+    border-radius: 3px;
+    text-align: center;
     width: 20px;
     height: 20px;
     font-size: 15px;

@@ -121,6 +121,25 @@ public class ProductDAO {
 	public int insertProductImage(List<ProductImage> productImageList) {
 		return sqlSession.insert("productMapper.insertProductImage", productImageList);
 	}
+	
+	/**
+	 * 이미지 수정
+	 * @param img
+	 * @return result
+	 */
+	public int updateProductImage(ProductImage img) {
+		return sqlSession.update("productMapper.updateProductImage", img);
+	}
+
+	/**
+	 * 이미지 삽입(1개)
+	 * @param img
+	 * @return result
+	 */
+	public int insertImageOne(ProductImage img) {
+		return sqlSession.insert("productMapper.insertImageOne", img);
+	}
+	
 
 	/**
 	 * 상품 수정 DAO
@@ -212,6 +231,8 @@ public class ProductDAO {
 	public int weeklyUpdate(String key) {
 		return sqlSession.update("productMapper.weeklyUpdate", key);
 	}
+
+
 
 	
 	

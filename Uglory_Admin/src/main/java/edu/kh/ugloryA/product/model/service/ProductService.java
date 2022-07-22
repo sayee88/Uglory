@@ -65,18 +65,11 @@ public interface ProductService {
 	int insertProduct(Product product, List<MultipartFile> imageList, String webPath, String folderPath) throws IOException;
 
 	/**
-	 * 상품 1개 조회 Service
-	 * @param productCode
-	 * @return product
-	 */
-	Product selectProduct(int productCode);
-
-	/**
 	 * 상품 수정 Service
 	 * @param product
 	 * @return result
 	 */
-	int updateProduct(Product product);
+	int updateProduct(Product product, List<MultipartFile> imageList, String webPath, String folderPath) throws IOException;
 
 	/**
 	 * 옵션 등록 Service
