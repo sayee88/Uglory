@@ -51,8 +51,15 @@ public class SubscriptionServiceImpl implements SubscriptionService{
 		// 구독 배송 내역 삽입
 		int del = dao.insertDel(payInfo);
 		
+		// 결제 번호 생성
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddhhmmss");
+		String date = sdf.format(new Date());
+		int random = (int)(Math.random() * 10000);
+		String payNo = "SP" + date + "-" + random;
+		payInfo.put("payNo", payNo);
 		
-		int subPay = dao.insertPay(payInfo);
+		
+		int subPay = dao.insertPay(payInfo); //
 		
 		return result;
 	}
