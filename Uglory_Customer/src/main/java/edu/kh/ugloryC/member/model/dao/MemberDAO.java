@@ -85,12 +85,13 @@ public class MemberDAO {
 
 		return sqlSession.selectList("memberMapper.selectSubHistoryList",memberNo);
 	}
-
+	// 구독 상품 주문 상세 조회
 	public SubHistoryDetail selectSubHistoryDetail(String subOrderNo) {
 	
 		return sqlSession.selectOne("memberMapper.selectSubHistoryDetail",subOrderNo);
 	}
 
+	// 개별 상품 주문 환불 
 	public int productCancel(String orderNo) {
 		
 		return sqlSession.insert("memberMapper.productCancel",orderNo);
