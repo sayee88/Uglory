@@ -15,6 +15,7 @@ for (let btn of orderDetailBtn) {
         if(this.parentElement.parentElement.nextElementSibling.nextElementSibling != undefined){
             
             for(let i=8 ; i>2 ; i--){
+                
                 target.children[i].remove();
             }
             return;
@@ -63,10 +64,10 @@ for (let btn of orderDetailBtn) {
                     const img = document.createElement("img");
                     img.classList.add("orderImg");
 
-                    if(proc.imageRename == null){
+                    if(proc.imageRoot == null){
                         img.setAttribute("src", contextPath + "/resources/img/about/xmark.png" );
                     }else{
-                        img.setAttribute("src", window.location.origin+'/ugloryA' +  proc.imageRename);
+                        img.setAttribute("src", window.location.origin+'/ugloryA' +  proc.imageRoot);
                     }
 
                     
@@ -238,11 +239,41 @@ for (let btn of orderDetailBtn) {
 
 
 //개별 상품 환불 btn
-function refundValidate(){
+function productRefund(orderNo, btn){
 
-    if(!confirm("환불 신청을 하시겠습니까?")){
-        return false;
+    if(confirm("주문 취소를 하시겠습니까?")){
+
+
+        $.ajax({
+            url:"productCancel",
+            data:{"orderNo":orderNo},
+            type:"GET",
+            success: function(result){
+
+                if(result>0){
+
+                    alert("환불 신청되었습니다.");
+
+
+                    btn.parentElement.previousElementSibling.innerText = "환불 처리 상태";
+                    btn.previousElementSibling.innerText = "환불 완료";
+                    btn.remove();
+                    
+                }else{
+                    alert("환불 신청  실패. 다시 시도해주세요.")
+                }
+
+
+
+            },
+            error: function (request, status, error) {
+                console.log('error');
+            }
+
+        });
+
     }
-    return true;
 
 }
+
+

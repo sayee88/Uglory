@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.kh.ugloryC.member.model.vo.Member;
+import edu.kh.ugloryC.product.model.vo.ProductList;
 import edu.kh.ugloryC.subscription.model.dao.SubscriptionDAO;
 import edu.kh.ugloryC.subscription.model.vo.Delivery;
 import edu.kh.ugloryC.subscription.model.vo.OrderInfo;
@@ -127,6 +128,12 @@ public class SubscriptionServiceImpl implements SubscriptionService{
 	@Override
 	public int updateBiFri() {
 		return dao.updateBiFri();
+	}
+
+	// 구독 제외 상품용 상품 리스트 조회
+	@Override
+	public List<ProductList> selectProductList() {
+		return dao.selectProductList();
 	}
 
 	
