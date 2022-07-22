@@ -259,7 +259,7 @@
 			AND PRODUCT_ORDER.MEMBER_NO = #{memberNo}
 		
 		) AS MY_UNWRITTEN_REVIEW
-		FROM DUAL;
+		FROM DUAL
 	</select>
 	
 	
@@ -282,7 +282,7 @@
 			AND PRODUCT_ORDER.MEMBER_NO = #{memberNo}
 		
 		) AS MY_UNWRITTEN_REVIEW
-		FROM DUAL;
+		FROM DUAL
 	</select>
 		
 		
