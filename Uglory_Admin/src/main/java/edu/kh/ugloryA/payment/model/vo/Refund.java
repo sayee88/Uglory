@@ -20,4 +20,5 @@ public class Refund {
 	private String productName;
 	private String optionName;
 	private int optionCount;
+	private String refundStatement;
 }
