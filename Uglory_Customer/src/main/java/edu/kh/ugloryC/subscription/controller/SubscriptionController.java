@@ -34,7 +34,7 @@ import edu.kh.ugloryC.product.model.vo.ProductList;
 import edu.kh.ugloryC.subscription.model.service.SubscriptionService;
 import edu.kh.ugloryC.subscription.model.vo.OrderInfo;
 
-@SessionAttributes({"orderInfo", "deliveryInfo", "loginMember","choice"})
+@SessionAttributes({"orderInfo", "deliveryInfo", "loginMember"})
 @Controller
 public class SubscriptionController {
 	
@@ -51,6 +51,7 @@ public class SubscriptionController {
 							   RedirectAttributes ra,
 							   HttpServletRequest req,
 							   HttpServletResponse resp) {
+		
 		
 		Member loginMember = (Member)session.getAttribute("loginMember");
 		
@@ -99,11 +100,6 @@ public class SubscriptionController {
 		
 		orderInfo.setBox(box);
 		orderInfo.setCycle(cycle);
-//		orderInfo.setChoice(choice); -> list는 set 못함 -> 따로 모델로 담음
-		
-//		orderInfo.put("box", box);
-//		orderInfo.put("cycle", cycle);
-//		orderInfo.put("choice", choice);
 		
 		// 결제 번호 생성
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddhhmmss");
