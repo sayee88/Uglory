@@ -4,6 +4,9 @@
 <%-- 문자열 관련 함수(메서드) 제공 JSTL (EL형식으로 작성) --%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
+<c:set var="refundList" value="${map.refundList}" />
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -100,7 +103,7 @@
                                             <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
                                                 <div class="ms-3" id="countCustomer">
                                                     <p class="mb-2">구독</p>
-                                                    <h6 class="mb-0">건</h6>
+                                                    <h6 class="mb-0">${map.subsCount} 건</h6>
                                                 </div>
                                             </div>
                                         </div>
@@ -133,33 +136,35 @@
 
                                 <div class="faq-content-list">
                                     <div>
-                                        <forEach>
-                                            <button class="faq-list" data-bs-toggle="collapse" data-bs-target="#collapse-4">SP2207211928-17(주문번호) / 100,400원(환불 금액)</button>
-                                            <div class="faq-content collapse" id="collapse-4">
-                                                <table class="table table-borderless farmTable mt-4">
-                                                    <thead>
-                                                        <tr>
-                                                            <th scope="col">주문 번호</th>
-                                                            <th scope="col">주문자 아이디(이름)</th>
-                                                            <th scope="col">상품명</th>
-                                                            <th scope="col">옵션 * 수량</th>
-                                                            <th scope="col">주문일 / 환불 요청일</th>
-                                                            <th scope="col">환불 금액</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <td>SP2207211928-17</td>
-                                                            <td>ksy@uglory.com (권순영)</td>
-                                                            <td>고구마</td>
-                                                            <td>7.5kg * 1</td>
-                                                            <td>220721 / 220721</td>
-                                                            <td>100,400원</td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </forEach>
+                                        <c:if test="${!empty refundList}">
+                                            <c:forEach var="refund" items="${refundList}">
+                                                <button class="faq-list" data-bs-toggle="collapse" data-bs-target="#collapse-4">${refund.orderCode} / ${refund.refundAmount}</button>
+                                                <div class="faq-content collapse" id="collapse-4">
+                                                    <table class="table table-borderless farmTable mt-4">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">주문 번호</th>
+                                                                <th scope="col">주문자 아이디(이름)</th>
+                                                                <th scope="col">상품명</th>
+                                                                <th scope="col">옵션 * 수량</th>
+                                                                <th scope="col">주문일 / 환불 요청일</th>
+                                                                <th scope="col">환불 금액</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>${refund.orderCode}</td>
+                                                                <td>${refund.customerEmail} / ${refund.customerName}</td>
+                                                                <td>${refund.productName}</td>
+                                                                <td>${refund.optionName} * ${refund.optionCount}</td>
+                                                                <td>${refund.orderDate} / ${refund.refundDate}</td>
+                                                                <td>${refund.refundAmount}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </c:forEach>
+                                        </c:if>
                                     </div>
                                 </div>
                             </div>
