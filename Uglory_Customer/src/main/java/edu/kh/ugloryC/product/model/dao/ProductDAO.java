@@ -105,12 +105,12 @@ public class ProductDAO {
 		return sqlSession.selectList("productMapper.productCart", memberNo);
 	}
 
-	/** 장바구니 개수 조회
-	 * @param memberNo
-	 * @return cartCount
+	/** 결제 시 OPTION_TB 테이블 삽입
+	 * @param optionMap
+	 * @return result
 	 */
-	public int cartCount(int memberNo) {
+	public int insertOptionTb(Map<String, Object> optionMap) {
 
-		return sqlSession.selectOne("productMapper.cartCount", memberNo);
+		return sqlSession.insert("productMapper.insertOptionTb", optionMap);
 	}
 }

@@ -241,6 +241,14 @@ public class ProductDAO {
 		return sqlSession.selectList("productMapper.selectPhoneList");
 	}
 
+	/**
+	 * 알림 발송용 이번주 내역 발송
+	 * @return deliveryList
+	 */
+	public List<WeeklyProduct> selectThisWeek() {
+		return sqlSession.selectList("productMapper.selectThisWeek");
+	}
+
 
 
 	
