@@ -3,7 +3,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"  %>
 
 <c:set var="productCode" value="${detail.productCode}" />
-<c:set var="categoryNo" value="${detail.categoryNo}" />
 
 <!DOCTYPE html>
 <html lang="en">
@@ -262,7 +261,6 @@
 
         <script>
             const productCode = "${productCode}";
-            const categoryNo = "${categoryNo}";
             const contextPath = "${contextPath}";
         </script>
 

@@ -99,12 +99,26 @@ public class ProductServiceImpl implements ProductService {
 		return dao.productCart(memberNo);
 	}
 
-	// 장바구니 개수 조회
+	// 결제 시 OPTION_TB 테이블 삽입
 	@Override
-	public int cartCount(int memberNo) {
+	public int insertOptionTb(List<String> optionCodeList, List<String> amountList, String pOrderCode) {
+
+		int result = 0;
 		
-		return dao.cartCount(memberNo);
+		Map<String, Object> optionMap = new HashMap<String, Object>();
+		
+		optionMap.put("pOrderCode", pOrderCode);
+		
+		for(int i=0; i<optionCodeList.size(); i++) {
+			
+			optionMap.put("optionCode", optionCodeList.get(i));
+			optionMap.put("optionAmout", amountList.get(i));
+			
+			result = dao.insertOptionTb(optionMap);
+		}
+			
+		return result;
 	}
-	
+
 	
 }
