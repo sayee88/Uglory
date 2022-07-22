@@ -243,3 +243,7 @@ if(subBtn != undefined){
 }
 
 
+
+
+// value값이 p_cd에 없을 때
+// product 내역 조회 해서 foreach

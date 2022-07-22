@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import edu.kh.ugloryC.member.model.vo.Member;
+import edu.kh.ugloryC.product.model.vo.ProductList;
 import edu.kh.ugloryC.subscription.model.vo.Delivery;
 import edu.kh.ugloryC.subscription.model.vo.OrderInfo;
 
@@ -33,5 +34,8 @@ public interface SubscriptionService {
 
 	// 격주 금요일 배송완으로 변경
 	int updateBiFri();
+
+	// 상품 리스트 조회(구독 제외 상품 조회용)
+	List<ProductList> selectProductList();
 
 }
