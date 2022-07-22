@@ -116,19 +116,19 @@
                             <div class="box_review_section" style="cursor: pointer;">
                                 <a href="${contextPath}/review/list">
                                     <p>전체 후기 수</p>
-                                    <p>2000</p>
+                                    <p>${mybox.result1}</p>
                                 </a>
                             </div>
                             <div class="box_review_section box_center">
                                 <p>전체만족도</p>
-                                <p>4.8</p>
+                                <p>${mybox.result2}</p>
                             </div>
                         </div>
                         <div class="box_content_d">
                             <div class="box_review_section box_center">
                                 <p>나의 리뷰</p>
                                 <p>
-                                    <span style="margin-right: 7px;">1</span>
+                                    <span style="margin-right: 7px;">${mybox.result3}</span>
                                      <a href="${contextPath}/review/list">
                                         <span style="background-color: rgb(113, 214, 199); color:white; font-size: 15px; padding: 3px 8px; border-radius: 10px; font-weigth: bold;">ON</span>
                                     </a>
@@ -137,7 +137,7 @@
                             <div class="box_review_section box_center">
                                 <p>미작성 리뷰</p>
                                 <p>
-                                    <span style="margin-right: 15px;">2</span>
+                                    <span style="margin-right: 15px;">${mybox.result4}</span>
                                     <a href="${contextPath}/review/list/unWritten">
                                         <span style="font-size: 15px; color: rgb(80, 124, 254);">쓰기 >></span>
                                     </a>
@@ -149,6 +149,15 @@
 
                 <!-- 나의 리뷰 목록 조회 -->
                 <div class="myreview-section">
+
+                <!-- category -->
+                    <div class="category_section"> 
+                        <div class="category_button">
+                            <div style="background-color: rgb(113, 214, 199); color:white">모두보기</div>
+                            <div>구독박스</div>
+                            <div>상점</div>
+                        </div>
+                    </div>
 
                 <div class="myreview-list">
                     <div class="myreview-content">

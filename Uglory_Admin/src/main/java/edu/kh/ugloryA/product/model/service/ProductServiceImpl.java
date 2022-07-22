@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import edu.kh.ugloryA.common.Util;
 import edu.kh.ugloryA.farm.model.vo.Farm;
+import edu.kh.ugloryA.payment.model.vo.SubsPaymentDetail;
 import edu.kh.ugloryA.product.model.dao.ProductDAO;
 import edu.kh.ugloryA.product.model.exception.InsertFailException;
 import edu.kh.ugloryA.product.model.vo.OptionType;
@@ -277,25 +278,11 @@ public class ProductServiceImpl implements ProductService {
 		}
 		return count;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
+	// 구독 멤버 번호 조회
+	@Override
+	public List<String> selectPhoneList() {
+		return dao.selectPhoneList();
+	}
+	
 }

@@ -1203,19 +1203,144 @@ SELECT NEXT_DAY((TRUNC(SYSDATE,'MM')),'wed') FROM DUAL;
 SELECT NEXT_DAY((TRUNC(TO_DATE('20220706', 'YYMMDD') ,'MM')),'wed')+7 FROM DUAL;
 SELECT NEXT_DAY((TRUNC(SYSDATE,'MM')),'wed')+7 FROM DUAL;
 
+-- 셋째주 수요일
+SELECT NEXT_DAY((TRUNC(SYSDATE,'MM')),'wed')+14 FROM DUAL;
+
 -- 넷째주 수요일 구하는 방법
 SELECT NEXT_DAY((TRUNC(TO_DATE('20220706', 'YYMMDD') ,'MM')),'wed')+21 FROM DUAL;
 SELECT NEXT_DAY((TRUNC(SYSDATE,'MM')),'wed')+21 FROM DUAL;
 
 
 
--- 격주 첫배송날짜!
+
+-- 첫째 수요일
+-- 첫째 수요일이 1일인 경우 둘째 수요일이 나옴
+SELECT NEXT_DAY((TRUNC(TO_DATE('20231101', 'YYMMDD'),'MM')),'wed') FROM DUAL;
+
+SELECT NEXT_DAY((TRUNC(TO_DATE('20231123', 'YYMMDD') ,'MM')),'wed')+21 FROM DUAL;
+
+
+
+-- 해당 월의 첫째 요일 구하기
+SELECT TO_CHAR(TRUNC(sysdate,'MM'),'D') FROM DUAL;
+
+-- 이번달의 첫째 날
+SELECT TRUNC(sysdate,'MM') FROM DUAL;
+
+-- 다음달의 첫째 날
+SELECT ADD_MONTHS( TRUNC(sysdate,'MM'), 1 ) FROM DUAL;
+
+SELECT 
+   CASE
+      WHEN TO_CHAR(TRUNC(sysdate,'MM'),'D') = 4 THEN '첫째날이 수요일'
+      ELSE '첫째날이 수요일 아님'
+      END 첫째날
+FROM DUAL;
+
+SELECT 
+   CASE
+      WHEN TO_CHAR(TRUNC(TO_DATE('20231101', 'YYMMDD'),'MM'),'D') = 4 THEN '첫째날이 수요일'
+      ELSE '첫째날이 수요일 아님'
+      END 첫째날
+FROM DUAL;
+
+
+-- 해당일만 구하기
+SELECT EXTRACT(DAY FROM TO_DATE('20231101', 'YYMMDD')) FROM DUAL;
+SELECT EXTRACT(DAY FROM SYSDATE) FROM DUAL;
+
+
+
+-- 격주 첫배송날짜! THEN (소괄호 안에 식 넣기!!!)
+-- 테스트시 SYSDATE -> TO_DATE('2023112', 'YYYYMMDD')
 SELECT
    CASE
-      WHEN TRUNC(SYSDATE, 'MM') <= SYSDATE AND SYSDATE < NEXT_DAY((TRUNC(SYSDATE,'MM')),'wed')+7 THEN '둘째 수요일'
-      WHEN NEXT_DAY((TRUNC(SYSDATE,'MM')),'wed')+7 <= SYSDATE  AND SYSDATE < NEXT_DAY((TRUNC(SYSDATE,'MM')),'wed')+21 THEN '넷째 수요일'
-      WHEN NEXT_DAY((TRUNC(SYSDATE,'MM')),'wed')+21 <= SYSDATE AND SYSDATE < LAST_DAY(SYSDATE) THEN '다음달로 이월'
+      WHEN TO_CHAR(TRUNC(SYSDATE,'MM'),'D') = 4 AND EXTRACT(DAY FROM SYSDATE) < 8
+        THEN (TRUNC(SYSDATE,'MM')+7) -- 1일이 수요일이고, 현재일자가 8(일) 미만일 경우 -> 이번달의 1일(수)이 배송일
+      WHEN TO_CHAR(TRUNC(SYSDATE,'MM'),'D') = 4 AND 8 <= (EXTRACT(DAY FROM SYSDATE)) AND (EXTRACT(DAY FROM SYSDATE)) < 22
+        THEN (NEXT_DAY((TRUNC(SYSDATE,'MM')),'wed')+14) -- 1일이 수요일이고, 현재일자가 8(이상)~22(미만)인 경우 -> 이번달의 셋째 수요일이 배송일
+      WHEN TO_CHAR(TRUNC(SYSDATE,'MM'),'D') = 4 AND 8 <= (EXTRACT(DAY FROM SYSDATE)) AND (EXTRACT(DAY FROM SYSDATE)) >= 22
+        THEN (NEXT_DAY((TRUNC(ADD_MONTHS( TRUNC(SYSDATE,'MM'), 1 ),'MM')),'wed')+7) -- 1일이 수요일이고, 현재일자가 22일 이상인 경우 -> 다음달 둘째 수요일
+      WHEN TRUNC(SYSDATE, 'MM') <= SYSDATE AND SYSDATE < NEXT_DAY((TRUNC(SYSDATE,'MM')),'wed')+7
+        THEN ( NEXT_DAY((TRUNC(SYSDATE,'MM')),'wed')+7) -- 이번달 둘째주 수요일
+      WHEN NEXT_DAY((TRUNC(SYSDATE,'MM')),'wed')+7 <= SYSDATE  AND SYSDATE < NEXT_DAY((TRUNC(SYSDATE,'MM')),'wed')+21
+        THEN (NEXT_DAY((TRUNC(SYSDATE,'MM')),'wed')+21) -- 이번달 넷째주 수요일
+      WHEN NEXT_DAY((TRUNC(SYSDATE,'MM')),'wed')+21 <= SYSDATE AND SYSDATE < LAST_DAY(SYSDATE)
+        THEN (NEXT_DAY((TRUNC(ADD_MONTHS( TRUNC(SYSDATE,'MM'), 1 ),'MM')),'wed')+7) -- 다음달 둘째 수요일
    END 배송날짜
 FROM DUAL;
 
 
+
+
+
+-- ******** 배송일 지정하기
+WITH TEMP_DATE AS (
+SELECT TO_DATE(YYYY||MM, 'YYYYMM') YYYYMM 
+FROM (SELECT LPAD(LEVEL, 2, '0') MM FROM DUAL
+    CONNECT BY LEVEL <= 12)
+    ,(SELECT TO_CHAR(LEVEL+TO_CHAR(SYSDATE, 'YYYY') -1 ) YYYY FROM DUAL
+    CONNECT BY LEVEL <= 1)
+ORDER BY 1)
+
+SELECT COL_VAL FROM (
+    SELECT YYYYMM "1일", 
+        YYYYMM + 7 + (4-TO_CHAR(YYYYMM, 'D')) "두번째 수요일",
+        YYYYMM + 21 + (4-TO_CHAR(YYYYMM, 'D')) "네번째 수요일",
+        ADD_MONTHS(YYYYMM, 1) + 7 + (4-TO_CHAR( ADD_MONTHS(YYYYMM, 1), 'D')) "다음달 두번째 수요일"
+    FROM TEMP_DATE
+)
+UNPIVOT ( COL_VAL FOR COL_NM IN ("두번째 수요일", "네번째 수요일", "다음달 두번째 수요일"))
+
+
+WHERE "1일" = TRUNC(SYSDATE, 'MM')
+AND COL_VAL > SYSDATE
+AND ROWNUM = 1;
+
+
+
+SELECT * FROM SUBS_ORDER;
+
+
+
+
+
+-- 해당 월의 각 수요일 구하기
+WITH TEMP_DATE AS (
+SELECT TO_DATE(YYYY||MM, 'YYYYMM') YYYYMM 
+FROM (SELECT LPAD(LEVEL, 2, '0') MM FROM DUAL
+    CONNECT BY LEVEL <= 12)
+    ,(SELECT TO_CHAR(LEVEL+TO_CHAR(SYSDATE, 'YYYY') -1 ) YYYY FROM DUAL
+    CONNECT BY LEVEL <= 1)
+ORDER BY 1)
+
+SELECT YYYYMM "1st", 
+    YYYYMM + 7 + (4-TO_CHAR(YYYYMM, 'D')) "2ndwed",
+    YYYYMM + 21 + (4-TO_CHAR(YYYYMM, 'D')) "4thwed",
+    ADD_MONTHS(YYYYMM, 1) + 7 + (4-TO_CHAR( ADD_MONTHS(YYYYMM, 1), 'D')) "next2ndwed"
+FROM TEMP_DATE
+
+WHERE YYYYMM = TRUNC(SYSDATE, 'MM');
+
+
+
+
+SELECT
+   CASE
+      WHEN TRUNC(SYSDATE, 'MM') <= SYSDATE AND SYSDATE < NEXT_DAY((TRUNC(SYSDATE,'MM')),'wed')+7 THEN ( NEXT_DAY((TRUNC(SYSDATE,'MM')),'wed')+7) -- 이번달 둘째주 수요일
+      WHEN NEXT_DAY((TRUNC(SYSDATE,'MM')),'wed')+7 <= SYSDATE  AND SYSDATE < NEXT_DAY((TRUNC(SYSDATE,'MM')),'wed')+21 THEN (NEXT_DAY((TRUNC(SYSDATE,'MM')),'wed')+21) -- 이번달 넷째주 수요일
+      WHEN NEXT_DAY((TRUNC(SYSDATE,'MM')),'wed')+21 <= SYSDATE AND SYSDATE < LAST_DAY(SYSDATE) THEN (NEXT_DAY((TRUNC(ADD_MONTHS( TRUNC(sysdate,'MM'), 1 ),'MM')),'wed')+7) -- 다음달 둘째 수요일
+      WHEN TO_CHAR(TRUNC(SYSDATE,'MM'),'D') = 4 AND EXTRACT(DAY FROM SYSDATE) < 8 THEN (TRUNC(SYSDATE,'MM')) -- 1일이 수요일이고, 현재일자가 8(일) 미만일 경우 -> 이번달의 1일(수)이 배송일
+      WHEN TO_CHAR(TRUNC(sysdate,'MM'),'D') = 4 AND 8 <= (EXTRACT(DAY FROM SYSDATE)) AND (EXTRACT(DAY FROM SYSDATE)) < 22 THEN (NEXT_DAY((TRUNC(SYSDATE,'MM')),'wed')+14) -- 1일이 수요일이고, 현재일자가 8(이상)~22(미만)인 경우 -> 이번달의 셋째 수요일이 배송일
+   END 배송날짜
+FROM DUAL;
+
+SELECT PRODUCT_NM, P_CD
+FROM PRODUCT
+ORDER BY P_CATEGORY_NO;
+
+SELECT * FROM SUBS_ORDER;
+SELECT * FROM SUBS_EXCEPTION WHERE S_ORDER_CD='J20220722-00301';
+SELECT *FROM PRODUCT;
+
+SELECT * FROM SUBS_EXCEPTION;

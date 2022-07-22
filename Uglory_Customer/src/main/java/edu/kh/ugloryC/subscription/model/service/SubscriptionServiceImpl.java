@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.kh.ugloryC.member.model.vo.Member;
+import edu.kh.ugloryC.product.model.vo.ProductList;
 import edu.kh.ugloryC.subscription.model.dao.SubscriptionDAO;
 import edu.kh.ugloryC.subscription.model.vo.Delivery;
 import edu.kh.ugloryC.subscription.model.vo.OrderInfo;
@@ -50,8 +51,15 @@ public class SubscriptionServiceImpl implements SubscriptionService{
 		// 구독 배송 내역 삽입
 		int del = dao.insertDel(payInfo);
 		
+		// 결제 번호 생성
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddhhmmss");
+		String date = sdf.format(new Date());
+		int random = (int)(Math.random() * 10000);
+		String payNo = "SP" + date + "-" + random;
+		payInfo.put("payNo", payNo);
 		
-		int subPay = dao.insertPay(payInfo);
+		
+		int subPay = dao.insertPay(payInfo); //
 		
 		return result;
 	}
@@ -127,6 +135,12 @@ public class SubscriptionServiceImpl implements SubscriptionService{
 	@Override
 	public int updateBiFri() {
 		return dao.updateBiFri();
+	}
+
+	// 구독 제외 상품용 상품 리스트 조회
+	@Override
+	public List<ProductList> selectProductList() {
+		return dao.selectProductList();
 	}
 
 	

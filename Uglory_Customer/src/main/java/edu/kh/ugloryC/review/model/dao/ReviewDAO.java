@@ -127,6 +127,50 @@ public class ReviewDAO {
 
 
 	
+	/**
+	 * 리뷰 전체 후기 수 조회 DAO
+	 * @return result1
+	 */
+	public int selectReviewAllCount() {
+		
+		return sqlSession.selectOne("reviewMapper.selectReviewAllCount");
+	}
+
+
+	/**
+	 * 별점 평균 조회 DAO
+	 * @return result2
+	 */
+	public double selectAvgStar() {
+		
+		return sqlSession.selectOne("reviewMapper.selectAvgStar");
+	}
+
+
+	
+	/**
+	 * 나의 리뷰 수 조회 DAO
+	 * @param memberNo
+	 * @return result3
+	 */
+	public int selectMyReviewCount(int memberNo) {
+		
+		return sqlSession.selectOne("reviewMapper.selectMyReviewCount", memberNo);
+	}
+
+
+	/**
+	 * 나의 미작성 리뷰 수 조회 DAO
+	 * @param memberNo
+	 * @return result4
+	 */
+	public int selectUnWrittenCount(int memberNo) {
+		
+		return sqlSession.selectOne("reviewMapper.selectUnWrittenCount", memberNo);
+	}
+
+
+	
 	
 
 }

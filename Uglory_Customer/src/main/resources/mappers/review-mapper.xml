@@ -216,9 +216,74 @@
 	</select>
 		
 		
+	
+	
+	<!-- 리뷰 전체 후기 수 조회 -->
+	<select id="selectReviewAllCount" resultType="_int">
+		SELECT COUNT(REVIEW_NO)
+		FROM(
+			SELECT REVIEW_NO, S_REVIEW_ST FROM REVIEW
+			JOIN SUBS_ORDER USING(S_ORDER_CD)
+			WHERE S_REVIEW_ST = 'Y'
 		
+			UNION ALL
 		
+			SELECT REVIEW_NO, P_REVIEW_ST FROM REVIEW
+			JOIN PRODUCT_ORDER USING(P_ORDER_CD)
+			WHERE P_REVIEW_ST = 'Y')
+	</select>
+	
+	
+	<!-- 별점 평균 조회 -->
+	<select id="selectAvgStar" resultType="_double">
+		SELECT ROUND(AVG(STAR_RATING/2),1) FROM REVIEW
+	</select>
+	
+	
+	<!-- 나의 리뷰 수 조회 -->
+	<select id="selectMyReviewCount" resultType="_int">
+		SELECT (
+			SELECT COUNT(*)
+			FROM SUBS_ORDER
+			JOIN SUBS USING(S_CD)
+			WHERE S_REVIEW_ST = 'Y'
+			AND SUBS_ORDER.MEMBER_NO = #{memberNo}
 		
+		) + (
+			SELECT count(*)
+			FROM PRODUCT_ORDER
+			JOIN OPTION_TB USING(P_ORDER_CD)
+			JOIN OPTION_TYPE USING(OPTION_CD)
+			JOIN PRODUCT ON(OPTION_TYPE.P_CD = PRODUCT.P_CD)
+			WHERE P_REVIEW_ST = 'Y'
+			AND PRODUCT_ORDER.MEMBER_NO = #{memberNo}
+		
+		) AS MY_UNWRITTEN_REVIEW
+		FROM DUAL
+	</select>
+	
+	
+	<!-- 냐의 미작성 리뷰 수 조회 -->
+	<select id="selectUnWrittenCount" resultType="_int">
+		SELECT (
+			SELECT COUNT(*)
+			FROM SUBS_ORDER
+			JOIN SUBS USING(S_CD)
+			WHERE S_REVIEW_ST = 'N'
+			AND SUBS_ORDER.MEMBER_NO = #{memberNo}
+		
+		) + (
+			SELECT count(*)
+			FROM PRODUCT_ORDER
+			JOIN OPTION_TB USING(P_ORDER_CD)
+			JOIN OPTION_TYPE USING(OPTION_CD)
+			JOIN PRODUCT ON(OPTION_TYPE.P_CD = PRODUCT.P_CD)
+			WHERE P_REVIEW_ST = 'N'
+			AND PRODUCT_ORDER.MEMBER_NO = #{memberNo}
+		
+		) AS MY_UNWRITTEN_REVIEW
+		FROM DUAL
+	</select>
 		
 		
 		

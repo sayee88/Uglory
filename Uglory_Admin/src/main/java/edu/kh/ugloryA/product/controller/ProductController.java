@@ -1,7 +1,6 @@
 package edu.kh.ugloryA.product.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,18 +16,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.gson.Gson;
 
+import edu.kh.ugloryA.common.Util;
 import edu.kh.ugloryA.farm.model.vo.Farm;
+import edu.kh.ugloryA.payment.model.vo.SubsPaymentDetail;
 import edu.kh.ugloryA.product.model.service.ProductService;
 import edu.kh.ugloryA.product.model.vo.OptionType;
 import edu.kh.ugloryA.product.model.vo.Product;
 import edu.kh.ugloryA.product.model.vo.ProductCategory;
-import edu.kh.ugloryA.product.model.vo.ProductImage;
 import edu.kh.ugloryA.product.model.vo.WeeklyList;
 import edu.kh.ugloryA.product.model.vo.WeeklyProduct;
 
@@ -38,6 +37,7 @@ public class ProductController {
 	
 	@Autowired
 	private ProductService service;
+	
 	
 	//상품 조회 페이지
 	@GetMapping("/list")
@@ -255,7 +255,7 @@ public class ProductController {
 	}
 	
 	@ResponseBody
-	@PostMapping("weekly/register")
+	@PostMapping("/weekly/register")
 	public int insertWeeklyProduct(int optionCode,
 								   int productListNo) {
 
@@ -277,9 +277,38 @@ public class ProductController {
 	
 	//삭제
 	@ResponseBody
-	@GetMapping("weekly/delete")
+	@GetMapping("/weekly/delete")
 	public int deleteWeeklyProduct(int productNo) {
 		return service.deleteWeeklyProduct(productNo);
+	}
+	
+	
+	//알림 보내기
+	@ResponseBody
+	@GetMapping("/weekly/message")
+	public int sendMessage(int productListNo) {
+		
+		//text 만들기
+		String text = "[이번주 배송 상품 목록]\n";
+		
+		List<WeeklyProduct> deliveryList = service.selectWeeklyProduct(productListNo);
+		
+		String delivery = "";
+		
+		for(WeeklyProduct del : deliveryList) {
+			delivery += "- " + del.getProductName() + " " + del.getOptionName() + "\n";
+		}
+		
+		text += delivery + "\n* 표시된 상품 수량(용량)은 Standard 상품 기준입니다.";
+				
+		//phone 조회해오기
+		//조회해온 값 "value, value, ..." 형태로 만들기
+		List<String> phoneList = service.selectPhoneList();
+		String memberPhone = String.join(", ", phoneList);
+		
+		int result = Util.sendMessage(text, memberPhone);
+		
+		return result;
 	}
 	
 	

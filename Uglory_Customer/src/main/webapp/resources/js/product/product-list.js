@@ -7,8 +7,7 @@
             
             const row = document.getElementById("row");
             row.innerText = "";
-        
-        
+                
             for(let product of pList){
             
                 const col = document.createElement("div");
