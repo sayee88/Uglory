@@ -224,6 +224,8 @@
         const totalAmount = "${map.totalAmount}"
         const productPayNo = "${map.productPayNo}";
         const memberNo = "${loginMember.memberNo}";
+        const amountList = "${map.amountList}";
+        const optionCodeList = "${map.optionCodeList}";
 
      </script>
 
