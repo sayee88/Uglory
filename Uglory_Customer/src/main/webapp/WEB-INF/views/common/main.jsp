@@ -331,7 +331,7 @@
                             <div class="rounded-circle overflow-hidden m-4">
                                 <img class="img-fluid subs-img" src="${contextPath}/resources/img/main/main_card.png" alt="">
                             </div>
-                            <h5 class="mb-0">해지 & 중지 가능</h5>
+                            <h5 class="mb-0">해지 가능</h5>
                             <%-- <small>Designation</small>
                             <div class="d-flex justify-content-center mt-3">
                                 <a class="btn btn-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>

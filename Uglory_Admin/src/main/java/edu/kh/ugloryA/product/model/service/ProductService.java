@@ -146,12 +146,11 @@ public interface ProductService {
 	 * @return phoneList
 	 */
 	List<String> selectPhoneList();
-	
-	
-	
-	
-	
-	
-	
 
+	/**
+	 * 알림 발송용 상품 목록 조회
+	 * @return deliveryList
+	 */
+	List<WeeklyProduct> selectThisWeek();
+	
 }

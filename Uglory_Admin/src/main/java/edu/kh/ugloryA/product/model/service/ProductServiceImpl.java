@@ -284,5 +284,10 @@ public class ProductServiceImpl implements ProductService {
 	public List<String> selectPhoneList() {
 		return dao.selectPhoneList();
 	}
+
+	@Override
+	public List<WeeklyProduct> selectThisWeek() {
+		return dao.selectThisWeek();
+	}
 	
 }

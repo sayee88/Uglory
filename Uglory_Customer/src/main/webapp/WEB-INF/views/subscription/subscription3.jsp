@@ -51,8 +51,7 @@
     <div id="box">
         <div style="width: 70%;">
 
-
-            memberName = ${loginMember.memberName}<hr>
+            <%-- memberName = ${loginMember.memberName}<hr>
             memberNo = ${loginMember.memberNo}<hr>
             choice = ${choice}<hr>
             subsOrderNo = ${orderInfo.subsOrderNo}<hr>
@@ -65,7 +64,7 @@
             cycle = ${orderInfo.cycle}<hr>
             box = ${orderInfo.box}<hr>
             ${loginMember}
-            
+             --%>
             <div class="inner-box" >
                 <div class="step-text">
                     <h3 id="step-text">STEP 5</h3>
@@ -83,11 +82,11 @@
                                 <c:choose>
                                     <c:when test="${orderInfo.box == 'standard'}">
                                         <th>친환경 못난이 채소박스[스탠다드]</th>
-                                        <th>15,500원</th>
+                                        <th>20,000원</th>
                                     </c:when>
                                     <c:otherwise>
                                         <th>친환경 못난이 채소박스[점보]</th>
-                                        <th>25,000원</th>
+                                        <th>30,000원</th>
                                     </c:otherwise>
                                 </c:choose>
                             </tr>
@@ -100,10 +99,10 @@
                                 <th class="white-th">총 결제 금액</th>
                                 <c:choose>
                                     <c:when test="${orderInfo.box == 'standard'}">
-                                        <th class="white-th">15,500원</th>
+                                        <th class="white-th">20,000원</th>
                                     </c:when>
                                     <c:otherwise>
-                                        <th class="white-th">25,000원</th>
+                                        <th class="white-th">30,000원</th>
                                     </c:otherwise>
                                 </c:choose>
                             </tr>
@@ -174,10 +173,10 @@
 
         if("${orderInfo.box}" == 1){
             boxName = "스탠다드";
-            amount = "15000";
+            amount = "20000";
         }else{
             boxName = "점보";
-            amount = "25000";
+            amount = "30000";
 
         }
 
