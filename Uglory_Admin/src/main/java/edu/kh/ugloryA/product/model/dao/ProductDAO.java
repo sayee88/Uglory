@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import edu.kh.ugloryA.farm.model.vo.Farm;
+import edu.kh.ugloryA.payment.model.vo.SubsPaymentDetail;
 import edu.kh.ugloryA.product.model.vo.OptionType;
 import edu.kh.ugloryA.product.model.vo.Product;
 import edu.kh.ugloryA.product.model.vo.ProductCategory;
@@ -230,6 +231,14 @@ public class ProductDAO {
 	 */
 	public int weeklyUpdate(String key) {
 		return sqlSession.update("productMapper.weeklyUpdate", key);
+	}
+
+	/**
+	 * 구독 멤버 번호 조회
+	 * @return phoneList
+	 */
+	public List<String> selectPhoneList() {
+		return sqlSession.selectList("productMapper.selectPhoneList");
 	}
 
 

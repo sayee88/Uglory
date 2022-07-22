@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.web.multipart.MultipartFile;
 
 import edu.kh.ugloryA.farm.model.vo.Farm;
+import edu.kh.ugloryA.payment.model.vo.SubsPaymentDetail;
 import edu.kh.ugloryA.product.model.vo.OptionType;
 import edu.kh.ugloryA.product.model.vo.Product;
 import edu.kh.ugloryA.product.model.vo.ProductCategory;
@@ -139,6 +140,12 @@ public interface ProductService {
 	 * @return count
 	 */
 	int weeklyUpdate();
+
+	/**
+	 * 구독 멤버 번호 조회
+	 * @return phoneList
+	 */
+	List<String> selectPhoneList();
 	
 	
 	
