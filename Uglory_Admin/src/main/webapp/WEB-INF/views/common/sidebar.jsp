@@ -81,7 +81,7 @@
                         <a href="${contextPath}/payment/selectAll" class="sub-menu">결제 관리</a>
                     </div>
                     <div class="dropdown-item">
-                        <a href="signup.html" class="sub-menu">매출 관리</a>
+                        <a href="${contextPath}/payment//refundList" class="sub-menu">매출 관리</a>
                     </div>
                 </div>
             </div>
