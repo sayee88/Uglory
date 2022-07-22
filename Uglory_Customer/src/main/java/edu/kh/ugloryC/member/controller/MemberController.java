@@ -93,17 +93,6 @@ public class MemberController {
 		return new Gson().toJson(service.selectSubHistoryDetail(subOrderNo));
 	}
 	
-	//로그아웃 
-	@GetMapping("/logout")
-	public String logout(HttpSession session , SessionStatus status) {
-		// 로그아웃 == 세션을 없애는것 
-		
-		//session.invalidate();  // 기존 세션 무효화 방식으로는 안된다!
-		status.setComplete(); // 세션이 할일이 완료됨 -> 정보 없앤다 (로그아웃시킨다!!!!)
-		
-		
-		return "redirect:/"; // 메인페이지로 리다이렉트
-	}
 	
 	
 
@@ -134,6 +123,22 @@ public class MemberController {
 		return 0;
 		
 	}
+	
+	
+	
+	//로그아웃 
+	@GetMapping("/logout")
+	public String logout(HttpSession session , SessionStatus status) {
+		// 로그아웃 == 세션을 없애는것 
+		
+		//session.invalidate();  // 기존 세션 무효화 방식으로는 안된다!
+		status.setComplete(); // 세션이 할일이 완료됨 -> 정보 없앤다 (로그아웃시킨다!!!!)
+		
+		
+		return "redirect:/"; // 메인페이지로 리다이렉트
+	}
+	
+	
 	
 	// 회원 탈퇴
 	@PostMapping("/secession") // 회원정보에 다들어있으니깐 

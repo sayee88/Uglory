@@ -63,10 +63,10 @@ for (let btn of orderDetailBtn) {
                     const img = document.createElement("img");
                     img.classList.add("orderImg");
 
-                    if(proc.imageRename == null){
+                    if(proc.imageRoot == null){
                         img.setAttribute("src", contextPath + "/resources/img/about/xmark.png" );
                     }else{
-                        img.setAttribute("src", window.location.origin+'/ugloryA' +  proc.imageRename);
+                        img.setAttribute("src", window.location.origin+'/ugloryA' +  proc.imageRoot);
                     }
 
                     
