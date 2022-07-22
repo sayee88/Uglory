@@ -41,6 +41,8 @@ public interface MemberService {
 
 	SubHistoryDetail selectSubHistoryDetail(String subOrderNo);
 
+	int productCancel(String orderNo);
+
 
 
 	

@@ -4,6 +4,18 @@
 
 
 	<!-- 상품 목록용 resultMap -->   
+	<resultMap type="productList" id="product_list">
+		<id property="productCode" column="P_CD"/>
+		<result property="productName" column="PRODUCT_NM"/>
+		<result property="productPrice" column="PRODUCT_PRICE"/>
+		<result property="imgRoot" column="IMG_ROOT"/>
+		<result property="categoryName" column="P_CATEGORY_NM"/>
+		<result property="starCount" column="STAR_COUNT"/>
+		<result property="starAvg" column="STAR_AVG"/>
+		<result property="productState" column="PRODUCT_ST"/>
+		<result property="categoryNo" column="P_CATEGORY_NO"/>
+	</resultMap>
+	
 	<resultMap type="delivery" id="delivery_rm">
 		<id property="subsOrderCode" column="S_ORDER_CD"/>
 		<result property="sCancel" column="S_CANCEL"/>
@@ -35,7 +47,29 @@
 	
 	<!-- 첫배송일 지정 -->
 	<select id="createDelDate" resultType="date">
-		SELECT NEXT_DAY(SYSDATE, '수요일') FROM DUAL
+		<![CDATA[
+		WITH TEMP_DATE AS (
+		SELECT TO_DATE(YYYY||MM, 'YYYYMM') YYYYMM 
+		FROM (SELECT LPAD(LEVEL, 2, '0') MM FROM DUAL
+		    CONNECT BY LEVEL <= 12)
+		    ,(SELECT TO_CHAR(LEVEL+TO_CHAR(SYSDATE, 'YYYY') -1 ) YYYY FROM DUAL
+		    CONNECT BY LEVEL <= 1)
+		ORDER BY 1)
+		]]>
+		
+		SELECT COL_VAL FROM (
+		    SELECT YYYYMM "1일", 
+		        YYYYMM + 7 + (4-TO_CHAR(YYYYMM, 'D')) "두번째 수요일",
+		        YYYYMM + 21 + (4-TO_CHAR(YYYYMM, 'D')) "네번째 수요일",
+		        ADD_MONTHS(YYYYMM, 1) + 7 + (4-TO_CHAR( ADD_MONTHS(YYYYMM, 1), 'D')) "다음달 두번째 수요일"
+		    FROM TEMP_DATE
+		)
+		UNPIVOT ( COL_VAL FOR COL_NM IN ("두번째 수요일", "네번째 수요일", "다음달 두번째 수요일"))
+		
+		
+		WHERE "1일" = TRUNC(SYSDATE, 'MM')
+		AND COL_VAL > SYSDATE
+		AND ROWNUM = 1
 	</select>
 	
 	
@@ -176,6 +210,13 @@
 		AND S_ORDER_CD IN (SELECT S_ORDER_CD FROM SUBS_ORDER
 		              WHERE S_CYCLE ='2')
 	</update>
+	
+	<!-- 구독 제외 상품용 상품 리스트 조회 -->
+	<select id="selectProductList" resultMap="product_list">
+		SELECT PRODUCT_NM, P_CD
+		FROM PRODUCT
+		ORDER BY P_CATEGORY_NO
+	</select>
 	
 	
 </mapper>

@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import edu.kh.ugloryC.product.model.vo.ProductList;
 import edu.kh.ugloryC.subscription.model.vo.Delivery;
 import edu.kh.ugloryC.subscription.model.vo.OrderInfo;
 
@@ -110,6 +111,11 @@ public class SubscriptionDAO {
 	// 격주 수요일 배송중으로 변경
 	public int updateBiDel() {
 		return sqlSession.update("subscriptionMapper.updateBiDel");
+	}
+
+	// 구독 제외 상품용 상품 리스트 조회
+	public List<ProductList> selectProductList() {
+		return sqlSession.selectList("subscriptionMapper.selectProductList");
 	}
 
 

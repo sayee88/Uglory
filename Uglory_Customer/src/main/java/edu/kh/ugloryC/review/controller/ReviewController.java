@@ -29,7 +29,7 @@ import edu.kh.ugloryC.review.model.vo.ReviewSelectInfo;
 
 @Controller
 @RequestMapping("/review")
-@SessionAttributes("loginMember")
+@SessionAttributes({"loginMember", })
 public class ReviewController {
 	
 	@Autowired
@@ -113,13 +113,21 @@ public class ReviewController {
 	public String write( @PathVariable("orderCode") int orderCode,
 			@ModelAttribute("loginMember")  Member loginMember, Model model, String mode) {
 		
+		int memberNo = loginMember.getMemberNo();
 		// 상품 정보 불러오기
 		// 구독 (구독이미지(따로 불러오고), 구독일, 구독상품명, 구독결제금액)
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("memberNo", memberNo);
+		map.put("orderCode", orderCode);
 		
-//		int sub = service.subSelect(loginMember, reviewCode);
+		// 개별상품 조회
+		UnWrittenProduct unWrittenProduct = service.productSelect(map);
 		
-		// 상품 (상품이미지, 구매일, 개별상품명, 옵션명, 총가격)
+		// 구독상품 조회
+		UnWrittenSubscription UnWrittenSubscription = service.subSelect(map);
 		
+		model.addAttribute("UnWrittenSubscription", UnWrittenSubscription);
+		model.addAttribute("unWrittenProduct",unWrittenProduct);
 		
 		return "review/ReviewWriteForm";
 	}

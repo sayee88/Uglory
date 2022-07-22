@@ -30,6 +30,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.ugloryC.member.model.vo.Member;
+import edu.kh.ugloryC.product.model.vo.ProductList;
 import edu.kh.ugloryC.subscription.model.service.SubscriptionService;
 import edu.kh.ugloryC.subscription.model.vo.OrderInfo;
 
@@ -68,6 +69,11 @@ public class SubscriptionController {
 
 			}
 			if(result == null) {
+				
+				List<ProductList> productList = service.selectProductList();
+				
+				model.addAttribute("productList", productList);
+				
 				path = "subscription/subscription1";
 				
 			}
@@ -88,6 +94,7 @@ public class SubscriptionController {
 		
 //		Map<String, Object> orderInfo = new HashMap<String, Object>();
 		
+		
 		OrderInfo orderInfo = new OrderInfo();
 		
 		orderInfo.setBox(box);
@@ -99,8 +106,6 @@ public class SubscriptionController {
 //		orderInfo.put("choice", choice);
 		
 		// 결제번호 생성
-//		LocalDate currentDate = LocalDate.now(); 
-//		String date = currentDate.format(DateTimeFormatter.ofPattern("yyMMdd"));
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddhhmmss");
 		String date = sdf.format(new Date());
