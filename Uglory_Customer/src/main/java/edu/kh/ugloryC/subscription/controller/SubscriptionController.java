@@ -105,11 +105,10 @@ public class SubscriptionController {
 //		orderInfo.put("cycle", cycle);
 //		orderInfo.put("choice", choice);
 		
-		// 결제번호 생성
-		
+		// 결제 번호 생성
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddhhmmss");
 		String date = sdf.format(new Date());
-		int random = (int)(Math.random() * 5);
+		int random = (int)(Math.random() * 10000);
 		String payNo = "SP" + date + "-" + random;
 		
 		orderInfo.setPayNo(payNo);

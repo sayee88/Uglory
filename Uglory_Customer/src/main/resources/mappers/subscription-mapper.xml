@@ -114,7 +114,7 @@
 	<!-- 구독 결제정보 삽입 -->
 	<insert id="insertPay">
 		INSERT INTO SUBS_PAY VALUES(
-		   SEQ_S_PAY_NO.NEXTVAL,
+		   #{payNo},
 		   SYSDATE,
 		   #{amount},
 		   #{memberNo},
