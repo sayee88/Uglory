@@ -101,11 +101,17 @@ public class MemberServiceImpl implements MemberService {
 		return dao.selectSubHistoryList(memberNo);
 	}
 
-
+	//구독 상품 상세 조회
 	@Override
 	public SubHistoryDetail selectSubHistoryDetail(String subOrderNo) {
 
 		return dao.selectSubHistoryDetail(subOrderNo);
+	}
+
+	// 주문 취소
+	@Override
+	public int productCancel(String orderNo) {	// TODO Auto-generated method stub
+		return dao.productCancel(orderNo);
 	}
 
 	

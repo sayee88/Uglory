@@ -91,6 +91,11 @@ public class MemberDAO {
 		return sqlSession.selectOne("memberMapper.selectSubHistoryDetail",subOrderNo);
 	}
 
+	public int productCancel(String orderNo) {
+		
+		return sqlSession.insert("memberMapper.productCancel",orderNo);
+	}
+
 
 
 	

@@ -26,6 +26,7 @@
 		<result property="totalPrice" column="TOTAL_PRICE"/>
 		<result property="orderDate" column="P_ORDER_DT"/>
 		<result property="count" column="CNT"/>
+		<result property="refundStatus" column="REFUND_ST"/>
 		
 	</resultMap>
 	
@@ -167,30 +168,29 @@
 	<!-- 개별 상품 주문 내역 조회 -->
 	<select id="selectOrderHistoryList" resultMap="orderHistory_rm">
 		SELECT P_ORDER_CD,TOTAL_PRICE,DELIVERY_ST,
-			TO_CHAR(P_ORDER_DT,
-			'YYYY/MM/DD') P_ORDER_DT,
+			TO_CHAR(P_ORDER_DT,'YYYY/MM/DD') P_ORDER_DT
+			, '[원산지 ' || (SELECT ORIGIN || '] ' ||	PRODUCT_NM 
+							FROM PRODUCT_ORDER C
+							JOIN OPTION_TB ON(C.P_ORDER_CD = OPTION_TB.P_ORDER_CD)
+							JOIN OPTION_TYPE USING(OPTION_CD)
+							JOIN PRODUCT USING(P_CD)
+							JOIN FARM USING(FARM_NO)
+							WHERE ROWNUM = 1) ORIGIN,
 		
-			'[원산지 ' || (SELECT ORIGIN || '] ' ||
-			PRODUCT_NM FROM PRODUCT_ORDER
-			JOIN OPTION_TB USING(P_ORDER_CD)
+			(SELECT COUNT(*) - 1 CNT 
+			FROM PRODUCT_ORDER B
+			JOIN OPTION_TB ON(B.P_ORDER_CD = OPTION_TB.P_ORDER_CD)
 			JOIN OPTION_TYPE USING(OPTION_CD)
 			JOIN PRODUCT USING(P_CD)
 			JOIN FARM USING(FARM_NO)
-			WHERE P_ORDER_CD = #{orderNo}
-			AND ROWNUM = 1) ORIGIN,
+			WHERE B.P_ORDER_CD = A.P_ORDER_CD ) CNT,
 		
-			(SELECT COUNT(*) - 1 CNT FROM PRODUCT_ORDER
-			JOIN
-			OPTION_TB USING(P_ORDER_CD)
-			JOIN OPTION_TYPE USING(OPTION_CD)
-			JOIN
-			PRODUCT USING(P_CD)
-			JOIN FARM USING(FARM_NO)
-		WHERE P_ORDER_CD = #{orderNo} ) CNT
-		FROM PRODUCT_ORDER
+			NVL( (SELECT '1' FROM PRODUCT_REFUND WHERE P_ORDER_CD = A.P_ORDER_CD ), 0) REFUND_ST
+		
+		FROM PRODUCT_ORDER A
 		JOIN PRODUCT_DELIVERY USING(DELIVERY_CD)
 		WHERE MEMBER_NO = #{memberNo}
-		ORDER BY P_ORDER_DT DESC
+	ORDER BY P_ORDER_DT DESC
 	
 	</select>
 	
@@ -256,6 +256,16 @@
 	JOIN SUBS_PAY USING(S_ORDER_CD)
 	JOIN SUBS USING(S_CD)
 	</select>
+	
+	
+	<!-- 주문 취소 -->
+	<insert id="productCancel">
+		INSERT INTO PRODUCT_REFUND VALUES(
+			SEQ_P_REFUND_CD.NEXTVAL, SYSDATE, 
+			(SELECT TOTAL_PRICE FROM PRODUCT_ORDER WHERE P_ORDER_CD = #{orderNo}), 
+			DEFAULT,#{orderNo} 
+		)
+	</insert>
 	
 	
 </mapper>

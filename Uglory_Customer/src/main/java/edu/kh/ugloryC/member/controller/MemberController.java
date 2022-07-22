@@ -131,6 +131,7 @@ public class MemberController {
 	public String logout(HttpSession session , SessionStatus status) {
 		// 로그아웃 == 세션을 없애는것 
 		
+		
 		//session.invalidate();  // 기존 세션 무효화 방식으로는 안된다!
 		status.setComplete(); // 세션이 할일이 완료됨 -> 정보 없앤다 (로그아웃시킨다!!!!)
 		
@@ -249,18 +250,18 @@ public class MemberController {
 	
 	
 	// 개별 상품 환불
-	@PostMapping("/orderHistoryRefund")
-	public String orderHistoryRefund(@ModelAttribute("loginMember") Member loginMember
-									 ,RedirectAttributes ra
-									 , Model model	) {
-		
-	
-		
-		
-		return null;
+	@ResponseBody
+	@GetMapping("/productCancel")
+	public int orderHistoryCancel(String orderNo) {
+
+		return service.productCancel(orderNo);
 		
 	}
 
 	
 
+	
+	
+	
+	
 }
