@@ -2,6 +2,7 @@ package edu.kh.ugloryC.product.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -148,6 +149,7 @@ public class ProductController {
 			map.put("productPayNo", productPayNo);
 		}
 		
+		
 		// 주문 페이지 내 옵션 코드 상품 코드에 따른 옵션이름, 개수 조회
 		List<OptionType> selectOptionList = service.orderOptionSelect(map);
 		
@@ -172,7 +174,10 @@ public class ProductController {
 							int totalAmount,
 							@ModelAttribute("loginMember") Member loginMember,
 							Model model,
-							RedirectAttributes ra, HttpServletRequest req) {
+							RedirectAttributes ra, HttpServletRequest req,
+							@RequestParam(value="optionCodeList") String optionCode,
+							@RequestParam(value="amountList") String amount
+							) {
 		
 		int memberNo = loginMember.getMemberNo();
 		
@@ -181,6 +186,19 @@ public class ProductController {
 		String address1 = pOrderAddress1 + pOrderAddress2;
 		
 		String address = String.join(",,", address1);
+		
+		
+		optionCode = optionCode.replaceAll("\\[", "");
+		optionCode = optionCode.replaceAll("\\]", "");
+		
+		amount = amount.replaceAll("\\[", "");
+		amount = amount.replaceAll("\\]", "");
+
+		String[] optionCodeArr = optionCode.split(",");
+		String[] amountArr = amount.split(",");
+		
+		List<String> optionCodeList = Arrays.asList(optionCodeArr);
+		List<String> amountList = Arrays.asList(amountArr);
 		
 		if(pOrderReq.equals("")) {
 			pOrderReq = "NULL";
@@ -198,6 +216,8 @@ public class ProductController {
 		int result = service.productOrder(productOrder);
 		
 		if(result > 0) { // 주문 정보 입력 및 결제 성공 시 결제 테이블 삽입
+
+			int insertOptionTb = service.insertOptionTb(optionCodeList, amountList, pOrderCode);
 			int productPay = service.productPay(productOrder);
 		}
 		
@@ -260,14 +280,7 @@ public class ProductController {
 		List<ProductCart> productCartList = service.productCart(loginMember.getMemberNo()); 
 		
 		model.addAttribute("productCartList", productCartList);
-		
-		if(productCartList != null) {
-			
-			// 장바구니 개수 카운트
-			int cartCount = service.cartCount(loginMember.getMemberNo());
-			
-			model.addAttribute("cartCount", cartCount);
-		}
+
 		return "product/productCart";
 	}
 	

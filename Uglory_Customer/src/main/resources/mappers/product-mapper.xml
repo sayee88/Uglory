@@ -7,7 +7,8 @@
     	<id property="productCode" column="P_CD"/>
       	<result property="productName" column="PRODUCT_NM"/>
       	<result property="productPrice" column="PRODUCT_PRICE"/>
-      	<result property="productInfo" column="RODUCT_INFO"/>
+      	<result property="productInfo" column="PRODUCT_INFO"/>
+      	<result property="productInfo" column="PRODUCT_INFO"/>
       	
       	<result property="optionName" column="OPTION_NM"/>
       	<result property="optionPrice" column="OPTION_PRICE"/>
@@ -45,7 +46,7 @@
     <!-- 상품 상세 조회 -->
     <!-- 별점 개수, 리뷰 개수 필요 -->
 	<select id="productDetail" resultMap="detail_rm">
-<!-- 		SELECT P_CD, PRODUCT_NM, PRODUCT_PRICE, PRODUCT_INFO,
+<!-- 		SELECT P_CD, PRODUCT_NM, PRODUCT_PRICE, 
       	OPTION_NM, OPTION_PRICE, PRODUCT_IMG,
       	PRODUCER, ORIGIN, STAR_RATING
       	FROM PRODUCT
@@ -55,7 +56,7 @@
       	JOIN PRODUCT_IMG USING(P_CD)
       	WHERE P_CD = ${pCode} -->
  
-		SELECT P_CD, PRODUCT_NM, PRODUCT_PRICE, PRODUCT_INFO, P_CATEGORY_NO, PRODUCER, ORIGIN
+		SELECT P_CD, PRODUCT_NM, PRODUCT_PRICE, PRODUCT_INFO, PRODUCER, ORIGIN
 		FROM PRODUCT
 		JOIN FARM USING(FARM_NO)
 		WHERE P_CD = ${productCode}
@@ -93,6 +94,12 @@
 				'N', 
 				#{memberNo}, 
 				1)
+	</insert>
+	
+	<!-- 결제 시 OPTION_TB 삽입 -->
+	<insert id="insertOptionTb">
+		INSERT INTO OPTION_TB VALUES 
+		(SEQ_OPTION_NO.NEXTVAL, #{optionCode}, #{optionAmout}, #{pOrderCode})
 	</insert>
 	
 	<!-- 결제 정보 삽입 -->
@@ -141,6 +148,16 @@
 		FROM CART
 		WHERE MEMBER_NO = #{memberNo}
 	</select>
+	
+	<!-- 결제 시 OPTION_TB 테이블 삽입 -->
+	<insert id="optionTbInsert">
+		INSERT INTO OPTION_TB
+		VALUES(
+			SEQ_OPTION_NO.NEXTVAL,
+			
+		
+		)
+	</insert>
 
 </mapper>
 

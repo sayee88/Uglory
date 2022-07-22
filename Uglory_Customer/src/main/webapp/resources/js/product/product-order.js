@@ -168,6 +168,8 @@ document.getElementById("order-btn").addEventListener("click", function(){
                             "memberNo" : memberNo,
                             "totalAmount" : totalAmount ,
                             "productPayNo" : productPayNo,
+                            "optionCodeList" : optionCodeList,
+                            "amountList" : amountList
                         },
 
                         type : "POST",
