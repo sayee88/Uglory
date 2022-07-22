@@ -169,7 +169,7 @@ public class ReviewController {
 	
 	// 리뷰 작성 화면 전환
 	@GetMapping("/write/{orderCode}")
-	public String write( @PathVariable("orderCode") int orderCode,
+	public String write( @PathVariable("orderCode") String orderCode,
 			@ModelAttribute("loginMember")  Member loginMember, Model model, String mode) {
 		
 		int memberNo = loginMember.getMemberNo();

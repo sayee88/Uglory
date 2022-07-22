@@ -119,17 +119,17 @@
 			#{reviewWrite.productCode},
 		</if>
 		
-		<if test="reviewWrite.productOrderCode == 0">
+		<if test="reviewWrite.productOrderCode == null">
 			NULL,
 		</if>
-		<if test="reviewWrite.productOrderCode != 0">
+		<if test="reviewWrite.productOrderCode != null">
 			#{reviewWrite.productOrderCode},
 		</if>
 		
-		<if test="reviewWrite.subOrderCode == 0">
+		<if test="reviewWrite.subOrderCode == null">
 			NULL,
 		</if>
-		<if test="reviewWrite.subOrderCode != 0">
+		<if test="reviewWrite.subOrderCode != null">
 			#{reviewWrite.subOrderCode},
 		</if>
 		

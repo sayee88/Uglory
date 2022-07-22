@@ -9,7 +9,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class UnWrittenProduct {
 	
-	private int productOrderCode;
+	private String productOrderCode;
 //	private String productImage;
 	private String productOrderDate;
 	private String productName;
