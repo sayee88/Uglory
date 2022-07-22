@@ -52,6 +52,9 @@
     <jsp:include page="/WEB-INF/views/common/header-1.jsp" />
     <form action="${contextPath}/subscription/order" onsubmit="return subscriptionValidate()">
 
+                choice = ${choice}<hr>
+
+
         <div id="box" style="padding-bottom: 200px;">
             <div style="width: 70%;">
 
@@ -170,42 +173,6 @@
                                                 </c:forEach>
                                             </div>
 
-                                        
-                                            <%-- <div style="background-color:#eee;">
-                                                <div class="row">
-                                                    <div class="col">
-                                                        <input class="form-check-input" name="choice" onclick="count_check(this);" type="checkbox" id="mush1" value="50">
-                                                        <label class="form-check-label" for="mush1">버섯 전체</label>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col">
-                                                        <input class="form-check-input" type="checkbox" id="mush2" name="mushroom" value="45">
-                                                        <label class="form-check-label" for="mush2">새송이버섯</label>
-                                                    </div>
-                                                    <div class="col">
-                                                        <input class="form-check-input" type="checkbox" id="mush3" name="mushroom" value="46">
-                                                        <label class="form-check-label" for="mush3">양송이버섯</label>
-                                                    </div>
-                                                    <div class="col">
-                                                        <input class="form-check-input" type="checkbox" id="mush4" name="mushroom" value="47">
-                                                        <label class="form-check-label" for="mush4">표고버섯</label>
-                                                    </div>
-                                                </div>
-
-                                                <div class="row">
-                                                    <div class="col">
-                                                        <input class="form-check-input" type="checkbox" id="mush5" name="mushroom" value="48">
-                                                        <label class="form-check-label" for="mush5">느타리버섯</label>
-                                                    </div>
-                                                    <div class="col">
-                                                        <input class="form-check-input" type="checkbox" id="mush6" name="mushroom" value="49">
-                                                        <label class="form-check-label" for="mush6">팽이버섯</label>
-                                                    </div>
-                                                    <div class="col"></div>
-                                                </div>
-                                            
-                                            </div> --%>
                                             
                                         </div>
 

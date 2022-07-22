@@ -8,6 +8,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import edu.kh.ugloryC.member.model.vo.Member;
 import edu.kh.ugloryC.product.model.vo.ProductList;
@@ -39,6 +40,7 @@ public class SubscriptionServiceImpl implements SubscriptionService{
 	}
 
 	// 주문 삽입
+//	@Transactional(rollbackFor = {Exception.class})
 	@Override
 	public int insertSubsOrder(Map<String, Object> payInfo) {
 		
@@ -59,7 +61,7 @@ public class SubscriptionServiceImpl implements SubscriptionService{
 		payInfo.put("payNo", payNo);
 		
 		
-		int subPay = dao.insertPay(payInfo); //
+		int subPay = dao.insertPay(payInfo); 
 		
 		return result;
 	}
