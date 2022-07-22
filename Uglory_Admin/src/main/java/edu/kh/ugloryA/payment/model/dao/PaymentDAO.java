@@ -107,5 +107,34 @@ public class PaymentDAO {
 		return sqlSession.selectList("paymentMapper.selectRefundList");
 	}
 
+
+	/**
+	 * 개별 상품 결제 건수 
+	 * @return
+	 */
+	public int prodPaymentCount() {
+		return sqlSession.selectOne("paymentMapper.prodPaymentCount");
+	}
+
+
+	/**
+	 * 환불 요청 건수
+	 * @return
+	 */
+	public int refundCount() {
+		return sqlSession.selectOne("paymentMapper.refundCount");
+	}
+
+
+	/**
+	 * 환불 완료 건수
+	 * @return
+	 */
+	public int refundDone() {
+		return sqlSession.selectOne("paymentMapper.refundDone");
+	}
+	
+	
+
 	
 }
