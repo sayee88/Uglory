@@ -80,7 +80,10 @@
                                 </div>
     
                                 <div class="p-btn-area">
-                                    <button type="button" class="btn btn-outline-primary">알림</button>
+
+                                    <c:if test="${!empty thisWeek}">
+                                        <button type="button" class="btn btn-outline-primary" onclick="sendMessage(${thisWeek.productListNo})">알림</button>
+                                    </c:if>
                                     <i class="fa-solid fa-lightbulb text-warning" style="font-size:36px;"></i>
                                 </div>                           
                             </div>
@@ -110,7 +113,7 @@
                                         <c:when test="${!empty nextWeek}">
                                             <div>
                                                 <button type="button" class="btn btn-primary" onclick="location.href='register?mode=update&key=N'">수정</button>
-                                                <button type="button" class="btn btn-outline-primary">알림</button>
+                                                <button type="button" class="btn btn-outline-primary"  onclick="sendMessage(${nextWeek.productListNo})">알림</button>
                                             </div>
                                             <i class="fa-solid fa-lightbulb text-warning" style="font-size:36px;"></i>
                                         </c:when>
