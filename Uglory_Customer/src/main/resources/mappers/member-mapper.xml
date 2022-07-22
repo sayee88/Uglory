@@ -57,7 +57,7 @@
 		<result property="optionName" column="OPTION_NM"/>
 		<result property="optionCount" column="OPTION_COUNT"/>
 		<result property="deliveryFlag" column="DELIVERY_ST"/>
-		<result property="imageRename" column="IMG_RENAME"/>
+		<result property="imageRoot" column="IMG_ROOT"/>
 	</resultMap>
 	
 	
@@ -209,7 +209,7 @@
 	
 	<!--  주문 내역 상세 조회 -->
 	<select id="selectOrderHistoryProduct" resultMap="orderHistoryProduct_rm">
-		SELECT P_ORDER_CD, PRODUCT_NM, PRODUCT_PRICE, OPTION_PRICE, OPTION_NM, DELIVERY_ST, OPTION_COUNT, IMG_RENAME
+		SELECT P_ORDER_CD, PRODUCT_NM, PRODUCT_PRICE, OPTION_PRICE, OPTION_NM, DELIVERY_ST, OPTION_COUNT, IMG_ROOT
 		FROM PRODUCT_ORDER
 		JOIN OPTION_TB USING(P_ORDER_CD)
 		JOIN OPTION_TYPE USING(OPTION_CD)

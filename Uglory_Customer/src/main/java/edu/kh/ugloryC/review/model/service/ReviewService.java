@@ -2,6 +2,7 @@ package edu.kh.ugloryC.review.model.service;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -43,6 +44,24 @@ public interface ReviewService {
 	 * @return productUnWrittenList
 	 */
 	List<UnWrittenProduct> productUnWrittenList(Member loginMember);
+
+
+
+	/**
+	 * 리뷰 작성의 상품 조회
+	 * @param map
+	 * @return unWrittenProduct
+	 */
+	UnWrittenProduct productSelect(Map<String, Object> map);
+
+
+
+	/**
+	 * 리뷰 작성의 구독 조회
+	 * @param map
+	 * @return UnWrittenSubscription
+	 */
+	UnWrittenSubscription subSelect(Map<String, Object> map);
 
 
 	

@@ -15,5 +15,5 @@ public class OrderHistoryProduct {
 	private String optionName; // 옵션이름
 	private int optionCount; // 옵션 개수
 	private String deliveryFlag; // 배송 상태
-	private String imageRename; // 상품 이미지
+	private String imageRoot; // 상품 이미지
 }
