@@ -62,6 +62,18 @@
         </div>
     </div> 
     <!-- Footer End -->
+     <c:if test="${ !empty sessionScope.message }">
+        <script>
+            alert("${sessionScope.message}");
+            // EL 작성 시 scope를 지정하지 않으면
+            // page -> request -> session -> application 순서로 검색하여
+            // 일치하는 속성이 있으면 출력
+
+            <c:remove var="message" scope="session"/>
+        </script>
+    
+    </c:if> 
+
 
     <%-- request에 message 속성이 존재하는 경우 alert창으로 해당 내용을 출력 --%>
     <c:if test="${ !empty message }">
@@ -73,6 +85,7 @@
         </script>
     
     </c:if> 
+   
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>

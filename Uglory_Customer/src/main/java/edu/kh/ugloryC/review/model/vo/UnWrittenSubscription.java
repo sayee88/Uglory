@@ -14,5 +14,4 @@ public class UnWrittenSubscription {
 	private int reviewCode;
 	private String subName;
 	private int subPrice;
-	
 }

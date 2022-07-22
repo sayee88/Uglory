@@ -94,23 +94,40 @@
 
                 <form action="${reviewCode}" enctype="multipart/form-data" method="POST" class="review-write">
                     <div style="padding: 10px 0; font-size: 14px;" class="px-1">
-                    	<c:if test="${reviewCode == 1}">
+                    	<c:if test="${unWrittenProduct.productOrderCode == null}">
                     		구독상품
                     	</c:if>
-                    	<c:if test="${reviewCode == 2}">
+                    	<c:if test="${unWrittenProduct.productOrderCode != null}">
                     		개별상품
                    		</c:if>
                     </div>
-                    <div class="purchase-product">
-                        <div>
-                            <img src="${contextPath}/resources/img/product/banana.png">
+
+                    <c:if test="${unWrittenProduct.productOrderCode == null}">
+                        <div class="purchase-product">
+                            <div>
+                                <img src="${contextPath}/resources/img/product/banana.png">
+                            </div>
+                            <div>
+                                <div>${UnWrittenSubscription.subDate}</div>
+                                <div>${UnWrittenSubscription.subName}</div>
+                                <div>구매 가격 : ${UnWrittenSubscription.subPrice}원</div>
+                            </div>
                         </div>
-                        <div>
-                            <div>2022.07.07</div>
-                            <div>유기농 어글리 바나나 - 1.5kg</div>
-                            <div>구매 가격 : 15,000원</div>
+                    </c:if>
+                    
+                    <c:if test="${unWrittenProduct.productOrderCode != null}">
+                        <div class="purchase-product">
+                            <div>
+                                <img src="${contextPath}/resources/img/product/banana.png">
+                            </div>
+                            <div>
+                                <div>${unWrittenProduct.productOrderDate}</div>
+                                <div>${unWrittenProduct.productName} - ${unWrittenProduct.optionName}</div>
+                                <div>구매 가격 : ${unWrittenProduct.totalPrice}원</div>
+                            </div>
                         </div>
-                    </div>
+                    </c:if>
+
 
                     <div class="review-star-section">
                         <h3>상품은 어떠셨나요?</h3>

@@ -5,6 +5,7 @@ import java.util.List;
 import edu.kh.ugloryA.payment.model.vo.Chart;
 import edu.kh.ugloryA.payment.model.vo.Payment;
 import edu.kh.ugloryA.payment.model.vo.ProductPaymentDetail;
+import edu.kh.ugloryA.payment.model.vo.Refund;
 import edu.kh.ugloryA.payment.model.vo.SubsPaymentDetail;
 
 public interface PaymentService {
@@ -47,6 +48,27 @@ public interface PaymentService {
 	 * @return
 	 */
 	SubsPaymentDetail selectSubsPaymentDetail(String orderCode);
+
+
+	/**
+	 * 당일 매출
+	 * @return
+	 */
+	int dailySales();
+
+
+	/**
+	 * 총 매출
+	 * @return
+	 */
+	int totalSales();
+
+
+	/**
+	 * 환불 내역 조회
+	 * @return
+	 */
+	List<Refund> selectRefundList();
 
 
 

@@ -9,10 +9,14 @@ import lombok.Setter;
 @NoArgsConstructor
 public class ProductCart {
 	
-	private String productName;
-	private String optionName;
+	private int categoryNo;
 	private int productCode;
+	private String productName;
+	private int productPrice;
 	private int optionCode;
+	private String optionName;
+	private int optionPrice;
 	private int optionNo;
+	
 	private int optionCount;
 }

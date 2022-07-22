@@ -97,18 +97,13 @@ public class ReviewServiceImpl implements ReviewService{
 						
 					}
 					
-					// 리뷰 작성 상태 update
-					// 구독
-					// 상품 
-					
-					
 				} else {
 					
 					throw new InsertFailException();
 				}
 			}
 			
-			
+			// 변수로 등록해줌
 			String subOrderCode = reviewWrite.getSubOrderCode();
 			
 			if( subOrderCode != null ) {
@@ -146,6 +141,30 @@ public class ReviewServiceImpl implements ReviewService{
 		
 		return productUnWrittenList;
 	}
+
+
+
+	// 리뷰 작성 시 상품 정보 조회
+	@Override
+	public UnWrittenProduct productSelect(Map<String, Object> map) {
+		
+		return dao.productSelect(map);
+	}
+
+
+
+	// 리뷰 작성 시 구독 정보 조회
+	@Override
+	public UnWrittenSubscription subSelect(Map<String, Object> map) {
+		
+		return dao.subSelect(map);
+	}
+	
+	
+	
+
+	
+
 	
 	
 	

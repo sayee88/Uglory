@@ -28,12 +28,12 @@ import edu.kh.ugloryA.product.model.service.ProductService;
 import edu.kh.ugloryA.product.model.vo.OptionType;
 import edu.kh.ugloryA.product.model.vo.Product;
 import edu.kh.ugloryA.product.model.vo.ProductCategory;
+import edu.kh.ugloryA.product.model.vo.ProductImage;
 import edu.kh.ugloryA.product.model.vo.WeeklyList;
 import edu.kh.ugloryA.product.model.vo.WeeklyProduct;
 
 @Controller
 @RequestMapping("/product")
-@SessionAttributes({"product", "optionType", "farm"})
 public class ProductController {
 	
 	@Autowired
@@ -87,14 +87,15 @@ public class ProductController {
 								@RequestParam(value="productCode", required = false, defaultValue = "0") int productCode,
 								Model model) {
 		
-		Product product = new Product();
+		Map<String, Object> detailMap = new HashMap<String, Object>();
 		
 		if(mode.equals("update")) {
 			
-			product = service.selectProduct(productCode);
+			detailMap = service.productDetail(productCode);
+			
 		}
 
-		model.addAttribute("product", product);
+		model.addAttribute("detailMap", detailMap);
 		
 		List<ProductCategory> categoryList = service.selectCategory();
 		List<Farm> farmList = service.selectFarmList();
@@ -110,7 +111,6 @@ public class ProductController {
 	@PostMapping("/register")
 	public String productInsert(String mode,
 								Product product,
-								@RequestParam(value="productCode", required = false, defaultValue = "0") int updateCode,
 								@RequestParam(value="productImg", required=false) List<MultipartFile> imageList,
 								RedirectAttributes ra,
 								HttpServletRequest req) throws IOException {
@@ -138,10 +138,7 @@ public class ProductController {
 			
 		} else { // update일 때
 			
-			product.setProductCode(updateCode);
-			
-			int result = service.updateProduct(product);
-											 //imageList, webPath, folderPath
+			int result = service.updateProduct(product, imageList, webPath, folderPath);
 			
 			if(result>0) {
 				path = "detail/" + product.getProductCode();

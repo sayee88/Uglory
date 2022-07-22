@@ -101,6 +101,32 @@ public class ReviewDAO {
 
 
 	
+	/**
+	 * 리뷰 작성 시 상품 정보 조회
+	 * @param map
+	 * @return unWrittenProduct
+	 */
+	public UnWrittenProduct productSelect(Map<String, Object> map) {
+		
+		
+		
+		return sqlSession.selectOne("reviewMapper.productSelect" , map);
+	}
+
+
+	
+	/**
+	 * 리뷰 작성 시 구독 정보 조회
+	 * @param map
+	 * @return UnWrittenSubscription
+	 */
+	public UnWrittenSubscription subSelect(Map<String, Object> map) {
+		
+		return sqlSession.selectOne("reviewMapper.subSelect", map);
+	}
+
+
+	
 	
 
 }
