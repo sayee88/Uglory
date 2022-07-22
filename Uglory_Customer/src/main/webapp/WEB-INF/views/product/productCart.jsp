@@ -65,10 +65,11 @@
             <%-- 장바구니에 담긴 상품이 있을 경우 --%>
             <c:if test="${!empty productCartList}">
 
-                <form action="${contextPath}/product/order" method="POST">
+                <form action="${contextPath}/product/order" method="GET" name="orderForm" onsubmit="return orderValidate()">
 
                     <!-- 장바구니에 담긴 상품이 있을 경우 -->
-                    <h4 class="cart-count">장바구니 상품<span>(${cartCount})</span></h4>
+                    <h4 class="cart-count">장바구니 상품(<span id="cartCount">${fn:length(productCartList)}</span>)</h4>
+                    
                     <c:forEach var="cartList" items="${productCartList}">
                         <div class="product-cart-area" style="background-color:#EAEAEA; padding:10px; margin-top:10px; border-radius: 10px;">
                             
@@ -77,7 +78,7 @@
                                 <!-- 장바구니 담은 상품 선택 -->
                                 <input type="checkbox" name="cart-check" value="cart-1" class="cart-check" checked>
                                 <!-- 장바구니 담은 상품 삭제 버튼 -->
-                                <button class="cart-delete" onclick="pDelete()">X</button>
+                                <button type="button" class="cart-delete">X</button>
                             </div> 
 
                             <!-- 장바구니 담은 상품 리스트 -->
@@ -102,46 +103,50 @@
                                 <!-- 상품 수량 변경 -->
                                 <div class="option-info">
                                     <div class="option-updown" style="margin-top:-5px;">
-                                        <button type="button" class="option-minus">-</button>
+                                        <button type="button" class="option-minus" id="option-minus">-</button>
                                         <span class="option-count"> ${cartList.optionCount}</span>
-                                        <button type="button" class="option-plus">+</button>
+                                        <button type="button" class="option-plus" id="option-plus">+</button>
                                     </div>
+                                    <%-- 상품 가격이 30,000원 미만일 때 3,000원 추가 --%>
                                     <c:if test="${cartList.productPrice+(cartList.optionCount*cartList.optionPrice) < 30000}">
-                                        <p style="margin-top: -3px;"><span>${cartList.productPrice+(cartList.optionCount*cartList.optionPrice)+3000}</span>원</p>
+                                        <p style="margin-top: -3px;"><span class="productCartPrice">${cartList.productPrice+(cartList.optionCount*cartList.optionPrice)+3000}</span>원</p>
                                     </c:if>
+                                    <%-- 상품 가격이 30,000원 이상 --%>
                                     <c:if test="${cartList.productPrice+(cartList.optionCount*cartList.optionPrice) >= 30000}">
-                                        <p style="margin-top: -3px;"><span>${cartList.productPrice+(cartList.optionCount*cartList.optionPrice)}</span>원</p>
+                                        <p style="margin-top: -3px;"><span class="productCartPrice">${cartList.productPrice+(cartList.optionCount*cartList.optionPrice)}</span>원</p>
                                     </c:if>
                                 </div>
                             </div>
 
                             <p class="cart-option-amount" style="margin-top:10px;">상품 : <span>${cartList.productPrice+(cartList.optionCount*cartList.optionPrice)}원</span>
+                            <%-- 상품 가격이 30,000원 미만일 때 3,000원 추가해서 보여줌 --%>
                             <c:if test="${cartList.productPrice+(cartList.optionCount*cartList.optionPrice) >= 30000}">
                                 + 배송비 : 0원
                             </c:if>
+                            <%-- 상품 가격이 30,000원 미만일 때 3,000원 추가해서 보여줌 --%>
                             <c:if test="${cartList.productPrice+(cartList.optionCount*cartList.optionPrice) < 30000}">
-                                + 배송비 : 3,000원
+                                + 배송비 : <span class="spanDel">3000</span>원
                             </c:if>
                             </p>
                         </div>
                     </c:forEach>
                     <!-- 장바구니에 담긴 상품이 있을 경우 끝 -->
 
-                    <div class="cart-total-amount">
-                        <p>총 주문 금액</p> <p><span>0</span> 원</p>
+                    <div class="cart-total-amount" style="margin-top : 15px; margin-bottom : -20px;">
+                        <p>총 주문 금액</p> <p><span id="cartTotalPrice">0</span> 원</p>
                     </div>
                     <hr>
 
                     <!-- 가격 상세 내역 -->
                     <div class="total-product-amount">
-                        <p>총 상품금액</p> <p><span>0</span>원</p>
+                        <p>총 상품금액</p> <p><span id="cartPrice">0</span>원</p>
                     </div>
 
                     <div class="total-del-amount">
-                        <p>총 배송비</p> <p><span>3,000</span>원</p>
+                        <p>총 배송비</p> <p><span id="delTotalPrice">0</span>원</p>
                     </div>
 
-                    <button id="product-order">주문하기</button>
+                    <button type="submit" id="product-order">주문하기</button>
                 </form>
             </c:if>
         </section>
