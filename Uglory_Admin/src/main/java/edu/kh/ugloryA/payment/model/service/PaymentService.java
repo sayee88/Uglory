@@ -92,5 +92,12 @@ public interface PaymentService {
 	int refundDone();
 
 
+	/**
+	 * 구독 건수
+	 * @return
+	 */
+	int subsCount();
+
+
 
 }

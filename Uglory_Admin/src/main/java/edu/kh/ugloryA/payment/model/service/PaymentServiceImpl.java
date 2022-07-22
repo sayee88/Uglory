@@ -99,6 +99,13 @@ public class PaymentServiceImpl implements PaymentService {
 	public int refundDone() {
 		return dao.refundDone();
 	}
+
+
+	// 구독 건수
+	@Override
+	public int subsCount() {
+		return dao.subsCount();
+	}
 	
 	
 	

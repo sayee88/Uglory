@@ -85,11 +85,14 @@ public class PaymentController {
 		
 		int refundDone = service.refundDone();
 		
+		int subsCount = service.subsCount();
+		
 		Map<String, Object> map = new HashMap<String, Object>();
 		
 		map.put("prodPaymentCount", prodPaymentCount);
 		map.put("refundCount", refundCount);
 		map.put("refundDone", refundDone);
+		map.put("subsCount", subsCount);
 		
 		List<Refund> refundList = service.selectRefundList();
 		
