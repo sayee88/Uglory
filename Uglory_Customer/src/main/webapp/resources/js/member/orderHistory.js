@@ -15,7 +15,7 @@ for (let btn of orderDetailBtn) {
         if(this.parentElement.parentElement.nextElementSibling.nextElementSibling != undefined){
             
             for(let i=8 ; i>2 ; i--){
-                
+
                 target.children[i].remove();
             }
             return;
@@ -215,6 +215,7 @@ for (let btn of orderDetailBtn) {
                 if(orderHistoryDetail.deliveryReq == ""){
                     dd3_4.innerText = "";
                 }
+
 
                 dl3_4.append(dt3_4, dd3_4);
 

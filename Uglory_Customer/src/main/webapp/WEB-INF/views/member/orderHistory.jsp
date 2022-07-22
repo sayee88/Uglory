@@ -86,7 +86,7 @@
 
                                 <c:if test="${item.refundStatus == 0}">
                                 <dl>
-                                    <dt>환불금액</dt>
+                                    <dt>결제금액</dt>
                                     <dd>${item.totalPrice}원</dd>
                                 </dl>
 
