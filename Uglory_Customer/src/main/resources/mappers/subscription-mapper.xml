@@ -35,7 +35,29 @@
 	
 	<!-- 첫배송일 지정 -->
 	<select id="createDelDate" resultType="date">
-		SELECT NEXT_DAY(SYSDATE, '수요일') FROM DUAL
+		<![CDATA[
+		WITH TEMP_DATE AS (
+		SELECT TO_DATE(YYYY||MM, 'YYYYMM') YYYYMM 
+		FROM (SELECT LPAD(LEVEL, 2, '0') MM FROM DUAL
+		    CONNECT BY LEVEL <= 12)
+		    ,(SELECT TO_CHAR(LEVEL+TO_CHAR(SYSDATE, 'YYYY') -1 ) YYYY FROM DUAL
+		    CONNECT BY LEVEL <= 1)
+		ORDER BY 1)
+		]]>
+		
+		SELECT COL_VAL FROM (
+		    SELECT YYYYMM "1일", 
+		        YYYYMM + 7 + (4-TO_CHAR(YYYYMM, 'D')) "두번째 수요일",
+		        YYYYMM + 21 + (4-TO_CHAR(YYYYMM, 'D')) "네번째 수요일",
+		        ADD_MONTHS(YYYYMM, 1) + 7 + (4-TO_CHAR( ADD_MONTHS(YYYYMM, 1), 'D')) "다음달 두번째 수요일"
+		    FROM TEMP_DATE
+		)
+		UNPIVOT ( COL_VAL FOR COL_NM IN ("두번째 수요일", "네번째 수요일", "다음달 두번째 수요일"))
+		
+		
+		WHERE "1일" = TRUNC(SYSDATE, 'MM')
+		AND COL_VAL > SYSDATE
+		AND ROWNUM = 1
 	</select>
 	
 	
