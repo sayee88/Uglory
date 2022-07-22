@@ -63,10 +63,14 @@
 		<result property="productCode" column="P_CD"/>
 		<result property="productName" column="PRODUCT_NM"/>
 		<result property="productPrice" column="PRODUCT_PRICE"/>
+		<!-- 
+		 -->
 
 		<result property="optionCode" column="OPTION_CD"/>
 		<result property="optionName" column="OPTION_NM"/>
 		<result property="optionPrice" column="OPTION_PRICE"/>
+		<!-- 
+		 -->
 	</resultMap>
 	
 	
@@ -298,6 +302,7 @@
 		WHERE S_CANCEL = 'N'
 	</select>
 	
+	
 	<select id="selectThisWeek" resultMap="weeklyProduct_rm">
 		SELECT PRODUCT_NM, OPTION_NM 
 		FROM WEEKLY_P
@@ -307,5 +312,6 @@
 		WHERE EX_UPLOAD_DATE = 'T'
 		ORDER BY PRODUCT_NO
 	</select>
+	
 
 </mapper>
