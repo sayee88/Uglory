@@ -100,3 +100,24 @@
 h4{
     margin-top: 15px;
 }
+
+
+/* 별점 */
+.review-star{
+    /* border: 1px solid red; */
+    display: flex;
+}
+
+.fa-star {
+    color: rgb(113, 214, 199);
+}
+
+.rating .star-wrap{width: 20px; display:inline-block; margin: 0 -3px;}
+
+.rating, p{
+    padding-top: 20px;
+    overflow: hidden;
+
+}
+
+

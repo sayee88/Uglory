@@ -175,7 +175,7 @@
                                         <div>2022.07.10</div>
                                     </div>
                                     <div class="review-star">
-                                        <div class="rating" data-rate="3.5">
+                                        <div class="rating" data-rate="4.7">
                                             <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
                                             <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
                                             <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
