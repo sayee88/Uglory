@@ -104,6 +104,13 @@ public class PaymentController {
 	}
 	
 	
+	@GetMapping("/refund")
+	@ResponseBody
+	public int refundHandling(String orderCode) {
+		return service.refundHandling(orderCode);
+	}
+	
+	
 	
 	
 	

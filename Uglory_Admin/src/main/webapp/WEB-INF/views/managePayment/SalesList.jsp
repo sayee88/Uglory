@@ -138,28 +138,41 @@
                                     <div>
                                         <c:if test="${!empty refundList}">
                                             <c:forEach var="refund" items="${refundList}">
-                                                <button class="faq-list" data-bs-toggle="collapse" data-bs-target="#collapse-4">${refund.orderCode} / ${refund.refundAmount}</button>
-                                                <div class="faq-content collapse" id="collapse-4">
+                                                <div style="display: block;">
+                                                    <i class="fa-solid fa-apple-whole"></i>
+                                                    <button class="faq-list" data-bs-toggle="collapse" data-bs-target="#collapse-${refund.orderCode}"> 주문 번호 : ${refund.orderCode} / ${refund.refundAmount} 원</button>
+                                                </div>
+                                                <div class="faq-content collapse" id="collapse-${refund.orderCode}">
                                                     <table class="table table-borderless farmTable mt-4">
                                                         <thead>
                                                             <tr>
                                                                 <th scope="col">주문 번호</th>
                                                                 <th scope="col">주문자 아이디(이름)</th>
-                                                                <th scope="col">상품명</th>
-                                                                <th scope="col">옵션 * 수량</th>
                                                                 <th scope="col">주문일 / 환불 요청일</th>
                                                                 <th scope="col">환불 금액</th>
+                                                                <th scope="col">옵션 * 수량</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
                                                             <tr>
                                                                 <td>${refund.orderCode}</td>
-                                                                <td>${refund.customerEmail} / ${refund.customerName}</td>
-                                                                <td>${refund.productName}</td>
-                                                                <td>${refund.optionName} * ${refund.optionCount}</td>
+                                                                <td>${refund.customerEmail} (${refund.customerName})</td>
                                                                 <td>${refund.orderDate} / ${refund.refundDate}</td>
                                                                 <td>${refund.refundAmount}</td>
+
+                                                                <c:forEach var="option" items="${refund.optionList}">
+                                                                    <td>${option.productName} - ${option.optionName} * ${option.optionCount}</td>
+                                                                </c:forEach>
+
                                                             </tr>
+                                                            <c:if test="${refund.refundStatement == 'N'}">
+                                                                <tr>
+                                                                    <td>
+                                                                        <button type="button" class="btn btn-active refundDone">환불 처리</button>
+                                                                    </td>
+                                                                </tr>
+                                                            </c:if>
+                                                            
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -201,18 +214,10 @@
     <!-- Template Javascript -->
     <script src="${contextPath}/resources/js/main.js"></script>
 
-    <script src="${contextPath}/resources/js/paymentList.js"></script>
+    <script src="${contextPath}/resources/js/salesList.js"></script>
 
     <script>
         const contextPath = "${contextPath}";
-        
-
-        for(var sort of sortlist){
-            console.log(sort);
-        }
-
-
-
     </script>
 
 </body>
