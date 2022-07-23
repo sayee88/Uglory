@@ -120,5 +120,26 @@ public class ProductServiceImpl implements ProductService {
 		return result;
 	}
 
+	// x버튼 클릭 시 장바구니 삭제 
+	@Override
+	public int cartDelete(int memberNo, List<String> deleteList) {
+		
+		int result = 0;
+		
+		Map<String, Object> optionDeleteMap = new HashMap<String, Object>();
+		
+		optionDeleteMap.put("memberNo", memberNo);
+		
+		for(int i=0; i<deleteList.size(); i++) {
+			optionDeleteMap.put("optionNoDelete", deleteList.get(i));
+			
+			result = dao.cartDelete(optionDeleteMap);
+		}
+		
+		return result;
+	}
+
+
+
 	
 }
