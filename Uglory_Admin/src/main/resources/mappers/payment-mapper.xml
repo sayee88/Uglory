@@ -70,6 +70,16 @@
 	</resultMap>
 	
 	
+	<resultMap type="monthlyChart" id="monthlyChart_rm">
+		<id property="period" column="PERIOD" />
+		<result property="productPerMonth" column="PROD_TOTAL" />
+		<result property="subsPerMonth" column="SUBS_TOTAL" />
+		<result property="totalPerMonth" column="TOTAL" />
+	</resultMap>
+	
+	
+	
+	
 	
 	<!-- 결제 전체 조회 -->
 	<select id="selectAllPayment" resultMap="payment_rm">
@@ -263,6 +273,23 @@
 		    FROM (SELECT TO_CHAR(SYSDATE + LEVEL - 7, 'YYYY-MM-DD') DT
 		        FROM DUAL
 		        CONNECT BY LEVEL &lt;= 7)  A)	
+	</select>
+	
+	
+	<select id="selectMonthlyChartData" resultMap="monthlyChart_rm">
+		SELECT PERIOD, (PROD_TOTAL - REFUND_TOTAL) AS PROD_TOTAL, SUBS_TOTAL, "PROD_TOTAL" + "SUBS_TOTAL" - "REFUND_TOTAL" AS TOTAL
+		FROM (
+		SELECT TO_CHAR(P_ORDER_DT, 'YYYY-MM') PERIOD, 
+		    SUM(TOTAL_PRICE) "PROD_TOTAL",
+		    ( SELECT SUM(S_PAY_AMOUNT) FROM SUBS_PAY
+		       WHERE TO_CHAR(S_PAY_DT, 'YYYY-MM') = TO_CHAR(P_ORDER_DT, 'YYYY-MM')
+		     ) "SUBS_TOTAL"
+		    ,(SELECT SUM( P_REFUND_AMOUNT ) FROM PRODUCT_REFUND
+		       WHERE TO_CHAR(P_REFUND_DT, 'YYYY-MM')  = TO_CHAR(P_ORDER_DT, 'YYYY-MM')
+		    ) "REFUND_TOTAL"
+		    
+		FROM PRODUCT_ORDER
+		GROUP BY TO_CHAR(P_ORDER_DT, 'YYYY-MM') ) A
 	</select>
 	
 	

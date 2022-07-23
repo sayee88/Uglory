@@ -271,7 +271,9 @@
 	
 	<!-- 나의 리뷰 수 조회 -->
 	<select id="selectMyReviewCount" resultType="_int">
-		SELECT COUNT(*) FROM REVIEW WHERE MEMBER_NO = #{memberNo}
+		SELECT NVL((SELECT ROUND(AVG(STAR_RATING/2),1) FROM REVIEW
+		JOIN MEMBER ON(MEMBER.MEMBER_NO = REVIEW.MEMBER_NO)
+		WHERE MEMBER.MEMBER_NO = #{memberNo}), 0 ) FROM DUAL;
 	
 		<!-- SELECT (
 			SELECT COUNT(*)

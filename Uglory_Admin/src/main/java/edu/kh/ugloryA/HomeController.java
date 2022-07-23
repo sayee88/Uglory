@@ -3,6 +3,7 @@ package edu.kh.ugloryA;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import edu.kh.ugloryA.customer.model.service.CustomerService;
 import edu.kh.ugloryA.payment.model.service.PaymentService;
 import edu.kh.ugloryA.payment.model.vo.Chart;
+import edu.kh.ugloryA.payment.model.vo.MonthlyChart;
 import edu.kh.ugloryA.review.model.service.ReviewService;
 
 @Controller
@@ -57,6 +59,9 @@ public class HomeController {
 		// 매출 per day 차트 데이터 조회
 		Chart chartData = pService.selectChartData();
 		
+		// 월별 매출 차트 데이터 조회 (list)
+		List<MonthlyChart> monthlyChartDatalist = pService.selectMonthlyChartData();
+		
 		
 		Map<String, Object> mainDataMap = new HashMap<String, Object>();
 		
@@ -65,6 +70,8 @@ public class HomeController {
 		mainDataMap.put("dailySales", dailySales);
 		mainDataMap.put("totalSales", totalSales);
 		mainDataMap.put("chartData", chartData);
+		mainDataMap.put("monthlyChartDatalist", monthlyChartDatalist);
+		
 		
 		model.addAttribute("mainDataMap", mainDataMap);
 		

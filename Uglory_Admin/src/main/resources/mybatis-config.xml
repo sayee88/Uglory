@@ -34,6 +34,7 @@
 		<typeAlias type="edu.kh.ugloryA.review.model.vo.ReviewImage" alias="reviewImage"/>
 		
 		<typeAlias type="edu.kh.ugloryA.payment.model.vo.Chart" alias="chart"/>
+		<typeAlias type="edu.kh.ugloryA.payment.model.vo.MonthlyChart" alias="monthlyChart"/>
 
 		<typeAlias type="edu.kh.ugloryA.product.model.vo.Product" alias="product"/>
 		<typeAlias type="edu.kh.ugloryA.product.model.vo.ProductImage" alias="productImage"/>
