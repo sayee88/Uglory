@@ -1,44 +1,5 @@
-const subUnWrittenList = document.getElementById("subUnWrittenList");
-const productUnWrittenList = document.getElementById("productUnWrittenList");
-
-
-document.getElementsByClassName("subBox")[0].addEventListener("click", function(){
-    
-    
-    if(subUnWrittenList != null){
-        subUnWrittenList.style.display = "block";
-    }
-    productUnWrittenList.style.display = "none";
-
-    document.getElementsByClassName("unWritten")[0].classList.add("unWrittenNone");
-    document.getElementsByClassName("unWritten")[0].classList.remove("unWritten");
-    this.classList.remove("unWrittenNone");
-    this.classList.add("unWritten");
-
-});
-    
-
-
-document.getElementsByClassName("product")[0].addEventListener("click", function(){
-    
-    productUnWrittenList.style.display = "block";
-    
-    if(subUnWrittenList != null){
-        subUnWrittenList.style.display = "none";
-    }
-
-    document.getElementsByClassName("unWritten")[0].classList.add("unWrittenNone");
-    document.getElementsByClassName("unWritten")[0].classList.remove("unWritten");
-    this.classList.remove("unWrittenNone");
-    this.classList.add("unWritten");
-   
-});
-
-
-
-
 // ajax
-function subBox(){
+function subCategory(){
 
     $.ajax({
 
@@ -95,9 +56,106 @@ function createBox(){
     const starRating = document.createElement("div");
     starRating.classList.add("review-star");
 
-    const star = document.createElement("span");
-    star.innerText = "별점";
+    // 별점 부분
 
 
 
 };
+
+
+
+
+
+// 별점 
+const rating = $('.rating');
+
+rating.each(function(){
+    const $this = $(this);
+    const targetScore = $this.attr('data-rate');
+    const firstdigit = targetScore.split('.');
+
+    console.log(firstdigit);
+
+    // firstdigit의 개수가 2개이면 소수점
+    if(firstdigit.length > 1){
+
+        for(let i=0; i<firstdigit[0]; i++){
+            $this.find('.star').eq(i).css({width:'100%'});
+        }
+        $this.find('.star').eq(firstdigit[0]).css({width:firstdigit[1]+'0%'});
+
+    } else {
+        for(let i=0; i<targetScore; i++){
+            $this.find('.star').eq(i).css({width:'100%'});
+        }
+    }
+
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 나의 미작성 리뷰 
+const subUnWrittenList = document.getElementById("subUnWrittenList");
+const productUnWrittenList = document.getElementById("productUnWrittenList");
+
+
+document.getElementsByClassName("subBox")[0].addEventListener("click", function(){
+    
+    
+    if(subUnWrittenList != null){
+        subUnWrittenList.style.display = "block";
+    }
+    productUnWrittenList.style.display = "none";
+
+    document.getElementsByClassName("unWritten")[0].classList.add("unWrittenNone");
+    document.getElementsByClassName("unWritten")[0].classList.remove("unWritten");
+    this.classList.remove("unWrittenNone");
+    this.classList.add("unWritten");
+
+});
+    
+
+
+document.getElementsByClassName("product")[0].addEventListener("click", function(){
+    
+    productUnWrittenList.style.display = "block";
+    
+    if(subUnWrittenList != null){
+        subUnWrittenList.style.display = "none";
+    }
+
+    document.getElementsByClassName("unWritten")[0].classList.add("unWrittenNone");
+    document.getElementsByClassName("unWritten")[0].classList.remove("unWritten");
+    this.classList.remove("unWrittenNone");
+    this.classList.add("unWritten");
+   
+});
+
+
+
+
