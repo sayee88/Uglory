@@ -54,16 +54,90 @@ function createBox(){
     enrollDate.innerText = "리뷰 작성일";
 
     // 별점 부분
-    const starRating = document.createElement("div");
-    starRating.classList.add("review-star");
+    // 별점
+    const review_star = document.createElement("div");
+    review_star.classList.add("review-star");
 
-    const datarating = document.createElement("div");
-    datarating.classList.add("rating");
-    datarating.setAttribute("data-rate","별점 값 넣기");
+    const rating = document.createElement("div");
+    rating.classList.add("rating");
+    rating.setAttribute("data-rate", product.starAvg);
+
+    const star_wrap1 = document.createElement("div");
+    star_wrap1.classList.add("star-wrap");
+    const star1 = document.createElement("div");
+    star1.classList.add("star");
+    const i1 = document.createElement("i");
+    i1.classList.add("fas");
+    i1.classList.add("fa-star");
+
+    const star_wrap2 = document.createElement("div");
+    star_wrap2.classList.add("star-wrap");
+    const star2 = document.createElement("div");
+    star2.classList.add("star");
+    const i2 = document.createElement("i");
+    i2.classList.add("fas");
+    i2.classList.add("fa-star");
+
+    const star_wrap3 = document.createElement("div");
+    star_wrap3.classList.add("star-wrap");
+    const star3 = document.createElement("div");
+    star3.classList.add("star");
+    const i3 = document.createElement("i");
+    i3.classList.add("fas");
+    i3.classList.add("fa-star");
+
+    const star_wrap4 = document.createElement("div");
+    star_wrap4.classList.add("star-wrap");
+    const star4 = document.createElement("div");
+    star4.classList.add("star");
+    const i4 = document.createElement("i");
+    i4.classList.add("fas");
+    i4.classList.add("fa-star");
+
+    const star_wrap5 = document.createElement("div");
+    star_wrap5.classList.add("star-wrap");
+    const star5 = document.createElement("div");
+    star5.classList.add("star");
+    const i5 = document.createElement("i");
+    i5.classList.add("fas");
+    i5.classList.add("fa-star");
 
     
+    star1.append(i1);
+    star_wrap1.append(star1);
 
+    star2.append(i2);
+    star_wrap2.append(star2);
 
+    star3.append(i3);
+    star_wrap3.append(star3);
+
+    star4.append(i4);
+    star_wrap4.append(star4);
+
+    star5.append(i5);
+    star_wrap5.append(star5);
+    
+    rating.append(star_wrap1, star_wrap2, star_wrap3, star_wrap4, star_wrap5);
+    review_star.append(rating);
+    flex_container.append(review_star);
+
+    const $this = $(rating)
+    const targetScore = $this.attr('data-rate');
+    const firstdigit = targetScore.split('.');
+
+    // firstdigit의 개수가 2개이면 소수점
+    if(firstdigit.length > 1){
+        for(let i=0; i<firstdigit[0]; i++){
+            $this.find('.star').eq(i).css({width:'100%'});
+        }
+        $this.find('.star').eq(firstdigit[0]).css({width:firstdigit[1]+'0%'});
+
+    } else {
+        for(let i=0; i<targetScore; i++){
+            $this.find('.star').eq(i).css({width:'100%'});
+        }
+    }
 
 };
 
