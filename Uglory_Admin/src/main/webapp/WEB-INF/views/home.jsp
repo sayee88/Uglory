@@ -7,6 +7,25 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<c:set var="chartData" value="${mainDataMap.chartData}"/>
+
+<c:set var="monthlyChartDatalist" value="${mainDataMap.monthlyChartDatalist}"/>
+
+<c:forEach var="monthlyChart" items="${monthlyChartDatalist}">
+    <c:set var="period" value="${monthlyChart.period}"/>
+    <c:set var="productPerMonth" value="${monthlyChart.productPerMonth}"/>
+    <c:set var="subsPerMonth" value="${monthlyChart.subsPerMonth}"/>
+    <c:set var="totalPerMonth" value="${monthlyChart.totalPerMonth}"/>
+<%--     
+    ${monthlyChart.period}
+    ${monthlyChart.productPerMonth}
+    ${monthlyChart.subsPerMonth}
+    ${monthlyChart.totalPerMonth}
+
+    ${monthlyChart} --%>
+</c:forEach>
+
+
 <head>
     <meta charset="utf-8">
     <title>Uglory</title>
@@ -100,8 +119,8 @@
                 </div>
             </div>
 
-            <c:set var="chartData" value="${mainDataMap.chartData}"/>
             
+
 
 
             <%-- 매출 그래프 --%>
@@ -158,6 +177,12 @@
         let chartDate = "${chartData.chartDate}".split(",");
         let subsPerDate = "${chartData.subsPerDate}".split(",");
         let productPerDate = "${chartData.productPerDate}".split(",");
+
+        let period = ["${period}"];
+        let productPerMonth = ["${productPerMonth}"];
+        let subsPerMonth =["${subsPerMonth}"];
+        let totalPerMonth = ["${totalPerMonth}"];
+
     </script>
     <%-- 차트 JS --%>
     <script src="${contextPath}/resources/js/chart.js"></script>
