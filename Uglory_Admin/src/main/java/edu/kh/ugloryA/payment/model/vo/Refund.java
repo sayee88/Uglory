@@ -1,5 +1,7 @@
 package edu.kh.ugloryA.payment.model.vo;
 
+import java.util.List;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,8 +19,7 @@ public class Refund {
 	private String orderDate;
 	private String customerEmail;
 	private String customerName;
-	private String productName;
-	private String optionName;
-	private int optionCount;
 	private String refundStatement;
+	
+	private List<Option> optionList;
 }

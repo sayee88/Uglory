@@ -89,6 +89,7 @@
                                     <tr>
                                         <th scope="col">주문 번호</th>
                                         <th scope="col">회원 이메일</th>
+                                        <th scope="col">회원 이름</th>
                                         <th scope="col">결제금액</th>
                                         <th scope="col">결제일</th>
                                         <th scope="col">결제 상세</th>
@@ -99,6 +100,7 @@
                                         <tr>
                                             <th scope="row">${payment.orderCode}</th>
                                             <td>${payment.customerEmail}</td>
+                                            <td>${payment.customerName}</td>
                                             <td>${payment.payAmount}</td>
                                             <td>${payment.payDate}</td>
                                             <td>

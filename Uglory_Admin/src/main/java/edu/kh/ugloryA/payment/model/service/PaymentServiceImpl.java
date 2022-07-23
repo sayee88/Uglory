@@ -106,6 +106,13 @@ public class PaymentServiceImpl implements PaymentService {
 	public int subsCount() {
 		return dao.subsCount();
 	}
+
+
+	// 환불 처리
+	@Override
+	public int refundHandling(String orderCode) {
+		return dao.refundHandling(orderCode);
+	}
 	
 	
 	
