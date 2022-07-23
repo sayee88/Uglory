@@ -122,13 +122,15 @@
                             </div>
                             <div>
                                 <div>${unWrittenProduct.productOrderDate}</div>
-                                <div>${unWrittenProduct.productName}</div>
+                                <div>${unWrittenProduct.productName} - 
+                                    <div>
+                                        <c:forEach var="opt" items="${unWrittenProduct.optionList}">
+                                            ${opt.OPTION_NM} - ${opt.OPTION_PRICE} / ${opt.OPTION_COUNT}개<br>
+                                        </c:forEach>
+                                    </div>
+                                
+                                </div>
                                 <div>구매 가격 : ${unWrittenProduct.totalPrice}원</div>
-                            </div>
-                            <div>
-                                <c:forEach var="opt" items="${unWrittenProduct.optionList}">
-                                    ${opt.OPTION_NM} - ${opt.OPTION_PRICE} / ${opt.OPTION_COUNT}개<br>
-                                </c:forEach>
                             </div>
                         </div>
                     </c:if>
