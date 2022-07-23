@@ -29,6 +29,7 @@
     /* border: 1px solid red; */
     width: 500px;
     padding-left: 20px;
+    display: inline-block;
 }
 
 .purchase-product > div > div:nth-of-type(1){
@@ -37,10 +38,17 @@
 }
 
 .purchase-product > div > div:nth-of-type(2){
+    /* border : 1px solid red; */
     color: gray;
     font-weight: bold;
     font-size: 16px;
     margin-top: 8px;
+    display: flex;
+}
+
+.purchase-product > div > div > div{
+    /* border: 1px solid red; */
+    margin-left: 10px;
 }
 
 .purchase-product > div > div:nth-of-type(3){

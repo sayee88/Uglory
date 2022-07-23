@@ -16,7 +16,7 @@ public class ReviewDetail {
 	private int reviewNo; 
 	private String enrollDate;
 	private String reviewContent;
-	private int starRating;
+	private Double starRating;
 	
 	private String customerName;
 	
