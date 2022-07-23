@@ -21,9 +21,8 @@ public class ProductDetail {
     private String producer;
     private String origin;
     
-    private int starCount;
     private double star; // 0.5단위
-    private int reviewCount;
+    private int reviewNo;
 
     private List<OptionType> optionList;
     

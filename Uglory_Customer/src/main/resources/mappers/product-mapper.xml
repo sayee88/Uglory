@@ -8,7 +8,6 @@
       	<result property="productName" column="PRODUCT_NM"/>
       	<result property="productPrice" column="PRODUCT_PRICE"/>
       	<result property="productInfo" column="PRODUCT_INFO"/>
-      	<result property="productInfo" column="PRODUCT_INFO"/>
       	
       	<result property="optionName" column="OPTION_NM"/>
       	<result property="optionPrice" column="OPTION_PRICE"/>
@@ -17,6 +16,8 @@
       	<result property="origin" column="ORIGIN"/>
       	
       	<result property="star" column="STAR_RATING"/>
+      	<result property="reviewNo" column="REVIEW_NO"/>
+      	
 
     </resultMap>
     
@@ -56,9 +57,10 @@
       	JOIN PRODUCT_IMG USING(P_CD)
       	WHERE P_CD = ${pCode} -->
  
-		SELECT P_CD, PRODUCT_NM, PRODUCT_PRICE, PRODUCT_INFO, PRODUCER, ORIGIN
+		SELECT P_CD, PRODUCT_NM, PRODUCT_PRICE, PRODUCT_INFO, PRODUCER, ORIGIN, NVL((SELECT ROUND(AVG(STAR_RATING/2),1) FROM REVIEW), 0 ), REVIEW_NO
 		FROM PRODUCT
 		JOIN FARM USING(FARM_NO)
+		JOIN REVIEW USING(P_CD)
 		WHERE P_CD = ${productCode}
 	</select>
 	
