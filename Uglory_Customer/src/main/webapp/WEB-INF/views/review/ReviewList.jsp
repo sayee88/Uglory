@@ -185,7 +185,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <%--  여까지 함 --%>
+                                
                                 <div class="review-content-text-section modal-open">
                                     <div href="#" style="color: black;" >
                                         신선한 토마토로 카프레제 해먹었어요~ 멋쟁이 토마토로 파스타도 해먹구 신이 나요~
@@ -208,7 +208,7 @@
                                         <div>2022.07.06</div>
                                     </div>
                                     <div class="review-star">
-                                        <div class="rating" data-rate="3">
+                                        <div class="rating" data-rate="1.5">
                                             <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
                                             <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
                                             <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>

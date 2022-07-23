@@ -53,10 +53,15 @@ function createBox(){
     const enrollDate = document.createElement("div");
     enrollDate.innerText = "리뷰 작성일";
 
+    // 별점 부분
     const starRating = document.createElement("div");
     starRating.classList.add("review-star");
 
-    // 별점 부분
+    const datarating = document.createElement("div");
+    datarating.classList.add("rating");
+    datarating.setAttribute("data-rate","별점 값 넣기");
+
+    
 
 
 
@@ -73,8 +78,6 @@ rating.each(function(){
     const $this = $(this);
     const targetScore = $this.attr('data-rate');
     const firstdigit = targetScore.split('.');
-
-    console.log(firstdigit);
 
     // firstdigit의 개수가 2개이면 소수점
     if(firstdigit.length > 1){
