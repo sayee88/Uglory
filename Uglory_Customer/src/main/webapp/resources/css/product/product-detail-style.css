@@ -240,3 +240,7 @@
     line-height: 0;
 }
 
+/* 상품 정보 조회 영역 p margin 제거 */
+.info-area > p{
+    margin: 0;
+}

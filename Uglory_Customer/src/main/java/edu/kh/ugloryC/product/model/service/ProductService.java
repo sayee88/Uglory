@@ -71,6 +71,13 @@ public interface ProductService {
 	 */
 	int insertOptionTb(List<String> optionCodeList, List<String> amountList, String pOrderCode);
 
+	/** x버튼 클릭 시 장바구니 삭제 
+	 * @param memberNo
+	 * @param deleteList
+	 * @return result
+	 */
+	int cartDelete(int memberNo, List<String> deleteList);
+
 	
 
 
