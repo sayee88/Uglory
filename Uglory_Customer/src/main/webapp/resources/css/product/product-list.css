@@ -114,7 +114,8 @@ h4{
 
 .rating .star-wrap{width: 20px; display:inline-block; margin: 0 -3px;}
 
-.rating, p{
+.rating .star{
+    width: 0;
     padding-top: 20px;
     overflow: hidden;
 

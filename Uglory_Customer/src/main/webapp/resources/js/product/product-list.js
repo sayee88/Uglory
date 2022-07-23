@@ -105,17 +105,21 @@
             
                 
             
-                i1.append(star1);
-                star1.append(star_wrap1);
-                i2.append(star2);
-                star2.append(star_wrap2);
-                i3.append(star3);
-                star3.append(star_wrap3);
-                i4.append(star4);
-                star4.append(star_wrap4);
-                i5.append(star5);
-                star5.append(star_wrap5);
+                star1.append(i1);
+                star_wrap1.append(star1);
 
+                star2.append(i2);
+                star_wrap2.append(star2);
+
+                star3.append(i3);
+                star_wrap3.append(star3);
+
+                star4.append(i4);
+                star_wrap4.append(star4);
+
+                star5.append(i5);
+                star_wrap5.append(star5);
+                
                 rating.append(star_wrap1, star_wrap2, star_wrap3, star_wrap4, star_wrap5);
                 review_star.append(rating, rc);
                 flex_container.append(h5, review_star);
@@ -126,7 +130,23 @@
                 a.append(box);
                 col.append(a);
                 row.append(col);
-        
+
+                const $this = $(rating)
+                const targetScore = $this.attr('data-rate');
+                const firstdigit = targetScore.split('.');
+
+                // firstdigit의 개수가 2개이면 소수점
+                if(firstdigit.length > 1){
+                    for(let i=0; i<firstdigit[0]; i++){
+                        $this.find('.star').eq(i).css({width:'100%'});
+                    }
+                    $this.find('.star').eq(firstdigit[0]).css({width:firstdigit[1]+'0%'});
+
+                } else {
+                    for(let i=0; i<targetScore; i++){
+                        $this.find('.star').eq(i).css({width:'100%'});
+                    }
+                }
             }
             
         },
@@ -262,17 +282,20 @@ function category(selectCategoryNo){
                 }
             
             
-                i1.append(star1);
-                star1.append(star_wrap1);
+                star1.append(i1);
+                star_wrap1.append(star1);
 
-                i2.append(star2);
-                star2.append(star_wrap2);
-                i3.append(star3);
-                star3.append(star_wrap3);
-                i4.append(star4);
-                star4.append(star_wrap4);
-                i5.append(star5);
-                star5.append(star_wrap5);
+                star2.append(i2);
+                star_wrap2.append(star2);
+
+                star3.append(i3);
+                star_wrap3.append(star3);
+
+                star4.append(i4);
+                star_wrap4.append(star4);
+
+                star5.append(i5);
+                star_wrap5.append(star5);
 
                 rating.append(star_wrap1, star_wrap2, star_wrap3, star_wrap4, star_wrap5);
                 review_star.append(rating, rc);
@@ -285,10 +308,27 @@ function category(selectCategoryNo){
                 col.append(a);
                 row.append(col);
         
+
+                const $this = $(rating)
+                const targetScore = $this.attr('data-rate');
+                const firstdigit = targetScore.split('.');
+
+                // firstdigit의 개수가 2개이면 소수점
+                if(firstdigit.length > 1){
+                    for(let i=0; i<firstdigit[0]; i++){
+                        $this.find('.star').eq(i).css({width:'100%'});
+                    }
+                    $this.find('.star').eq(firstdigit[0]).css({width:firstdigit[1]+'0%'});
+
+                } else {
+                    for(let i=0; i<targetScore; i++){
+                        $this.find('.star').eq(i).css({width:'100%'});
+                    }
+                }
             }
 
         },
-        error : function(pcList){
+        error: function (pcList) {
             console.log("에러발생");
         }
     })
@@ -304,11 +344,8 @@ rating.each(function(){
     const targetScore = $this.attr('data-rate');
     const firstdigit = targetScore.split('.');
 
-    console.log(firstdigit);
-
     // firstdigit의 개수가 2개이면 소수점
     if(firstdigit.length > 1){
-
         for(let i=0; i<firstdigit[0]; i++){
             $this.find('.star').eq(i).css({width:'100%'});
         }
