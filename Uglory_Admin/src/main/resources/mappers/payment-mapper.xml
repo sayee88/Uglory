@@ -63,9 +63,6 @@
 	</resultMap>
 	
 
-	
-	
-	
 	<resultMap type="chart" id="chart_rm">
 		<id property="chartDate" column="DT" />
 		<result property="subsPerDate" column="SUBS" />
@@ -252,6 +249,21 @@
 	<update id="refundHandling">
 		UPDATE PRODUCT_REFUND SET P_REFUND_ST = 'Y' WHERE P_ORDER_CD = #{orderCode}
 	</update>
+	
+	
+	<select id="selectChartData" resultMap="chart_rm">
+		SELECT 
+		    LISTAGG(DT, ',') WITHIN GROUP (ORDER BY DT)  DT,
+		    LISTAGG(SUBS, ',') WITHIN GROUP (ORDER BY ROWNUM)  SUBS,
+		    LISTAGG(PROD, ',') WITHIN GROUP (ORDER BY ROWNUM)  PROD
+		FROM( 
+		    SELECT DT,
+		    NVL( (SELECT SUM(S_PAY_AMOUNT) FROM SUBS_PAY WHERE TO_CHAR(S_PAY_DT, 'YYYY-MM-DD') = A.DT) ,0 ) SUBS,
+		    NVL(  (SELECT SUM(P_PAY_AMOUNT) FROM PRODUCT_PAY WHERE TO_CHAR(P_PAY_DT, 'YYYY-MM-DD') = A.DT), 0) PROD
+		    FROM (SELECT TO_CHAR(SYSDATE + LEVEL - 7, 'YYYY-MM-DD') DT
+		        FROM DUAL
+		        CONNECT BY LEVEL &lt;= 7)  A)	
+	</select>
 	
 	
 	

@@ -54,6 +54,9 @@ public class HomeController {
 		// 총 매출
 		int totalSales = pService.totalSales();
 		
+		// 매출 per day 차트 데이터 조회
+		Chart chartData = pService.selectChartData();
+		
 		
 		Map<String, Object> mainDataMap = new HashMap<String, Object>();
 		
@@ -61,6 +64,7 @@ public class HomeController {
 		mainDataMap.put("countReview", countReview);
 		mainDataMap.put("dailySales", dailySales);
 		mainDataMap.put("totalSales", totalSales);
+		mainDataMap.put("chartData", chartData);
 		
 		model.addAttribute("mainDataMap", mainDataMap);
 		

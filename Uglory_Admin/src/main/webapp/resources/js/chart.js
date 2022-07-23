@@ -4,16 +4,16 @@ var ctx1 = document.getElementById("sales-per-day");
 var myChart1 = new Chart(ctx1, {
     type: "bar",
     data: {
-        labels: ["2022-07-07", "2022-07-08", "2022-07-09", "2022-07-10"],
+        labels: chartDate,
         datasets: [{
                 label: "구독 결제",
-                data: [90000, 168000, 176500, 125000],
+                data: subsPerDate,
                 backgroundColor: "rgba(0, 156, 255, .7)"
             },
             {
                 label: "개별 상품 결제",
-                data: [170000, 138000, 276500, 75000],
-                backgroundColor: "rgba(0, 156, 255, .3)"
+                data: productPerDate,
+                backgroundColor: "rgba(0, 156, 255, .3)"    
             },
         ]
         },

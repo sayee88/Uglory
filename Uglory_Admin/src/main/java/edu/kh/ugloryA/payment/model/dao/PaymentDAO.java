@@ -152,6 +152,11 @@ public class PaymentDAO {
 	public int refundHandling(String orderCode) {
 		return sqlSession.update("paymentMapper.refundHandling", orderCode);
 	}
+
+
+	public Chart selectChartData() {
+		return sqlSession.selectOne("paymentMapper.selectChartData");
+	}
 	
 	
 

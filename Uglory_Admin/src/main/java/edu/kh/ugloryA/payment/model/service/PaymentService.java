@@ -107,5 +107,12 @@ public interface PaymentService {
 	int refundHandling(String orderCode);
 
 
+	/**
+	 * 차트 데이터 조회
+	 * @return
+	 */
+	Chart selectChartData();
+
+
 
 }
