@@ -6,13 +6,15 @@ import java.util.List;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
 @NoArgsConstructor
+@ToString
 public class OrderInfo {
 	
-	private String box;
+	private int box;
 	private String cycle;
 	private String payNo;
 	private String subsOrderNo;
