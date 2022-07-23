@@ -575,6 +575,8 @@
 .order-name{
     padding: 20px 0 13px;
     border-bottom: 1px solid #dddfe1;
+    display: flex;
+    justify-content: space-between;
 }
 .order-name a{
     color: black;
