@@ -73,7 +73,7 @@ public class ReviewServiceImpl implements ReviewService{
 					ReviewImage img = new ReviewImage();
 					img.setReviewNo(reviewNo);
 					img.setReviewImageLevel(i);
-					img.setReviewImageOriginal(imageList.get(i).getOriginalFilename());
+					img.setreviewImageRename(imageList.get(i).getOriginalFilename());
 					img.setReviewImageReName(webPath + reName);
 					
 					reviewImageList.add(img);
