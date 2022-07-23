@@ -170,6 +170,8 @@ public class ReviewController {
 	// 리뷰 작성 화면 전환
 	@GetMapping("/write/{orderCode}")
 	public String write( @PathVariable("orderCode") String orderCode,
+			int reviewCode,
+			@RequestParam(value="productCode", required = false, defaultValue = "0") int productCode,
 			@ModelAttribute("loginMember")  Member loginMember, Model model, String mode) {
 		
 		int memberNo = loginMember.getMemberNo();
@@ -179,14 +181,19 @@ public class ReviewController {
 		map.put("memberNo", memberNo);
 		map.put("orderCode", orderCode);
 		
-		// 개별상품 조회
-		UnWrittenProduct unWrittenProduct = service.productSelect(map);
+		if(reviewCode == 1) {
+			
+			// 구독상품 조회
+			UnWrittenSubscription UnWrittenSubscription = service.subSelect(map);
+			model.addAttribute("UnWrittenSubscription", UnWrittenSubscription);
+			
+		}else {
+			map.put("productCode", productCode);
+			// 개별상품 조회
+			UnWrittenProduct unWrittenProduct = service.productSelect(map);
+			model.addAttribute("unWrittenProduct",unWrittenProduct);
+		}
 		
-		// 구독상품 조회
-		UnWrittenSubscription UnWrittenSubscription = service.subSelect(map);
-		
-		model.addAttribute("UnWrittenSubscription", UnWrittenSubscription);
-		model.addAttribute("unWrittenProduct",unWrittenProduct);
 		
 		return "review/ReviewWriteForm";
 	}
@@ -260,37 +267,6 @@ public class ReviewController {
 		
 		return "/review/ReviewList";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	

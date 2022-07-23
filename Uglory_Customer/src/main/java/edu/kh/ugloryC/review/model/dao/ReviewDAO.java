@@ -170,6 +170,11 @@ public class ReviewDAO {
 	}
 
 
+	public List<Map<String, Object>> productOptionList(Map<String, Object> map) {
+		return sqlSession.selectList("reviewMapper.productOptionList", map);
+	}
+
+
 	
 	
 

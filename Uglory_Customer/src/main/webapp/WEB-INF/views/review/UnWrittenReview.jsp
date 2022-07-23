@@ -231,6 +231,7 @@
                                                 <button onclick="location.href='../write/${pd.productOrderCode}?mode=insert&reviewCode=2&productCode=${pd.productCode}'">리뷰작성하기</button>
                                             </div>
                                         </div>
+                                        
                                     </div>
                                 </div>
                                 
