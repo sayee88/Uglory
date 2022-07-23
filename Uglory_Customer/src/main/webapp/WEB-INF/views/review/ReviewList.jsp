@@ -154,7 +154,7 @@
                     <div class="category_section"> 
                         <div class="category_button">
                             <div style="background-color: rgb(113, 214, 199); color:white">모두보기</div>
-                            <div onclick="subBox()">구독박스</div>
+                            <div onclick="subCategory()">구독박스</div>
                             <div>상점</div>
                         </div>
                     </div>
@@ -175,12 +175,12 @@
                                         <div>2022.07.10</div>
                                     </div>
                                     <div class="review-star">
-                                        <div class="rating" data-rate="3">
-                                            <div class="star-wrap"><div class="star">★</div></div>
-                                            <div class="star-wrap"><div class="star">★</div></div>
-                                            <div class="star-wrap"><div class="star">★</div></div>
-                                            <div class="star-wrap"><div class="star">★</div></div>
-                                            <div class="star-wrap"><div class="star">★</div></div>
+                                        <div class="rating" data-rate="3.5">
+                                            <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
+                                            <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
+                                            <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
+                                            <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
+                                            <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
                                         <%-- <span>★★★★★</span> --%>
                                         </div>
                                     </div>
@@ -199,7 +199,7 @@
                         
                         <div class="review-content">
                             <div>
-                                <img src="img/리뷰/이용후기2.jpeg">
+                                <img>
                             </div>
                             <div class="review-content-text">
                                 <div class="review-content-top-section">
@@ -208,11 +208,14 @@
                                         <div>2022.07.06</div>
                                     </div>
                                     <div class="review-star">
-                                        <span>★</span>
-                                        <span>★</span>
-                                        <span>★</span>
-                                        <span>★</span>
-                                        <span>☆</span>
+                                        <div class="rating" data-rate="3">
+                                            <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
+                                            <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
+                                            <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
+                                            <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
+                                            <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
+                                        <%-- <span>★★★★★</span> --%>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="review-content-text-section">
@@ -228,7 +231,7 @@
                         
                         <div class="review-content">
                             <div>
-                                <img src="img/리뷰/이용후기3.jpeg">
+                                <img>
                             </div>
                             <div class="review-content-text">
                                 <div class="review-content-top-section">
@@ -260,7 +263,7 @@
                             
                             <div class="review-content">
                                 <div>
-                                    <img src="img/리뷰/이용후기4.jpeg">
+                                    <img>
                                 </div>
                                 <div class="review-content-text">
                                     <div class="review-content-top-section">
@@ -289,7 +292,7 @@
 
                             <div class="review-content">
                                 <div>
-                                    <img src="img/리뷰/이용후기5.png">
+                                    <img>
                                 </div>
                                 <div class="review-content-text">
                                     <div class="review-content-top-section">
@@ -318,7 +321,7 @@
 
                             <div class="review-content">
                                 <div>
-                                    <img src="img/리뷰/이용후기6.png">
+                                    <img>
                                 </div>
                                 <div class="review-content-text">
                                     <div class="review-content-top-section">

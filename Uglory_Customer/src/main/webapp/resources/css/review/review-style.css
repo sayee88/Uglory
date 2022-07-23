@@ -182,10 +182,13 @@
     font-size: 13px;
 }
 
-.review-star > span{
+/*  별점 */
+
+
+/* .review-star > span{
     color: rgb(113, 214, 199);
     text-align: end;
-}
+} */
 
 .review-star{
     /* border: 1px solid red; */
@@ -193,12 +196,15 @@
     display: flex;
 }
 
+.fa-star {
+    color: rgb(113, 214, 199);
+}
+
 .rating .star-wrap{width: 20px; display:inline-block;}
 
 .rating .star{
-    width: 100%;
+    width: 0;
     overflow: hidden;
-    color: rgb(113, 214, 199);
 }
 
 
