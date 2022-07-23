@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.google.gson.Gson;
+
 import edu.kh.ugloryC.member.model.vo.Member;
 import edu.kh.ugloryC.review.model.service.ReviewService;
 import edu.kh.ugloryC.review.model.vo.ReviewWrite;
@@ -74,13 +76,17 @@ public class ReviewController {
 	}
 	
 	
-	@PostMapping("/list")
-	public String reviewList(Member loginMember, ReviewSelectInfo reviewCode) {
+	
+	// 리뷰 구독 전체 후기
+	@PostMapping("/list/selectSub")
+	public String selectSub() {
 		
+		List<ReviewSelectInfo> reviewSelectInfo = service.selectSub();
 		
-		
-		return null;
+		return new Gson().toJson(reviewSelectInfo);
 	}
+	
+	
 	
 	
 	

@@ -3,13 +3,21 @@ function subCategory(){
 
     $.ajax({
 
-        url: "selectSub",
-        type : "GET",
+        url: "/selectSub",
+        type : "POST",
         dataType : "JSON",
         success : function(subList){
                         // 담아올 바구니
             // list 자체를 가져와야함
 
+
+            if(subList.length != 0){
+
+                for(let item of subList){
+
+                    createBox(item);
+                }
+            }
 
         },
         error: function(req, status, error){
@@ -26,7 +34,7 @@ function subCategory(){
 
 const reviewList = document.getElementById("review-list");
 
-function createBox(){
+function createBox(item){
 
     const reviewContent = document.createElement("div");
     reviewContent.classList.add("review-content");
@@ -102,7 +110,32 @@ function createBox(){
     i5.classList.add("fas");
     i5.classList.add("fa-star");
 
-    
+
+    const contentSection = document.createElement("div");
+    contentSection.classList.add("review-content-text-section");
+    contentSection.classList.add("modal-open");
+
+    const contentText = document.createElement("div");
+    contentText.setAttribute("data-bs-toggle", "modal");
+    contentText.setAttribute("data-bs-target", "#exampleModal");
+    contentText.style.color = "black";
+    // contentText 리뷰 내용 넣어주기
+
+
+    const contentBottom = document.createElement("div");
+    contentBottom.classList.add("review-content-bottom-section");
+
+    const reviewCode = document.createElement("div");
+    reviewCode.innerText = "정기구독박스 or 개별상품";
+
+
+    clickModal.append(reviewImage);
+
+    cotentTopLeft.append(name, enrollDate);
+
+
+
+    // 별점
     star1.append(i1);
     star_wrap1.append(star1);
 
@@ -118,9 +151,23 @@ function createBox(){
     star5.append(i5);
     star_wrap5.append(star5);
     
+    //rating.append(star-wrap, star-wrap, star-wrap, star-wrap, star-wrap)
     rating.append(star_wrap1, star_wrap2, star_wrap3, star_wrap4, star_wrap5);
     review_star.append(rating);
-    flex_container.append(review_star);
+ 
+
+    contentSection.append(contentText);
+
+    contentBottom.append(reviewCode);
+    
+    contentTop.append(cotentTopLeft, review_star);
+
+    text.append(contentTop, contentSection, contentBottom);
+
+    reviewContent.append(clickModal, text);
+
+    reviewList.append(reviewContent);
+
 
     const $this = $(rating)
     const targetScore = $this.attr('data-rate');
