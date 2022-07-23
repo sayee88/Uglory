@@ -25,8 +25,7 @@ public class ImageDeleteScheduling {
 	@Autowired
 	private ServletContext application;
 	
-//	@Scheduled(cron="0 0 0 * * *")
-	@Scheduled(cron="0 0 * * * *")
+	@Scheduled(cron="0 0 0 * * *")
 	public void serverImageDelete() {
 		
 		//사용하지 않는 상품이미지 삭제
