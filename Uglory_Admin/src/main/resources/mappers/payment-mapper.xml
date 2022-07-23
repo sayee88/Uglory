@@ -240,6 +240,13 @@
 	</select>
 	
 	
+	<select id="subsCount" resultType="_int">
+		SELECT COUNT(*) FROM SUBS_PAY
+		JOIN SUBS_ORDER USING(S_ORDER_CD)
+		WHERE S_CANCEL = 'N'
+	</select>
+	
+	
 	
 	
 	

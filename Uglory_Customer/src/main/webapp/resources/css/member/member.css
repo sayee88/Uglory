@@ -679,6 +679,12 @@ dd{
     border:none;
     font-weight: bold;
 }
+
+.oBox > img{
+    max-height: 200px;
+    width: 300px;
+}
+
 #deliveryBox{
     display: flex;
     align-content: center;

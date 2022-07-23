@@ -133,6 +133,15 @@ public class PaymentDAO {
 	public int refundDone() {
 		return sqlSession.selectOne("paymentMapper.refundDone");
 	}
+
+
+	/**
+	 * 구독 건수
+	 * @return
+	 */
+	public int subsCount() {
+		return sqlSession.selectOne("paymentMapper.subsCount");
+	}
 	
 	
 
