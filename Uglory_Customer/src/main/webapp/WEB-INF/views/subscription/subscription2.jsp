@@ -44,10 +44,15 @@
 
 <body>
     <jsp:include page="/WEB-INF/views/common/header.jsp" />
-<%-- 
-            ${paramValues.choice}<hr>
-            ${requestScope.choice}<hr>
-            ${sessionScope.choice}<hr> --%>
+
+           param ${param.box}<hr>
+           request ${requestScope.box}<hr>
+           session ${sessionScope.box}<hr>
+           orderInfo = ${orderInfo.box}<hr>
+           loginMember ${loginMember}<hr>
+                      ${orderInfo}<hr>
+
+
 
     <div id="box">
         <div style="width: 70%;">
