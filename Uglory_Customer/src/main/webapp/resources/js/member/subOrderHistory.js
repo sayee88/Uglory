@@ -135,6 +135,11 @@ for (let btn of orderDetailBtn) {
                 dt3_4.innerText = "알러지 제외 상품"
                 const dd3_4 = document.createElement("dd");
                 dd3_4.innerText = SubHistoryDetail.productName;
+                
+                if(SubHistoryDetail.productName == undefined){
+                    dd3_4.innerText = "나는야 알러지 한개도 없는 최고 면역력 자!!!!";
+                }
+
                 dl3_4.append(dt3_4, dd3_4);
 
 
@@ -143,6 +148,11 @@ for (let btn of orderDetailBtn) {
                 dt3_5.innerText = "배송 요청 사항"
                 const dd3_5 = document.createElement("dd");
                 dd3_5.innerText = SubHistoryDetail.subDeliveryReq;
+
+                if(SubHistoryDetail.subDeliveryReq =="NULL"){
+                    dd3_5.innerText = "없음";
+                }
+
                 dl3_5.append(dt3_5, dd3_5);
 
                 orderInfo3.append(dl3_1, dl3_2, dl3_3, dl3_4,dl3_5);

@@ -15,7 +15,7 @@ public class ProductDetail {
 	
 	private int productCode;
 	private String productName;
-    private int productPrice;
+    private String productPrice;
     private String productInfo;
     
     private String producer;
@@ -24,8 +24,7 @@ public class ProductDetail {
     private int starCount;
     private double star; // 0.5단위
     private int reviewCount;
-    
-    private List<ProductImage> imageList;
+
     private List<OptionType> optionList;
     
     private String productState; // 상품상태

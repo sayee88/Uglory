@@ -12,11 +12,11 @@ public class ProductCart {
 	private int categoryNo;
 	private int productCode;
 	private String productName;
-	private int productPrice;
+	private String productPrice;
 	private int optionCode;
 	private String optionName;
-	private int optionPrice;
-	private int optionNo;
+	private String optionPrice;
+	private String optionNo;
 	
 	private int optionCount;
 }

@@ -2,8 +2,6 @@ package edu.kh.ugloryA.common.scheduling;
 
 import java.util.List;
 
-import javax.servlet.ServletContext;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +20,8 @@ public class WeeklyUpdateScheduling {
 	@Autowired
 	private ProductService service;
 
-	@Autowired
-	private ServletContext application;
-	
 //	@Scheduled(cron="0 * * * * *")
-	@Scheduled(cron="0 0 12 * * 1")
+	@Scheduled(cron="0 0 14 * * 1")
 	public void weeklyUpdate() {
 		
 		//logger.info("weekly에서 1분마다 출력");
@@ -56,9 +51,9 @@ public class WeeklyUpdateScheduling {
 		List<String> phoneList = service.selectPhoneList();
 		String memberPhone = String.join(", ", phoneList);
 		
-		Util.sendMessage(text, memberPhone);
-		
+		if(!phoneList.isEmpty()) {
+			Util.sendMessage(text, memberPhone);
+		}
 	}
-	
 	
 }
