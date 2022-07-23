@@ -111,7 +111,7 @@ public class PaymentController {
 	}
 	
 	
-	
+
 	
 	
 	
@@ -151,17 +151,7 @@ public class PaymentController {
 	
 	
 	
-//	// 매출 per day 차트 데이터 조회
-//	@GetMapping
-//	public String selectChartData(Model model) {
-//		
-//		Chart chart = service.selectChartData();
-//		
-//		// 가져온 값을 ,를 기준으로 나눠야? 하나용????? 
-//		
-//		
-//		return null;
-//	}
+
 	
 	
 

@@ -113,6 +113,13 @@ public class PaymentServiceImpl implements PaymentService {
 	public int refundHandling(String orderCode) {
 		return dao.refundHandling(orderCode);
 	}
+
+
+	// 차트 데이터 조회
+	@Override
+	public Chart selectChartData() {
+		return dao.selectChartData();
+	}
 	
 	
 	

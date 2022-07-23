@@ -100,6 +100,9 @@
                 </div>
             </div>
 
+            <c:set var="chartData" value="${mainDataMap.chartData}"/>
+            
+
 
             <%-- 매출 그래프 --%>
             <div class="container-fluid pt-4 px-4">
@@ -149,12 +152,16 @@
     <!-- Template Javascript -->
     <script src="${contextPath}/resources/js/main.js"></script>
 
+    <script> 
+        const contextPath = "${contextPath}"; 
+
+        let chartDate = "${chartData.chartDate}".split(",");
+        let subsPerDate = "${chartData.subsPerDate}".split(",");
+        let productPerDate = "${chartData.productPerDate}".split(",");
+    </script>
     <%-- 차트 JS --%>
     <script src="${contextPath}/resources/js/chart.js"></script>
 
-    <script> 
-        const contextPath = "${contextPath}"; 
-    </script>
 
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
