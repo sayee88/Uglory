@@ -147,8 +147,12 @@ public class ReviewServiceImpl implements ReviewService{
 	// 리뷰 작성 시 상품 정보 조회
 	@Override
 	public UnWrittenProduct productSelect(Map<String, Object> map) {
+		UnWrittenProduct unWrittenProduct = dao.productSelect(map);
 		
-		return dao.productSelect(map);
+		List<Map<String, Object>> optionList = dao.productOptionList(map);
+		unWrittenProduct.setOptionList(optionList);
+		
+		return unWrittenProduct;
 	}
 
 

@@ -142,22 +142,12 @@
 		WHERE MEMBER.MEMBER_NO = #{memberNo}
 	</select>
 	
-	<!-- 장바구니 개수 조회 -->
-	<select id="cartCount" resultType="_int">
-		SELECT COUNT(*)
+	<!-- x버튼 클릭 시 장바구니 삭제  -->
+	<delete id="cartDelete">
+		DELETE
 		FROM CART
 		WHERE MEMBER_NO = #{memberNo}
-	</select>
-	
-	<!-- 결제 시 OPTION_TB 테이블 삽입 -->
-	<insert id="optionTbInsert">
-		INSERT INTO OPTION_TB
-		VALUES(
-			SEQ_OPTION_NO.NEXTVAL,
-			
-		
-		)
-	</insert>
-
+		AND OPTION_NO = #{optionNoDelete}
+	</delete>
 </mapper>
 

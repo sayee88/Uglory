@@ -113,4 +113,13 @@ public class ProductDAO {
 
 		return sqlSession.insert("productMapper.insertOptionTb", optionMap);
 	}
+
+	/** x버튼 클릭 시 장바구니 삭제 
+	 * @param optionDeleteMap
+	 * @return result
+	 */
+	public int cartDelete(Map<String, Object> optionDeleteMap) {
+
+		return sqlSession.delete("productMapper.cartDelete", optionDeleteMap);
+	}
 }

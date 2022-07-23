@@ -191,7 +191,9 @@
                 <a href="#">Review</a>
                 <hr>
 
-                ${detail.productInfo}
+                <div class="info-area">
+                    ${detail.productInfo}
+                </div>
                 <!-- 썸머노트 조회 영역(확인 필요) -->
                 <%-- <div id="summernote"><p>Hello Summernote</p>
                     <script>

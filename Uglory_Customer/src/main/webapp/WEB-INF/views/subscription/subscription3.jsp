@@ -48,6 +48,15 @@
 <body>
     <jsp:include page="/WEB-INF/views/common/header.jsp" />
 
+           param ${param.box}<hr>
+           request ${requestScope.box}<hr>
+           session ${sessionScope.box}<hr>
+           orderInfo = ${orderInfo.box}<hr>
+           ${orderInfo}<hr>
+           loginMember ${loginMember}<hr>
+           fed ${orderInfo.firstDelDate}
+
+
     <div id="box">
         <div style="width: 70%;">
 
@@ -61,10 +70,8 @@
             inputDelText = ${orderInfo.inputDelText}  <hr>          
             firstDelDate = ${orderInfo.firstDelDate}<hr>
             payNo = ${orderInfo.payNo}<hr>
-            cycle = ${orderInfo.cycle}<hr>
-            box = ${orderInfo.box}<hr>
-            ${loginMember}
-             --%>
+            cycle = ${orderInfo.cycle}<hr> --%>
+            
             <div class="inner-box" >
                 <div class="step-text">
                     <h3 id="step-text">STEP 5</h3>
@@ -80,14 +87,14 @@
                             </tr>
                             <tr>
                                 <c:choose>
-                                    <c:when test="${orderInfo.box == 'standard'}">
+                                    <c:when test="${orderInfo.box == 1}">
                                         <th>친환경 못난이 채소박스[스탠다드]</th>
                                         <th>20,000원</th>
                                     </c:when>
-                                    <c:otherwise>
+                                    <c:when test="${orderInfo.box == 2}">
                                         <th>친환경 못난이 채소박스[점보]</th>
                                         <th>30,000원</th>
-                                    </c:otherwise>
+                                    </c:when>
                                 </c:choose>
                             </tr>
                             <tr>
@@ -98,12 +105,12 @@
                             <tr>
                                 <th class="white-th">총 결제 금액</th>
                                 <c:choose>
-                                    <c:when test="${orderInfo.box == 'standard'}">
+                                    <c:when test="${orderInfo.box == 1}">
                                         <th class="white-th">20,000원</th>
                                     </c:when>
-                                    <c:otherwise>
+                                    <c:when test="${orderInfo.box == 2}">
                                         <th class="white-th">30,000원</th>
-                                    </c:otherwise>
+                                    </c:when>
                                 </c:choose>
                             </tr>
                             <tr>
@@ -113,7 +120,7 @@
                             <tr>
                                 <th colspan="2">-배송 주기 : <span style="color: red;">
                                     <c:choose>
-                                        <c:when test="${orderInfo.cycle == '1'}">매주</c:when>
+                                        <c:when test="${sessionScope.box == '1'}">매주</c:when>
                                         <c:otherwise>격주</c:otherwise>
                                     </c:choose>
                                 </span></th>
