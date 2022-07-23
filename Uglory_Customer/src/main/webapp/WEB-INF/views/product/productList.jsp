@@ -92,7 +92,7 @@
                 <div class="row">
                     <div class="col" style="margin: 20px;">
 
-                        <h2 >상품보기</h2>
+                        <h2>👀 상품보기</h2>
                     </div>
                     
                 </div>
@@ -104,13 +104,13 @@
             <!-- 상품 카테고리 -->
             <div class="category">
                 <button class="btn btn-primary"><a href="${contextPath}/product/list"  style="color: white;">ALL</a> </button>
-                <button class="btn btn-primary" id="c1" onclick="category(1)">근채류</button>
-                <button class="btn btn-primary" id="c2" onclick="category(2)">곡식류/견과류</button>
-                <button class="btn btn-primary" id="c3" onclick="category(3)">채소류</button>
-                <button class="btn btn-primary" id="c4" onclick="category(4)">과채류</button>
-                <button class="btn btn-primary" id="c5" onclick="category(5)">나물류</button>
-                <button class="btn btn-primary" id="c6" onclick="category(6)">버섯류</button>
-                <button class="btn btn-primary" id="c7" onclick="category(7)">과일류</button>
+                <button class="btn btn-primary" id="c1" onclick="category(1)">🥔 근채류</button>
+                <button class="btn btn-primary" id="c2" onclick="category(2)">🌾 곡식류/견과류</button>
+                <button class="btn btn-primary" id="c3" onclick="category(3)">🥬 채소류</button>
+                <button class="btn btn-primary" id="c4" onclick="category(4)">🍆 과채류</button>
+                <button class="btn btn-primary" id="c5" onclick="category(5)">🌿 나물류</button>
+                <button class="btn btn-primary" id="c6" onclick="category(6)">🍄 버섯류</button>
+                <button class="btn btn-primary" id="c7" onclick="category(7)">🍋 과일류</button>
             </div>
 
 

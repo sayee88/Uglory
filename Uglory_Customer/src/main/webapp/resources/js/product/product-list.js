@@ -27,14 +27,14 @@
             
                 const div = document.createElement("div");
             
-                const h5 = document.createElement("h5");
-                h5.innerText = product.productName;
+                const h4 = document.createElement("h4");
+                h4.innerText = product.productName;
             
                 const flex_container = document.createElement("div");
                 flex_container.classList.add("flex-container");
             
-                const h4 = document.createElement("h4");
-                h4.innerText = product.productPrice;
+                const h5 = document.createElement("h5");
+                h5.innerText = product.productPrice;
             
                 const sub_box = document.createElement("div");
                 sub_box.classList.add("sub-box");
@@ -61,8 +61,8 @@
                 
             
                 sub_box.append(starImg, p);
-                flex_container.append(h4, sub_box);
-                div.append(h5, flex_container);
+                flex_container.append(h5, sub_box);
+                div.append(h4, flex_container);
                 img_box.append(product_img);
                 box.append(img_box, div);
                 a.append(box);
@@ -122,20 +122,26 @@ function category(selectCategoryNo){
             
                 const div = document.createElement("div");
             
-                const h5 = document.createElement("h5");
-                h5.innerText = product.productName;
+                const h4 = document.createElement("h4");
+                h4.innerText = product.productName;
             
                 const flex_container = document.createElement("div");
                 flex_container.classList.add("flex-container");
             
-                const h4 = document.createElement("h4");
-                h4.innerText = product.productPrice;
+                const h5 = document.createElement("h5");
+                h5.innerText = product.productPrice;
             
                 const sub_box = document.createElement("div");
                 sub_box.classList.add("sub-box");
             
-                const starImg = document.createElement("img");
-                starImg.setAttribute("src", contextPath + "/resources/img/product/star.jpg"); // 수정필요
+                if(0 < product.starAvg <= 0.4){
+                    const starImg = document.createElement("p")
+                    starImg.innerText = "★★★★★";
+                }
+
+                
+                // const starImg = document.createElement("img");
+                // starImg.setAttribute("src", contextPath + "/resources/img/product/star.jpg"); // 수정필요
             
                 const p = document.createElement("p");
                 p.innerText = "("+product.starCount+")";
@@ -156,8 +162,8 @@ function category(selectCategoryNo){
                 
             
                 sub_box.append(starImg, p);
-                flex_container.append(h4, sub_box);
-                div.append(h5, flex_container);
+                flex_container.append(h5, sub_box);
+                div.append(h4, flex_container);
                 img_box.append(product_img);
                 box.append(img_box, div);
                 a.append(box);
