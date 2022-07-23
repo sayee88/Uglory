@@ -190,7 +190,18 @@
 .review-star{
     /* border: 1px solid red; */
     padding-left: 30px;
+    display: flex;
 }
+
+.rating .star-wrap{width: 20px; display:inline-block;}
+
+.rating .star{
+    width: 100%;
+    overflow: hidden;
+    color: rgb(113, 214, 199);
+}
+
+
 
 
 .review-content-text-section{
