@@ -50,10 +50,10 @@
 
 <body>
     <jsp:include page="/WEB-INF/views/common/header-1.jsp" />
+
     <form action="${contextPath}/subscription/order" onsubmit="return subscriptionValidate()">
 
-                choice = ${choice}<hr>
-
+                <%-- choice = ${choice}<hr> --%>
 
         <div id="box" style="padding-bottom: 200px;">
             <div style="width: 70%;">
@@ -61,7 +61,7 @@
                 <div class="inner-box">
                     <div>
                         <h3 id="step-text">STEP 1</h3>
-                        <h2>구독 상품을 선택해주세요.</h2>
+                        <h2>구독 상품을 선택해주세요 📦 </h2>
                         <pre>매 주 나에게 맞는 6~10종의
 다양한 채소/과일이 들어가요
                         </pre>
@@ -78,7 +78,7 @@
                                     <label for="standard-check">
                                         <img src="${contextPath}/resources/img/product/standard.png" style="cursor: pointer;">
                                         <div>
-                                            <h5 id="box-name">스탠다드 박스</h5>
+                                            <h5 id="box-name">📦 스탠다드 박스</h5>
                                             <p id="box-intro">1-2인 가구에게 적합해요</p>
                                         </div>
                                     </label>
@@ -91,7 +91,7 @@
                                     <label for="jumbo-check">
                                         <img src="${contextPath}/resources/img/product/jumbo.png" style="cursor: pointer;">
                                         <div>
-                                            <h5 id="box-name">점보 박스</h5>
+                                            <h5 id="box-name">📦 점보 박스</h5>
                                             <p id="box-intro">3-4인 가구에게 적합해요</p>
                                         </div>
                                     </label>
@@ -108,7 +108,7 @@
 
                     <div class="step-text">
                         <h3 id="step-text">STEP 2</h3>
-                        <h2>배송 주기를 선택해주세요</h2>
+                        <h2>배송 주기를 선택해주세요 📆</h2>
                     </div>
                     <div class="container" style="display: flex; justify-content: center;">
                         <div>
@@ -130,14 +130,14 @@
 
                     <div class="step-text">
                         <h3 id="step-text">STEP 3</h3>
-                        <h2 style="margin-bottom: 100px;">제외할 채소를 골라주세요</h2>
+                        <h2 style="margin-bottom: 100px;">제외할 채소를 골라주세요 😵</h2>
                     </div>
 
                     <div class="step3-container">
 
                         <!-- Button trigger modal -->
                         <button type="button" id="exception-btn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            ⓧ 제외할 채소 고르기
+                            ❌ 제외할 채소 고르기
                         </button>
                         
                         <!-- Modal -->

@@ -46,15 +46,15 @@
 </head>
 
 <body>
-    <jsp:include page="/WEB-INF/views/common/header.jsp" />
+    <jsp:include page="/WEB-INF/views/common/header-1.jsp" />
 
-           param ${param.box}<hr>
+           <%-- param ${param.box}<hr>
            request ${requestScope.box}<hr>
            session ${sessionScope.box}<hr>
            orderInfo = ${orderInfo.box}<hr>
            ${orderInfo}<hr>
            loginMember ${loginMember}<hr>
-           fed ${orderInfo.firstDelDate}
+           fed ${orderInfo.firstDelDate} --%>
 
 
     <div id="box">
@@ -75,7 +75,7 @@
             <div class="inner-box" >
                 <div class="step-text">
                     <h3 id="step-text">STEP 5</h3>
-                    <h2>주문 확인 및 결제</h2>
+                    <h2>주문 확인 및 결제 💳</h2>
                 </div>
                 
             
