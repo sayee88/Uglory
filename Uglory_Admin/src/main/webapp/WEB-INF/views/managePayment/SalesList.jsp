@@ -4,6 +4,9 @@
 <%-- 문자열 관련 함수(메서드) 제공 JSTL (EL형식으로 작성) --%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
+<c:set var="refundList" value="${map.refundList}" />
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,9 +36,30 @@
 
     <!-- 회원, 결제, 리뷰 조회 Style sheet -->
     <link href="${contextPath}/resources/css/adminselect-style.css" rel="stylesheet">
+    <link href="${contextPath}/resources/css/faq-style.css" rel="stylesheet">
+
     
     <!-- Fontawesome cdn 링크 -->
     <script src="https://kit.fontawesome.com/1ef9913073.js" crossorigin="anonymous"></script>
+
+    <style>
+        table{
+            display:flex;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            overflow-x: auto;
+            overflow-y: hidden;
+            }
+
+        tbody{
+            display:flex
+        
+        }
+
+        th,td{
+            display:block
+        }
+    </style>
 
 </head>
 
@@ -70,68 +94,88 @@
 
                         <%-- 메인 --%>
                         <div class="listBody">
-                            div.refund-content-list
-                            <table class="table table-borderless farmTable mt-4">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">주문 번호</th>
-                                        <th scope="col">주문자 아이디</th>
-                                        <th scope="col">주문자 이름</th>
-                                        <th scope="col">상품명</th>
-                                        <th scope="col">결제일</th>
-                                        <th scope="col">결제 상세</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="paymentList">
-                                    <c:forEach var="payment" items="${paymentList}" >
-                                        <tr>
-                                            <th scope="row">${payment.orderCode}</th>
-                                            <td>${payment.customerEmail}</td>
-                                            <td>${payment.payAmount}</td>
-                                            <td>${payment.payDate}</td>
-                                            <td>
-                                                <button type="button" class="btn btn-payment-detail selectDetail sort-${payment.sort}">상세</button>
-                                                <%-- onclick="location.href='../selectDetail/${payment.orderCode}'" --%>
-                                            </td>
-                                        </tr>
-                                    </c:forEach>
-                                </tbody>
-                            </table>
-                        </div>
+                            <div class="faq-content">
 
-                        
+                                <%-- 구독회원수, 개별상품 결제 건수(환불 미포함), 환불 요청 건수, 환불 완료 건수 --%>
+                                <div class="container-fluid pt-4 px-4">
+                                    <div class="row g-4">
+                                        <div class="col-sm-6 col-xl-3">
+                                            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                                                <div class="ms-3" id="countCustomer">
+                                                    <p class="mb-2">구독</p>
+                                                    <h6 class="mb-0">${map.subsCount} 건</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 col-xl-3">
+                                            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                                                <div class="ms-3">
+                                                    <p class="mb-2">개별상품 결제</p>
+                                                    <h6 class="mb-0">${map.prodPaymentCount} 건</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 col-xl-3">
+                                            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                                                <div class="ms-3">
+                                                    <p class="mb-2">환불 요청</p>
+                                                    <h6 class="mb-0">${map.refundCount} 건</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 col-xl-3">
+                                            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                                                <div class="ms-3">
+                                                    <p class="mb-2">환불 완료</p>
+                                                    <h6 class="mb-0">${map.refundDone} 건</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
-
-
-                        <%-- 토글 --%>
-                        <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
-                            <div class="faq-content-list">
-                                <div>
-                                    <span style="font-size: 24px; color: rgb(113, 214, 199);">Q</span>
-                                    <button class="faq-list" data-bs-toggle="collapse" data-bs-target="#collapse-1">어떤 채소들을 받게 되나요?</button>
-                                    <div class="faq-content collapse" id="collapse-1" 
-                                        style="color: rgb(150, 150, 150);">
-                                        모양이나 중량으로 버려질 위기의 못난이 채소, 급식 중단으로 판로를 잃은 채소 등
-                                        구출이 긴급한 채소들이 우선 구성됩니다. <br>
-                                        모든 채소들은 무농약/유기농 인증을 받은 제철 친환경 채소들이에요.<br> 
-                                        사연은 제각각이지만, 꼼꼼하게 선별해 맛과 신선도에는 문제가 없는 채소들로만 꾸려집니다. <br>
-                                        불필요한 유통 과정을 줄여 발송 직전 수확해 가장 신선하게 보내드려요!
+                                <div class="faq-content-list">
+                                    <div>
+                                        <c:if test="${!empty refundList}">
+                                            <c:forEach var="refund" items="${refundList}">
+                                                <button class="faq-list" data-bs-toggle="collapse" data-bs-target="#collapse-4">${refund.orderCode} / ${refund.refundAmount}</button>
+                                                <div class="faq-content collapse" id="collapse-4">
+                                                    <table class="table table-borderless farmTable mt-4">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">주문 번호</th>
+                                                                <th scope="col">주문자 아이디(이름)</th>
+                                                                <th scope="col">상품명</th>
+                                                                <th scope="col">옵션 * 수량</th>
+                                                                <th scope="col">주문일 / 환불 요청일</th>
+                                                                <th scope="col">환불 금액</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>${refund.orderCode}</td>
+                                                                <td>${refund.customerEmail} / ${refund.customerName}</td>
+                                                                <td>${refund.productName}</td>
+                                                                <td>${refund.optionName} * ${refund.optionCount}</td>
+                                                                <td>${refund.orderDate} / ${refund.refundDate}</td>
+                                                                <td>${refund.refundAmount}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </c:forEach>
+                                        </c:if>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-
-
-
-
-
-
-
-
                     </div>
                 </div>
             </div>
+
+
+
+
 
             <!-- Footer Start -->
             <jsp:include page="/WEB-INF/views/common/footer.jsp"/>

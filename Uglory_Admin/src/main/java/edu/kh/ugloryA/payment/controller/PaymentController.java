@@ -1,8 +1,11 @@
 package edu.kh.ugloryA.payment.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import org.apache.commons.collections.map.HashedMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,12 +79,31 @@ public class PaymentController {
 	@GetMapping("/refundList")
 	public String selectRefundList(Model model) {
 		
+		int prodPaymentCount = service.prodPaymentCount();
+		
+		int refundCount = service.refundCount();
+		
+		int refundDone = service.refundDone();
+		
+		int subsCount = service.subsCount();
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("prodPaymentCount", prodPaymentCount);
+		map.put("refundCount", refundCount);
+		map.put("refundDone", refundDone);
+		map.put("subsCount", subsCount);
+		
 		List<Refund> refundList = service.selectRefundList();
 		
-		model.addAttribute("refundList", refundList);
+		map.put("refundList", refundList);
+		
+		model.addAttribute("map", map);
 		
 		return "managePayment/SalesList";
 	}
+	
+	
 	
 	
 	

@@ -71,5 +71,33 @@ public interface PaymentService {
 	List<Refund> selectRefundList();
 
 
+	/**
+	 * 개별 상품 결제 건수 
+	 * @return
+	 */
+	int prodPaymentCount();
+
+
+	/**
+	 * 환불 요청 건수
+	 * @return
+	 */
+	int refundCount();
+
+
+	/**
+	 * 환불 완료 건수
+	 * @return
+	 */
+	int refundDone();
+
+
+	/**
+	 * 구독 건수
+	 * @return
+	 */
+	int subsCount();
+
+
 
 }

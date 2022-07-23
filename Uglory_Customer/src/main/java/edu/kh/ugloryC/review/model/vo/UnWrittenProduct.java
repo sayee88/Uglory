@@ -1,5 +1,8 @@
 package edu.kh.ugloryC.review.model.vo;
 
+import java.util.List;
+import java.util.Map;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,7 +12,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class UnWrittenProduct {
 	
-	private int productOrderCode;
+	private String productOrderCode;
 //	private String productImage;
 	private String productOrderDate;
 	private String productName;
@@ -19,4 +22,6 @@ public class UnWrittenProduct {
 	private int reviewCode;
 
 	private int productCode;
+	
+	private List<Map<String, Object>> optionList;
 }

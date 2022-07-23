@@ -289,7 +289,7 @@ public class ProductController {
 	public int sendMessage(int productListNo) {
 		
 		//text 만들기
-		String text = "[이번주 배송 상품 목록]\n";
+		String text = "[Uglory 배송 상품 목록]\n";
 		
 		List<WeeklyProduct> deliveryList = service.selectWeeklyProduct(productListNo);
 		

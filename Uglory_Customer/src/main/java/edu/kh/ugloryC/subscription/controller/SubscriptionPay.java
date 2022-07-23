@@ -42,7 +42,7 @@ public class SubscriptionPay {
 	@PostMapping("/subscription/kakaopay")
 	public int subscriptionPay(@RequestParam String subsOrderNo,
 								  @RequestParam String orderName,
-								  @RequestParam int orderPhone,
+								  @RequestParam String orderPhone,
 								  @RequestParam String orderAddress,
 								  @RequestParam(value="delText", required=false) String delText,
 								  @RequestParam int cycle,

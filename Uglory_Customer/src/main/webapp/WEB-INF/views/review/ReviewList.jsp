@@ -154,7 +154,7 @@
                     <div class="category_section"> 
                         <div class="category_button">
                             <div style="background-color: rgb(113, 214, 199); color:white">모두보기</div>
-                            <div>구독박스</div>
+                            <div onclick="subCategory()">구독박스</div>
                             <div>상점</div>
                         </div>
                     </div>
@@ -162,7 +162,7 @@
 
                     <!-- 리뷰 목록 -->
                     <div class="review-section">
-                        <div class="review-list">
+                        <div class="review-list" id="review-list">
 
                         <div class="review-content">
                             <div data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -175,13 +175,17 @@
                                         <div>2022.07.10</div>
                                     </div>
                                     <div class="review-star">
-                                        <span>★</span>
-                                        <span>★</span>
-                                        <span>★</span>
-                                        <span>★</span>
-                                        <span>★</span>
+                                        <div class="rating" data-rate="3.5">
+                                            <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
+                                            <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
+                                            <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
+                                            <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
+                                            <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
+                                        <%-- <span>★★★★★</span> --%>
+                                        </div>
                                     </div>
                                 </div>
+                                <%--  여까지 함 --%>
                                 <div class="review-content-text-section modal-open">
                                     <div href="#" style="color: black;" >
                                         신선한 토마토로 카프레제 해먹었어요~ 멋쟁이 토마토로 파스타도 해먹구 신이 나요~
@@ -195,7 +199,7 @@
                         
                         <div class="review-content">
                             <div>
-                                <img src="img/리뷰/이용후기2.jpeg">
+                                <img>
                             </div>
                             <div class="review-content-text">
                                 <div class="review-content-top-section">
@@ -204,11 +208,14 @@
                                         <div>2022.07.06</div>
                                     </div>
                                     <div class="review-star">
-                                        <span>★</span>
-                                        <span>★</span>
-                                        <span>★</span>
-                                        <span>★</span>
-                                        <span>☆</span>
+                                        <div class="rating" data-rate="3">
+                                            <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
+                                            <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
+                                            <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
+                                            <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
+                                            <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
+                                        <%-- <span>★★★★★</span> --%>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="review-content-text-section">
@@ -224,7 +231,7 @@
                         
                         <div class="review-content">
                             <div>
-                                <img src="img/리뷰/이용후기3.jpeg">
+                                <img>
                             </div>
                             <div class="review-content-text">
                                 <div class="review-content-top-section">
@@ -256,7 +263,7 @@
                             
                             <div class="review-content">
                                 <div>
-                                    <img src="img/리뷰/이용후기4.jpeg">
+                                    <img>
                                 </div>
                                 <div class="review-content-text">
                                     <div class="review-content-top-section">
@@ -285,7 +292,7 @@
 
                             <div class="review-content">
                                 <div>
-                                    <img src="img/리뷰/이용후기5.png">
+                                    <img>
                                 </div>
                                 <div class="review-content-text">
                                     <div class="review-content-top-section">
@@ -314,7 +321,7 @@
 
                             <div class="review-content">
                                 <div>
-                                    <img src="img/리뷰/이용후기6.png">
+                                    <img>
                                 </div>
                                 <div class="review-content-text">
                                     <div class="review-content-top-section">
@@ -438,6 +445,8 @@
 
     <%-- footer --%>
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
+
+    <script>const contextPath = '${contextPath}'</script>
 
     <!-- jQuery 추가 -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>

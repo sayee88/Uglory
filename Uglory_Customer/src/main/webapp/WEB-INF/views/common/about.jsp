@@ -181,7 +181,7 @@
                     <div class="about2-item1">
                         <div class="about2-image1">
                             <img src="${contextPath}/resources/img/about/about2-image2.png">
-                            <p class="about2-text1">결제일</p>
+                            <p class="about2-text1">결제일 / 배송일</p>
                             <div class="empty5"></div>
                             <p class="about2-text2">수요일</p>
                         </div>

@@ -14,6 +14,6 @@ public class Customer {
 	private int customerNo;
 	private String customerEmail;
 	private String customerName;
-	private String subscriptionFlag;
+	private int subscriptionFlag;
 	private String accountFlag;
 }

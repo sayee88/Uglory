@@ -59,10 +59,10 @@
                     </div>
                 </div>
                 
-                
+                <%-- ${contextPath}/member/logout --%>
                 <div class="myPage-emailBox">
                     <p class="emailText">${loginMember.memberEmail}</p>
-                    <a href="${contextPath}/member/logout" class="logoutBtn">로그아웃</a>
+                    <a href="#" onclick="kakaoLogout()" class="logoutBtn">로그아웃</a>
                 </div>
                 <div class=empty1></div>  
                 <a href="${contextPath}/member/secession" class="myPageSecession">
@@ -100,7 +100,6 @@
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
     <%-- <!— jQuery 추가 —> --%>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -116,8 +115,51 @@
 
     
     
-    <%-- Template Javascript --%>
-    <%-- <script src="${contextPath}/resources/js/main.js"></script> --%>
+    <%-- Template Javascript  --%>
+    <%-- <script src="${contextPath}/resources/js/main.js"></script>  --%>
+
+    <script>
+        const contextPath = "${contextPath}";
+    </script>
+
+
+    <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+        <script>
+        /* function kakaoLogout() {
+            
+            if (Kakao.Auth.getAccessToken()) {
+            Kakao.API.request({
+                url: '/v1/user/unlink',
+                success: function (response) {
+                    console.log(response)
+                },
+                fail: function (error) {
+                console.log(error)
+                },
+            })
+            Kakao.Auth.setAccessToken(undefined)
+            }
+        }  */
+        function kakaoLogout() {
+            Kakao.init('d16c24decd0c24025e4473a953442aa0'); // 초기화
+            Kakao.isInitialized();
+            Kakao.Auth.setAccessToken(Kakao.Auth.getAccessToken());
+
+            Kakao.API.request({
+            url: '/v1/user/unlink',
+            success: function(response) {
+                console.log(response);
+                    location.href = contextPath + "/member/logout";
+                },
+                fail: function(error) {
+                    //alert('탈퇴처리가 미완료되었습니다. \n관리자에게 문의하시기 바랍니다.');
+                    location.href = contextPath + "/member/logout";
+                console.log(error);
+                }
+            });
+        };
+
+    </script>
     
 </body>
 </html>

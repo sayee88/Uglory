@@ -225,6 +225,28 @@
 	</select>
 	
 	
+	<select id="prodPaymentCount" resultType="_int">
+	SELECT COUNT(*) FROM PRODUCT_PAY
+	</select>
+	
+	
+	<select id="refundCount" resultType="_int">
+		SELECT COUNT(*) FROM PRODUCT_REFUND
+	</select>
+	
+	
+	<select id="refundDone" resultType="_int">
+		SELECT COUNT(*) FROM PRODUCT_REFUND WHERE P_REFUND_ST = 'Y'
+	</select>
+	
+	
+	<select id="subsCount" resultType="_int">
+		SELECT COUNT(*) FROM SUBS_PAY
+		JOIN SUBS_ORDER USING(S_ORDER_CD)
+		WHERE S_CANCEL = 'N'
+	</select>
+	
+	
 	
 	
 	

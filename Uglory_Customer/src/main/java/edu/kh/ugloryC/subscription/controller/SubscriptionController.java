@@ -34,7 +34,7 @@ import edu.kh.ugloryC.product.model.vo.ProductList;
 import edu.kh.ugloryC.subscription.model.service.SubscriptionService;
 import edu.kh.ugloryC.subscription.model.vo.OrderInfo;
 
-@SessionAttributes({"orderInfo", "deliveryInfo", "loginMember","choice"})
+@SessionAttributes({"deliveryInfo", "loginMember"})
 @Controller
 public class SubscriptionController {
 	
@@ -51,6 +51,7 @@ public class SubscriptionController {
 							   RedirectAttributes ra,
 							   HttpServletRequest req,
 							   HttpServletResponse resp) {
+		
 		
 		Member loginMember = (Member)session.getAttribute("loginMember");
 		
@@ -86,24 +87,16 @@ public class SubscriptionController {
 	
 	// 구독 페이지2
 	@GetMapping("/subscription/order")
-	public String subscription_order(String box, String cycle, @RequestParam(value="choice", required = false) List<String> choice,
+	public String subscription_order(int box, String cycle, @RequestParam(value="choice", required = false) List<String> choice,
 									Model model,
 									HttpSession session,
 									HttpServletRequest req,
-									HttpServletResponse resp) {
-		
-//		Map<String, Object> orderInfo = new HashMap<String, Object>();
-		
+									HttpServletResponse resp) {		
 		
 		OrderInfo orderInfo = new OrderInfo();
 		
 		orderInfo.setBox(box);
 		orderInfo.setCycle(cycle);
-//		orderInfo.setChoice(choice); -> list는 set 못함 -> 따로 모델로 담음
-		
-//		orderInfo.put("box", box);
-//		orderInfo.put("cycle", cycle);
-//		orderInfo.put("choice", choice);
 		
 		// 결제 번호 생성
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddhhmmss");
@@ -142,7 +135,6 @@ public class SubscriptionController {
 									@RequestParam(value="s-orderPhone") String inputPhone,
 									@RequestParam(value="s-orderAddress") String[] inputAddress,
 									@RequestParam(value="s-orderReq") String inputDelText,
-									@ModelAttribute("orderInfo") OrderInfo orderInfo,
 									@ModelAttribute("loginMember") Member loginMember,
 									@ModelAttribute("firstDelDate") Date firstDelDate,
 									HttpSession session,
@@ -150,6 +142,8 @@ public class SubscriptionController {
 									RedirectAttributes ra,
 									HttpServletRequest req,
 									HttpServletResponse resp) {
+		
+		OrderInfo orderInfo = (OrderInfo) session.getAttribute("orderInfo");
 		
 		String address = String.join(",,", inputAddress);
 		
@@ -169,7 +163,7 @@ public class SubscriptionController {
 		
 //		model.addAttribute(orderInfo);
 		
-		session.setAttribute("orderInfo", orderInfo);
+//		session.setAttribute("orderInfo", orderInfo);
 				
 		return "subscription/subscription3";
 		

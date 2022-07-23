@@ -17,6 +17,7 @@ import edu.kh.ugloryA.payment.model.vo.SubsPaymentDetail;
 @Service
 public class PaymentServiceImpl implements PaymentService {
 	
+
 	@Autowired
 	private PaymentDAO dao;
 	
@@ -76,6 +77,34 @@ public class PaymentServiceImpl implements PaymentService {
 	@Override
 	public List<Refund> selectRefundList() {
 		return dao.selectRefundList();
+	}
+	
+	
+	// 개별 상품 결제 건수 
+	@Override
+	public int prodPaymentCount() {
+		return dao.prodPaymentCount();
+	}
+
+
+	// 환불 요청 건수
+	@Override
+	public int refundCount() {
+		return dao.refundCount();
+	}
+
+
+	// 환불 완료 건수
+	@Override
+	public int refundDone() {
+		return dao.refundDone();
+	}
+
+
+	// 구독 건수
+	@Override
+	public int subsCount() {
+		return dao.subsCount();
 	}
 	
 	
