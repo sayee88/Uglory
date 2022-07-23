@@ -187,7 +187,7 @@
                                 </div>
                                 
                                 <div class="review-content-text-section modal-open">
-                                    <div href="#" style="color: black;" >
+                                    <div data-bs-toggle="modal" data-bs-target="#exampleModal" style="color: black;" >
                                         신선한 토마토로 카프레제 해먹었어요~ 멋쟁이 토마토로 파스타도 해먹구 신이 나요~
                                     </div> 
                                 </div>

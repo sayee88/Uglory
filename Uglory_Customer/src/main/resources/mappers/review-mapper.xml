@@ -325,7 +325,14 @@
 		) AS MY_UNWRITTEN_REVIEW
 		FROM DUAL
 	</select>
+	
+	
+	
+	
+	<!-- 리뷰 구독 전체 리스트 -->
+	<select id="selecSub">
 		
+	</select>
 		
 		
 		

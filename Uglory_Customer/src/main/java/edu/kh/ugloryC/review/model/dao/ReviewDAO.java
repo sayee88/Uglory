@@ -170,8 +170,25 @@ public class ReviewDAO {
 	}
 
 
+	/**
+	 * 옵션 따로...
+	 * @param map
+	 * @return
+	 */
 	public List<Map<String, Object>> productOptionList(Map<String, Object> map) {
 		return sqlSession.selectList("reviewMapper.productOptionList", map);
+	}
+
+
+	
+	
+	/**
+	 * 리뷰 구독 전체 리스트
+	 * @return
+	 */
+	public List<ReviewSelectInfo> selecSub() {
+		
+		return sqlSession.selectList("reviewMapper.selecSub");
 	}
 
 
