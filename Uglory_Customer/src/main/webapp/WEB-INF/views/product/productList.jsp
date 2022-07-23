@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"  %>
 
 
 
@@ -92,7 +93,7 @@
                 <div class="row">
                     <div class="col" style="margin: 20px;">
 
-                        <h2 >상품보기</h2>
+                        <h2>👀 상품보기</h2>
                     </div>
                     
                 </div>
@@ -101,20 +102,32 @@
             
             <div class="line"></div>
 
-            <!-- 상품 카테고리 -->
-            <div class="category">
-                <button class="btn btn-primary"><a href="${contextPath}/product/list"  style="color: white;">ALL</a> </button>
-                <button class="btn btn-primary" id="c1" onclick="category(1)">근채류</button>
-                <button class="btn btn-primary" id="c2" onclick="category(2)">곡식류/견과류</button>
-                <button class="btn btn-primary" id="c3" onclick="category(3)">채소류</button>
-                <button class="btn btn-primary" id="c4" onclick="category(4)">과채류</button>
-                <button class="btn btn-primary" id="c5" onclick="category(5)">나물류</button>
-                <button class="btn btn-primary" id="c6" onclick="category(6)">버섯류</button>
-                <button class="btn btn-primary" id="c7" onclick="category(7)">과일류</button>
+             <div class="review-star">
+                <div class="rating" data-rate="3.5">
+                    <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
+                    <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
+                    <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
+                    <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
+                    <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
+                </div>
+                <p>(49)</p>
             </div>
 
 
+            <!-- 상품 카테고리 -->
+            <div class="category">
+                <button class="btn btn-primary"><a href="${contextPath}/product/list"  style="color: white;">ALL</a> </button>
+                <button class="btn btn-primary" id="c1" onclick="category(1)">🥔 근채류</button>
+                <button class="btn btn-primary" id="c2" onclick="category(2)">🌾 곡식류/견과류</button>
+                <button class="btn btn-primary" id="c3" onclick="category(3)">🥬 채소류</button>
+                <button class="btn btn-primary" id="c4" onclick="category(4)">🍆 과채류</button>
+                <button class="btn btn-primary" id="c5" onclick="category(5)">🌿 나물류</button>
+                <button class="btn btn-primary" id="c6" onclick="category(6)">🍄 버섯류</button>
+                <button class="btn btn-primary" id="c7" onclick="category(7)">🍋 과일류</button>
+            </div>
 
+
+           
             <!-- 상품 목록 -->
             <div class="container">
 
@@ -129,12 +142,27 @@
                             </div>
                             
                             <div>
-                                <h5>친환경 초당 옥수수 - 10개/20개</h5>
+                                <h4>친환경 초당 옥수수 - 10개/20개</h4>
                                 <div class="flex-container">
-                                    <h4>25,000</h4>
-                                    <div class="sub-box">
-                                        <img src="${contextPath}/resources/img/product/star.jpg" alt=""><p>(49)</p>
+                                    <h5>25,000</h5>
+
+                                    <div class="review-star">
+                                        <div class="rating" data-rate="4.7">
+
+                                            <div class="star-wrap">
+                                                <div class="star">
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                            </div>
+
+                                            <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
+                                            <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
+                                            <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
+                                            <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
+                                        </div>
+                                        <p>(49)</p>
                                     </div>
+
                                 </div>
                             </div>
                         </div>

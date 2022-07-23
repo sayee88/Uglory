@@ -43,7 +43,7 @@
 </head>
 
 <body>
-    <jsp:include page="/WEB-INF/views/common/header.jsp" />
+    <jsp:include page="/WEB-INF/views/common/header-1.jsp" />
 
            param ${param.box}<hr>
            request ${requestScope.box}<hr>
@@ -61,7 +61,7 @@
             <div class="inner-box">
                 <div class="step-text">
                     <h3 id="step-text">STEP 4</h3>
-                    <h2>배송 정보를 입력해주세요.</h2>
+                    <h2>배송 정보를 입력해주세요 🚚</h2>
                     <pre style="font-size: 17px;">*은 필수 입력 항목입니다.</pre>
                 </div>
                 

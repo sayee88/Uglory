@@ -620,10 +620,10 @@
     height: 160px;
 }
 
-.content-info > div:nth-of-type(1){
+.myReview-star{
     /* border: 1px solid red; */
     color: rgb(254, 161, 22);
-    font-size: 22px;
+    font-size: 20px;
     margin-bottom: 10px;
 }
 

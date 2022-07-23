@@ -62,7 +62,7 @@
     object-fit: cover
 }
 
-.sub-box > img{
+.sub-box > div{
     width: 50px;
     height: 50px;
 }
@@ -96,3 +96,29 @@
     color: white;
     border: white;
 }
+
+h4{
+    margin-top: 15px;
+}
+
+
+/* 별점 */
+.review-star{
+    /* border: 1px solid red; */
+    display: flex;
+}
+
+.fa-star {
+    color: rgb(113, 214, 199);
+}
+
+.rating .star-wrap{width: 20px; display:inline-block; margin: 0 -3px;}
+
+.rating .star{
+    width: 0;
+    padding-top: 20px;
+    overflow: hidden;
+
+}
+
+
