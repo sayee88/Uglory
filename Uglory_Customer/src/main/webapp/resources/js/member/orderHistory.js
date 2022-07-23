@@ -66,6 +66,7 @@ for (let btn of orderDetailBtn) {
 
                     if(proc.imageRoot == null){
                         img.setAttribute("src", contextPath + "/resources/img/about/xmark.png" );
+                        
                     }else{
                         img.setAttribute("src", window.location.origin+'/ugloryA' +  proc.imageRoot);
                     }
@@ -85,7 +86,7 @@ for (let btn of orderDetailBtn) {
                     const dt2 = document.createElement("dt");
                     dt2.innerText = "상품 가격 / 옵션명 / 수량"
                     const dd2 = document.createElement("dd");
-                    dd2.innerText = (Number(proc.productPrice)+ "원" + Number(proc.optionPrice))+ " / " + proc.optionName + " / " + proc.optionCount + "개";
+                    dd2.innerText = (Number(proc.productPrice)+ Number(proc.optionPrice)) + "원" + " / " + proc.optionName + " / " + proc.optionCount + "개";
                     dl2.append(dt2, dd2);
                     
                     
@@ -212,8 +213,8 @@ for (let btn of orderDetailBtn) {
                 const dd3_4 = document.createElement("dd");
                 dd3_4.innerText = orderHistoryDetail.deliveryReq;
 
-                if(orderHistoryDetail.deliveryReq == ""){
-                    dd3_4.innerText = "";
+                if(orderHistoryDetail.deliveryReq =="NULL"){
+                    dd3_4.innerText = "없음";
                 }
 
 

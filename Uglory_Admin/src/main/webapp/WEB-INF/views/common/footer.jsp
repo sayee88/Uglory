@@ -21,4 +21,6 @@
     <script>
         alert("${message}");
     </script>
+
+    <c:remove var="message" />
 </c:if> 

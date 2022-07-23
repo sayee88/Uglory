@@ -1,5 +1,9 @@
 package edu.kh.ugloryA.common.scheduling;
 
+import java.io.File;
+import java.util.Arrays;
+import java.util.List;
+
 import javax.servlet.ServletContext;
 
 import org.slf4j.Logger;
@@ -21,14 +25,34 @@ public class ImageDeleteScheduling {
 	@Autowired
 	private ServletContext application;
 	
-//	@Scheduled(cron="0 0 0 * * *")
-	@Scheduled(cron="0 * * * * *")
+	@Scheduled(cron="0 0 0 * * *")
 	public void serverImageDelete() {
 		
-		//logger.info("imagedelte에서 1분마다 출력");
+		//사용하지 않는 상품이미지 삭제
+		List<String> dbList = service.selectProductDBList();
 		
-		//이미지 삭제 추가 예정
+		String folderPath = application.getRealPath("/resources/img/productImage");
 		
+		File path = new File(folderPath);
+		File[] arr = path.listFiles();
+		
+		//배열을 List로 바꾸기
+		List<File> serverList = Arrays.asList(arr);
+		
+		if(!serverList.isEmpty()) {
+			
+			for(File serverImage : serverList) {
+				
+				String name = serverImage.getName();
+				
+				if(dbList.indexOf(name) == -1) {
+					
+					//dbList에는 없는데 serverList에만 파일이 존재하는 경우
+					logger.info(serverImage.getName() + "삭제");
+					serverImage.delete();
+				}
+			}
+			logger.info("---------- 서버 이미지 삭제 완료 ----------");
+		}
 	}
-	
 }

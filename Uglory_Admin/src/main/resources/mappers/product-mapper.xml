@@ -296,13 +296,14 @@
 		WHERE EX_UPLOAD_DATE = #{key}
 	</update>
 	
+	<!-- 구독 회원 번호리스트 조회 -->
 	<select id="selectPhoneList" resultType="string">
 		SELECT S_ORDER_PHONE
 		FROM SUBS_ORDER
 		WHERE S_CANCEL = 'N'
 	</select>
 	
-	
+	<!-- 이번주 상품 목록 조회 -->
 	<select id="selectThisWeek" resultMap="weeklyProduct_rm">
 		SELECT PRODUCT_NM, OPTION_NM 
 		FROM WEEKLY_P
@@ -311,6 +312,11 @@
 		JOIN PRODUCT USING(P_CD)
 		WHERE EX_UPLOAD_DATE = 'T'
 		ORDER BY PRODUCT_NO
+	</select>
+	
+	<!-- 삭제용 상품 이미지 리스트 조회 -->
+	<select id="selectProductDBList" resultType="string">
+		SELECT IMG_RENAME FROM PRODUCT_IMG
 	</select>
 	
 

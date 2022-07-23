@@ -6,6 +6,7 @@
 	<resultMap type="payment" id="payment_rm">
 		<id property="orderCode" column="ORDER_CD" />
 		<result property="customerEmail" column="MEMBER_EMAIL" />
+		<result property="customerName" column="MEMBER_NAME" />
 		<result property="payAmount" column="PAY_AMOUNT" />
 		<result property="payDate" column="PAY_DT" />
 	</resultMap>
@@ -55,12 +56,10 @@
 		<result property="refundAmount" column="P_REFUND_AMOUNT"/>
 		<result property="refundDate" column="P_REFUND_DT"/>
 		<result property="orderDate" column="P_ORDER_DT"/>
+		<result property="refundStatement" column="P_REFUND_ST"/>
 		<result property="customerEmail" column="MEMBER_EMAIL"/>
 		<result property="customerName" column="MEMBER_NAME"/>
-		<result property="productName" column="PRODUCT_NM"/>
-		<result property="optionName" column="OPTION_NM"/>
-		<result property="optionCount" column="OPTION_COUNT"/>
-		<result property="refundStatement" column="P_REFUND_ST"/>
+		<collection property="optionList" column="P_ORDER_CD" ofType="option" select="selectRefundOption" javaType="java.util.ArrayList" />
 	</resultMap>
 	
 
@@ -77,13 +76,13 @@
 	
 	<!-- 결제 전체 조회 -->
 	<select id="selectAllPayment" resultMap="payment_rm">
-		SELECT S.S_ORDER_CD AS ORDER_CD, M.MEMBER_EMAIL, S.S_PAY_AMOUNT AS PAY_AMOUNT, TO_CHAR(S.S_PAY_DT, 'YYYY-MM-DD') AS PAY_DT, '1' SORT
+		SELECT S.S_ORDER_CD AS ORDER_CD, M.MEMBER_EMAIL, M.MEMBER_NAME, S.S_PAY_AMOUNT AS PAY_AMOUNT, TO_CHAR(S.S_PAY_DT, 'YYYY-MM-DD') AS PAY_DT, '1' SORT
 		FROM SUBS_PAY S
 		JOIN MEMBER M ON S.MEMBER_NO = M.MEMBER_NO
 		
 		UNION ALL
 		
-		SELECT P.P_ORDER_CD AS ORDER_CD, M.MEMBER_EMAIL, P.P_PAY_AMOUNT AS PAY_AMOUNT, TO_CHAR(P.P_PAY_DT, 'YYYY-MM-DD') AS PAY_DT, '2' SORT
+		SELECT P.P_ORDER_CD AS ORDER_CD, M.MEMBER_EMAIL, M.MEMBER_NAME, P.P_PAY_AMOUNT AS PAY_AMOUNT, TO_CHAR(P.P_PAY_DT, 'YYYY-MM-DD') AS PAY_DT, '2' SORT
 		FROM PRODUCT_PAY P
 		JOIN PRODUCT_ORDER PO ON P.P_ORDER_CD = PO.P_ORDER_CD
 		LEFT JOIN PRODUCT_REFUND PR ON PO.P_ORDER_CD = PR.P_ORDER_CD 
@@ -95,7 +94,7 @@
 	
 	<!-- 결제 검색 조회 -->
 	<select id="searchPayment" resultMap="payment_rm">
-		SELECT S.S_ORDER_CD AS ORDER_CD, M.MEMBER_EMAIL, S.S_PAY_AMOUNT AS PAY_AMOUNT, TO_CHAR(S.S_PAY_DT, 'YYYY-MM-DD') AS PAY_DT, '1' SORT
+		SELECT S.S_ORDER_CD AS ORDER_CD, M.MEMBER_EMAIL, M.MEMBER_NAME, S.S_PAY_AMOUNT AS PAY_AMOUNT, TO_CHAR(S.S_PAY_DT, 'YYYY-MM-DD') AS PAY_DT, '1' SORT
 		FROM SUBS_PAY S
 		JOIN MEMBER M ON S.MEMBER_NO = M.MEMBER_NO
 		<if test='query != null and query !=""'>
@@ -113,7 +112,7 @@
 			</choose>
 		</if>
 		UNION ALL
-		SELECT P.P_ORDER_CD AS ORDER_CD, M.MEMBER_EMAIL, P.P_PAY_AMOUNT AS PAY_AMOUNT, TO_CHAR(P.P_PAY_DT, 'YYYY-MM-DD') AS PAY_DT, '2' SORT
+		SELECT P.P_ORDER_CD AS ORDER_CD, M.MEMBER_EMAIL, M.MEMBER_NAME, P.P_PAY_AMOUNT AS PAY_AMOUNT, TO_CHAR(P.P_PAY_DT, 'YYYY-MM-DD') AS PAY_DT, '2' SORT
 		FROM PRODUCT_PAY P
 		JOIN PRODUCT_ORDER PO ON P.P_ORDER_CD = PO.P_ORDER_CD
 		LEFT JOIN PRODUCT_REFUND PR ON PO.P_ORDER_CD = PR.P_ORDER_CD 
@@ -214,14 +213,18 @@
 	
 	<select id="selectRefundList" resultMap="refund_rm">
 		SELECT  P_ORDER_CD, P_REFUND_AMOUNT, P_REFUND_DT, P_ORDER_DT,
-		        MEMBER_EMAIL, MEMBER_NAME, 
-		        PRODUCT_NM, OPTION_NM, OPTION_COUNT, P_REFUND_ST
+		        MEMBER_EMAIL, MEMBER_NAME, P_REFUND_ST
 		FROM PRODUCT_REFUND
 		JOIN PRODUCT_ORDER USING(P_ORDER_CD)
 		JOIN MEMBER USING(MEMBER_NO)
-		JOIN OPTION_TB USING(P_ORDER_CD)
+	</select>
+	
+	<select id="selectRefundOption" resultMap="option_rm">
+		SELECT OPTION_COUNT, OPTION_NM, PRODUCT_NM
+		FROM OPTION_TB 
 		JOIN OPTION_TYPE USING(OPTION_CD)
 		JOIN PRODUCT USING(P_CD)
+		WHERE P_ORDER_CD = #{orderCode}
 	</select>
 	
 	
@@ -245,6 +248,10 @@
 		JOIN SUBS_ORDER USING(S_ORDER_CD)
 		WHERE S_CANCEL = 'N'
 	</select>
+	
+	<update id="refundHandling">
+		UPDATE PRODUCT_REFUND SET P_REFUND_ST = 'Y' WHERE P_ORDER_CD = #{orderCode}
+	</update>
 	
 	
 	
