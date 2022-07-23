@@ -99,5 +99,13 @@ public interface PaymentService {
 	int subsCount();
 
 
+	/**
+	 * 환불 처리
+	 * @param orderCode
+	 * @return
+	 */
+	int refundHandling(String orderCode);
+
+
 
 }

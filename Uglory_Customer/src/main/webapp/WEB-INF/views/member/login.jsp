@@ -18,6 +18,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&family=Pacifico&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
@@ -37,7 +38,7 @@
     
     <link href="${contextPath}/resources/css/member/member.css" rel="stylesheet">
     
-</head>
+</head> 
 <body>
     
     <main class="main">

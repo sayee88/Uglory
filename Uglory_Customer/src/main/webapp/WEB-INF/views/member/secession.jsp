@@ -107,7 +107,7 @@
                                 <div class="row">
                                     <div class="col">
                                         <input class="form-check-input" name="choice" onclick="count_check(this);" type="radio" id="secession_cnt4" value="4" >
-                                        <label class="form-check-label" for="secession_cnt4">비밀이에요.</label>
+                                        <label class="form-check-label" for="secession_cnt4"> 비밀!!</label>
                                     </div>
                                 </div>
 
