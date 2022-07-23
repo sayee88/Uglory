@@ -98,6 +98,14 @@ public interface ReviewService {
 	int selectUnWrittenCount(int memberNo);
 
 
+
+	/**
+	 * 리뷰 구독 리스트 불러오기
+	 * @return subList
+	 */
+	List<ReviewSelectInfo> selectSub();
+
+
 	
 	
 

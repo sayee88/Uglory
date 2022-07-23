@@ -199,6 +199,18 @@ public class ReviewServiceImpl implements ReviewService{
 		
 		return dao.selectUnWrittenCount(memberNo);
 	}
+
+
+
+	// 리뷰 구독 리스트
+	@Override
+	public List<ReviewSelectInfo> selectSub() {
+		
+		return dao.selecSub();
+	}
+	
+	
+	
 	
 	
 	
