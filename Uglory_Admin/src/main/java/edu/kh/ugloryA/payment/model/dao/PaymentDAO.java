@@ -142,6 +142,16 @@ public class PaymentDAO {
 	public int subsCount() {
 		return sqlSession.selectOne("paymentMapper.subsCount");
 	}
+
+
+	/**
+	 * 환불 처리
+	 * @param orderCode
+	 * @return
+	 */
+	public int refundHandling(String orderCode) {
+		return sqlSession.update("paymentMapper.refundHandling", orderCode);
+	}
 	
 	
 

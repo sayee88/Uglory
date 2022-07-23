@@ -285,9 +285,16 @@ public class ProductServiceImpl implements ProductService {
 		return dao.selectPhoneList();
 	}
 
+	//이번주 상품 목록 조회하기
 	@Override
 	public List<WeeklyProduct> selectThisWeek() {
 		return dao.selectThisWeek();
+	}
+
+	//상품 이미지 디비리스트 조회(삭제용)
+	@Override
+	public List<String> selectProductDBList() {
+		return dao.selectProductDBList();
 	}
 	
 }

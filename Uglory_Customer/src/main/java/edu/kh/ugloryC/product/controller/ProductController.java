@@ -175,8 +175,8 @@ public class ProductController {
 							@ModelAttribute("loginMember") Member loginMember,
 							Model model,
 							RedirectAttributes ra, HttpServletRequest req,
-							@RequestParam(value="optionCodeList") String optionCode,
-							@RequestParam(value="amountList") String amount
+							@RequestParam(value="optionCodeList") String optionCode, // OPTION_CD 리스트
+							@RequestParam(value="amountList") String amount // OPTION_COUNT 리스트
 							) {
 		
 		int memberNo = loginMember.getMemberNo();
@@ -187,16 +187,18 @@ public class ProductController {
 		
 		String address = String.join(",,", address1);
 		
-		
+		// 옵션 코드 내 [] 를 공백으로 바꿈
 		optionCode = optionCode.replaceAll("\\[", "");
 		optionCode = optionCode.replaceAll("\\]", "");
 		
+		// 옵션 수량 내 [] 를 공백으로 바꿈
 		amount = amount.replaceAll("\\[", "");
 		amount = amount.replaceAll("\\]", "");
 
+		// , 기준으로 잘라서 배열에 저장
 		String[] optionCodeArr = optionCode.split(",");
 		String[] amountArr = amount.split(",");
-		
+	
 		List<String> optionCodeList = Arrays.asList(optionCodeArr);
 		List<String> amountList = Arrays.asList(amountArr);
 		
@@ -215,7 +217,7 @@ public class ProductController {
 
 		int result = service.productOrder(productOrder);
 		
-		if(result > 0) { // 주문 정보 입력 및 결제 성공 시 결제 테이블 삽입
+		if(result > 0) { // 주문 정보 입력 및 결제 성공 시 PRODUCT_PAY 테이블 및 OPTION_TB 테이블 삽입
 
 			int insertOptionTb = service.insertOptionTb(optionCodeList, amountList, pOrderCode);
 			int productPay = service.productPay(productOrder);
@@ -284,4 +286,20 @@ public class ProductController {
 		return "product/productCart";
 	}
 	
+	@ResponseBody
+	@PostMapping("/cartDelete")
+	public int cartDelete(@ModelAttribute("loginMember") Member loginMember,
+					      @RequestParam(value="optionNo") String optionNoDelete) {
+				
+		int memberNo = loginMember.getMemberNo();  
+		
+		optionNoDelete = optionNoDelete.replaceAll("\\[", "");
+		String[] optionNoArr = optionNoDelete.split(",");
+		List<String> deleteList = Arrays.asList(optionNoArr);
+		
+		// x버튼 클릭 시 장바구니 삭제 
+		int result = service.cartDelete(memberNo, deleteList);
+		
+		return result;
+	}
 }

@@ -64,7 +64,7 @@
                         <div class="date">${item.orderDate}</div>
                     
                         <div class="order-goods">
-                        
+                            
                             <div class="order-name">
                                 ${item.origin}
                                 
@@ -72,7 +72,7 @@
                                     외 ${item.count} 개
                                 </c:if>
 
-                                <button class="orderDetailBtn" id="${item.orderNo}" style="border:none; font-weight:bold; color: #FF5957;">></button>
+                                <button class="orderDetailBtn" id="${item.orderNo}" style="border:none; font-weight:bold; color: #FF5957; font-size: 15px;">주문 내역 상세보기></button>
                             </div>
                         
                         </div>
@@ -85,52 +85,44 @@
                                 </dl>
 
                                 <c:if test="${item.refundStatus == 0}">
-                                <dl>
-                                    <dt>결제금액</dt>
-                                    <dd>${item.totalPrice}원</dd>
-                                </dl>
+                                    <dl>
+                                        <dt>결제금액</dt>
+                                        <dd>${item.totalPrice}원</dd>
+                                    </dl>
 
 
+                    
+                                    <dl>
+                                        <dt>배송상태</dt>
+                                    
+                                        <div id="deliveryBox">
+                                            <dd>${item.deliveryFlag}</dd>
+                                            <button type="button" class="refundBtn" onclick="productRefund('${item.orderNo}', this)">환불신청</button>
+                                        </div>
+                                    <dl>
+
+                                </c:if>
+
+
+                                <c:if test="${item.refundStatus == 1}">
+                                    <dl>
+                                        <dt>환불 금액</dt>
+                                        <dd>${item.totalPrice}원</dd>
+                                    </dl>
                 
-                                <dl>
-                                    <%-- <c:if test="${item.refundStatus == 0}"> --%>
+                                    <dl>
+                                     
 
-                                    <dt>배송상태</dt>
-                                
-                                    <div id="deliveryBox">
-                                        <dd>${item.deliveryFlag}</dd>
-                                        <button type="button" class="refundBtn" onclick="productRefund('${item.orderNo}', this)">환불신청</button>
-                                    </div>
+                                        <dt>환불상태</dt>
+                                        <div id="deliveryBox">
+                                            <dd>환불 완료</dd>
+                                            
+                                        </div>
 
-                            </c:if>
-
-
-                            <c:if test="${item.refundStatus == 1}">
-                                <dl>
-                                    <dt>환불금액</dt>
-                                    <dd>${item.totalPrice}원</dd>
-                                </dl>
-            
-                                <dl>
-                                    <%-- <c:if test="${item.refundStatus == 0}"> --%>
-
-                                    <dt>배송상태</dt>
-                                
-                                    <div id="deliveryBox">
-                                        <dd>${item.deliveryFlag}</dd>
+                                    </dl>
+                                </c:if>
+                                    
                                         
-                                    </div>
-                                    </c:if>
-                                    <%-- <c:if test="${item.refundStatus == 1}">
-
-                                    <dt>환불 처리 상태</dt>
-                                
-                                    <div id="deliveryBox">
-                                        <dd>환불 완료</dd>
-                                    </div>
-                                    </c:if> --%>
-                                        
-                                </dl>
                             </div>
                         </div>
 
@@ -272,15 +264,18 @@
             </ul>
             
 
+
+
+
             <!-- 페이지네이션 시작-->   
-            <nav aria-label="Page navigation example">
+            <%-- <nav aria-label="Page navigation example">
             <ul class="pagination d-flex justify-content-center">
                 <li class="page-item">
                 <a class="page-link" href="#" aria-label="Previous">
                     <span aria-hidden="true">&laquo;</span>
                 </a>
                 </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link current" >1</a></li>
                 <li class="page-item"><a class="page-link" href="#">2</a></li>
                 <li class="page-item"><a class="page-link" href="#">3</a></li>
                 <li class="page-item">
@@ -289,7 +284,7 @@
                 </a>
                 </li>
             </ul>
-            </nav>
+            </nav> --%>
             <!-- 페이지 네이션 끝 -->
             
         </div>
