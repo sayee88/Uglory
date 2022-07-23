@@ -152,5 +152,11 @@ public interface ProductService {
 	 * @return deliveryList
 	 */
 	List<WeeklyProduct> selectThisWeek();
+
+	/**
+	 * 상품 이미지 목록 조회해오기
+	 * @return productDBList
+	 */
+	List<String> selectProductDBList();
 	
 }
