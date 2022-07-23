@@ -249,9 +249,12 @@ public class ProductDAO {
 		return sqlSession.selectList("productMapper.selectThisWeek");
 	}
 
-
-
-	
-	
+	/**
+	 * 상품 이미지 디비리스트 조회
+	 * @return produtctDBList
+	 */
+	public List<String> selectProductDBList() {
+		return sqlSession.selectList("productMapper.selectProductDBList");
+	}
 
 }
