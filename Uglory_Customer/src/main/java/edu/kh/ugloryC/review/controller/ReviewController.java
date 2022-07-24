@@ -153,6 +153,8 @@ public class ReviewController {
 		
 		List<ReviewSelectInfo> reviewSelectInfo = service.selectMyReview(loginMember);
 		
+		model.addAttribute("reviewSelectInfo", reviewSelectInfo);
+		
 		return "review/MyReview";
 	}
 	

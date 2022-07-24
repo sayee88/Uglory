@@ -21,7 +21,7 @@ public class ReviewSelectInfo {
 	private int reviewNo;
 	private String reviewContent;
 	private String reviewEnrollDate;
-	private int starRating;
+	private double starRating;
 	
 	private int memberNo;
 	private String memberName;
