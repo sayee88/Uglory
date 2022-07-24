@@ -141,9 +141,9 @@ public class ReviewDAO {
 	 * 별점 평균 조회 DAO
 	 * @return result2
 	 */
-	public double selectAvgStar() {
+	public double selectAvgStar(int memberNo) {
 		
-		return sqlSession.selectOne("reviewMapper.selectAvgStar");
+		return sqlSession.selectOne("reviewMapper.selectAvgStar", memberNo);
 	}
 
 

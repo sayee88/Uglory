@@ -177,9 +177,9 @@ public class ReviewServiceImpl implements ReviewService{
 
 	// 별점 평균 조회 서비스 구현
 	@Override
-	public double selectAvgStar() {
+	public double selectAvgStar(int memberNo) {
 		
-		return dao.selectAvgStar();
+		return dao.selectAvgStar(memberNo);
 	}
 
 

@@ -3,6 +3,7 @@ package edu.kh.ugloryA.payment.model.service;
 import java.util.List;
 
 import edu.kh.ugloryA.payment.model.vo.Chart;
+import edu.kh.ugloryA.payment.model.vo.MonthlyChart;
 import edu.kh.ugloryA.payment.model.vo.Payment;
 import edu.kh.ugloryA.payment.model.vo.ProductPaymentDetail;
 import edu.kh.ugloryA.payment.model.vo.Refund;
@@ -108,10 +109,17 @@ public interface PaymentService {
 
 
 	/**
-	 * 차트 데이터 조회
+	 * 일별 차트 데이터 조회
 	 * @return
 	 */
 	Chart selectChartData();
+
+
+	/**
+	 * 월별 차트 데이터 조회
+	 * @return
+	 */
+	List<MonthlyChart> selectMonthlyChartData();
 
 
 

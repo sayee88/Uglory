@@ -77,7 +77,7 @@ public interface ReviewService {
 	 * 별점 평균 조회 서비스
 	 * @return result2
 	 */
-	double selectAvgStar();
+	double selectAvgStar(int memberNo);
 
 
 
