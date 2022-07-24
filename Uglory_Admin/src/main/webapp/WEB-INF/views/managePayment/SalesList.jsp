@@ -59,6 +59,10 @@
         th,td{
             display:block
         }
+
+        body{
+            min-height:1000px;
+        }
     </style>
 
 </head>
@@ -165,14 +169,22 @@
                                                                 </c:forEach>
 
                                                             </tr>
-                                                            <c:if test="${refund.refundStatement == 'N'}">
-                                                                <tr>
-                                                                    <td>
-                                                                        <button type="button" class="btn btn-active refundDone">환불 처리</button>
-                                                                    </td>
-                                                                </tr>
-                                                            </c:if>
-                                                            
+                                                            <c:choose>
+                                                                <c:when test="${refund.refundStatement == 'N'}">
+                                                                    <tr>
+                                                                        <td>
+                                                                            <button type="button" class="btn btn-active refundDone">환불 처리</button>
+                                                                        </td>
+                                                                    </tr>
+                                                                </c:when>
+                                                                <c:otherwise>
+                                                                    <tr>
+                                                                        <td>
+                                                                            환불 처리 완료
+                                                                        </td>
+                                                                    </tr>
+                                                                </c:otherwise>
+                                                            </c:choose>
                                                         </tbody>
                                                     </table>
                                                 </div>
