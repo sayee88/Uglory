@@ -150,7 +150,19 @@
                 <!-- 나의 리뷰 목록 조회 -->
                 <div class="myreview-section">
 
+                <c:choose>
                 
+                    <c:when test="${empty reviewSelectInfo}">
+                        <div>작성한 리뷰가 없습니다.</div>
+                    </c:when>
+
+                    <c:otherwise>
+                        <div>
+                            
+                        </div>
+                    </c:otherwise>   
+                
+                </c:choose>
 
                 <div class="myreview-list">
                     <div class="myreview-content">
@@ -163,7 +175,6 @@
                                     <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
                                     <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
                                     <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
-                                <%-- <span>★★★★★</span> --%>
                                 </div>
                             </div>
                             <div>2022.07.07</div>
