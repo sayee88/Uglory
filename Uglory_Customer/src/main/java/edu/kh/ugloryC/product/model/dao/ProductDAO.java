@@ -27,15 +27,24 @@ public class ProductDAO {
 		return sqlSession.selectOne("productMapper.productDetail", productCode);
 	}
 
-//	/** 총 가격 조회 DAO
-//	 * @param map
-//	 * @return result
-//	 */
-//	public int totalAmount(Map<String, Object> map) {
-//		return sqlSession.selectOne("productMapper.totalAmount", map);
-//	}
+	/** 상품 상세 페이지 별점 조회
+	 * @param productCode
+	 * @return result
+	 */
+	public double selectStar(int productCode) {
+		
+		return sqlSession.selectOne("productMapper.selectStar", productCode);
+	}
 
+	/** 상품 상세 페이지 리뷰 수 조회
+	 * @param productCode
+	 * @return count
+	 */
+	public int countReview(int productCode) {
 
+		return sqlSession.selectOne("productMapper.countReview",productCode);
+	}
+	
 	/** 주문 페이지 내 옵션에 따른 상품, 옵션 조회 DAO
 	 * @param map
 	 * @return selectOptionList
@@ -122,4 +131,6 @@ public class ProductDAO {
 
 		return sqlSession.delete("productMapper.cartDelete", optionDeleteMap);
 	}
+
+
 }

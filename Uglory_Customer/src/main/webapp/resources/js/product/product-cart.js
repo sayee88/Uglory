@@ -22,10 +22,15 @@ if(sum < 30000){
 // 총 가격 계산 함수 
 function calcPrice(){
     let productPrice1 = document.getElementsByClassName("productCartPrice");
+    let checkBox = document.getElementsByClassName("cart-check");
+
+    console.log(productCode);
     let sum = 0;
 
     for(let i=0; i<productPrice1.length; i++){
-        sum += Number(productPrice1[i].innerText);
+        if(checkBox[i].checked){
+            sum += Number(productPrice1[i].innerText);
+        }
     }
 
     /* document.getElementById("cartTotalPrice").innerText = sum; // 총 주문 금액
@@ -100,6 +105,22 @@ for(const minusBtn of minusBtnList){
             // 가격 변동 필요
             calcPrice();
         }
+
+        $.ajax({
+            url : contextPath + "/product/cartMinus",
+            data : {"minusOptionNo" : minusOptionNo,
+                    "optionMinusCount" : optionMinusCount.innerText,
+                    },
+            type : "POST",
+
+            success : function(){
+                console.log("수량 변경 성공");
+            },
+            error : function(request, status, error){
+				console.log("에러 발생");
+				console.log("상태코드 : " + request.status); 
+			}
+        });
     });
 }
 
@@ -137,21 +158,41 @@ function optionCal(target, num){
     target.parentElement.nextElementSibling.children[0].innerText = productPrice + (opPrice * optionCount) ;
 }
 
-// // 결제페이지로
-// // productCode, 옵션 수량, optionCode, 총 가격
 
-const optionObj = {}; // 선택한 옵션 정보 추가
-const productPrice = document.getElementById("cartTotalPrice").innerText; // 상품 가격
+let chkOptionNoArr = []; 
+// 체크한 박스만 가져오기
+function getCheckboxValue(event)  {
+
+    calcPrice();
+    const checkBoxList = document.getElementsByClassName("cart-check");
+    for(const checkBox of checkBoxList){
+        if(checkBox.checked)  {
+            chkOptionNoArr.push(Number(checkBox.getAttribute("value")));
+            //chkOptionNoList = event.target.getAttribute("value");
+        } 
+    }
+  }
+
+// // 결제페이지로
+// // 체크된 productCode, 옵션 수량, 체크한 optionCode, 총 가격
 
 function orderValidate(){
-    document.getElementById("product-order").addEventListener("click", function(){
 
-        if(!confirm("결제 페이지로 이동합니다.")){ // 취소 버튼
-            return;
+    console.log(totalPrice);
+    if(!confirm("결제 페이지로 이동합니다.")){ // 취소 버튼
+        return false;
 
-        } else { // 확인
+    } else { // 확인
 
-        }
+        /// 총 가격
+        const input1 = document.createElement("input");
+        input1.setAttribute("type", "hidden");
+		input1.setAttribute("name", "totalAmount");
+        input1.setAttribute("value", document.getElementById("cartTotalPrice").innerText);
 
-    })
+        const input2 = document.createElement("input");
+		input2.setAttribute("type", "hidden");
+		input2.setAttribute("name", "optionNo");
+        input2.setAttribute("value", chkOptionNoArr);
+    }
 }

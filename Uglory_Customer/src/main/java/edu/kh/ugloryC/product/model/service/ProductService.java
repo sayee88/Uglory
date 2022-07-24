@@ -16,11 +16,17 @@ public interface ProductService {
 	 */
 	ProductDetail productDetail(int productCode);
 
-//	/** 총 가격 조회 서비스
-//	 * @param map
-//	 * @return result
-//	 */
-//	int totalAmount(Map<String, Object> map);
+	/** 상품 상세 페이지 별점 조회
+	 * @param productCode
+	 * @return result
+	 */
+	double selectStar(int productCode);
+	
+	/** 상품 상세 페이지 리뷰 수 조회
+	 * @param productCode
+	 * @return count
+	 */
+	int countReview(int productCode);
 	
 	/** 주문 페이지 내 옵션에 따른 상품, 옵션 조회
 	 * @param map
@@ -77,6 +83,9 @@ public interface ProductService {
 	 * @return result
 	 */
 	int cartDelete(int memberNo, List<String> deleteList);
+
+
+
 
 	
 
