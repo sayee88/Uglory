@@ -2,18 +2,18 @@
 // 개별 차트
 var ctx1 = document.getElementById("sales-per-day");
 var myChart1 = new Chart(ctx1, {
-    type: "bar",
+    type: "line",
     data: {
-        labels: ["2022-07-07", "2022-07-08", "2022-07-09", "2022-07-10"],
+        labels: chartDate,
         datasets: [{
                 label: "구독 결제",
-                data: [90000, 168000, 176500, 125000],
+                data: subsPerDate,
                 backgroundColor: "rgba(0, 156, 255, .7)"
             },
             {
                 label: "개별 상품 결제",
-                data: [170000, 138000, 276500, 75000],
-                backgroundColor: "rgba(0, 156, 255, .3)"
+                data: productPerDate,
+                backgroundColor: "rgba(0, 156, 255, .3)"    
             },
         ]
         },
@@ -24,21 +24,36 @@ var myChart1 = new Chart(ctx1, {
 
 
 // 월별 차트
+// line 그래프로 했더니... 6월이나 8월 데이터가 없어서 볼품 없음... 다른 차트 형식도 고민해봐야 할 듯!
 var ctx2 = document.getElementById("sales-per-month");
 var myChart2 = new Chart(ctx2, {
-    type: "line",
+    type: "bar",
     data: {
-        labels: ["JUL", "AUG", "SEP", "OCT", "NOV", "DEC"],
+        labels: period,
         datasets: [{
-                label: "전체 매출(상품+구독)",
-                data: [7800000, 7683000,6800000, 7160000, 6895000, 5790000],
-                backgroundColor: "rgba(0, 156, 255, .5)",
+                label: "전체 매출",
+                data: totalPerMonth,
+                backgroundColor: "rgba(0, 156, 255, .3)",
                 fill: true
             },
+            {
+                label: "개별 상품 매출",
+                data: productPerMonth,
+                backgroundColor: "rgba(0, 0, 204, 0.3)",
+                fill: true
+
+            },
+            {
+                label: "구독 매출",
+                data: subsPerMonth,
+                backgroundColor: "rgba(204, 0, 0, 0.5)",
+                fill: true
+            }
         ]
         },
     options: {
         responsive: true
     }
 });
-    
+
+

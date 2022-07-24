@@ -458,7 +458,7 @@
     border-width: 0;
     border-radius: 0;
     --tw-bg-opacity: 1;
-    background-color: rgba(255,103,65,var(--tw-bg-opacity));
+    background-color: #FF5957;
 }
 
 /* 내 구독 정보 */
@@ -484,7 +484,7 @@
     --tw-border-opacity: 1;
     border-color: rgba(229,231,235,var(--tw-border-opacity));
     --tw-bg-opacity: 1;
-    background-color: rgba(245,245,230,var(--tw-bg-opacity));
+    background-color: #eee;
 }
 
 
@@ -517,7 +517,7 @@
     font-weight: 600;
     border-radius: .125rem;
     --tw-bg-opacity: 1;
-    background-color: rgba(255,104,64,var(--tw-bg-opacity));
+    background-color: #FF5956;
     border: none;
     cursor: pointer;
 

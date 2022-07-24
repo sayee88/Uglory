@@ -54,7 +54,7 @@
 
             <div>
                 <p>1. 탈퇴 시, 구독 정보와 회원 정보 ,보유 쿠폰 등 모든 정보가 영구적으로 삭제되며 복구가 불가능합니다.</p>
-                <p>2.탈퇴 후 6개월간 동일한 계정으로 재가입이 불가능합니다.</p>
+                <p>2.탈퇴 후 24시간 동일한 계정으로 재가입이 불가능합니다.</p>
             </div>
 
             <form action="secession" method="POST" name="myPage-form" onsubmit="return secessionValidate()" >

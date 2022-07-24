@@ -141,9 +141,9 @@ public class ReviewDAO {
 	 * 별점 평균 조회 DAO
 	 * @return result2
 	 */
-	public double selectAvgStar() {
+	public double selectAvgStar(int memberNo) {
 		
-		return sqlSession.selectOne("reviewMapper.selectAvgStar");
+		return sqlSession.selectOne("reviewMapper.selectAvgStar", memberNo);
 	}
 
 
@@ -170,8 +170,25 @@ public class ReviewDAO {
 	}
 
 
+	/**
+	 * 옵션 따로...
+	 * @param map
+	 * @return
+	 */
 	public List<Map<String, Object>> productOptionList(Map<String, Object> map) {
 		return sqlSession.selectList("reviewMapper.productOptionList", map);
+	}
+
+
+	
+	
+	/**
+	 * 리뷰 구독 전체 리스트
+	 * @return
+	 */
+	public List<ReviewSelectInfo> selecSub() {
+		
+		return sqlSession.selectList("reviewMapper.selecSub");
 	}
 
 

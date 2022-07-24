@@ -177,9 +177,9 @@ public class ReviewServiceImpl implements ReviewService{
 
 	// 별점 평균 조회 서비스 구현
 	@Override
-	public double selectAvgStar() {
+	public double selectAvgStar(int memberNo) {
 		
-		return dao.selectAvgStar();
+		return dao.selectAvgStar(memberNo);
 	}
 
 
@@ -199,6 +199,18 @@ public class ReviewServiceImpl implements ReviewService{
 		
 		return dao.selectUnWrittenCount(memberNo);
 	}
+
+
+
+	// 리뷰 구독 리스트
+	@Override
+	public List<ReviewSelectInfo> selectSub() {
+		
+		return dao.selecSub();
+	}
+	
+	
+	
 	
 	
 	

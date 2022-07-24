@@ -77,7 +77,7 @@ public interface ReviewService {
 	 * 별점 평균 조회 서비스
 	 * @return result2
 	 */
-	double selectAvgStar();
+	double selectAvgStar(int memberNo);
 
 
 
@@ -96,6 +96,14 @@ public interface ReviewService {
 	 * @return result4
 	 */
 	int selectUnWrittenCount(int memberNo);
+
+
+
+	/**
+	 * 리뷰 구독 리스트 불러오기
+	 * @return subList
+	 */
+	List<ReviewSelectInfo> selectSub();
 
 
 	
