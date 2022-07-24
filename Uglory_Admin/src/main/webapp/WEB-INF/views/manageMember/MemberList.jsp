@@ -4,13 +4,6 @@
 <%-- 문자열 관련 함수(메서드) 제공 JSTL (EL형식으로 작성) --%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<%-- <c:forEach var="customer" items="${customerList}">
-    <c:set var="customerNo" value="${customer.customerNo}" />
-    <c:set var="customerEmail" value="${customer.customerEmail}" />
-    <c:set var="customerName" value="${customer.customerName}" />
-    <c:set var="subscriptionFlag" value="${customer.subscriptionFlag}" />
-    <c:set var="accountFlag" value="${customer.accountFlag}" />
-</c:forEach> --%>
 
 <!DOCTYPE html>
 <html lang="en">

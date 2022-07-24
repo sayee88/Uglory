@@ -16,9 +16,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.google.gson.Gson;
 
 import edu.kh.ugloryC.member.model.vo.Member;
 import edu.kh.ugloryC.review.model.service.ReviewService;
@@ -53,7 +56,7 @@ public class ReviewController {
 		int result1 = service.selectReviewAllCount();
 		
 		// 별점 평균 조회
-		double result2 = service.selectAvgStar();
+		double result2 = service.selectAvgStar(loginMember.getMemberNo());
 		
 		// 나의 리뷰 수 조회
 												// Member 객체를 가져오기위한 loginMember 변수명에서 memberNo를 꺼내 호출
@@ -74,13 +77,29 @@ public class ReviewController {
 	}
 	
 	
-	@PostMapping("/list")
-	public String reviewList(Member loginMember, ReviewSelectInfo reviewCode) {
+	
+	// 리뷰 구독 전체 후기
+	@ResponseBody
+	@PostMapping("/list/selectSub")
+	public String selectSub() {
 		
+		List<ReviewSelectInfo> reviewSelectInfo = service.selectSub();
 		
-		
-		return null;
+		return new Gson().toJson(reviewSelectInfo);
 	}
+	
+	
+	// 리뷰 상품 전체 후기
+//	@ResponseBody
+//	@PostMapping("/list/selectSub")
+//	public String selectProduct() {
+		
+//		List<ReviewSelectInfo> reviewSelectInfo = service.selectProduct();
+		
+//		return new Gson().toJson(reviewSelectInfo);
+//	}
+	
+	
 	
 	
 	
@@ -94,7 +113,7 @@ public class ReviewController {
 		int result1 = service.selectReviewAllCount();
 		
 		// 별점 평균 조회
-		double result2 = service.selectAvgStar();
+		double result2 = service.selectAvgStar(loginMember.getMemberNo());
 		
 		// 나의 리뷰 수 조회
 												// Member 객체를 가져오기위한 loginMember 변수명에서 memberNo를 꺼내 호출
@@ -129,7 +148,7 @@ public class ReviewController {
 		int result1 = service.selectReviewAllCount();
 		
 		// 별점 평균 조회
-		double result2 = service.selectAvgStar();
+		double result2 = service.selectAvgStar(loginMember.getMemberNo());
 		
 		// 나의 리뷰 수 조회
 												// Member 객체를 가져오기위한 loginMember 변수명에서 memberNo를 꺼내 호출

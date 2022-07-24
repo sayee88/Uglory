@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import edu.kh.ugloryA.payment.model.dao.PaymentDAO;
 import edu.kh.ugloryA.payment.model.vo.Chart;
+import edu.kh.ugloryA.payment.model.vo.MonthlyChart;
 import edu.kh.ugloryA.payment.model.vo.Payment;
 import edu.kh.ugloryA.payment.model.vo.ProductPaymentDetail;
 import edu.kh.ugloryA.payment.model.vo.Refund;
@@ -112,6 +113,20 @@ public class PaymentServiceImpl implements PaymentService {
 	@Override
 	public int refundHandling(String orderCode) {
 		return dao.refundHandling(orderCode);
+	}
+
+
+	// 일별 차트 데이터 조회
+	@Override
+	public Chart selectChartData() {
+		return dao.selectChartData();
+	}
+
+
+	// 월별 차트 데이터 조회
+	@Override
+	public List<MonthlyChart> selectMonthlyChartData() {
+		return dao.selectMonthlyChartData();
 	}
 	
 	

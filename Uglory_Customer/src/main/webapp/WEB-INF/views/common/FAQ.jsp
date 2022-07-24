@@ -218,20 +218,19 @@
                     <div class="faq-content-list">
                         <div>
                             <span>Q</span>
-                            <button class="faq-list" data-bs-toggle="collapse" data-bs-target="#collapse-12">구독 중지 or 해지는 어떻게 하나요?</button>
+                            <button class="faq-list" data-bs-toggle="collapse" data-bs-target="#collapse-12">구독 해지는 어떻게 하나요?</button>
                             <div class="faq-content collapse" id="collapse-12">
-                                구독 중지 및 해지는 마이페이지에서 아래 경로를 통해 가능합니다. <br>
-                                *로그인 후 마이페이지 > 구독정보 변경 > 하단의 [구독 일시 정지] 또는 [구독 해지]를 선택해 주세요.
+                                구독 해지는 마이페이지에서 아래 경로를 통해 가능합니다. <br>
+                                *로그인 후 마이페이지 > 구독정보 변경 > 하단의 [구독 해지]를 선택해 주세요.
                             </div>
                         </div>
                     </div>
                     <div class="faq-content-list">
                         <div>
                             <span>Q</span>
-                            <button class="faq-list" data-bs-toggle="collapse" data-bs-target="#collapse-13">구독 중지를 해제하고 다시 받을 수 있나요?</button>
+                            <button class="faq-list" data-bs-toggle="collapse" data-bs-target="#collapse-13">구독 해제하고 다시 구독할 수 있나요?</button>
                             <div class="faq-content collapse" id="collapse-13">
-                                네, 물론입니다. 언제든 원하실 때 마이페이지에서 [구독 중지 해제]를 눌러 다시 배송을 받을 수 있습니다. <br>
-                                *로그인 후 마이페이지 > 구독 > [구독 중지 해제]
+                                네, 물론입니다. 언제든 원하실 때 다시 구독하실 수 있습니다.
                             </div>
                         </div>
                     </div>

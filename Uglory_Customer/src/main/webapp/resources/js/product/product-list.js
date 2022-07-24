@@ -38,7 +38,6 @@
                 h5.innerText = product.productPrice;
             
                 // 별점
-                // sub-box 였던것...
                 const review_star = document.createElement("div");
                 review_star.classList.add("review-star");
 
