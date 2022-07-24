@@ -157,59 +157,42 @@
                     </c:when>
 
                     <c:otherwise>
-                        <div>
-                            
-                        </div>
+                        <c:forEach var="mr" items="${reviewSelectInfo}">
+                            <div class="myreview-list">
+                                <div class="myreview-content">
+                                    <div class="myreview-image"><img src="${mr.thumbnail}"></div>
+                                    <div class="content-info">
+                                        <div class="myReview-star">
+                                            <div class="rating" data-rate="${mr.starRating}">
+                                                <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
+                                                <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
+                                                <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
+                                                <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
+                                                <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
+                                            </div>
+                                        </div>
+                                        <div>${mr.reviewEnrollDate}</div>
+                                        <c:if test="${mr.reviewCode == 1}">
+                                            <div>정기구독박스</div>
+                                        </c:if>
+                                        <c:if test="${mr.reviewCode == 2}">
+                                            <div>개별상품</div>
+                                        </c:if>
+                                        <div>${mr.reviewContent}</div>
+                                    </div>
+                                </div>
+                                <div class="myreview-button">
+                                    <button id="updateBtn">수정</button>
+                                    <button id="deleteBtn">삭제</button>
+                                </div>
+                            </div>
+                        </c:forEach>
                     </c:otherwise>   
                 
                 </c:choose>
 
-                <div class="myreview-list">
-                    <div class="myreview-content">
-                        <div class="myreview-image"><img src="#"></div>
-                        <div class="content-info">
-                            <div class="myReview-star">
-                                <div class="rating" data-rate="5">
-                                    <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
-                                    <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
-                                    <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
-                                    <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
-                                    <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
-                                </div>
-                            </div>
-                            <div>2022.07.07</div>
-                            <div>유기농 어글리 바나나 - 1.5kg</div>
-                            <div>달달하니 맛있는 바나나예요~</div>
-                        </div>
-                    </div>
-                    <div class="myreview-button">
-                        <button id="updateBtn">수정</button>
-                        <button id="deleteBtn">삭제</button>
-                    </div>
-                </div>
-
-                <div class="myreview-list">
-                    <div class="myreview-content">
-                        <div class="myreview-image"><img src="#"></div>
-                        <div class="content-info">
-                            <div>★★★★★</div>
-                            <div>2022.07.07</div>
-                            <div>유기농 어글리 바나나 - 1.5kg</div>
-                            <div>달달하니 맛있는 바나나예요~</div>
-                        </div>
-                    </div>
-                    <div class="myreview-button">
-                        <button id="updateBtn">수정</button>
-                        <button id="deleteBtn">삭제</button>
-                    </div>
-                </div>
-            
-            
-            
             </div>
             
-            
-            </div>
         </section>       
                 
 
