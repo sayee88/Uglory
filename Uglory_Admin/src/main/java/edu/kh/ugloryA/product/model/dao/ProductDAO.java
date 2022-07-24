@@ -257,4 +257,13 @@ public class ProductDAO {
 		return sqlSession.selectList("productMapper.selectProductDBList");
 	}
 
+	/**
+	 * 사용중인 옵션 개수 조회
+	 * @param optionCode
+	 * @return count
+	 */
+	public int countOption(int optionCode) {
+		return sqlSession.selectOne("productMapper.countOption", optionCode);
+	}
+
 }
