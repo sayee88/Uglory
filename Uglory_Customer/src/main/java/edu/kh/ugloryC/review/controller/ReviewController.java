@@ -78,6 +78,18 @@ public class ReviewController {
 	
 	
 	
+	// 리뷰 전체 불러오기
+	@ResponseBody
+	@PostMapping("/list/allRevieList")
+	public String allRevieList() {
+		
+		List<ReviewSelectInfo> reviewSelectInfo = service.allRevieList();
+		
+		return new Gson().toJson(reviewSelectInfo);
+	}
+	
+	
+	
 	// 리뷰 구독 전체 후기
 	@ResponseBody
 	@PostMapping("/list/selectSub")
@@ -90,14 +102,14 @@ public class ReviewController {
 	
 	
 	// 리뷰 상품 전체 후기
-//	@ResponseBody
-//	@PostMapping("/list/selectSub")
-//	public String selectProduct() {
+	@ResponseBody
+	@PostMapping("/list/selectProduct")
+	public String selectProduct() {
 		
-//		List<ReviewSelectInfo> reviewSelectInfo = service.selectProduct();
+		List<ReviewSelectInfo> reviewSelectInfo = service.selectProduct();
 		
-//		return new Gson().toJson(reviewSelectInfo);
-//	}
+		return new Gson().toJson(reviewSelectInfo);
+	}
 	
 	
 	
@@ -129,6 +141,19 @@ public class ReviewController {
 		mybox.put("result4", result4);
 		
 		model.addAttribute("mybox", mybox);
+		
+		return "review/MyReview";
+	}
+	
+	
+	// 나의 리뷰 목록 조회
+	@PostMapping("/list/myReview")
+	public String myReviewList(Model model, 
+			@ModelAttribute("loginMember") Member loginMember) {
+		
+		List<ReviewSelectInfo> reviewSelectInfo = service.selectMyReview(loginMember);
+		
+		model.addAttribute("reviewSelectInfo", reviewSelectInfo);
 		
 		return "review/MyReview";
 	}

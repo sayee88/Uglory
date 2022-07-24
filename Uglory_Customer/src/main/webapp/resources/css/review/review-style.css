@@ -102,23 +102,35 @@
     justify-content: center;
 }
 
-.category_button > div{
+.category_button > label{
     /* border: 1px solid red; */
     /* border: 1px solid rgb(113, 214, 199); */
     border-radius: 10px;
     margin: 0 20px;
-    color: rgb(55, 55, 55);
+    /* color: rgb(55, 55, 55); */
     font-weight: bold;
     padding: 10px;
     width: 100px;
     overflow: hidden;
 }
 
-.category_button > div:hover{
+.category_button > label:hover{
     cursor: pointer;
     background-color: rgb(113, 214, 199);
     color: white;
 }
+
+.reviewChecked{
+    cursor: pointer;
+    background-color: rgb(113, 214, 199);
+    color: white;
+}
+
+.reviewRadio{
+    display: none;
+}
+
+
 
 
 /* ========================================== */
