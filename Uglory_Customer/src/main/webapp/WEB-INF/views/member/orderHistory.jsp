@@ -87,7 +87,12 @@
                                 <c:if test="${item.refundStatus == 0}">
                                     <dl>
                                         <dt>결제금액</dt>
+                                        <c:if test="${item.totalPrice>=30000}">
                                         <dd>${item.totalPrice}원</dd>
+                                        </c:if>
+                                        <c:if test="${item.totalPrice<30000}">
+                                        <dd>${item.totalPrice+3000}원</dd>
+                                        </c:if>
                                     </dl>
 
 

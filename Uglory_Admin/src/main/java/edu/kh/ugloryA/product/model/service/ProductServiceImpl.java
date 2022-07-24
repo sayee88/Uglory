@@ -296,5 +296,12 @@ public class ProductServiceImpl implements ProductService {
 	public List<String> selectProductDBList() {
 		return dao.selectProductDBList();
 	}
+
+	//사용중인 옵션 카운트하기
+	@Override
+	public int countOption(int optionCode) {
+		return dao.countOption(optionCode);
+	}
+	
 	
 }

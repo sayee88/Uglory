@@ -168,7 +168,7 @@
 	<!-- 개별 상품 주문 내역 조회 -->
 	<select id="selectOrderHistoryList" resultMap="orderHistory_rm">
 		SELECT P_ORDER_CD,TOTAL_PRICE,DELIVERY_ST,
-			TO_CHAR(P_ORDER_DT,'YYYY/MM/DD') P_ORDER_DT
+			TO_CHAR(P_ORDER_DT,'YYYY-MM-DD') P_ORDER_DT
 			, '[원산지 ' || (SELECT ORIGIN || '] ' ||	PRODUCT_NM 
 							FROM PRODUCT_ORDER C
 							JOIN OPTION_TB ON(C.P_ORDER_CD = OPTION_TB.P_ORDER_CD)
@@ -197,7 +197,7 @@
 	<!-- 주문 정보 조회 -->
 	<select id="selectOrderHistoryDetail" resultMap="orderHistoryDetail_rm">
 		SELECT P_ORDER_CD, MEMBER_NAME, 
-		TO_CHAR(P_PAY_DT,'YYYY/MM/DD') P_PAY_DT,
+		TO_CHAR(P_PAY_DT,'YYYY-MM-DD') P_PAY_DT,
 		TOTAL_PRICE,P_ORDER_NM,P_ORDER_PHONE,P_ORDER_ADDR,P_DL_REQ
 		
 		FROM PRODUCT_ORDER 
@@ -226,7 +226,7 @@
 	<!-- 구독 내역 목록 조회 -->
 	<select id="selectSubHistoryList" resultMap="subHistory_rm">
 	SELECT S_ORDER_CD,S_NM,
-	TO_CHAR(S_PAY_DT,'YYYY/MM/DD') S_PAY_DT,
+	TO_CHAR(S_PAY_DT,'YYYY-MM-DD') S_PAY_DT,
 	S_PAY_AMOUNT,
 	DELIVERY_ST
 

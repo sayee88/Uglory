@@ -158,5 +158,12 @@ public interface ProductService {
 	 * @return productDBList
 	 */
 	List<String> selectProductDBList();
+
+	/**
+	 * 사용중인 옵션 카운트하기
+	 * @param optionCode
+	 * @return count
+	 */
+	int countOption(int optionCode);
 	
 }

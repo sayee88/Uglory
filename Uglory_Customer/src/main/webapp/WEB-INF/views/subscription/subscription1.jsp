@@ -49,7 +49,7 @@
 </head>
 
 <body>
-    <jsp:include page="/WEB-INF/views/common/header-1.jsp" />
+        <jsp:include page="/WEB-INF/views/common/header-1.jsp" />
 
     <form action="${contextPath}/subscription/order" onsubmit="return subscriptionValidate()">
 

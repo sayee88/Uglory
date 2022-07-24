@@ -8,7 +8,6 @@
       	<result property="productName" column="PRODUCT_NM"/>
       	<result property="productPrice" column="PRODUCT_PRICE"/>
       	<result property="productInfo" column="PRODUCT_INFO"/>
-      	<result property="productInfo" column="PRODUCT_INFO"/>
       	
       	<result property="optionName" column="OPTION_NM"/>
       	<result property="optionPrice" column="OPTION_PRICE"/>
@@ -17,6 +16,8 @@
       	<result property="origin" column="ORIGIN"/>
       	
       	<result property="star" column="STAR_RATING"/>
+      	<result property="reviewNo" column="REVIEW_NO"/>
+      	
 
     </resultMap>
     
@@ -46,22 +47,25 @@
     <!-- 상품 상세 조회 -->
     <!-- 별점 개수, 리뷰 개수 필요 -->
 	<select id="productDetail" resultMap="detail_rm">
-<!-- 		SELECT P_CD, PRODUCT_NM, PRODUCT_PRICE, 
-      	OPTION_NM, OPTION_PRICE, PRODUCT_IMG,
-      	PRODUCER, ORIGIN, STAR_RATING
-      	FROM PRODUCT
-      	JOIN OPTION_TYPE USING(P_CD)
-      	JOIN FARM USING(FARM_NO)
-      	JOIN REVIEW USING(P_CD)
-      	JOIN PRODUCT_IMG USING(P_CD)
-      	WHERE P_CD = ${pCode} -->
- 
 		SELECT P_CD, PRODUCT_NM, PRODUCT_PRICE, PRODUCT_INFO, PRODUCER, ORIGIN
 		FROM PRODUCT
 		JOIN FARM USING(FARM_NO)
 		WHERE P_CD = ${productCode}
 	</select>
 	
+	<!-- 상품 상세 페이지 별점 조회 -->
+	<select id="selectStar" resultType="_double">
+		SELECT ROUND((((SELECT SUM(STAR_RATING) FROM REVIEW R4 WHERE R4.P_CD=P.P_CD) / (SELECT COUNT(*) FROM REVIEW R5 WHERE R5.P_CD=P.P_CD))/2),1)
+		FROM PRODUCT P
+		WHERE P.P_CD = ${productCode}
+	</select>
+	
+	<!-- 상품 상세 페이지 리뷰 수 조회 -->
+	<select id="countReview" resultType="_int">
+		SELECT COUNT(*)
+		FROM REVIEW
+		WHERE P_CD = ${productCode}
+	</select>
 	
 	<!-- 주문 페이지 내 옵션 조회 -->
 	<select id="orderOptionSelect"  resultMap="orderOptionProduct_rm">

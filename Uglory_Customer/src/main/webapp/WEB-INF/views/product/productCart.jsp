@@ -3,6 +3,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"  %>
 
 <c:set var="cartOptionList" value="${cartMap.cartOptionList}" />
+<c:set var="productCode" value="${cartOptionList.productCode}" />
 
 <!DOCTYPE html>
 <html lang="en">
@@ -77,7 +78,7 @@
                             <!-- 장바구니 상품 선택 및 삭제 영역 -->
                             <div class="cart-check-delete">
                                 <!-- 장바구니 담은 상품 선택 -->
-                                <input type="checkbox" name="cart-check" value="cart-1" class="cart-check" checked>
+                                <input type="checkbox" name="cart-check" value="${cartList.optionNo}" class="cart-check" onclick="getCheckboxValue(event)" checked>
                                 <!-- 장바구니 담은 상품 삭제 버튼 -->
                                 <button type="button" id="optionNo-${cartList.optionNo}" class="cart-delete">X</button>
                             </div> 
@@ -152,6 +153,7 @@
 
     <script>
         const contextPath = "${contextPath}";
+        const productCode = "${productCode}";
     </script>
         <jsp:include page="/WEB-INF/views/common/footer.jsp" />
         

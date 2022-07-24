@@ -116,9 +116,8 @@ h4{
 
 .rating .star{
     width: 0;
-    padding-top: 20px;
     overflow: hidden;
-
 }
-
-
+.review-star > p{
+    padding-right: 14px;
+}
