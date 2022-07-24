@@ -1,40 +1,34 @@
-// ajax
+// 구독 ajax
 function subCategory(){
 
     $.ajax({
 
-        url: "/selectSub",
+        url: "list/selectSub", 
         type : "POST",
         dataType : "JSON",
         success : function(subList){
                         // 담아올 바구니
             // list 자체를 가져와야함
 
-
             if(subList.length != 0){
-
                 for(let item of subList){
-
                     createBox(item);
                 }
             }
-
         },
         error: function(req, status, error){
             console.log("리스트 조회 중 에러가 발생...");
             console.log(req.responseText);
         }
     });
-
-
-
-
-
 }
+
 
 const reviewList = document.getElementById("review-list");
 
 function createBox(item){
+
+    reviewList.innerHTML = "";
 
     const reviewContent = document.createElement("div");
     reviewContent.classList.add("review-content");
@@ -44,7 +38,7 @@ function createBox(item){
     clickModal.setAttribute("data-bs-target", "#exampleModal");
 
     const reviewImage = document.createElement("img");
-    reviewImage.setAttribute("src", contextPath + '이미지루트');
+    reviewImage.setAttribute("src", contextPath + item.thumbnail);
 
     const text = document.createElement("div");
     text.classList.add("review-content-text");
@@ -56,10 +50,10 @@ function createBox(item){
     cotentTopLeft.classList.add("review-content-top-left");
 
     const name = document.createElement("div");
-    name.innerText = "이름 얻어오기";
+    name.innerText = item.memberName;
 
     const enrollDate = document.createElement("div");
-    enrollDate.innerText = "리뷰 작성일";
+    enrollDate.innerText = item.reviewEnrollDate;
 
     // 별점 부분
     // 별점
@@ -68,7 +62,7 @@ function createBox(item){
 
     const rating = document.createElement("div");
     rating.classList.add("rating");
-    rating.setAttribute("data-rate", product.starAvg);
+    rating.setAttribute("data-rate", item.starRating);
 
     const star_wrap1 = document.createElement("div");
     star_wrap1.classList.add("star-wrap");
@@ -120,19 +114,23 @@ function createBox(item){
     contentText.setAttribute("data-bs-target", "#exampleModal");
     contentText.style.color = "black";
     // contentText 리뷰 내용 넣어주기
+    contentText.innerText = item.reviewContent;
 
 
     const contentBottom = document.createElement("div");
     contentBottom.classList.add("review-content-bottom-section");
 
     const reviewCode = document.createElement("div");
-    reviewCode.innerText = "정기구독박스 or 개별상품";
 
+    if(item.reviewCode == 1){
+        reviewCode.innerText = "정기구독박스";
+    } else {
+        reviewCode.innerText = "개별상품";
+    }
+    
 
     clickModal.append(reviewImage);
-
     cotentTopLeft.append(name, enrollDate);
-
 
 
     // 별점
@@ -188,6 +186,38 @@ function createBox(item){
 
 };
 
+//==========================================================
+// 상품 ajax
+function productCaregory(){
+
+    $.ajax({
+
+        url: "list/selectProduct",
+        type : "POST",
+        dataType : "JSON",
+        success : function(productList){
+                        // 담아올 바구니
+            // list 자체를 가져와야함
+
+            if(productList.length != 0){
+                for(let item of productList){
+                    createBox(item);
+                }
+            }
+        },
+        error: function(req, status, error){
+            console.log("리스트 조회 중 에러가 발생...");
+            console.log(req.responseText);
+        }
+    });
+}
+
+
+
+
+
+
+
 
 
 
@@ -218,32 +248,7 @@ rating.each(function(){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// 나의 미작성 리뷰 
+// 나의 미작성 리뷰 js 부분
 const subUnWrittenList = document.getElementById("subUnWrittenList");
 const productUnWrittenList = document.getElementById("productUnWrittenList");
 
