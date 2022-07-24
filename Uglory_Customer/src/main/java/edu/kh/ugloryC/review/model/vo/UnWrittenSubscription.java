@@ -9,7 +9,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class UnWrittenSubscription {
 
-	private int subOrderCode;
+	private String subOrderCode;
 	private String subDate;
 	private int reviewCode;
 	private String subName;
