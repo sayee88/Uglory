@@ -150,14 +150,7 @@
                 <!-- 나의 리뷰 목록 조회 -->
                 <div class="myreview-section">
 
-                <!-- category -->
-                    <div class="category_section"> 
-                        <div class="category_button">
-                            <div style="background-color: rgb(113, 214, 199); color:white">모두보기</div>
-                            <div>구독박스</div>
-                            <div>상점</div>
-                        </div>
-                    </div>
+                
 
                 <div class="myreview-list">
                     <div class="myreview-content">
