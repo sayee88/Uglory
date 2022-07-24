@@ -21,11 +21,16 @@ public class ReviewSelectInfo {
 	private int reviewNo;
 	private String reviewContent;
 	private String reviewEnrollDate;
-	private int starRating;
+	private double starRating;
 	
 	private int memberNo;
 	private String memberName;
 	
 	private String thumbnail;
+//	
+//	private String productName;
+//	private String optionName;
+//	
+//	private String subName;
 
 }

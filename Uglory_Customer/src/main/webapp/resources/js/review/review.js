@@ -38,7 +38,7 @@ function allReviewList(){
 
     $.ajax({
 
-        url: "list/allRevieList", 
+        url: "list/allReviewList", 
         type : "POST",
         dataType : "JSON",
         success : function(allList){
