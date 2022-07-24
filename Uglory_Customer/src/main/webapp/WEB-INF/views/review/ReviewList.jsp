@@ -117,18 +117,37 @@
                                 <a href="${contextPath}/review/list">
                                     <p>전체 후기 수</p>
                                     <p>${map.result1}</p>
+
+
                                 </a>
                             </div>
                             <div class="box_review_section box_center">
                                 <p>나의 리뷰 평점</p>
-                                <p>${map.result2}</p>
+                                    <c:choose>
+                                        <c:when test="${!empty loginMember}">
+                                            <p>${map.result2}</p>
+                                        </c:when>
+
+                                        <c:otherwise>
+                                            <p>0</p>
+                                        </c:otherwise>
+                                    </c:choose>
                             </div>
                         </div>
                         <div class="box_content_d">
                             <div class="box_review_section box_center">
                                 <p>나의 리뷰</p>
                                 <p>
-                                    <span style="margin-right: 7px;">${map.result3}</span>
+                                    <c:choose>
+                                        <c:when test="${!empty loginMember}">
+                                            <span style="margin-right: 7px;">${map.result3}</span>
+                                            
+                                        </c:when>
+
+                                        <c:otherwise>
+                                            <span style="margin-right: 7px;">0</span>
+                                        </c:otherwise>
+                                    </c:choose>
                                     <a href="${contextPath}/review/list/myReview">
                                         <span style="background-color: rgb(190, 190, 190); color:white; font-size: 15px; padding: 3px 8px; border-radius: 10px;">OFF</span>
                                     </a>
@@ -137,7 +156,16 @@
                             <div class="box_review_section box_center">
                                 <p>미작성 리뷰</p>
                                 <p>
-                                    <span style="margin-right: 15px;">${map.result4}</span>
+                                    <c:choose>
+                                        <c:when test="${!empty loginMember}">
+                                            <span style="margin-right: 15px;">${map.result4}</span>
+                                        </c:when>
+                                            
+                                        <c:otherwise>
+                                            <span style="margin-right: 15px;">0</span>
+                                        </c:otherwise>
+                                    </c:choose>
+
                                     <a href="${contextPath}/review/list/unWritten">
                                         <span style="font-size: 15px; color: rgb(80, 124, 254);">쓰기 >></span>
                                     </a>
@@ -153,115 +181,21 @@
                     <!-- category -->
                     <div class="category_section"> 
                         <div class="category_button">
-                            <div style="background-color: rgb(113, 214, 199); color:white">모두보기</div>
-                            <div onclick="subCategory()">구독박스</div>
-                            <div onclick="productCaregory()">상점</div>
+                            <input type="radio" class="reviewRadio" id="reviewClick1" name="reviewRadio">
+                            <label onclick="allReviewList()" for="reviewClick1" class="reviewBtn reviewChecked">모두보기</label>
+                            
+                            <input type="radio" class="reviewRadio" id="reviewClick2" name="reviewRadio">
+                            <label onclick="subCategory()" for="reviewClick2" class="reviewBtn">구독박스</label>
+                            
+                            <input type="radio" class="reviewRadio" id="reviewClick3" name="reviewRadio">
+                            <label onclick="productCaregory()" for="reviewClick3" class="reviewBtn">상점</label>
                         </div>
                     </div>
                     
 
                     <!-- 리뷰 목록 -->
                     <div class="review-section">
-                        <div class="review-list" id="review-list">
-
-                            <div class="review-content">
-                                <div data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                    <img src="${contextPath}/resources/img/review/review_img1.png">
-                                </div>
-                                <div class="review-content-text">
-                                    <div class="review-content-top-section">
-                                        <div class="review-content-top-left">
-                                            <div>고*비</div>
-                                            <div>2022.07.10</div>
-                                        </div>
-                                        <div class="review-star">
-                                            <div class="rating" data-rate="4.7">
-                                                <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
-                                                <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
-                                                <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
-                                                <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
-                                                <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
-                                            <%-- <span>★★★★★</span> --%>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="review-content-text-section modal-open">
-                                        <div data-bs-toggle="modal" data-bs-target="#exampleModal" style="color: black;" >
-                                            신선한 토마토로 카프레제 해먹었어요~ 멋쟁이 토마토로 파스타도 해먹구 신이 나요~
-                                        </div> 
-                                    </div>
-                                    <div class="review-content-bottom-section">
-                                        <div>정기구독박스</div>
-                                    </div>
-                                </div>
-                            </div>
-                        
-                            <div class="review-content">
-                                <div>
-                                    <img>
-                                </div>
-                                <div class="review-content-text">
-                                    <div class="review-content-top-section">
-                                        <div class="review-content-top-left">
-                                            <div>김*희</div>
-                                            <div>2022.07.06</div>
-                                        </div>
-                                        <div class="review-star">
-                                            <div class="rating" data-rate="1.5">
-                                                <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
-                                                <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
-                                                <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
-                                                <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
-                                                <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
-                                            <%-- <span>★★★★★</span> --%>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="review-content-text-section">
-                                        <div href="#" style="color: black;">
-                                            모히또가서 몰디브 한잔?
-                                        </div>
-                                    </div>
-                                    <div class="review-content-bottom-section">
-                                        <div>개별상품구매</div>
-                                    </div>
-                                </div>
-                            </div>
-                        
-                            <div class="review-content">
-                                <div>
-                                    <img>
-                                </div>
-                                <div class="review-content-text">
-                                    <div class="review-content-top-section">
-                                        <div class="review-content-top-left">
-                                            <div>박*진</div>
-                                            <div>2022.07.05</div>
-                                        </div>
-                                        <div class="review-star">
-                                            <span>★</span>
-                                            <span>★</span>
-                                            <span>★</span>
-                                            <span>★</span>
-                                            <span>★</span>
-                                        </div>
-                                    </div>
-                                    <div class="review-content-text-section">
-                                        <div href="#" style="color: black;">
-                                            양상추로 푸짐한 샐러드완성~ 아삭아삭 신선해요!
-                                        </div>
-                                    </div>
-                                    <div class="review-content-bottom-section">
-                                        <div>정기구독박스</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="review-list">
-                            
-
+                        <div class="review-list row" id="review-list">
 
                         </div>
                     </div>
