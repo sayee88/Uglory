@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import edu.kh.ugloryA.payment.model.vo.Chart;
+import edu.kh.ugloryA.payment.model.vo.MonthlyChart;
 import edu.kh.ugloryA.payment.model.vo.Payment;
 import edu.kh.ugloryA.payment.model.vo.ProductPaymentDetail;
 import edu.kh.ugloryA.payment.model.vo.Refund;
@@ -151,6 +152,24 @@ public class PaymentDAO {
 	 */
 	public int refundHandling(String orderCode) {
 		return sqlSession.update("paymentMapper.refundHandling", orderCode);
+	}
+
+
+	/**
+	 * 일별 차트 데이터 조회
+	 * @return
+	 */
+	public Chart selectChartData() {
+		return sqlSession.selectOne("paymentMapper.selectChartData");
+	}
+
+
+	/**
+	 * 월별 차트 데이터 조회
+	 * @return
+	 */
+	public List<MonthlyChart> selectMonthlyChartData() {
+		return sqlSession.selectList("paymentMapper.selectMonthlyChartData");
 	}
 	
 	

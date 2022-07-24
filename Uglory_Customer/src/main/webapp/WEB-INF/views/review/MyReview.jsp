@@ -163,7 +163,16 @@
                     <div class="myreview-content">
                         <div class="myreview-image"><img src="#"></div>
                         <div class="content-info">
-                            <div>★★★★★</div>
+                            <div class="myReview-star">
+                                <div class="rating" data-rate="5">
+                                    <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
+                                    <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
+                                    <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
+                                    <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
+                                    <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
+                                <%-- <span>★★★★★</span> --%>
+                                </div>
+                            </div>
                             <div>2022.07.07</div>
                             <div>유기농 어글리 바나나 - 1.5kg</div>
                             <div>달달하니 맛있는 바나나예요~</div>

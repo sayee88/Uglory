@@ -11,6 +11,7 @@ public class ReviewImage {
 	
 	private int reviewImageNo;
 	private String reviewImageReName;
+	private String reviewImageOriginal;
 	private int reviewImageLevel;
 	private int reviewNo;
 	
