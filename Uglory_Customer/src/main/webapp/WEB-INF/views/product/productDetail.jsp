@@ -137,7 +137,7 @@
 
                             <div class="detail-star-area">
                                 <div class="review-star">
-                                    <div class="rating" data-rate="${detail.star}">
+                                    <div class="rating" data-rate="${result}">
                                         <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
                                         <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
                                         <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
@@ -153,9 +153,9 @@
                                 <img src="${contextPath}/resources/img/main/star-2.png" width="30px" height="30px"> --%>
 
                                 <!-- 별점 평균 -->
-                                <span>${detail.star}</span>
+                                <span>${result}</span>
                                 <!-- 해당 상품에 대한 리뷰 페이지로 이동 -->
-                                <a href="#"><span>${fn:length(detail.reviewNo)}</span>개의 리뷰 &gt;</a>
+                                <a href="#"><span>${count}</span>개의 리뷰 &gt;</a>
                             </div>
                         </div>
                         <hr>
@@ -217,12 +217,12 @@
                 <hr>
 
                 <!-- 후기  -->
-                <h3><span id="detail-review-count">${fn:length(detail.reviewNo)}</span> 개의 이용후기를 확인해보세요!</h3>
+                <h3><span id="detail-review-count">${count}</span> 개의 이용후기를 확인해보세요!</h3>
 
                 <!-- 별점 및 평균 조회 및 리뷰 페이지 이동 영역 -->
                 <div class="product-review-area">
                     <div class="review-star">
-                        <div class="rating" data-rate="${detail.star}">
+                        <div class="rating" data-rate="${result}">
                             <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
                             <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
                             <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
@@ -232,8 +232,8 @@
                         </div>
                     </div>
                     <!-- 별점 평균 -->
-                    <h4 style="color: gray"><span id="product-review-avg">${detail.star}</span>/5</h4>
-                    <a href="#"><span>${fn:length(detail.reviewNo)}</span>개의 리뷰 &gt;</a>
+                    <h4 style="color: gray"><span id="product-review-avg">${result}</span>/5</h4>
+                    <a href="#" style="color:gray; margin-left:8px; font-size:20px;"><span>${count}</span>개의 리뷰 &gt;</a>
                 </div>
 
                 <%-- 장바구니 모달창 --%>

@@ -28,12 +28,19 @@ public class ProductServiceImpl implements ProductService {
 		return dao.productDetail(productCode);
 	}
 
-	// 총 가격 조회 서비스 구현
-//	@Override
-//	public int totalAmount(Map<String, Object> map) {
-//		
-//		return dao.totalAmount(map);
-//	}
+	// 상품 상세 페이지 별점 조회
+	@Override
+	public double selectStar(int productCode) {
+		
+		return dao.selectStar(productCode);
+	}
+	
+	// 상품 상세 페이지 리뷰 수 조회
+	@Override
+	public int countReview(int productCode) {
+		
+		return dao.countReview(productCode);
+	}
 
 	// 주문 페이지 내 옵션에 따른 상품, 옵션 조회
 	public List<OptionType> orderOptionSelect(Map<String, Object> map) {
@@ -138,8 +145,5 @@ public class ProductServiceImpl implements ProductService {
 		
 		return result;
 	}
-
-
-
 	
 }

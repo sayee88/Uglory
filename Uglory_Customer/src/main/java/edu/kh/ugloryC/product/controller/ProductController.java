@@ -62,6 +62,15 @@ public class ProductController {
 			model.addAttribute("optionList", optionList);
 		}
 		
+		// 별점 조회
+		double result = service.selectStar(productCode);
+		
+		// 리뷰 수 조회 
+		if(result > 0) {
+			int count = service.countReview(productCode);
+			model.addAttribute("count", count);
+			model.addAttribute("result", result);
+		}
 		// 별점 카운트, 리뷰 카운트 필요
 		model.addAttribute("detail", detail);
 		
@@ -274,6 +283,7 @@ public class ProductController {
 		return 0;
 	}
 	
+	// 장바구니 화면 전환
 	@GetMapping("/cart")
 	public String selectCart(@ModelAttribute("loginMember") Member loginMember, 
 							Model model) {
@@ -286,6 +296,7 @@ public class ProductController {
 		return "product/productCart";
 	}
 	
+	// 장바구니에 담은 상품 삭제
 	@ResponseBody
 	@PostMapping("/cartDelete")
 	public int cartDelete(@ModelAttribute("loginMember") Member loginMember,
@@ -302,4 +313,19 @@ public class ProductController {
 		
 		return result;
 	}
+	
+	@ResponseBody
+	@PostMapping("/cartMinus")
+	public int cartMinus(@RequestParam(value="minusOptionNo") String minusOptionNo,
+						@RequestParam(value="optionMinusCount") String optionMinusCount) {
+		
+		minusOptionNo = minusOptionNo.replaceAll("\\[", "");
+		String[] minusArr = minusOptionNo.split(",");
+		List<String> minusOptionList = Arrays.asList(minusArr);
+		
+		// 수량 마이너스 변경
+		
+		return 0;
+	}
+	
 }
