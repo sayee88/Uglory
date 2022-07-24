@@ -319,5 +319,11 @@
 		SELECT IMG_RENAME FROM PRODUCT_IMG
 	</select>
 	
+	<!-- 사용중인 옵션 개수 조회 -->
+	<select id="countOption" resultType="_int">
+		SELECT COUNT(*)
+		FROM OPTION_TB
+		WHERE OPTION_CD = #{optionCode}
+	</select>
 
 </mapper>

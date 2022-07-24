@@ -178,7 +178,15 @@ public class ProductController {
 	@ResponseBody
 	@GetMapping("/option/delete")
 	public int deleteOption(int optionCode) {
-		return service.deleteOption(optionCode);
+		
+		int result = 0;
+		int count = service.countOption(optionCode);
+		
+		if(count == 0) {
+			result = service.deleteOption(optionCode);
+		}
+		
+		return result;
 	}
 	
 

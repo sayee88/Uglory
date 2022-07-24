@@ -64,7 +64,7 @@
                             <div class="dateBox">
                                 <p>상품 등록일 : ${product.productDate}</p>
 
-                                <c:if test="${product.productUpdate} != ''">
+                                <c:if test="${product.productUpdate != ''}">
                                     <p>최종 수정일 : ${product.productUpdate}</p>
                                 </c:if>
                             </div>
