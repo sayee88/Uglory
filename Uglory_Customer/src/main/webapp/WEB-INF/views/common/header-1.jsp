@@ -15,7 +15,7 @@
 
         <!-- Navbar & Hero Start -->
         <div class="container-xxl position-relative p-0">
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0 sticky-top shadow-sm">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0 sticky-top shadow-sm"  style="background: var(--dark) !important;">
                 <a href="${contextPath}" class="navbar-brand p-0">
                     <span class="text-primary m-0">
                         <i class="me-3" style="font-size:30px"></i>
