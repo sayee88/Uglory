@@ -217,12 +217,12 @@ public class ReviewDAO {
 	
 	/**
 	 * 나의 리뷰 목록 조회 DAO
-	 * @param loginMember
+	 * @param memberNo
 	 * @return
 	 */
-	public List<ReviewSelectInfo> selectMyReview(Member loginMember) {
+	public List<ReviewSelectInfo> selectMyReview(int memberNo) {
 		
-		return sqlSession.selectList("reviewMapper.selectMyReview", loginMember);
+		return sqlSession.selectList("reviewMapper.selectMyReview", memberNo);
 	}
 	
 	
