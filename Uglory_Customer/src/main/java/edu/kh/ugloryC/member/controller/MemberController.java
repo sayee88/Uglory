@@ -55,7 +55,10 @@ public class MemberController {
 	
 	// 개별 주문 목록 내역 조회
 	@GetMapping("/orderHistory")
-	public String orderHistory(Model model, @ModelAttribute("loginMember") Member loginMember) {
+	public String orderHistory(Model model, @ModelAttribute("loginMember") Member loginMember
+															) {
+		
+		
 		List<OrderHistory> orderHistoryList = service.selectOrderHistoryList(loginMember.getMemberNo());
 
 		model.addAttribute("orderHistoryList", orderHistoryList);

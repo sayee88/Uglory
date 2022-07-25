@@ -64,11 +64,10 @@ for (let btn of orderDetailBtn) {
                     const img = document.createElement("img");
                     img.classList.add("orderImg");
 
-                    if(proc.imageRoot == null){
-                        img.setAttribute("src", contextPath + "/resources/img/about/xmark.png" );
-                        
-                    }else{
+                    if(proc.imageRoot != "NULL"){
+                        //img.setAttribute("src", contextPath + "/resources/img/about/xmark.png" );
                         img.setAttribute("src", window.location.origin+'/ugloryA' +  proc.imageRoot);
+                        
                     }
 
                     
