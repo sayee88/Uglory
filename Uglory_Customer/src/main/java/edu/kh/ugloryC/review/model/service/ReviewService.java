@@ -126,10 +126,10 @@ public interface ReviewService {
 	
 	/**
 	 * 나의 리뷰 목록 조회 서비스
-	 * @param loginMember
+	 * @param memberNo
 	 * @return 
 	 */
-	List<ReviewSelectInfo> selectMyReview(Member loginMember);
+	List<ReviewSelectInfo> selectMyReview(int memberNo);
 
 
 	

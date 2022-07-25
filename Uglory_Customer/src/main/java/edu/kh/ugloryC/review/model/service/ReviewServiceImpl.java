@@ -231,9 +231,9 @@ public class ReviewServiceImpl implements ReviewService{
 
 	// 나의 리뷰 목록 조회 서비스 구현
 	@Override
-	public List<ReviewSelectInfo> selectMyReview(Member loginMember) {
+	public List<ReviewSelectInfo> selectMyReview(int memberNo) {
 		
-		return dao.selectMyReview(loginMember);
+		return dao.selectMyReview(memberNo);
 	}
 	
 	
