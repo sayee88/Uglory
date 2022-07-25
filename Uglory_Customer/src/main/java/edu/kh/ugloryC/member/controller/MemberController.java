@@ -154,7 +154,7 @@ public class MemberController {
 		Map<String , Object> map = new HashMap<String, Object>();
 		
 		map.put("memberNo", loginMember.getMemberNo());
-		map.put("choise", choice);
+		map.put("choice", choice);
 		
 		
 		int result = service.secession(map);
@@ -226,7 +226,7 @@ public class MemberController {
 							RedirectAttributes ra, Model model) {
 		
 		int memberNo = loginMember.getMemberNo();
-		
+	
 		int result = service.subCancel(memberNo);
 		
 		String message = null;
