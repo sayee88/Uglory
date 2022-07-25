@@ -84,6 +84,28 @@ public interface ProductService {
 	 */
 	int cartDelete(int memberNo, List<String> deleteList);
 
+	/** 장바구니 내 옵션 수량 변경 - Minus
+	 * @param minusOptionList
+	 * @param optionMinusCount
+	 * @return result
+	 */
+	int minusCount(List<String> minusOptionList, String optionMinusCount);
+
+	/** 장바구니 내 옵션 수량 변경 - PLUS
+	 * @param plusOptionList
+	 * @param optionPlusCount
+	 * @return result
+	 */
+	int plusCount(List<String> plusOptionList, String optionPlusCount);
+
+
+	/** 장바구니 -> 주문 페이지 내 옵션에 따른 상품, 옵션 조회
+	 * @param optionNo List
+	 * @return selectOptionList
+	 */
+	List<OptionType> cartOrder(Map<String, Object> map);
+
+
 
 
 

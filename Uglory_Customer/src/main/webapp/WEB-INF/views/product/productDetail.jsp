@@ -155,6 +155,9 @@
                                 <!-- 별점 평균 -->
                                 <span>${result}</span>
                                 <!-- 해당 상품에 대한 리뷰 페이지로 이동 -->
+                                <c:if test="${count}==0">
+                                    <a href="#"><span>0</span>개의 리뷰 &gt;</a>
+                                </c:if>
                                 <a href="#"><span>${count}</span>개의 리뷰 &gt;</a>
                             </div>
                         </div>
@@ -217,7 +220,12 @@
                 <hr>
 
                 <!-- 후기  -->
-                <h3><span id="detail-review-count">${count}</span> 개의 이용후기를 확인해보세요!</h3>
+                <h3>
+                <c:if test="${count}==0">
+                    <span class="detail-review-count">0</span>
+                </c:if>
+                <span class="detail-review-count">${count}</span> 개의 이용후기를 확인해보세요!
+                </h3>
 
                 <!-- 별점 및 평균 조회 및 리뷰 페이지 이동 영역 -->
                 <div class="product-review-area">
