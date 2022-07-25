@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.web.multipart.MultipartFile;
 
 import edu.kh.ugloryC.member.model.vo.Member;
+import edu.kh.ugloryC.review.model.vo.ReviewDetail;
 import edu.kh.ugloryC.review.model.vo.ReviewSelectInfo;
 import edu.kh.ugloryC.review.model.vo.ReviewWrite;
 import edu.kh.ugloryC.review.model.vo.UnWrittenProduct;
@@ -130,6 +131,15 @@ public interface ReviewService {
 	 * @return 
 	 */
 	List<ReviewSelectInfo> selectMyReview(int memberNo);
+
+
+
+	/**
+	 * 리뷰 상세 조회
+	 * @param reviewNo 
+	 * @return reviewDetail
+	 */
+	List<ReviewDetail> selectReviewDetail(int reviewNo);
 
 
 	

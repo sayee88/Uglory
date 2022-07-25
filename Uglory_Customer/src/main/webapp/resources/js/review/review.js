@@ -136,12 +136,14 @@ function createBox(item){
     const clickModal = document.createElement("div");
     clickModal.setAttribute("data-bs-toggle", "modal");
     clickModal.setAttribute("data-bs-target", "#exampleModal");
+    clickModal.setAttribute("onclick", "openModal("+item.reviewNo+")");
 
     const reviewImage = document.createElement("img");
     reviewImage.setAttribute("src", contextPath + item.thumbnail);
 
     const text = document.createElement("div");
     text.classList.add("review-content-text");
+    text.classList.add("openModal2");
 
     const contentTop = document.createElement("div");
     contentTop.classList.add("review-content-top-section");
@@ -313,11 +315,234 @@ rating.each(function(){
 
 });
 
-
 //==========================================================
 
 
-// 나의 리뷰
+// 모달 리뷰 상세보기
+function openModal(reviewNo){
+
+    $.ajax({
+
+        url: "list/reviewDetail", 
+        data : {"reviewNo" : reviewNo},
+        type : "GET",
+        dataType : "JSON",
+        async : false,
+        success : function(reviewDetail){
+                        // 담아올 바구니
+
+            console.log(reviewDetail[0]);
+
+            console.log(reviewDetail[0].imageList);
+
+            //console.log(reviewDetail[0].imageList[0].reviewImageRename);
+            console.log(reviewDetail[0].imageList[3]);
+
+
+            // 이미지 슬라이드 부분
+
+            const carouselInner = document.getElementsByClassName("carousel-inner")[0];
+            carouselInner.innerHTML = "";
+            
+            if(reviewDetail[0].imageList.length != 0){
+                for(let i = 0; i<reviewDetail[0].imageList.length; i++){
+                    const carouselItem = document.createElement("div");
+                    carouselItem.classList.add("carousel-item");
+                    
+                    if(i==0){
+                        carouselItem.classList.add("active");
+                    }
+                    
+                    const image = document.createElement("img");
+                    image.setAttribute("src", contextPath + reviewDetail[0].imageList[i].reviewImageRename);
+                    
+                    carouselItem.append(image);
+                    
+                    carouselInner.append(carouselItem);
+                }
+            } else {
+                carouselInner.innerHTML = "";
+            }
+
+            // 이미지 리스트
+            const imgList = document.getElementsByClassName("modal-imgList")[0];
+            imgList.innerHTML = "";
+
+            
+            const noImage = document.createElement("div");
+            noImage.classList.add("img4");
+            noImage.innerText = "x";
+            
+            //reviewDetail[0].imageList.legth == 0  검사
+            if(reviewDetail[0].imageList.length == 0){
+                
+                imgList.append(noImage, noImage, noImage, noImage);
+                
+            } else {
+                
+                for(let i=0; i < 4; i++){
+                    
+                    if(reviewDetail[0].imageList[i] != undefined){
+                        const imgListDiv = document.createElement("div");
+                        const image = document.createElement("img");
+                        image.classList.add("small");
+                        image.setAttribute("src", contextPath + reviewDetail[0].imageList[i].reviewImageRename);
+                        
+                        imgListDiv.append(image);
+                        imgList.append(imgListDiv);
+
+                    } else {
+                        // 이미지 없을 때
+                        imgList.append(noImage);
+                        
+                    }
+                }
+            }
+
+            const contentInfo = document.getElementsByClassName("modal-content-info")[0];
+            contentInfo.innerHTML = "";
+
+            const contentSection = document.createElement("div");
+            const infoNameDate = document.createElement("div");
+            infoNameDate.classList.add("info-name-date");
+
+            const spanName = document.createElement("div");
+            spanName.innerText = reviewDetail[0].memberName;
+
+            const spanEnrollDate = document.createElement("div");
+            spanEnrollDate.innerText = reviewDetail[0].reviewEnrollDate;
+
+            const purchase = document.createElement("div");
+            purchase.classList.add("purchase");
+            if(reviewDetail.reviewCode == 1){
+                purchase.innerText = "정기구독박스";
+
+            } else {
+                purchase.innerText = "개별상품";
+            }
+
+            infoNameDate.append(spanName, spanEnrollDate);
+
+            contentSection.append(infoNameDate, purchase);
+
+
+            // 별점
+            const modalStar = document.createElement("div");
+            modalStar.classList.add("modal-star");
+
+            const modalStarSection = document.createElement("div");
+
+            const review_star = document.createElement("div");
+            review_star.classList.add("myReview-star");
+
+            const rating = document.createElement("div");
+            rating.classList.add("rating");
+            rating.setAttribute("data-rate", reviewDetail[0].starRating);
+
+            const star_wrap1 = document.createElement("div");
+            star_wrap1.classList.add("star-wrap");
+            const star1 = document.createElement("div");
+            star1.classList.add("star");
+            const i1 = document.createElement("i");
+            i1.classList.add("fas");
+            i1.classList.add("fa-star");
+
+            const star_wrap2 = document.createElement("div");
+            star_wrap2.classList.add("star-wrap");
+            const star2 = document.createElement("div");
+            star2.classList.add("star");
+            const i2 = document.createElement("i");
+            i2.classList.add("fas");
+            i2.classList.add("fa-star");
+
+            const star_wrap3 = document.createElement("div");
+            star_wrap3.classList.add("star-wrap");
+            const star3 = document.createElement("div");
+            star3.classList.add("star");
+            const i3 = document.createElement("i");
+            i3.classList.add("fas");
+            i3.classList.add("fa-star");
+
+            const star_wrap4 = document.createElement("div");
+            star_wrap4.classList.add("star-wrap");
+            const star4 = document.createElement("div");
+            star4.classList.add("star");
+            const i4 = document.createElement("i");
+            i4.classList.add("fas");
+            i4.classList.add("fa-star");
+
+            const star_wrap5 = document.createElement("div");
+            star_wrap5.classList.add("star-wrap");
+            const star5 = document.createElement("div");
+            star5.classList.add("star");
+            const i5 = document.createElement("i");
+            i5.classList.add("fas");
+            i5.classList.add("fa-star");
+
+            star1.append(i1);
+            star_wrap1.append(star1);
+
+            star2.append(i2);
+            star_wrap2.append(star2);
+
+            star3.append(i3);
+            star_wrap3.append(star3);
+
+            star4.append(i4);
+            star_wrap4.append(star4);
+
+            star5.append(i5);
+            star_wrap5.append(star5);
+            
+            // 별점 숫자로 표시
+            const numStarRating = document.createElement("div");
+            numStarRating.classList.add("modal-starRating");
+            numStarRating.innerText = reviewDetail[0].starRating;
+            
+            //rating.append(star-wrap, star-wrap, star-wrap, star-wrap, star-wrap)
+            rating.append(star_wrap1, star_wrap2, star_wrap3, star_wrap4, star_wrap5, numStarRating);
+            review_star.append(rating);
+            modalStarSection.append(review_star);
+            modalStar.append(modalStarSection);
+
+
+
+            contentInfo.append(contentSection, modalStar);
+
+            const modalContentText = document.getElementsByClassName("modal-content-text")[0];
+            modalContentText.innerText = "";
+            modalContentText.innerText = reviewDetail[0].reviewContent;
+
+
+            // 별점
+            const $this = $(rating)
+            const targetScore = $this.attr('data-rate');
+            const firstdigit = targetScore.split('.');
+
+            // firstdigit의 개수가 2개이면 소수점
+            if(firstdigit.length > 1){
+                for(let i=0; i<firstdigit[0]; i++){
+                    $this.find('.star').eq(i).css({width:'100%'});
+                }
+                $this.find('.star').eq(firstdigit[0]).css({width:firstdigit[1]+'0%'});
+
+            } else {
+                for(let i=0; i<targetScore; i++){
+                    $this.find('.star').eq(i).css({width:'100%'});
+                }
+            }
+
+
+            
+        },
+        error: function(req, status, error){
+            console.log("리스트 조회 중 에러가 발생...");
+            console.log(req.responseText);
+        }
+    });
+
+
+}
 
 
 
@@ -327,12 +552,7 @@ rating.each(function(){
 
 
 
-
-
-
-
-
-
+//==========================================================
 
 
 

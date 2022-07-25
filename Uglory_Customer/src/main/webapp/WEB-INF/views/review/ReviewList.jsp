@@ -220,38 +220,54 @@
                         <div class="modal-mainImage">
                             <div>
                                 <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+                                    
+                                    <%-- 이미지 슬라이드 부분 --%>
                                     <div class="carousel-inner">
-                                    <div class="carousel-item active" >
-                                        <img src="${contextPath}/resources/img/review/review_img1.png" class="d-block w-100" style="object-fit: contain;">
+                                        <%-- 여기부터 --%>
+                                        <div class="carousel-item active" >
+                                            <img src="${contextPath}/resources/img/review/review_img1.png" class="d-block w-100" style="object-fit: contain;">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="${contextPath}/resources/img/review/review_img10.png" class="d-block w-100">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="${contextPath}/resources/img/review/review_img11.png" class="d-block w-100" alt="...">
+                                        </div>
+                                        <%-- 여기 --%>
+
                                     </div>
-                                    <div class="carousel-item">
-                                        <img src="${contextPath}/resources/img/review/review_img10.png" class="d-block w-100">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="${contextPath}/resources/img/review/review_img11.png" class="d-block w-100" alt="...">
-                                    </div>
-                                    </div>
+                                    
+                                    <%-- 이전 버튼 --%>
                                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                     <span class="visually-hidden">Previous</span>
                                     </button>
+                                    
+                                    <%-- 다음 버튼 --%>
                                     <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
                                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                     <span class="visually-hidden">Next</span>
+                                    
                                     </button>
                                 </div>
                             </div>
+
+                            <%-- 이미지 리스트 --%>
                             <div class="modal-imgList">
+                                <%-- 여기부터 --%>
                                 <div><img class="small" src="${contextPath}/resources/img/review/review_img1.png"></div>
                                 <div><img class="small" src="${contextPath}/resources/img/review/review_img10.png"></div>
                                 <div><img class="small" src="${contextPath}/resources/img/review/review_img11.png"></div>
                                 <div class="img4">x</div>
+                                <%-- 여기 --%>
                             </div>
                         </div>
                         
                         <div class="modal-mycontent">
                             <div class="modal-content-info">
                                 
+                                <%-- 여기부터 --%>
+                                <%-- 리뷰 내용  --%>
                                 <div>
                                     <div class="info-name-date">
                                         <span>신*윤</span>
@@ -259,29 +275,42 @@
                                     </div>
                                     <div class="purchase">정기구독박스</div>
                                 </div>
+                                
                                 <div class="modal-star">
                                     <div>
-                                        <span>★</span>
-                                        <span>★</span>
-                                        <span>★</span>
-                                        <span>★</span>
-                                        <span>☆</span>
+                                    <%-- 여기부터 --%>
+                                        <div class="myReview-star">
+                                            <div class="rating" data-rate="5" style="width:200px">
+                                                <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
+                                                <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
+                                                <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
+                                                <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
+                                                <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
+                                                <div class="modal-starRating">4.0</div> 
+                                            </div>
+                                        </div>
+                                    <%-- 여기 --%>
                                     </div>
-                                    <div class="avgstar">4.0</div>
+                                    
                                 </div>
         
                             </div>
+
+
                             <div class="modal-content-text">
                                 신선한 토마토로 카프레제 해먹었어요~ 멋쟁이 토마토로 파스타도 해먹구 신이 나요~
                             </div>
+                            
                             <div class="modal-bottom">
                                 <div class="modal-sub">
                                     <img src="${contextPath}/resources/img/icon/tomato.png" width="50px">
                                     <a href="#">   구독 박스가 궁금하다면? >></a>
                                 </div>
                             </div>
+
                         </div>
                     </div>
+
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
                         style="background-color:rgb(113, 214, 199); border:0; font-weight: bold;">수정하기</button>
