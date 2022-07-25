@@ -6,14 +6,14 @@ var myChart1 = new Chart(ctx1, {
     data: {
         labels: chartDate,
         datasets: [{
-                label: "구독 결제",
-                data: subsPerDate,
-                backgroundColor: "rgba(0, 156, 255, .7)"
-            },
-            {
                 label: "개별 상품 결제",
                 data: productPerDate,
-                backgroundColor: "rgba(0, 156, 255, .3)"    
+                backgroundColor: "rgba(79, 134, 198, 0.8)"
+            },
+            {
+                label: "구독 결제",
+                data: subsPerDate,
+                backgroundColor: "rgba(108, 73, 184, .8)"
             },
         ]
         },
@@ -33,20 +33,20 @@ var myChart2 = new Chart(ctx2, {
         datasets: [{
                 label: "전체 매출",
                 data: totalPerMonth,
-                backgroundColor: "rgba(0, 156, 255, .3)",
+                backgroundColor: "rgba(79, 176, 198, .3)",
                 fill: true
             },
             {
                 label: "개별 상품 매출",
                 data: productPerMonth,
-                backgroundColor: "rgba(0, 0, 204, 0.3)",
+                backgroundColor: "rgba(79, 134, 198, 0.5)",
                 fill: true
 
             },
             {
                 label: "구독 매출",
                 data: subsPerMonth,
-                backgroundColor: "rgba(204, 0, 0, 0.5)",
+                backgroundColor: "rgba(108, 73, 184, .5)",
                 fill: true
             }
         ]

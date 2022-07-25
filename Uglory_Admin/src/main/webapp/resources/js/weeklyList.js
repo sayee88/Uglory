@@ -109,12 +109,13 @@ const pList = document.getElementById("pList");
 const opList = document.getElementById("opList");
 const addListBtn = document.getElementById("addListBtn");
 const deleteWeek = document.getElementsByClassName("deleteWeek");
+const delPrice = document.getElementById("del-price");
+const cal = document.getElementsByClassName("cal");
 
 if(delPList!=null){
     
     (function(){
         addList();
-
     })();
 
     //옵션 선택하기
@@ -230,8 +231,16 @@ function addList(){
                     btnArea.append(btn);
                     tr.append(pName, opName, btnArea);
 
-                    delPList.append(tr);
+                    const input = document.createElement("input");
+                    input.setAttribute("type", "hidden");
+                    input.classList.add("cal");
+                    input.value = del.productPrice + del.optionPrice;
+
+                    delPList.append(tr, input);
+
                 }
+
+                calculate();
             }
         },
         error : function(req, status, error){
@@ -264,6 +273,25 @@ function delProduct(productNo){
             console.log(req.responseText);
         }
     });
+}
+
+function calculate(){
+        
+    let sum = 0;
+
+    for(let i=0; i<cal.length; i++){
+        sum += Number(cal[i].value);
+    }
+    
+    delPrice.innerText = sum;
+
+    if(sum > 20000){
+        delPrice.classList.add("text-danger");
+        delPrice.classList.remove("text-success");
+    } else {
+        delPrice.classList.add("text-success");
+        delPrice.classList.remove("text-danger");
+    }
 }
 
 //점보박스 옵션 구하기

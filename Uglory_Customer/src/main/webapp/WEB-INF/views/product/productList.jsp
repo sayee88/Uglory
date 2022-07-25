@@ -66,13 +66,13 @@
                     </div>
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                        <img src="${contextPath}/resources/img/product/수박슬라이드.png" class="d-block w-100" alt="${contextPath}/resources.">
+                            <a href="${contextPath}/product/detail/7/6"><img src="${contextPath}/resources/img/product/수박슬라이드.png" class="d-block w-100" alt="${contextPath}/resources."></a>
                         </div>
                         <div class="carousel-item">
-                        <img src="${contextPath}/resources/img/product/복숭아슬라이드.png" class="d-block w-100" alt="${contextPath}/resources.">
+                            <a href="${contextPath}/product/detail/7/4"><img src="${contextPath}/resources/img/product/복숭아슬라이드.png" class="d-block w-100" alt="${contextPath}/resources."></a>
                         </div>
                         <div class="carousel-item">
-                        <img src="${contextPath}/resources/img/product/옥수수슬라이드.png" class="d-block w-100" alt="${contextPath}/resources.">
+                            <a href="${contextPath}/product/detail/2/5"><img src="${contextPath}/resources/img/product/옥수수슬라이드.png" class="d-block w-100" alt="${contextPath}/resources."></a>
                         </div>
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -101,17 +101,6 @@
             
             
             <div class="line"></div>
-
-             <div class="review-star">
-                <div class="rating" data-rate="3.5">
-                    <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
-                    <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
-                    <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
-                    <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
-                    <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
-                </div>
-                <p>(49)</p>
-            </div>
 
 
             <!-- 상품 카테고리 -->

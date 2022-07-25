@@ -18,7 +18,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&family=Pacifico&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400&display=swap" rel="stylesheet">
 
     <!-- Icon Font Stylesheet -->
@@ -47,10 +46,10 @@
 
         <div class="login">
             <section class="login-area">
-                <div class="login-text">로그인</div>
+                <div class="login-text" style="font-size:24px;">로그인</div>
                 <div class="login-full">
                     <a href="javascript:kakaoLogin();">
-                        <img class="kakao" src="${contextPath}/resources/img/login/kakao_login_medium_narrow.png" alt="카카오로그인"></a>
+                        <img class="kakao" src="${contextPath}/resources/img/login/kakao_login_medium_narrow.png" style="width: 300px;"alt="카카오로그인"></a>
                 </div>
             </section>
             

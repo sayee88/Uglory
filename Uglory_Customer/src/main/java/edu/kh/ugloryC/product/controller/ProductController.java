@@ -68,8 +68,11 @@ public class ProductController {
 		// 리뷰 수 조회 
 		if(result > 0) {
 			int count = service.countReview(productCode);
+
 			model.addAttribute("count", count);
 			model.addAttribute("result", result);
+
+			
 		}
 		// 별점 카운트, 리뷰 카운트 필요
 		model.addAttribute("detail", detail);
@@ -77,69 +80,38 @@ public class ProductController {
 		return "product/productDetail";
 	}	
 	
-	
-// - js로 구현
-//	// 선택한 옵션 조회
-//	@ResponseBody
-//	@PostMapping("/detail/optionSelect")
-//	public String optionSelect(int optionCode) {
-//		
-//		List<OptionType> optionList = optionService.selectOption(optionCode);
-//		
-//		return new Gson().toJson(optionList);
-//	}
-//	
-//	// 옵션 선택에 따른 총 가격 조회
-//	@ResponseBody
-//	@PostMapping("/detail/optionTotal")
-//	public int optionTotal(int productCode,
-//							   int optionCode,
-//							   @RequestParam Map<String, Object> paramMap) {
-//		
-//		paramMap.put("productCode", productCode);
-//		paramMap.put("optionCode", optionCode);
-//		
-//		int result = service.totalAmount(paramMap);
-//		
-//		return result;
-//	}
-	
 	// 결제 페이지 화면 전환
 	@SuppressWarnings({ "unchecked" }) // 무점검 경고 억제 어노테이션
 	@GetMapping("/order")
-	public String productOrder(Integer productCode,
+	public String productOrder(String productCode,
 							   Integer totalAmount, String optionObj, Model model) {
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		
 		// 넘어온 스트링을 객체 형태로 변환
 		map = (Map<String, Object>)new Gson().fromJson(optionObj, map.getClass());
-		
-		//List<String> lm =  map.keySet().stream().collect(Collectors.toList());
-		// java.util.ConcurrentModificationException
-		// map을 List로 변환
-
-//		for(String key : lm) {
-//			map.put("key" , ((Double)map.get(key)).intValue() );
-//		}
-		
+	
 		// 옵션코드 리스트
 		List<String> optionCodeList = new ArrayList<String>(map.keySet());
-
+		
 		// 수량 리스트
 		List<Integer> amountList = new ArrayList<Integer>();
 		for(String key : map.keySet()) {
 			amountList.add( ((Double)map.get(key)).intValue() );
 		}
-
-		// 	옵션코드 리스트 인덱스 == 수량 리스트 인덱스
-				
-		map.clear();
 		
+		// 	옵션코드 리스트 인덱스 == 수량 리스트 인덱스
+		
+		map.clear();
+
 		map.put("optionCodeList", optionCodeList);
 		map.put("amountList", amountList);
-		
+			
 		map.put("productCode", productCode);
+		// 주문 페이지 내 옵션 코드 상품 코드에 따른 옵션이름, 개수 조회
+		List<OptionType> selectOptionList = service.orderOptionSelect(map);
+		
+		map.put("selectOptionList", selectOptionList);
 		
 		// 주문 번호 생성
 		String pOrderCode = service.createProductOrderCode();
@@ -158,13 +130,43 @@ public class ProductController {
 			map.put("productPayNo", productPayNo);
 		}
 		
-		
-		// 주문 페이지 내 옵션 코드 상품 코드에 따른 옵션이름, 개수 조회
-		List<OptionType> selectOptionList = service.orderOptionSelect(map);
-		
-		map.put("selectOptionList", selectOptionList);
 		map.put("totalAmount", totalAmount);
 
+		model.addAttribute("map", map);
+		
+		return "product/productOrder";
+	}
+	
+	// 장바구니 - 결제페이지 
+	@GetMapping("/cartOrder")
+	public String cartOrder(Integer totalAmount, @RequestParam(value="optionNo", required=false) List<Integer> optionNoList, Model model) {
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("optionNoList", optionNoList);
+		
+		List<OptionType> cartList = service.cartOrder(map);
+		
+		map.put("totalAmount", totalAmount);
+		map.put("cartList", cartList);
+		
+		// 주문 번호 생성
+		String pOrderCode = service.createProductOrderCode();
+		
+		map.put("pOrderCode", pOrderCode);
+		
+		if(pOrderCode != null) {
+			
+			SimpleDateFormat sdf = new SimpleDateFormat("yyMMddHHmmss");
+			
+			String date = sdf.format(new Date());
+			
+			int random = (int)(Math.random() * 5);
+			String productPayNo = date + "-" + random;
+			
+			map.put("productPayNo", productPayNo);
+		}
+		
 		model.addAttribute("map", map);
 		
 		return "product/productOrder";
@@ -314,6 +316,7 @@ public class ProductController {
 		return result;
 	}
 	
+	// 장바구니 내 옵션 수량 변경 - Minus
 	@ResponseBody
 	@PostMapping("/cartMinus")
 	public int cartMinus(@RequestParam(value="minusOptionNo") String minusOptionNo,
@@ -324,8 +327,24 @@ public class ProductController {
 		List<String> minusOptionList = Arrays.asList(minusArr);
 		
 		// 수량 마이너스 변경
+		int result = service.minusCount(minusOptionList ,optionMinusCount);
 		
-		return 0;
+		return result;
 	}
 	
+	// // 장바구니 내 옵션 수량 변경 - PLUS
+	@ResponseBody
+	@PostMapping("/cartPlus")
+	public int cartPlus(@RequestParam(value="plusOptionNo") String plusOptionNo,
+						@RequestParam(value="optionPlusCount") String optionPlusCount) {
+		
+		plusOptionNo = plusOptionNo.replaceAll("\\[", "");
+		String[] plusArr = plusOptionNo.split(",");
+		List<String> plusOptionList = Arrays.asList(plusArr);
+		
+		// 수량 플러스 변경
+		int result = service.plusCount(plusOptionList ,optionPlusCount);
+		
+		return result;
+	}
 }
