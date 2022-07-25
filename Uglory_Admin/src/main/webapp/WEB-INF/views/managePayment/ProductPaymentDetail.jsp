@@ -132,6 +132,8 @@
                             </tbody>
                         </table>
 
+                        <div style="margin-top: 100px;"><a class="btn btn-primary rounded-pill" href="${contextPath}/payment/selectAll">목록으로</a></div>
+
                     </div>
                 </div>
             </div>

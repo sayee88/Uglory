@@ -85,14 +85,14 @@
                         <%-- 메인 --%>
                         <div class="listBody">
                             <table class="table table-borderless farmTable mt-4">
-                                <thead>
+                                <thead style="margin-bottom: 10px;">
                                     <tr>
                                         <th scope="col">주문 번호</th>
                                         <th scope="col">회원 이메일</th>
                                         <th scope="col">회원 이름</th>
-                                        <th scope="col">결제금액</th>
+                                        <th scope="col">결제 금액</th>
                                         <th scope="col">결제일</th>
-                                        <th scope="col">결제 상세</th>
+                                        <th scope="col">상세</th>
                                     </tr>
                                 </thead>
                                 <tbody id="paymentList">
