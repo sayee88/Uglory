@@ -110,6 +110,7 @@ h4{
 
 .fa-star {
     color: rgb(113, 214, 199);
+    border: rgb(113, 214, 199);
 }
 
 .rating .star-wrap{width: 20px; display:inline-block; margin: 0 -3px;}
@@ -120,4 +121,8 @@ h4{
 }
 .review-star > p{
     padding-right: 14px;
+}
+
+h5{
+    color: rgb(54, 69, 79);
 }
