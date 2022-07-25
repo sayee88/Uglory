@@ -148,7 +148,7 @@
 		SET DELIVERY_CD ='2'
 		WHERE DELIVERY_CD ='1'
 		AND S_ORDER_CD IN (SELECT S_ORDER_CD FROM SUBS_ORDER
-		              WHERE S_CYCLE ='1')
+		              WHERE S_CYCLE ='1' AND S_CANCEL='N')
 	</update>
 	
 	<!-- 구독 결제 추가  -->
@@ -169,7 +169,7 @@
 		SET DELIVERY_CD ='3'
 		WHERE DELIVERY_CD ='2'
 		AND S_ORDER_CD IN (SELECT S_ORDER_CD FROM SUBS_ORDER
-		              WHERE S_CYCLE ='1')
+		              WHERE S_CYCLE ='1' AND S_CANCEL='N')
 	</update>
 	
 	
@@ -199,7 +199,7 @@
 		SET DELIVERY_CD ='3'
 		WHERE DELIVERY_CD ='2'
 		AND S_ORDER_CD IN (SELECT S_ORDER_CD FROM SUBS_ORDER
-		              WHERE S_CYCLE ='2')
+		              WHERE S_CYCLE ='2'  AND S_CANCEL='N')
 	</update>
 	
 	<!-- 격주 수요일 배송전->배송중으로 변경 -->
@@ -208,7 +208,7 @@
 		SET DELIVERY_CD ='2'
 		WHERE DELIVERY_CD ='1'
 		AND S_ORDER_CD IN (SELECT S_ORDER_CD FROM SUBS_ORDER
-		              WHERE S_CYCLE ='2')
+		              WHERE S_CYCLE ='2'  AND S_CANCEL='N')
 	</update>
 	
 	<!-- 구독 제외 상품용 상품 리스트 조회 -->
