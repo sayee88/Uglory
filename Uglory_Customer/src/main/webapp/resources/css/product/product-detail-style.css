@@ -154,7 +154,7 @@
 }
 
 /* 하단 후기 개수 조회 */
-#detail-review-count{
+.detail-review-count{
     color: rgb(255, 89, 87);
 }
 

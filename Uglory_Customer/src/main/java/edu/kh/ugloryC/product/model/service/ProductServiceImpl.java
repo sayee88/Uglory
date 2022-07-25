@@ -107,6 +107,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	// 결제 시 OPTION_TB 테이블 삽입
+	@Transactional(rollbackFor = {Exception.class})
 	@Override
 	public int insertOptionTb(List<String> optionCodeList, List<String> amountList, String pOrderCode) {
 
@@ -128,6 +129,7 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	// x버튼 클릭 시 장바구니 삭제 
+	@Transactional(rollbackFor = {Exception.class})
 	@Override
 	public int cartDelete(int memberNo, List<String> deleteList) {
 		
@@ -145,5 +147,72 @@ public class ProductServiceImpl implements ProductService {
 		
 		return result;
 	}
+
+	// 장바구니 내 옵션 수량 변경 - Minus
+	@Transactional(rollbackFor = {Exception.class})
+	@Override
+	public int minusCount(List<String> minusOptionList, String optionMinusCount) {
+		
+		int result = 0;
+		
+		Map<String, Object> cartMinus = new HashMap<String, Object>();
+		
+		cartMinus.put("optionMinusCount", optionMinusCount);
+		
+		for(int i=0; i<minusOptionList.size(); i++) {
+			cartMinus.put("optionNoMinus", minusOptionList.get(i));
+			
+			result = dao.minusCount(cartMinus);
+		}
+		return result;
+	}
 	
+	// 장바구니 내 옵션 수량 변경 - PLUS
+	@Transactional(rollbackFor = {Exception.class})
+	@Override
+	public int plusCount(List<String> plusOptionList, String optionPlusCount) {
+		
+		int result = 0;
+		
+		Map<String, Object> cartPlus = new HashMap<String, Object>();
+		
+		cartPlus.put("optionPlusCount", optionPlusCount);
+		
+		for(int i=0; i<plusOptionList.size(); i++) {
+			cartPlus.put("optionNoPlus", plusOptionList.get(i));
+			
+			result = dao.plusCount(cartPlus);
+		}
+		return result;
+	}
+
+	/*
+	 * // 장바구니 -> 주문 페이지 내 옵션에 따른 상품, 옵션 조회(productCodeList)
+	 * 
+	 * @Transactional(rollbackFor = {Exception.class})
+	 * 
+	 * @Override public List<OptionType> orderOptionSelect(List<String>
+	 * productCodeList, List<String> optionCodeList) {
+	 * 
+	 * List<OptionType> orderOptionSelect = new ArrayList<OptionType>();
+	 * 
+	 * Map<String, Object> map = new HashMap<String, Object>();
+	 * 
+	 * map.put("optionCodeList", optionCodeList);
+	 * 
+	 * for(int i=0; i<productCodeList.size(); i++) { map.put("productCode",
+	 * productCodeList.get(i)); }
+	 * 
+	 * orderOptionSelect = dao.orderOptionSelect(map);
+	 * 
+	 * return orderOptionSelect; }
+	 */
+
+	// 장바구니 -> 주문 페이지 내 옵션에 따른 상품, 옵션 조회
+	@Override
+	public List<OptionType> cartOrder(Map<String, Object> map) {
+			
+		return dao.cartOrder(map);
+
+	}
 }

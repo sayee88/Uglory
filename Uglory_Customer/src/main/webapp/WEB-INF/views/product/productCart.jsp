@@ -3,7 +3,6 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"  %>
 
 <c:set var="cartOptionList" value="${cartMap.cartOptionList}" />
-<c:set var="productCode" value="${cartOptionList.productCode}" />
 
 <!DOCTYPE html>
 <html lang="en">
@@ -57,7 +56,7 @@
             <!-- 장바구니에 담긴 상품이 없을 경우 -->
             <c:if test="${empty productCartList}">
             <!-- 장바구니 개수 -->
-            <h4 class="cart-count" style="margin-top = 100px;">장바구니 상품</h4>
+            <h4 class="cart-count" style="margin-top: 100px;">장바구니 상품</h4>
                 <div class="empty-product-cart">
                     <p>장바구니에 담긴 상품이 없습니다.</p>
                 </div> 
@@ -66,10 +65,10 @@
             <%-- 장바구니에 담긴 상품이 있을 경우 --%>
             <c:if test="${!empty productCartList}">
 
-                <form action="${contextPath}/product/order" method="GET" name="orderForm" onsubmit="return orderValidate()">
+                <form action="${contextPath}/product/cartOrder" method="GET" name="orderForm" onsubmit="return orderValidate()">
 
                     <!-- 장바구니에 담긴 상품이 있을 경우 -->
-                    <h4 class="cart-count">장바구니 상품(<span id="cartCount">${fn:length(productCartList)}</span>)</h4>
+                    <h4 class="cart-count" style="margin-top: 100px;">장바구니 상품(<span id="cartCount">${fn:length(productCartList)}</span>)</h4>
                     
                     <c:forEach var="cartList" items="${productCartList}">
 
@@ -79,6 +78,7 @@
                             <div class="cart-check-delete">
                                 <!-- 장바구니 담은 상품 선택 -->
                                 <input type="checkbox" name="cart-check" value="${cartList.optionNo}" class="cart-check" onclick="getCheckboxValue(event)" checked>
+                                    <input type="hidden" value="${cartList.optionNo}" name="optionNo">
                                 <!-- 장바구니 담은 상품 삭제 버튼 -->
                                 <button type="button" id="optionNo-${cartList.optionNo}" class="cart-delete">X</button>
                             </div> 
@@ -92,7 +92,8 @@
                                 
                                 <!-- 상품명(클릭 시 상품 상세조회 화면)-->
                                 <div>
-                                    <a href="${contextPath}/product/detail/${cartList.categoryNo}/${cartList.productCode}" style="color: #747474; margin-left:10px; font-size:20px;">
+                                    <a href="${contextPath}/product/detail/${cartList.categoryNo}/${cartList.productCode}" 
+                                       value="productCode-${cartList.productCode}" class="productA" style="color: #747474; margin-left:10px; font-size:20px;">
                                         <span>${cartList.productName}</a>
                                 </div>
                             </div>
@@ -100,7 +101,7 @@
                             <!-- 선택된 옵션 조회 영역 -->
                             <div class="cart-option-info" style="margin-top:15px">
                                 <!-- 상품명 + 옵션명 -->
-                                <p style="margin-top: -5px;">상품 : <span>${cartList.productName} - ${cartList.optionName}</span></p>
+                                <p style="margin-top: -5px;">상품 : <span>${cartList.productName} - </span><span class="optionCd" value="optionCd-${cartList.optionCode}">${cartList.optionName}</span></p>
 
                                 <!-- 상품 수량 변경 -->
                                 <div class="option-info">
@@ -153,7 +154,6 @@
 
     <script>
         const contextPath = "${contextPath}";
-        const productCode = "${productCode}";
     </script>
         <jsp:include page="/WEB-INF/views/common/footer.jsp" />
         
