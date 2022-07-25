@@ -183,13 +183,86 @@ public class ReviewDAO {
 	
 	
 	/**
-	 * 리뷰 구독 전체 리스트
+	 * 리뷰 구독 전체 리스트 조회 DAO
 	 * @return
 	 */
 	public List<ReviewSelectInfo> selecSub() {
 		
 		return sqlSession.selectList("reviewMapper.selecSub");
 	}
+
+
+	
+	/**
+	 * 리뷰 상품 전체 리스트 조회 DAO
+	 * @return
+	 */
+	public List<ReviewSelectInfo> selectProduct() {
+		
+		return sqlSession.selectList("reviewMapper.selectProduct");
+	}
+
+
+	
+	/**
+	 * 리뷰 전체 조회 DAO
+	 * @return
+	 */
+	public List<ReviewSelectInfo> allRevieList() {
+		
+		return sqlSession.selectList("reviewMapper.allRevieList");
+	}
+
+
+	
+	/**
+	 * 나의 리뷰 목록 조회 DAO
+	 * @param memberNo
+	 * @return
+	 */
+	public List<ReviewSelectInfo> selectMyReview(int memberNo) {
+		
+		return sqlSession.selectList("reviewMapper.selectMyReview", memberNo);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 
 	

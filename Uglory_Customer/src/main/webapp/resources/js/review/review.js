@@ -1,3 +1,67 @@
+const reviewList = document.getElementById("review-list");
+
+// 즉시실행 함수
+(function(){
+    allReviewList();
+})();
+
+
+const reviewRadio = document.getElementsByClassName("reviewRadio");
+const reviewBtn = document.getElementsByClassName("reviewBtn");
+
+for(let i=0; i < reviewRadio.length; i++){
+    reviewRadio[i].addEventListener("change", function () {
+
+        for(let j=0; j<reviewRadio.length; j++){
+            
+            if( reviewRadio[j].checked ){
+                reviewRadio[j].nextElementSibling.classList.add("reviewChecked");
+            } else {
+                reviewRadio[j].nextElementSibling.classList.remove("reviewChecked");
+            }
+
+        }
+
+    });    
+}
+
+
+
+
+//전체
+
+//함수 >
+//reviewList.innerHTML = "";
+//구독 ajax, 상품 ajax
+
+function allReviewList(){
+
+    $.ajax({
+
+        url: "list/allReviewList", 
+        type : "POST",
+        dataType : "JSON",
+        success : function(allList){
+                        // 담아올 바구니
+            // list 자체를 가져와야함
+            reviewList.innerHTML = "";
+
+            if(allList.length != 0){
+                
+                for(let item of allList){
+                    createBox(item);
+                }
+            }
+        },
+        error: function(req, status, error){
+            console.log("리스트 조회 중 에러가 발생...");
+            console.log(req.responseText);
+        }
+    });
+
+}
+
+
 // 구독 ajax
 function subCategory(){
 
@@ -9,8 +73,11 @@ function subCategory(){
         success : function(subList){
                         // 담아올 바구니
             // list 자체를 가져와야함
+            reviewList.innerHTML = "";
 
             if(subList.length != 0){
+                
+                
                 for(let item of subList){
                     createBox(item);
                 }
@@ -24,14 +91,47 @@ function subCategory(){
 }
 
 
-const reviewList = document.getElementById("review-list");
+// 상품 ajax
+function productCaregory(){
+
+    $.ajax({
+
+        url: "list/selectProduct",
+        type : "POST",
+        dataType : "JSON",
+        success : function(productList){
+                        // 담아올 바구니
+            // list 자체를 가져와야함
+            reviewList.innerHTML = "";
+
+            if(productList.length != 0){
+
+                //reviewList.innerHTML = "";
+
+                for(let item of productList){
+                    createBox(item);
+                }
+            }
+        },
+        error: function(req, status, error){
+            console.log("리스트 조회 중 에러가 발생...");
+            console.log(req.responseText);
+        }
+    });
+}
+
+
+
+
 
 function createBox(item){
 
-    reviewList.innerHTML = "";
+    // reviewList.innerHTML = "";
 
     const reviewContent = document.createElement("div");
     reviewContent.classList.add("review-content");
+    reviewContent.classList.add("col-4");
+    reviewContent.classList.add("mb-5");
 
     const clickModal = document.createElement("div");
     clickModal.setAttribute("data-bs-toggle", "modal");
@@ -187,39 +287,6 @@ function createBox(item){
 };
 
 //==========================================================
-// 상품 ajax
-function productCaregory(){
-
-    $.ajax({
-
-        url: "list/selectProduct",
-        type : "POST",
-        dataType : "JSON",
-        success : function(productList){
-                        // 담아올 바구니
-            // list 자체를 가져와야함
-
-            if(productList.length != 0){
-                for(let item of productList){
-                    createBox(item);
-                }
-            }
-        },
-        error: function(req, status, error){
-            console.log("리스트 조회 중 에러가 발생...");
-            console.log(req.responseText);
-        }
-    });
-}
-
-
-
-
-
-
-
-
-
 
 
 // 별점 
@@ -245,6 +312,27 @@ rating.each(function(){
     }
 
 });
+
+
+//==========================================================
+
+
+// 나의 리뷰
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

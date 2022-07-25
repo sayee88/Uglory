@@ -145,7 +145,7 @@ public class SubscriptionController {
 		
 		OrderInfo orderInfo = (OrderInfo) session.getAttribute("orderInfo");
 		
-		String address = String.join(",,", inputAddress);
+		String address = String.join(", ", inputAddress);
 		
 		int memberNo = loginMember.getMemberNo();
 		

@@ -100,10 +100,36 @@ public interface ReviewService {
 
 
 	/**
-	 * 리뷰 구독 리스트 불러오기
+	 * 리뷰 구독 리스트 조회 서비스
 	 * @return subList
 	 */
 	List<ReviewSelectInfo> selectSub();
+
+
+
+	/**
+	 * 리뷰 상품 리스트 조회 서비스
+	 * @return 
+	 */
+	List<ReviewSelectInfo> selectProduct();
+
+
+
+	/**
+	 * 리뷰 전체 조회 서비스
+	 * @return 
+	 */
+	List<ReviewSelectInfo> allRevieList();
+
+
+
+	
+	/**
+	 * 나의 리뷰 목록 조회 서비스
+	 * @param memberNo
+	 * @return 
+	 */
+	List<ReviewSelectInfo> selectMyReview(int memberNo);
 
 
 	

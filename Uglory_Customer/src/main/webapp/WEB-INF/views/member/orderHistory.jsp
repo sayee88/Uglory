@@ -91,7 +91,9 @@
                                         <dd>${item.totalPrice}원</dd>
                                         </c:if>
                                         <c:if test="${item.totalPrice<30000}">
-                                        <dd>${item.totalPrice+3000}원</dd>
+                                        <dd>${item.totalPrice+3000}원  (배송비 포함)</dd>
+                                    
+                                     
                                         </c:if>
                                     </dl>
 

@@ -21,7 +21,7 @@ public class WeeklyUpdateScheduling {
 	private ProductService service;
 
 //	@Scheduled(cron="0 * * * * *")
-	@Scheduled(cron="0 0 14 * * 1")
+	@Scheduled(cron="0 0 14 * * 0")
 	public void weeklyUpdate() {
 		
 		//logger.info("weekly에서 1분마다 출력");
