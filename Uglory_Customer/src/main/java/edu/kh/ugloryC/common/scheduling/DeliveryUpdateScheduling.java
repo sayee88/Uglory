@@ -26,16 +26,18 @@ public class DeliveryUpdateScheduling {
 	
 	
 	// 매주
-	@Scheduled(cron="0 0 0 * * 4") // 매주 수요일 0시마다
-//	@Scheduled(cron="0 3 * * * *") // 테스트용
+//	@Scheduled(cron="0 0 0 * * 4") // 매주 수요일 0시마다
+//	@Scheduled(cron="0 0 0 * * 1") // 시연용
+//	@Scheduled(cron="0 20 * * * *") // 테스트용
 	public void updateEvery() {
 		
 		List<Delivery> everyList = service.selectEveryList();
 		logger.info("배송중");
 	}
 	
-	@Scheduled(cron="0 0 0 * * 6") // 매주 금요일 0시마다
-//	@Scheduled(cron="0 4 * * * *") // 테스트용
+//	@Scheduled(cron="0 0 0 * * 6") // 매주 금요일 0시마다
+//	@Scheduled(cron="0 0 0 * * 2") // 시연용
+//	@Scheduled(cron="0 21 * * * *") // 테스트용
 	public void updateEveryFri() {
 		// 배송주기 '1'인 사람 중 배송중인 사람 '배송완'으로 update
 		int updateEveryFri = service.updateEveryFri();
@@ -46,8 +48,9 @@ public class DeliveryUpdateScheduling {
 	
 	
 	// 격주
-	@Scheduled(cron="0 0 0 * * 4#2,4#4") // 둘째 넷째 수요일 0시마다
-//	@Scheduled(cron="0 5 * * * *") // 테스트용
+//	@Scheduled(cron="0 0 0 * * 4#2,4#4") // 둘째 넷째 수요일 0시마다
+//	@Scheduled(cron="0 0 0 * * 4#2,4#4") // 시연용
+//	@Scheduled(cron="0 22 * * * *") // 테스트용
 	public void updateBiweekly() {
 		List<Delivery> biList = service.selectbiList();
 		logger.info("2배송중");
@@ -55,8 +58,9 @@ public class DeliveryUpdateScheduling {
 	}
 	
 
-	@Scheduled(cron="0 0 0 * * 6#2,6#4") // 둘째 넷째 금요일 0시마다
-//	@Scheduled(cron="0 6 * * * *") // 테스트용
+//	@Scheduled(cron="0 0 0 * * 6#2,6#4") // 둘째 넷째 금요일 0시마다
+//	@Scheduled(cron="0 0 0 * * 6#2,6#4") // 시연용
+//	@Scheduled(cron="0 23 * * * *") // 테스트용
 	public void updateBiFri() {
 		// 배송주기 '2'인 사람 중 배송중인 사람 '배송완'으로 update
 		int updateBiFri = service.updateBiFri(); 
