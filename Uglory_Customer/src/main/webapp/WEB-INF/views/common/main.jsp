@@ -31,7 +31,6 @@
     <link href="resources/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="resources/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
-
     <!-- Customized Bootstrap Stylesheet -->
     <link href="resources/css/bootstrap.min.css" rel="stylesheet">
 
@@ -71,12 +70,16 @@
                             src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts2201-3@1.0/ROKAFSansBold.woff') format('woff');
                             font-weight: normal;
                             font-style: normal;
-                        }">우리가 함께 구한 것</h1>
-                        <p class="mb-4">우리가 함께 구한 것
-                            농산물의 폐기 문제는 지구 온난화의 원인이 되고 
-                            물과 비료 , 노동 에너지의 낭비에 이어져 고민이 깊어만 갑니다.</p>
-                        <p class="mb-4">개성있는 외모 농산물의 가치를 찾고 건강한 땅을 위한 농부의 땀과 노력을 함께 담아
-                            꿍야의 건강한 식탁과 미래를 위한 환경을 만들어갑니다.</p>
+                        }"></h1>
+                        <p class="mb-4">
+                            SAVE NOT UGLY, BUT GLORY PRODUCTS<br>
+                            맛과 영양에는 문제 없지만 못생겼다는 이유로 폐기되는 농산물은
+                            농부의 소득을 저하하고 많은 쓰레기를 유발합니다.<br>
+                            물과 비료, 노동에너지의 낭비를 줄이고 
+                            궁극적으로는 지구를 구하는 길에 동참합니다. 
+                        <p class="mb-4">
+                            농부의 땀과 노력으로 이루어진 농산물의 가치를 발견하여
+                            모두의 건강한 식탁과 미래를 위한 환경을 만들어갑니다.</p>
                         <div class="row g-4 mb-4">
                             <div class="col-sm-6">
                                 <div class="d-flex align-items-center border-start border-5 border-primary px-3">
@@ -91,14 +94,14 @@
                                 <div class="d-flex align-items-center border-start border-5 border-primary px-3">
                                     <h1 class="flex-shrink-0 display-5 text-primary mb-0" data-toggle="counter-up">81,455</h1>
                                     <div class="ps-4">
-                                        <p class="mb-0">vegiterable</p>
+                                        <p class="mb-0">Vegiterable</p>
                                         <h6 class="text-uppercase mb-0 mission-about">구출한 채소</h6>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div>
-                            <a class="btn btn-primary py-3 px-5 mt-2" href="">Mission About</a>
+                            <a class="btn btn-primary py-3 px-5 mt-2" href="${contextPath}/common/mission">Mission About</a>
                         </div>
                     </div>
                 </div>
@@ -112,25 +115,23 @@
             <div class="container">
                 <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
                     <h5 class="section-title ff-secondary text-center text-primary fw-normal">Market</h5>
-                    <h1 class="mb-5">delivery of merchandise</h1>
+                    <h1 class="mb-5">DELIVERY</h1>
                 </div>
                 <div class="tab-class text-center wow fadeInUp" data-wow-delay="0.1s">
                     <ul class="nav nav-pills d-inline-flex justify-content-center border-bottom mb-5">
                         <li class="nav-item">
                             <a class="d-flex align-items-center text-start mx-3 ms-0 pb-3 active" data-bs-toggle="pill" href="#tab-1">
-                                <i class="fa fa-coffee fa-2x text-primary"></i>
                                 <div class="ps-3">
-                                    <small class="text-body">이번주</small>
-                                    <h6 class="mt-n1 mb-0"> 배송상품</h6>
+                                    <small class="text-body">GOODS TO BE RECEIVED</small>
+                                    <h6 class="mt-n1 mb-0">THIS WEEK</h6>
                                 </div>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="d-flex align-items-center text-start mx-3 pb-3" data-bs-toggle="pill" href="#tab-2">
-                                <i class="fa fa-hamburger fa-2x text-primary"></i>
                                 <div class="ps-3">
-                                    <small class="text-body">다음주</small>
-                                    <h6 class="mt-n1 mb-0">배송상품</h6>
+                                    <small class="text-body">GOODS TO BE RECEIVED</small>
+                                    <h6 class="mt-n1 mb-0">NEXT WEEK</h6>
                                 </div>
                             </a>
                         </li>
@@ -283,6 +284,7 @@
                     <h5 class="section-title ff-secondary text-center text-primary fw-normal">Subscription method</h5>
                     <h1 class="mb-5">구독, 이렇게 진행돼요</h1>
                 </div>
+
                 <div class="row g-4">
                     <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="team-item text-center rounded overflow-hidden">
