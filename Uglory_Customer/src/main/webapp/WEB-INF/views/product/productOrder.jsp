@@ -3,6 +3,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"  %>
 
 <c:set var="selectOptionList" value="${map.selectOptionList}" />
+<c:set var="cartList" value="${map.cartList}" />
 
 <!DOCTYPE html>
 <html lang="en">
@@ -54,7 +55,7 @@
         <!-- 상품, 옵션, 개별상품주문정보, 결제 테이블 -->
         <!-- 결제페이지 -->
         <section class="product-order">
-            <h4 class="order-info">배송지 정보</h4>
+            <h4 class="order-info" style="margin-top: 100px;">배송지 정보</h4>
                        <%--  onsubmit="return orderValidate()" --%>
             <form action="order" method="POST">
                 <div class="product-order-area">
@@ -117,7 +118,9 @@
                                     </c:if>
 
                                     <c:if test="${fl == 'true'}">
+
                                         <a href="${contextPath}/product/detail/${selectOption.productCategoryNo}/${selectOption.productCode}">${selectOption.productName}</a>
+
                                     </c:if>
 
                                 </c:forEach>
