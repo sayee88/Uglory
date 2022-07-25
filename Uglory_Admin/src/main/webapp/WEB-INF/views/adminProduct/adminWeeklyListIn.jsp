@@ -76,6 +76,14 @@
                             </table>
                         </div>
 
+                        <div class="product-row text-secondary mb-2">
+                            <div class="standard text-end">가격</div>
+                            <div>
+                                <span id="del-price"></span>
+                                <span>/ 20000</span>
+                            </div>
+                        </div>
+
                         <!-- ajax로 만들어야 하는 부분 -->
                         <div class="product-row m-2 mb-4 bg-white rounded p-2">
                             <select id="pList" class="pListItem">
