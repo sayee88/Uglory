@@ -45,12 +45,12 @@
 <body>
     <jsp:include page="/WEB-INF/views/common/header-1.jsp" />
 
-           param ${param.box}<hr>
+           <%-- param ${param.box}<hr>
            request ${requestScope.box}<hr>
            session ${sessionScope.box}<hr>
            orderInfo = ${orderInfo.box}<hr>
            loginMember ${loginMember}<hr>
-                      ${orderInfo}<hr>
+                      ${orderInfo}<hr> --%>
 
 
 
