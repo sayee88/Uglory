@@ -98,8 +98,10 @@
                     product_img.classList.add("soldout");
             
                     const soldoutImg = document.createElement("img");
-                    starImg.setAttribute("src", contextPath + "/resources/img/product/품절스티커.png");
-                    starImg.classList.add("soldout-sticker");
+                    soldoutImg.classList.add("soldout-sticker");
+                    soldoutImg.setAttribute("src", contextPath + "/resources/img/product/품절스티커.png");                
+                    
+                    box.append(soldoutImg)
                 }
             
                 
@@ -271,15 +273,19 @@ function category(selectCategoryNo){
                 const a = document.createElement("a");
                 a.setAttribute("href", "detail/"+product.categoryNo+"/"+product.productCode);
             
+
                 // 품절시 추가
                 if(product.productState == "O"){ 
                     product_img.classList.add("soldout");
             
                     const soldoutImg = document.createElement("img");
-                    starImg.setAttribute("src", contextPath + "/resources/img/product/품절스티커.png");
-                    starImg.classList.add("soldout-sticker");
+                    soldoutImg.classList.add("soldout-sticker");
+                    soldoutImg.setAttribute("src", contextPath + "/resources/img/product/품절스티커.png");                
+                    
+                    box.append(soldoutImg)
                 }
             
+                
             
                 star1.append(i1);
                 star_wrap1.append(star1);
@@ -295,7 +301,7 @@ function category(selectCategoryNo){
 
                 star5.append(i5);
                 star_wrap5.append(star5);
-
+                
                 rating.append(star_wrap1, star_wrap2, star_wrap3, star_wrap4, star_wrap5);
                 review_star.append(rating, rc);
                 flex_container.append(h5, review_star);
