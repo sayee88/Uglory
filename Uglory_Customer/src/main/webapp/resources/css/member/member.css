@@ -475,12 +475,21 @@
    
 }
 .subscribe-box{
-    margin-left: 1.25rem;
-    margin-right: 1.25rem;
-    height: 270px;
+   
+    height: 450px;
 
     border-width: 1px;
     border-radius: .125rem;
+    --tw-border-opacity: 1;
+    border-color: rgba(229,231,235,var(--tw-border-opacity));
+    --tw-bg-opacity: 1;
+    background-color: #eee;
+}
+.subscribe-box-1{
+   
+    height: 300px;
+    border-width: 1px;
+    border-radius: 0.125rem;
     --tw-border-opacity: 1;
     border-color: rgba(229,231,235,var(--tw-border-opacity));
     --tw-bg-opacity: 1;
@@ -523,6 +532,10 @@
 
 }
 
+.subBox{
+    display: flex;
+    justify-content: center;
+}
 /* 주문 내역 */
 .order-section{
     /* float: right; */
