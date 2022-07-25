@@ -55,7 +55,10 @@ public class MemberController {
 	
 	// 개별 주문 목록 내역 조회
 	@GetMapping("/orderHistory")
-	public String orderHistory(Model model, @ModelAttribute("loginMember") Member loginMember) {
+	public String orderHistory(Model model, @ModelAttribute("loginMember") Member loginMember
+															) {
+		
+		
 		List<OrderHistory> orderHistoryList = service.selectOrderHistoryList(loginMember.getMemberNo());
 
 		model.addAttribute("orderHistoryList", orderHistoryList);
@@ -151,7 +154,7 @@ public class MemberController {
 		Map<String , Object> map = new HashMap<String, Object>();
 		
 		map.put("memberNo", loginMember.getMemberNo());
-		map.put("choise", choice);
+		map.put("choice", choice);
 		
 		
 		int result = service.secession(map);
@@ -223,7 +226,7 @@ public class MemberController {
 							RedirectAttributes ra, Model model) {
 		
 		int memberNo = loginMember.getMemberNo();
-		
+	
 		int result = service.subCancel(memberNo);
 		
 		String message = null;

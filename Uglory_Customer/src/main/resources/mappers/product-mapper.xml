@@ -29,6 +29,7 @@
 		<result property="optionPrice" column="OPTION_PRICE"/>
 		<result property="productName" column="PRODUCT_NM"/>
 		<result property="productCategoryNo" column="P_CATEGORY_NO"/>
+		<result property="optionNo" column="OPTION_NO"/>
 	</resultMap>
 	
 	<!-- 장바구니 조회 resultMap -->
@@ -55,9 +56,13 @@
 	
 	<!-- 상품 상세 페이지 별점 조회 -->
 	<select id="selectStar" resultType="_double">
-		SELECT ROUND((((SELECT SUM(STAR_RATING) FROM REVIEW R4 WHERE R4.P_CD=P.P_CD) / (SELECT COUNT(*) FROM REVIEW R5 WHERE R5.P_CD=P.P_CD))/2),1)
+		SELECT CASE WHEN  (SELECT COUNT(*) FROM REVIEW R3 WHERE R3.P_CD=P.P_CD) = 0 THEN 0
+		        ELSE  ROUND((((SELECT SUM(STAR_RATING) FROM REVIEW R4 WHERE R4.P_CD=P.P_CD) / (SELECT COUNT(*) FROM REVIEW R5 WHERE R5.P_CD=P.P_CD))/2),1)
+		        END AS STAR_AVG
 		FROM PRODUCT P
 		WHERE P.P_CD = ${productCode}
+		
+		
 	</select>
 	
 	<!-- 상품 상세 페이지 리뷰 수 조회 -->
@@ -79,6 +84,20 @@
 			#{item}
 		</foreach>
 	</select>
+	
+	<!-- 장바구니 -> 결제 옵션 조회 -->
+	<select id="cartOrder" resultMap="orderOptionProduct_rm">
+		SELECT OPTION_CD, OPTION_NM, OPTION_PRICE, PRODUCT_NM, P_CD, P_CATEGORY.P_CATEGORY_NO
+		FROM OPTION_TB
+		JOIN OPTION_TYPE USING(OPTION_CD)
+		JOIN PRODUCT USING(P_CD)
+		JOIN P_CATEGORY ON(PRODUCT.P_CATEGORY_NO = P_CATEGORY.P_CATEGORY_NO)
+		WHERE OPTION_NO IN
+		<foreach item="item" collection="optionNoList" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</select>
+	
 	
 	<!-- 주문번호 생성 -->
 	<select id="createProductOrderCode" resultType="string">
@@ -153,5 +172,19 @@
 		WHERE MEMBER_NO = #{memberNo}
 		AND OPTION_NO = #{optionNoDelete}
 	</delete>
+	
+	<!-- 장바구니 내 옵션 수량 변경 - Minus -->
+	<update id="minusCount">
+		UPDATE OPTION_TB SET
+		OPTION_COUNT = ${optionMinusCount}
+		WHERE OPTION_NO = #{optionNoMinus}
+	</update>
+	
+	<!-- 장바구니 내 옵션 수량 변경 - PLUS -->
+	<update id="plusCount">
+		UPDATE OPTION_TB SET
+		OPTION_COUNT = ${optionPlusCount}
+		WHERE OPTION_NO = #{optionNoPlus}
+	</update>
 </mapper>
 

@@ -132,5 +132,30 @@ public class ProductDAO {
 		return sqlSession.delete("productMapper.cartDelete", optionDeleteMap);
 	}
 
+	/** 장바구니 내 옵션 수량 변경 - Minus
+	 * @param cartMinus
+	 * @return result
+	 */
+	public int minusCount(Map<String, Object> cartMinus) {
 
+		return sqlSession.update("productMapper.minusCount", cartMinus);
+	}
+
+	/** 장바구니 내 옵션 수량 변경 - PLUS
+	 * @param cartPlus
+	 * @return result
+	 */
+	public int plusCount(Map<String, Object> cartPlus) {
+		
+		return sqlSession.update("productMapper.plusCount", cartPlus);
+	}
+
+	/**  장바구니 -> 주문 페이지 내 옵션에 따른 상품, 옵션 조회
+	 * @param optionNoList
+	 * @return selectOptionList
+	 */
+	public List<OptionType> cartOrder(Map<String, Object> map) {
+		
+		return sqlSession.selectList("productMapper.cartOrder", map);
+	}
 }
