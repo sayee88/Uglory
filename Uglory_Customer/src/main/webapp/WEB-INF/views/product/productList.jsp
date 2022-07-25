@@ -102,17 +102,6 @@
             
             <div class="line"></div>
 
-             <div class="review-star">
-                <div class="rating" data-rate="3.5">
-                    <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
-                    <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
-                    <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
-                    <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
-                    <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
-                </div>
-                <p>(49)</p>
-            </div>
-
 
             <!-- 상품 카테고리 -->
             <div class="category">
