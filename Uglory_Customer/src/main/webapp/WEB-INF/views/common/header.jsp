@@ -54,14 +54,16 @@
                 <div class="container my-5 py-5">
                     <div class="row align-items-center g-5">
                         <div class="col-lg-6 text-center text-lg-start">
-                            <h1 class="display-3 text-white animated slideInLeft">Reap every crop<br></h1>
-                            <p class="text-white animated slideInLeft mb-4 pb-2">Hello, we are vegetable village. 
-                                Our goal is an interview.
-                                Our motto is don't be scared.
-                                I have one person to introduce.
-                                It's our happy virus and positive vitamin.Let me introduce you!
-                                Go Eunbi!</p>
-                            <a href="" class="btn btn-primary py-sm-3 px-sm-5 me-3 animated slideInLeft">Booking</a>
+                            <h1 class="display-3 text-white animated slideInLeft">REAP EVERY CROP<br></h1>
+                            <p class="text-white animated slideInLeft mb-4 pb-2">
+                                There is no fruit that is not precious.<br>
+                                We sell products that are discarded<br>
+                                because they have no problem with taste and nutrition<br>
+                                but do not meet consumer standards.<br>
+                                We want to change the structure that lowers farmers' incomes,<br>
+                                generates a lot of waste and creates unnecessary waste.<br> 
+                                ALL CROPS ARE PRECIOUS!</p>
+                            <a href="${contextPath}/subscription" class="btn btn-primary py-sm-3 px-sm-5 me-3 animated slideInLeft">SUBSCRIBE</a>
                         </div>
                         <div class="col-lg-6 text-center text-lg-end overflow-hidden">
                             <img class="img-fluid" src="${contextPath}/resources/img/main/vagetable.png" alt="">
