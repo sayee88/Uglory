@@ -23,8 +23,6 @@ if(sum < 30000){
 function calcPrice(){
     let productPrice1 = document.getElementsByClassName("productCartPrice");
     let checkBox = document.getElementsByClassName("cart-check");
-
-    console.log(productCode);
     let sum = 0;
 
     for(let i=0; i<productPrice1.length; i++){
@@ -136,7 +134,23 @@ for(const plusBtn of plusBtnList){
         const optionplusCount = plusBtn.previousElementSibling; 
         optionplusCount.innerText = Number(optionplusCount.innerText) + 1;   
         optionCal(e.target, 1);
-        calcPrice();  
+        calcPrice();
+
+        $.ajax({
+            url : contextPath + "/product/cartPlus",
+            data : {"plusOptionNo" : plusOptionNo,
+                    "optionPlusCount" : optionplusCount.innerText,
+                    },
+            type : "POST",
+
+            success : function(){
+                console.log("수량 변경 성공");
+            },
+            error : function(request, status, error){
+				console.log("에러 발생");
+				console.log("상태코드 : " + request.status); 
+			}
+        });
     });
 }
 
@@ -158,31 +172,76 @@ function optionCal(target, num){
     target.parentElement.nextElementSibling.children[0].innerText = productPrice + (opPrice * optionCount) ;
 }
 
+let optionNoList = [];
 
-let chkOptionNoArr = []; 
 // 체크한 박스만 가져오기
 function getCheckboxValue(event)  {
 
     calcPrice();
     const checkBoxList = document.getElementsByClassName("cart-check");
-    for(const checkBox of checkBoxList){
-        if(checkBox.checked)  {
-            chkOptionNoArr.push(Number(checkBox.getAttribute("value")));
-            //chkOptionNoList = event.target.getAttribute("value");
-        } 
+
+    for(checkBox of checkBoxList){
+        if(checkBox.checked){
+
+            checkBox.nextElementSibling.setAttribute("name", "optionNo");
+            // optionNo
+            //optionNoList.push(Number(checkBox.nextElementSibling.value));
+            //console.log(optionNoList);
+
+        } else {
+            checkBox.nextElementSibling.setAttribute("name", "unableNo");
+        }
     }
-  }
+    // 체크되었을 때
+    
+//     for(let j=0; j<checkBoxList.length; j++){
+
+//         checkBoxList.setAttribute("dis")
+
+//         disabled
+//         // if(checkBoxList[j].checked)  {
+
+//             // productCode 얻어오기
+//             const productClassList = checkBoxList[j].parentElement.nextElementSibling.children[1].getElementsByClassName("productA");
+
+//             for(productClass of productClassList){
+//                 productCode.push(productClass.getAttribute("value").replace("productCode-", ""));
+//             }
+
+//             console.log(productCode);
+
+//             // optionCode 얻어오기
+//             const optionCodeList = checkBoxList[j].nextElementSibling.value;
+
+
+//             const optionCountList = document.getElementsByClassName("option-count");
+
+//             for(let i=0 ; i< optionCode.length ; i++){
+//                 optionObj[optionCode] = Number(optionCode[i].innerText);
+//             }
+
+//             //chkOptionNoList = event.target.getAttribute("value");
+//     //}
+
+//   }
+}
 
 // // 결제페이지로
 // // 체크된 productCode, 옵션 수량, 체크한 optionCode, 총 가격
 
+
+const optionObj = {};
+const productCode = [];
+
 function orderValidate(){
 
-    console.log(totalPrice);
     if(!confirm("결제 페이지로 이동합니다.")){ // 취소 버튼
         return false;
 
     } else { // 확인
+
+        console.log(productCode);
+        console.log(optionObj);
 
         /// 총 가격
         const input1 = document.createElement("input");
@@ -190,9 +249,20 @@ function orderValidate(){
 		input1.setAttribute("name", "totalAmount");
         input1.setAttribute("value", document.getElementById("cartTotalPrice").innerText);
 
-        const input2 = document.createElement("input");
-		input2.setAttribute("type", "hidden");
-		input2.setAttribute("name", "optionNo");
-        input2.setAttribute("value", chkOptionNoArr);
+        // 옵션 No
+        // const input2 = document.createElement("input");
+		// input2.setAttribute("type", "hidden");
+		// input2.setAttribute("name", "optionNo");
+        // input2.setAttribute("value", optionNoList);
+
+        // // productCode
+        // const input3 = document.createElement("input");
+        // input3.setAttribute("type", "hidden");
+        // input3.setAttribute("name", "productCode");
+        // input3.setAttribute("value", productCode);
+
+        //document.orderForm.append(input1, input2);
+        document.orderForm.append(input1);
+
     }
 }
