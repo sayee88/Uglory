@@ -88,7 +88,7 @@
 	
 	<!-- 장바구니 -> 결제 옵션 조회 -->
 	<select id="cartOrder" resultMap="orderOptionProduct_rm">
-		SELECT OPTION_CD, OPTION_NM, OPTION_PRICE, PRODUCT_NM, P_CD, P_CATEGORY.P_CATEGORY_NO, OPTION_COUNT
+		SELECT OPTION_CD, OPTION_NM, OPTION_PRICE, PRODUCT_NM, P_CD, P_CATEGORY.P_CATEGORY_NO, OPTION_COUNT, OPTION_NO
 		FROM OPTION_TB
 		JOIN OPTION_TYPE USING(OPTION_CD)
 		JOIN PRODUCT USING(P_CD)
@@ -187,5 +187,20 @@
 		OPTION_COUNT = ${optionPlusCount}
 		WHERE OPTION_NO = #{optionNoPlus}
 	</update>
+	
+	<!-- 장바구니 -> 결제 성공 시 OPTION_TB 업데이트 -->
+	<update id="updateOptionTb">
+		UPDATE OPTION_TB SET
+		P_ORDER_CD = #{pOrderCode}
+		WHERE OPTION_NO = ${optionNo}
+	</update>
+	
+	<!-- 장바구니 -> 결제 성공 시 CART 테이블 삭제 -->
+	<delete id="deleteCart">
+		DELETE 
+		FROM CART
+		WHERE MEMBER_NO = #{memberNo}
+		AND OPTION_NO = ${optionNo}
+	</delete>
 </mapper>
 

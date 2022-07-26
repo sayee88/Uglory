@@ -12,6 +12,10 @@ import edu.kh.ugloryC.product.model.vo.ProductCart;
 import edu.kh.ugloryC.product.model.vo.ProductDetail;
 import edu.kh.ugloryC.product.model.vo.ProductOrder;
 
+/**
+ * @author user1
+ *
+ */
 @Repository
 public class ProductDAO {
 
@@ -157,5 +161,23 @@ public class ProductDAO {
 	public List<OptionType> cartOrder(Map<String, Object> map) {
 		
 		return sqlSession.selectList("productMapper.cartOrder", map);
+	}
+ 
+	/** 장바구니 - 결제 성공 시 OPTION_TB UPDATE
+	 * @param optionUpdateMap
+	 * @return result
+	 */
+	public int updateOptionTb(Map<String, Object> optionUpdateMap) {
+		
+		return sqlSession.update("productMapper.updateOptionTb", optionUpdateMap);
+	}
+
+	/** 장바구니 -> 결제 진행 시 장바구니 테이블 삭제
+	 * @param cartDelteMap
+	 * @return result
+	 */
+	public int deleteCart(Map<String, Object> cartDelteMap) {
+
+		return sqlSession.delete("productMapper.deleteCart", cartDelteMap);
 	}
 }

@@ -130,6 +130,11 @@ document.getElementById("order-btn").addEventListener("click", function(){
     const pOrderAddress2 = document.getElementsByClassName("p-orderAddress")[1].value;
     const pOrderReq = document.getElementById("p-orderReq").value;
 
+
+    if(pOrderName.length == 0 || pOrderPhone.length == 0 || pOrderAddress1.length == 0 || pOrderAddress2.length == 0){
+        
+
+    }
     if( !agree.checked ){ // 체크를 안했을 때
         alert("약관 동의 후 주문 버튼을 클릭해주세요.");
         agree.focus();
@@ -141,6 +146,16 @@ document.getElementById("order-btn").addEventListener("click", function(){
             return;
 
         } else {
+
+            console.log(optionNoList);
+            console.log(productName);
+            
+            if(productName == ''){
+                const nameList = document.querySelectorAll(".orderProductName > a");
+                
+                productName = nameList[0].innerText + " 외 " + (nameList.length - 1) + "개"
+            }
+            console.log(productName);
             // 개별상품 결제
             var IMP = window.IMP; 
             IMP.init("imp33404182"); 
@@ -155,6 +170,8 @@ document.getElementById("order-btn").addEventListener("click", function(){
                 buyer_tel : pOrderPhone
 
             }, function (rsp) { // callback
+
+                console.log(rsp);
                 if (rsp.success) {
                     $.ajax({
                         url : contextPath + "/product/order",
@@ -169,7 +186,8 @@ document.getElementById("order-btn").addEventListener("click", function(){
                             "totalAmount" : totalAmount ,
                             "productPayNo" : productPayNo,
                             "optionCodeList" : optionCodeList,
-                            "amountList" : amountList
+                            "amountList" : amountList,
+                            "optionNoList" : optionNoList
                         },
 
                         type : "POST",
