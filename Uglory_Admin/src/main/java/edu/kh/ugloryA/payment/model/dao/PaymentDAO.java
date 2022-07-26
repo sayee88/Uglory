@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Repository;
 
 import edu.kh.ugloryA.payment.model.vo.Chart;
 import edu.kh.ugloryA.payment.model.vo.MonthlyChart;
+import edu.kh.ugloryA.payment.model.vo.Pagination;
 import edu.kh.ugloryA.payment.model.vo.Payment;
 import edu.kh.ugloryA.payment.model.vo.ProductPaymentDetail;
 import edu.kh.ugloryA.payment.model.vo.Refund;
@@ -26,29 +28,61 @@ public class PaymentDAO {
 	private Logger logger = LoggerFactory.getLogger(PaymentDAO.class);
 
 	
+	/**
+	 * 결제내역 전체 개수 조회 DAO
+	 */
+	public int listCount() {
+		return sqlSession.selectOne("paymentMapper.listCount");
+	}
+	
 	
 	/**
 	 * 전체 결제 내역 조회 DAO
+	 * @param pagination 
 	 * @return
 	 */
-	public List<Payment> selectAllPayment() {
-		return sqlSession.selectList("paymentMapper.selectAllPayment");
+	public List<Payment> selectAllPayment(Pagination pagination) {
+		
+		int offset = (pagination.getCurrentPage()-1) * pagination.getLimit();
+		
+		RowBounds rowbounds = new RowBounds(offset, pagination.getLimit());
+		
+		return sqlSession.selectList("paymentMapper.selectAllPayment", null, rowbounds);
 	}
 
+	/**
+	 * 결제내역 검색 개수 조회 DAO
+	 * @return
+	 */
+	public int searchListCount(String key, String query) {
+		
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		
+		paramMap.put("key", key);
+		paramMap.put("query", query);
+		
+		return sqlSession.selectOne("paymentMapper.searchListCount", paramMap);
+	}
+	
 	
 	/**
 	 * 결제 내역 검색 조회 DAO
 	 * @param key
 	 * @param query
+	 * @param pagination 
 	 * @return
 	 */
-	public List<Payment> searchPayment(String key, String query) {
+	public List<Payment> searchPayment(String key, String query, Pagination pagination) {
+		
+		int offset = (pagination.getCurrentPage() -1) * pagination.getLimit();
+		
+		RowBounds rowbounds = new RowBounds(offset, pagination.getLimit());
 		
 		Map<String,	Object> map = new HashMap<String, Object>();
 		map.put("key", key);
 		map.put("query", query);
 		
-		return sqlSession.selectList("paymentMapper.searchPayment", map);
+		return sqlSession.selectList("paymentMapper.searchPayment", map, rowbounds);
 	}
 
 
@@ -171,6 +205,9 @@ public class PaymentDAO {
 	public List<MonthlyChart> selectMonthlyChartData() {
 		return sqlSession.selectList("paymentMapper.selectMonthlyChartData");
 	}
+
+
+
 	
 	
 
