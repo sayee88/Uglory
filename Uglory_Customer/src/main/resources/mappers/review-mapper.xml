@@ -162,7 +162,7 @@
 	 	SELECT SEQ_REVIEW_IMG_NO.NEXTVAL REVIEW_IMG_NO, A.* FROM(
 	 		
 	 		<foreach collection="list" item="img" separator="UNION ALL">
-	 			SELECT 	#{img.reviewImageReName} REVIEW_IMG_RENAME,
+	 			SELECT 	#{img.reviewImageRename} REVIEW_IMG_RENAME,
 	 					#{img.reviewImageLevel} REVIEW_IMG_LEVEL,
 	 					#{img.reviewNo} REVIEW_NO
 	 			FROM DUAL
