@@ -216,7 +216,7 @@ function createBox(item){
     contentText.setAttribute("data-bs-target", "#exampleModal");
     contentText.style.color = "black";
     // contentText 리뷰 내용 넣어주기
-    contentText.innerText = item.reviewContent;
+    contentText.innerHTML = item.reviewContent;
 
 
     const contentBottom = document.createElement("div");
@@ -596,6 +596,4 @@ document.getElementsByClassName("product")[0].addEventListener("click", function
 
 
 // br 태그 제거
-const reg = /<[^>]*>?/g
-
-String.replace(/<[^>]*>?/g, '');
+text = text.replace(/<(\/)?([a-zA-Z]*)(\s[a-zA-Z]*=[^>]*)?(\s)*(\/)?>/ig, "");
