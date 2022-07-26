@@ -70,7 +70,7 @@
                             src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts2201-3@1.0/ROKAFSansBold.woff') format('woff');
                             font-weight: normal;
                             font-style: normal;
-                        }"></h1>
+                        }">우리가 함께 구한 것</h1>
                         <p class="mb-4">
                             SAVE NOT UGLY, BUT GLORY PRODUCTS<br>
                             맛과 영양에는 문제 없지만 못생겼다는 이유로 폐기되는 농산물은
@@ -121,15 +121,17 @@
                     <ul class="nav nav-pills d-inline-flex justify-content-center border-bottom mb-5">
                         <li class="nav-item">
                             <a class="d-flex align-items-center text-start mx-3 ms-0 pb-3 active" data-bs-toggle="pill" href="#tab-1">
-                                <div class="ps-3">
-                                    <small class="text-body">GOODS TO BE RECEIVED</small>
+                                    <i class="fa fa-coffee fa-2x text-primary"></i>
+                                <div class="ps-3 mx-4">
+                                    <small class="text-body ml-5">GOODS TO BE RECEIVED</small>
                                     <h6 class="mt-n1 mb-0">THIS WEEK</h6>
                                 </div>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="d-flex align-items-center text-start mx-3 pb-3" data-bs-toggle="pill" href="#tab-2">
-                                <div class="ps-3">
+                                    <i class="fa fa-hamburger fa-2x text-primary"></i>
+                                <div class="ps-3 mx-4">
                                     <small class="text-body">GOODS TO BE RECEIVED</small>
                                     <h6 class="mt-n1 mb-0">NEXT WEEK</h6>
                                 </div>
