@@ -326,6 +326,16 @@
 
     <script>const contextPath = '${contextPath}'</script>
 
+    <script type="text/javascript">
+        tmp = tmp.replace(/<(\/?)p>/gi,"");//p태그 제거 
+        tmp = tmp.replace(/(<br>)|(<br />)/gi,"");//br태그 제거 
+        tmp = tmp.replace(/\s/gi,"");//공백제거 
+        tmp = tmp.replace(/&nbsp;/gi,"");//공백제거 
+        tmp = tmp.replace(/<head>(.*?)<(\/?)head>/gi,"");//head에 포한됨 모든 내용 제거 
+        tmp = tmp.replace(/<style>(.*?)<(\/?)style>/gi,"");//style 태그에 포함된 모든 내용 제거
+        tmp = tmp.replace(/<(\/?)body>/gi,"");//body 태그 제거
+    </script>
+
     <!-- jQuery 추가 -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 

@@ -595,4 +595,7 @@ document.getElementsByClassName("product")[0].addEventListener("click", function
 
 
 
+// br 태그 제거
+const reg = /<[^>]*>?/g
 
+String.replace(/<[^>]*>?/g, '');
