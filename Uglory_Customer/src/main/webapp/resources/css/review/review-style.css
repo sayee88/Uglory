@@ -213,7 +213,6 @@
 }
 
 .rating{
-    text-align: end;
     padding-right: 10px;
 }
 
@@ -649,7 +648,7 @@
 }
 
 .myReview-star > .myRating{
-    text-align: start;
+    text-align: end;
 }
 
 .content-info > div:nth-of-type(1){

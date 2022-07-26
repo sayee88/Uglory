@@ -142,6 +142,16 @@ public interface ReviewService {
 	List<ReviewDetail> selectReviewDetail(int reviewNo);
 
 
+
+	/**
+	 * 리뷰 삭제
+	 * @param reviewNo
+	 * @param reviewCode 
+	 * @return result
+	 */
+	int reviewDelete(int reviewNo, int reviewCode);
+
+
 	
 	
 
