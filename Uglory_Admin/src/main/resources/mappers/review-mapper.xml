@@ -93,6 +93,28 @@
 	<select id="countReview" resultType="_int">
 		SELECT COUNT(*) FROM REVIEW WHERE REVIEW_CD IN (1,2)
 	</select>
+	
+	
+	
+	<select id="searchListCount" resultType="_int">
+		SELECT COUNT(*) FROM 
+			(SELECT REVIEW_NO, REVIEW_ENROLL_DT, MEMBER_NAME, REVIEW_CONTENT
+			FROM REVIEW
+			JOIN MEMBER USING(MEMBER_NO)
+			<if test='query != null and query !=""'>
+				WHERE
+				<choose>
+					<when test='key == "enrollDate"'>
+						REVIEW_ENROLL_DT BETWEEN TO_DATE('${query}', 'YYYY/MM/DD') AND TO_DATE('${query}', 'YYYY/MM/DD') + 0.99999
+					</when>
+					<when test='key == "customerName"'>
+						MEMBER_NAME LIKE '%${query}%'
+					</when>
+				</choose>
+			</if>
+			AND REVIEW_CD IN (1,2)
+			ORDER BY REVIEW_ENROLL_DT DESC)
+	</select>
 
 
 
