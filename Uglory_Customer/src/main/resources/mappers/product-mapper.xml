@@ -30,6 +30,7 @@
 		<result property="productName" column="PRODUCT_NM"/>
 		<result property="productCategoryNo" column="P_CATEGORY_NO"/>
 		<result property="optionNo" column="OPTION_NO"/>
+		<result property="optionCount" column="OPTION_COUNT"/>
 	</resultMap>
 	
 	<!-- 장바구니 조회 resultMap -->
@@ -87,7 +88,7 @@
 	
 	<!-- 장바구니 -> 결제 옵션 조회 -->
 	<select id="cartOrder" resultMap="orderOptionProduct_rm">
-		SELECT OPTION_CD, OPTION_NM, OPTION_PRICE, PRODUCT_NM, P_CD, P_CATEGORY.P_CATEGORY_NO
+		SELECT OPTION_CD, OPTION_NM, OPTION_PRICE, PRODUCT_NM, P_CD, P_CATEGORY.P_CATEGORY_NO, OPTION_COUNT
 		FROM OPTION_TB
 		JOIN OPTION_TYPE USING(OPTION_CD)
 		JOIN PRODUCT USING(P_CD)
