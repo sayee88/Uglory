@@ -221,6 +221,7 @@
                                 <div>
                                     <div class="unWritten-list">
                                         <div class="unWritten-productList">
+                                            <%-- 상품이미지 받아오기 --%>
                                             <img src="${contextPath}/resources/img/product/banana.png">
                                         </div>
                                         <div>

@@ -54,7 +54,7 @@
                 <%-- 구독 상품이 없을 때  --%>
                 <c:if test="${subCount == 0}">
                 <div class=sub-area>
-                    <div class="subscribe-box">
+                    <div class="subscribe-box-1">
                         <div class="subscribe-situation">
                             <p>구독 중인 박스가 없어요!!</p>
                         </div>
@@ -82,6 +82,21 @@
                                 <p>${substatus.subCycle}주 마다 이용 중 입니다.</p>
                             </div>
 
+                            <c:if test="${substatus.subName == '스탠다드'}">
+
+                                <div class= "subBox">
+                                    <img src="${contextPath}/resources/img/product/standard.png" style="width:250px; height:180px">
+                                </div>
+
+                            </c:if>
+
+                            <c:if test="${substatus.subName == '점보'}">
+
+                                <div class= "subBox">
+                                    <img src="${contextPath}/resources/img/product/jumbo.png" style="width:250px; height:180px">
+                                </div>
+
+                            </c:if>
 
                             <div class="subscribeBtn">
                                 <button type="submit" class="subscribe-btn">어글로리 구독 취소</button>

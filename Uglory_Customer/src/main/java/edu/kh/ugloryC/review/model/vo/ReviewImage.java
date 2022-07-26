@@ -10,7 +10,7 @@ import lombok.Setter;
 public class ReviewImage {
 	
 	private int reviewImageNo;
-	private String reviewImageReName;
+	private String reviewImageRename;
 	private String reviewImageOriginal;
 	private int reviewImageLevel;
 	private int reviewNo;

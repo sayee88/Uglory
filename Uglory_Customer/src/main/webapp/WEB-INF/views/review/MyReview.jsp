@@ -160,7 +160,7 @@
                         <c:forEach var="mr" items="${reviewSelectInfo}">
                             <div class="myreview-list">
                                 <div class="myreview-content">
-                                    <div class="myreview-image"><img src="${mr.thumbnail}"></div>
+                                    <div class="myreview-image"><img src="${contextPath}${mr.thumbnail}"></div>
                                     <div class="content-info">
                                         <div class="myReview-star">
                                             <div class="rating" data-rate="${mr.starRating}">
