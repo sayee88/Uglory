@@ -225,6 +225,14 @@ public class ReviewServiceImpl implements ReviewService{
 	@Override
 	public List<ReviewSelectInfo> allRevieList() {
 		
+//		List<ReviewSelectInfo> list = dao.allReviewList()
+		
+		// 1) XSS 방지 처리 + 개행문자 처리
+//		for(c : list) {
+//			list.setReviewContent(Util.XSSClear(list.getReviewContent()));
+//		}
+		
+		
 		return dao.allRevieList();
 	}
 
