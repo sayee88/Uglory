@@ -57,7 +57,7 @@
             <c:if test="${empty productCartList}">
             <!-- 장바구니 개수 -->
             <h4 class="cart-count" style="margin-top: 100px;">장바구니 상품</h4>
-                <div class="empty-product-cart">
+                <div class="empty-product-cart" style="margin-bottom:500px;">
                     <p>장바구니에 담긴 상품이 없습니다.</p>
                 </div> 
             </c:if>
@@ -140,10 +140,10 @@
                         <p>총 상품금액</p> <p><span id="cartPrice">0</span>원</p>
                     </div>
 
-                    <div class="total-del-amount">
+                    <%-- <div class="total-del-amount">
 
                         <p>총 배송비</p> <p><span id="delTotalPrice">0</span>원</p>
-                    </div>
+                    </div> --%>
 
                     <button type="submit" id="product-order">주문하기</button>
 

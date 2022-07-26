@@ -289,12 +289,13 @@
      <script>
         const contextPath = "${contextPath}";
         const pOrderCode = "${map.pOrderCode}";
-        const productName = "${selectOptionList[0].productName}";
+        let productName = "${selectOptionList[0].productName}";
         const totalAmount = "${map.totalAmount}"
         const productPayNo = "${map.productPayNo}";
         const memberNo = "${loginMember.memberNo}";
         const amountList = "${map.amountList}";
         const optionCodeList = "${map.optionCodeList}";
+        const optionNoList = "${map.optionNoList}";
 
      </script>
 
