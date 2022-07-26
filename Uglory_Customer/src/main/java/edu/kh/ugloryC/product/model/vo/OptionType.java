@@ -17,6 +17,7 @@ public class OptionType {
 	private String productName;
 	private int productCode;
 	private int productCategoryNo;
+	private int optionCount;
 	
 	private int optionNo;
 	

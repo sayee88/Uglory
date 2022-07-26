@@ -139,7 +139,8 @@ public class ProductController {
 	
 	// 장바구니 - 결제페이지 
 	@GetMapping("/cartOrder")
-	public String cartOrder(Integer totalAmount, @RequestParam(value="optionNo", required=false) List<Integer> optionNoList, Model model) {
+	public String cartOrder(Integer totalAmount, @RequestParam(value="optionNo", required=false) List<Integer> optionNoList,
+							/*@RequestParam(value="productPrice", required=false) List<String> productPrice*/ Model model) {
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		
@@ -167,6 +168,7 @@ public class ProductController {
 			map.put("productPayNo", productPayNo);
 		}
 		
+		//model.addAttribute("productPrice", productPrice);
 		model.addAttribute("map", map);
 		
 		return "product/productOrder";

@@ -173,6 +173,7 @@ function optionCal(target, num){
 }
 
 let optionNoList = [];
+const productPrice = [];
 
 // 체크한 박스만 가져오기
 function getCheckboxValue(event)  {
@@ -184,6 +185,8 @@ function getCheckboxValue(event)  {
         if(checkBox.checked){
 
             checkBox.nextElementSibling.setAttribute("name", "optionNo");
+            productPrice.push(Number(checkBox.parentElement.nextElementSibling.nextElementSibling.children[1].children[1].children[0].innerText));
+            console.log(productPrice);
             // optionNo
             //optionNoList.push(Number(checkBox.nextElementSibling.value));
             //console.log(optionNoList);
@@ -249,11 +252,11 @@ function orderValidate(){
 		input1.setAttribute("name", "totalAmount");
         input1.setAttribute("value", document.getElementById("cartTotalPrice").innerText);
 
-        // 옵션 No
-        // const input2 = document.createElement("input");
-		// input2.setAttribute("type", "hidden");
-		// input2.setAttribute("name", "optionNo");
-        // input2.setAttribute("value", optionNoList);
+        // 상품 가격
+        const input2 = document.createElement("input");
+		input2.setAttribute("type", "hidden");
+		input2.setAttribute("name", "productPrice");
+        input2.setAttribute("value", productPrice);
 
         // // productCode
         // const input3 = document.createElement("input");
@@ -261,8 +264,8 @@ function orderValidate(){
         // input3.setAttribute("name", "productCode");
         // input3.setAttribute("value", productCode);
 
-        //document.orderForm.append(input1, input2);
-        document.orderForm.append(input1);
+        document.orderForm.append(input1, input2);
+        //document.orderForm.append(input1);
 
     }
 }
