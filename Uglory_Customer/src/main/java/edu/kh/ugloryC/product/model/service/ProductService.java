@@ -105,6 +105,20 @@ public interface ProductService {
 	 */
 	List<OptionType> cartOrder(Map<String, Object> map);
 
+	/** 장바구니 - 결제 성공 시 OPTION_TB UPDATE
+	 * @param optionNoList
+	 * @param pOrderCode 
+	 * @return optionUpdate
+	 */
+	int updateOptionTb(List<String> optionNoList, String pOrderCode);
+
+	/** 장바구니 -> 결제 진행 시 장바구니 테이블 삭제
+	 * @param optionNoList
+	 * @param memberNo
+	 * @return deleteCart
+	 */
+	int deleteCart(List<String> optionNoList, int memberNo);
+
 
 
 

@@ -8,13 +8,9 @@ for(let i=0; i<productPrice1.length; i++){
 
 // if(sum == 0) {
 //     document.getElementById("cartTotalPrice").innerText = sum;
-if(sum < 30000){
-    document.getElementById("cartTotalPrice").innerText = sum + 3000;
-    document.getElementById("cartPrice").innerText = sum;
-} else { 
+
     document.getElementById("cartTotalPrice").innerText = sum; // 총 주문 금액
     document.getElementById("cartPrice").innerText = sum; // 총 상품 금액
-}
 
 
 //----------------------------------------------------------------------------------
