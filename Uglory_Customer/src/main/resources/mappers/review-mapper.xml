@@ -199,7 +199,8 @@
 		JOIN PRODUCT USING(P_CD)
 		WHERE MEMBER_NO = #{memberNo}
 		AND (P_ORDER_CD, P_CD) NOT IN (SELECT P_ORDER_CD, P_CD FROM REVIEW
-		                                WHERE MEMBER_NO = #{memberNo})
+		                                WHERE MEMBER_NO = #{memberNo}
+		                                AND S_ORDER_CD IS NULL)
 	</select>
 		
 	
@@ -340,7 +341,8 @@
 			JOIN PRODUCT USING(P_CD)
 			WHERE MEMBER_NO = #{memberNo}
 			AND (P_ORDER_CD, P_CD) NOT IN (SELECT P_ORDER_CD, P_CD FROM REVIEW
-			                                WHERE MEMBER_NO = #{memberNo}))
+			                                WHERE MEMBER_NO = #{memberNo}
+			                                AND S_ORDER_CD IS NULL))
 		
 		) AS MY_UNWRITTEN_REVIEW
 		FROM DUAL

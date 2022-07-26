@@ -212,6 +212,11 @@
     color: rgb(113, 214, 199);
 }
 
+.rating{
+    text-align: end;
+    padding-right: 10px;
+}
+
 .rating .star-wrap{width: 20px; display:inline-block;}
 
 .rating .star{
@@ -639,6 +644,10 @@
     color: rgb(254, 161, 22);
     font-size: 20px;
     margin-bottom: 10px;
+}
+
+.myReview-star > .rating{
+    text-align: start;
 }
 
 .content-info > div:nth-of-type(2){
