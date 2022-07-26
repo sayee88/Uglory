@@ -94,61 +94,127 @@
                     <hr>
                     <h4 class="order-product">주문 상품</h4>
 
-                    <!-- 결제상품 리스트 -->
-                    <div class="order-product-area">
-                        <!-- 상품 썸네일 이미지 -->
-                        <div class="order-productImgName">
-                            <div>
-                                <img src="${contextPath}/resources/img/main/broccoli.jpg" width="150px" height="150px">
-                            </div>
+                    <%-- 여러 상품일 때 --%>
+                    <c:if test="${!empty cartList}">
+                        <c:forEach var="list" items="${cartList}">
+                            <!-- 결제상품 리스트 -->
+                            <div class="order-product-area" style="width:400px;">
 
-                            <div class="orderProductName"> 
+                                <!-- 상품 썸네일 이미지 -->
+                                <div class="order-productImgName" style="margin-top : 10px;">
+                                    <div>
+                                        <img src="${contextPath}/resources/img/main/broccoli.jpg" width="150px" height="150px">
+                                    </div>
 
-                                <%-- 중복제거 --%>
-                                <c:forEach var="selectOption" items="${selectOptionList}" varStatus="vs1">
+                                    <div class="orderProductName"> 
 
-                                    <c:set var="fl" value="true"/>
+                                        <%-- 중복제거 --%>
+                                        <%-- <c:forEach var="cart" items="${list}" varStatus="vs1">
 
-                                    <c:if test="${!vs1.first}">
-                                        <c:forEach var="temp" items="${selectOptionList}" varStatus="vs2" begin="0" end="${vs1.index-1}">
-                                            <c:if test="${selectOption.productName == temp.productName}">
-                                                <c:set var="fl" value="false"/>
+                                            <c:set var="fl" value="true"/>
+
+                                            <c:if test="${!vs1.first}">
+                                                <c:forEach var="temp" items="${list}" varStatus="vs2" begin="0" end="${vs1.index-1}">
+                                                    <c:if test="${cart.productName == temp.productName}">
+                                                        <c:set var="fl" value="false"/>
+                                                    </c:if>
+                                                </c:forEach>
                                             </c:if>
-                                        </c:forEach>
-                                    </c:if>
 
-                                    <c:if test="${fl == 'true'}">
+                                            <c:if test="${fl == 'true'}"> --%>
 
-                                        <a href="${contextPath}/product/detail/${selectOption.productCategoryNo}/${selectOption.productCode}">${selectOption.productName}</a>
-
-                                    </c:if>
-
-                                </c:forEach>
-
-                                <br>
-                                <%-- <c:forEach var="selectOption" items="${selectOptionList}" varStatus="vs"> --%>
-                                <c:forEach var="optionCode" items="${map.optionCodeList}" varStatus="vs">
-                                    <span>
-                                        <c:forEach var="selectOption" items="${selectOptionList}">
-                                            <c:if test="${optionCode == selectOption.optionCode}">
-                                                ${selectOption.optionName}
+                                        <a href="${contextPath}/product/detail/${list.productCategoryNo}/${list.productCode}" style="font-size:20px; font-weigt:bold; margin-left:-110px;">${list.productName}</a>
+<%-- 
                                             </c:if>
-                                        </c:forEach>
-                                         - ${map.amountList[vs.index]}개
-                                    </span>
-                                   
-                                   
-                                    <c:if test="${!vs.last}">
-                                    /
-                                    </c:if> 
-                                </c:forEach>
 
-                                <div class="orderPrice">
-                                    <!-- 옵션 선택에 따른 상품 가격 -->
-                                    <p><span>${map.totalAmount}</span>원</p>
+                                        </c:forEach> --%>
+
+                                        <br>
+                                        <%-- <c:forEach var="selectOption" items="${selectOptionList}" varStatus="vs"> --%>
+                                        <%-- <c:forEach var="cartOption" items="${list}" varStatus="vs">
+                                            <span>
+                                                <c:forEach var="cart" items="${list}">
+                                                    <c:if test="${cartOption == cart.optionCode}">
+                                                        ${cart.optionName}
+                                                    </c:if>
+                                                </c:forEach>
+                                                - ${cart.optionCount[vs.index]}개
+                                            </span>
+                                        
+                                        
+                                            <c:if test="${!vs.last}">
+                                            /
+                                            </c:if> 
+                                        </c:forEach> --%>
+<%-- 
+                                        <div class="orderPrice">
+                                            <!-- 옵션 선택에 따른 상품 가격 -->
+                                            <p><span>${productPrice}</span>원</p>
+                                        </div> --%>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
+                            </c:forEach>
+                        </c:if>
+
+                        <%-- 단일 상품일 때 --%>
+                        <c:if test="${empty cartList}">
+                            <div class="order-product-area">
+
+                                <!-- 상품 썸네일 이미지 -->
+                                <div class="order-productImgName">
+                                    <div>
+                                        <img src="${contextPath}/resources/img/main/broccoli.jpg" width="150px" height="150px">
+                                    </div>
+
+                                    <div class="orderProductName"> 
+
+                                        <%-- 중복제거 --%>
+                                        <c:forEach var="selectOption" items="${selectOptionList}" varStatus="vs1">
+
+                                            <c:set var="fl" value="true"/>
+
+                                            <c:if test="${!vs1.first}">
+                                                <c:forEach var="temp" items="${selectOptionList}" varStatus="vs2" begin="0" end="${vs1.index-1}">
+                                                    <c:if test="${selectOption.productName == temp.productName}">
+                                                        <c:set var="fl" value="false"/>
+                                                    </c:if>
+                                                </c:forEach>
+                                            </c:if>
+
+                                            <c:if test="${fl == 'true'}">
+
+                                                <a href="${contextPath}/product/detail/${selectOption.productCategoryNo}/${selectOption.productCode}" style="font-size:20px; font-weigt:bold;">
+                                                ${selectOption.productName}</a>
+
+                                            </c:if>
+
+                                        </c:forEach>
+
+                                        <br>
+                                        <%-- <c:forEach var="selectOption" items="${selectOptionList}" varStatus="vs"> --%>
+                                        <c:forEach var="optionCode" items="${map.optionCodeList}" varStatus="vs">
+                                            <span>
+                                                <c:forEach var="selectOption" items="${selectOptionList}">
+                                                    <c:if test="${optionCode == selectOption.optionCode}">
+                                                        ${selectOption.optionName}
+                                                    </c:if>
+                                                </c:forEach>
+                                                - ${map.amountList[vs.index]}개
+                                            </span>
+                                        
+                                        
+                                            <c:if test="${!vs.last}">
+                                            /
+                                            </c:if> 
+                                        </c:forEach>
+
+                                        <div class="orderPrice">
+                                            <!-- 옵션 선택에 따른 상품 가격 -->
+                                            <p><span>${map.totalAmount}</span>원</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </c:if>
 
                         <!-- 상품명(클릭 시 상품 상세조회 화면)-->
                         <%-- <div class="order-product-info"> --%>
@@ -186,7 +252,7 @@
                     <!-- 금액 상세 내역 -->
                     <div class="product-total-pay">
                         <c:if test="${map.totalAmount < 30000}">
-                        <p>총 상품금액</p> <p><span>${map.totalAmount-3000}</span>원</p>
+                        <p>총 상품금액</p> <p><span>${map.totalAmount}</span>원</p>
                         </c:if>
                         <c:if test="${map.totalAmount >= 30000}">
                         <p>총 상품금액</p> <p><span>${map.totalAmount}</span>원</p>
@@ -223,12 +289,13 @@
      <script>
         const contextPath = "${contextPath}";
         const pOrderCode = "${map.pOrderCode}";
-        const productName = "${selectOptionList[0].productName}";
+        let productName = "${selectOptionList[0].productName}";
         const totalAmount = "${map.totalAmount}"
         const productPayNo = "${map.productPayNo}";
         const memberNo = "${loginMember.memberNo}";
         const amountList = "${map.amountList}";
         const optionCodeList = "${map.optionCodeList}";
+        const optionNoList = "${map.optionNoList}";
 
      </script>
 

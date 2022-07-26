@@ -185,34 +185,50 @@ public class ProductServiceImpl implements ProductService {
 		}
 		return result;
 	}
-
-	/*
-	 * // 장바구니 -> 주문 페이지 내 옵션에 따른 상품, 옵션 조회(productCodeList)
-	 * 
-	 * @Transactional(rollbackFor = {Exception.class})
-	 * 
-	 * @Override public List<OptionType> orderOptionSelect(List<String>
-	 * productCodeList, List<String> optionCodeList) {
-	 * 
-	 * List<OptionType> orderOptionSelect = new ArrayList<OptionType>();
-	 * 
-	 * Map<String, Object> map = new HashMap<String, Object>();
-	 * 
-	 * map.put("optionCodeList", optionCodeList);
-	 * 
-	 * for(int i=0; i<productCodeList.size(); i++) { map.put("productCode",
-	 * productCodeList.get(i)); }
-	 * 
-	 * orderOptionSelect = dao.orderOptionSelect(map);
-	 * 
-	 * return orderOptionSelect; }
-	 */
-
+	
 	// 장바구니 -> 주문 페이지 내 옵션에 따른 상품, 옵션 조회
 	@Override
 	public List<OptionType> cartOrder(Map<String, Object> map) {
 			
 		return dao.cartOrder(map);
 
+	}
+
+	// 장바구니 - 결제 성공 시 OPTION_TB UPDATE
+	@Transactional(rollbackFor = {Exception.class})
+	@Override
+	public int updateOptionTb(List<String> optionNoList, String pOrderCode) {
+		
+		int result = 0;
+		
+		Map<String, Object> optionUpdateMap = new HashMap<String, Object>();
+		
+		optionUpdateMap.put("pOrderCode", pOrderCode);
+		
+		for(int i=0; i<optionNoList.size(); i++) {
+			optionUpdateMap.put("optionNo", optionNoList.get(i));
+			
+			result = dao.updateOptionTb(optionUpdateMap);
+		}
+		return result;
+	}
+	
+	// 장바구니 -> 결제 진행 시 장바구니 테이블 삭제
+	@Transactional(rollbackFor = {Exception.class})
+	@Override
+	public int deleteCart(List<String> optionNoList, int memberNo) {
+		
+		int result = 0;
+		
+		Map<String, Object> cartDelteMap = new HashMap<String, Object>();
+		
+		cartDelteMap.put("memberNo", memberNo);
+		
+		for(int i=0; i<optionNoList.size(); i++) {
+			cartDelteMap.put("optionNo", optionNoList.get(i));
+			
+			result = dao.deleteCart(cartDelteMap);
+		}
+		return result;
 	}
 }

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import edu.kh.ugloryC.member.model.vo.Member;
+import edu.kh.ugloryC.review.model.vo.ReviewDetail;
 import edu.kh.ugloryC.review.model.vo.ReviewImage;
 import edu.kh.ugloryC.review.model.vo.ReviewSelectInfo;
 import edu.kh.ugloryC.review.model.vo.ReviewWrite;
@@ -223,6 +224,18 @@ public class ReviewDAO {
 	public List<ReviewSelectInfo> selectMyReview(int memberNo) {
 		
 		return sqlSession.selectList("reviewMapper.selectMyReview", memberNo);
+	}
+
+
+	
+	/**
+	 * 리뷰 상세 조회
+	 * @param reviewNo 
+	 * @return reviewDetail
+	 */
+	public List<ReviewDetail> selectReviewDetail(int reviewNo) {
+		
+		return sqlSession.selectList("reviewMapper.selectReviewDetail", reviewNo);
 	}
 	
 	

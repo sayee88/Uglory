@@ -16,6 +16,7 @@ import edu.kh.ugloryC.common.Util;
 import edu.kh.ugloryC.member.model.vo.Member;
 import edu.kh.ugloryC.review.exception.InsertFailException;
 import edu.kh.ugloryC.review.model.dao.ReviewDAO;
+import edu.kh.ugloryC.review.model.vo.ReviewDetail;
 import edu.kh.ugloryC.review.model.vo.ReviewImage;
 import edu.kh.ugloryC.review.model.vo.ReviewSelectInfo;
 import edu.kh.ugloryC.review.model.vo.ReviewWrite;
@@ -74,7 +75,7 @@ public class ReviewServiceImpl implements ReviewService{
 					img.setReviewNo(reviewNo);
 					img.setReviewImageLevel(i);
 					img.setReviewImageOriginal(imageList.get(i).getOriginalFilename());
-					img.setReviewImageReName(webPath + reName);
+					img.setReviewImageRename(webPath + reName);
 					
 					reviewImageList.add(img);
 				}
@@ -224,6 +225,14 @@ public class ReviewServiceImpl implements ReviewService{
 	@Override
 	public List<ReviewSelectInfo> allRevieList() {
 		
+//		List<ReviewSelectInfo> list = dao.allReviewList()
+		
+		// 1) XSS 방지 처리 + 개행문자 처리
+//		for(c : list) {
+//			list.setReviewContent(Util.XSSClear(list.getReviewContent()));
+//		}
+		
+		
 		return dao.allRevieList();
 	}
 
@@ -235,6 +244,19 @@ public class ReviewServiceImpl implements ReviewService{
 		
 		return dao.selectMyReview(memberNo);
 	}
+
+
+
+	
+	// 리뷰 상세 조회
+	@Override
+	public List<ReviewDetail> selectReviewDetail(int reviewNo) {
+		
+		return dao.selectReviewDetail(reviewNo);
+	}
+	
+	
+	
 	
 	
 	

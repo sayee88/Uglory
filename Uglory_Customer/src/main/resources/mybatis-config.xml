@@ -28,10 +28,10 @@
 		<typeAlias type="edu.kh.ugloryC.product.model.vo.ProductOrder" alias="productOrder"/>
 		<typeAlias type="edu.kh.ugloryC.product.model.vo.ProductList" alias="productList"/>
 		<typeAlias type="edu.kh.ugloryC.product.model.vo.ProductCart" alias="productCart"/>
-		
 
 		
 		<typeAlias type="edu.kh.ugloryC.review.model.vo.ReviewWrite" alias="reviewWrite"/>
+		<typeAlias type="edu.kh.ugloryC.review.model.vo.ReviewDetail" alias="reviewDetail"/>
 		<typeAlias type="edu.kh.ugloryC.review.model.vo.ReviewImage" alias="reviewImage"/>
 		<typeAlias type="edu.kh.ugloryC.review.model.vo.ReviewSelectInfo" alias="reviewSelectInfo"/>
 		<typeAlias type="edu.kh.ugloryC.review.model.vo.UnWrittenSubscription" alias="unWrittenSubscription"/>

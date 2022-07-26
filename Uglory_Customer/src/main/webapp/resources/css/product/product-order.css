@@ -98,7 +98,7 @@
 /* 주문 상품 이미지, 이름 영역 */
 .order-productImgName{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .orderProductName{

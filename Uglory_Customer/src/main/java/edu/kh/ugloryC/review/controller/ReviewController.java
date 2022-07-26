@@ -28,6 +28,7 @@ import edu.kh.ugloryC.review.model.service.ReviewService;
 import edu.kh.ugloryC.review.model.vo.ReviewWrite;
 import edu.kh.ugloryC.review.model.vo.UnWrittenProduct;
 import edu.kh.ugloryC.review.model.vo.UnWrittenSubscription;
+import edu.kh.ugloryC.review.model.vo.ReviewDetail;
 import edu.kh.ugloryC.review.model.vo.ReviewSelectInfo;
 
 @Controller
@@ -110,6 +111,28 @@ public class ReviewController {
 		
 		return new Gson().toJson(reviewSelectInfo);
 	}
+	
+	
+	
+	
+	// 리뷰 상세 조회 
+	@ResponseBody
+	@GetMapping("/list/reviewDetail")
+	public String selectReviewDetail(Model model
+			, int reviewNo) {
+		
+		List<ReviewDetail> reviewDetail = service.selectReviewDetail(reviewNo);
+		
+		return new Gson().toJson(reviewDetail);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

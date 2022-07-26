@@ -134,10 +134,10 @@ for (let btn of orderDetailBtn) {
                 const dt3_4 = document.createElement("dt");
                 dt3_4.innerText = "알러지 제외 상품"
                 const dd3_4 = document.createElement("dd");
-                dd3_4.innerText = SubHistoryDetail.productName;
+                dd3_4.innerText = SubHistoryDetail.productName +"는 빼고 보냅니다.";
                 
                 if(SubHistoryDetail.productName == undefined){
-                    dd3_4.innerText = "나는야 알러지 한개도 없는 최고 면역력 자!!!!";
+                    dd3_4.innerText = "저는 다먹습니다~ 다~~ ";
                 }
 
                 dl3_4.append(dt3_4, dd3_4);

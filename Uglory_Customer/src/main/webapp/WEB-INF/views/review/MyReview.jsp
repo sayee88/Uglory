@@ -160,8 +160,9 @@
                         <c:forEach var="mr" items="${reviewSelectInfo}">
                             <div class="myreview-list">
                                 <div class="myreview-content">
-                                    <div class="myreview-image"><img src="${mr.thumbnail}"></div>
+                                    <div class="myreview-image"><img src="${contextPath}${mr.thumbnail}"></div>
                                     <div class="content-info">
+                                        <div>${mr.reviewEnrollDate}</div>
                                         <div class="myReview-star">
                                             <div class="rating" data-rate="${mr.starRating}">
                                                 <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
@@ -171,7 +172,6 @@
                                                 <div class="star-wrap"><div class="star"><i class="fas fa-star"></i></div></div>
                                             </div>
                                         </div>
-                                        <div>${mr.reviewEnrollDate}</div>
                                         <c:if test="${mr.reviewCode == 1}">
                                             <div>정기구독박스</div>
                                         </c:if>

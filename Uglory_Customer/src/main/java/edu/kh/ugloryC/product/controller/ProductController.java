@@ -139,7 +139,8 @@ public class ProductController {
 	
 	// 장바구니 - 결제페이지 
 	@GetMapping("/cartOrder")
-	public String cartOrder(Integer totalAmount, @RequestParam(value="optionNo", required=false) List<Integer> optionNoList, Model model) {
+	public String cartOrder(Integer totalAmount, @RequestParam(value="optionNo", required=false) List<Integer> optionNoList,
+							/*@RequestParam(value="productPrice", required=false) List<String> productPrice*/ Model model) {
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		
@@ -167,12 +168,14 @@ public class ProductController {
 			map.put("productPayNo", productPayNo);
 		}
 		
+		//model.addAttribute("productPrice", productPrice);
 		model.addAttribute("map", map);
 		
 		return "product/productOrder";
 	}
 	
 	// 배송정보 입력 - 결제
+	@SuppressWarnings("unused")
 	@ResponseBody
 	@PostMapping("/order")
 	public int productOrder(@RequestParam(value="pOrderCode", required=false) String pOrderCode,
@@ -187,7 +190,8 @@ public class ProductController {
 							Model model,
 							RedirectAttributes ra, HttpServletRequest req,
 							@RequestParam(value="optionCodeList") String optionCode, // OPTION_CD 리스트
-							@RequestParam(value="amountList") String amount // OPTION_COUNT 리스트
+							@RequestParam(value="amountList") String amount, // OPTION_COUNT 리스트
+							@RequestParam(value="optionNoList", required=false) String optionNo // OPTION_NO 리스트 (
 							) {
 		
 		int memberNo = loginMember.getMemberNo();
@@ -205,13 +209,19 @@ public class ProductController {
 		// 옵션 수량 내 [] 를 공백으로 바꿈
 		amount = amount.replaceAll("\\[", "");
 		amount = amount.replaceAll("\\]", "");
+		
+		// 옵션 넘버 내 [] 를 공백으로 바꿈
+		optionNo = optionNo.replaceAll("\\[", "");
+		optionNo = optionNo.replaceAll("\\]", "");
 
 		// , 기준으로 잘라서 배열에 저장
 		String[] optionCodeArr = optionCode.split(",");
 		String[] amountArr = amount.split(",");
+		String[] optionNoarr = optionNo.split(",");
 	
 		List<String> optionCodeList = Arrays.asList(optionCodeArr);
 		List<String> amountList = Arrays.asList(amountArr);
+		List<String> optionNoList = Arrays.asList(optionNoarr);
 		
 		if(pOrderReq.equals("")) {
 			pOrderReq = "NULL";
@@ -227,10 +237,20 @@ public class ProductController {
 		productOrder.put("productPayNo", productPayNo);
 
 		int result = service.productOrder(productOrder);
-		
-		if(result > 0) { // 주문 정보 입력 및 결제 성공 시 PRODUCT_PAY 테이블 및 OPTION_TB 테이블 삽입
 
+		// 상품 디테일 -> OPTION_TB 테이블 삽입
+		if(optionNo == null) {
 			int insertOptionTb = service.insertOptionTb(optionCodeList, amountList, pOrderCode);
+		
+		} else {
+			// 장바구니 -> OPTION_TB 업데이트
+			int optionUpdate = service.updateOptionTb(optionNoList, pOrderCode);
+			// 장바구니 테이블 삭제
+			int deleteCart = service.deleteCart(optionNoList, memberNo);
+		}
+		
+		if(result > 0) { // 주문 정보 입력 및 결제 성공 시 PRODUCT_PAY 테이블 삽입
+
 			int productPay = service.productPay(productOrder);
 		}
 		

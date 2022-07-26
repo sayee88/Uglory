@@ -150,3 +150,6 @@ function addReviewImg(){
     }
 
 }
+
+// br 태그 제거
+text = text.replace(/<(\/)?([a-zA-Z]*)(\s[a-zA-Z]*=[^>]*)?(\s)*(\/)?>/ig, "");

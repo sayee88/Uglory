@@ -638,3 +638,9 @@ body::-webkit-scrollbar-thumb {
 body::-webkit-scrollbar-track {
     background: rgba(33, 122, 244, .1);  /*스크롤바 뒷 배경 색상*/
 }
+
+
+/* main text 위치 */
+.mainText{
+    margin-left: 100px;
+}
