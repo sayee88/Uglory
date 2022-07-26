@@ -152,6 +152,4 @@ function addReviewImg(){
 }
 
 // br 태그 제거
-const reg = /<[^>]*>?/g
-
-String.replace(/<[^>]*>?/g, '');
+text = text.replace(/<(\/)?([a-zA-Z]*)(\s[a-zA-Z]*=[^>]*)?(\s)*(\/)?>/ig, "");
