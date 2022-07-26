@@ -1,6 +1,8 @@
 package edu.kh.ugloryA.payment.model.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Service;
 import edu.kh.ugloryA.payment.model.dao.PaymentDAO;
 import edu.kh.ugloryA.payment.model.vo.Chart;
 import edu.kh.ugloryA.payment.model.vo.MonthlyChart;
+import edu.kh.ugloryA.payment.model.vo.Pagination;
 import edu.kh.ugloryA.payment.model.vo.Payment;
 import edu.kh.ugloryA.payment.model.vo.ProductPaymentDetail;
 import edu.kh.ugloryA.payment.model.vo.Refund;
@@ -27,15 +30,37 @@ public class PaymentServiceImpl implements PaymentService {
 	
 	// 전체 결제 내역 조회
 	@Override
-	public List<Payment> selectAllPayment() {
-		return dao.selectAllPayment();
+	public Map<String, Object> selectAllPayment(int cp) {
+		
+		int listCount = dao.listCount();
+		Pagination pagination = new Pagination(cp, listCount);
+		
+		List<Payment> paymentList = dao.selectAllPayment(pagination);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("pagination", pagination);
+		map.put("paymentList", paymentList);
+		
+		return map;
 	}
 
 	
 	// 결제 내역 검색 조회
 	@Override
-	public List<Payment> searchPayment(String key, String query) {
-		return dao.searchPayment(key, query);
+	public Map<String, Object> searchPayment(int cp, String key, String query) {
+		
+		int listCount = dao.searchListCount(key, query);
+		Pagination pagination = new Pagination(cp, listCount);
+		
+		List<Payment> paymentList = dao.searchPayment(key, query, pagination);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("pagination", pagination);
+		map.put("paymentList", paymentList);
+		
+		return map;
 	}
 
 
@@ -128,6 +153,8 @@ public class PaymentServiceImpl implements PaymentService {
 	public List<MonthlyChart> selectMonthlyChartData() {
 		return dao.selectMonthlyChartData();
 	}
+
+
 	
 	
 	

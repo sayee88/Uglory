@@ -1,8 +1,7 @@
 package edu.kh.ugloryA.review.model.service;
 
-import java.util.List;
+import java.util.Map;
 
-import edu.kh.ugloryA.review.model.vo.Review;
 import edu.kh.ugloryA.review.model.vo.ReviewDetail;
 
 public interface ReviewService {
@@ -11,7 +10,7 @@ public interface ReviewService {
 	 * 전체 리뷰 내역 조회
 	 * @return reviewList
 	 */
-	List<Review> selectAllReview();
+	Map<String, Object> selectAllReview(int cp);
 
 	
 	/**
@@ -20,7 +19,7 @@ public interface ReviewService {
 	 * @param query
 	 * @return reviewList
 	 */
-	List<Review> searchReview(String key, String query);
+	Map<String, Object> searchReview(int cp, String key, String query);
 
 
 	/**

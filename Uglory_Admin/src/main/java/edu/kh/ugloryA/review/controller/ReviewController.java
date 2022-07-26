@@ -2,6 +2,7 @@ package edu.kh.ugloryA.review.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,18 +35,20 @@ public class ReviewController {
 	@GetMapping("/selectAll")
 	public String selectAll(@RequestParam(value="key", required = false) String key,
 			@RequestParam(value="query", required = false) String query,
+			@RequestParam(value="cp", required = false, defaultValue = "1") int cp,
 			Model model) {
 		
-		List<Review> reviewList = new ArrayList<Review>();
+		Map<String, Object> map = null;
+		
 		
 		if(key == null && query == null) {
-			reviewList = service.selectAllReview();
+			map = service.selectAllReview(cp);
 		} else {
-			reviewList = service.searchReview(key, query);
+			map = service.searchReview(cp, key, query);
 		}
 		
 		
-		model.addAttribute("reviewList", reviewList);
+		model.addAttribute("map", map);
 		
 		return "manageReview/ReviewList";
 	}
