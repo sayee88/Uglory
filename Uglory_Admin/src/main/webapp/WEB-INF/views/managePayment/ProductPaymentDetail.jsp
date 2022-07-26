@@ -106,7 +106,14 @@
                                     <th>주문일</th>
                                     <td>${pPaymentDetail.orderDate}</td>
                                     <th>배송 요청사항</th>
-                                    <td>${pPaymentDetail.deliveryRequest}</td>
+                                    <c:choose>
+                                        <c:when test="${!empty pPaymentDetail.deliveryRequest}">
+                                            <td>${pPaymentDetail.deliveryRequest}</td>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <td></td>
+                                        </c:otherwise>
+                                    </c:choose>
                                 </tr>
                             </tbody>
                         </table>
