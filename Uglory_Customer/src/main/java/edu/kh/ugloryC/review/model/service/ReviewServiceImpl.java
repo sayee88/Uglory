@@ -225,6 +225,14 @@ public class ReviewServiceImpl implements ReviewService{
 	@Override
 	public List<ReviewSelectInfo> allRevieList() {
 		
+//		List<ReviewSelectInfo> list = dao.allReviewList()
+		
+		// 1) XSS 방지 처리 + 개행문자 처리
+//		for(c : list) {
+//			list.setReviewContent(Util.XSSClear(list.getReviewContent()));
+//		}
+		
+		
 		return dao.allRevieList();
 	}
 
@@ -245,6 +253,19 @@ public class ReviewServiceImpl implements ReviewService{
 	public List<ReviewDetail> selectReviewDetail(int reviewNo) {
 		
 		return dao.selectReviewDetail(reviewNo);
+	}
+
+
+
+	// 리뷰 삭제
+	@Override
+	public int reviewDelete(int reviewNo, int reviewCode) {
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("reviewNo", reviewNo);
+		map.put("reviewCode", reviewCode);
+		
+		return dao.reviewDelete(map);
 	}
 	
 	

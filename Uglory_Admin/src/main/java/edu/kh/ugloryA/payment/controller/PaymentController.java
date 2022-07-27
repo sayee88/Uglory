@@ -1,11 +1,9 @@
 package edu.kh.ugloryA.payment.controller;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.collections.map.HashedMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +17,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import edu.kh.ugloryA.payment.model.service.PaymentService;
-import edu.kh.ugloryA.payment.model.vo.Chart;
 import edu.kh.ugloryA.payment.model.vo.Payment;
 import edu.kh.ugloryA.payment.model.vo.ProductPaymentDetail;
 import edu.kh.ugloryA.payment.model.vo.Refund;
@@ -38,17 +35,21 @@ public class PaymentController {
 	@GetMapping("/selectAll")
 	public String selectAll(@RequestParam(value="key", required = false) String key,
 			@RequestParam(value="query", required = false) String query,
+			@RequestParam(value="cp", required= false, defaultValue = "1") int cp,
 			Model model) {
 		
-		List<Payment> paymentList = new ArrayList<Payment>();
+		
+		Map<String, Object> map = null;
 		
 		if(key == null && query == null) {
-			paymentList = service.selectAllPayment();
+			
+			map = service.selectAllPayment(cp);
 		} else {
-			paymentList = service.searchPayment(key, query);
+			
+			map = service.searchPayment(cp, key, query);
 		}
 		
-		model.addAttribute("paymentList", paymentList);
+		model.addAttribute("map", map);
 		
 		return "managePayment/PaymentList";
 	}
