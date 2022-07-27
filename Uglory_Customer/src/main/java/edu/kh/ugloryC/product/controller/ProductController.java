@@ -209,19 +209,15 @@ public class ProductController {
 		// 옵션 수량 내 [] 를 공백으로 바꿈
 		amount = amount.replaceAll("\\[", "");
 		amount = amount.replaceAll("\\]", "");
-		
-		// 옵션 넘버 내 [] 를 공백으로 바꿈
-		optionNo = optionNo.replaceAll("\\[", "");
-		optionNo = optionNo.replaceAll("\\]", "");
 
 		// , 기준으로 잘라서 배열에 저장
 		String[] optionCodeArr = optionCode.split(",");
 		String[] amountArr = amount.split(",");
-		String[] optionNoarr = optionNo.split(",");
+
 	
 		List<String> optionCodeList = Arrays.asList(optionCodeArr);
 		List<String> amountList = Arrays.asList(amountArr);
-		List<String> optionNoList = Arrays.asList(optionNoarr);
+
 		
 		if(pOrderReq.equals("")) {
 			pOrderReq = "NULL";
@@ -238,11 +234,21 @@ public class ProductController {
 
 		int result = service.productOrder(productOrder);
 
-		// 상품 디테일 -> OPTION_TB 테이블 삽입
-		if(optionNo == null) {
-			int insertOptionTb = service.insertOptionTb(optionCodeList, amountList, pOrderCode);
-		
+		// 상품 디테일 -> 결제 OPTION_TB 테이블 삽입
+		if(optionNo.equals("")) {
+			int insertOptionTb = service.insertOptionTb(optionCodeList, amountList, pOrderCode);	
+			
 		} else {
+			// 장바구니 -> 결제 OPTION_TB UPDATE 및 CART DELETE
+			
+			// 옵션 넘버 내 [] 를 공백으로 바꿈
+			optionNo = optionNo.replaceAll("\\[", "");
+			optionNo = optionNo.replaceAll("\\]", "");
+			
+			String[] optionNoarr = optionNo.split(",");
+			
+			List<String> optionNoList = Arrays.asList(optionNoarr);
+			
 			// 장바구니 -> OPTION_TB 업데이트
 			int optionUpdate = service.updateOptionTb(optionNoList, pOrderCode);
 			// 장바구니 테이블 삭제

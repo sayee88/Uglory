@@ -131,10 +131,26 @@ document.getElementById("order-btn").addEventListener("click", function(){
     const pOrderReq = document.getElementById("p-orderReq").value;
 
 
-    if(pOrderName.length == 0 || pOrderPhone.length == 0 || pOrderAddress1.length == 0 || pOrderAddress2.length == 0){
-        
-
+    if(pOrderName.length == 0){
+        alert("수령인 이름을 입력해주세요");
+        pOrderName.focus();
     }
+
+    if(pOrderPhone.length == 0){
+        alert("수령인 연락처를 입력해주세요");
+        pOrderPhone.focus();
+    }
+
+    if(pOrderAddress1.length == 0){
+        alert("배송지를 입력해주세요");
+        pOrderAddress1.focus();
+    }
+
+    if(pOrderAddress2.length == 0){
+        alert("배송지를 입력해주세요");
+        pOrderAddress2.focus();
+    }
+
     if( !agree.checked ){ // 체크를 안했을 때
         alert("약관 동의 후 주문 버튼을 클릭해주세요.");
         agree.focus();

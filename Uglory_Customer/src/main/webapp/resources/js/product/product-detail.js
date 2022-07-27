@@ -145,7 +145,7 @@ function calcPrice(){
 	
 	let optionPrice;
 
-	sum = Number(productPrice);
+	sum = 0;
 	// 옵션 가격 계산
 	for(const key in optionObj){
 
@@ -158,7 +158,15 @@ function calcPrice(){
 				break;
 			}
 		}
-		sum += Number(optionPrice) * optionObj[key];
+
+		if(Number(optionPrice) == 0){
+			sum += Number(productPrice)* optionObj[key];
+
+		} else {
+
+			sum += (Number(productPrice) + Number(optionPrice)) * optionObj[key];
+		}
+
 		// 3만원 미만 배송비 추가
 		// if(sum < 30000){
 		// 	sum += delAmount;
@@ -173,6 +181,10 @@ function orderValidate(){
 
 	const optionSpan = document.querySelectorAll(".optionSpan");
 
+	if(productStatus == "O"){
+		alert("품절 상품은 구매가 불가능합니다.");
+		return false;
+	}
 	// 옵션 선택했을 때
 	if(optionSpan.length > 0){
 
@@ -210,6 +222,10 @@ document.getElementById("cartButton").addEventListener("click", function(){
 
 	const optionSpan = document.querySelectorAll(".optionSpan");
 
+	if(productStatus == "O"){
+		alert("품절 상품은 장바구니 담기가 불가능합니다.");
+		return false;
+	} 
 	// 옵션 선택했을 때
 	if(optionSpan.length > 0){
 	
@@ -273,5 +289,7 @@ rating.each(function(){
     }
 
 });
+
+
 
 

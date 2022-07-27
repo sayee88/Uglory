@@ -17,6 +17,7 @@
       	
       	<result property="star" column="STAR_RATING"/>
       	<result property="reviewNo" column="REVIEW_NO"/>
+      	<result property="productStatus" column="PRODUCT_ST"/>
       	
 
     </resultMap>
@@ -49,7 +50,7 @@
     <!-- 상품 상세 조회 -->
     <!-- 별점 개수, 리뷰 개수 필요 -->
 	<select id="productDetail" resultMap="detail_rm">
-		SELECT P_CD, PRODUCT_NM, PRODUCT_PRICE, PRODUCT_INFO, PRODUCER, ORIGIN
+		SELECT P_CD, PRODUCT_NM, PRODUCT_PRICE, PRODUCT_INFO, PRODUCER, ORIGIN, PRODUCT_ST
 		FROM PRODUCT
 		JOIN FARM USING(FARM_NO)
 		WHERE P_CD = ${productCode}
@@ -62,8 +63,6 @@
 		        END AS STAR_AVG
 		FROM PRODUCT P
 		WHERE P.P_CD = ${productCode}
-		
-		
 	</select>
 	
 	<!-- 상품 상세 페이지 리뷰 수 조회 -->

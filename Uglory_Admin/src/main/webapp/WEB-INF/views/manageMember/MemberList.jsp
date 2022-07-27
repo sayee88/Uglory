@@ -4,6 +4,8 @@
 <%-- 문자열 관련 함수(메서드) 제공 JSTL (EL형식으로 작성) --%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
+<c:set var="pagination" value="${map.pagination}" />
+<c:set var="customerList" value="${map.customerList}" />
 
 <!DOCTYPE html>
 <html lang="en">
@@ -132,6 +134,50 @@
                             </table>
 
                         </div>
+
+
+                        <c:if test="${!empty pagination}">
+                            <%-- 페이지네이션 --%>
+                            <div class="pagination-area">
+                                <!-- 페이지네이션 a태그에 사용될 공통 주소를 저장한 변수 선언 -->
+                                <c:set var="url" value="?cp="/>
+                                <%-- selectAll?cp= --%>
+
+
+                                <ul class="pagination">
+                                    <!-- 첫 페이지로 이동 -->
+                                    <li><a href="${url}1"><i class="fa-solid fa-angles-left"></i></a></li>
+
+                                    <!-- 이전 목록 마지막 번호로 이동 -->
+                                    <li><a href="${url}${pagination.prevPage}"><i class="fa-solid fa-angle-left"></i></a></li>
+
+                                    <!-- 범위가 정해진 일반 for문 사용 -->
+                                    <c:forEach var="i" begin="${pagination.startPage}" end="${pagination.endPage}" step="1">
+
+                                        <c:choose>
+                                            <c:when test="${i == pagination.currentPage}">
+                                                <li><a class="current">${i}</a></li>
+                                            </c:when>
+
+                                            <c:otherwise>
+                                                <li><a href="${url}${i}">${i}</a></li>        
+                                            </c:otherwise>
+                                        </c:choose>
+
+                                    </c:forEach>
+                                    
+                                    <!-- 다음 목록 시작 번호로 이동 -->
+                                    <li><a href="${url}${pagination.nextPage}"><i class="fa-solid fa-angle-right"></i></a></li>
+
+                                    <!-- 끝 페이지로 이동 -->
+                                    <li><a href="${url}${pagination.maxPage}"><i class="fa-solid fa-angles-right"></i></a></li>
+                                </ul>
+                            </div>
+                        </c:if>
+
+
+
+
                     </div>
                 </div>
             </div>

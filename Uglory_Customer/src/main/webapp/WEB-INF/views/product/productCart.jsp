@@ -87,7 +87,7 @@
                             <div class="cart-info-area">
                                 <!-- 상품 썸네일 이미지 -->
                                 <div>
-                                    <img src="${contextPath}/resources/img/product/bam.png" width="150px" height="150px">
+                                    <img src="${contextPath}/resources/img/product/OKSUSU.PNG" width="150px" height="150px">
                                 </div>
                                 
                                 <!-- 상품명(클릭 시 상품 상세조회 화면)-->

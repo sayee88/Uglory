@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import edu.kh.ugloryA.customer.model.vo.Customer;
+import edu.kh.ugloryA.customer.model.vo.Pagination;
 
 @Repository
 public class CustomerDAO {
@@ -24,8 +26,13 @@ public class CustomerDAO {
 	 * ��ü �� ��� ��ȸ DAO
 	 * @return customerList
 	 */
-	public List<Customer> selectAllCustomer() {
-		return sqlSession.selectList("customerMapper.selectAllCustomer");
+	public List<Customer> selectAllCustomer(Pagination pagination) {
+		
+		int offset = (pagination.getCurrentPage()-1) * pagination.getLimit();
+		
+		RowBounds rowbounds = new RowBounds(offset, pagination.getLimit());
+		
+		return sqlSession.selectList("customerMapper.selectAllCustomer", null, rowbounds);
 	}
 
 	
@@ -40,6 +47,8 @@ public class CustomerDAO {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("key", key);
 		map.put("query", query);
+		
+		
 		
 		return sqlSession.selectList("customerMapper.searchCustomer", map);
 	}
