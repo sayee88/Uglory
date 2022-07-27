@@ -48,7 +48,6 @@
 	</resultMap>
      
     <!-- 상품 상세 조회 -->
-    <!-- 별점 개수, 리뷰 개수 필요 -->
 	<select id="productDetail" resultMap="detail_rm">
 		SELECT P_CD, PRODUCT_NM, PRODUCT_PRICE, PRODUCT_INFO, PRODUCER, ORIGIN, PRODUCT_ST
 		FROM PRODUCT
@@ -72,6 +71,14 @@
 		WHERE P_CD = ${productCode}
 	</select>
 	
+	<!-- 상품 상세 페이지 내 이미지 조회 -->
+	<select id="selectImgList" resultType="string">
+		SELECT IMG_ROOT
+        FROM PRODUCT_IMG
+        JOIN PRODUCT USING(P_CD)
+        WHERE P_CD = ${productCode} 
+	</select>
+	
 	<!-- 주문 페이지 내 옵션 조회 -->
 	<select id="orderOptionSelect"  resultMap="orderOptionProduct_rm">
 		SELECT OPTION_CD, OPTION_NM, OPTION_PRICE, PRODUCT_NM, P_CD, P_CATEGORY.P_CATEGORY_NO
@@ -83,6 +90,14 @@
 		<foreach item="item" collection="optionCodeList" open="(" separator="," close=")">
 			#{item}
 		</foreach>
+	</select>
+	
+	<!-- 단일상품 -> 결제 페이지 내 이미지 조회  -->
+	<select id="selectImages" resultType="string">
+		SELECT IMG_ROOT
+        FROM PRODUCT_IMG
+        JOIN PRODUCT USING(P_CD)
+        WHERE P_CD = ${productCode} 
 	</select>
 	
 	<!-- 장바구니 -> 결제 옵션 조회 -->

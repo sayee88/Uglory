@@ -16,6 +16,10 @@ import edu.kh.ugloryC.product.model.vo.ProductOrder;
  * @author user1
  *
  */
+/**
+ * @author user1
+ *
+ */
 @Repository
 public class ProductDAO {
 
@@ -179,5 +183,23 @@ public class ProductDAO {
 	public int deleteCart(Map<String, Object> cartDelteMap) {
 
 		return sqlSession.delete("productMapper.deleteCart", cartDelteMap);
+	}
+
+	/** 상품 상세페이지 내 이미지 조회
+	 * @param productCode
+	 * @return productImgList
+	 */
+	public List<String> selectImgList(int productCode) {
+
+		return sqlSession.selectList("productMapper.selectImgList", productCode);
+	}
+
+	/** 단일상품 -> 결제 페이지 내 이미지 조회
+	 * @param productCode
+	 * @return productImgList
+	 */
+	public String selectImages(String productCode) {
+
+		return sqlSession.selectOne("productMapper.selectImages", productCode);
 	}
 }
