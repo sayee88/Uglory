@@ -1,9 +1,13 @@
 const reviewList = document.getElementById("review-list");
 
 // 즉시실행 함수
-(function(){
-    allReviewList();
-})();
+if(reviewList != null){
+
+    (function(){
+        allReviewList();
+    })();
+
+}
 
 
 const reviewRadio = document.getElementsByClassName("reviewRadio");
@@ -60,7 +64,6 @@ function allReviewList(){
     });
 
 }
-
 
 // 구독 ajax
 function subCategory(){
@@ -609,3 +612,11 @@ document.getElementsByClassName("product")[0].addEventListener("click", function
     this.classList.add("unWritten");
    
 });
+
+
+// 상품 이미지
+// const img = document.getElementsByClassName("img");
+// for(let i=0; i<img.length; i++){
+//     img[i].setAttribute("src", window.location.origin+'/ugloryA' + imgRoot);
+
+// };

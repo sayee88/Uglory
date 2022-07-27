@@ -27,4 +27,6 @@ public class ReviewWrite {
 	private String productOrderCode;
 	private String subOrderCode;
 	
+	private String imgRoot;
+	
 }

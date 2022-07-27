@@ -87,32 +87,22 @@ public class PaymentDAO {
 
 
 	/**
-	 * 주문 번호로 개별 or 구독 여부 확인
-	 * @param orderCode
-	 * @return
-	 */
-	public int checkOrder(String orderCode) {
-		return sqlSession.selectOne("paymentMapper.checkOrder", orderCode);
-	}
-
-
-	/**
 	 * 개별 상품 상세 조회
-	 * @param orderCode
+	 * @param payNo
 	 * @return pPaymentDetail
 	 */
-	public ProductPaymentDetail selectProductPaymentDetail(String orderCode) {
-		return sqlSession.selectOne("paymentMapper.selectProductPaymentDetail", orderCode);
+	public ProductPaymentDetail selectProductPaymentDetail(String payNo) {
+		return sqlSession.selectOne("paymentMapper.selectProductPaymentDetail", payNo);
 	}
 
 
 	/**
 	 * 구독 상품 상세 조회
-	 * @param orderCode
+	 * @param payNo
 	 * @return sPaymentDetail
 	 */
-	public SubsPaymentDetail selectSubsPaymentDetail(String orderCode) {
-		return sqlSession.selectOne("paymentMapper.selectSubsPaymentDetail", orderCode);
+	public SubsPaymentDetail selectSubsPaymentDetail(String payNo) {
+		return sqlSession.selectOne("paymentMapper.selectSubsPaymentDetail", payNo);
 	}
 
 

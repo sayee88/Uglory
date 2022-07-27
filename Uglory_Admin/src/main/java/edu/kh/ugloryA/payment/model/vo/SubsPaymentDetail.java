@@ -14,6 +14,7 @@ import lombok.ToString;
 public class SubsPaymentDetail {
 	
 	// 공통
+	private String payNo; // 결제번호
 	private String orderCode; // 주문번호
 	private String payAmount; // 결제 금액
 	private String payDate; // 결제일
