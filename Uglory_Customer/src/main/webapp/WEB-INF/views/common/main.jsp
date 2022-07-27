@@ -151,7 +151,7 @@
                     </ul>
                     <div class="tab-content">
                         <div id="tab-1" class="tab-pane fade show p-0 active">
-                            <div class="row g-4">
+                            <div class="row g-4" id="thisWeekTab">
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
                                         <img class="flex-shrink-0 img-fluid rounded" src="${contextPath}/resources/img/main/paprika.jpg" alt="" style="width: 80px;">
@@ -180,7 +180,7 @@
                             </div>
                         </div>
                         <div id="tab-2" class="tab-pane fade show p-0">
-                            <div class="row g-4">
+                            <div class="row g-4" id="nextWeekTab">
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
                                         <img class="flex-shrink-0 img-fluid rounded" src="${contextPath}/resources/img/main/broccoli.jpg" alt="" style="width: 80px;">
@@ -438,6 +438,10 @@
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
     <%-- <!— jQuery 추가 —> --%>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <script>
+        const contextPath = '${contextPath}';
+    </script>
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
