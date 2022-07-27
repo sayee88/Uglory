@@ -6,7 +6,7 @@ if(reviewList != null){
     (function(){
         allReviewList();
     })();
-    
+
 }
 
 
@@ -615,5 +615,8 @@ document.getElementsByClassName("product")[0].addEventListener("click", function
 
 
 // 상품 이미지
-const img = document.getElementById("img");
-img.setAttribute("src", window.location.origin+'/ugloryA' + imgRoot);
+// const img = document.getElementsByClassName("img");
+// for(let i=0; i<img.length; i++){
+//     img[i].setAttribute("src", window.location.origin+'/ugloryA' + imgRoot);
+
+// };
