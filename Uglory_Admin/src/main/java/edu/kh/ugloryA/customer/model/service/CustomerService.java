@@ -1,6 +1,7 @@
 package edu.kh.ugloryA.customer.model.service;
 
 import java.util.List;
+import java.util.Map;
 
 import edu.kh.ugloryA.customer.model.vo.Customer;
 
@@ -10,7 +11,7 @@ public interface CustomerService {
 	 * ��ü �� ��� ��ȸ
 	 * @return customerList
 	 */
-	List<Customer> selectAllCustomer();
+	Map<String, Object> selectAllCustomer(int cp);
 
 	
 	/**
@@ -19,7 +20,7 @@ public interface CustomerService {
 	 * @param query
 	 * @return customerList
 	 */
-	List<Customer> searchCustomer(String key, String query);
+	Map<String, Object> searchCustomer(String key, String query);
 
 
 	/**
