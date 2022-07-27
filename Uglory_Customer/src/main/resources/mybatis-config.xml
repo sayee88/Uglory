@@ -53,6 +53,7 @@
 
 		
 		<typeAlias type="edu.kh.ugloryC.main.model.vo.DeliveryProduct" alias="deliveryProduct"/>
+		<typeAlias type="edu.kh.ugloryC.main.model.vo.RecentReview" alias="recentReview"/>
 		
 		
 	</typeAliases>
