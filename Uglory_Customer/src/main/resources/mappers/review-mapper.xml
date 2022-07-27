@@ -35,6 +35,7 @@
 		<result property="totalPrice" column="TOTAL_PRICE" />
 		<result property="reviewCode" column="REVIEW_CD" />
 		<result property="productCode" column="P_CD" />
+		<result property="imgRoot" column="IMG_ROOT" />
 		
 	
 	</resultMap>
@@ -79,6 +80,7 @@
 		<result property="productName" column="PRODUCT_NM" />
 		<result property="optionName" column="OPTION_NM" />
 		<result property="totalPrice" column="TOTAL_PRICE" />
+		<result property="imgRoot" column="IMG_ROOT" />
 	
 	</resultMap>
 
@@ -192,15 +194,20 @@
 		WHERE P_REVIEW_ST = 'N'
 		AND PRODUCT_ORDER.MEMBER_NO  = #{memberNo} -->
 		
-		SELECT DISTINCT P_ORDER_CD, P_CD, PRODUCT_NM, P_ORDER_DT, TOTAL_PRICE
+		SELECT DISTINCT P_ORDER_CD, P.P_CD, PRODUCT_NM, P_ORDER_DT, TOTAL_PRICE, 
+		(SELECT IMG_ROOT
+		FROM PRODUCT_IMG I
+		WHERE IMG_LEVEL = 0
+		AND I.P_CD = P.P_CD) IMG_ROOT
 		FROM PRODUCT_ORDER
 		JOIN OPTION_TB USING(P_ORDER_CD)
-		JOIN OPTION_TYPE USING(OPTION_CD)
-		JOIN PRODUCT USING(P_CD)
-		WHERE MEMBER_NO = #{memberNo}
-		AND (P_ORDER_CD, P_CD) NOT IN (SELECT P_ORDER_CD, P_CD FROM REVIEW
-		                                WHERE MEMBER_NO = #{memberNo}
-		                                AND S_ORDER_CD IS NULL)
+		JOIN OPTION_TYPE O USING(OPTION_CD)
+		JOIN PRODUCT P ON(P.P_CD = O.P_CD)
+		JOIN PRODUCT_IMG I ON(I.P_CD = P.P_CD)
+		WHERE MEMBER_NO = 6
+		AND (P_ORDER_CD, P.P_CD) NOT IN (SELECT P_ORDER_CD, P.P_CD FROM REVIEW
+		                               WHERE MEMBER_NO = 6
+									   AND S_ORDER_CD IS NULL)
 	</select>
 		
 	
@@ -230,14 +237,19 @@
 		JOIN PRODUCT ON(OPTION_TYPE.P_CD = PRODUCT.P_CD)
 		WHERE P_ORDER_CD = #{orderCode}
 		AND MEMBER_NO = #{memberNo} -->
-		SELECT P_ORDER_CD, PRODUCT_NM, P_ORDER_DT, TOTAL_PRICE
+		SELECT P_ORDER_CD, PRODUCT_NM, P_ORDER_DT, TOTAL_PRICE, 
+		(SELECT I.IMG_ROOT
+		FROM PRODUCT_IMG I
+		WHERE IMG_LEVEL = 0
+		AND I.P_CD = P.P_CD) IMG_ROOT
 		FROM PRODUCT_ORDER
 		JOIN MEMBER USING(MEMBER_NO)
 		JOIN OPTION_TB USING(P_ORDER_CD)
-		JOIN OPTION_TYPE USING(OPTION_CD)
-		JOIN PRODUCT ON(OPTION_TYPE.P_CD = PRODUCT.P_CD)
+		JOIN OPTION_TYPE O USING(OPTION_CD)
+		JOIN PRODUCT P ON(O.P_CD = P.P_CD)
+		JOIN PRODUCT_IMG I ON (I.P_CD = P.P_CD)
 		WHERE MEMBER_NO = #{memberNo}
-		AND PRODUCT.P_CD = #{productCode}
+		AND P.P_CD = #{productCode}
 		AND ROWNUM = 1
 	</select>
 	

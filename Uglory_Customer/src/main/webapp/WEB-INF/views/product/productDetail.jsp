@@ -34,7 +34,6 @@
     <link href="${contextPath}/resources/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="${contextPath}/resources/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
-
     <!-- Customized Bootstrap Stylesheet -->
     <link href="${contextPath}/resources/css/bootstrap.min.css" rel="stylesheet">
 
@@ -65,32 +64,38 @@
                 <div class="product-detail-area">
                     <!-- 상품 이미지 영역 최대 4개(썸네일 포함)-->
                     <div class="product-detail-img">
-                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                                <div class="carousel-indicators">
+
+                                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                </div>
+                                <div class="carousel-inner">
+
+                                    <c:forEach var="productImage" items="${productImgList}">
+                                        <div class="carousel-item active">
+                                            <img src="http://localhost:8080/ugloryA${productImage}" class="d-block w-100" alt="..." width="380px" height="380px">
+                                        </div>
+                                        <%-- <div class="carousel-item">
+                                            <img src="http://localhost:8080/ugloryA${productImage}" class="d-block w-100" alt="..." width="380px" height="380px">
+                                        </div> 
+                                        <div class="carousel-item">
+                                            <img src="http://localhost:8080/ugloryA${productImage}" class="d-block w-100" width="380px" height="380px" alt="...">
+                                        </div> --%>
+                                    </c:forEach>
+
+                                </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
                         </div>
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="${contextPath}/resources/img/product/bam.png" class="d-block w-100" alt="...">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="${contextPath}/resources/img/product/bam.png" class="d-block w-100" alt="...">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="${contextPath}/resources/img/product/bam.png" class="d-block w-100" alt="...">
-                            </div>
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                        </button>
-                        </div>
+                    </div>
                         <%-- <table border="0">
                             <tbody>
                                 <tr>
@@ -114,7 +119,6 @@
                                 </tr>
                             </tfoot>
                         </table> --%>
-                    </div>
 
                     <!-- 상품 정보  -->
                     <div class="product-detail-info">
@@ -207,15 +211,6 @@
                 <div class="info-area">
                     ${detail.productInfo}
                 </div>
-                <!-- 썸머노트 조회 영역(확인 필요) -->
-                <%-- <div id="summernote"><p>Hello Summernote</p>
-                    <script>
-                        $(document).ready(function() {
-                            $('#summernote').summernote();
-                        });
-                    </script>
-                </div> --%>
-                <!-- 썸머노트 조회 영역 끝 -->
 
                 <hr>
 
@@ -224,7 +219,7 @@
                 <c:if test="${count}==0">
                     <span class="detail-review-count">0</span>
                 </c:if>
-                <span class="detail-review-count">${count}</span> 개의 이용후기를 확인해보세요!
+                <span class="detail-review-count">${count}</span>개의 이용후기를 확인해보세요!
                 </h3>
 
                 <!-- 별점 및 평균 조회 및 리뷰 페이지 이동 영역 -->
