@@ -4,6 +4,12 @@
 
 <%-- <c:set var="hmm" value="${map.productUnWrittenList}" /> --%>
 
+<%-- <c:set var="unWrittenList" value="${map.productUnWrittenList}" />
+
+<c:forEach var="puw" items="${unWrittenList}">
+    <c:set var="humm" value="${puw.imgRoot}" />
+</c:forEach> --%>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -220,12 +226,12 @@
                     
                         <div class="unWrittenReview-List" id="productUnWrittenList">
                             <c:forEach var="pd" items="${map.productUnWrittenList}">
-
+                                
                                 <div>
                                     <div class="unWritten-list">
                                         <div class="unWritten-productList">
                                             <%-- 상품이미지 받아오기 --%>
-                                            <img id="img">
+                                            <img class="img" src="/ugloryA${pd.imgRoot}" >
                                         </div>
                                         <div>
                                             <div>${pd.productOrderDate}</div>
@@ -342,7 +348,8 @@
     <script>
         // console.log("${map.productUnWrittenList[0].imgRoot}");
         //console.log('hmm : ' + '${hmm}');
-        const imgRoot = "${map.productUnWrittenList[0].imgRoot}";
+        // const imgRoot = "${unWrittenList[0].imgRoot}";
+
     </script>
 
     <%-- footer --%>
