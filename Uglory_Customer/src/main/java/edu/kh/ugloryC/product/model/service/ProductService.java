@@ -124,5 +124,11 @@ public interface ProductService {
 	 */
 	int deleteCart(List<String> optionNoList, int memberNo);
 
+	/** 단일상품 -> 결제 페이지 내 이미지 조회
+	 * @param productCode
+	 * @return productImgList
+	 */
+	String selectImages(String productCode);
+
 
 }

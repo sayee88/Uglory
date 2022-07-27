@@ -238,4 +238,12 @@ public class ProductServiceImpl implements ProductService {
 		}
 		return result;
 	}
+
+	// 단일상품 -> 결제 페이지 내 이미지 조회
+	@Override
+	public String selectImages(String productCode) {
+
+		return dao.selectImages(productCode);
+	}
+
 }

@@ -115,6 +115,11 @@ public class ProductController {
 		// 주문 페이지 내 옵션 코드 상품 코드에 따른 옵션이름, 개수 조회
 		List<OptionType> selectOptionList = service.orderOptionSelect(map);
 		
+		// 이미지 조회
+		String orderImg = service.selectImages(productCode);
+		
+		model.addAttribute("orderImg", orderImg);
+		
 		map.put("selectOptionList", selectOptionList);
 		
 		// 주문 번호 생성
@@ -322,6 +327,7 @@ public class ProductController {
 		
 		// 장바구니 상품 조회
 		List<ProductCart> productCartList = service.productCart(loginMember.getMemberNo()); 
+		
 		
 		model.addAttribute("productCartList", productCartList);
 
