@@ -275,7 +275,7 @@
 
 
             <!-- 페이지네이션 시작-->   
-            <%-- <nav aria-label="Page navigation example">
+            <nav aria-label="Page navigation example">
             <ul class="pagination d-flex justify-content-center">
                 <li class="page-item">
                 <a class="page-link" href="#" aria-label="Previous">
@@ -291,7 +291,7 @@
                 </a>
                 </li>
             </ul>
-            </nav> --%>
+            </nav> 
             <!-- 페이지 네이션 끝 -->
             
         </div>
