@@ -9,7 +9,17 @@
 		<result property="price" column="PRICE"/>
 		<result property="thumbnail" column="THUMBNAIL"/>
 	</resultMap>
+	
+	<resultMap type="recentReview" id="recentReview_rm">
+		<result property="starRating" column="STAR_RATING"/>
+		<result property="productName" column="PRODUCT_NM"/>
+		<result property="reviewEnrollDate" column="REVIEW_ENROLL_DT"/>
+		<result property="memberName" column="MEMBER_NAME"/>
+		<result property="reviewContent" column="REVIEW_CONTENT"/>
+		<result property="thumbnail" column="THUMBNAIL"/>
+	</resultMap>
 
+	<!-- 이번주 배송 상품 조회 -->
 	<select id="thisDeliveryProduct" resultMap="delProduct_rm">
 		SELECT P_CATEGORY_NM, PRODUCT_NM, OPTION_NM, TO_CHAR((PRODUCT_PRICE + OPTION_PRICE), 'FM9,999,999') PRICE,
 		       (SELECT IMG_ROOT FROM PRODUCT_IMG I
@@ -24,6 +34,7 @@
 		ORDER BY PRODUCT_NO
 	</select>
 	
+	<!-- 다음주 배송 상품 조회 -->
 	<select id="nextDeliveryProduct" resultMap="delProduct_rm">
 		SELECT P_CATEGORY_NM, PRODUCT_NM, OPTION_NM, TO_CHAR((PRODUCT_PRICE + OPTION_PRICE), 'FM9,999,999') PRICE,
 		       (SELECT IMG_ROOT FROM PRODUCT_IMG I
@@ -36,6 +47,36 @@
 		JOIN P_CATEGORY PC ON(P.P_CATEGORY_NO = PC.P_CATEGORY_NO)
 		WHERE EX_UPLOAD_DATE = 'N'
 		ORDER BY PRODUCT_NO
+	</select>
+	
+	<!-- 농장 개수 조회 -->
+	<select id="farmCount" resultType="_int">
+		SELECT COUNT(*) FROM FARM
+	</select>
+	
+	<!-- 상품 개수 조회 -->
+	<select id="productCount" resultType="_int">
+		SELECT COUNT(*) FROM PRODUCT
+	</select>
+	
+	<!-- 최근 리뷰 조회 -->
+	<select id="selectRecentReview" resultMap="recentReview_rm">
+		SELECT *
+		FROM(
+		    SELECT STAR_RATING, PRODUCT_NM,
+		           TO_CHAR(REVIEW_ENROLL_DT, 'YYYY.MM.DD') REVIEW_ENROLL_DT, 
+		           MEMBER_NAME, REVIEW_CONTENT,
+		           (SELECT REVIEW_IMG_RENAME
+		            FROM REVIEW_IMG I
+		            WHERE REVIEW_IMG_LEVEL = 0
+		            AND I.REVIEW_NO = R.REVIEW_NO) THUMBNAIL
+		
+		    FROM REVIEW R
+		    LEFT JOIN PRODUCT USING(P_CD)
+		    JOIN MEMBER USING(MEMBER_NO)
+		    ORDER BY REVIEW_NO DESC
+		    )
+		WHERE ROWNUM &lt;= 5
 	</select>
 
 </mapper>

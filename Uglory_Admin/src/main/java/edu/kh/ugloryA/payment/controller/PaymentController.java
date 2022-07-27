@@ -55,10 +55,10 @@ public class PaymentController {
 	}
 	
 	
-	@GetMapping("/PPaymentDetail/{orderCode}")
-	public String selectProductPaymentDetail(@PathVariable("orderCode") String orderCode, Model model) {
+	@GetMapping("/PPaymentDetail/{payNo}")
+	public String selectProductPaymentDetail(@PathVariable("payNo") String payNo, Model model) {
 		
-		ProductPaymentDetail pPaymentDetail = (ProductPaymentDetail)service.selectProductPaymentDetail(orderCode);
+		ProductPaymentDetail pPaymentDetail = (ProductPaymentDetail)service.selectProductPaymentDetail(payNo);
 		
 		model.addAttribute("pPaymentDetail", pPaymentDetail);
 		
@@ -66,11 +66,11 @@ public class PaymentController {
 	}
 	
 	
-	@GetMapping("/SPaymentDetail/{orderCode}")
-	public String selectSubsPaymentDetail(@PathVariable("orderCode") String orderCode, Model model) {
+	@GetMapping("/SPaymentDetail/{payNo}")
+	public String selectSubsPaymentDetail(@PathVariable("payNo") String payNo, Model model) {
 		
 		
-		SubsPaymentDetail sPaymentDetail = (SubsPaymentDetail)service.selectSubsPaymentDetail(orderCode);
+		SubsPaymentDetail sPaymentDetail = (SubsPaymentDetail)service.selectSubsPaymentDetail(payNo);
 		
 		model.addAttribute("sPaymentDetail", sPaymentDetail);
 		

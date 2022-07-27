@@ -31,27 +31,19 @@ public interface PaymentService {
 
 
 	/**
-	 * 주문 번호로 개별 or 구독 여부 확인
-	 * @param orderCode
-	 * @return
-	 */
-	int checkOrder(String orderCode);
-
-
-	/**
 	 * 개별 상품 상세 조회 
-	 * @param orderCode
+	 * @param payNo
 	 * @return
 	 */
-	ProductPaymentDetail selectProductPaymentDetail(String orderCode);
+	ProductPaymentDetail selectProductPaymentDetail(String payNo);
 
 
 	/**
 	 * 구독 상품 상세 조회
-	 * @param orderCode
+	 * @param payNo
 	 * @return
 	 */
-	SubsPaymentDetail selectSubsPaymentDetail(String orderCode);
+	SubsPaymentDetail selectSubsPaymentDetail(String payNo);
 
 
 	/**

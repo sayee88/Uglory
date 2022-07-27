@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import edu.kh.ugloryC.main.model.dao.MainDAO;
 import edu.kh.ugloryC.main.model.vo.DeliveryProduct;
+import edu.kh.ugloryC.main.model.vo.RecentReview;
 
 @Service
 public class MainServiceImpl implements MainService {
@@ -24,7 +25,24 @@ public class MainServiceImpl implements MainService {
 	@Override
 	public List<DeliveryProduct> nextDeliveryProduct() {
 		return dao.nextDeliveryProduct();
+	}
+
+	//농장 개수 세기
+	@Override
+	public int farmCount() {
+		return dao.farmCount();
+	}
+
+	//상품 개수 세기
+	@Override
+	public int productCount() {
+		return dao.productCount();
+	}
+
+	//최근 리뷰 조회하기
+	@Override
+	public List<RecentReview> selectRecentReview() {
+		return dao.selectRecentReview();
 	} 
-	
 	
 }
