@@ -114,6 +114,53 @@
             }
         }
     });
+
+    const thisWeekTab = document.getElementById("thisWeekTab");
+    const nextWeekTab = document.getElementById("nextWeekTab");
+
+    $.ajax({
+        url : contextPath + "/delivery/product",
+        dataType : "json",
+        success : function(map){
+
+            console.log(map.thisWeekList);
+            console.log(map.nextWeekList);
+
+            // 이번주 목록 만들기
+            if(map.thisWeekList.length != 0){
+                thisWeekTab.innerHTML = "";
+
+                for(let items of map.thisWeekList){
+
+                    const col = document.createElement("div");
+                    col.classList.add("col-lg-6");
+
+                    const dflex = document.createElement("div");
+                    dflex.classList.add("d-flex");
+                    dflex.classList.add("align-items-center");
+
+                    const img = document.createElement("img");
+                    img.classList.add("flex-shrink-0");
+                    img.classList.add("img-fluid");
+                    img.classList.add("rounded");
+                    img.setAttribute("src", "#");
+
+                }
+
+            }
+
+            //다음주 목록 만들기
+            if(map.nextWeekList.length != 0){
+
+            }
+
+
+        },
+        error : function(request, status, error){
+            console.log("에러 발생");
+            console.log("상태코드 : " + request.status);
+        }
+    });
     
 })(jQuery);
 
