@@ -31,4 +31,6 @@ public class MainController {
 		return"review/privacyPolicy";
 	}
 	
+	
+	
 }

@@ -197,7 +197,6 @@ function category(selectCategoryNo){
                 product_img.classList.add("product-img");
                 product_img.setAttribute("src",  window.location.origin+'/ugloryA' + product.imgRoot);
                 
-                
             
                 const div = document.createElement("div");
             

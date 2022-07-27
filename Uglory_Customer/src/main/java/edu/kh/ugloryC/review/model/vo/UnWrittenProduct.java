@@ -13,7 +13,6 @@ import lombok.Setter;
 public class UnWrittenProduct {
 	
 	private String productOrderCode;
-//	private String productImage;
 	private String productOrderDate;
 	private String productName;
 	private String optionName;
@@ -22,6 +21,8 @@ public class UnWrittenProduct {
 	private int reviewCode;
 
 	private int productCode;
+	
+	private String imgRoot;
 	
 	private List<Map<String, Object>> optionList;
 }
