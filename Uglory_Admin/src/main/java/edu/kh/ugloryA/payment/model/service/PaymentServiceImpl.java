@@ -64,24 +64,17 @@ public class PaymentServiceImpl implements PaymentService {
 	}
 
 
-	// 주문 번호로 개별 or 구독 여부 확인
-	@Override
-	public int checkOrder(String orderCode) {
-		return dao.checkOrder(orderCode);
-	}
-
-
 	// 개별 상품 상세 조회
 	@Override
-	public ProductPaymentDetail selectProductPaymentDetail(String orderCode) {
-		return dao.selectProductPaymentDetail(orderCode);
+	public ProductPaymentDetail selectProductPaymentDetail(String payNo) {
+		return dao.selectProductPaymentDetail(payNo);
 	}
 
 
 	// 구독 상품 상세 조회
 	@Override
-	public SubsPaymentDetail selectSubsPaymentDetail(String orderCode) {
-		return dao.selectSubsPaymentDetail(orderCode);
+	public SubsPaymentDetail selectSubsPaymentDetail(String payNo) {
+		return dao.selectSubsPaymentDetail(payNo);
 	}
 
 

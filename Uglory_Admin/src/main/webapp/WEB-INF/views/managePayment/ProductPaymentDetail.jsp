@@ -70,16 +70,16 @@
 
                             <thead>
                                 <tr>
-                                    <th scope="col" colspan="2">주문 번호</th>
-                                    <th scope="col" colspan="3">${pPaymentDetail.orderCode}</th>
+                                    <th scope="col" colspan="2">결제 번호</th>
+                                    <th scope="col" colspan="3">${pPaymentDetail.payNo}</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
+                                    <th>주문 번호</th>
+                                    <td>${pPaymentDetail.orderCode}</td>
                                     <th>주문자</th>
-                                    <td>${pPaymentDetail.customerName}</td>
-                                    <th>주문자 아이디</th>
-                                    <td>${pPaymentDetail.customerEmail}</td>
+                                    <td>${pPaymentDetail.customerEmail} / ${pPaymentDetail.customerName}</td>
                                 </tr>
 
                                 <tr>
@@ -139,7 +139,7 @@
                             </tbody>
                         </table>
 
-                        <div style="margin-top: 100px;"><a class="btn btn-primary rounded-pill" href="${contextPath}/payment/selectAll">목록으로</a></div>
+                        <div style="margin-top: 100px;"><a class="btn btn-primary rounded-pill" id="goToList" href="${contextPath}/payment/selectAll">목록으로</a></div>
 
                     </div>
                 </div>

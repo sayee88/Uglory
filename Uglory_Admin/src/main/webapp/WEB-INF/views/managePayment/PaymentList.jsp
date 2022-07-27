@@ -77,9 +77,9 @@
                         <div class="listHead">
                             <form action="selectAll">
                                 <select name="key">
-                                    <option value="orderNo">주문번호</option>
-                                    <option value="customerEmail">회원 이메일</option>
-                                    <option value="orderDate">결제일</option>
+                                    <option value="payNo">결제 번호</option>
+                                    <option value="customerName">회원 이름</option>
+                                    <option value="payDate">결제일</option>
                                 </select>
 
                                 <input type="text" name="query" id="paymentSearch">
@@ -93,10 +93,8 @@
                             <table class="table table-borderless farmTable mt-4">
                                 <thead style="margin-bottom: 10px;">
                                     <tr>
-                                        <th scope="col">주문 번호</th>
-                                        <th scope="col">회원 이메일</th>
+                                        <th scope="col">결제 번호</th>
                                         <th scope="col">회원 이름</th>
-                                        <th scope="col">결제 금액</th>
                                         <th scope="col">결제일</th>
                                         <th scope="col">상세</th>
                                     </tr>
@@ -104,10 +102,8 @@
                                 <tbody id="paymentList">
                                     <c:forEach var="payment" items="${paymentList}" >
                                         <tr>
-                                            <th scope="row">${payment.orderCode}</th>
-                                            <td>${payment.customerEmail}</td>
+                                            <th scope="row">${payment.payNo}</th>
                                             <td>${payment.customerName}</td>
-                                            <td>${payment.payAmount}</td>
                                             <td>${payment.payDate}</td>
                                             <td>
                                                 <button type="button" class="btn btn-payment-detail selectDetail sort-${payment.sort}">상세</button>
