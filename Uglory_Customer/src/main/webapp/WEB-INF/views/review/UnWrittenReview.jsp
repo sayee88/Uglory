@@ -2,6 +2,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"  %>
 
+<%-- <c:set var="hmm" value="${map.productUnWrittenList}" /> --%>
+
+<%-- <c:set var="unWrittenList" value="${map.productUnWrittenList}" />
+
+<c:forEach var="puw" items="${unWrittenList}">
+    <c:set var="humm" value="${puw.imgRoot}" />
+</c:forEach> --%>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -217,12 +226,12 @@
                     
                         <div class="unWrittenReview-List" id="productUnWrittenList">
                             <c:forEach var="pd" items="${map.productUnWrittenList}">
-
+                                
                                 <div>
                                     <div class="unWritten-list">
                                         <div class="unWritten-productList">
                                             <%-- 상품이미지 받아오기 --%>
-                                            <img src="${contextPath}/resources/img/product/banana.png">
+                                            <img class="img" src="/ugloryA${pd.imgRoot}" >
                                         </div>
                                         <div>
                                             <div>${pd.productOrderDate}</div>
@@ -335,6 +344,13 @@
             </div>
         </div>
     </div>
+
+    <script>
+        // console.log("${map.productUnWrittenList[0].imgRoot}");
+        //console.log('hmm : ' + '${hmm}');
+        // const imgRoot = "${unWrittenList[0].imgRoot}";
+
+    </script>
 
     <%-- footer --%>
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />

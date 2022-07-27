@@ -341,13 +341,13 @@ public class ReviewController {
 	
 	
 	
-	// 게시글 삭제
+	// 리뷰 삭제
 	@GetMapping("/list/delete/{reviewCode}/{reviewNo}")
 	public String deleteReview(@PathVariable("reviewNo") int reviewNo,
 							@PathVariable("reviewCode") int reviewCode,
 							HttpServletRequest req,
 							@RequestHeader("referer") String referer,
-							RedirectAttributes ra) {
+							RedirectAttributes ra) { 
 		
 		int result = service.reviewDelete(reviewNo, reviewCode);
 		
@@ -366,6 +366,13 @@ public class ReviewController {
 		
 		return "redirect:" + path;
 	}
+	
+	
+	
+	
+	// 리뷰 수정
+	
+	
 	
 	
 	
