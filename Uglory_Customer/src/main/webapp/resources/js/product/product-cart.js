@@ -52,10 +52,8 @@ for(const deleteBtn of deleteBtnList){
         const optionNo = this.getAttribute("id").replace("optionNo-", "");
 
         const cartDiv = deleteBtn.parentElement.parentElement;
-        cartDiv.previousElementSibling.firstElementChild.innerText = cartDiv.previousElementSibling.firstElementChild.innerText -1;
+        cartDiv.parentElement.firstElementChild.firstElementChild.innerText = cartDiv.parentElement.firstElementChild.firstElementChild.innerText -1;
         cartDiv.remove();
-
-        calcPrice();
 
         // X버튼 동작 시 CART DB 삭제 진행
 
@@ -67,16 +65,18 @@ for(const deleteBtn of deleteBtnList){
             success : function(result){
                 if(result > 0){
                     console.log("성공");
+                    calcPrice();
                 } else {
                     console.log("실패");
                 }
             },
-
+            
             error : function(request, status, error){
 				console.log("에러 발생");
 				console.log("상태코드 : " + request.status); 
 			}
         });
+
     });
 }
 
