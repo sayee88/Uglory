@@ -237,6 +237,19 @@ public class ReviewDAO {
 		
 		return sqlSession.selectList("reviewMapper.selectReviewDetail", reviewNo);
 	}
+
+
+	
+
+	/**
+	 * 리뷰 삭제
+	 * @param map
+	 * @return result
+	 */
+	public int reviewDelete(Map<String, Object> map) {
+		
+		return sqlSession.delete("reviewMapper.reviewDelete", map);
+	}
 	
 	
 	

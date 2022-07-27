@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -337,6 +338,36 @@ public class ReviewController {
 		
 		return "/review/ReviewList";
 	}
+	
+	
+	
+	// 게시글 삭제
+	@GetMapping("/list/delete/{reviewCode}/{reviewNo}")
+	public String deleteReview(@PathVariable("reviewNo") int reviewNo,
+							@PathVariable("reviewCode") int reviewCode,
+							HttpServletRequest req,
+							@RequestHeader("referer") String referer,
+							RedirectAttributes ra) {
+		
+		int result = service.reviewDelete(reviewNo, reviewCode);
+		
+		String path = null;
+		String message = null;
+		
+		if(result > 0) {
+			message = "게시글이 삭제 되었습니다.";
+			path = "../../list/delete/" + reviewNo;
+		} else {
+			message = "게시글 삭제 실패ㅠㅠ";
+			path = referer;
+		}
+		
+		ra.addFlashAttribute("message", message);
+		
+		return "redirect:" + path;
+	}
+	
+	
 	
 	
 	
