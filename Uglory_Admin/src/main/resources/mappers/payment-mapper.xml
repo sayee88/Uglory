@@ -4,17 +4,17 @@
 
 
 	<resultMap type="payment" id="payment_rm">
-		<id property="orderCode" column="ORDER_CD" />
-		<result property="customerEmail" column="MEMBER_EMAIL" />
+		<id property="payNo" column="PAY_NO" />
 		<result property="customerName" column="MEMBER_NAME" />
-		<result property="payAmount" column="PAY_AMOUNT" />
 		<result property="payDate" column="PAY_DT" />
+		<result property="sort" column="SORT" />
 	</resultMap>
 	
 	
 	
 	<resultMap type="productPaymentDetail" id="pPaymentDetail_rm">
-		<id property="orderCode" column="P_ORDER_CD"/>
+		<id property="payNo" column="P_PAY_NO"/>
+		<result property="orderCode" column="P_ORDER_CD"/>
 		<result property="customerName" column="MEMBER_NAME"/>
 		<result property="customerEmail" column="MEMBER_EMAIL"/>
 		<result property="payAmount" column="P_PAY_AMOUNT"/>
@@ -23,11 +23,11 @@
 		<result property="deliveryStatement" column="DELIVERY_ST"/>
 		<result property="deliveryRequest" column="P_DL_REQ"/>
 		<result property="orderDate" column="P_ORDER_DT"/>
-		<collection property="optionList" column="P_ORDER_CD" ofType="option" select="selectOption" javaType="java.util.ArrayList" />
+		<collection property="optionList" column="P_PAY_NO" ofType="option" select="selectOption" javaType="java.util.ArrayList" />
 	</resultMap>
 	
 	<resultMap type="option" id="option_rm">
-		<id property="orderCode" column="ORDER_CD"/>
+		<id property="payNo" column="P_PAY_NO"/>
 		<result property="optionName" column="OPTION_NM"/>
 		<result property="productName" column="PRODUCT_NM"/>
 		<result property="optionCount" column="OPTION_COUNT"/>
@@ -36,7 +36,8 @@
 	
 	
 	<resultMap type="subsPaymentDetail" id="sPaymentDetail_rm">
-		<id property="orderCode" column="S_ORDER_CD"/>
+		<id property="payNo" column="S_PAY_NO"/>
+		<result property="orderCode" column="S_ORDER_CD"/>
 		<result property="customerName" column="MEMBER_NAME"/>
 		<result property="customerEmail" column="MEMBER_EMAIL"/>
 		<result property="payAmount" column="S_PAY_AMOUNT"/>
@@ -81,31 +82,31 @@
 	<!-- 결제 내역 전체 개수 조회 -->
 	<select id="listCount" resultType="_int">
 		SELECT COUNT(*) 
-		FROM (SELECT S.S_ORDER_CD AS ORDER_CD, M.MEMBER_EMAIL, S.S_PAY_AMOUNT AS PAY_AMOUNT, TO_CHAR(S.S_PAY_DT, 'YYYY-MM-DD HH24:MI:SS') AS PAY_DT, '1' SORT
-			FROM SUBS_PAY S
-			JOIN MEMBER M ON S.MEMBER_NO = M.MEMBER_NO
-			
-			UNION ALL
-			
-			SELECT P.P_ORDER_CD AS ORDER_CD, M.MEMBER_EMAIL, P.P_PAY_AMOUNT AS PAY_AMOUNT, TO_CHAR(P.P_PAY_DT, 'YYYY-MM-DD HH24:MI:SS') AS PAY_DT, '2' SORT
-			FROM PRODUCT_PAY P
-			JOIN PRODUCT_ORDER PO ON P.P_ORDER_CD = PO.P_ORDER_CD
-			LEFT JOIN PRODUCT_REFUND PR ON PO.P_ORDER_CD = PR.P_ORDER_CD 
-			JOIN MEMBER M ON P.MEMBER_NO = M.MEMBER_NO
-			WHERE PR.P_ORDER_CD IS NULL
-			ORDER BY PAY_DT DESC)
+		FROM (	SELECT S.S_PAY_NO AS PAY_NO, M.MEMBER_NAME, TO_CHAR(S.S_PAY_DT, 'YYYY-MM-DD HH24:MI:SS') AS PAY_DT, '1' SORT
+				FROM SUBS_PAY S
+				JOIN MEMBER M ON S.MEMBER_NO = M.MEMBER_NO
+				
+				UNION ALL
+				
+				SELECT P.P_PAY_NO AS PAY_NO, M.MEMBER_NAME, TO_CHAR(P.P_PAY_DT, 'YYYY-MM-DD HH24:MI:SS') AS PAY_DT, '2' SORT
+				FROM PRODUCT_PAY P
+				JOIN PRODUCT_ORDER PO ON P.P_ORDER_CD = PO.P_ORDER_CD
+				LEFT JOIN PRODUCT_REFUND PR ON PO.P_ORDER_CD = PR.P_ORDER_CD 
+				JOIN MEMBER M ON P.MEMBER_NO = M.MEMBER_NO
+				WHERE PR.P_ORDER_CD IS NULL
+				ORDER BY PAY_DT DESC)
 	</select>
 	
 	
 	<!-- 결제 전체 조회 -->
 	<select id="selectAllPayment" resultMap="payment_rm">
-		SELECT S.S_ORDER_CD AS ORDER_CD, M.MEMBER_EMAIL, M.MEMBER_NAME, S.S_PAY_AMOUNT AS PAY_AMOUNT, TO_CHAR(S.S_PAY_DT, 'YYYY-MM-DD HH24:MI:SS') AS PAY_DT, '1' SORT
+		SELECT S.S_PAY_NO AS PAY_NO, M.MEMBER_NAME, TO_CHAR(S.S_PAY_DT, 'YYYY-MM-DD HH24:MI:SS') AS PAY_DT, '1' SORT
 		FROM SUBS_PAY S
 		JOIN MEMBER M ON S.MEMBER_NO = M.MEMBER_NO
 		
 		UNION ALL
 		
-		SELECT P.P_ORDER_CD AS ORDER_CD, M.MEMBER_EMAIL, M.MEMBER_NAME, P.P_PAY_AMOUNT AS PAY_AMOUNT, TO_CHAR(P.P_PAY_DT, 'YYYY-MM-DD HH24:MI:SS') AS PAY_DT, '2' SORT
+		SELECT P.P_PAY_NO AS PAY_NO, M.MEMBER_NAME, TO_CHAR(P.P_PAY_DT, 'YYYY-MM-DD HH24:MI:SS') AS PAY_DT, '2' SORT
 		FROM PRODUCT_PAY P
 		JOIN PRODUCT_ORDER PO ON P.P_ORDER_CD = PO.P_ORDER_CD
 		LEFT JOIN PRODUCT_REFUND PR ON PO.P_ORDER_CD = PR.P_ORDER_CD 
@@ -117,25 +118,25 @@
 	<!-- 결제 검색 내역 개수 조회 -->
 	<select id="searchListCount" resultType="_int">
 	 	SELECT COUNT(*) FROM (
-			SELECT S.S_ORDER_CD AS ORDER_CD, M.MEMBER_EMAIL, M.MEMBER_NAME, S.S_PAY_AMOUNT AS PAY_AMOUNT, TO_CHAR(S.S_PAY_DT, 'YYYY-MM-DD') AS PAY_DT, '1' SORT
+			SELECT S.S_PAY_NO AS PAY_NO, M.MEMBER_NAME, TO_CHAR(S.S_PAY_DT, 'YYYY-MM-DD') AS PAY_DT, '1' SORT
 			FROM SUBS_PAY S
 			JOIN MEMBER M ON S.MEMBER_NO = M.MEMBER_NO
 			<if test='query != null and query !=""'>
 				WHERE 
 				<choose>
-					<when test='key == "orderNo"'>
-						S.S_ORDER_CD LIKE '%${query}%'
+					<when test='key == "payNo"'>
+						S.S_PAY_NO LIKE '%${query}%'
 					</when>
-					<when test='key == "customerEmail"'>
-						MEMBER_EMAIL LIKE '%${query}%'
+					<when test='key == "customerName"'>
+						MEMBER_NAME LIKE '%${query}%'
 					</when>
-					<when test='key == "orderDate"'>
+					<when test='key == "payDate"'>
 						S.S_PAY_DT BETWEEN TO_DATE('${query}', 'YYYY/MM/DD') AND TO_DATE('${query}', 'YYYY/MM/DD') + 0.99999
 					</when>
 				</choose>
 			</if>
 			UNION ALL
-			SELECT P.P_ORDER_CD AS ORDER_CD, M.MEMBER_EMAIL, M.MEMBER_NAME, P.P_PAY_AMOUNT AS PAY_AMOUNT, TO_CHAR(P.P_PAY_DT, 'YYYY-MM-DD') AS PAY_DT, '2' SORT
+			SELECT P.P_PAY_NO AS PAY_NO, M.MEMBER_NAME, TO_CHAR(P.P_PAY_DT, 'YYYY-MM-DD') AS PAY_DT, '2' SORT
 			FROM PRODUCT_PAY P
 			JOIN PRODUCT_ORDER PO ON P.P_ORDER_CD = PO.P_ORDER_CD
 			LEFT JOIN PRODUCT_REFUND PR ON PO.P_ORDER_CD = PR.P_ORDER_CD 
@@ -143,13 +144,13 @@
 			<if test='query != null and query !=""'>
 				WHERE 
 				<choose>
-					<when test='key == "orderNo"'>
-						P.P_ORDER_CD LIKE '%${query}%'
+					<when test='key == "payNo"'>
+						P.P_PAY_NO LIKE '%${query}%'
 					</when>
-					<when test='key == "customerEmail"'>
-						MEMBER_EMAIL LIKE '%${query}%'
+					<when test='key == "customerName"'>
+						MEMBER_NAME LIKE '%${query}%'
 					</when>
-					<when test='key == "orderDate"'>
+					<when test='key == "payDate"'>
 						P.P_PAY_DT BETWEEN TO_DATE('${query}', 'YYYY/MM/DD') AND TO_DATE('${query}', 'YYYY/MM/DD') + 0.99999
 					</when>
 				</choose>
@@ -161,25 +162,25 @@
 	
 	<!-- 결제 검색 조회 -->
 	<select id="searchPayment" resultMap="payment_rm">
-		SELECT S.S_ORDER_CD AS ORDER_CD, M.MEMBER_EMAIL, M.MEMBER_NAME, S.S_PAY_AMOUNT AS PAY_AMOUNT, TO_CHAR(S.S_PAY_DT, 'YYYY-MM-DD') AS PAY_DT, '1' SORT
+		SELECT S.S_PAY_NO AS PAY_NO, M.MEMBER_NAME, TO_CHAR(S.S_PAY_DT, 'YYYY-MM-DD') AS PAY_DT, '1' SORT
 		FROM SUBS_PAY S
 		JOIN MEMBER M ON S.MEMBER_NO = M.MEMBER_NO
 		<if test='query != null and query !=""'>
 			WHERE 
 			<choose>
-				<when test='key == "orderNo"'>
-					S.S_ORDER_CD LIKE '%${query}%'
+				<when test='key == "payNo"'>
+					S.S_PAY_NO LIKE '%${query}%'
 				</when>
-				<when test='key == "customerEmail"'>
-					MEMBER_EMAIL LIKE '%${query}%'
+				<when test='key == "customerName"'>
+					MEMBER_NAME LIKE '%${query}%'
 				</when>
-				<when test='key == "orderDate"'>
+				<when test='key == "payDate"'>
 					S.S_PAY_DT BETWEEN TO_DATE('${query}', 'YYYY/MM/DD') AND TO_DATE('${query}', 'YYYY/MM/DD') + 0.99999
 				</when>
 			</choose>
 		</if>
 		UNION ALL
-		SELECT P.P_ORDER_CD AS ORDER_CD, M.MEMBER_EMAIL, M.MEMBER_NAME, P.P_PAY_AMOUNT AS PAY_AMOUNT, TO_CHAR(P.P_PAY_DT, 'YYYY-MM-DD') AS PAY_DT, '2' SORT
+		SELECT P.P_PAY_NO AS PAY_NO, M.MEMBER_NAME, TO_CHAR(P.P_PAY_DT, 'YYYY-MM-DD') AS PAY_DT, '2' SORT
 		FROM PRODUCT_PAY P
 		JOIN PRODUCT_ORDER PO ON P.P_ORDER_CD = PO.P_ORDER_CD
 		LEFT JOIN PRODUCT_REFUND PR ON PO.P_ORDER_CD = PR.P_ORDER_CD 
@@ -187,13 +188,13 @@
 		<if test='query != null and query !=""'>
 			WHERE 
 			<choose>
-				<when test='key == "orderNo"'>
-					P.P_ORDER_CD LIKE '%${query}%'
+				<when test='key == "payNo"'>
+					P.P_PAY_NO LIKE '%${query}%'
 				</when>
-				<when test='key == "customerEmail"'>
-					MEMBER_EMAIL LIKE '%${query}%'
+				<when test='key == "customerName"'>
+					MEMBER_NAME LIKE '%${query}%'
 				</when>
-				<when test='key == "orderDate"'>
+				<when test='key == "payDate"'>
 					P.P_PAY_DT BETWEEN TO_DATE('${query}', 'YYYY/MM/DD') AND TO_DATE('${query}', 'YYYY/MM/DD') + 0.99999
 				</when>
 			</choose>
@@ -206,43 +207,44 @@
 	
 	<!-- 개별 상품 상세 조회 -->
 	<select id="selectProductPaymentDetail" resultMap="pPaymentDetail_rm">
-		SELECT  P_ORDER_CD, MEMBER_NAME, MEMBER_EMAIL, P_PAY_AMOUNT,
+		SELECT  P_PAY_NO, P_ORDER_CD, MEMBER_NAME, MEMBER_EMAIL, P_PAY_AMOUNT,
 		        P_PAY_DT, P_ORDER_ADDR, P_ORDER_DT, 
 		        P_DL_REQ, DELIVERY_ST
 		FROM PRODUCT_PAY
 		JOIN MEMBER USING(MEMBER_NO)
 		JOIN PRODUCT_ORDER USING (P_ORDER_CD)
 		JOIN PRODUCT_DELIVERY USING (DELIVERY_CD)
-		WHERE P_ORDER_CD = #{orderCode}
+		WHERE P_PAY_NO = #{payNo}
 	</select>
 	
 	<select id="selectOption" resultMap="option_rm">
-		SELECT P_ORDER_CD AS ORDER_CD, OPTION_NM, PRODUCT_NM, OPTION_COUNT
+		SELECT P_PAY_NO AS PAY_NO, OPTION_NM, PRODUCT_NM, OPTION_COUNT
 		FROM PRODUCT_PAY
 		JOIN PRODUCT_ORDER USING(P_ORDER_CD)
 		JOIN OPTION_TB USING(P_ORDER_CD)
 		JOIN OPTION_TYPE USING(OPTION_CD)
 		JOIN PRODUCT USING(P_CD)
-		WHERE P_ORDER_CD = #{orderCode}
+		WHERE P_PAY_NO = #{payNo}
 	</select>
 
 	
 	<!-- 구독 상품 상세 조회 -->
 	<select id="selectSubsPaymentDetail" resultMap="sPaymentDetail_rm">
-		SELECT  S_ORDER_CD, MEMBER_NAME, MEMBER_EMAIL, S_PAY_AMOUNT, S_PAY_DT, S_ORDER_ADDR, 
+		SELECT  S_PAY_NO, S_ORDER_CD, MEMBER_NAME, MEMBER_EMAIL, S_PAY_AMOUNT, S_PAY_DT, S_ORDER_ADDR, 
 		        S_DELIVERY_DT, DELIVERY_ST, S_DL_REQ, S_NM, S_CYCLE,
-		        (SELECT LISTAGG(PRODUCT_NM, ', ') WITHIN GROUP (ORDER BY S_ORDER_CD)
-		        FROM SUBS_ORDER 
+		        (SELECT LISTAGG(PRODUCT_NM, ', ') WITHIN GROUP (ORDER BY S_PAY_NO)
+		        FROM SUBS_PAY
+		        JOIN SUBS_ORDER USING(S_ORDER_CD)
 		        JOIN SUBS_EXCEPTION USING(S_ORDER_CD)
 		        JOIN PRODUCT USING(P_CD)
-		        WHERE S_ORDER_CD = #{orderCode}) PRODUCT_NM
+		        WHERE S_PAY_NO = #{payNo}) PRODUCT_NM
 		FROM SUBS_PAY
 		JOIN MEMBER USING(MEMBER_NO)
 		JOIN SUBS_DELIVERY USING(S_ORDER_CD)
 		JOIN SUBS_ORDER USING(S_ORDER_CD)
 		JOIN PRODUCT_DELIVERY USING(DELIVERY_CD)
 		JOIN SUBS USING(S_CD)
-		WHERE S_ORDER_CD = #{orderCode}
+		WHERE S_PAY_NO = #{payNo}
 	</select>
 	
 	
@@ -284,6 +286,7 @@
 		FROM PRODUCT_REFUND
 		JOIN PRODUCT_ORDER USING(P_ORDER_CD)
 		JOIN MEMBER USING(MEMBER_NO)
+		ORDER BY P_ORDER_DT DESC
 	</select>
 	
 	<select id="selectRefundOption" resultMap="option_rm">
