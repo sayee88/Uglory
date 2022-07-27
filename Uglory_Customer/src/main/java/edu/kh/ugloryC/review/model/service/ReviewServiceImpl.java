@@ -254,6 +254,19 @@ public class ReviewServiceImpl implements ReviewService{
 		
 		return dao.selectReviewDetail(reviewNo);
 	}
+
+
+
+	// 리뷰 삭제
+	@Override
+	public int reviewDelete(int reviewNo, int reviewCode) {
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("reviewNo", reviewNo);
+		map.put("reviewCode", reviewCode);
+		
+		return dao.reviewDelete(map);
+	}
 	
 	
 	

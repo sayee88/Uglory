@@ -183,13 +183,15 @@
                                 </div>
                                 <div class="myreview-button">
                                     <button id="updateBtn">수정</button>
-                                    <button id="deleteBtn">삭제</button>
+                                    <button id="deleteBtn" onclick="deleteReview(${mr.reviewNo}, ${mr.reviewCode})">삭제</button>
                                 </div>
                             </div>
                         </c:forEach>
                     </c:otherwise>   
                 
                 </c:choose>
+
+
 
             </div>
             

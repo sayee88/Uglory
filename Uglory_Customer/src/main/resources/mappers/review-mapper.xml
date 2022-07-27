@@ -442,8 +442,23 @@
 		WHERE REVIEW_NO = #{reviewNo}
 		ORDER BY REVIEW_IMG_LEVEL
 	</select>
+	
+	
+	<!-- 게시판 삭제 -->
+	<delete id="reviewDelete" >
+		UPDATE REVIEW SET
 		
+		<if test="reviewCode == 1">
+			REVIEW_CD = 3
+		</if>
 		
+		<if test="reviewCode == 2">
+			REVIEW_CD = 4
+		</if>
+		
+		WHERE REVIEW_NO = #{reviewNo}
+		
+	</delete>
 		
 		
 		
