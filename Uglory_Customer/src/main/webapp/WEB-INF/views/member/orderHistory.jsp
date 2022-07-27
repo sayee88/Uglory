@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 
+
+<c:set var="pagination" value="${map.pagination}" />
+<c:set var="orderHistoryList" value="${map.orderHistoryList}" />
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -210,60 +214,6 @@
                     </div>
 
 
-                    <div class="order-head">
-                        <h2 class="orderTitle"> 주문 정보</h2>
-                    </div>
-
-                    <div class="order-info">
-                        <div class="description" id=selectOne>
-
-                            <dl>
-                                <dt>주문자 이름</dt>
-                                <dd>박예진${item.memberName}</dd>
-                                
-                            </dl>
-                            <dl>
-                                <dt>결제 일시</dt>
-                                <dd> 2022/07/19 11:28:50${item.payDate}</dd>
-                            </dl>
-
-                            <dl>
-                                <dt>총 결제 금액</dt>
-                                <dd>27,000원${item.totalPirce}</dd>
-                            </dl>
-
-                        </div>
-                    </div>
-
-
-                    <div class="order-head">
-                        <h2 class="orderTitle"> 배송 정보</h2>
-                    </div>
-
-                    <div class="order-info">
-                        <div class="description" id=selectOne>
-
-                            <dl>
-                                <dt>수령인 이름</dt>
-                                <dd>박예진${item.orderName}</dd>
-                                
-                            </dl>
-                            <dl>
-                                <dt>수령인 전화번호</dt>
-                                <dd>010-2222-3333${item.orderPhone}</dd>
-                            </dl>
-
-                            <dl>
-                                <dt>수령인 주소</dt>
-                                <dd>압구정로 79-16 1층${item.orderaddress}</dd>
-                            </dl>
-                            
-                                <dl>
-                                    <dt>배송 요청 사항</dt>
-                                    <dd>굿뜨${item.deliveryReq}</dd>
-                                </dl>
-
-                        </div>
                     </div> --%>
 
                 </li>
@@ -275,23 +225,23 @@
 
 
             <!-- 페이지네이션 시작-->   
-            <%-- <nav aria-label="Page navigation example">
+            <nav aria-label="Page navigation example">
+
+            <c:set var="url" value="?cp="/>
             <ul class="pagination d-flex justify-content-center">
-                <li class="page-item">
-                <a class="page-link" href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                </a>
-                </li>
-                <li class="page-item"><a class="page-link current" >1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                <li class="page-item">
-                <a class="page-link" href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-                </li>
+
+                <li class="page-item"><a class="page-link" href="${url}1" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+              
+                <!-- 범위가 정해진 일반 for문 -->
+                <c:forEach var="i" begin="${pagination.startPage}" end="${pagination.endPage}" step="1">
+                    <c:if test="${i == pagination.currentPage}">
+                        <li class="page-item"><a class="page-link current" >${i}</a></li>
+                    </c:if>
+                </c:forEach>
+               
+                <li class="page-item"><a class="page-link" href="${url}${pagination.maxPage}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
             </ul>
-            </nav> --%>
+            </nav> 
             <!-- 페이지 네이션 끝 -->
             
         </div>

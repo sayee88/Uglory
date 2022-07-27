@@ -151,61 +151,10 @@
                     </ul>
                     <div class="tab-content">
                         <div id="tab-1" class="tab-pane fade show p-0 active">
-                            <div class="row g-4">
-                                <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="${contextPath}/resources/img/main/paprika.jpg" alt="" style="width: 80px;">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>과채류</span>
-                                                <span class="text-primary">15,000원</span>
-                                            </h5>
-                                            <small class="fst-italic">파프리카 2kg</small>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="${contextPath}/resources/img/main/watermelon.jpg" alt="" style="width: 80px;">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>과일류</span>
-                                                <span class="text-primary">13,000원</span>
-                                            </h5>
-                                            <small class="fst-italic">수박</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <div class="row g-4" id="thisWeekTab"></div>
                         </div>
                         <div id="tab-2" class="tab-pane fade show p-0">
-                            <div class="row g-4">
-                                <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="${contextPath}/resources/img/main/broccoli.jpg" alt="" style="width: 80px;">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>엽/양채류</span>
-                                                <span class="text-primary">23,000원</span>
-                                            </h5>
-                                            <small class="fst-italic">브로콜리</small>
-                                        </div>
-                                    </div>
-                                </div> 
-                                <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="${contextPath}/resources/img/main/onion.jpg" alt="" style="width: 80px;">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>조미채소류</span>
-                                                <span class="text-primary">8,000원</span>
-                                            </h5>
-                                            <small class="fst-italic">양파 3kg</small>
-                                        </div>
-                                    </div>
-                                </div>           
-                            </div>
+                            <div class="row g-4" id="nextWeekTab"></div>
                         </div>
                     </div>
                 </div>  
@@ -438,6 +387,10 @@
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
     <%-- <!— jQuery 추가 —> --%>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <script>
+        const contextPath = '${contextPath}';
+    </script>
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

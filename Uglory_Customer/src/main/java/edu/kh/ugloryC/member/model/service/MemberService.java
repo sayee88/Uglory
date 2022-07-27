@@ -31,7 +31,7 @@ public interface MemberService {
 	int subCancel(int memberNo);
 
 	//개별 상품 주문 목록 내역 조회
-	List<OrderHistory> selectOrderHistoryList(int memberNo);
+	Map<String, Object> selectOrderHistoryList(int memberNo,int cp);
 
 	// 개별 주문 상세 조회 조회
 	OrderHistoryDetail selectOrderHistoryDetail(String orderNo);
