@@ -1,5 +1,6 @@
 package edu.kh.ugloryC.member.model.service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -12,6 +13,7 @@ import edu.kh.ugloryC.member.model.dao.MemberDAO;
 import edu.kh.ugloryC.member.model.vo.Member;
 import edu.kh.ugloryC.member.model.vo.OrderHistory;
 import edu.kh.ugloryC.member.model.vo.OrderHistoryDetail;
+import edu.kh.ugloryC.member.model.vo.Pagination;
 import edu.kh.ugloryC.member.model.vo.SubHistory;
 import edu.kh.ugloryC.member.model.vo.SubHistoryDetail;
 import edu.kh.ugloryC.member.model.vo.SubscriptionStatus;
@@ -84,8 +86,18 @@ public class MemberServiceImpl implements MemberService {
 
 	// 개별 상품 주문 목록 조회
 	@Override
-	public List<OrderHistory> selectOrderHistoryList(int memberNo) {
-		return dao.selectOrderHistoryList(memberNo);
+	public Map<String, Object> selectOrderHistoryList(int memberNo,int cp) {
+		
+		int listCount = dao.listCount(memberNo);
+		Pagination pagination = new Pagination(cp,listCount);
+		List<OrderHistory> orderHistoryList = dao.selectOrderHistoryList(memberNo,pagination);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("pagination",pagination);
+		map.put("orderHistoryList", orderHistoryList);
+		
+		return map;
+		
 	}
 
 	// 개별 주문 상품 상세 조회 
