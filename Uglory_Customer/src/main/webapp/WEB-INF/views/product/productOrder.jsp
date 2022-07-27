@@ -163,7 +163,7 @@
                                 <!-- 상품 썸네일 이미지 -->
                                 <div class="order-productImgName">
                                     <div>
-                                        <img src="${contextPath}/resources/img/main/broccoli.jpg" width="150px" height="150px">
+                                        <img src="${contextPath}/resources/img/product/OKSUSU.PNG" width="150px" height="150px">
                                     </div>
 
                                     <div class="orderProductName"> 
