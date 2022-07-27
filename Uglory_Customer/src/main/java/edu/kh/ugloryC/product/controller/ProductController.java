@@ -71,10 +71,14 @@ public class ProductController {
 
 			model.addAttribute("count", count);
 			model.addAttribute("result", result);
-
 			
 		}
-		// 별점 카운트, 리뷰 카운트 필요
+		
+		// 상품 이미지 조회
+		List<String> productImgList = service.selectImgList(productCode);
+		
+		model.addAttribute("productImgList", productImgList);
+		
 		model.addAttribute("detail", detail);
 		
 		return "product/productDetail";

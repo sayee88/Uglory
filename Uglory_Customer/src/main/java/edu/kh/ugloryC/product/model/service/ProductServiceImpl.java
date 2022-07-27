@@ -41,6 +41,13 @@ public class ProductServiceImpl implements ProductService {
 		
 		return dao.countReview(productCode);
 	}
+	
+	// 상품 상세페이지 내 이미지 조회 
+	@Override
+	public List<String> selectImgList(int productCode) {
+
+		return dao.selectImgList(productCode);
+	}
 
 	// 주문 페이지 내 옵션에 따른 상품, 옵션 조회
 	public List<OptionType> orderOptionSelect(Map<String, Object> map) {

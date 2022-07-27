@@ -180,4 +180,13 @@ public class ProductDAO {
 
 		return sqlSession.delete("productMapper.deleteCart", cartDelteMap);
 	}
+
+	/** 상품 상세페이지 내 이미지 조회
+	 * @param productCode
+	 * @return productImgList
+	 */
+	public List<String> selectImgList(int productCode) {
+
+		return sqlSession.selectList("productMapper.selectImgList", productCode);
+	}
 }

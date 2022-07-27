@@ -290,6 +290,15 @@ rating.each(function(){
 
 });
 
+(function(){
+// 상품 이미지
+	const productImgList = document.getElementsByClassName("carousel-item");
+	for(productImge of productImgList){
+		productImge.setAttribute("src",  window.location.origin+'/ugloryA' + productImg);
+	}
+});
+
+
 
 
 

@@ -28,6 +28,12 @@ public interface ProductService {
 	 */
 	int countReview(int productCode);
 	
+	/** 상품 상세페이지 내 이미지 조회
+	 * @param productCode
+	 * @return productImgList
+	 */
+	List<String> selectImgList(int productCode);
+	
 	/** 주문 페이지 내 옵션에 따른 상품, 옵션 조회
 	 * @param map
 	 * @return selectOptionList
@@ -98,7 +104,6 @@ public interface ProductService {
 	 */
 	int plusCount(List<String> plusOptionList, String optionPlusCount);
 
-
 	/** 장바구니 -> 주문 페이지 내 옵션에 따른 상품, 옵션 조회
 	 * @param optionNo List
 	 * @return selectOptionList
@@ -118,20 +123,6 @@ public interface ProductService {
 	 * @return deleteCart
 	 */
 	int deleteCart(List<String> optionNoList, int memberNo);
-
-
-
-
-
-	
-
-
-
-
-
-
-
-
 
 
 }

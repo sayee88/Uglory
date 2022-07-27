@@ -286,6 +286,7 @@
             const productCode = "${productCode}";
             const contextPath = "${contextPath}";
             const productStatus = "${detail.productStatus}"
+            const productImg = "${productImgList}"
         </script>
 
         <%-- Template Javascript --%>
