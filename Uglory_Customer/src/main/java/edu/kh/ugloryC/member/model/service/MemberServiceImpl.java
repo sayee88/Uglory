@@ -37,6 +37,7 @@ public class MemberServiceImpl implements MemberService {
 			int memberNo = dao.signUp(inputMember);
 			if(memberNo > 0) {
 				inputMember.setMemberNo(memberNo);
+				inputMember.setSecessionFlag("N");
 				return inputMember;
 				
 			}else {
