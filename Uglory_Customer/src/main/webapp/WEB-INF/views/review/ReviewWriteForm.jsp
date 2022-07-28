@@ -105,7 +105,7 @@
                     <c:if test="${unWrittenProduct.productOrderCode == null}">
                         <div class="purchase-product">
                             <div>
-                                <img src="${contextPath}/resources/img/product/banana.png">
+                                <img src="${contextPath}/resources/img/product/standard.png">
                             </div>
                             <div>
                                 <div>${UnWrittenSubscription.subDate}</div>
