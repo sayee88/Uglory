@@ -638,6 +638,7 @@
 .myreview-content > div > img{
     width: 160px;
     height: 160px;
+    object-fit: cover;
 }
 
 .myReview-star{

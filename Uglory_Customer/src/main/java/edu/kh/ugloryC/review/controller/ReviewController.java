@@ -365,8 +365,8 @@ public class ReviewController {
 		ra.addFlashAttribute("message", message);
 		
 		return "redirect:" + path;
-	}
 	
+	}
 	
 	
 	
