@@ -304,7 +304,7 @@
                             <div class="modal-bottom">
                                 <div class="modal-sub">
                                     <img src="${contextPath}/resources/img/icon/tomato.png" width="50px">
-                                    <a href="#">   구독 박스가 궁금하다면? >></a>
+                                    <a href="${contextPath}/subscription">   구독 박스가 궁금하다면? >></a>
                                 </div>
                             </div>
 
