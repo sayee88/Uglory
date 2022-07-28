@@ -14,6 +14,11 @@
 		<result property="memberName" column="MEMBER_NAME" />
 		
 		<result property="thumbnail" column="THUMBNAIL" />
+		
+		<result property="subOrderCode" column="S_ORDER_CD" />
+		<result property="productOrderCode" column="P_ORDER_CD" />
+		<result property="productCode" column="P_CD" />
+		
 	</resultMap>
 	
 	<!-- 구독 상품 미작성 리뷰 -->
@@ -298,13 +303,16 @@
 	<select id="selectAvgStar" resultType="_double">
 	 	SELECT NVL((SELECT ROUND(AVG(STAR_RATING/2),1) FROM REVIEW
 		JOIN MEMBER ON(MEMBER.MEMBER_NO = REVIEW.MEMBER_NO)
-		WHERE MEMBER.MEMBER_NO = #{memberNo}), 0 ) FROM DUAL
+		WHERE MEMBER.MEMBER_NO = #{memberNo}
+		AND REVIEW_CD IN (1,2)), 0 ) FROM DUAL
 	</select>
 	
 	
 	<!-- 나의 리뷰 수 조회 -->
 	<select id="selectMyReviewCount" resultType="_int">
-		SELECT COUNT(*) FROM REVIEW WHERE MEMBER_NO = #{memberNo}
+		SELECT COUNT(*) FROM REVIEW 
+		WHERE MEMBER_NO = #{memberNo}
+		AND REVIEW_CD IN (1,2)
 	
 		<!-- SELECT (
 			SELECT COUNT(*)
@@ -374,6 +382,7 @@
 		FROM REVIEW R
 		JOIN MEMBER USING(MEMBER_NO)
 		WHERE R.REVIEW_CD = 1
+		AND REVIEW_CD IN (1,2)
 		ORDER BY REVIEW_ENROLL_DT DESC
 	</select>
 	
@@ -390,6 +399,7 @@
 		FROM REVIEW R
 		JOIN MEMBER USING(MEMBER_NO)
 		WHERE R.REVIEW_CD = 2
+		AND REVIEW_CD IN (1,2)
 		ORDER BY REVIEW_ENROLL_DT DESC
 	</select>
 	
@@ -404,6 +414,7 @@
 		REVIEW_ENROLL_DT, REVIEW_CONTENT, (STAR_RATING/2) STAR_RATING, REVIEW_CD, MEMBER_NAME
 		FROM REVIEW R
 		JOIN MEMBER USING(MEMBER_NO)
+		WHERE REVIEW_CD IN (1,2)
 		ORDER BY REVIEW_ENROLL_DT DESC
 	</select>
 		
@@ -419,6 +430,7 @@
 		FROM REVIEW R
 		JOIN MEMBER USING(MEMBER_NO)
 		WHERE MEMBER_NO = #{memberNo}
+		AND REVIEW_CD IN (1,2)
 		ORDER BY REVIEW_ENROLL_DT DESC
 	</select>
 		
@@ -457,7 +469,7 @@
 	
 	
 	<!-- 게시판 삭제 -->
-	<delete id="reviewDelete" >
+	<update id="reviewDelete" >
 		UPDATE REVIEW SET
 		
 		<if test="reviewCode == 1">
@@ -470,7 +482,7 @@
 		
 		WHERE REVIEW_NO = #{reviewNo}
 		
-	</delete>
+	</update>
 		
 		
 		

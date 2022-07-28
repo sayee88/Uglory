@@ -182,7 +182,6 @@
                                     </div>
                                 </div>
                                 <div class="myreview-button">
-                                    <button id="updateBtn">수정</button>
                                     <button id="deleteBtn" onclick="deleteReview(${mr.reviewNo}, ${mr.reviewCode})">삭제</button>
                                 </div>
                             </div>
@@ -197,7 +196,9 @@
             
         </section>       
                 
-
+        <script>
+            const contextPath = '${contextPath}';
+        </script>
 
         <%-- footer --%>
         <jsp:include page="/WEB-INF/views/common/footer.jsp" />
@@ -219,7 +220,7 @@
 
         <!-- Template Javascript -->
         <script src="${contextPath}/resources/js/main.js"></script>
-        <script src="${contextPath}/resources/js/review/review.js"></script>
+        <script src="${contextPath}/resources/js/review/myReview.js"></script>
         
 </body>
 

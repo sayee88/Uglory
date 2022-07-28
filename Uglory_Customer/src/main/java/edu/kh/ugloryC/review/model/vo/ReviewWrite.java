@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
+// 리뷰 작성 시
 @Getter
 @Setter
 @NoArgsConstructor
