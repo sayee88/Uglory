@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 
-@WebFilter(filterName = "loginFilter", urlPatterns = {"/product/order", "/product/cartOrder", "/product/cart"})
+@WebFilter(filterName = "loginFilter", urlPatterns = {"/product/order", "/product/cartOrder", "/product/cart", "/review/list/myReview", "/review/list/unWritten", "/review/write"})
 public class LoginFilter extends HttpFilter implements Filter {
 
 	public void init(FilterConfig fConfig) throws ServletException {

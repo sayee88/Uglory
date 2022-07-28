@@ -5,10 +5,12 @@ import java.sql.Date;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
 @NoArgsConstructor
+@ToString
 public class ReviewSelectInfo {
 	
 	private int reviewTotalCount;
@@ -28,10 +30,11 @@ public class ReviewSelectInfo {
 	
 	private String thumbnail;
 	
+	// 구독주문코드, 상품주문코드, 상품코드 추가
+	private String subOrderCode;
+	private String productOrderCode;
+	private int productCode;
 	
-//	private String productName;
-//	private String optionName;
-//	
-//	private String subName;
+	
 
 }
