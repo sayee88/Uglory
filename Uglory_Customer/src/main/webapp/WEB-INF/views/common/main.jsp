@@ -83,7 +83,7 @@
                         <div class="row g-4 mb-4">
                             <div class="col-sm-6">
                                 <div class="d-flex align-items-center border-start border-5 border-primary px-3">
-                                    <h1 class="flex-shrink-0 display-5 text-primary mb-0" data-toggle="counter-up">200</h1>
+                                    <h1 class="flex-shrink-0 display-5 text-primary mb-0" data-toggle="counter-up">${farmCount}</h1>
                                     <div class="ps-4">
                                         <p class="mb-0">Farm</p>
                                         <h6 class="text-uppercase mb-0">함께하는 농가</h6>
@@ -92,7 +92,7 @@
                             </div>
                             <div class="col-sm-6">
                                 <div class="d-flex align-items-center border-start border-5 border-primary px-3">
-                                    <h1 class="flex-shrink-0 display-5 text-primary mb-0" data-toggle="counter-up">81,455</h1>
+                                    <h1 class="flex-shrink-0 display-5 text-primary mb-0" data-toggle="counter-up">${productCount}</h1>
                                     <div class="ps-4">
                                         <p class="mb-0">Vegiterable</p>
                                         <h6 class="text-uppercase mb-0 mission-about">구출한 채소</h6>
@@ -151,61 +151,10 @@
                     </ul>
                     <div class="tab-content">
                         <div id="tab-1" class="tab-pane fade show p-0 active">
-                            <div class="row g-4">
-                                <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="${contextPath}/resources/img/main/paprika.jpg" alt="" style="width: 80px;">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>과채류</span>
-                                                <span class="text-primary">15,000원</span>
-                                            </h5>
-                                            <small class="fst-italic">파프리카 2kg</small>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="${contextPath}/resources/img/main/watermelon.jpg" alt="" style="width: 80px;">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>과일류</span>
-                                                <span class="text-primary">13,000원</span>
-                                            </h5>
-                                            <small class="fst-italic">수박</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <div class="row g-4" id="thisWeekTab"></div>
                         </div>
                         <div id="tab-2" class="tab-pane fade show p-0">
-                            <div class="row g-4">
-                                <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="${contextPath}/resources/img/main/broccoli.jpg" alt="" style="width: 80px;">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>엽/양채류</span>
-                                                <span class="text-primary">23,000원</span>
-                                            </h5>
-                                            <small class="fst-italic">브로콜리</small>
-                                        </div>
-                                    </div>
-                                </div> 
-                                <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" src="${contextPath}/resources/img/main/onion.jpg" alt="" style="width: 80px;">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>조미채소류</span>
-                                                <span class="text-primary">8,000원</span>
-                                            </h5>
-                                            <small class="fst-italic">양파 3kg</small>
-                                        </div>
-                                    </div>
-                                </div>           
-                            </div>
+                            <div class="row g-4" id="nextWeekTab"></div>
                         </div>
                     </div>
                 </div>  
@@ -357,77 +306,57 @@
                     <h5 class="section-title ff-secondary text-center text-primary fw-normal">Review</h5>
                     <h1 class="mb-5">지속가능한 가능한 식탁을 만들어가요!</h1>
                 </div>
+
                 <div class="owl-carousel testimonial-carousel">
                     
-                    <div class="testimonial-item bg-transparent border rounded p-4">
-                        <i class="fa fa-2x text-primary mb-3">★</i>
-                        <i class="fa fa-2x text-primary mb-3">★</i>
-                        <i class="fa fa-2x text-primary mb-3">★</i>
-                        <i class="fa fa-2x text-primary mb-3">★</i>
-                        <i class="fa fa-2x text-primary mb-3">★</i>
-                        <div class="d-flex align-items-center">
-                            <div class="ps-3">
-                                <h5 class="mb-1" style="font-size: 15px;">어글리 유기농 바나나 - 1.5kg</h5>
-                                <div style="font-size: 14px;">2022.07.07</div>
-                                <div>유*일</div>
-                            </div>
-                            <img class="img-fluid flex-shrink-0 rounded-circle" src="${contextPath}/resources/img/review/review_img1.png" style="width: 100px; height: 100px;">
-                        </div>
-                        <div class="review-content">맛있어요~ 뭐가 올지 궁금한맛도 좋아요 원숭이 엉덩이는 빨개 빨갛면 사과 사과는</div>
-                    </div>
+                    <c:forEach var="review" items="${recentReviewList}">
                     
-                    <div class="testimonial-item bg-transparent border rounded p-4">
-                        <i class="fa fa-2x text-primary mb-3">★</i>
-                        <i class="fa fa-2x text-primary mb-3">★</i>
-                        <i class="fa fa-2x text-primary mb-3">★</i>
-                        <i class="fa fa-2x text-primary mb-3">★</i>
-                        <i class="fa fa-2x text-primary mb-3">★</i>
-                        <div class="d-flex align-items-center">
-                            <div class="ps-3">
-                                <h5 class="mb-1" style="font-size: 15px;">어글리 유기농 바나나 - 1.5kg</h5>
-                                <div style="font-size: 14px;">2022.07.07</div>
-                                <div>유*일</div>
-                            </div>
-                            <img class="img-fluid flex-shrink-0 rounded-circle" src="${contextPath}/resources/img/review/review_img2.jpeg" style="width: 100px; height: 100px;">
-                        </div>
-                        <div class="review-content">맛있어요~ 뭐가 올지 궁금한맛도 좋아요</div>
-                    </div>
+                        <div class="testimonial-item bg-transparent border rounded p-4">
+                            <div class="rating">
+                                <c:if test="${review.starRating % 2 == 0}">
+                                    <c:forEach var="i" begin="1" end="${review.starRating / 2}">
+                                        <div class="star-wrap"><div class="star" style="width:100%"><i class="fa fa-2x text-primary mb-3">★</i></div></div>
+                                    </c:forEach>
+                                </c:if>
 
-                    <div class="testimonial-item bg-transparent border rounded p-4">
-                        <i class="fa fa-2x text-primary mb-3">★</i>
-                        <i class="fa fa-2x text-primary mb-3">★</i>
-                        <i class="fa fa-2x text-primary mb-3">★</i>
-                        <i class="fa fa-2x text-primary mb-3">★</i>
-                        <i class="fa fa-2x text-primary mb-3">★</i>
-                        <div class="d-flex align-items-center">
-                            <div class="ps-3">
-                                <h5 class="mb-1" style="font-size: 15px;">어글리 유기농 바나나 - 1.5kg</h5>
-                                <div style="font-size: 14px;">2022.07.07</div>
-                                <div>유*일</div>
-                            </div>
-                            <img class="img-fluid flex-shrink-0 rounded-circle" src="${contextPath}/resources/img/review/review_img3.jpeg" style="width: 100px; height: 100px;">
-                        </div>
-                        <div class="review-content">맛있어요~ 뭐가 올지 궁금한맛도 좋아요</div>
-                    </div>
+                                <c:if test="${review.starRating % 2 == 1}">
+                                    <c:forEach var="i" begin="1" end="${review.starRating / 2}">
+                                        <div class="star-wrap"><div class="star" style="width:100%"><i class="fa fa-2x text-primary mb-3">★</i></div></div>
+                                    </c:forEach>
 
-                    <div class="testimonial-item bg-transparent border rounded p-4">
-                        <i class="fa fa-2x text-primary mb-3">★</i>
-                        <i class="fa fa-2x text-primary mb-3">★</i>
-                        <i class="fa fa-2x text-primary mb-3">★</i>
-                        <i class="fa fa-2x text-primary mb-3">★</i>
-                        <i class="fa fa-2x text-primary mb-3">★</i>
-                        <div class="d-flex align-items-center">
-                            <div class="ps-3">
-                                <h5 class="mb-1" style="font-size: 15px;">어글리 유기농 바나나 - 1.5kg</h5>
-                                <div style="font-size: 14px;">2022.07.07</div>
-                                <div>유*일</div>
+                                    <div class="star-wrap"><div class="star" style="width:50%"><i class="fa fa-2x text-primary mb-3">★</i></div></div>
+                                </c:if>
+                                
                             </div>
-                            <img class="img-fluid flex-shrink-0 rounded-circle" src="${contextPath}/resources/img/review/review_img4.jpeg" style="width: 100px; height: 100px;">
-                        </div>
-                        <div class="review-content">맛있어요~ 뭐가 올지 궁금한맛도 좋아요</div>
-                    </div>
+                            <div class="d-flex align-items-center">
+                                <div class="ps-3">
+                                    <c:choose>
+                                        <c:when test="${review.productName != null}">
+                                            <h5 class="mb-1" style="font-size: 15px;">${review.productName}</h5>
+                                        </c:when>
+                                        <c:otherwise>
+                                            <h5 class="mb-1" style="font-size: 15px;">어글로리 구독 상품</h5>
+                                        </c:otherwise>
+                                    </c:choose>
+                                    <div style="font-size: 14px;">${review.reviewEnrollDate}</div>
+                                    <div>${review.memberName}</div>
+                                </div>
 
-                   
+                                <c:choose>
+                                    <c:when test="${review.thumbnail != null}">
+                                        <img class="img-fluid flex-shrink-0 rounded-circle" src="${contextPath}${review.thumbnail}" style="width: 100px; height: 100px;">
+                                    </c:when>
+                                    <c:otherwise>
+                                        <img class="img-fluid flex-shrink-0 rounded-circle" src="${contextPath}/resources/img/icon/tomato.png" style="width: 100px; height: 100px;">
+                                    </c:otherwise>
+                                </c:choose>
+                            </div>
+                            <div class="review-content">${review.reviewContent}</div>
+                        </div>
+
+                    </c:forEach>
+                    
+
                 </div>
             </div>
         </div>
@@ -438,6 +367,10 @@
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
     <%-- <!— jQuery 추가 —> --%>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <script>
+        const contextPath = '${contextPath}';
+    </script>
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

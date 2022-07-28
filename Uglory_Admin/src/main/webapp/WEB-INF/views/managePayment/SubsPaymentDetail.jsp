@@ -70,16 +70,16 @@
 
                             <thead>
                                 <tr>
-                                    <th scope="col" colspan="2">주문 번호</th>
-                                    <th scope="col" colspan="3">${sPaymentDetail.orderCode}</th>
+                                    <th scope="col" colspan="2">결제 번호</th>
+                                    <th scope="col" colspan="3">${sPaymentDetail.payNo}</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
+                                    <th>주문 번호</th>
+                                    <td>${sPaymentDetail.orderCode}</td>
                                     <th>주문자</th>
-                                    <td>${sPaymentDetail.customerName}</td>
-                                    <th>주문자 아이디</th>
-                                    <td>${sPaymentDetail.customerEmail}</td>
+                                    <td>${sPaymentDetail.customerEmail} / ${sPaymentDetail.customerName}</td>
                                 </tr>
 
                                 <tr>

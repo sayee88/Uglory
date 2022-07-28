@@ -55,13 +55,14 @@ public class MemberController {
 	
 	// 개별 주문 목록 내역 조회
 	@GetMapping("/orderHistory")
-	public String orderHistory(Model model, @ModelAttribute("loginMember") Member loginMember
+	public String orderHistory(Model model, @ModelAttribute("loginMember") Member loginMember,
+							   @RequestParam(value="cp",required=false , defaultValue="1")int cp	
 															) {
+		Map<String, Object> map = null;
 		
-		
-		List<OrderHistory> orderHistoryList = service.selectOrderHistoryList(loginMember.getMemberNo());
+		map = service.selectOrderHistoryList(loginMember.getMemberNo(),cp);
 
-		model.addAttribute("orderHistoryList", orderHistoryList);
+		model.addAttribute("map", map);
 		
 		return "member/orderHistory";
 	}

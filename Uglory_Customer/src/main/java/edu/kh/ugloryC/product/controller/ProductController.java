@@ -71,10 +71,14 @@ public class ProductController {
 
 			model.addAttribute("count", count);
 			model.addAttribute("result", result);
-
 			
 		}
-		// 별점 카운트, 리뷰 카운트 필요
+		
+		// 상품 이미지 조회
+		List<String> productImgList = service.selectImgList(productCode);
+		
+		model.addAttribute("productImgList", productImgList);
+		
 		model.addAttribute("detail", detail);
 		
 		return "product/productDetail";
@@ -110,6 +114,11 @@ public class ProductController {
 		map.put("productCode", productCode);
 		// 주문 페이지 내 옵션 코드 상품 코드에 따른 옵션이름, 개수 조회
 		List<OptionType> selectOptionList = service.orderOptionSelect(map);
+		
+		// 이미지 조회
+		String orderImg = service.selectImages(productCode);
+		
+		model.addAttribute("orderImg", orderImg);
 		
 		map.put("selectOptionList", selectOptionList);
 		
@@ -209,19 +218,15 @@ public class ProductController {
 		// 옵션 수량 내 [] 를 공백으로 바꿈
 		amount = amount.replaceAll("\\[", "");
 		amount = amount.replaceAll("\\]", "");
-		
-		// 옵션 넘버 내 [] 를 공백으로 바꿈
-		optionNo = optionNo.replaceAll("\\[", "");
-		optionNo = optionNo.replaceAll("\\]", "");
 
 		// , 기준으로 잘라서 배열에 저장
 		String[] optionCodeArr = optionCode.split(",");
 		String[] amountArr = amount.split(",");
-		String[] optionNoarr = optionNo.split(",");
+
 	
 		List<String> optionCodeList = Arrays.asList(optionCodeArr);
 		List<String> amountList = Arrays.asList(amountArr);
-		List<String> optionNoList = Arrays.asList(optionNoarr);
+
 		
 		if(pOrderReq.equals("")) {
 			pOrderReq = "NULL";
@@ -238,11 +243,21 @@ public class ProductController {
 
 		int result = service.productOrder(productOrder);
 
-		// 상품 디테일 -> OPTION_TB 테이블 삽입
-		if(optionNo == null) {
-			int insertOptionTb = service.insertOptionTb(optionCodeList, amountList, pOrderCode);
-		
+		// 상품 디테일 -> 결제 OPTION_TB 테이블 삽입
+		if(optionNo.equals("")) {
+			int insertOptionTb = service.insertOptionTb(optionCodeList, amountList, pOrderCode);	
+			
 		} else {
+			// 장바구니 -> 결제 OPTION_TB UPDATE 및 CART DELETE
+			
+			// 옵션 넘버 내 [] 를 공백으로 바꿈
+			optionNo = optionNo.replaceAll("\\[", "");
+			optionNo = optionNo.replaceAll("\\]", "");
+			
+			String[] optionNoarr = optionNo.split(",");
+			
+			List<String> optionNoList = Arrays.asList(optionNoarr);
+			
 			// 장바구니 -> OPTION_TB 업데이트
 			int optionUpdate = service.updateOptionTb(optionNoList, pOrderCode);
 			// 장바구니 테이블 삭제
@@ -312,6 +327,7 @@ public class ProductController {
 		
 		// 장바구니 상품 조회
 		List<ProductCart> productCartList = service.productCart(loginMember.getMemberNo()); 
+		
 		
 		model.addAttribute("productCartList", productCartList);
 

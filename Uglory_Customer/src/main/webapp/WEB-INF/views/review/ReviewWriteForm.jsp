@@ -118,7 +118,7 @@
                     <c:if test="${unWrittenProduct.productOrderCode != null}">
                         <div class="purchase-product">
                             <div>
-                                <img src="${contextPath}/resources/img/product/banana.png">
+                                <img src="/ugloryA${unWrittenProduct.imgRoot}">
                             </div>
                             <div>
                                 <div>${unWrittenProduct.productOrderDate}</div>

@@ -2,6 +2,7 @@ package edu.kh.ugloryA.customer.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,17 +34,20 @@ public class CustomerController {
 	@GetMapping("/selectAll")
 	public String selectAll(@RequestParam(value="key", required = false) String key, 
 			@RequestParam(value="query", required=false) String query,
+			@RequestParam(value="cp", required=false, defaultValue = "1") int cp,
 			Model model) {
 		
-		List<Customer> customerList = new ArrayList<Customer>();
+		Map<String,	Object> map = null;
 		
-		if(key == null && query == null) { // �˻��� �ƴ� ��� == key Ȥ�� query�� ���� ���
-			customerList = service.selectAllCustomer();
+		
+		
+		if(key == null && query == null) { 
+			map = service.selectAllCustomer(cp);
 		} else {
-			customerList = service.searchCustomer(key, query);
+			map = service.searchCustomer(key, query);
 		}
 		
-		model.addAttribute("customerList", customerList);
+		model.addAttribute("map", map);
 		
 		return "manageMember/MemberList";
 	}

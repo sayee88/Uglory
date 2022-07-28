@@ -11,6 +11,7 @@ import lombok.ToString;
 @ToString
 public class Option {
 
+	private String payNo;
 	private String orderCode;
 	private String optionName;
 	private String productName;

@@ -4,22 +4,20 @@ const selectDetailList = document.getElementsByClassName("selectDetail");
 for(const selectDetailBtn of selectDetailList){
     selectDetailBtn.addEventListener("click", function(){
 
-        const orderCode = this.parentElement.parentElement.children[0].innerText;
+        const payNo = this.parentElement.parentElement.children[0].innerText;
 
-        console.log(orderCode);
+        console.log(payNo);
 
 
         let sortNum;
         if(this.classList.contains("sort-1")) {
-            location.href = "SPaymentDetail/" + orderCode;
+            location.href = "SPaymentDetail/" + payNo;
         }
         else {
             
-            location.href = "PPaymentDetail/" + orderCode;
+            location.href = "PPaymentDetail/" + payNo;
         }
 
     })
-
-
 
 }

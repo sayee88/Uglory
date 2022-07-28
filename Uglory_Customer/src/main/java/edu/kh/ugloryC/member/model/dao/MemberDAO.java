@@ -3,6 +3,7 @@ package edu.kh.ugloryC.member.model.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -12,6 +13,7 @@ import com.google.gson.JsonElement;
 import edu.kh.ugloryC.member.model.vo.Member;
 import edu.kh.ugloryC.member.model.vo.OrderHistory;
 import edu.kh.ugloryC.member.model.vo.OrderHistoryDetail;
+import edu.kh.ugloryC.member.model.vo.Pagination;
 import edu.kh.ugloryC.member.model.vo.SubHistory;
 import edu.kh.ugloryC.member.model.vo.SubHistoryDetail;
 import edu.kh.ugloryC.member.model.vo.SubscriptionStatus;
@@ -70,9 +72,13 @@ public class MemberDAO {
 	}
 
 	// 개별 상품 주문 목록 조회 DAO
-	public List<OrderHistory> selectOrderHistoryList(int memberNo) {
+	public List<OrderHistory> selectOrderHistoryList(int memberNo,Pagination pagination) {
+		
+		int offset = (pagination.getCurrentPage()-1) * pagination.getLimit();
+		
+		RowBounds rowbounds = new RowBounds(offset, pagination.getLimit());
 	
-		return sqlSession.selectList("memberMapper.selectOrderHistoryList",memberNo);
+		return sqlSession.selectList("memberMapper.selectOrderHistoryList",memberNo,rowbounds);
 	}
 
 	//개별 상품 상세 주문 조회 DAO
@@ -95,6 +101,11 @@ public class MemberDAO {
 	public int productCancel(String orderNo) {
 		
 		return sqlSession.insert("memberMapper.productCancel",orderNo);
+	}
+
+	public int listCount(int memberNo) {
+		
+		return sqlSession.selectOne("memberMapper.listCount",memberNo);
 	}
 
 

@@ -20,6 +20,7 @@ public class ProductDetail {
     
     private String producer;
     private String origin;
+    private String productStatus;
     
     private double star; // 0.5단위
     private int reviewNo;

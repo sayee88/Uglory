@@ -1,9 +1,13 @@
 const reviewList = document.getElementById("review-list");
 
 // 즉시실행 함수
-(function(){
-    allReviewList();
-})();
+if(reviewList != null){
+
+    (function(){
+        allReviewList();
+    })();
+
+}
 
 
 const reviewRadio = document.getElementsByClassName("reviewRadio");
@@ -60,7 +64,6 @@ function allReviewList(){
     });
 
 }
-
 
 // 구독 ajax
 function subCategory(){
@@ -552,7 +555,7 @@ function openModal(reviewNo){
 // 리뷰 삭제
 function deleteReview(reviewNo, reviewCode){
 
-    let url = contextPath + "/review/list/delete/" + reviewCode + "/" + reviewNo;
+    let url = contextPath + "/review/list/delete" + reviewCode + "/" + reviewNo;
 
     if( confirm("정말로 삭제 하시겠습니까?")){
         location.href = url; // get 방식으로 url에 요청
@@ -609,3 +612,11 @@ document.getElementsByClassName("product")[0].addEventListener("click", function
     this.classList.add("unWritten");
    
 });
+
+
+// 상품 이미지
+// const img = document.getElementsByClassName("img");
+// for(let i=0; i<img.length; i++){
+//     img[i].setAttribute("src", window.location.origin+'/ugloryA' + imgRoot);
+
+// };

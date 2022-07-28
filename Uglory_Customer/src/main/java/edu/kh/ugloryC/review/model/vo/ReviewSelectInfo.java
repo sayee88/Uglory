@@ -27,7 +27,8 @@ public class ReviewSelectInfo {
 	private String memberName;
 	
 	private String thumbnail;
-//	
+	
+	
 //	private String productName;
 //	private String optionName;
 //	

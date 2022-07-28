@@ -17,6 +17,7 @@
       	
       	<result property="star" column="STAR_RATING"/>
       	<result property="reviewNo" column="REVIEW_NO"/>
+      	<result property="productStatus" column="PRODUCT_ST"/>
       	
 
     </resultMap>
@@ -47,9 +48,8 @@
 	</resultMap>
      
     <!-- 상품 상세 조회 -->
-    <!-- 별점 개수, 리뷰 개수 필요 -->
 	<select id="productDetail" resultMap="detail_rm">
-		SELECT P_CD, PRODUCT_NM, PRODUCT_PRICE, PRODUCT_INFO, PRODUCER, ORIGIN
+		SELECT P_CD, PRODUCT_NM, PRODUCT_PRICE, PRODUCT_INFO, PRODUCER, ORIGIN, PRODUCT_ST
 		FROM PRODUCT
 		JOIN FARM USING(FARM_NO)
 		WHERE P_CD = ${productCode}
@@ -62,8 +62,6 @@
 		        END AS STAR_AVG
 		FROM PRODUCT P
 		WHERE P.P_CD = ${productCode}
-		
-		
 	</select>
 	
 	<!-- 상품 상세 페이지 리뷰 수 조회 -->
@@ -71,6 +69,14 @@
 		SELECT COUNT(*)
 		FROM REVIEW
 		WHERE P_CD = ${productCode}
+	</select>
+	
+	<!-- 상품 상세 페이지 내 이미지 조회 -->
+	<select id="selectImgList" resultType="string">
+		SELECT IMG_ROOT
+        FROM PRODUCT_IMG
+        JOIN PRODUCT USING(P_CD)
+        WHERE P_CD = ${productCode} 
 	</select>
 	
 	<!-- 주문 페이지 내 옵션 조회 -->
@@ -84,6 +90,14 @@
 		<foreach item="item" collection="optionCodeList" open="(" separator="," close=")">
 			#{item}
 		</foreach>
+	</select>
+	
+	<!-- 단일상품 -> 결제 페이지 내 이미지 조회  -->
+	<select id="selectImages" resultType="string">
+		SELECT IMG_ROOT
+        FROM PRODUCT_IMG
+        JOIN PRODUCT USING(P_CD)
+        WHERE P_CD = ${productCode} 
 	</select>
 	
 	<!-- 장바구니 -> 결제 옵션 조회 -->
