@@ -56,6 +56,7 @@ for(const deleteBtn of deleteBtnList){
         cartDiv.remove();
 
         // X버튼 동작 시 CART DB 삭제 진행
+        calcPrice();
 
         $.ajax({
             url : contextPath + "/product/cartDelete",
@@ -65,7 +66,6 @@ for(const deleteBtn of deleteBtnList){
             success : function(result){
                 if(result > 0){
                     console.log("성공");
-                    calcPrice();
                 } else {
                     console.log("실패");
                 }

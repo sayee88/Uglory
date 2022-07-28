@@ -32,6 +32,7 @@
 		<result property="productCategoryNo" column="P_CATEGORY_NO"/>
 		<result property="optionNo" column="OPTION_NO"/>
 		<result property="optionCount" column="OPTION_COUNT"/>
+		<result property="imageRoot" column="IMG_ROOT"/>
 	</resultMap>
 	
 	<!-- 장바구니 조회 resultMap -->
@@ -45,6 +46,7 @@
 		<result property="productName" column="PRODUCT_NM"/>
 		<result property="productPrice" column="PRODUCT_PRICE"/>
 		<result property="optionCount" column="OPTION_COUNT"/>
+		<result property="imageRoot" column="IMG_ROOT"/>
 	</resultMap>
      
     <!-- 상품 상세 조회 -->
@@ -113,7 +115,6 @@
 		</foreach>
 	</select>
 	
-	
 	<!-- 주문번호 생성 -->
 	<select id="createProductOrderCode" resultType="string">
 		SELECT CONCAT(TO_CHAR(SYSDATE, 'YYYYMMDD-"00"'), SEQ_P_ORDER_CD.NEXTVAL) as temp FROM DUAL
@@ -171,13 +172,26 @@
 	
 	<!-- 장바구니 조회 -->
 	<select id="productCart" resultMap="productCart_rm">
-		SELECT P_CATEGORY_NO, PRODUCT.P_CD, PRODUCT_NM, PRODUCT_PRICE, OPTION_TYPE.OPTION_CD, OPTION_NM, OPTION_PRICE, OPTION_TB.OPTION_NO, OPTION_COUNT
+		SELECT P_CATEGORY_NO, PRODUCT.P_CD, PRODUCT_NM, PRODUCT_PRICE, OPTION_TYPE.OPTION_CD, OPTION_NM, OPTION_PRICE, OPTION_TB.OPTION_NO, OPTION_COUNT, IMG_ROOT
 		FROM PRODUCT
+		JOIN PRODUCT_IMG ON (PRODUCT.P_CD = PRODUCT_IMG.P_CD)
 		JOIN OPTION_TYPE ON (PRODUCT.P_CD = OPTION_TYPE.P_CD)
 		JOIN OPTION_TB ON (OPTION_TYPE.OPTION_CD = OPTION_TB.OPTION_CD)
 		JOIN CART ON (OPTION_TB.OPTION_NO = CART.OPTION_NO)
 		JOIN MEMBER ON(CART.MEMBER_NO = MEMBER.MEMBER_NO)
 		WHERE MEMBER.MEMBER_NO = #{memberNo}
+	</select>
+	
+	<!-- 장바구니 이미지 조회 -->
+	<select id="cartImage" resultType="string">
+		SELECT IMG_ROOT
+		FROM PRODUCT_IMG
+		JOIN PRODUCT USING(P_CD)
+		JOIN OPTION_TYPE USING(P_CD)
+		JOIN OPTION_TB USING(OPTION_CD)
+		JOIN CART USING(OPTION_NO)
+		JOIN MEMBER USING(MEMBER_NO)
+		WHERE MEMBER_NO = #{memberNo}
 	</select>
 	
 	<!-- x버튼 클릭 시 장바구니 삭제  -->
@@ -216,5 +230,18 @@
 		WHERE MEMBER_NO = #{memberNo}
 		AND OPTION_NO = ${optionNo}
 	</delete>
+	
+	<!-- 장바구니 -> 결제 페이지 이미지 조회 -->
+	<select id="cartOrderImage" resultType="string">
+		SELECT IMG_ROOT
+		FROM PRODUCT_IMG
+		JOIN PRODUCT USING(P_CD)
+		JOIN OPTION_TYPE USING(P_CD)
+		JOIN OPTION_TB USING(OPTION_CD)
+		WHERE OPTION_NO IN
+		<foreach item="item" collection="optionNoList" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</select>
 </mapper>
 

@@ -15,6 +15,10 @@ import edu.kh.ugloryC.product.model.vo.ProductCart;
 import edu.kh.ugloryC.product.model.vo.ProductDetail;
 import edu.kh.ugloryC.product.model.vo.ProductOrder;
 
+/**
+ * @author user1
+ *
+ */
 @Service
 public class ProductServiceImpl implements ProductService {
 	
@@ -241,9 +245,26 @@ public class ProductServiceImpl implements ProductService {
 
 	// 단일상품 -> 결제 페이지 내 이미지 조회
 	@Override
-	public String selectImages(String productCode) {
+	public List<String> selectImages(String productCode) {
 
 		return dao.selectImages(productCode);
 	}
+
+	// 장바구니 -> 결제 페이지 내 이미지 조회
+	@Override
+	public List<String> cartOrderImage(Map<String, Object> map) {
+		
+		return dao.cartOrderImage(map);
+	}
+
+	// 장바구니 이미지 조회
+	@Override
+	public List<String> cartImage(int memberNo) {
+
+		return dao.cartImage(memberNo);
+	}
+	
+	
+	
 
 }

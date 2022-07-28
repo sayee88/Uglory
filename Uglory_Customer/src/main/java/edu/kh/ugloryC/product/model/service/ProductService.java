@@ -128,7 +128,18 @@ public interface ProductService {
 	 * @param productCode
 	 * @return productImgList
 	 */
-	String selectImages(String productCode);
+	List<String> selectImages(String productCode);
 
+	/** 장바구니 -> 결제 페이지 이미지 조회
+	 * @param map
+	 * @return cartOrderImgList
+	 */
+	List<String> cartOrderImage(Map<String, Object> map);
 
+	/** 장바구니 이미지 조회
+	 * @param memberNo
+	 * @return cartImagelist
+	 */
+	List<String> cartImage(int memberNo);
+	
 }
