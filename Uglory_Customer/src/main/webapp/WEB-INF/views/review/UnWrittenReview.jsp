@@ -186,7 +186,7 @@
                 <c:choose>
 
                     <c:when test="${empty map.subUnWrittenList}">
-                        <div id="subReviewNone">작성할 리뷰 없음</div>
+                        <div id="subReviewNone" >작성할 리뷰 없음</div>
                     </c:when>
 
                     <c:otherwise>
@@ -220,7 +220,7 @@
                 <c:choose>
 
                     <c:when test="${empty map.productUnWrittenList}">
-                        <div id="pReviewNone">작성할 리뷰 없음</div>
+                        <div id="pReviewNone" style="display:none;">작성할 리뷰 없음</div>
                     </c:when>
 
                     <c:otherwise>

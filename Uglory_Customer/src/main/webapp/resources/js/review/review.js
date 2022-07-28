@@ -569,12 +569,19 @@ const pReviewNone = document.getElementById("pReviewNone");
 
 document.getElementsByClassName("subBox")[0].addEventListener("click", function(){
     
-    
     if(subUnWrittenList != null){
         subUnWrittenList.style.display = "block";
+    } else {
+        subReviewNone.style.display = "block";
     }
-    productUnWrittenList.style.display = "none";
-    pReviewNone.style.display = "none";
+    
+    if(productUnWrittenList != null){
+        productUnWrittenList.style.display = "none";
+        
+    } else {
+        pReviewNone.style.display = "none";
+
+    }
 
     document.getElementsByClassName("unWritten")[0].classList.add("unWrittenNone");
     document.getElementsByClassName("unWritten")[0].classList.remove("unWritten");
@@ -587,12 +594,21 @@ document.getElementsByClassName("subBox")[0].addEventListener("click", function(
 
 document.getElementsByClassName("product")[0].addEventListener("click", function(){
     
-    productUnWrittenList.style.display = "block";
+    if(productUnWrittenList != null){
+        productUnWrittenList.style.display = "block";
+        
+    } else {
+        pReviewNone.style.display = "block";
+    }
     
     if(subUnWrittenList != null){
         subUnWrittenList.style.display = "none";
+    } else {
         subReviewNone.style.display = "none";
+        
     }
+
+
 
     document.getElementsByClassName("unWritten")[0].classList.add("unWrittenNone");
     document.getElementsByClassName("unWritten")[0].classList.remove("unWritten");

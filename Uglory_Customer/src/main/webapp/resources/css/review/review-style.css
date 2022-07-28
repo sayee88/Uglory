@@ -1,12 +1,16 @@
 *{box-sizing: border-box;}
 
+/* ================================================= */
 /* 내용 전체 영역 지정 */
+/* ================================================= */
 .content_container{
     /* border: 1px solid red; */
     margin: 0 80px 100px 80px;
 }
 
+/* ================================================= */
 /* box 안에 내용 영역 */
+/* ================================================= */
 .box_container{
     border: 1px solid rgb(208, 208, 208);
     height: 150px;
@@ -85,8 +89,9 @@
     font-size: 30px;
 }
 
-/* ========================================== */
+/* ================================================= */
 /* 카테고리 버튼 */
+/* ================================================= */
 .category_section{
     /* border: 1px solid red; */
     text-align: center;
@@ -133,8 +138,9 @@
 
 
 
-/* ========================================== */
+/* ================================================= */
 /* 리뷰 목록 */
+/* ================================================= */
 .review-section{
     /* border: 1px solid red; */
     padding: 0 0 20px 0;
@@ -194,8 +200,10 @@
     font-size: 13px;
 }
 
-/*  별점 */
 
+/* ================================================= */
+/*  별점 */
+/* ================================================= */
 
 /* .review-star > span{
     color: rgb(113, 214, 199);
@@ -247,9 +255,9 @@
 }
 
 
-/* ========================================== */
-
+/* ================================================= */
 /* 모달창 */
+/* ================================================= */
 .mymodal{
     width: 100%;
     height: 100%;
@@ -432,10 +440,9 @@
 }
 
 
-/* ----------------------------------------- */
-
-
+/* ================================================= */
 /* 미작성 리뷰 카테고리 */
+/* ================================================= */
 .unWritten-reviewCode{
     /* border: 1px solid red; */
     display: flex;
@@ -506,8 +513,9 @@
 }
 
 
-
+/* ================================================= */
 /* 미작성 리뷰 리스트 */
+/* ================================================= */
 .unWrittenReview-List > div{
     /* border: 1px solid red; */
     height: 250px;
@@ -598,9 +606,9 @@
 .subBox , .product{ cursor: pointer;}
 
 
-/* ====================================================== */
-
+/* ================================================= */
 /* 나의 리뷰 */
+/* ================================================= */
 .myreview-list{
     /* margin-bottom: 20px; */
     border-bottom: 1px solid rgb(176, 176, 176);
@@ -643,9 +651,12 @@
 
 .myReview-star{
     /* border: 1px solid red; */
-    color: rgb(254, 161, 22);
     font-size: 20px;
-    /* margin-bottom: 10px; */
+}
+
+.myReview-star .fa-star{
+    color: rgb(254, 161, 22);
+
 }
 
 .myReview-star > .myRating{
@@ -660,9 +671,9 @@
 
 .content-info > div:nth-of-type(2){
     /* border: 1px solid red; */
-    /* font-size: 14px;
-    color: rgb(157, 157, 157); */
+    font-size: 20px;
     margin-top: 5px;
+    color: rgb(254, 161, 22);
 }
 
 .content-info > div:nth-of-type(3){
@@ -691,17 +702,6 @@
     text-align: end;
 }
 
-#updateBtn{
-    border: 0;
-    width: 80px;
-    height: 30px;
-    color: white;
-    background-color: rgb(113, 214, 199);
-    font-weight: bold;
-    border-radius: 7px;
-    margin-right: 10px;
-}
-
 #deleteBtn{
     border: 0;
     width: 80px;
@@ -714,7 +714,19 @@
 }
 
 
+#subReviewNone, #pReviewNone{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    font-size: larger;
+    font-weight: bold;
+    padding-top: 100px;
+}
+
+/* ================================================= */
 /* 모달 상세보기 이미지 크기 지정 */
+/* ================================================= */
 .carousel-item > img{
     /* height: 100%; */
     width: 100%;
