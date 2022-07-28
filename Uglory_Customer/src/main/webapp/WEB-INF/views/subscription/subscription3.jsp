@@ -120,7 +120,7 @@
                             <tr>
                                 <th colspan="2">-배송 주기 : <span style="color: red;">
                                     <c:choose>
-                                        <c:when test="${orderInfo.box == '1'}">매주</c:when>
+                                        <c:when test="${orderInfo.cycle == '1'}">매주</c:when>
                                         <c:otherwise>격주</c:otherwise>
                                     </c:choose>
                                 </span></th>
