@@ -74,7 +74,7 @@
                                 <div class="carousel-inner">
 
                                     <c:forEach var="productImage" items="${productImgList}">
-                                        <div class="carousel-item active">
+                                        <div class="carousel-item"> 
                                             <img src="http://localhost:8080/ugloryA${productImage}" class="d-block w-100" alt="..." width="380px" height="380px">
                                         </div>
                                         <%-- <div class="carousel-item">
