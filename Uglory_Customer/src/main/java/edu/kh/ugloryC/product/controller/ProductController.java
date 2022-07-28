@@ -112,13 +112,14 @@ public class ProductController {
 		map.put("amountList", amountList);
 			
 		map.put("productCode", productCode);
+		
 		// 주문 페이지 내 옵션 코드 상품 코드에 따른 옵션이름, 개수 조회
 		List<OptionType> selectOptionList = service.orderOptionSelect(map);
 		
-		// 이미지 조회
-		String orderImg = service.selectImages(productCode);
+//		// 이미지 조회
+		List<String> orderImgList = service.selectImages(productCode);
 		
-		model.addAttribute("orderImg", orderImg);
+		model.addAttribute("orderImgList", orderImgList);
 		
 		map.put("selectOptionList", selectOptionList);
 		
@@ -164,6 +165,10 @@ public class ProductController {
 		String pOrderCode = service.createProductOrderCode();
 		
 		map.put("pOrderCode", pOrderCode);
+		
+		// 이미지 조회
+		List<String> cartOrderImgList = service.cartOrderImage(map);
+		model.addAttribute("cartOrderImgList", cartOrderImgList);
 		
 		if(pOrderCode != null) {
 			
@@ -223,11 +228,9 @@ public class ProductController {
 		String[] optionCodeArr = optionCode.split(",");
 		String[] amountArr = amount.split(",");
 
-	
 		List<String> optionCodeList = Arrays.asList(optionCodeArr);
 		List<String> amountList = Arrays.asList(amountArr);
 
-		
 		if(pOrderReq.equals("")) {
 			pOrderReq = "NULL";
 		}
@@ -328,7 +331,9 @@ public class ProductController {
 		// 장바구니 상품 조회
 		List<ProductCart> productCartList = service.productCart(loginMember.getMemberNo()); 
 		
+		List<String> cartImagelist = service.cartImage(loginMember.getMemberNo()); 
 		
+		model.addAttribute("cartImagelist", cartImagelist);
 		model.addAttribute("productCartList", productCartList);
 
 		return "product/productCart";
