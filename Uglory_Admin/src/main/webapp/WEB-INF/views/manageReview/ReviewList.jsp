@@ -203,7 +203,9 @@
                                     <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
 
                                         <%-- 이미지 슬라이드 --%>
-                                        <div class="carousel-inner"></div>
+                                        <div class="carousel-inner">
+                                            <img src="${contextPath}/resources/img/Uglory_apple.png">
+                                        </div>
 
                                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
                                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
