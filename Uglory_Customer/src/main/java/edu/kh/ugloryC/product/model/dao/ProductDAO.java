@@ -220,8 +220,8 @@ public class ProductDAO {
 	 * @param memberNo
 	 * @return cartImagelist
 	 */
-	public List<String> cartImage(int memberNo) {
-
-		return sqlSession.selectList("productMapper.cartImage", memberNo);
-	}
+//	public List<String> cartImage(int memberNo) {
+//
+//		return sqlSession.selectList("productMapper.cartImage", memberNo);
+//	}
 }

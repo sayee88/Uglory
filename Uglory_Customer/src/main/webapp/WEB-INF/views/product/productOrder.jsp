@@ -103,7 +103,7 @@
                                 <!-- 상품 썸네일 이미지 -->
                                 <div class="order-productImgName" style="margin-top : 10px;">
                                     <div>
-                                        <img src="http://localhost:8080/ugloryA${cartOrderImgList}" width="150px" height="150px">
+                                        <img src="http://localhost:8080/ugloryA${cartOrderImgList[0]}" width="150px" height="150px">
                                     </div>
 
                                     <div class="orderProductName"> 
