@@ -185,6 +185,7 @@ function orderValidate(){
 		alert("품절 상품은 구매가 불가능합니다.");
 		return false;
 	}
+
 	// 옵션 선택했을 때
 	if(optionSpan.length > 0){
 
@@ -221,9 +222,11 @@ function orderValidate(){
 document.getElementById("cartButton").addEventListener("click", function(){
 
 	const optionSpan = document.querySelectorAll(".optionSpan");
+	const selectOption = document.querySelectorAll(".selectOption");
+	const ser = document.getElementsByClassName("selectOption");
 
 	if(productStatus == "O"){
-		alert("품절 상품은 장바구니 담기가 불가능합니다.");
+		// alert("품절 상품은 장바구니 담기가 불가능합니다.");
 		return false;
 	} 
 	// 옵션 선택했을 때
@@ -253,6 +256,7 @@ document.getElementById("cartButton").addEventListener("click", function(){
 
 	} else {
 		alert("옵션을 선택해주세요");
+		modalContent.modal('hide');
 		return false;
 	}
 });
@@ -294,10 +298,19 @@ rating.each(function(){
 
 	const carousel_item = document.getElementsByClassName("carousel-item")[0];
 	carousel_item.classList.add("active");	 
-	
+
 })();
 
+// 장바구니 모달창 x
+document.getElementsByClassName('detail-product-farm')[0].addEventListener("click", function(){
 
-
-
-
+	if(document.getElementsByClassName("optionSpan").length != 0){
+ 
+	   document.getElementById("cartButton").setAttribute("data-bs-toggle", "modal");
+	   
+	} else {
+ 
+	   document.getElementById("cartButton").removeAttribute("data-bs-toggle", "modal");
+ 
+	}
+ });
