@@ -162,7 +162,7 @@
                                 <c:if test="${count}==0">
                                     <a href="#"><span>0</span>개의 리뷰 &gt;</a>
                                 </c:if>
-                                <a href="#"><span>${count}</span>개의 리뷰 &gt;</a>
+                                <a href="${contextPath}/review/list"><span>${count}</span>개의 리뷰 &gt;</a>
                             </div>
                         </div>
                         <hr>
@@ -236,7 +236,7 @@
                     </div>
                     <!-- 별점 평균 -->
                     <h4 style="color: gray"><span id="product-review-avg">${result}</span>/5</h4>
-                    <a href="#" style="color:gray; margin-left:8px; font-size:20px;"><span>${count}</span>개의 리뷰 &gt;</a>
+                    <a href="${contextPath}/review/list" style="color:gray; margin-left:8px; font-size:20px;"><span>${count}</span>개의 리뷰 &gt;</a>
                 </div>
 
                 <%-- 장바구니 모달창 --%>
