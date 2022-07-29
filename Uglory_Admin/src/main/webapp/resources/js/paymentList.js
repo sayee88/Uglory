@@ -8,7 +8,6 @@ for(const selectDetailBtn of selectDetailList){
 
         console.log(payNo);
 
-
         let sortNum;
         if(this.classList.contains("sort-1")) {
             location.href = "SPaymentDetail/" + payNo;
@@ -21,3 +20,7 @@ for(const selectDetailBtn of selectDetailList){
     })
 
 }
+
+
+
+
