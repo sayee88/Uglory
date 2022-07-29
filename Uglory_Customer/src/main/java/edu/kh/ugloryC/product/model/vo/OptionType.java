@@ -19,6 +19,7 @@ public class OptionType {
 	private int productCategoryNo;
 	private int optionCount;
 	private String imageRoot;
+	private String thumbnail;
 	
 	private int optionNo;
 	

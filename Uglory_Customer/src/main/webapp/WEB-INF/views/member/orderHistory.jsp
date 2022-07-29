@@ -91,18 +91,15 @@
                                 <c:if test="${item.refundStatus == 0}">
                                     <dl>
                                         <dt>결제금액</dt>
-                                        <c:if test="${item.totalPrice>=30000}">
+                                       
                                         <dd>${item.totalPrice}원</dd>
-                                        </c:if>
-                                        <c:if test="${item.totalPrice<30000}">
-                                        <dd>${item.totalPrice+3000}원  (배송비 포함)</dd>
-                                    
+                                       
+                                       
                                      
-                                        </c:if>
                                     </dl>
+                                </c:if>
 
-
-                    
+                                <c:if test="${item.refundStatus != 1}">
                                     <dl>
                                         <dt>배송상태</dt>
                                     
@@ -111,9 +108,7 @@
                                             <button type="button" class="refundBtn" onclick="productRefund('${item.orderNo}', this)">환불신청</button>
                                         </div>
                                     <dl>
-
                                 </c:if>
-
 
                                 <c:if test="${item.refundStatus == 1}">
                                     <dl>
@@ -235,7 +230,10 @@
                 <!-- 범위가 정해진 일반 for문 -->
                 <c:forEach var="i" begin="${pagination.startPage}" end="${pagination.endPage}" step="1">
                     <c:if test="${i == pagination.currentPage}">
-                        <li class="page-item"><a class="page-link current" >${i}</a></li>
+                        <li class="page-item"><a class="page-link current">${i}</a></li>
+                    </c:if>
+                    <c:if test="${i != pagination.currentPage}">
+                        <li class="page-item"><a class="page-link" href="${url}${i}">${i}</a></li>
                     </c:if>
                 </c:forEach>
                
