@@ -192,6 +192,7 @@
 		JOIN CART USING(OPTION_NO)
 		JOIN MEMBER USING(MEMBER_NO)
 		WHERE MEMBER_NO = #{memberNo}
+		AND IMG_LEVEL = 0
 	</select>
 	
 	<!-- x버튼 클릭 시 장바구니 삭제  -->
@@ -242,6 +243,7 @@
 		<foreach item="item" collection="optionNoList" open="(" separator="," close=")">
 			#{item}
 		</foreach>
+		AND IMG_LEVEL = 0
 	</select>
 </mapper>
 
