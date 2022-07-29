@@ -186,13 +186,10 @@
 
     <script>
         const contextPath = "${contextPath}";
-        
 
-        for(var sort of sortlist){
-            console.log(sort);
-        }
-
-
+        // for(var sort of sortlist){
+        //     console.log(sort);
+        // }
 
     </script>
 

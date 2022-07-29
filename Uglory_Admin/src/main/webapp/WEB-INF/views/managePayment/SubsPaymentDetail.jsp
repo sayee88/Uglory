@@ -136,7 +136,7 @@
                             </tbody>
                         </table>
 
-                        <div style="margin-top: 100px;"><a class="btn btn-primary rounded-pill" href="${contextPath}/payment/selectAll">목록으로</a></div>
+                        <div style="margin-top: 100px;"><a class="btn btn-primary rounded-pill" id="goToList" href="javascript:history.back();">목록으로</a></div>
 
                     </div>
                 </div>

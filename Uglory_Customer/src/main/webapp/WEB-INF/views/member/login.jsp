@@ -49,7 +49,7 @@
                 <div class="login-text d-flex justify-content-center" style="font-size:24px;">로그인</div>
                 <div class="login-full d-flex justify-content-center">
                     <a href="javascript:kakaoLogin();">
-                        <img class="kakao" src="${contextPath}/resources/img/login/kakao_login_medium_narrow.png" style="width: 300px;"alt="카카오로그인"></a>
+                        <img class="kakao" src="${contextPath}/resources/img/login/kakaoFin.png" style="width:350px; height:60px; border-radius:10px;"alt="카카오로그인"></a>
                 </div>
             </section>
             
