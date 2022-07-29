@@ -151,15 +151,9 @@ for (let btn of orderDetailBtn) {
                 const dt2_3 = document.createElement("dt");
                 dt2_3.innerText = "총 결제 금액"
                 const dd2_3 = document.createElement("dd");
-                
-                if(orderHistoryDetail.totalPrice >= 30000){
-                    dd2_3.innerText = orderHistoryDetail.totalPrice + "원";
+                dd2_3.innerText = orderHistoryDetail.totalPrice + "원";
                     
-                }
-                else if(orderHistoryDetail.totalPrice < 30000){
-                    dd2_3.innerText = (orderHistoryDetail.totalPrice+3000) + "원";
-
-                }
+               
                 dl2_3.append(dt2_3, dd2_3);
 
 
