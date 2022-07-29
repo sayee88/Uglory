@@ -248,7 +248,7 @@ public class ReviewDAO {
 	 */
 	public int reviewDelete(Map<String, Object> map) {
 		
-		return sqlSession.delete("reviewMapper.reviewDelete", map);
+		return sqlSession.update("reviewMapper.reviewDelete", map);
 	}
 	
 	

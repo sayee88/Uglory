@@ -551,21 +551,6 @@ function openModal(reviewNo){
 //==========================================================
 
 
-// 나의 리뷰 js 부분
-// 리뷰 삭제
-function deleteReview(reviewNo, reviewCode){
-
-    let url = contextPath + "/review/list/delete/" + reviewCode + "/" + reviewNo;
-
-    if( confirm("정말로 삭제 하시겠습니까?")){
-        location.href = url; // get 방식으로 url에 요청
-    }
-
-}
-
-
-
-
 
 
 
@@ -579,15 +564,24 @@ function deleteReview(reviewNo, reviewCode){
 // 나의 미작성 리뷰 js 부분
 const subUnWrittenList = document.getElementById("subUnWrittenList");
 const productUnWrittenList = document.getElementById("productUnWrittenList");
-
+const subReviewNone = document.getElementById("subReviewNone");
+const pReviewNone = document.getElementById("pReviewNone");
 
 document.getElementsByClassName("subBox")[0].addEventListener("click", function(){
     
-    
     if(subUnWrittenList != null){
         subUnWrittenList.style.display = "block";
+    } else {
+        subReviewNone.style.display = "block";
     }
-    productUnWrittenList.style.display = "none";
+    
+    if(productUnWrittenList != null){
+        productUnWrittenList.style.display = "none";
+        
+    } else {
+        pReviewNone.style.display = "none";
+
+    }
 
     document.getElementsByClassName("unWritten")[0].classList.add("unWrittenNone");
     document.getElementsByClassName("unWritten")[0].classList.remove("unWritten");
@@ -600,11 +594,21 @@ document.getElementsByClassName("subBox")[0].addEventListener("click", function(
 
 document.getElementsByClassName("product")[0].addEventListener("click", function(){
     
-    productUnWrittenList.style.display = "block";
+    if(productUnWrittenList != null){
+        productUnWrittenList.style.display = "block";
+        
+    } else {
+        pReviewNone.style.display = "block";
+    }
     
     if(subUnWrittenList != null){
         subUnWrittenList.style.display = "none";
+    } else {
+        subReviewNone.style.display = "none";
+        
     }
+
+
 
     document.getElementsByClassName("unWritten")[0].classList.add("unWrittenNone");
     document.getElementsByClassName("unWritten")[0].classList.remove("unWritten");
@@ -612,11 +616,3 @@ document.getElementsByClassName("product")[0].addEventListener("click", function
     this.classList.add("unWritten");
    
 });
-
-
-// 상품 이미지
-// const img = document.getElementsByClassName("img");
-// for(let i=0; i<img.length; i++){
-//     img[i].setAttribute("src", window.location.origin+'/ugloryA' + imgRoot);
-
-// };

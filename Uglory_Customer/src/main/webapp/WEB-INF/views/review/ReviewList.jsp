@@ -69,8 +69,18 @@
                             <a href="${contextPath}/product/list" class="nav-item nav-link">Market</a>
                             <a href="${contextPath}/review/list" class="nav-item nav-link icon">Review</a>
                         </div>
-                        <a href="#" class="nav-item icon"><img class="menu-chart" src="${contextPath}/resources/img/main/shopping-cart-white.png"></a>
-                        <a href="${contextPath}/member/login" class="nav-item icon"><img class="menu-chart" src="${contextPath}/resources/img/main/user-white.png"></a>
+                        <a href="${contextPath}/product/cart" class="nav-item icon"><img class="menu-chart" src="${contextPath}/resources/img/main/shopping-cart-white.png"></a>
+                        <c:choose>
+
+                            <c:when test="${empty sessionScope.loginMember}">
+                                <a href="${contextPath}/member/login" class="nav-item icon"><img class="menu-chart" src="${contextPath}/resources/img/main/user-white.png"></a>
+                            </c:when>
+
+                            <c:otherwise>
+                                <a href="${contextPath}/member/myPage" class="nav-item icon"><img class="menu-chart" src="${contextPath}/resources/img/main/user-white.png"></a>
+                            </c:otherwise>
+
+                    </c:choose>
                     </div>
                 </nav>
 
@@ -304,7 +314,7 @@
                             <div class="modal-bottom">
                                 <div class="modal-sub">
                                     <img src="${contextPath}/resources/img/icon/tomato.png" width="50px">
-                                    <a href="#">   구독 박스가 궁금하다면? >></a>
+                                    <a href="${contextPath}/subscription">   구독 박스가 궁금하다면? >></a>
                                 </div>
                             </div>
 

@@ -17,6 +17,7 @@ public class ProductCart {
 	private String optionName;
 	private String optionPrice;
 	private String optionNo;
+	private String imageRoot;
 	
 	private int optionCount;
 }

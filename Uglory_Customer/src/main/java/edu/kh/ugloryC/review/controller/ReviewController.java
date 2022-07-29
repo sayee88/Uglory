@@ -40,8 +40,9 @@ public class ReviewController {
 	@Autowired
 	private ReviewService service;
 
-	
+	// ==========================================================================================================
 	// 이용 약관
+	// ==========================================================================================================
 	@GetMapping("/termsAndCondition")
 	public String termsAndCondition() {
 		return "review/termsAndCondition";
@@ -79,8 +80,9 @@ public class ReviewController {
 	}
 	
 	
-	
+	// ==========================================================================================================
 	// 리뷰 전체 불러오기
+	// ==========================================================================================================
 	@ResponseBody
 	@PostMapping("/list/allReviewList")
 	public String allRevieList() {
@@ -91,6 +93,9 @@ public class ReviewController {
 	}
 	
 	
+	// ==========================================================================================================
+	// 리뷰 구독/상품 전체 후기
+	// ==========================================================================================================
 	
 	// 리뷰 구독 전체 후기
 	@ResponseBody
@@ -115,8 +120,9 @@ public class ReviewController {
 	
 	
 	
-	
+	// ==========================================================================================================
 	// 리뷰 상세 조회 
+	// ==========================================================================================================
 	@ResponseBody
 	@GetMapping("/list/reviewDetail")
 	public String selectReviewDetail(Model model
@@ -138,10 +144,11 @@ public class ReviewController {
 	
 	
 	
-	
+	// ==========================================================================================================
 	// 나의 리뷰 화면 전환
+	// ==========================================================================================================
 	@GetMapping("/list/myReview")
-	public String myReview(Model model, 
+	public String myReview(Model model,
 			@ModelAttribute("loginMember") Member loginMember){
 		
 		// 리뷰 박스
@@ -167,30 +174,22 @@ public class ReviewController {
 		mybox.put("result3", result3);
 		mybox.put("result4", result4);
 		
+		
 		model.addAttribute("mybox", mybox);
 		model.addAttribute("reviewSelectInfo", reviewSelectInfo);
+		
+		
 		
 		return "review/MyReview";
 	}
 	
 	
-	// 나의 리뷰 목록 조회
-//	@GetMapping("/list/myReview")
-//	public String myReviewList(Model model, 
-//			@ModelAttribute("loginMember") Member loginMember) {
-//		
-//		
-//		model.addAttribute("reviewSelectInfo", reviewSelectInfo);
-//		
-//		return "review/MyReview";
-//	}
-//	
 	
 	
 	
-	
-	
+	// ==========================================================================================================
 	// 미작성 리뷰 호출
+	// ==========================================================================================================
 	@GetMapping("/list/unWritten")
 	public String unWritten(@ModelAttribute("loginMember")  Member loginMember, Model model){
 		
@@ -237,8 +236,9 @@ public class ReviewController {
 	
 	
 	
-	
+	// ==========================================================================================================
 	// 리뷰 작성 화면 전환
+	// ==========================================================================================================
 	@GetMapping("/write/{orderCode}")
 	public String write( @PathVariable("orderCode") String orderCode,
 			int reviewCode,
@@ -266,12 +266,17 @@ public class ReviewController {
 		}
 		
 		
+		
+		
 		return "review/ReviewWriteForm";
 	}
 	
+	// ==========================================================================================================
 	// 리뷰 작성
+	// ==========================================================================================================
 	@PostMapping("/write/{orderCode}")
-	public String write(@RequestParam(value="images", required=false) List<MultipartFile> imageList // 업로드 파일(이미지) 리스트
+	public String write(
+			@RequestParam(value="images", required=false) List<MultipartFile> imageList // 업로드 파일(이미지) 리스트
 			, @PathVariable("orderCode") String orderCode
 			, int reviewCode
 			, String mode
@@ -333,6 +338,8 @@ public class ReviewController {
 			
 		} else { // 수정일 부분
 			
+			
+			
 		}
 		
 		
@@ -340,14 +347,18 @@ public class ReviewController {
 	}
 	
 	
-	
+	// ==========================================================================================================
 	// 리뷰 삭제
+	// ==========================================================================================================
 	@GetMapping("/list/delete/{reviewCode}/{reviewNo}")
 	public String deleteReview(@PathVariable("reviewNo") int reviewNo,
 							@PathVariable("reviewCode") int reviewCode,
 							HttpServletRequest req,
 							@RequestHeader("referer") String referer,
 							RedirectAttributes ra) { 
+		
+		
+		//let url = contextPath + "/review/list/delete" + reviewCode + "/" + reviewNo;
 		
 		int result = service.reviewDelete(reviewNo, reviewCode);
 		
@@ -356,7 +367,7 @@ public class ReviewController {
 		
 		if(result > 0) {
 			message = "게시글이 삭제 되었습니다.";
-			path = "../../list/delete/" + reviewNo;
+			path = "../../myReview";
 		} else {
 			message = "게시글 삭제 실패ㅠㅠ";
 			path = referer;
@@ -365,12 +376,22 @@ public class ReviewController {
 		ra.addFlashAttribute("message", message);
 		
 		return "redirect:" + path;
+	
 	}
 	
 	
 	
 	
-	// 리뷰 수정
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

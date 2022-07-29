@@ -644,3 +644,24 @@ body::-webkit-scrollbar-track {
 .mainText{
     margin-left: 100px;
 }
+
+
+.review-star{
+    padding-left: 30px;
+    display: flex;
+}
+
+.fa-star {
+    color: rgb(113, 214, 199);
+}
+
+.rating{
+    padding-right: 10px;
+}
+
+.rating .star-wrap{width: 20px; display:inline-block;}
+
+.rating .star{
+    width: 0;
+    overflow: hidden;
+}

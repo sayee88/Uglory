@@ -23,8 +23,6 @@ public class DeliveryUpdateScheduling {
 	private SubscriptionService service;
 	
 	
-	
-	
 	// 매주
 //	@Scheduled(cron="0 0 0 * * 4") // 매주 수요일 0시마다
 //	@Scheduled(cron="0 0 0 * * 1") // 시연용

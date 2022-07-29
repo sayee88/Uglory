@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+
+//모달
 @Getter
 @Setter
 @NoArgsConstructor
