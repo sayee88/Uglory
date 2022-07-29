@@ -16,6 +16,7 @@
     height: 150px;
     padding: 30px 40px;
     display: flex;
+    width: 1150px;
 }
 
 .box_text{
@@ -214,6 +215,8 @@
     /* border: 1px solid red; */
     padding-left: 30px;
     display: flex;
+    text-align: end;
+    width: 50%;
 }
 
 .fa-star {
