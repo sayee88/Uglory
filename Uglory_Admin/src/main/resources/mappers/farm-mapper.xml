@@ -41,5 +41,11 @@
 			SEQ_FARM_NO.NEXTVAL, #{farmName}, #{producer}, #{origin}, DEFAULT
 		)
 	</insert>
+	
+	<!-- 농장 개수 세기 -->
+	<select id="countFarmNo" resultType="_int">
+		SELECT COUNT(*) FROM FARM
+		WHERE FARM_ST = 'Y'
+	</select>
 
 </mapper>
