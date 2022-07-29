@@ -33,6 +33,7 @@
 		<result property="optionNo" column="OPTION_NO"/>
 		<result property="optionCount" column="OPTION_COUNT"/>
 		<result property="imageRoot" column="IMG_ROOT"/>
+		<result property="thumbnail" column="THUMBNAIL"/>
 	</resultMap>
 	
 	<!-- 장바구니 조회 resultMap -->
@@ -104,10 +105,14 @@
 	
 	<!-- 장바구니 -> 결제 옵션 조회 -->
 	<select id="cartOrder" resultMap="orderOptionProduct_rm">
-		SELECT OPTION_CD, OPTION_NM, OPTION_PRICE, PRODUCT_NM, P_CD, P_CATEGORY.P_CATEGORY_NO, OPTION_COUNT, OPTION_NO
-		FROM OPTION_TB
-		JOIN OPTION_TYPE USING(OPTION_CD)
-		JOIN PRODUCT USING(P_CD)
+		SELECT OPTION_TB.OPTION_CD, OPTION_NM, OPTION_PRICE, PRODUCT_NM, PRODUCT.P_CD, P_CATEGORY.P_CATEGORY_NO, OPTION_COUNT, OPTION_NO,
+		(SELECT IMG_ROOT
+		   FROM PRODUCT_IMG
+		   WHERE IMG_LEVEL = 0
+		   AND PRODUCT_IMG.P_CD = PRODUCT.P_CD) THUMBNAIL
+		FROM OPTION_TB 
+		JOIN OPTION_TYPE ON(OPTION_TB.OPTION_CD = OPTION_TYPE.OPTION_CD)
+		JOIN PRODUCT ON(OPTION_TYPE.P_CD = PRODUCT.P_CD)
 		JOIN P_CATEGORY ON(PRODUCT.P_CATEGORY_NO = P_CATEGORY.P_CATEGORY_NO)
 		WHERE OPTION_NO IN
 		<foreach item="item" collection="optionNoList" open="(" separator="," close=")">
