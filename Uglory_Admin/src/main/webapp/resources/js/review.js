@@ -72,14 +72,28 @@ for(const selectDetailBtn of selectDetailList){
                     }
 
                 } else{
+
                     imageSlide.innerHTML = "";
                     imgbox.innerHTML = "";
+                    
+                    const modalImageBox = document.getElementsByClassName("modal-mainImage")[0].children[0];
+                    modalImageBox.innerHTML = "";
+                    
+                    const defaultImageBox = document.createElement("div");
+                    const defaultImage = document.createElement("img");
+
+                    // defaultImageBox.classList.add("carousel-item");
+
+                    defaultImage.classList.add("d-block", "w-100");
+                    defaultImage.setAttribute("src", contextPath+'/resources/img/Uglory_apple.png');
+
+                    // defaultImageBox.classList.add("active");
+                    // defaultImageBox.setAttribute("style", "object-fit: contain;");
+
+                    defaultImageBox.append(defaultImage);
+                    modalImageBox.append(defaultImageBox);
 
                 }
-
-               
-                // 이미지 리스트 왜 안 없어져!??!?! 
-                
 
                 // 삭제하기 위한 함수에 reviewNo 매개변수 추가
                 const deleteBtn = document.getElementsByClassName("btn-delete")[0];
