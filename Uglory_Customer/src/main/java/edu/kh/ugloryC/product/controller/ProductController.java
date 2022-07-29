@@ -331,9 +331,9 @@ public class ProductController {
 		// 장바구니 상품 조회
 		List<ProductCart> productCartList = service.productCart(loginMember.getMemberNo()); 
 		
-		List<String> cartImagelist = service.cartImage(loginMember.getMemberNo()); 
+//		List<String> cartImagelist = service.cartImage(loginMember.getMemberNo()); 
 		
-		model.addAttribute("cartImagelist", cartImagelist);
+//		model.addAttribute("cartImagelist", cartImagelist);
 		model.addAttribute("productCartList", productCartList);
 
 		return "product/productCart";

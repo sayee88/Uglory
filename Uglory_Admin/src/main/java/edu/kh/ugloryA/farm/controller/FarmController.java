@@ -1,6 +1,7 @@
 package edu.kh.ugloryA.farm.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -10,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -25,11 +27,12 @@ public class FarmController {
 	
 	//농장 조회 페이지
 	@GetMapping("/list")
-	public String farmList(Model model) {
+	public String farmList(Model model,
+						   @RequestParam(value="cp", required=false, defaultValue = "1") int cp) {
 		
-		List<Farm> farmList = service.selectFarmList();
+		Map<String,	Object> map = service.selectFarmList(cp);
 		
-		model.addAttribute("farmList", farmList);
+		model.addAttribute("map", map);
 		
 		return "adminFarm/adminFarmList";
 	}

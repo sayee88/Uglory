@@ -1,10 +1,13 @@
 package edu.kh.ugloryA.farm.model.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import edu.kh.ugloryA.customer.model.vo.Pagination;
 import edu.kh.ugloryA.farm.model.dao.FarmDAO;
 import edu.kh.ugloryA.farm.model.vo.Farm;
 
@@ -16,8 +19,19 @@ public class FarmServiceImpl implements FarmService {
 
 	//농장 리스트 조회 서비스 구현
 	@Override
-	public List<Farm> selectFarmList() {
-		return dao.selectFarmList();
+	public Map<String, Object> selectFarmList(int cp) {
+		
+		int listCount = dao.countFarmNo();
+		Pagination pagination = new Pagination(cp, listCount);
+		
+		List<Farm> farmList = dao.selectFarmList(pagination);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("farmList", farmList);
+		map.put("pagination", pagination);
+		
+		return map;
 	}
 
 	//농장 삭제 서비스 구현

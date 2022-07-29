@@ -136,10 +136,10 @@ public interface ProductService {
 	 */
 	List<String> cartOrderImage(Map<String, Object> map);
 
-	/** 장바구니 이미지 조회
-	 * @param memberNo
-	 * @return cartImagelist
-	 */
-	List<String> cartImage(int memberNo);
+//	/** 장바구니 이미지 조회
+//	 * @param memberNo
+//	 * @return cartImagelist
+//	 */
+//	List<String> cartImage(int memberNo);
 	
 }
