@@ -387,9 +387,12 @@
     <!— Template Javascript —>
     <script src="${contextPath}/resources/js/main.js"></script>
 
+
+    ${loginMember}
+
     <script>
         const memberEmail = '${loginMember.memberEmail}';
-        const memberNickname = '${loginMember.memberNickname}';
+        const memberName = '${loginMember.memberName}';
 
         (function() {
             var w = window;
@@ -431,7 +434,7 @@
             "pluginKey": "47cc0c81-8455-48b5-ab72-07c8a57573fd", //please fill with your plugin key
             "memberId": memberEmail, //fill with user id
             "profile": {
-                "name": memberNickname, //fill with user name
+                "name": memberName, //fill with user name
                 //   "CUSTOM_VALUE_1": "VALUE_1", //any other custom meta data
                 //   "CUSTOM_VALUE_2": "VALUE_2"
             }

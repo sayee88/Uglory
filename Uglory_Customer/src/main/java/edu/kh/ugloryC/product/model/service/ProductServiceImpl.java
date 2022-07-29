@@ -258,11 +258,11 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	// 장바구니 이미지 조회
-	@Override
-	public List<String> cartImage(int memberNo) {
-
-		return dao.cartImage(memberNo);
-	}
+//	@Override
+//	public List<String> cartImage(int memberNo) {
+//
+//		return dao.cartImage(memberNo);
+//	}
 	
 	
 	
