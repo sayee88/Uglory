@@ -99,8 +99,7 @@
                                     </dl>
                                 </c:if>
 
-
-                    
+                                <c:if test="${item.refundStatus != 1}">
                                     <dl>
                                         <dt>배송상태</dt>
                                     
@@ -109,9 +108,7 @@
                                             <button type="button" class="refundBtn" onclick="productRefund('${item.orderNo}', this)">환불신청</button>
                                         </div>
                                     <dl>
-
                                 </c:if>
-
 
                                 <c:if test="${item.refundStatus == 1}">
                                     <dl>
@@ -234,6 +231,9 @@
                 <c:forEach var="i" begin="${pagination.startPage}" end="${pagination.endPage}" step="1">
                     <c:if test="${i == pagination.currentPage}">
                         <li class="page-item"><a class="page-link current">${i}</a></li>
+                    </c:if>
+                    <c:if test="${i != pagination.currentPage}">
+                        <li class="page-item"><a class="page-link" href="${url}${i}">${i}</a></li>
                     </c:if>
                 </c:forEach>
                
