@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -52,27 +53,32 @@ public class ReviewController {
 	// 리뷰 후기 list 화면 전환 // 조회할 때 필요한 정보를 담아서
 	@GetMapping("/list")
 	public String reviewList(Model model, 
-			@ModelAttribute("loginMember") Member loginMember){
+			HttpSession session){
 		
 		// 리뷰 박스
 		// 리뷰 전체 후기 수 조회
 		int result1 = service.selectReviewAllCount();
 		
-		// 별점 평균 조회
-		double result2 = service.selectAvgStar(loginMember.getMemberNo());
-		
-		// 나의 리뷰 수 조회
-												// Member 객체를 가져오기위한 loginMember 변수명에서 memberNo를 꺼내 호출
-		int result3 = service.selectMyReviewCount(loginMember.getMemberNo());
-		
-		// 나의 미작성 리뷰 수 조회
-		int result4 = service.selectUnWrittenCount(loginMember.getMemberNo());
+		Member loginMember = (Member)session.getAttribute("loginMember");
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("result1", result1);
-		map.put("result2", result2);
-		map.put("result3", result3);
-		map.put("result4", result4);
+		
+		if(loginMember != null) {
+		// 별점 평균 조회
+			double result2 = service.selectAvgStar(loginMember.getMemberNo());
+			
+			// 나의 리뷰 수 조회
+													// Member 객체를 가져오기위한 loginMember 변수명에서 memberNo를 꺼내 호출
+			int result3 = service.selectMyReviewCount(loginMember.getMemberNo());
+			
+			// 나의 미작성 리뷰 수 조회
+			int result4 = service.selectUnWrittenCount(loginMember.getMemberNo());
+
+			map.put("result2", result2);
+			map.put("result3", result3);
+			map.put("result4", result4);
+		}
 		
 		model.addAttribute("map", map);
 		
