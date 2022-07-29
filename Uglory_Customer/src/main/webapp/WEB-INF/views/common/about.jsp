@@ -255,15 +255,15 @@
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content" style="height: 700px; width: 700px;">
+        <div class="modal-content" style="height: 700px; width: 450px;">
         <div class="modal-header">
             <h5 class="modal-title" id="exampleModalLabel">어글로리 채소 전체보기  👀🥬</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
-            <img src="${contextPath}/resources/img/about/vegetable.webp" style="width:680px;">
+        <div class="modal-body text-center">
+            <img src="${contextPath}/resources/img/about/어글로리전체보기.png" style="width:400px; height:550px;">
         </div>
-        <div class="modal-footer">
+        <div class="modal-footer p-0">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           
         </div>

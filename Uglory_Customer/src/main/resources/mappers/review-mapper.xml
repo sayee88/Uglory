@@ -211,11 +211,11 @@
 		JOIN PRODUCT_IMG I ON(I.P_CD = P.P_CD)
 		WHERE MEMBER_NO = #{memberNo}
 		AND (P_ORDER_CD, P.P_CD) NOT IN (SELECT P_ORDER_CD, P.P_CD FROM REVIEW
-		                               WHERE MEMBER_NO = 6
+		                               WHERE MEMBER_NO = #{memberNo}
 									   AND S_ORDER_CD IS NULL)
 	</select>
 		
-	
+
 	<!-- 구독 리뷰 상태 'Y' -->
 	<update id="updateSubReviewST">
 		UPDATE SUBS_ORDER
