@@ -52,6 +52,7 @@
 	<!-- 농장 개수 조회 -->
 	<select id="farmCount" resultType="_int">
 		SELECT COUNT(*) FROM FARM
+		WHERE FARM_ST = 'Y'
 	</select>
 	
 	<!-- 상품 개수 조회 -->
