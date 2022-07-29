@@ -4,6 +4,10 @@
 
 <c:set var="productCode" value="${detail.productCode}" />
 
+<c:if test="${detail.productStatus == 'O'}">
+    <c:set var="disabled" value="disabled"/>
+</c:if>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -158,11 +162,7 @@
 
                                 <!-- 별점 평균 -->
                                 <span>${result}</span>
-                                <!-- 해당 상품에 대한 리뷰 페이지로 이동 -->
-                                <c:if test="${count}==0">
-                                    <a href="#"><span>0</span>개의 리뷰 &gt;</a>
-                                </c:if>
-                                <a href="${contextPath}/review/list"><span>${count}</span>개의 리뷰 &gt;</a>
+                                <a href="${contextPath}/review/list">리뷰 확인하기 &gt;</a>
                             </div>
                         </div>
                         <hr>
@@ -178,7 +178,7 @@
                                 <!-- 옵션 선택 for문으로 가져오기 -->
                                 <option value="option-0" selected disabled>옵션 선택</option>
                                 <c:forEach var="option_type" items="${optionList}">
-                                    <option value="${option_type.optionCode}" >
+                                    <option value="${option_type.optionCode}" class ="selectOption" ${disabled}>
                                         ${option_type.optionName} - ${option_type.optionPrice}원
                                     </option>
                                 </c:forEach>
@@ -195,7 +195,9 @@
                         <div class="detail-product-btnArea">
                             <c:if test="${!empty loginMember}">
                                 <button type="submit" id="buy-btn">구매하기</button>
-                                <button type="button" class="cartBtn" id="cartButton" data-bs-toggle="modal" data-bs-target="#staticBackdrop">장바구니</button>
+                                                    <%-- data-bs-toggle="modal"  --%>
+                                    <button type="button" class="cartBtn" id="cartButton" data-bs-target="#staticBackdrop">장바구니</button>
+                                    
                             </c:if>
                             <button id="share-btn" onclick="clip(); return false;">공유하기</button>
                         </div>
@@ -236,7 +238,7 @@
                     </div>
                     <!-- 별점 평균 -->
                     <h4 style="color: gray"><span id="product-review-avg">${result}</span>/5</h4>
-                    <a href="${contextPath}/review/list" style="color:gray; margin-left:8px; font-size:20px;"><span>${count}</span>개의 리뷰 &gt;</a>
+                    <a href="${contextPath}/review/list" style="color:gray; margin-left:8px; font-size:20px;">리뷰 확인하기 &gt;</a>
                 </div>
 
                 <%-- 장바구니 모달창 --%>
