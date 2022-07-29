@@ -386,6 +386,59 @@
 
     <!— Template Javascript —>
     <script src="${contextPath}/resources/js/main.js"></script>
+
+    <script>
+        const memberEmail = '${loginMember.memberEmail}';
+        const memberNickname = '${loginMember.memberNickname}';
+
+        (function() {
+            var w = window;
+            if (w.ChannelIO) {
+            return (window.console.error || window.console.log || function(){})('ChannelIO script included twice.');
+            }
+            var ch = function() {
+            ch.c(arguments);
+            };
+            ch.q = [];
+            ch.c = function(args) {
+            ch.q.push(args);
+            };
+            w.ChannelIO = ch;
+            function l() {
+            if (w.ChannelIOInitialized) {
+                return;
+            }
+            w.ChannelIOInitialized = true;
+
+            var s = document.createElement('script');
+            s.type = 'text/javascript';
+            s.async = true;
+            s.src = 'https://cdn.channel.io/plugin/ch-plugin-web.js';
+            s.charset = 'UTF-8';
+            var x = document.getElementsByTagName('script')[0];
+            x.parentNode.insertBefore(s, x);
+            }
+            if (document.readyState === 'complete') {
+            l();
+            } else if (window.attachEvent) {
+            window.attachEvent('onload', l);
+            } else {
+            window.addEventListener('DOMContentLoaded', l, false);
+            window.addEventListener('load', l, false);
+            }
+        })();
+        ChannelIO('boot', {
+            "pluginKey": "47cc0c81-8455-48b5-ab72-07c8a57573fd", //please fill with your plugin key
+            "memberId": memberEmail, //fill with user id
+            "profile": {
+                "name": memberNickname, //fill with user name
+                //   "CUSTOM_VALUE_1": "VALUE_1", //any other custom meta data
+                //   "CUSTOM_VALUE_2": "VALUE_2"
+            }
+        });
+    
+    </script>
+    
 </body>
 
 </html>
