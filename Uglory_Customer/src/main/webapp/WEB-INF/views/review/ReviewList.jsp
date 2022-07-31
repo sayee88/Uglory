@@ -221,9 +221,9 @@
             <div class="modal-dialog modal-dialog-centered modal-lg" style="object-fit: contain;">
                 <div class="modal-content">
                     
-                    <div class="modal-header">
-                        <div class="modal-title" id="exampleModalLabel"></div>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <div class="modal-header" style="height:50px;">
+                        <div class="modal-title" id="exampleModalLabel" ></div>
+                        <%-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> --%>
                     </div>
                     
                     <div class="modal-body" style="display: flex;">
@@ -308,7 +308,7 @@
 
 
                             <div class="modal-content-text">
-                                신선한 토마토로 카프레제 해먹었어요~ 멋쟁이 토마토로 파스타도 해먹구 신이 나요~
+                                
                             </div>
                             
                             <div class="modal-bottom">
@@ -323,9 +323,7 @@
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-                        style="background-color:rgb(113, 214, 199); border:0; font-weight: bold;">수정하기</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-                        style="background-color:rgb(113, 214, 199); border:0; font-weight: bold;">삭제하기</button>
+                        style="background-color:rgb(113, 214, 199); border:0; font-weight: bold;">닫기</button>
                 </div>
                 </div>
             </div>
