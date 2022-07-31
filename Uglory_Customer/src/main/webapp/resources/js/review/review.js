@@ -514,7 +514,7 @@ function openModal(reviewNo){
 
             const modalContentText = document.getElementsByClassName("modal-content-text")[0];
             modalContentText.innerText = "";
-            modalContentText.innerText = reviewDetail[0].reviewContent;
+            modalContentText.innerHTML = reviewDetail[0].reviewContent;
 
 
             // 별점
