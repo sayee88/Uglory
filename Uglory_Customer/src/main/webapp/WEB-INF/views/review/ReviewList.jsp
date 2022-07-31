@@ -198,7 +198,7 @@
                             <label onclick="subCategory()" for="reviewClick2" class="reviewBtn">구독박스</label>
                             
                             <input type="radio" class="reviewRadio" id="reviewClick3" name="reviewRadio">
-                            <label onclick="productCaregory()" for="reviewClick3" class="reviewBtn">상점</label>
+                            <label onclick="productCaregory()" for="reviewClick3" class="reviewBtn">개별상품</label>
                         </div>
                     </div>
                     
@@ -234,8 +234,8 @@
                                     <%-- 이미지 슬라이드 부분 --%>
                                     <div class="carousel-inner">
                                         <%-- 여기부터 --%>
-                                        <div class="carousel-item active" >
-                                            <img src="${contextPath}/resources/img/review/review_img1.png" class="d-block w-100" style="object-fit: contain;">
+                                        <div class="carousel-item active">
+                                            <img src="${contextPath}/resources/img/review/review_img1.png" class="d-block w-100">
                                         </div>
                                         <div class="carousel-item">
                                             <img src="${contextPath}/resources/img/review/review_img10.png" class="d-block w-100">
