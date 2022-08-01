@@ -34,8 +34,8 @@ public class Util {
 		Logger logger = LoggerFactory.getLogger(Util.class);
 		
 		//메세지 보내기 예제
-		String api_key = "NCSHMUJDRA5SEMJV";
-	    String api_secret = "3BRDUZ0EWAXWXI7MUXPJBOTBN4LWOCZB";
+		String api_key = "";
+	    String api_secret = "";
 	    Message coolsms = new Message(api_key, api_secret);
 	    
 
