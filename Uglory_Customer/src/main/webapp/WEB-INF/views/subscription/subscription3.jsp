@@ -47,7 +47,6 @@
 
 <body>
     <jsp:include page="/WEB-INF/views/common/header-1.jsp" />
-
            <%-- param ${param.box}<hr>
            request ${requestScope.box}<hr>
            session ${sessionScope.box}<hr>
@@ -115,7 +114,7 @@
                             </tr>
                             <tr>
                                 <th>첫 배송 날짜</th>
-                                <th><fmt:formatDate value="${orderInfo.firstDelDate}" pattern="yyyy.MM.dd" /></th>
+                                <th><fmt:formatDate value="${sessionScope.firstDelDate}" pattern="yyyy.MM.dd" /></th>
                             </tr>
                             <tr>
                                 <th colspan="2">-배송 주기 : <span style="color: red;">
@@ -170,7 +169,7 @@
         const delText = "${orderInfo.inputDelText}";
         const payNo = "${orderInfo.payNo}";
         const memberNo = "${loginMember.memberNo}";
-        const firstDelDate = "${orderInfo.firstDelDate}";
+        const firstDelDate = "${sessionScope.firstDelDate}";
 
         const cycle = "${orderInfo.cycle}"
         const box = "${orderInfo.box}";
